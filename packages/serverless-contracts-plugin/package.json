@@ -1,0 +1,64 @@
+{
+  "name": "@serverless-contracts/plugin",
+  "license": "MIT",
+  "version": "0.0.0",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "transpile": "babel . --extensions .ts",
+    "package": "rm -rf dist && yarn package:cjs && yarn package:esm && yarn package:types",
+    "watch": "rm -rf dist && concurrently 'yarn:package:* --watch'",
+    "package:cjs": "NODE_ENV=cjs yarn transpile --out-dir dist/cjs --source-maps",
+    "package:esm": "NODE_ENV=esm yarn transpile --out-dir dist/esm --source-maps",
+    "package:types": "ttsc",
+    "test:type": "tsc --noEmit --emitDeclarationOnly false",
+    "test:unit": "echo 'no tests yet'",
+    "test:dependents": "lerna run --scope @serverless-contracts/plugin --include-dependents --stream --concurrency 2 test:type",
+    "package:test": "yarn package && yarn test:dependents",
+    "test:all": "yarn test:linter && yarn test:dependents && yarn test:unit",
+    "linter-base-config": "eslint --ext=js,ts .",
+    "test:linter": "yarn linter-base-config .",
+    "lint:fix": "yarn linter-base-config --fix",
+    "lint:fix-all": "yarn lint:fix .",
+    "precommit": "echo 'lint-staged'"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "json-schema-diff": "^0.17.1",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/plugin-transform-runtime": "^7.16.4",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-typescript": "^7.16.0",
+    "@serverless-contracts/configuration": "^0.0.0",
+    "@serverless/typescript": "^2.66.2",
+    "@types/serverless": "^1.78.39",
+    "@zerollup/ts-transform-paths": "^1.7.18",
+    "aws-sdk": "^2.1033.0",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "concurrently": "^6.4.0",
+    "eslint": "^8.2.0",
+    "jest": "^27.3.1",
+    "json-schema-to-ts": "^1.6.4",
+    "lint-staged": "^12.0.3",
+    "prettier": "^2.4.1",
+    "serverless": "^2.66.2",
+    "simple-git": "^2.47.0",
+    "ttypescript": "^1.5.12",
+    "typescript": "^4.5.2"
+  },
+  "peerDependencies": {
+    "@serverless-contracts/core": "0.0.0",
+    "serverless": "^2.60 || 3"
+  }
+}

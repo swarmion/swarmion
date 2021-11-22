@@ -1,0 +1,71 @@
+{
+  "name": "@serverless-contracts/app",
+  "private": true,
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "Generate and use type-safe contracts between your Serverless services.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fargito/serverless-contracts.git"
+  },
+  "keywords": [
+    "Serverless",
+    "Contracts",
+    "Typescript"
+  ],
+  "author": "fargito",
+  "bugs": {
+    "url": "https://github.com/fargito/serverless-contracts/issues"
+  },
+  "homepage": "https://github.com/fargito/serverless-contracts#readme",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "check-audit": "check-audit --yarn",
+    "deploy": "yarn package && lerna run --stream --concurrency 2 deploy",
+    "deploy:production:since": "lerna run --stream --concurrency 3 deploy:production --include-dependents --since",
+    "deploy:since": "lerna run --stream --concurrency 3 deploy --include-dependents --since",
+    "deploy:staging:since": "lerna run --stream --concurrency 3 deploy:staging --include-dependents --since",
+    "info": "lerna run --stream sls:info",
+    "lint:fix": "lerna run --stream --concurrency 2 lint:fix",
+    "list:since": "lerna list --all --long --parseable --since",
+    "package": "lerna run --stream package",
+    "package:since": "lerna run --stream --concurrency 3 package --include-dependencies --include-dependents --since",
+    "prepare": "husky install",
+    "remove": "lerna run --stream --concurrency 2 remove",
+    "resolve-audit": "resolve-audit --yarn",
+    "test:all": "yarn test:linter && yarn test:type && yarn test:unit",
+    "test:linter": "lerna run --stream --concurrency 2 test:linter",
+    "test:since": "lerna run --stream --concurrency 3 test:all --include-dependents --since",
+    "test:type": "lerna run --stream --concurrency 2 test:type",
+    "test:unit": "lerna run --stream --concurrency 2 test:unit",
+    "watch": "lerna run --parallel watch"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
+    "@types/jest": "^27.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "aws-sdk": "^2.1033.0",
+    "eslint": "^8.2.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jest": "^25.2.4",
+    "eslint-plugin-prefer-arrow": "^1.2.3",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "jest": "^27.3.1",
+    "lerna": "^4.0.0",
+    "lodash": "^4.17.20",
+    "npm-audit-resolver": "^2.2.1",
+    "prettier": "^2.4.1",
+    "syncpack": "^5.6.10",
+    "typescript": "^4.5.2"
+  },
+  "engines": {
+    "node": "^14.18.1",
+    "yarn": "^1.22.15"
+  }
+}
