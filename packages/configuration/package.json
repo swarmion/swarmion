@@ -28,7 +28,7 @@
     "test:unit": "echo 'no tests yet'",
     "transpile": "babel . --extensions .ts",
     "watch": "rm -rf dist && concurrently 'yarn:package:* --watch'",
-    "precommit": "echo 'lint-staged'"
+    "precommit": "lint-staged"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.0",
