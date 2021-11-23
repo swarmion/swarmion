@@ -1,28 +1,24 @@
-# Serverless contracts
+# @serverless-contracts/core
 
 Generate and use type-safe contracts between your Serverless services.
 
-## Motivation
+This package is part of the [serverless-contracts](https://github.com/fargito/serverless-contracts) project. See its documentation for more insights.
 
-When splitting your codebase into multiple services, you need to be able to deploy each service independently. However, how to ensure that each deployment will not impact the behavior of other services?
+## Installation
 
-The proposed solution is to constrain every service to interact with other services through a system of contracts.
+```bash
+npm install @serverless-contracts/core
+```
 
-Each interaction is inherently asymmetric:
+or if using yarn
 
-- The **provider** is reponsible for giving resources to other services
-- The **consumers** use resources given by the provider
-
-Each service can be both a provider and a consumer for different contracts, but each contract is only provided by a single service.
-
-In order to make these contracts safe, each side of the contract must be able to validate it:
-
-- statically with Typescript
-- dynamically with JSONSchema
-
-_As of today, only interactions through ApiGateway's HTTP API and REST API are supported. In the future, CloudFormation import/exports and more will also be supported._
+```bash
+yarn add @serverless-contracts/core
+```
 
 ## Defining contracts between services
+
+_As of today, only interactions through ApiGateway's HTTP API and REST API are supported. In the future, CloudFormation import/exports and more will also be supported._
 
 Let's create our first HttpApi contract. First we will need to define the subschemas for each part of our contract:
 
