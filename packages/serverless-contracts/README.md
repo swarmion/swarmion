@@ -237,7 +237,7 @@ const serverlessConfiguration = {
 };
 ```
 
-The resolved imported value will be available as `${self:custom.myImportedValue}` in you serverless files. See [the Serverless variables documentation](https://www.serverless.com/framework/docs/providers/aws/guide/variables/#reference-properties-in-serverlessyml).
+The resolved imported value will be available as `${self:custom.myImportedValue}` in your serverless files. See [the Serverless variables documentation](https://www.serverless.com/framework/docs/providers/aws/guide/variables/#reference-properties-in-serverlessyml).
 
 # About type inference
 
