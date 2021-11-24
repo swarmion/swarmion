@@ -4,7 +4,13 @@ Generate and use type-safe contracts between your Serverless services.
 
 This package is part of the [serverless-contracts](https://github.com/fargito/serverless-contracts) project. See its documentation for more insights.
 
-## Installation
+- [Installation](#installation)
+- [Defining contracts](#defining-contracts)
+  - [ApiGateway](#apigateway)
+  - [CloudFormation](#cloudformation)
+- [About type inference](#about-type-inference)
+
+# Installation
 
 ```bash
 npm install @serverless-contracts/core
@@ -16,20 +22,27 @@ or if using yarn
 yarn add @serverless-contracts/core
 ```
 
-## Defining contracts between services
+# Defining contracts
 
-_As of today, only interactions through ApiGateway's HTTP API and REST API are supported. In the future, CloudFormation import/exports and more will also be supported._
+## ApiGateway
+
+ApiGateway is an AWS service that makes it possible to trigger lambda functions through HTTP. There are two types of ApiGateways (for more details, see [AWS documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html)):
+
+- HTTP API
+- REST API
+
+In our examples, we will use and HTTP API, but it is completely equivalent for REST APIs in terms of contracts.
 
 Let's create our first HttpApi contract. First we will need to define the subschemas for each part of our contract:
 
 - the `path` and the http `method` which will trigger the lambda
-- the `integrationType`: `"httpApi"` or `"restApi"`. For more information, see [AWS ApiGateway documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html)
+- the `integrationType`: `"httpApi"` or `"restApi"`
 - then the different parts of the http request:
   - the path parameters: `pathParametersSchema`, which must correspond to a `Record<string, string>`
   - the query string parameters: `queryStringParametersSchema`, which must respect the same constraint
   - the headers: `headersSchema`, with the same constraint
   - the body `bodySchema` which is an unconstrained JSON schema
-- finally, the `outputSchema` in order to be able to validate the output of the lambda. It is also un unconstrained JSON schema.
+- finally, the `outputSchema` in order to be able to validate the output of the lambda. It is also an unconstrained JSON schema.
 
 ```ts
 const pathParametersSchema = {
@@ -98,7 +111,7 @@ const myContract = new ApiGatewayContract({
 });
 ```
 
-## Provider-side usage
+### Provider-side usage
 
 ### Generate the lambda trigger
 
@@ -132,7 +145,7 @@ in order to validate the input and/or the output of your lambda.
 
 TODO
 
-## Consumer-side usage
+### Consumer-side usage
 
 Simply call the `axiosRequest` method on the schema.
 
@@ -164,3 +177,11 @@ myContract.getRequestParameters({
 ```
 
 and then use them in your request.
+
+# CloudFormation
+
+TODO
+
+# About type inference
+
+TODO
