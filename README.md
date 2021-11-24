@@ -4,8 +4,8 @@ A set of tools to build and deploy type-safe Serverless microservices.
 
 This projet is composed of the following packages:
 
-- [@serverless-contracts/core](./packages/serverless-contracts/README.md): generate and use type-safe contracts in your microservices
-- [@serverless-contracts/plugin](./packages/serverless-contracts-plugin/README.md): a Serverless plugin to safely deploy microservices
+- [@serverless-contracts/core](./packages/serverless-contracts): generate and use type-safe contracts in your microservices
+- [@serverless-contracts/plugin](./packages/serverless-contracts-plugin): a Serverless plugin to safely deploy microservices
 
 ## Motivation
 
@@ -29,8 +29,8 @@ In order to make these contracts safe, each side of the contract must be able to
 
 Serverless contracts are based on the idea of defining contracts before implementing them.
 
-See [@serverless-contracts/core](./packages/serverless-contracts/README.md) for more details on how to define and use contracts in your services.
+See [@serverless-contracts/core](./packages/serverless-contracts) for more details on how to define and use contracts in your services.
 
 ## Securing the deploy process
 
-Serverless contracts enable validation at deploy time in order to prevent breaking changes to be deployed in production. See [@serverless-contracts/plugin](./packages/serverless-contracts-plugin/README.md) for more details on the available configuration and commands.
+Serverless contracts enable validation at deploy time in order to prevent breaking changes to be deployed in production. See [@serverless-contracts/plugin](./packages/serverless-contracts-plugin) for more details on the available configuration and commands.
