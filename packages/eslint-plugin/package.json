@@ -1,17 +1,33 @@
 {
-  "name": "@serverless-contracts/configuration",
-  "version": "0.0.6",
-  "private": true,
+  "name": "@serverless-contracts/eslint-plugin",
   "license": "MIT",
+  "version": "0.0.6",
+  "description": "An eslint plugin with rules to enforces proper usage of contracts.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fargito/serverless-contracts.git"
+  },
+  "keywords": [
+    "Serverless",
+    "Contracts",
+    "Typescript",
+    "eslint",
+    "eslintplugin"
+  ],
+  "author": "fargito",
+  "bugs": {
+    "url": "https://github.com/fargito/serverless-contracts/issues"
+  },
+  "homepage": "https://github.com/fargito/serverless-contracts#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "dist"
   ],
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "lint:fix": "yarn linter-base-config --fix",
     "lint:fix-all": "yarn lint:fix .",
@@ -19,16 +35,15 @@
     "package": "rm -rf dist && yarn package:cjs && yarn package:esm && yarn package:types",
     "package:cjs": "NODE_ENV=cjs yarn transpile --out-dir dist/cjs --source-maps",
     "package:esm": "NODE_ENV=esm yarn transpile --out-dir dist/esm --source-maps",
-    "package:test": "yarn package && yarn test:dependents",
     "package:types": "ttsc",
+    "precommit": "lint-staged",
     "test:all": "yarn test:linter && yarn test:dependents && yarn test:unit",
-    "test:dependents": "lerna run --scope @serverless-contracts/configuration --include-dependents --stream --concurrency 2 test:type",
+    "test:dependents": "lerna run --scope @serverless-contracts/eslint-plugin --include-dependents --stream --concurrency 2 test:type",
     "test:linter": "yarn linter-base-config .",
     "test:type": "tsc --noEmit --emitDeclarationOnly false",
-    "test:unit": "echo 'no tests yet'",
+    "test:unit": "jest --runInBand --collectCoverage --logHeapUsage",
     "transpile": "babel . --extensions .ts",
-    "watch": "rm -rf dist && concurrently 'yarn:package:* --watch'",
-    "precommit": "lint-staged"
+    "watch": "rm -rf dist && concurrently 'yarn:package:* --watch'"
   },
   "dependencies": {
     "@babel/runtime": "^7.16.3"
@@ -39,17 +54,16 @@
     "@babel/plugin-transform-runtime": "^7.16.4",
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-typescript": "^7.16.0",
-    "@serverless/typescript": "^2.66.2",
+    "@serverless-contracts/configuration": "^0.0.6",
+    "@types/eslint": "^8.2.0",
     "@zerollup/ts-transform-paths": "^1.7.18",
     "babel-plugin-module-resolver": "^4.1.0",
     "concurrently": "^6.4.0",
     "eslint": "^8.2.0",
+    "find-up": "^5.0.0",
     "jest": "^27.3.1",
-    "jest-runner-groups": "^2.1.0",
-    "json-schema-to-ts": "^1.6.4",
     "lint-staged": "^12.0.3",
     "prettier": "^2.4.1",
-    "ts-jest": "^27.0.7",
     "ttypescript": "^1.5.12",
     "typescript": "^4.5.2"
   }
