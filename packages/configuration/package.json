@@ -30,6 +30,9 @@
     "watch": "rm -rf dist && concurrently 'yarn:package:* --watch'",
     "precommit": "lint-staged"
   },
+  "dependencies": {
+    "@babel/runtime": "^7.16.3"
+  },
   "devDependencies": {
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
