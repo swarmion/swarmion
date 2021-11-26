@@ -9,6 +9,7 @@ This projet is composed of the following packages:
 
 - [@serverless-contracts/core](./packages/serverless-contracts): generate and use type-safe contracts in your microservices
 - [@serverless-contracts/plugin](./packages/serverless-contracts-plugin): a Serverless plugin to safely deploy microservices
+- [@serverless-contracts/eslint-plugin](./packages/serverless-contracts-plugin): an eslint plugin with rules to enforces proper usage of contracts
 
 ## Motivation
 
