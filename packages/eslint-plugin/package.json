@@ -1,7 +1,7 @@
 {
   "name": "@serverless-contracts/eslint-plugin",
   "license": "MIT",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "An eslint plugin with rules to enforces proper usage of contracts.",
   "repository": {
     "type": "git",
@@ -46,7 +46,8 @@
     "watch": "rm -rf dist && concurrently 'yarn:package:* --watch'"
   },
   "dependencies": {
-    "@babel/runtime": "^7.16.3"
+    "@babel/runtime": "^7.16.3",
+    "find-up": "^5.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.0",
@@ -60,7 +61,6 @@
     "babel-plugin-module-resolver": "^4.1.0",
     "concurrently": "^6.4.0",
     "eslint": "^8.2.0",
-    "find-up": "^5.0.0",
     "jest": "^27.3.1",
     "lint-staged": "^12.0.3",
     "prettier": "^2.4.1",
