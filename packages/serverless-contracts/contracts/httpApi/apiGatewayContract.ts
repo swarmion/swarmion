@@ -7,8 +7,8 @@ import omitBy from 'lodash/omitBy';
 import { ConstrainedJSONSchema } from 'types/constrainedJSONSchema';
 import { GenericContract } from 'types/genericContract';
 import { HttpMethod } from 'types/http';
+import { fillPathTemplate } from 'utils/fillPathTemplate';
 
-import { fillPathTemplate } from '../../utils/fillPathTemplate';
 import {
   ApiGatewayIntegrationType,
   ApiGatewayLambdaTriggerType,

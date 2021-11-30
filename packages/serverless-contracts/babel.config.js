@@ -1,3 +1,17 @@
 const commonBabelConfig = require('../../commonConfiguration/babel.config');
 
-module.exports = commonBabelConfig();
+const plugins = [
+  [
+    'module-resolver',
+    {
+      root: ['.'],
+      alias: {
+        contracts: './contracts',
+        types: './types',
+        utils: './utils',
+      },
+    },
+  ],
+];
+
+module.exports = commonBabelConfig(plugins);

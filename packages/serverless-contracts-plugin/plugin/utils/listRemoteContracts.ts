@@ -1,7 +1,8 @@
 import * as AWS from 'aws-sdk';
 import Serverless from 'serverless';
 
-import { RemoteServerlessContracts } from '../../types/serviceOptions';
+import { RemoteServerlessContracts } from 'types/serviceOptions';
+
 import { buildPreviousDeploymentArtifactDirectoryName } from './artifactDirectory';
 import { COMPILED_CONTRACTS_FILE_NAME, CONTRACTS_VERSION } from './constants';
 import { getLatestDeployedTimestamp } from './getLatestDeployedTimestamp';

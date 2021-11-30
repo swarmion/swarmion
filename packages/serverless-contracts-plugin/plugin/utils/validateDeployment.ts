@@ -1,11 +1,11 @@
 import JsonSchemaDiff from 'json-schema-diff';
 import { JSONSchema } from 'json-schema-to-ts';
 
-import { DeploymentStrategies } from '../../types/deploymentTypes';
+import { DeploymentStrategies } from 'types/deploymentTypes';
 import {
   RemoteServerlessContracts,
   ServerlessContracts,
-} from '../../types/serviceOptions';
+} from 'types/serviceOptions';
 
 export const validateDeployment = async (
   localContracts: ServerlessContracts,

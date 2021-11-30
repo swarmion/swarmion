@@ -1,5 +1,5 @@
-import { ContractsLocation } from '../../types/locations';
-import { ServerlessContracts } from '../../types/serviceOptions';
+import { ContractsLocation } from 'types/locations';
+import { ServerlessContracts } from 'types/serviceOptions';
 
 export const printContracts = (
   { provides, consumes }: ServerlessContracts,

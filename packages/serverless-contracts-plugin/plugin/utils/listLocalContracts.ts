@@ -1,6 +1,6 @@
 import Serverless from 'serverless';
 
-import { ServerlessContracts } from '../../types/serviceOptions';
+import { ServerlessContracts } from 'types/serviceOptions';
 
 export const listLocalContracts = (
   serverless: Serverless,
