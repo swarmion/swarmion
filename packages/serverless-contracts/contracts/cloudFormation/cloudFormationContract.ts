@@ -60,6 +60,10 @@ export class CloudFormationContract<Name extends string>
     };
   }
 
+  get contractId(): string {
+    return this._id;
+  }
+
   get fullContractSchema(): FullContractSchemaType<Name> {
     return {
       type: 'object',

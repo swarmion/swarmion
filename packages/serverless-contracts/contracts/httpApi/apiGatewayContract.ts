@@ -158,6 +158,10 @@ export class ApiGatewayContract<
     return this._outputSchema;
   }
 
+  get contractId(): string {
+    return this._id;
+  }
+
   /**
    * Returns the aggregated contract schema in order to validate the inputs of lambdas.
    *
