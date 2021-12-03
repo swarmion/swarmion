@@ -149,12 +149,14 @@ export class ServerlessContractsPlugin implements Plugin {
       return;
     }
 
-    this.serverless.cli.log('Validating contracts...', 'Contracts');
+    if (this.options.strategy !== undefined) {
+      this.serverless.cli.log('Validating contracts...', 'Contracts');
 
-    await validateDeployment(
-      localContracts,
-      remoteContracts,
-      this.options.strategy ?? DeploymentStrategies.PROVIDER_FIRST,
-    );
+      await validateDeployment(
+        localContracts,
+        remoteContracts,
+        this.options.strategy,
+      );
+    }
   }
 }
