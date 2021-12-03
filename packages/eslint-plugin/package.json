@@ -41,7 +41,7 @@
     "test:dependents": "lerna run --scope @serverless-contracts/eslint-plugin --include-dependents --stream --concurrency 2 test:type",
     "test:linter": "yarn linter-base-config .",
     "test:type": "tsc --noEmit --emitDeclarationOnly false",
-    "test:unit": "jest --runInBand --collectCoverage --logHeapUsage",
+    "test:unit": "jest --runInBand --collectCoverage --logHeapUsage --passWithNoTests",
     "transpile": "babel . --extensions .ts",
     "watch": "rm -rf dist && concurrently 'yarn:package:* --watch'"
   },
