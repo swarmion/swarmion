@@ -52,6 +52,7 @@ export class ApiGatewayContract<
     : undefined,
 > implements GenericContract
 {
+  private _id: string;
   private _path: Path;
   private _method: Method;
   private _integrationType: IntegrationType;
@@ -64,6 +65,7 @@ export class ApiGatewayContract<
   /**
    * Builds a new ApiGateway contract
    *
+   * @param id an id to uniquely identify the contract among services. Beware of unicity!
    * @param path the path on which the lambda will be triggered
    * @param method the http method
    * @param integrationType httpApi or restApi, see https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html
@@ -77,6 +79,7 @@ export class ApiGatewayContract<
    * @param outputSchema a JSONSchema used to validate the output and infer its type (Same constraints).
    */
   constructor({
+    id,
     path,
     method,
     integrationType,
@@ -86,6 +89,7 @@ export class ApiGatewayContract<
     bodySchema,
     outputSchema,
   }: {
+    id: string;
     path: Path;
     method: Method;
     integrationType: IntegrationType;
@@ -95,6 +99,7 @@ export class ApiGatewayContract<
     bodySchema: BodySchema;
     outputSchema: OutputSchema;
   }) {
+    this._id = id;
     this._path = path;
     this._method = method;
     this._integrationType = integrationType;
@@ -169,6 +174,7 @@ export class ApiGatewayContract<
     OutputSchema
   > {
     const properties = {
+      contractId: { const: this._id },
       contractType: { const: this._integrationType },
       path: { const: this._path },
       method: { const: this._method },

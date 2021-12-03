@@ -38,6 +38,7 @@ describe('httpApiContract', () => {
 
   describe('when all parameters are set', () => {
     const httpApiContract = new ApiGatewayContract({
+      id: 'testContract',
       path: '/users/{userId}',
       method: 'GET',
       integrationType: 'httpApi',
@@ -83,6 +84,7 @@ describe('httpApiContract', () => {
       expect(httpApiContract.fullContractSchema).toEqual({
         type: 'object',
         properties: {
+          contractId: { const: 'testContract' },
           contractType: { const: 'httpApi' },
           path: { const: '/users/{userId}' },
           method: { const: 'GET' },
@@ -93,6 +95,7 @@ describe('httpApiContract', () => {
           output: outputSchema,
         },
         required: [
+          'contractId',
           'contractType',
           'path',
           'method',
@@ -125,6 +128,7 @@ describe('httpApiContract', () => {
 
   describe('when it is instanciated with a subset of schemas', () => {
     const restApiContract = new ApiGatewayContract({
+      id: 'testContractRest',
       path: 'coucou',
       method: 'POST',
       integrationType: 'restApi',
@@ -160,11 +164,12 @@ describe('httpApiContract', () => {
       expect(restApiContract.fullContractSchema).toEqual({
         type: 'object',
         properties: {
+          contractId: { const: 'testContractRest' },
           contractType: { const: 'restApi' },
           path: { const: 'coucou' },
           method: { const: 'POST' },
         },
-        required: ['contractType', 'path', 'method'],
+        required: ['contractId', 'contractType', 'path', 'method'],
       });
     });
 

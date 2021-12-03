@@ -81,6 +81,7 @@ type AllFullContractProperties<
   BodySchema extends JSONSchema | undefined,
   OutputSchema extends JSONSchema | undefined,
 > = {
+  contractId: { const: string };
   contractType: { const: IntegrationType };
   path: { const: Path };
   method: { const: Method };
