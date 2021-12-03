@@ -18,15 +18,18 @@ import {
 export class CloudFormationContract<Name extends string>
   implements GenericContract
 {
+  private _id: string;
   private _name: Name;
 
   /**
    * Builds a new ApiGateway contract
    *
+   * @param id a unique id to identify the contract among stacks. Beware unicity!
    * @param name the name of the export
    * See https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html
    */
-  constructor({ name }: { name: Name }) {
+  constructor({ id, name }: { id: string; name: Name }) {
+    this._id = id;
     this._name = name;
   }
 
@@ -61,10 +64,11 @@ export class CloudFormationContract<Name extends string>
     return {
       type: 'object',
       properties: {
+        contractId: { const: this._id },
         contractType: { const: 'cloudFormation' },
         name: { const: this._name },
       },
-      required: ['name', 'contractType'],
+      required: ['contractId', 'name', 'contractType'],
       additionalProperties: false,
     };
   }
