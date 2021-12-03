@@ -33,6 +33,7 @@
     "package": "lerna run --stream package",
     "package:since": "lerna run --stream --concurrency 3 package --include-dependencies --include-dependents --since",
     "prepare": "husky install",
+    "release": "yarn package && lerna publish",
     "remove": "lerna run --stream --concurrency 2 remove",
     "resolve-audit": "resolve-audit --yarn",
     "test:all": "yarn test:linter && yarn test:type && yarn test:unit",
