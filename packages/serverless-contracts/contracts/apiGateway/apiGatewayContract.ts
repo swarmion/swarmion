@@ -136,7 +136,7 @@ export class ApiGatewayContract<
 
     // @ts-ignore somehow the type inference does not work here
     return {
-      [key]: { path: this._path, method: this._method, ...additionalConfig },
+      [key]: { ...additionalConfig, path: this._path, method: this._method },
     };
   }
 
