@@ -9,9 +9,12 @@ import { GenericContract } from 'types/genericContract';
 import { HttpMethod } from 'types/http';
 import { fillPathTemplate } from 'utils/fillPathTemplate';
 
+import { ApiGatewayLambdaConfigType } from './lambdaTrigger';
 import {
   ApiGatewayIntegrationType,
-  ApiGatewayLambdaTriggerType,
+  ApiGatewayLambdaCompleteTriggerType,
+  ApiGatewayLambdaSimpleTriggerType,
+  ApiGatewayTriggerKey,
   DefinedProperties,
   FullContractSchemaType,
   InputSchemaType,
@@ -113,11 +116,28 @@ export class ApiGatewayContract<
   /**
    * Returns the lambda trigger
    */
-  get trigger(): ApiGatewayLambdaTriggerType<IntegrationType> {
+  get trigger(): ApiGatewayLambdaSimpleTriggerType<
+    ApiGatewayTriggerKey<IntegrationType>
+  > {
     const key = this._integrationType === 'httpApi' ? 'httpApi' : 'http';
 
     // @ts-ignore somehow the type inference does not work here
     return { [key]: { path: this._path, method: this._method } };
+  }
+
+  getCompleteTrigger(
+    additionalConfig: ApiGatewayLambdaConfigType<
+      ApiGatewayTriggerKey<IntegrationType>
+    >,
+  ): ApiGatewayLambdaCompleteTriggerType<
+    ApiGatewayTriggerKey<IntegrationType>
+  > {
+    const key = this._integrationType === 'httpApi' ? 'httpApi' : 'http';
+
+    // @ts-ignore somehow the type inference does not work here
+    return {
+      [key]: { path: this._path, method: this._method, ...additionalConfig },
+    };
   }
 
   /**

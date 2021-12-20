@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { ApiGatewayContract } from '../apiGatewayContract';
 
 describe('httpApiContract', () => {
@@ -56,6 +57,18 @@ describe('httpApiContract', () => {
           method: 'GET',
         },
       });
+    });
+
+    it('should have the correct complete trigger', () => {
+      expect(httpApiContract.getCompleteTrigger({ authorizer: '123' })).toEqual(
+        {
+          httpApi: {
+            path: '/users/{userId}',
+            method: 'GET',
+            authorizer: '123',
+          },
+        },
+      );
     });
 
     it('should have the correct inputSchema', () => {
@@ -139,11 +152,27 @@ describe('httpApiContract', () => {
       outputSchema: undefined,
     });
 
-    it('should have the correct trigger', () => {
+    it('should have the correct simple trigger', () => {
       expect(restApiContract.trigger).toEqual({
         http: {
           path: 'coucou',
           method: 'POST',
+        },
+      });
+    });
+
+    it('should have the correct complete trigger', () => {
+      expect(
+        restApiContract.getCompleteTrigger({
+          authorizer: '123',
+          connectionId: '456',
+        }),
+      ).toEqual({
+        http: {
+          path: 'coucou',
+          method: 'POST',
+          authorizer: '123',
+          connectionId: '456',
         },
       });
     });
