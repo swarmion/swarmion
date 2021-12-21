@@ -128,6 +128,30 @@ export default {
 };
 ```
 
+This will only output the `method` and `path`. However, if you need a more fine-grained configuration for your lambda (such as defining an authorizer), you can use the `getCompleteTrigger` method.
+
+```ts
+export default {
+  environment: {},
+  handler: getHandlerPath(__dirname),
+  events: [myContract.getCompleteTrigger({ authorizer: 'arn::aws...' })],
+};
+```
+
+The static typing helps here to prevent accidental overloading of `path` and `method`:
+
+```ts
+export default {
+  environment: {},
+  handler: getHandlerPath(__dirname),
+  events: [
+    myContract.getCompleteTrigger({
+      method: 'delete', // typescript will throw an error
+    }),
+  ],
+};
+```
+
 ### Validate the lambda
 
 JSON Schemas are compatible with `ajv` and `@middy/validator`. You can use

@@ -2,22 +2,38 @@ import { JSONSchema } from 'json-schema-to-ts';
 
 import { HttpMethod } from 'types/http';
 
+import { ApiGatewayLambdaConfigType } from './lambdaTrigger';
+
 /**
  * The integration type: HTTP API or REST API
  * For more information, see https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html
  */
 export type ApiGatewayIntegrationType = 'httpApi' | 'restApi';
+export type ApiGatewayKey = 'httpApi' | 'http';
+
+/**
+ * map between our integration types (httpApi vs restApi) and
+ * serverless's triggers
+ */
+export type ApiGatewayTriggerKey<
+  ApiGatewayIntegration extends ApiGatewayIntegrationType,
+> = ApiGatewayIntegration extends 'httpApi' ? 'httpApi' : 'http';
 
 /**
  * The type of an httpApi lambda trigger
  */
-export type ApiGatewayLambdaTriggerType<
-  ApiGatewayIntegration extends ApiGatewayIntegrationType,
-> = {
-  [key in ApiGatewayIntegration extends 'httpApi' ? 'httpApi' : 'http']: {
+export type ApiGatewayLambdaSimpleTriggerType<Key extends ApiGatewayKey> = {
+  [key in Key]: {
     path: string;
     method: string;
   };
+};
+
+export type ApiGatewayLambdaCompleteTriggerType<Key extends ApiGatewayKey> = {
+  [key in Key]: {
+    path: string;
+    method: string;
+  } & ApiGatewayLambdaConfigType<Key>;
 };
 
 /**
