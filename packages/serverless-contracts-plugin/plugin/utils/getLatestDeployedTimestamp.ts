@@ -8,17 +8,21 @@ export const getLatestDeployedTimestamp = async (
 ): Promise<string | undefined> => {
   const stackName = provider.naming.getStackName();
 
-  const { Stacks } = (await provider.request(
-    'CloudFormation',
-    'describeStacks',
-    {
-      StackName: stackName,
-    },
-  )) as AWS.CloudFormation.DescribeStacksOutput;
+  try {
+    const { Stacks } = (await provider.request(
+      'CloudFormation',
+      'describeStacks',
+      {
+        StackName: stackName,
+      },
+    )) as AWS.CloudFormation.DescribeStacksOutput;
 
-  return Stacks !== undefined
-    ? Stacks[0].Tags?.find(
-        ({ Key }) => Key === LATEST_DEPLOYED_TIMESTAMP_TAG_NAME,
-      )?.Value
-    : undefined;
+    return Stacks !== undefined
+      ? Stacks[0].Tags?.find(
+          ({ Key }) => Key === LATEST_DEPLOYED_TIMESTAMP_TAG_NAME,
+        )?.Value
+      : undefined;
+  } catch {
+    return undefined;
+  }
 };
