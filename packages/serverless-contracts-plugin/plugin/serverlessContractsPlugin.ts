@@ -22,17 +22,17 @@ interface OptionsExtended extends Serverless.Options {
 }
 
 export class ServerlessContractsPlugin implements Plugin {
-  options: OptionsExtended;
+  cliOptions: OptionsExtended;
   serverless: Serverless;
   hooks: Plugin.Hooks;
   commands: Plugin.Commands;
 
-  constructor(serverless: Serverless, options: OptionsExtended) {
-    this.options = options;
+  constructor(serverless: Serverless, cliOptions: OptionsExtended) {
+    this.cliOptions = cliOptions;
     // validate the 'strategy' argument
     if (
-      this.options.strategy !== undefined &&
-      !Object.values(DeploymentStrategies).includes(this.options.strategy)
+      this.cliOptions.strategy !== undefined &&
+      !Object.values(DeploymentStrategies).includes(this.cliOptions.strategy)
     ) {
       throw new Error(
         `Invalid deployment strategy. Choices are ${JSON.stringify(
@@ -149,13 +149,13 @@ export class ServerlessContractsPlugin implements Plugin {
       return;
     }
 
-    if (this.options.strategy !== undefined) {
+    if (this.cliOptions.strategy !== undefined) {
       this.serverless.cli.log('Validating contracts...', 'Contracts');
 
       await validateDeployment(
         localContracts,
         remoteContracts,
-        this.options.strategy,
+        this.cliOptions.strategy,
       );
     }
   }
