@@ -1,5 +1,6 @@
 import crypto from 'crypto';
 import * as Serverless from 'serverless';
+import Plugin from 'serverless/classes/Plugin';
 import simpleGit from 'simple-git';
 
 import { RemoteServerlessContracts } from 'types/serviceOptions';
@@ -9,15 +10,12 @@ import { listLocalContracts } from './listLocalContracts';
 
 export const uploadContracts = async (
   serverless: Serverless,
+  log: Plugin.Logging['log'],
 ): Promise<void> => {
   // @ts-ignore @types/serverless does not know this prop
   // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
   if (serverless.service.provider.shouldNotDeploy) {
-    serverless.cli.log(
-      'Service files not changed. Skipping contracts upload...',
-      'Contracts',
-      { color: 'orange' },
-    );
+    log.info('Service files not changed. Skipping contracts upload...');
   }
   const provider = serverless.getProvider('aws');
   const bucketName = await provider.getServerlessDeploymentBucketName();
@@ -51,7 +49,7 @@ export const uploadContracts = async (
     },
   };
 
-  serverless.cli.log('Uploading contracts file to S3...', 'Contracts');
+  log.info('Uploading contracts file to S3...');
 
   await provider.request('S3', 'upload', params);
 };

@@ -22,17 +22,23 @@ interface OptionsExtended extends Serverless.Options {
 }
 
 export class ServerlessContractsPlugin implements Plugin {
-  options: OptionsExtended;
+  cliOptions: OptionsExtended;
   serverless: Serverless;
   hooks: Plugin.Hooks;
   commands: Plugin.Commands;
+  log: Plugin.Logging['log'];
 
-  constructor(serverless: Serverless, options: OptionsExtended) {
-    this.options = options;
+  constructor(
+    serverless: Serverless,
+    cliOptions: OptionsExtended,
+    { log }: Plugin.Logging,
+  ) {
+    this.cliOptions = cliOptions;
+    this.log = log;
     // validate the 'strategy' argument
     if (
-      this.options.strategy !== undefined &&
-      !Object.values(DeploymentStrategies).includes(this.options.strategy)
+      this.cliOptions.strategy !== undefined &&
+      !Object.values(DeploymentStrategies).includes(this.cliOptions.strategy)
     ) {
       throw new Error(
         `Invalid deployment strategy. Choices are ${JSON.stringify(
@@ -105,10 +111,7 @@ export class ServerlessContractsPlugin implements Plugin {
   async printRemoteServerlessContracts(): Promise<void> {
     const contracts = await this.listRemoteContracts();
     if (contracts === undefined) {
-      this.serverless.cli.log(
-        'Unable to retrieve remote contracts',
-        'Contracts',
-      );
+      this.log.error('Unable to retrieve remote contracts');
 
       return;
     }
@@ -134,28 +137,27 @@ export class ServerlessContractsPlugin implements Plugin {
   }
 
   async uploadContracts(): Promise<void> {
-    await uploadContracts(this.serverless);
+    await uploadContracts(this.serverless, this.log);
   }
 
   async validateDeployment(): Promise<void> {
     const localContracts = listLocalContracts(this.serverless);
     const remoteContracts = await listRemoteContracts(this.serverless);
     if (remoteContracts === undefined) {
-      this.serverless.cli.log(
-        'Unable to retrieve remote contracts, deployment is unsafe',
-        'Contracts',
+      this.log.warning(
+        'Contracts: Unable to retrieve remote contracts, deployment is unsafe',
       );
 
       return;
     }
 
-    if (this.options.strategy !== undefined) {
-      this.serverless.cli.log('Validating contracts...', 'Contracts');
+    if (this.cliOptions.strategy !== undefined) {
+      this.log.info('Validating contracts...');
 
       await validateDeployment(
         localContracts,
         remoteContracts,
-        this.options.strategy,
+        this.cliOptions.strategy,
       );
     }
   }
