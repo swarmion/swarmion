@@ -21,30 +21,17 @@ interface OptionsExtended extends Serverless.Options {
   strategy?: DeploymentStrategies;
 }
 
-export interface Logging {
-  log: {
-    error: (text: string) => void;
-    warning: (text: string) => void;
-    notice: (text: string) => void;
-    info: (text: string) => void;
-    debug: (text: string) => void;
-    verbose: (text: string) => void;
-    success: (text: string) => void;
-  };
-  writeText: (text: string | string[]) => void;
-}
-
 export class ServerlessContractsPlugin implements Plugin {
   cliOptions: OptionsExtended;
   serverless: Serverless;
   hooks: Plugin.Hooks;
   commands: Plugin.Commands;
-  log: Logging['log'];
+  log: Plugin.Logging['log'];
 
   constructor(
     serverless: Serverless,
     cliOptions: OptionsExtended,
-    { log }: Logging,
+    { log }: Plugin.Logging,
   ) {
     this.cliOptions = cliOptions;
     this.log = log;

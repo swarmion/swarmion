@@ -1,8 +1,8 @@
 import crypto from 'crypto';
 import * as Serverless from 'serverless';
+import Plugin from 'serverless/classes/Plugin';
 import simpleGit from 'simple-git';
 
-import { Logging } from 'plugin/serverlessContractsPlugin';
 import { RemoteServerlessContracts } from 'types/serviceOptions';
 
 import { COMPILED_CONTRACTS_FILE_NAME, CONTRACTS_VERSION } from './constants';
@@ -10,7 +10,7 @@ import { listLocalContracts } from './listLocalContracts';
 
 export const uploadContracts = async (
   serverless: Serverless,
-  log: Logging['log'],
+  log: Plugin.Logging['log'],
 ): Promise<void> => {
   // @ts-ignore @types/serverless does not know this prop
   // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
