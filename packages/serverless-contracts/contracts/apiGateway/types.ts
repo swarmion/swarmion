@@ -130,6 +130,7 @@ export type InputSchemaType<
   type: 'object';
   properties: DefinedInputProperties;
   required: Array<keyof DefinedInputProperties>;
+  additionalProperties: false;
 };
 
 /**
@@ -162,6 +163,7 @@ export interface FullContractSchemaType<
   type: 'object';
   properties: DefinedFullContractProperties;
   required: Array<keyof DefinedFullContractProperties>;
+  additionalProperties: false;
 }
 
 /**

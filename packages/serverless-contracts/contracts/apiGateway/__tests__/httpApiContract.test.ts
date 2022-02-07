@@ -85,6 +85,7 @@ describe('httpApiContract', () => {
           'headers',
           'body',
         ],
+        additionalProperties: false,
       });
     });
 
@@ -117,6 +118,7 @@ describe('httpApiContract', () => {
           'body',
           'output',
         ],
+        additionalProperties: false,
       });
     });
 
