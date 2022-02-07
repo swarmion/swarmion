@@ -48,6 +48,7 @@ describe('restApiContract', () => {
         type: 'object',
         properties: {},
         required: [],
+        additionalProperties: false,
       });
     });
 
@@ -61,6 +62,7 @@ describe('restApiContract', () => {
           method: { const: 'POST' },
         },
         required: ['contractId', 'contractType', 'path', 'method'],
+        additionalProperties: false,
       });
     });
 

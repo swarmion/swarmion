@@ -166,6 +166,7 @@ export class ApiGatewayContract<
       properties,
       // @ts-ignore here object.keys is not precise enough
       required: Object.keys(properties),
+      additionalProperties: false,
     };
   }
 
@@ -220,6 +221,7 @@ export class ApiGatewayContract<
       properties,
       // @ts-ignore type inference does not work here
       required: Object.keys(properties),
+      additionalProperties: false,
     };
   }
 
