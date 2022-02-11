@@ -1,23 +1,18 @@
 {
   "name": "@serverless-contracts/app",
+  "description": "A set of tools to build and deploy type-safe Serverless microservices.",
   "private": true,
   "version": "1.0.0",
+  "author": "fargito",
   "license": "MIT",
-  "description": "A set of tools to build and deploy type-safe Serverless microservices.",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fargito/serverless-contracts.git"
-  },
+  "homepage": "https://github.com/fargito/serverless-contracts#readme",
+  "bugs": "https://github.com/fargito/serverless-contracts/issues",
+  "repository": "fargito/serverless-contracts.git",
   "keywords": [
-    "Serverless",
     "Contracts",
+    "Serverless",
     "Typescript"
   ],
-  "author": "fargito",
-  "bugs": {
-    "url": "https://github.com/fargito/serverless-contracts/issues"
-  },
-  "homepage": "https://github.com/fargito/serverless-contracts#readme",
   "workspaces": [
     "packages/*"
   ],
@@ -41,6 +36,9 @@
   "devDependencies": {
     "@commitlint/cli": "^16.0.2",
     "@commitlint/config-conventional": "^16.0.0",
+    "@nrwl/cli": "^13.8.0",
+    "@nrwl/tao": "^13.8.0",
+    "@nrwl/workspace": "^13.8.0",
     "@types/jest": "^27.0.3",
     "@typescript-eslint/eslint-plugin": "^5.10.2",
     "@typescript-eslint/parser": "^5.10.2",
@@ -58,10 +56,7 @@
     "npm-audit-resolver": "^2.2.1",
     "prettier": "^2.5.0",
     "syncpack": "^6.2.0",
-    "typescript": "^4.5.2",
-    "@nrwl/workspace": "^13.8.0",
-    "@nrwl/cli": "^13.8.0",
-    "@nrwl/tao": "^13.8.0"
+    "typescript": "^4.5.2"
   },
   "engines": {
     "node": "^14.18.1",

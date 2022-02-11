@@ -1,31 +1,26 @@
 {
   "name": "@serverless-contracts/plugin",
-  "license": "MIT",
-  "version": "0.2.1",
   "description": "A plugin to safely deploy Serverless microservices.",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fargito/serverless-contracts.git"
-  },
+  "version": "0.2.1",
+  "author": "fargito",
+  "license": "MIT",
+  "homepage": "https://github.com/fargito/serverless-contracts#readme",
+  "bugs": "https://github.com/fargito/serverless-contracts/issues",
+  "repository": "fargito/serverless-contracts.git",
   "keywords": [
-    "Serverless",
     "Contracts",
+    "Serverless",
     "Typescript"
   ],
-  "author": "fargito",
-  "bugs": {
-    "url": "https://github.com/fargito/serverless-contracts/issues"
+  "publishConfig": {
+    "access": "public"
   },
-  "homepage": "https://github.com/fargito/serverless-contracts#readme",
   "files": [
     "dist"
   ],
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "lint-fix": "yarn linter-base-config --fix",
     "lint-fix-all": "yarn lint-fix .",
@@ -43,30 +38,30 @@
     "watch": "rm -rf dist && concurrently 'yarn:package:* --watch'"
   },
   "dependencies": {
-    "@babel/runtime": "^7.17.0",
+    "@babel/runtime": "^7.17.2",
     "axios": "^0.25.0",
     "json-schema-diff": "^0.17.1",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.0",
-    "@babel/core": "^7.17.0",
+    "@babel/core": "^7.17.2",
     "@babel/plugin-transform-runtime": "^7.17.0",
     "@babel/preset-env": "^7.16.8",
     "@babel/preset-typescript": "^7.16.0",
     "@serverless-contracts/configuration": "^0.2.1",
-    "@serverless/typescript": "^3.0.0",
+    "@serverless/typescript": "^3.1.1",
     "@types/serverless": "^3.0.0",
     "@zerollup/ts-transform-paths": "^1.7.18",
-    "aws-sdk": "^2.1068.0",
+    "aws-sdk": "^2.1073.0",
     "babel-plugin-module-resolver": "^4.1.0",
     "concurrently": "^7.0.0",
     "eslint": "^8.8.0",
-    "jest": "^27.4.3",
+    "jest": "^27.5.1",
     "json-schema-to-ts": "^1.6.4",
     "lint-staged": "^12.3.3",
     "prettier": "^2.5.0",
-    "serverless": "^3.1.1",
+    "serverless": "^3.2.0",
     "simple-git": "^3.1.1",
     "ttypescript": "^1.5.13",
     "typescript": "^4.5.2"

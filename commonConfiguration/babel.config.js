@@ -4,6 +4,17 @@ const defaultPresets = [
 
 const defaultIgnores = [/.*\/(.*\.|)test\.tsx?/, /node_modules/, /dist/];
 
+const defaultPlugins = [
+  [
+    'module-resolver',
+    {
+      root: ['./src'],
+      extensions: ['.ts'],
+    },
+  ],
+  '@babel/plugin-transform-runtime',
+];
+
 const presetsForESM = [
   [
     '@babel/preset-env',
@@ -34,6 +45,6 @@ module.exports = (plugins = []) => {
       },
     },
     ignore: defaultIgnores,
-    plugins: [...plugins, '@babel/plugin-transform-runtime'],
+    plugins: [...plugins, ...defaultPlugins],
   };
 };
