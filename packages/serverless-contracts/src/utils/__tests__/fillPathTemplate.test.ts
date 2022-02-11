@@ -1,5 +1,10 @@
 import { fillPathTemplate } from '../fillPathTemplate';
 
+/**
+ * unit tests
+ *
+ * @group unit/utils
+ */
 describe('fillPathTemplate', () => {
   it('should not fail if no values are passed', () => {
     expect(fillPathTemplate('/hello')).toBe('/hello');
