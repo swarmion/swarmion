@@ -80,7 +80,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:^7.1.0, @babel/core@npm:^7.12.3, @babel/core@npm:^7.17.8, @babel/core@npm:^7.7.2, @babel/core@npm:^7.7.5, @babel/core@npm:^7.8.0":
+"@babel/core@npm:^7.1.0, @babel/core@npm:^7.12.3, @babel/core@npm:^7.17.5, @babel/core@npm:^7.17.8, @babel/core@npm:^7.7.2, @babel/core@npm:^7.7.5, @babel/core@npm:^7.8.0":
   version: 7.17.8
   resolution: "@babel/core@npm:7.17.8"
   dependencies:
@@ -1317,7 +1317,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.8.4":
+"@babel/runtime@npm:^7.17.2, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.8.4":
   version: 7.17.8
   resolution: "@babel/runtime@npm:7.17.8"
   dependencies:
@@ -2738,6 +2738,51 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@middy/core@npm:^2.5.7":
+  version: 2.5.7
+  resolution: "@middy/core@npm:2.5.7"
+  checksum: 1ab47fcf1e8e28fc31d666d10ee4a08f853bad743301622bf6046199340bbcd765cbdc929a1d6c49c529028aab770ba4415cc9c061b463aa641175674b901c71
+  languageName: node
+  linkType: hard
+
+"@middy/http-error-handler@npm:^2.5.7":
+  version: 2.5.7
+  resolution: "@middy/http-error-handler@npm:2.5.7"
+  dependencies:
+    "@middy/util": ^2.5.7
+  checksum: 7db7890d66003c2b0e6e53f2d4d569b5e2d8bcffda3e75c1caf4feac1b276e6193b469d5941c5ceea2abd433a28ccc5592954d4fe73b712bf6f0be947e51205e
+  languageName: node
+  linkType: hard
+
+"@middy/http-json-body-parser@npm:^2.5.7":
+  version: 2.5.7
+  resolution: "@middy/http-json-body-parser@npm:2.5.7"
+  dependencies:
+    "@middy/util": ^2.5.7
+  checksum: 76cd733a320923b307e6154fe0f7a85e5bfc107375e034bce85baac39ee589506165137bb00c0ef518c23790de83b431b4a375655700cf967cdb11f09ffbdeb6
+  languageName: node
+  linkType: hard
+
+"@middy/util@npm:^2.5.7":
+  version: 2.5.7
+  resolution: "@middy/util@npm:2.5.7"
+  checksum: 4f91a0dbb9fdc4f9812222e6f4985688e0e6c371cfa6a7b698efcd8ad39f44638eea491049fea691f28b815a9af2b3e83a015f8ea57041a49002d087021ca57c
+  languageName: node
+  linkType: hard
+
+"@middy/validator@npm:^2.5.7":
+  version: 2.5.7
+  resolution: "@middy/validator@npm:2.5.7"
+  dependencies:
+    "@middy/util": ^2.5.7
+    ajv: 8.6.3
+    ajv-formats: 2.1.1
+    ajv-formats-draft2019: 1.6.1
+    ajv-i18n: 4.1.0
+  checksum: a64daa39f48ea65144ae0d8302f985dcab488dd587cb342f244312be52b54ceb836fa96ebbb7939dfe99ad198c7d5c2e7c8a0f653fb1168daf5e0ad268a28cd5
+  languageName: node
+  linkType: hard
+
 "@nicolo-ribaudo/chokidar-2@npm:2.1.8-no-fsevents.3":
   version: 2.1.8-no-fsevents.3
   resolution: "@nicolo-ribaudo/chokidar-2@npm:2.1.8-no-fsevents.3"
@@ -3187,7 +3232,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@serverless/typescript@npm:^3.8.0":
+"@serverless/typescript@npm:^3.3.0, @serverless/typescript@npm:^3.8.0":
   version: 3.8.0
   resolution: "@serverless/typescript@npm:3.8.0"
   checksum: 9dd2df51721ead0e9dfe29c2384e8b7f1ac02503f86f3b1572b0b54f853c186857507956cf196231e3b1baf94f5fb7542a1686c0f2acb4c18060487bff45326d
@@ -3256,7 +3301,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swarmion/configuration@^0.4.3, @swarmion/configuration@workspace:packages/configuration":
+"@swarmion/configuration@^0.4.1, @swarmion/configuration@^0.4.3, @swarmion/configuration@workspace:packages/configuration":
   version: 0.0.0-use.local
   resolution: "@swarmion/configuration@workspace:packages/configuration"
   dependencies:
@@ -3340,6 +3385,32 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@swarmion/serverless-configuration@workspace:packages/serverless-configuration":
+  version: 0.0.0-use.local
+  resolution: "@swarmion/serverless-configuration@workspace:packages/serverless-configuration"
+  dependencies:
+    "@babel/cli": ^7.17.6
+    "@babel/core": ^7.17.5
+    "@babel/plugin-transform-runtime": ^7.17.0
+    "@babel/preset-env": ^7.16.11
+    "@babel/preset-typescript": ^7.16.7
+    "@babel/runtime": ^7.17.2
+    "@serverless/typescript": ^3.3.0
+    "@types/node": ^17.0.21
+    "@zerollup/ts-transform-paths": ^1.7.18
+    babel-plugin-module-resolver: ^4.1.0
+    concurrently: ^7.0.0
+    eslint: ^8.10.0
+    jest: ^27.5.1
+    json-schema-to-ts: ^1.6.5
+    lint-staged: ^12.3.5
+    prettier: ^2.5.1
+    ts-node: ^10.7.0
+    ttypescript: ^1.5.13
+    typescript: ^4.6.2
+  languageName: unknown
+  linkType: soft
+
 "@swarmion/serverless-contracts@workspace:packages/serverless-contracts":
   version: 0.0.0-use.local
   resolution: "@swarmion/serverless-contracts@workspace:packages/serverless-contracts"
@@ -3368,6 +3439,37 @@ __metadata:
     prettier: ^2.6.0
     serverless: ^3.8.0
     ts-jest: ^27.1.3
+    ts-node: ^10.7.0
+    ttypescript: ^1.5.13
+    typescript: ^4.6.2
+  languageName: unknown
+  linkType: soft
+
+"@swarmion/serverless-helpers@workspace:packages/serverless-helpers":
+  version: 0.0.0-use.local
+  resolution: "@swarmion/serverless-helpers@workspace:packages/serverless-helpers"
+  dependencies:
+    "@babel/cli": ^7.17.6
+    "@babel/core": ^7.17.5
+    "@babel/plugin-transform-runtime": ^7.17.0
+    "@babel/preset-env": ^7.16.11
+    "@babel/preset-typescript": ^7.16.7
+    "@babel/runtime": ^7.17.2
+    "@middy/core": ^2.5.7
+    "@middy/http-error-handler": ^2.5.7
+    "@middy/http-json-body-parser": ^2.5.7
+    "@middy/validator": ^2.5.7
+    "@serverless/typescript": ^3.3.0
+    "@swarmion/configuration": ^0.4.1
+    "@types/aws-lambda": ^8.10.93
+    "@types/node": ^17.0.21
+    "@zerollup/ts-transform-paths": ^1.7.18
+    babel-plugin-module-resolver: ^4.1.0
+    concurrently: ^7.0.0
+    eslint: ^8.10.0
+    jest: ^27.5.1
+    json-schema-to-ts: ^1.6.5
+    prettier: ^2.5.1
     ts-node: ^10.7.0
     ttypescript: ^1.5.13
     typescript: ^4.6.2
@@ -3642,6 +3744,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/aws-lambda@npm:^8.10.93":
+  version: 8.10.93
+  resolution: "@types/aws-lambda@npm:8.10.93"
+  checksum: 82eac08a9e1c77724708192ff5c487ffbef572d4dd3851908c56c8bd7f174dd3fa558090ff5c499e04c3e7afa0dc885fb8cf12cd1b1044542b55b17c61846d14
+  languageName: node
+  linkType: hard
+
 "@types/babel__core@npm:^7.0.0, @types/babel__core@npm:^7.1.14":
   version: 7.1.18
   resolution: "@types/babel__core@npm:7.1.18"
@@ -3807,7 +3916,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:>=12, @types/node@npm:^17.0.22":
+"@types/node@npm:*, @types/node@npm:>=12, @types/node@npm:^17.0.21, @types/node@npm:^17.0.22":
   version: 17.0.22
   resolution: "@types/node@npm:17.0.22"
   checksum: 72d1fc8bdc37f0c18b1160e7207b52fb569d0e2b459ac9a4cbd3ca40e478ffe1455efc2c6a253c81e0a7a7c7a899716535d9970cd9521f87d6050b7de04b9ba3
@@ -4134,7 +4243,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ajv-formats@npm:^2.1.1":
+"ajv-formats-draft2019@npm:1.6.1":
+  version: 1.6.1
+  resolution: "ajv-formats-draft2019@npm:1.6.1"
+  dependencies:
+    punycode: ^2.1.1
+    schemes: ^1.4.0
+    smtp-address-parser: ^1.0.3
+    uri-js: ^4.4.1
+  peerDependencies:
+    ajv: "*"
+  checksum: 281f802f76defbb5821fa19e60b38c7be13d2a89d5f915ee11dc32c4be631f4785bb67595edf2657c2b05697e6cb89d50ef4c5fecbd0c814c0e05132ed3a650c
+  languageName: node
+  linkType: hard
+
+"ajv-formats@npm:2.1.1, ajv-formats@npm:^2.1.1":
   version: 2.1.1
   resolution: "ajv-formats@npm:2.1.1"
   dependencies:
@@ -4145,6 +4268,27 @@ __metadata:
     ajv:
       optional: true
   checksum: 4a287d937f1ebaad4683249a4c40c0fa3beed30d9ddc0adba04859026a622da0d317851316ea64b3680dc60f5c3c708105ddd5d5db8fe595d9d0207fd19f90b7
+  languageName: node
+  linkType: hard
+
+"ajv-i18n@npm:4.1.0":
+  version: 4.1.0
+  resolution: "ajv-i18n@npm:4.1.0"
+  peerDependencies:
+    ajv: ^8.0.0-beta.0
+  checksum: 631bd7bf2c946014a419def79c7c52d53e9f223476b0df2394a5fe6ac299b81de5b3a184b6b9e1a67d3b1f2358d03b5ca5a6d83aebf63a38f531632d753b20c6
+  languageName: node
+  linkType: hard
+
+"ajv@npm:8.6.3":
+  version: 8.6.3
+  resolution: "ajv@npm:8.6.3"
+  dependencies:
+    fast-deep-equal: ^3.1.1
+    json-schema-traverse: ^1.0.0
+    require-from-string: ^2.0.2
+    uri-js: ^4.2.2
+  checksum: 690ffb9408415fdab43686b3f92037ba0c8362f5d0709a123ba3fb546e6ad81414455f80a2b5cc432ce924afe9864671198f022bc331a19c072d4ede152ec3ca
   languageName: node
   linkType: hard
 
@@ -5346,7 +5490,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:^2.8.1":
+"commander@npm:^2.19.0, commander@npm:^2.8.1":
   version: 2.20.3
   resolution: "commander@npm:2.20.3"
   checksum: ab8c07884e42c3a8dbc5dd9592c606176c7eb5c1ca5ff274bcf907039b2c41de3626f684ea75ccf4d361ba004bbaff1f577d5384c155f3871e456bdf27becf9e
@@ -6075,6 +6219,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"discontinuous-range@npm:1.0.0":
+  version: 1.0.0
+  resolution: "discontinuous-range@npm:1.0.0"
+  checksum: 8ee88d7082445b6eadc7c03bebe6dc978f96760c45e9f65d16ca66174d9e086a9e3855ee16acf65625e1a07a846a17de674f02a5964a6aebe5963662baf8b5c8
+  languageName: node
+  linkType: hard
+
 "djv@npm:^2.1.4":
   version: 2.1.4
   resolution: "djv@npm:2.1.4"
@@ -6571,7 +6722,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.11.0":
+"eslint@npm:^8.10.0, eslint@npm:^8.11.0":
   version: 8.11.0
   resolution: "eslint@npm:8.11.0"
   dependencies:
@@ -9508,7 +9659,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lint-staged@npm:^12.3.7":
+"lint-staged@npm:^12.3.5, lint-staged@npm:^12.3.7":
   version: 12.3.7
   resolution: "lint-staged@npm:12.3.7"
   dependencies:
@@ -10250,6 +10401,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"moo@npm:^0.5.0":
+  version: 0.5.1
+  resolution: "moo@npm:0.5.1"
+  checksum: 2d8c013f1f9aad8e5c7a9d4a03dbb4eecd91b9fe5e9446fbc7561fd38d4d161c742434acff385722542fe7b360fce9c586da62442379e62e4158ad49c7e1a6b7
+  languageName: node
+  linkType: hard
+
 "ms@npm:2.0.0":
   version: 2.0.0
   resolution: "ms@npm:2.0.0"
@@ -10318,6 +10476,23 @@ __metadata:
     fs2: ^0.3.9
     type: ^2.5.0
   checksum: ed9f872cf8738c445999d1c7a8f3dbd470c9d8235b91136d450abed439519fe985735e3a12312c61a43ebfd0e818658bffb1e46505bfd247360cb0bfbc103576
+  languageName: node
+  linkType: hard
+
+"nearley@npm:^2.20.1":
+  version: 2.20.1
+  resolution: "nearley@npm:2.20.1"
+  dependencies:
+    commander: ^2.19.0
+    moo: ^0.5.0
+    railroad-diagrams: ^1.0.0
+    randexp: 0.4.6
+  bin:
+    nearley-railroad: bin/nearley-railroad.js
+    nearley-test: bin/nearley-test.js
+    nearley-unparse: bin/nearley-unparse.js
+    nearleyc: bin/nearleyc.js
+  checksum: 42c2c330c13c7991b48221c5df00f4352c2f8851636ae4d1f8ca3c8e193fc1b7668c78011d1cad88cca4c1c4dc087425420629c19cc286d7598ec15533aaef26
   languageName: node
   linkType: hard
 
@@ -11399,7 +11574,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.6.0":
+"prettier@npm:^2.5.1, prettier@npm:^2.6.0":
   version: 2.6.0
   resolution: "prettier@npm:2.6.0"
   bin:
@@ -11602,6 +11777,23 @@ __metadata:
   version: 5.1.1
   resolution: "quick-lru@npm:5.1.1"
   checksum: a516faa25574be7947969883e6068dbe4aa19e8ef8e8e0fd96cddd6d36485e9106d85c0041a27153286b0770b381328f4072aa40d3b18a19f5f7d2b78b94b5ed
+  languageName: node
+  linkType: hard
+
+"railroad-diagrams@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "railroad-diagrams@npm:1.0.0"
+  checksum: 9e312af352b5ed89c2118edc0c06cef2cc039681817f65266719606e4e91ff6ae5374c707cc9033fe29a82c2703edf3c63471664f97f0167c85daf6f93496319
+  languageName: node
+  linkType: hard
+
+"randexp@npm:0.4.6":
+  version: 0.4.6
+  resolution: "randexp@npm:0.4.6"
+  dependencies:
+    discontinuous-range: 1.0.0
+    ret: ~0.1.10
+  checksum: 3c0d440a3f89d6d36844aa4dd57b5cdb0cab938a41956a16da743d3a3578ab32538fc41c16cc0984b6938f2ae4cbc0216967e9829e52191f70e32690d8e3445d
   languageName: node
   linkType: hard
 
@@ -12032,6 +12224,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ret@npm:~0.1.10":
+  version: 0.1.15
+  resolution: "ret@npm:0.1.15"
+  checksum: d76a9159eb8c946586567bd934358dfc08a36367b3257f7a3d7255fdd7b56597235af23c6afa0d7f0254159e8051f93c918809962ebd6df24ca2a83dbe4d4151
+  languageName: node
+  linkType: hard
+
 "retry@npm:^0.12.0":
   version: 0.12.0
   resolution: "retry@npm:0.12.0"
@@ -12168,6 +12367,15 @@ __metadata:
   dependencies:
     xmlchars: ^2.2.0
   checksum: 5636b55cf15f7cf0baa73f2797bf992bdcf75d1b39d82c0aa4608555c774368f6ac321cb641fd5f3d3ceb87805122cd47540da6a7b5960fe0dbdb8f8c263f000
+  languageName: node
+  linkType: hard
+
+"schemes@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "schemes@npm:1.4.0"
+  dependencies:
+    extend: ^3.0.0
+  checksum: 729646ac65fbf2b76529c8bbb3433b1079891c4916556d2e1302bfb0c6b84dafcc00ee56e76c4572becd70a2c22a8fd4690b656ea43d1e6b70c180720735948e
   languageName: node
   linkType: hard
 
@@ -12444,6 +12652,15 @@ __metadata:
   version: 4.2.0
   resolution: "smart-buffer@npm:4.2.0"
   checksum: b5167a7142c1da704c0e3af85c402002b597081dd9575031a90b4f229ca5678e9a36e8a374f1814c8156a725d17008ae3bde63b92f9cfd132526379e580bec8b
+  languageName: node
+  linkType: hard
+
+"smtp-address-parser@npm:^1.0.3":
+  version: 1.0.10
+  resolution: "smtp-address-parser@npm:1.0.10"
+  dependencies:
+    nearley: ^2.20.1
+  checksum: 5cf2e960a6836ebec68bb5185c62bc3d343e6fdb1434f8d0d6c273e8d5359b11f2560dea5ecbbd98a77f01f8ef94b56c31d3f6ff24a5c44ba6530b9af7b63626
   languageName: node
   linkType: hard
 
@@ -13691,7 +13908,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uri-js@npm:^4.2.2":
+"uri-js@npm:^4.2.2, uri-js@npm:^4.4.1":
   version: 4.4.1
   resolution: "uri-js@npm:4.4.1"
   dependencies:
