@@ -1,56 +1,53 @@
 {
   "name": "@serverless-contracts/configuration",
-  "version": "0.2.1",
   "private": true,
+  "version": "0.2.2",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "dist"
   ],
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
-    "lint:fix": "yarn linter-base-config --fix",
-    "lint:fix-all": "yarn lint:fix .",
+    "lint-fix": "yarn linter-base-config --fix",
+    "lint-fix-all": "yarn lint-fix .",
     "linter-base-config": "eslint --ext=js,ts .",
     "package": "rm -rf dist && yarn package:cjs && yarn package:esm && yarn package:types",
     "package:cjs": "NODE_ENV=cjs yarn transpile --out-dir dist/cjs --source-maps",
     "package:esm": "NODE_ENV=esm yarn transpile --out-dir dist/esm --source-maps",
-    "package:test": "yarn package && yarn test:dependents",
     "package:types": "ttsc",
-    "test:all": "yarn test:linter && yarn test:dependents && yarn test:unit",
-    "test:dependents": "lerna run --scope @serverless-contracts/configuration --include-dependents --stream --concurrency 2 test:type",
-    "test:linter": "yarn linter-base-config .",
-    "test:type": "tsc --noEmit --emitDeclarationOnly false",
-    "test:unit": "echo 'no tests yet'",
-    "transpile": "babel . --extensions .ts",
-    "watch": "rm -rf dist && concurrently 'yarn:package:* --watch'",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "test": "yarn test-linter && yarn test-type",
+    "test-linter": "yarn linter-base-config .",
+    "test-type": "tsc --noEmit --emitDeclarationOnly false",
+    "transpile": "babel src --extensions .ts --quiet",
+    "watch": "rm -rf dist && concurrently 'yarn:package:* --watch'"
   },
   "dependencies": {
-    "@babel/runtime": "^7.17.0"
+    "@babel/runtime": "^7.17.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.0",
-    "@babel/core": "^7.17.0",
+    "@babel/core": "^7.17.2",
     "@babel/plugin-transform-runtime": "^7.17.0",
-    "@babel/preset-env": "^7.16.8",
-    "@babel/preset-typescript": "^7.16.0",
-    "@serverless/typescript": "^3.0.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@serverless/typescript": "^3.1.1",
     "@zerollup/ts-transform-paths": "^1.7.18",
     "babel-plugin-module-resolver": "^4.1.0",
     "concurrently": "^7.0.0",
     "eslint": "^8.8.0",
-    "jest": "^27.4.3",
+    "jest": "^27.5.1",
     "jest-runner-groups": "^2.1.0",
-    "json-schema-to-ts": "^1.6.4",
-    "lint-staged": "^12.3.3",
-    "prettier": "^2.5.0",
-    "ts-jest": "^27.0.7",
+    "json-schema-to-ts": "^1.6.5",
+    "lint-staged": "^11.2.6",
+    "prettier": "^2.5.1",
+    "ts-jest": "^27.1.3",
     "ttypescript": "^1.5.13",
-    "typescript": "^4.5.2"
+    "typescript": "^4.5.5"
   }
 }

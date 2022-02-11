@@ -1,72 +1,66 @@
 {
   "name": "@serverless-contracts/app",
+  "description": "A set of tools to build and deploy type-safe Serverless microservices.",
   "private": true,
   "version": "1.0.0",
+  "author": "fargito",
   "license": "MIT",
-  "description": "A set of tools to build and deploy type-safe Serverless microservices.",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fargito/serverless-contracts.git"
-  },
+  "homepage": "https://github.com/fargito/serverless-contracts#readme",
+  "bugs": "https://github.com/fargito/serverless-contracts/issues",
+  "repository": "fargito/serverless-contracts.git",
   "keywords": [
-    "Serverless",
     "Contracts",
+    "Serverless",
     "Typescript"
   ],
-  "author": "fargito",
-  "bugs": {
-    "url": "https://github.com/fargito/serverless-contracts/issues"
-  },
-  "homepage": "https://github.com/fargito/serverless-contracts#readme",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
+    "build-all": "nx run-many --target=build --all --parallel=4",
     "check-audit": "check-audit --yarn",
-    "deploy": "yarn package && lerna run --stream --concurrency 2 deploy",
-    "deploy:production:since": "lerna run --stream --concurrency 3 deploy:production --include-dependents --since",
-    "deploy:since": "lerna run --stream --concurrency 3 deploy --include-dependents --since",
-    "deploy:staging:since": "lerna run --stream --concurrency 3 deploy:staging --include-dependents --since",
-    "info": "lerna run --stream sls:info",
-    "lint:fix": "lerna run --stream --concurrency 2 lint:fix",
-    "list:since": "lerna list --all --long --parseable --since",
-    "package": "lerna run --stream package",
-    "package:since": "lerna run --stream --concurrency 3 package --include-dependencies --include-dependents --since",
-    "prepare": "husky install",
-    "release": "yarn package && lerna publish",
-    "remove": "lerna run --stream --concurrency 2 remove",
+    "deploy": "nx run-many --target=deploy --all --parallel=4",
+    "deploy-affected": "nx affected --target=deploy",
+    "graph": "nx dep-graph",
+    "info": "nx run-many --target=sls-info --all --parallel=4",
+    "package": "nx run-many --target=package --all --parallel=4",
+    "release": "yarn package && yarn lerna publish",
+    "postinstall": "husky install && syncpack format",
     "resolve-audit": "resolve-audit --yarn",
-    "test:all": "yarn test:linter && yarn test:type && yarn test:unit",
-    "test:linter": "lerna run --stream --concurrency 2 test:linter",
-    "test:since": "lerna run --stream --concurrency 3 test:all --include-dependents --since",
-    "test:type": "lerna run --stream --concurrency 2 test:type",
-    "test:unit": "lerna run --stream --concurrency 2 test:unit",
-    "watch": "lerna run --parallel watch"
+    "test": "nx run-many --target=test --all --parallel=4",
+    "test-affected": "nx affected --target=test",
+    "test-linter": "nx run-many --target=test-linter --all --parallel=4",
+    "test-type": "nx run-many --target=test-type --all --parallel=4",
+    "test-unit": "nx run-many --target=test-unit --all --parallel=4",
+    "watch": "nx run-many --target=watch --all  --parallel=4"
   },
   "devDependencies": {
-    "@commitlint/cli": "^16.0.2",
+    "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
-    "@types/jest": "^27.0.3",
-    "@typescript-eslint/eslint-plugin": "^5.10.2",
-    "@typescript-eslint/parser": "^5.10.2",
-    "aws-sdk": "^2.1068.0",
+    "@nrwl/cli": "^13.8.1",
+    "@nrwl/tao": "^13.8.1",
+    "@nrwl/workspace": "^13.8.1",
+    "@types/jest": "^27.4.0",
+    "@typescript-eslint/eslint-plugin": "^5.11.0",
+    "@typescript-eslint/parser": "^5.11.0",
+    "aws-sdk": "^2.1073.0",
     "eslint": "^8.8.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jest": "^26.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.0",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.4",
-    "jest": "^27.4.3",
+    "jest": "^27.5.1",
     "lerna": "^4.0.0",
-    "lodash": "^4.17.20",
-    "npm-audit-resolver": "^2.2.1",
-    "prettier": "^2.5.0",
+    "lodash": "^4.17.21",
+    "npm-audit-resolver": "^2.3.1",
+    "prettier": "^2.5.1",
     "syncpack": "^6.2.0",
-    "typescript": "^4.5.2"
+    "typescript": "^4.5.5"
   },
   "engines": {
-    "node": "^14.18.1",
-    "yarn": "^1.22.15"
-  }
+    "node": "^14.18.1"
+  },
+  "packageManager": "yarn@3.1.1"
 }
