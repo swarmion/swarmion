@@ -130,7 +130,7 @@ export type InputSchemaType<
   type: 'object';
   properties: DefinedInputProperties;
   required: Array<keyof DefinedInputProperties>;
-  additionalProperties: false;
+  additionalProperties: true;
 };
 
 /**
