@@ -170,7 +170,18 @@ in order to validate the input and/or the output of your lambda.
 
 ### Type the lambda input and output
 
-TODO
+On the handler side, you can use the `handler` method on the contract to correctly infer the input and output types from the schema.
+
+```ts
+const handler = myContract.handler(async event => {
+  event.pathParameters.userId; // will have type 'string'
+
+  event.toto; // will fail typing
+  event.pathParameters.toto; // will also fail
+
+  return { id: 'coucou', name: 'coucou' }; // also type-safe!
+});
+```
 
 ### Consumer-side usage
 
