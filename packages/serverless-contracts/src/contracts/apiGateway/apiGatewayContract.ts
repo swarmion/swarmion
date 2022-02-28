@@ -149,7 +149,8 @@ export class ApiGatewayContract<
     PathParametersSchema,
     QueryStringParametersSchema,
     HeadersSchema,
-    BodySchema
+    BodySchema,
+    true
   > {
     const properties = omitBy(
       {
@@ -181,6 +182,30 @@ export class ApiGatewayContract<
 
   get contractId(): string {
     return this._id;
+  }
+
+  /**
+   * A type-safe wrapper for api gateway handlers.
+   *
+   * Its only goal for the moment is to provide the developer the necessary types
+   *
+   * @param handler
+   * @returns the same handler
+   */
+  handler<
+    HandlerType extends (
+      event: FromSchema<
+        InputSchemaType<
+          PathParametersSchema,
+          QueryStringParametersSchema,
+          HeadersSchema,
+          BodySchema,
+          false
+        >
+      >,
+    ) => Promise<OutputType>,
+  >(handler: HandlerType): HandlerType {
+    return handler;
   }
 
   /**

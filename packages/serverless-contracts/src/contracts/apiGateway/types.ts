@@ -118,6 +118,7 @@ export type InputSchemaType<
   QueryStringParametersSchema extends JSONSchema | undefined,
   HeadersSchema extends JSONSchema | undefined,
   BodySchema extends JSONSchema | undefined,
+  AllowAdditionalProperties extends boolean,
   DefinedInputProperties = DefinedProperties<
     AllInputProperties<
       PathParametersSchema,
@@ -130,7 +131,7 @@ export type InputSchemaType<
   type: 'object';
   properties: DefinedInputProperties;
   required: Array<keyof DefinedInputProperties>;
-  additionalProperties: true;
+  additionalProperties: AllowAdditionalProperties;
 };
 
 /**
