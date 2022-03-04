@@ -3197,158 +3197,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@serverless-contracts/app@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "@serverless-contracts/app@workspace:."
-  dependencies:
-    "@commitlint/cli": ^16.1.0
-    "@commitlint/config-conventional": ^16.0.0
-    "@nrwl/cli": ^13.8.1
-    "@nrwl/tao": ^13.8.1
-    "@nrwl/workspace": ^13.8.1
-    "@types/jest": ^27.4.0
-    "@typescript-eslint/eslint-plugin": ^5.11.0
-    "@typescript-eslint/parser": ^5.11.0
-    aws-sdk: ^2.1073.0
-    eslint: ^8.8.0
-    eslint-config-prettier: ^8.3.0
-    eslint-plugin-import: ^2.25.4
-    eslint-plugin-jest: ^26.1.0
-    eslint-plugin-prefer-arrow: ^1.2.3
-    eslint-plugin-prettier: ^4.0.0
-    husky: ^7.0.4
-    jest: ^27.5.1
-    lerna: ^4.0.0
-    lodash: ^4.17.21
-    npm-audit-resolver: ^2.3.1
-    prettier: ^2.5.1
-    syncpack: ^6.2.0
-    typescript: ^4.5.5
-  languageName: unknown
-  linkType: soft
-
-"@serverless-contracts/configuration@0.2.2, @serverless-contracts/configuration@workspace:packages/configuration":
-  version: 0.0.0-use.local
-  resolution: "@serverless-contracts/configuration@workspace:packages/configuration"
-  dependencies:
-    "@babel/cli": ^7.17.0
-    "@babel/core": ^7.17.2
-    "@babel/plugin-transform-runtime": ^7.17.0
-    "@babel/preset-env": ^7.16.11
-    "@babel/preset-typescript": ^7.16.7
-    "@babel/runtime": ^7.17.2
-    "@serverless/typescript": ^3.1.1
-    "@zerollup/ts-transform-paths": ^1.7.18
-    babel-plugin-module-resolver: ^4.1.0
-    concurrently: ^7.0.0
-    eslint: ^8.8.0
-    jest: ^27.5.1
-    jest-runner-groups: ^2.1.0
-    json-schema-to-ts: ^1.6.5
-    lint-staged: ^11.2.6
-    prettier: ^2.5.1
-    ts-jest: ^27.1.3
-    ttypescript: ^1.5.13
-    typescript: ^4.5.5
-  languageName: unknown
-  linkType: soft
-
-"@serverless-contracts/core@workspace:packages/serverless-contracts":
-  version: 0.0.0-use.local
-  resolution: "@serverless-contracts/core@workspace:packages/serverless-contracts"
-  dependencies:
-    "@babel/cli": ^7.17.0
-    "@babel/core": ^7.17.2
-    "@babel/plugin-transform-runtime": ^7.17.0
-    "@babel/preset-env": ^7.16.11
-    "@babel/preset-typescript": ^7.16.7
-    "@babel/runtime": ^7.17.2
-    "@serverless-contracts/configuration": 0.2.2
-    "@serverless/typescript": ^3.1.1
-    "@typescript-eslint/eslint-plugin": ^5.11.0
-    "@typescript-eslint/parser": ^5.11.0
-    "@zerollup/ts-transform-paths": ^1.7.18
-    aws-sdk: ^2.1073.0
-    axios: ^0.25.0
-    babel-plugin-module-resolver: ^4.1.0
-    concurrently: ^7.0.0
-    eslint: ^8.8.0
-    eslint-plugin-jest: ^26.1.0
-    jest: ^27.5.1
-    json-schema-to-ts: ^1.6.5
-    lint-staged: ^12.3.3
-    lodash: ^4.17.21
-    prettier: ^2.5.1
-    serverless: ^3.2.0
-    ts-jest: ^27.1.3
-    ttypescript: ^1.5.13
-    typescript: ^4.5.5
-  languageName: unknown
-  linkType: soft
-
-"@serverless-contracts/eslint-plugin@workspace:packages/eslint-plugin":
-  version: 0.0.0-use.local
-  resolution: "@serverless-contracts/eslint-plugin@workspace:packages/eslint-plugin"
-  dependencies:
-    "@babel/cli": ^7.17.0
-    "@babel/core": ^7.17.2
-    "@babel/plugin-transform-runtime": ^7.17.0
-    "@babel/preset-env": ^7.16.11
-    "@babel/preset-typescript": ^7.16.7
-    "@babel/runtime": ^7.17.2
-    "@serverless-contracts/configuration": 0.2.2
-    "@types/eslint": ^8.4.1
-    "@types/jest": ^27.4.0
-    "@types/node": ^17.0.17
-    "@zerollup/ts-transform-paths": ^1.7.18
-    babel-plugin-module-resolver: ^4.1.0
-    concurrently: ^7.0.0
-    eslint: ^8.8.0
-    find-up: 5.0.0
-    jest: ^27.5.1
-    lint-staged: ^12.3.3
-    prettier: ^2.5.1
-    ts-node: ^10.5.0
-    ttypescript: ^1.5.13
-    typescript: ^4.5.5
-  languageName: unknown
-  linkType: soft
-
-"@serverless-contracts/plugin@workspace:packages/serverless-contracts-plugin":
-  version: 0.0.0-use.local
-  resolution: "@serverless-contracts/plugin@workspace:packages/serverless-contracts-plugin"
-  dependencies:
-    "@babel/cli": ^7.17.0
-    "@babel/core": ^7.17.2
-    "@babel/plugin-transform-runtime": ^7.17.0
-    "@babel/preset-env": ^7.16.11
-    "@babel/preset-typescript": ^7.16.7
-    "@babel/runtime": ^7.17.2
-    "@serverless-contracts/configuration": 0.2.2
-    "@serverless/typescript": ^3.1.1
-    "@types/serverless": ^3.0.0
-    "@zerollup/ts-transform-paths": ^1.7.18
-    aws-sdk: ^2.1073.0
-    axios: ^0.25.0
-    babel-plugin-module-resolver: ^4.1.0
-    concurrently: ^7.0.0
-    eslint: ^8.8.0
-    jest: ^27.5.1
-    json-schema-diff: ^0.17.1
-    json-schema-to-ts: ^1.6.5
-    lint-staged: ^12.3.3
-    lodash: ^4.17.21
-    prettier: ^2.5.1
-    serverless: ^3.2.0
-    simple-git: ^3.1.1
-    ts-jest: ^27.1.3
-    ttypescript: ^1.5.13
-    typescript: ^4.5.5
-  peerDependencies:
-    serverless: ^2.60 || 3
-  languageName: unknown
-  linkType: soft
-
 "@serverless/dashboard-plugin@npm:^6.0.0":
   version: 6.0.0
   resolution: "@serverless/dashboard-plugin@npm:6.0.0"
@@ -3538,6 +3386,158 @@ __metadata:
   checksum: 09b5a158ce013a6c37613258bad79ca4efeb99b1f59c41c73cca36cac00b258aefcf46eeea970fccf06b989414d86fe9f54c1102272c0c3bdd51a313cea80949
   languageName: node
   linkType: hard
+
+"@swarmion/configuration@^0.3.0, @swarmion/configuration@workspace:packages/configuration":
+  version: 0.0.0-use.local
+  resolution: "@swarmion/configuration@workspace:packages/configuration"
+  dependencies:
+    "@babel/cli": ^7.17.0
+    "@babel/core": ^7.17.2
+    "@babel/plugin-transform-runtime": ^7.17.0
+    "@babel/preset-env": ^7.16.11
+    "@babel/preset-typescript": ^7.16.7
+    "@babel/runtime": ^7.17.2
+    "@serverless/typescript": ^3.1.1
+    "@zerollup/ts-transform-paths": ^1.7.18
+    babel-plugin-module-resolver: ^4.1.0
+    concurrently: ^7.0.0
+    eslint: ^8.8.0
+    jest: ^27.5.1
+    jest-runner-groups: ^2.1.0
+    json-schema-to-ts: ^1.6.5
+    lint-staged: ^11.2.6
+    prettier: ^2.5.1
+    ts-jest: ^27.1.3
+    ttypescript: ^1.5.13
+    typescript: ^4.5.5
+  languageName: unknown
+  linkType: soft
+
+"@swarmion/eslint-plugin@workspace:packages/eslint-plugin":
+  version: 0.0.0-use.local
+  resolution: "@swarmion/eslint-plugin@workspace:packages/eslint-plugin"
+  dependencies:
+    "@babel/cli": ^7.17.0
+    "@babel/core": ^7.17.2
+    "@babel/plugin-transform-runtime": ^7.17.0
+    "@babel/preset-env": ^7.16.11
+    "@babel/preset-typescript": ^7.16.7
+    "@babel/runtime": ^7.17.2
+    "@swarmion/configuration": ^0.3.0
+    "@types/eslint": ^8.4.1
+    "@types/jest": ^27.4.0
+    "@types/node": ^17.0.17
+    "@zerollup/ts-transform-paths": ^1.7.18
+    babel-plugin-module-resolver: ^4.1.0
+    concurrently: ^7.0.0
+    eslint: ^8.8.0
+    find-up: 5.0.0
+    jest: ^27.5.1
+    lint-staged: ^12.3.3
+    prettier: ^2.5.1
+    ts-node: ^10.5.0
+    ttypescript: ^1.5.13
+    typescript: ^4.5.5
+  languageName: unknown
+  linkType: soft
+
+"@swarmion/root@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@swarmion/root@workspace:."
+  dependencies:
+    "@commitlint/cli": ^16.1.0
+    "@commitlint/config-conventional": ^16.0.0
+    "@nrwl/cli": ^13.8.1
+    "@nrwl/tao": ^13.8.1
+    "@nrwl/workspace": ^13.8.1
+    "@types/jest": ^27.4.0
+    "@typescript-eslint/eslint-plugin": ^5.11.0
+    "@typescript-eslint/parser": ^5.11.0
+    aws-sdk: ^2.1073.0
+    eslint: ^8.8.0
+    eslint-config-prettier: ^8.3.0
+    eslint-plugin-import: ^2.25.4
+    eslint-plugin-jest: ^26.1.0
+    eslint-plugin-prefer-arrow: ^1.2.3
+    eslint-plugin-prettier: ^4.0.0
+    husky: ^7.0.4
+    jest: ^27.5.1
+    lerna: ^4.0.0
+    lodash: ^4.17.21
+    npm-audit-resolver: ^2.3.1
+    prettier: ^2.5.1
+    syncpack: ^6.2.0
+    typescript: ^4.5.5
+  languageName: unknown
+  linkType: soft
+
+"@swarmion/serverless-contracts@workspace:packages/serverless-contracts":
+  version: 0.0.0-use.local
+  resolution: "@swarmion/serverless-contracts@workspace:packages/serverless-contracts"
+  dependencies:
+    "@babel/cli": ^7.17.0
+    "@babel/core": ^7.17.2
+    "@babel/plugin-transform-runtime": ^7.17.0
+    "@babel/preset-env": ^7.16.11
+    "@babel/preset-typescript": ^7.16.7
+    "@babel/runtime": ^7.17.2
+    "@serverless/typescript": ^3.1.1
+    "@swarmion/configuration": ^0.3.0
+    "@typescript-eslint/eslint-plugin": ^5.11.0
+    "@typescript-eslint/parser": ^5.11.0
+    "@zerollup/ts-transform-paths": ^1.7.18
+    aws-sdk: ^2.1073.0
+    axios: ^0.25.0
+    babel-plugin-module-resolver: ^4.1.0
+    concurrently: ^7.0.0
+    eslint: ^8.8.0
+    eslint-plugin-jest: ^26.1.0
+    jest: ^27.5.1
+    json-schema-to-ts: ^1.6.5
+    lint-staged: ^12.3.3
+    lodash: ^4.17.21
+    prettier: ^2.5.1
+    serverless: ^3.2.0
+    ts-jest: ^27.1.3
+    ttypescript: ^1.5.13
+    typescript: ^4.5.5
+  languageName: unknown
+  linkType: soft
+
+"@swarmion/serverless-plugin@workspace:packages/serverless-contracts-plugin":
+  version: 0.0.0-use.local
+  resolution: "@swarmion/serverless-plugin@workspace:packages/serverless-contracts-plugin"
+  dependencies:
+    "@babel/cli": ^7.17.0
+    "@babel/core": ^7.17.2
+    "@babel/plugin-transform-runtime": ^7.17.0
+    "@babel/preset-env": ^7.16.11
+    "@babel/preset-typescript": ^7.16.7
+    "@babel/runtime": ^7.17.2
+    "@serverless/typescript": ^3.1.1
+    "@swarmion/configuration": ^0.3.0
+    "@types/serverless": ^3.0.0
+    "@zerollup/ts-transform-paths": ^1.7.18
+    aws-sdk: ^2.1073.0
+    axios: ^0.25.0
+    babel-plugin-module-resolver: ^4.1.0
+    concurrently: ^7.0.0
+    eslint: ^8.8.0
+    jest: ^27.5.1
+    json-schema-diff: ^0.17.1
+    json-schema-to-ts: ^1.6.5
+    lint-staged: ^12.3.3
+    lodash: ^4.17.21
+    prettier: ^2.5.1
+    serverless: ^3.2.0
+    simple-git: ^3.1.1
+    ts-jest: ^27.1.3
+    ttypescript: ^1.5.13
+    typescript: ^4.5.5
+  peerDependencies:
+    serverless: ^2.60 || 3
+  languageName: unknown
+  linkType: soft
 
 "@szmarczak/http-timer@npm:^4.0.5":
   version: 4.0.6

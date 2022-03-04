@@ -66,7 +66,7 @@ module.exports = {
       {
         patterns: [
           {
-            group: ['@serverless-contracts/*/*'],
+            group: ['@swarmion/*/*'],
             message:
               'import of internal modules must be done at the root level.',
           },

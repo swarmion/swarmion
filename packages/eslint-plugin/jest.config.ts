@@ -1,3 +1,3 @@
-import { jestConfig } from '@serverless-contracts/configuration';
+import { jestConfig } from '@swarmion/configuration';
 
 export default jestConfig;
