@@ -1,4 +1,4 @@
-# Serverless contracts
+# Swarmion
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
@@ -6,11 +6,11 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-A set of tools to build and deploy type-safe Serverless microservices.
+A set of tools to build and deploy type-safe microservices. In order to see a working example of these tools, check out [Swarmion template](https://github.com/swarmion/template).
 
 This projet is composed of the following packages:
 
-- [@swarmion/serverless-contracts](./packages/serverless-contracts): generate and use type-safe contracts in your microservices
+- [@swarmion/serverless-contracts](./packages/serverless-contracts): generate and use type-safe contracts in your Serverless microservices
 - [@swarmion/serverless-plugin](./packages/serverless-contracts-plugin): a Serverless plugin to safely deploy microservices
 - [@swarmion/eslint-plugin](./packages/eslint-plugin): an eslint plugin with rules to enforces proper usage of contracts
 
@@ -25,7 +25,7 @@ Each interaction between services is inherently asymmetric:
 - The **provider** is reponsible for giving resources to other services
 - The **consumers** use resources given by the provider
 
-Each service can be both a provider and a consumer for different contracts, but each contract is only provided by a single service.
+Each service can be both a provider and a consumer for different contracts.
 
 In order to make these contracts safe, each side of the contract must be able to validate it:
 
