@@ -1,22 +1,22 @@
-# @serverless-contracts/plugin
+# @swarmion/serverless-plugin
 
 A plugin to safely deploy Serverless microservices.
 
-This plugin is part of the [serverless-contracts](https://github.com/fargito/serverless-contracts) project. See its documentation for more insights.
+This plugin is part of the [Swarmion](https://github.com/swarmion/swarmion) project. See its documentation for more insights.
 
 ## Installation
 
 ```bash
-npm install @serverless-contracts/plugin --save-dev
+npm install @swarmion/serverless-plugin --save-dev
 ```
 
 Or if you're using yarn
 
 ```bash
-yarn add -D @serverless-contracts/plugin
+yarn add -D @swarmion/serverless-plugin
 ```
 
-Then in your `serverless.ts` file, add `@serverless-contracts/plugin` to the list of your plugins.
+Then in your `serverless.ts` file, add `@swarmion/serverless-plugin` to the list of your plugins.
 
 ## Configuration
 
@@ -32,7 +32,7 @@ const serverlessConfigation = {
     provider: {
         name: aws
     },
-    plugins: ['@serverless-contracts/plugin'],
+    plugins: ['@swarmion/serverless-plugin'],
     functions: {
         ...
     },
@@ -48,7 +48,7 @@ const serverlessConfigation = {
 }
 ```
 
-Where all the contracts are defined using [serverless-contracts](https://github.com/fargito/serverless-contracts).
+Where all the contracts are defined using [serverless-contracts](https://github.com/swarmion/swarmion).
 
 ## Commands
 
@@ -61,7 +61,7 @@ Where all the contracts are defined using [serverless-contracts](https://github.
 This plugin exposes its own types. In order to properly type your Serverless service file:
 
 ```ts
-import { ServerlessContracts } from '@serverless-contracts/plugin';
+import { ServerlessContracts } from '@swarmion/serverless-plugin';
 import { AWS } from '@serverless/typescript';
 
 const serverlessConfiguration: AWS & ServerlessContracts = {

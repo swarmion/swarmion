@@ -4,9 +4,9 @@ module.exports = {
   rules: { 'no-undeclared-contracts': noUndeclaredContracts },
   configs: {
     recommended: {
-      plugins: ['@serverless-contracts'],
+      plugins: ['@swarmion'],
       rules: {
-        '@serverless-contracts/no-undeclared-contracts': 'error',
+        '@swarmion/no-undeclared-contracts': 'error',
       },
     },
   },

@@ -1,8 +1,8 @@
-# @serverless-contracts/core
+# @swarmion/serverless-contracts
 
 Generate and use type-safe contracts between your Serverless services.
 
-This package is part of the [serverless-contracts](https://github.com/fargito/serverless-contracts) project. See its documentation for more insights.
+This package is part of the [Swarmion](https://github.com/swarmion/swarmion) project. See its documentation for more insights.
 
 - [Installation](#installation)
 - [Defining contracts](#defining-contracts)
@@ -13,13 +13,13 @@ This package is part of the [serverless-contracts](https://github.com/fargito/se
 # Installation
 
 ```bash
-npm install @serverless-contracts/core
+npm install @swarmion/serverless-contracts
 ```
 
 or if using yarn
 
 ```bash
-yarn add @serverless-contracts/core
+yarn add @swarmion/serverless-contracts
 ```
 
 # Defining contracts
@@ -225,7 +225,7 @@ The CloudFormation import/export syntax is very specific, but only one informati
 ## Defining a CloudFormation contract
 
 ```ts
-import { CloudFormationContract } from '@serverless-contracts/core';
+import { CloudFormationContract } from '@swarmion/serverless-contracts';
 
 const myCloudFormationContract = new CloudFormationContract({
   name: 'mySuperExport',
