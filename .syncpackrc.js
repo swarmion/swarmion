@@ -26,6 +26,7 @@ module.exports = {
     'keywords',
     'publishConfig',
     'workspaces',
+    'sideEffects',
     'files',
     'main',
     'module',
