@@ -32,7 +32,7 @@
     "test": "yarn test-linter && yarn test-type && yarn test-unit",
     "test-linter": "yarn linter-base-config .",
     "test-type": "tsc --noEmit --emitDeclarationOnly false",
-    "test-unit": "jest --group=unit --runInBand --collectCoverage --logHeapUsage --passWithNoTests",
+    "test-unit": "jest --runInBand --collectCoverage --logHeapUsage --passWithNoTests",
     "transpile": "babel src --extensions .ts --quiet",
     "watch": "rm -rf dist && concurrently 'yarn:package:* --watch'"
   },

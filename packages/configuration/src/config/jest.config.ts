@@ -5,7 +5,6 @@ const TEST_REGEX = '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|js?|tsx?|ts?)$';
 const config: InitialOptionsTsJest = {
   preset: 'ts-jest',
   testRegex: TEST_REGEX,
-  runner: 'groups',
   globals: {
     'ts-jest': {
       isolatedModules: true,
