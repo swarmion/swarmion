@@ -48,7 +48,7 @@ describe('restApiContract', () => {
         type: 'object',
         properties: {},
         required: [],
-        additionalProperties: false,
+        additionalProperties: true,
       });
     });
 

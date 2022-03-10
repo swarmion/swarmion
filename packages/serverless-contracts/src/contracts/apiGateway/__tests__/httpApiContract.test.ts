@@ -85,7 +85,7 @@ describe('httpApiContract', () => {
           'headers',
           'body',
         ],
-        additionalProperties: false,
+        additionalProperties: true,
       });
     });
 
