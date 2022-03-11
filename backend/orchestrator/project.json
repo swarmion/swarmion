@@ -1,0 +1,102 @@
+{
+  "root": "backend/orchestrator",
+  "projectType": "application",
+  "targets": {
+    "deploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["backend/orchestrator/.serverless"],
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "dependencies"
+        },
+        {
+          "target": "package",
+          "projects": "dependencies"
+        },
+        {
+          "target": "deploy",
+          "projects": "dependencies"
+        }
+      ],
+      "options": {
+        "cwd": "backend/orchestrator",
+        "commands": [
+          {
+            "command": "serverless deploy"
+          }
+        ]
+      }
+    },
+    "test:all": {
+      "executor": "@nrwl/workspace:run-commands",
+      "dependsOn": [
+        {
+          "target": "package",
+          "projects": "dependencies"
+        }
+      ],
+      "options": {
+        "cwd": "backend/orchestrator",
+        "commands": [
+          {
+            "command": "yarn test:all"
+          }
+        ]
+      }
+    },
+    "test:linter": {
+      "executor": "@nrwl/workspace:run-commands",
+      "dependsOn": [
+        {
+          "target": "package",
+          "projects": "dependencies"
+        }
+      ],
+      "options": {
+        "cwd": "backend/orchestrator",
+        "commands": [
+          {
+            "command": "yarn test:linter"
+          }
+        ]
+      }
+    },
+    "test:type": {
+      "executor": "@nrwl/workspace:run-commands",
+      "dependsOn": [
+        {
+          "target": "package",
+          "projects": "dependencies"
+        }
+      ],
+      "options": {
+        "cwd": "backend/orchestrator",
+        "commands": [
+          {
+            "command": "yarn test:type"
+          }
+        ]
+      }
+    },
+    "test:unit": {
+      "executor": "@nrwl/workspace:run-commands",
+      "dependsOn": [
+        {
+          "target": "package",
+          "projects": "dependencies"
+        }
+      ],
+      "options": {
+        "cwd": "backend/orchestrator",
+        "commands": [
+          {
+            "command": "yarn test:type"
+          }
+        ]
+      }
+    },
+    "tags": [],
+    "implicitDependencies": []
+  }
+}
