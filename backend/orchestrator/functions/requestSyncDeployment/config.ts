@@ -2,20 +2,18 @@ import { getHandlerPath, LambdaFunction } from '@swarmion/serverless-helpers';
 
 const config: LambdaFunction = {
   environment: {
-    DEPLOYMENT_TABLE_NAME: { Ref: 'DeploymentTable' },
+    ORCHESTRATOR_TABLE_NAME: { Ref: 'OrchestratorTable' },
   },
   handler: getHandlerPath(__dirname),
   iamRoleStatements: [
     {
       Effect: 'Allow',
-      Resource: { 'Fn::GetAtt': ['DeploymentTable', 'Arn'] },
+      Resource: { 'Fn::GetAtt': ['OrchestratorTable', 'Arn'] },
       Action: ['dynamodb:PutItem'],
     },
   ],
   iamRoleStatementsInherit: true,
-  events: [
-    { sns: { arn: { Ref: 'DeploymentTopic' }, topicName: 'deploymentTopic' } },
-  ],
+  events: [],
 };
 
 export default config;

@@ -1,10 +1,10 @@
 import { Entity } from 'dynamodb-toolbox';
 
 import { PARTITION_KEY, SORT_KEY } from '../../resources/dynamodb';
-import DeploymentTable from '../deploymentTable';
+import OrchestratorTable from '../orchestratorTable';
 
-const DeploymentEvent = new Entity({
-  name: 'DeploymentEvent',
+const ContractEntity = new Entity({
+  name: 'Contract',
   attributes: {
     [PARTITION_KEY]: {
       partitionKey: true,
@@ -22,7 +22,7 @@ const DeploymentEvent = new Entity({
     timestamp: 'string',
     message: 'string',
   },
-  table: DeploymentTable,
+  table: OrchestratorTable,
 } as const);
 
-export default DeploymentEvent;
+export default ContractEntity;

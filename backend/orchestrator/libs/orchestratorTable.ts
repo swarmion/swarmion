@@ -7,8 +7,8 @@ import { PARTITION_KEY, SORT_KEY } from '../resources/dynamodb';
 
 const DocumentClient = new DynamoDB.DocumentClient();
 
-const DeploymentTable = new Table({
-  name: getEnvVariable('DEPLOYMENT_TABLE_NAME'),
+const OrchestatorTable = new Table({
+  name: getEnvVariable('ORCHESTRATOR_TABLE_NAME'),
   partitionKey: PARTITION_KEY,
   sortKey: SORT_KEY,
   autoExecute: true,
@@ -16,4 +16,4 @@ const DeploymentTable = new Table({
   DocumentClient,
 });
 
-export default DeploymentTable;
+export default OrchestatorTable;

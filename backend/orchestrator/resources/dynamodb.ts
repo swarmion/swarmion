@@ -1,7 +1,7 @@
 export const PARTITION_KEY = 'pk';
 export const SORT_KEY = 'sk';
 
-export const DeploymentTable = {
+export const OrchestratorTable = {
   Type: 'AWS::DynamoDB::Table',
   Properties: {
     AttributeDefinitions: [

@@ -1,3 +1,3 @@
-import deploymentTopicHandler from './deploymentTopicHandler/config';
+import requestSyncDeployment from './requestSyncDeployment/config';
 
-export const functions = { deploymentTopicHandler };
+export const functions = { requestSyncDeployment };

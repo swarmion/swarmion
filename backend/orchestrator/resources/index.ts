@@ -1,4 +1,3 @@
-import { DeploymentTable } from './dynamodb';
-import { DeploymentTopic } from './sns';
+import { OrchestratorTable } from './dynamodb';
 
-export const Resources = { DeploymentTopic, DeploymentTable };
+export const Resources = { OrchestratorTable };
