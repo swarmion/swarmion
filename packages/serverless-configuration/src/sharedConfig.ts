@@ -1,4 +1,4 @@
-export const projectName = 'sls-contracts';
+export const projectName = 'swarmion';
 export const region = 'eu-west-1';
 
 export const defaultEnvironment = 'dev';
@@ -23,7 +23,7 @@ export const sharedProviderConfig = {
  * An empty string for a profile means that the default profile will be used
  */
 export const sharedParams = {
-  dev: { profile: 'sls-monorepo-developer' },
+  dev: { profile: 'swarmion-developer' },
   staging: { profile: '' },
   production: { profile: '' },
 };
@@ -31,7 +31,8 @@ export const sharedParams = {
 export const sharedEsbuildConfig = {
   packager: 'yarn',
   bundle: true,
-  minify: false,
+  minify: true,
+  keepNames: true,
   sourcemap: true,
   exclude: ['aws-sdk'],
   target: 'node14',
