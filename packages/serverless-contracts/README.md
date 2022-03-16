@@ -220,7 +220,7 @@ and then use them in your request.
 
 AWS CloudFormation is used by the Serverless Framework to manage resources. In certain cases, it may be necessary to share these resources between services. For example, authentication may be handled by a common authorizer, which should not be reimplemented on each service.
 
-The CloudFormation import/export syntax is very specific, but only one information is truly useful: the name of the export. This must be unique across CloudFormation stacks and serves as a global variable name for the related value.
+The CloudFormation import/export syntax is very specific, but only one information is truly useful: the name of the export. This must be unique across CloudFormation stacks and serves as a global variable name for the related value. The `id` serves to uniquely identify the contract among all stacks. Please note that this id MUST be unique among all stacks. Use a convention to ensure unicity.
 
 ## Defining a CloudFormation contract
 
@@ -228,6 +228,7 @@ The CloudFormation import/export syntax is very specific, but only one informati
 import { CloudFormationContract } from '@swarmion/serverless-contracts';
 
 const myCloudFormationContract = new CloudFormationContract({
+  id: 'a-unique-id',
   name: 'mySuperExport',
 });
 ```
