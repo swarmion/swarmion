@@ -1,34 +1,31 @@
 import { ApiGatewayContract } from '@swarmion/serverless-contracts';
 
-import { postEntitySchema, threadEntitySchema } from 'contracts/entities';
-
-const pathParametersSchema = {
+const bodySchema = {
   type: 'object',
   properties: {
-    threadId: { type: 'string' },
+    serviceId: { type: 'string' },
   },
-  required: ['threadId'],
+  required: ['serviceId'],
   additionalProperties: false,
 } as const;
 
 const outputSchema = {
   type: 'object',
   properties: {
-    thread: threadEntitySchema,
-    posts: { type: 'array', items: postEntitySchema },
+    serviceId: { type: 'string' },
   },
-  required: ['thread', 'posts'],
+  required: ['serviceId'],
   additionalProperties: false,
 } as const;
 
-export const getThreadWithPostsContract = new ApiGatewayContract({
+export const requestSyncDeployment = new ApiGatewayContract({
   id: 'forum-getThreadWithPosts',
   path: '/forum/thread/{threadId}',
-  method: 'GET',
+  method: 'POST',
   integrationType: 'httpApi',
-  pathParametersSchema,
+  pathParametersSchema: undefined,
   queryStringParametersSchema: undefined,
-  bodySchema: undefined,
+  bodySchema,
   headersSchema: undefined,
   outputSchema,
 });

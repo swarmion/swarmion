@@ -1,1 +1,1 @@
-export * from './getThreadWithPosts';
+export * from './requestSyncDeployment';
