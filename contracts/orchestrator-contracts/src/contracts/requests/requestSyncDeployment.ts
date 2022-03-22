@@ -4,8 +4,9 @@ const bodySchema = {
   type: 'object',
   properties: {
     serviceId: { type: 'string' },
+    applicationId: { type: 'string' },
   },
-  required: ['serviceId'],
+  required: ['serviceId', 'applicationId'],
   additionalProperties: false,
 } as const;
 

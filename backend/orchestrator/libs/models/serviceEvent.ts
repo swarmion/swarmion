@@ -9,7 +9,13 @@ const ServiceEventEntity = new Entity({
     [PARTITION_KEY]: {
       partitionKey: true,
       hidden: true,
-      default: ({ stackId }: { stackId: string }) => `SERVICE#${stackId}`,
+      default: ({
+        serviceId,
+        applicationId,
+      }: {
+        serviceId: string;
+        applicationId: string;
+      }) => `${applicationId}#SERVICE#${serviceId}`,
     },
     [SORT_KEY]: {
       sortKey: true,
@@ -17,6 +23,7 @@ const ServiceEventEntity = new Entity({
       default: ({ timestamp }: { timestamp: string }) => `EVENT#${timestamp}`,
     },
     serviceId: { type: 'string', required: true },
+    applicationId: { type: 'string', required: true },
     timestamp: { type: 'string', required: true },
   },
   table: OrchestratorTable,
