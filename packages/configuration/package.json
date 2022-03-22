@@ -17,15 +17,15 @@
     "lint-fix": "yarn linter-base-config --fix",
     "lint-fix-all": "yarn lint-fix .",
     "linter-base-config": "eslint --ext=js,ts .",
-    "package": "rm -rf dist && yarn package:cjs && yarn package:esm && yarn package:types",
-    "package:cjs": "NODE_ENV=cjs yarn transpile --out-dir dist/cjs --source-maps",
-    "package:esm": "NODE_ENV=esm yarn transpile --out-dir dist/esm --source-maps",
-    "package:types": "ttsc -p tsconfig.build.json",
+    "package": "rm -rf dist && yarn package-cjs && yarn package-esm && yarn package-types",
+    "package-cjs": "NODE_ENV=cjs yarn transpile --out-dir dist/cjs --source-maps",
+    "package-esm": "NODE_ENV=esm yarn transpile --out-dir dist/esm --source-maps",
+    "package-types": "ttsc -p tsconfig.build.json",
     "test": "yarn test-linter && yarn test-type",
     "test-linter": "yarn linter-base-config .",
     "test-type": "tsc --noEmit --emitDeclarationOnly false",
     "transpile": "babel src --extensions .ts --quiet",
-    "watch": "rm -rf dist && concurrently 'yarn:package:* --watch'"
+    "watch": "rm -rf dist && concurrently 'yarn:package-* --watch'"
   },
   "dependencies": {
     "@babel/runtime": "^7.17.8"
