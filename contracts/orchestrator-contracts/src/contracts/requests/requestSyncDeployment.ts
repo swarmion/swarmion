@@ -19,7 +19,7 @@ const outputSchema = {
 } as const;
 
 export const requestSyncDeployment = new ApiGatewayContract({
-  id: 'forum-getThreadWithPosts',
+  id: 'orchestrator-requestSyncDeployment',
   path: '/request-sync-deployment',
   method: 'POST',
   integrationType: 'httpApi',

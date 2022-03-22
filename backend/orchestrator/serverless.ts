@@ -1,5 +1,6 @@
 import { AWS } from '@serverless/typescript';
 
+import { requestSyncDeployment } from '@swarmion/orchestrator-contracts';
 import {
   projectName,
   sharedEsbuildConfig,
@@ -31,7 +32,9 @@ const serverlessConfiguration: AWS & ServerlessContracts = {
     esbuild: sharedEsbuildConfig,
   },
   contracts: {
-    provides: {},
+    provides: {
+      requestSyncDeployment: requestSyncDeployment.fullContractSchema,
+    },
     consumes: {},
   },
   resources: {
