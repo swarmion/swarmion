@@ -1,5 +1,9 @@
-export const main = async (): Promise<void> => {
+import { requestSyncDeployment } from '@swarmion/orchestrator-contracts';
+
+export const main = requestSyncDeployment.handler(async event => {
   await Promise.resolve();
 
-  console.log('toto');
-};
+  const { serviceId } = event.body;
+
+  return { serviceId };
+});

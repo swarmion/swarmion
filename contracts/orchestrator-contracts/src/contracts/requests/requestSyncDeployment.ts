@@ -20,7 +20,7 @@ const outputSchema = {
 
 export const requestSyncDeployment = new ApiGatewayContract({
   id: 'forum-getThreadWithPosts',
-  path: '/forum/thread/{threadId}',
+  path: '/request-sync-deployment',
   method: 'POST',
   integrationType: 'httpApi',
   pathParametersSchema: undefined,
