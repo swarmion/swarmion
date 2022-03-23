@@ -10,7 +10,7 @@ const handler = requestSyncDeployment.handler(async event => {
 
   await ServiceEventEntity.put({ serviceId, applicationId, timestamp });
 
-  return { serviceId };
+  return { status: 'ACCEPTED', message: 'processing' };
 });
 
 export const main = applyHttpMiddlewares(handler, {

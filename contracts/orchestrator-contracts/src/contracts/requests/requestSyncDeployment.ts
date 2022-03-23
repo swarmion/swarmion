@@ -13,9 +13,10 @@ const bodySchema = {
 const outputSchema = {
   type: 'object',
   properties: {
-    serviceId: { type: 'string' },
+    status: { enum: ['ACCEPTED', 'REJECTED'] },
+    message: { type: 'string' },
   },
-  required: ['serviceId'],
+  required: ['status', 'message'],
   additionalProperties: false,
 } as const;
 
