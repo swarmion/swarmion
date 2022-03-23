@@ -29,7 +29,8 @@
     "jest.disabledWorkspaceFolders": ["swarmion root"],
     "jest.jestCommandLine": "yarn jest",
     "jest.showCoverageOnLoad": true,
-    "jest.coverageFormatter": "DefaultFormatter"
+    "jest.coverageFormatter": "DefaultFormatter",
+    "cSpell.words": ["esbuild", "Middlewares", "swarmion", "ulid"]
   },
   "extensions": {
     "recommendations": [
@@ -50,6 +51,14 @@
       "name": "swarmion root"
     },
     {
+      "path": "backend/orchestrator",
+      "name": "orchestrator backend [service]"
+    },
+    {
+      "path": "contracts/orchestrator-contracts",
+      "name": "orchestrator contracts [library]"
+    },
+    {
       "path": "packages/configuration",
       "name": "configuration [library]"
     },
@@ -58,12 +67,20 @@
       "name": "eslint plugin [library]"
     },
     {
+      "path": "packages/serverless-configuration",
+      "name": "serverless configuration [library]"
+    },
+    {
       "path": "packages/serverless-contracts",
       "name": "serverless contracts [library]"
     },
     {
       "path": "packages/serverless-contracts-plugin",
       "name": "serverless contracts plugin [library]"
+    },
+    {
+      "path": "packages/serverless-helpers",
+      "name": "serverless helpers [library]"
     }
   ]
 }
