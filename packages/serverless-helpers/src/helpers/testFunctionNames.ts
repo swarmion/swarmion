@@ -12,6 +12,9 @@ const getFullFunctionName = (config: AWS, functionName: string): string =>
 
 /**
  * Test that all the automatically generated function names will pass the 64 characters AWS limit
+ *
+ * In Swarmion, we use the `dev`, `staging`, `production` convention, so we test with the longest suffix
+ *
  * @param config serverless configuration object
  */
 const testFunctionNames = (config: AWS): void => {
