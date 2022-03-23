@@ -20,11 +20,11 @@ const ServiceEventEntity = new Entity({
     [SORT_KEY]: {
       sortKey: true,
       hidden: true,
-      default: ({ timestamp }: { timestamp: string }) => `EVENT#${timestamp}`,
+      default: ({ eventId }: { eventId: string }) => `EVENT#${eventId}`,
     },
     serviceId: { type: 'string', required: true },
     applicationId: { type: 'string', required: true },
-    timestamp: { type: 'string', required: true },
+    eventId: { type: 'string', required: true },
   },
   table: OrchestratorTable,
 } as const);
