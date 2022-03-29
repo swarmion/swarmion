@@ -1,0 +1,21 @@
+{
+  "cli": "nx",
+  "$id": "service-generator",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Service name",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "directory": {
+      "type": "string",
+      "description": "Directory of the new service",
+      "default": "backend"
+    }
+  },
+  "required": ["name"]
+}

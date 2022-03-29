@@ -32,6 +32,7 @@ module.exports = {
     'module',
     'types',
     'contracts',
+    'generators',
     'scripts',
   ],
   versionGroups: [],

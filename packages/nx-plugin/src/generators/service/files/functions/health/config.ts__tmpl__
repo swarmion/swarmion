@@ -1,0 +1,19 @@
+import {
+  getHandlerPath,
+  LambdaFunction,
+} from '@<%= workspaceName %>/serverless-helpers';
+
+const config: LambdaFunction = {
+  environment: {},
+  handler: getHandlerPath(__dirname),
+  events: [
+    {
+      httpApi: {
+        method: 'get',
+        path: '/<%= name %>/health',
+      },
+    },
+  ],
+};
+
+export default config;

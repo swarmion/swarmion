@@ -1,0 +1,9 @@
+const generateImportOrderRule = require('<%= offsetFromRoot %>/commonConfiguration/generateImportOrderRule');
+
+module.exports = {
+  rules: generateImportOrderRule(__dirname),
+  parserOptions: {
+    project: ['./tsconfig.json'],
+    tsconfigRootDir: __dirname,
+  },
+};
