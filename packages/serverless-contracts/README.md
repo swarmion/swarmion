@@ -264,6 +264,8 @@ Please note:
 
 ## Using a CloudFormation contract to import a value
 
+### Serverless framework
+
 In the consumer `serverless.ts`, you can use the import with:
 
 ```ts
@@ -277,6 +279,13 @@ const serverlessConfiguration = {
 ```
 
 The resolved imported value will be available as `${self:custom.myImportedValue}` in your serverless files. See [the Serverless variables documentation](https://www.serverless.com/framework/docs/providers/aws/guide/variables/#reference-properties-in-serverlessyml).
+
+### CDK
+You can also use the import with:
+
+```ts
+const myCloudFormationContract = Fn.importValue(myCloudformationContract.cdkImportValue);
+```
 
 # About type inference
 
