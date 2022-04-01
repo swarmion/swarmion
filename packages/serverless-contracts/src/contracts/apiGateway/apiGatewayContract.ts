@@ -3,8 +3,10 @@ import { AxiosInstance, AxiosResponse } from 'axios';
 import { FromSchema, JSONSchema } from 'json-schema-to-ts';
 import isUndefined from 'lodash/isUndefined';
 import omitBy from 'lodash/omitBy';
+import { OpenAPIV3 } from 'openapi-types';
 
 import { ConstrainedJSONSchema } from 'types/constrainedJSONSchema';
+import { ContractOpenApiDocumentation } from 'types/contractOpenApiDocumentation';
 import { GenericContract } from 'types/genericContract';
 import { HttpMethod } from 'types/http';
 import { fillPathTemplate } from 'utils/fillPathTemplate';
@@ -329,5 +331,69 @@ export class ApiGatewayContract<
       data: body,
       params: queryStringParameters,
     });
+  }
+
+  getOpenApiDocumentation(): ContractOpenApiDocumentation {
+    const contractDocumentation: OpenAPIV3.OperationObject = {
+      responses: {
+        '200': {
+          description: 'Success',
+          content: {
+            'application/json': {
+              schema: this._outputSchema as OpenAPIV3.SchemaObject,
+            },
+          },
+        },
+      },
+    };
+
+    if (this._pathParametersSchema?.properties !== undefined) {
+      contractDocumentation.parameters = [
+        ...Object.entries(this._pathParametersSchema.properties).map(
+          ([variableName, variableDefinition]) => ({
+            name: variableName,
+            in: 'path',
+            schema: variableDefinition as OpenAPIV3.SchemaObject,
+            required:
+              this._pathParametersSchema?.required?.includes(variableName) ??
+              false,
+          }),
+        ),
+        ...(contractDocumentation.parameters ?? []),
+      ];
+    }
+
+    if (this._queryStringParametersSchema?.properties !== undefined) {
+      contractDocumentation.parameters = [
+        ...Object.entries(this._queryStringParametersSchema.properties).map(
+          ([variableName, variableDefinition]) => ({
+            name: variableName,
+            in: 'query',
+            schema: variableDefinition as OpenAPIV3.SchemaObject,
+            required:
+              this._queryStringParametersSchema?.required?.includes(
+                variableName,
+              ) ?? false,
+          }),
+        ),
+        ...(contractDocumentation.parameters ?? []),
+      ];
+    }
+
+    if (this._bodySchema !== undefined) {
+      contractDocumentation.requestBody = {
+        content: {
+          'application/json': {
+            schema: this._bodySchema as OpenAPIV3.SchemaObject,
+          },
+        },
+      };
+    }
+
+    return {
+      path: this._path,
+      method: this._method.toLowerCase(),
+      documentation: contractDocumentation,
+    };
   }
 }
