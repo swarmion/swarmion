@@ -23,7 +23,7 @@ const generateImportOrderRule = (dirname, tsConfigPath = 'tsconfig.json') => {
   );
 
   const baseUrlPaths = readdirSync(
-    path.resolve(dirname, tsConfig.compilerOptions.baseUrl),
+    path.resolve(dirname, tsConfig.compilerOptions.baseUrl || ''),
     {
       withFileTypes: true,
     },
