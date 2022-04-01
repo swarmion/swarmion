@@ -284,6 +284,8 @@ The resolved imported value will be available as `${self:custom.myImportedValue}
 You can also use the import with:
 
 ```ts
+import { Fn } from 'aws-cdk-lib';
+
 const myCloudFormationContract = Fn.importValue(myCloudformationContract.cdkImportValue);
 ```
 
