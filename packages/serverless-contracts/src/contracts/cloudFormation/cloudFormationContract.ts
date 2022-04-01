@@ -41,6 +41,13 @@ export class CloudFormationContract<Name extends string>
   }
 
   /**
+   * @returns the CloudFormation import name to use with Fn.importValue in CDK
+   */
+  get cdkImportValue(): Name {
+    return this._name;
+  }
+
+  /**
    * @param description the description used in CloudFormation for this value
    * @param value the CloudFormation function passed to the export
    * For more information, see https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html
