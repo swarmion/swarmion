@@ -10,6 +10,7 @@ import {
 } from '../types/serviceOptions';
 import { getTimestampFromArtifactDirectoryName } from './utils/artifactDirectory';
 import { LATEST_DEPLOYED_TIMESTAMP_TAG_NAME } from './utils/constants';
+import { generateOpenApiDocumentation } from './utils/generateOpenApiDocumentation';
 import { listLocalContractSchemas } from './utils/listLocalContractSchemas';
 import { listRemoteContractSchemas } from './utils/listRemoteContractSchemas';
 import { printContractSchemas } from './utils/printContractSchemas';
@@ -77,6 +78,11 @@ export class ServerlessContractsPlugin implements Plugin {
           },
         },
       },
+      generateOpenApiDocumentation: {
+        usage:
+          'Generate OpenAPI with local Serverless contracts provided by the service',
+        lifecycleEvents: ['run'],
+      },
     };
     this.hooks = {
       'localContracts:run': this.printLocalServerlessContractSchemas.bind(this),
@@ -87,6 +93,8 @@ export class ServerlessContractsPlugin implements Plugin {
       'before:package:finalize': this.tagStackWithTimestamp.bind(this),
       'after:aws:deploy:deploy:uploadArtifacts':
         this.uploadContractSchemas.bind(this),
+      'generateOpenApiDocumentation:run':
+        this.generateOpenApiDocumentation.bind(this),
     };
   }
 
@@ -165,5 +173,9 @@ export class ServerlessContractsPlugin implements Plugin {
         this.cliOptions.strategy,
       );
     }
+  }
+
+  generateOpenApiDocumentation(): void {
+    generateOpenApiDocumentation(this.serverless);
   }
 }
