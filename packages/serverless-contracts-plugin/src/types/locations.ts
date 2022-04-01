@@ -1,4 +1,4 @@
-export enum ContractsLocation {
+export enum ContractSchemasLocation {
   LOCAL = 'LOCAL',
   REMOTE = 'REMOTE',
 }

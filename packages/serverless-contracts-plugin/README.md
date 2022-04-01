@@ -38,11 +38,11 @@ const serverlessConfigation = {
     },
     contracts: {
         provides: {
-            myFirstContract: myFirstContract.fullContractSchema,
-            mySecondContract: mySecondContract.fullContractSchema
+            myFirstContract,
+            mySecondContract,
         },
         consumes: {
-            consumedContract: consumedContract.fullContractSchema,
+            consumedContract,
         },
     },
 }

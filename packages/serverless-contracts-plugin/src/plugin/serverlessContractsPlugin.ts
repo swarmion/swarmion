@@ -2,18 +2,18 @@ import * as Serverless from 'serverless';
 import * as Plugin from 'serverless/classes/Plugin';
 
 import { DeploymentStrategies } from '../types/deploymentTypes';
-import { ContractsLocation } from '../types/locations';
+import { ContractSchemasLocation } from '../types/locations';
 import {
-  RemoteServerlessContracts,
-  ServerlessContracts,
+  RemoteServerlessContractSchemas,
+  ServerlessContractSchemas,
   serviceOptionsSchema,
 } from '../types/serviceOptions';
 import { getTimestampFromArtifactDirectoryName } from './utils/artifactDirectory';
 import { LATEST_DEPLOYED_TIMESTAMP_TAG_NAME } from './utils/constants';
-import { listLocalContracts } from './utils/listLocalContracts';
-import { listRemoteContracts } from './utils/listRemoteContracts';
-import { printContracts } from './utils/printContracts';
-import { uploadContracts } from './utils/uploadContracts';
+import { listLocalContractSchemas } from './utils/listLocalContractSchemas';
+import { listRemoteContractSchemas } from './utils/listRemoteContractSchemas';
+import { printContractSchemas } from './utils/printContractSchemas';
+import { uploadContractSchemas } from './utils/uploadContractSchemas';
 import { validateDeployment } from './utils/validateDeployment';
 
 interface OptionsExtended extends Serverless.Options {
@@ -79,13 +79,14 @@ export class ServerlessContractsPlugin implements Plugin {
       },
     };
     this.hooks = {
-      'localContracts:run': this.printLocalServerlessContracts.bind(this),
-      'remoteContracts:run': this.printRemoteServerlessContracts.bind(this),
-      'safeDeploy:run': this.deployWithContractsValidation.bind(this),
+      'localContracts:run': this.printLocalServerlessContractSchemas.bind(this),
+      'remoteContracts:run':
+        this.printRemoteServerlessContractSchemas.bind(this),
+      'safeDeploy:run': this.deployWithContractSchemasValidation.bind(this),
       'before:deploy:deploy': this.validateDeployment.bind(this),
       'before:package:finalize': this.tagStackWithTimestamp.bind(this),
       'after:aws:deploy:deploy:uploadArtifacts':
-        this.uploadContracts.bind(this),
+        this.uploadContractSchemas.bind(this),
     };
   }
 
@@ -95,31 +96,33 @@ export class ServerlessContractsPlugin implements Plugin {
    * Therefore, while this option has been set in the constructor, all we need to to is
    * launch the serverless framework deployment
    */
-  async deployWithContractsValidation(): Promise<void> {
+  async deployWithContractSchemasValidation(): Promise<void> {
     await this.serverless.pluginManager.spawn('deploy');
   }
 
-  listLocalContracts(): ServerlessContracts {
-    return listLocalContracts(this.serverless);
+  listLocalContractSchemas(): ServerlessContractSchemas {
+    return listLocalContractSchemas(this.serverless);
   }
 
-  printLocalServerlessContracts(): void {
-    const contracts = this.listLocalContracts();
-    printContracts(contracts, ContractsLocation.LOCAL);
+  printLocalServerlessContractSchemas(): void {
+    const contractSchemas = this.listLocalContractSchemas();
+    printContractSchemas(contractSchemas, ContractSchemasLocation.LOCAL);
   }
 
-  async printRemoteServerlessContracts(): Promise<void> {
-    const contracts = await this.listRemoteContracts();
-    if (contracts === undefined) {
-      this.log.error('Unable to retrieve remote contracts');
+  async printRemoteServerlessContractSchemas(): Promise<void> {
+    const contractSchemas = await this.listRemoteContractSchemas();
+    if (contractSchemas === undefined) {
+      this.log.error('Unable to retrieve remote contract schemas');
 
       return;
     }
-    printContracts(contracts, ContractsLocation.REMOTE);
+    printContractSchemas(contractSchemas, ContractSchemasLocation.REMOTE);
   }
 
-  async listRemoteContracts(): Promise<RemoteServerlessContracts | undefined> {
-    return listRemoteContracts(this.serverless);
+  async listRemoteContractSchemas(): Promise<
+    RemoteServerlessContractSchemas | undefined
+  > {
+    return listRemoteContractSchemas(this.serverless);
   }
 
   tagStackWithTimestamp(): void {
@@ -136,27 +139,29 @@ export class ServerlessContractsPlugin implements Plugin {
     };
   }
 
-  async uploadContracts(): Promise<void> {
-    await uploadContracts(this.serverless, this.log);
+  async uploadContractSchemas(): Promise<void> {
+    await uploadContractSchemas(this.serverless, this.log);
   }
 
   async validateDeployment(): Promise<void> {
-    const localContracts = listLocalContracts(this.serverless);
-    const remoteContracts = await listRemoteContracts(this.serverless);
-    if (remoteContracts === undefined) {
+    const localContractSchemas = listLocalContractSchemas(this.serverless);
+    const remoteContractSchemas = await listRemoteContractSchemas(
+      this.serverless,
+    );
+    if (remoteContractSchemas === undefined) {
       this.log.warning(
-        'Contracts: Unable to retrieve remote contracts, deployment is unsafe',
+        'Contracts: Unable to retrieve remote contract schemas, deployment is unsafe',
       );
 
       return;
     }
 
     if (this.cliOptions.strategy !== undefined) {
-      this.log.info('Validating contracts...');
+      this.log.info('Validating contract schemas...');
 
       await validateDeployment(
-        localContracts,
-        remoteContracts,
+        localContractSchemas,
+        remoteContractSchemas,
         this.cliOptions.strategy,
       );
     }
