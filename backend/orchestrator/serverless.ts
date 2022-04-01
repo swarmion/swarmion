@@ -33,7 +33,7 @@ const serverlessConfiguration: AWS & ServerlessContracts = {
   },
   contracts: {
     provides: {
-      requestSyncDeployment: requestSyncDeployment.fullContractSchema,
+      requestSyncDeployment,
     },
     consumes: {},
   },
