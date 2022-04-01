@@ -1,15 +1,15 @@
 import * as AWS from 'aws-sdk';
 import Serverless from 'serverless';
 
-import { RemoteServerlessContracts } from 'types/serviceOptions';
+import { RemoteServerlessContractSchemas } from 'types/serviceOptions';
 
 import { buildPreviousDeploymentArtifactDirectoryName } from './artifactDirectory';
 import { COMPILED_CONTRACTS_FILE_NAME, CONTRACTS_VERSION } from './constants';
 import { getLatestDeployedTimestamp } from './getLatestDeployedTimestamp';
 
-export const listRemoteContracts = async (
+export const listRemoteContractSchemas = async (
   serverless: Serverless,
-): Promise<RemoteServerlessContracts | undefined> => {
+): Promise<RemoteServerlessContractSchemas | undefined> => {
   const provider = serverless.getProvider('aws');
   const latestDeployedTimestamp = await getLatestDeployedTimestamp(provider);
 
@@ -45,9 +45,9 @@ export const listRemoteContracts = async (
     };
   }
 
-  const contracts = JSON.parse(
+  const contractSchemas = JSON.parse(
     remoteContractsBuffer.toString(),
-  ) as RemoteServerlessContracts;
+  ) as RemoteServerlessContractSchemas;
 
-  return contracts;
+  return contractSchemas;
 };
