@@ -19,6 +19,7 @@ module.exports = {
     'private',
     'version',
     'author',
+    'contributors',
     'license',
     'homepage',
     'bugs',

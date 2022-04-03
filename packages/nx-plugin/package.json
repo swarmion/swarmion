@@ -1,11 +1,30 @@
 {
   "name": "@swarmion/nx-plugin",
-  "private": true,
+  "description": "Generate and use type-safe contracts between your Serverless services.",
   "version": "0.4.4",
+  "contributors": [
+    "MaximeVivier",
+    "adriencaccia",
+    "guillaumeduboc"
+  ],
   "license": "MIT",
+  "homepage": "https://github.com/swarmion/swarmion#readme",
+  "bugs": "https://github.com/swarmion/swarmion/issues",
+  "repository": "swarmion/swarmion.git",
+  "keywords": [
+    "Serverless",
+    "Typescript",
+    "generator",
+    "nx",
+    "nxplugin"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "sideEffects": false,
   "files": [
-    "dist"
+    "dist",
+    "generators.json"
   ],
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -41,6 +60,7 @@
     "concurrently": "^7.0.0",
     "eslint": "^8.12.0",
     "jest": "^27.5.1",
+    "nx": "^13.9.6",
     "prettier": "^2.6.1",
     "ts-node": "^10.7.0",
     "ttypescript": "^1.5.13",
