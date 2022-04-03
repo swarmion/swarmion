@@ -1,11 +1,10 @@
-# nx-plugin
+# @swarmion/nx-plugin
 
-This library was generated with [Nx](https://nx.dev).
+Generate new libraries and services in your Serverless monorepo.
 
-## Building
+This package is part of the [Swarmion](https://github.com/swarmion/swarmion) project. See its documentation for more insights.
+It is meant to be used on a repo structured like the [Swarmion template](https://github.com/swarmion/template)
 
-Run `nx build nx-plugin` to build the library.
+To generate a service run `yarn nx g @swarmion/nx-plugin:service myService`
 
-## Running unit tests
-
-Run `nx test nx-plugin` to execute the unit tests via [Jest](https://jestjs.io).
+To generate a library run `yarn nx g @swarmion/nx-plugin:library myLibrary`
