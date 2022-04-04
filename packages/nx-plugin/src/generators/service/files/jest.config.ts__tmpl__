@@ -1,0 +1,6 @@
+import { jestConfig } from '@<%= workspaceName %>/configuration';
+
+export default {
+  ...jestConfig,
+  moduleDirectories: ['node_modules', '<rootDir>'],
+};

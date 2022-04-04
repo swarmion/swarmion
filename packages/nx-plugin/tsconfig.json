@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "composite": true,
+    "plugins": [{ "transform": "@zerollup/ts-transform-paths" }],
+    "emitDeclarationOnly": true,
+    "esModuleInterop": true,
+    "outDir": "./dist/types"
+  },
+  "references": [
+    { "path": "../../packages/configuration/tsconfig.build.json" }
+  ],
+  "exclude": ["./dist"],
+  "include": ["./**/*.ts"]
+}
