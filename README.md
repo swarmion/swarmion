@@ -1,9 +1,7 @@
 # Swarmion
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-) [![Downloads](https://img.shields.io/npm/dw/@swarmion/serverless-contracts?style=flat-square)](https://www.npmjs.com/package/@swarmion/serverless-contracts)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 A set of tools to build and deploy type-safe microservices. In order to see a working example of these tools, check out [Swarmion template](https://github.com/swarmion/template).
@@ -56,6 +54,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/MaximeVivier"><img src="https://avatars.githubusercontent.com/u/55386175?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Maxime Vivier</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=MaximeVivier" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/GuillaumeLagrange"><img src="https://avatars.githubusercontent.com/u/19265358?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Guillaume Lagrange</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=GuillaumeLagrange" title="Code">💻</a> <a href="https://github.com/swarmion/swarmion/commits?author=GuillaumeLagrange" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/Sc0ra"><img src="https://avatars.githubusercontent.com/u/25872509?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Axel Fournier</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=Sc0ra" title="Code">💻</a> <a href="https://github.com/swarmion/swarmion/commits?author=Sc0ra" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/guillaumeduboc"><img src="https://avatars.githubusercontent.com/u/33599414?v=4?s=100" width="100px;" alt=""/><br /><sub><b>guillaumeduboc</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=guillaumeduboc" title="Code">💻</a> <a href="https://github.com/swarmion/swarmion/commits?author=guillaumeduboc" title="Documentation">📖</a></td>
   </tr>
 </table>
 
