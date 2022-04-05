@@ -1,0 +1,33 @@
+{
+  "name": "@swarmion/documentation-cloudfront",
+  "private": true,
+  "version": "0.5.0",
+  "license": "MIT",
+  "scripts": {
+    "deploy": "serverless deploy",
+    "lint-fix": "yarn linter-base-config --fix",
+    "lint-fix-all": "yarn lint-fix .",
+    "linter-base-config": "eslint --ext=js,ts",
+    "remove": "serverless remove",
+    "sls-info": "serverless info --verbose",
+    "test": "yarn test-linter && yarn test-type && yarn test-circular",
+    "test-circular": "yarn depcruise --validate .dependency-cruiser.js .",
+    "test-linter": "yarn linter-base-config .",
+    "test-type": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@swarmion/serverless-configuration": "^0.5.0"
+  },
+  "devDependencies": {
+    "@serverless/typescript": "^3.8.0",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^17.0.23",
+    "dependency-cruiser": "^11.4.1",
+    "jest": "^27.5.1",
+    "serverless": "^3.10.2",
+    "serverless-lift": "^1.13.0",
+    "ts-jest": "^27.1.4",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
+  }
+}
