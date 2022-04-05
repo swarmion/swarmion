@@ -8,7 +8,7 @@ import {
 } from '@swarmion/serverless-configuration';
 
 const serverlessConfiguration: AWS & Lift = {
-  service: `${projectName}-frontend`, // Keep it short to have role name below 64
+  service: `${projectName}-documentation`, // Keep it short to have role name below 64
   frameworkVersion: '>=3.0.0',
   plugins: ['serverless-lift'],
   provider: sharedProviderConfig,
@@ -18,12 +18,12 @@ const serverlessConfiguration: AWS & Lift = {
   },
   constructs: {
     app: {
-      type: 'static-website',
-      path: '../app/dist',
+      type: 'single-page-app',
+      path: '../documentation/build',
     },
   },
   resources: {
-    Description: 'Frontend cloudfront service',
+    Description: 'Documentation cloudfront service',
   },
 };
 

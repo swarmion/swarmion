@@ -1,10 +1,10 @@
 {
   "name": "@swarmion/documentation-cloudfront",
   "private": true,
-  "version": "1.0.0",
-  "license": "UNLICENSED",
+  "version": "0.5.0",
+  "license": "MIT",
   "scripts": {
-    "deploy": "./deploy.sh",
+    "deploy": "serverless deploy",
     "lint-fix": "yarn linter-base-config --fix",
     "lint-fix-all": "yarn lint-fix .",
     "linter-base-config": "eslint --ext=js,ts",
@@ -16,7 +16,7 @@
     "test-type": "tsc --noEmit"
   },
   "dependencies": {
-    "@swarmion/serverless-configuration": "workspace:^"
+    "@swarmion/serverless-configuration": "^0.5.0"
   },
   "devDependencies": {
     "@serverless/typescript": "^3.8.0",
