@@ -23,7 +23,8 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/swarmion/swarmion',
+          editUrl:
+            'https://github.com/swarmion/swarmion/tree/main/user-docs/documentation',
         },
         blog: false,
         theme: {
@@ -47,7 +48,7 @@ const config = {
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Documentation',
           },
           {
             href: 'https://github.com/swarmion/swarmion',

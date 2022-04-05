@@ -19,7 +19,7 @@ const HomepageHeader = () => {
             className="button button--secondary button--lg"
             to="/docs/intro"
           >
-            Swarmion Tutorial
+            Documentation
           </Link>
         </div>
       </div>

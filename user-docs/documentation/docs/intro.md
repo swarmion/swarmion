@@ -6,11 +6,8 @@ sidebar_position: 1
 
 Let's discover **Swarmion**.
 
-## Getting Started
+## What is Swarmion?
 
-Get started by **creating a new site**.
+Swarmion is an open-source Framework for building Type-safe Serverless microservices at scale. It takes full advantage of the **Serverless Framework** to handle deployment and provisioning of resources, while adding a support for microservices and end-to-end type-safety.
 
-### What you'll need
-
-- [Node.js](https://nodejs.org/en/download/) version 14 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+## Our core beliefs
