@@ -10,38 +10,40 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
+    title: 'Built for Scale',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Swarmion helps you handle changes in your team organization, by clearly
+        separating service-specific and shared code.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Built for Dev Experience',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Using optimized development tools, Swarmion provides a seamless
+        developer experience and makes it easy to collaborate on your scaling
+        codebase.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Built for Stability',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Using end-to-end typing and validation contracts, Swarmion clearly
+        defines interactions between your services and uses them to prevent
+        breaking changes.
       </>
     ),
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+const Feature = ({ title, Svg, description }: FeatureItem) => {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
@@ -53,9 +55,8 @@ function Feature({title, Svg, description}: FeatureItem) {
       </div>
     </div>
   );
-}
-
-export default function HomepageFeatures(): JSX.Element {
+};
+const HomepageFeatures = (): JSX.Element => {
   return (
     <section className={styles.features}>
       <div className="container">
@@ -67,4 +68,6 @@ export default function HomepageFeatures(): JSX.Element {
       </div>
     </section>
   );
-}
+};
+
+export default HomepageFeatures;
