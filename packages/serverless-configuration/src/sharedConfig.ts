@@ -24,8 +24,8 @@ export const sharedProviderConfig = {
  */
 export const sharedParams = {
   dev: { profile: 'swarmion-developer' },
-  staging: { profile: '' },
-  production: { profile: '' },
+  staging: { profile: 'swarmion-developer' },
+  production: { profile: 'swarmion-developer' },
 };
 
 export const sharedEsbuildConfig = {
