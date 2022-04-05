@@ -1,7 +1,9 @@
 # Swarmion
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 A set of tools to build and deploy type-safe microservices. In order to see a working example of these tools, check out [Swarmion template](https://github.com/swarmion/template).
@@ -39,6 +41,10 @@ See [@swarmion/serverless-contracts](./packages/serverless-contracts) for more d
 ## Securing the deploy process
 
 Serverless contracts enable validation at deploy time in order to prevent breaking changes to be deployed in production. See [@swarmion/serverless-plugin](./packages/serverless-contracts-plugin) for more details on the available configuration and commands.
+
+## User Documentation
+
+Swarmion user documentation lives in [the user docs folder](./user-docs/documentation/README.md). It is deployed and accessible on https://www.swarmion.dev.
 
 ## Contributors ✨
 
