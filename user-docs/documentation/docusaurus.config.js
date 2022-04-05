@@ -51,7 +51,7 @@ const config = {
             label: 'Documentation',
           },
           {
-            href: 'https://github.com/swarmion/swarmion',
+            href: 'https://github.com/swarmion',
             label: 'GitHub',
             position: 'right',
           },
