@@ -26,8 +26,11 @@ In order to make these contracts safe, each side of the contract must be able to
 
 Serverless contracts are based on the idea of defining contracts before implementing them.
 
-See [@swarmion/serverless-contracts](./packages/serverless-contracts) for more details on how to define and use contracts in your services.
+Check out the specific documentation for each type of contract:
 
-## Securing the deploy process
+- [CloudFormation](./cloudformation)
+- [ApiGateway](./api-gateway)
 
-Serverless contracts enable validation at deploy time in order to prevent breaking changes to be deployed in production. See [@swarmion/serverless-plugin](./packages/serverless-contracts-plugin) for more details on the available configuration and commands.
+## Securing the deploy process (beta)
+
+Serverless contracts enable validation at deploy time in order to prevent breaking changes to be deployed in production. See the [serverless-plugin](./serverless-plugin) for more details on the available configuration and commands.
