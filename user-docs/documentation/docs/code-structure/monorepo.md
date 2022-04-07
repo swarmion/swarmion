@@ -34,46 +34,37 @@ For more information, check out [the libraries documentation](./libraries).
 
 Apart from the various configuration files at the root of the project, Swarmion philosophy is to keep a strict folder structure.
 
+You should define your own arborescence and keep the same logic for all your teams.
+
 _Note: the services names in this folder are purely for the sake of the example and should not be considered standard._
 
 ```
-├── backend
-|   ├── core
-|   |   └── ...
-|   ├── forum
-|   |   └── ...
-|   ├── users
-|   |   └── ...
+├── backend/
+|   ├── core/                       # core service
+|   ├── forum/                      # forum service
+|   ├── users/                      # users service
 |   └── ...                         # other deployed services
 |
-├── frontend
-|   ├── app
-|   |   └── ...
-|   ├── cloudfront
-|   |   └── ...
+├── frontend/
+|   ├── app/
+|   ├── cloudfront/
 |   └── ...                         # other deployed services
 |
-├── commonConfiguration             # configuration files such as jest, babel...
+├── commonConfiguration/            # configuration files such as jest, babel...
 |   ├── babel.config.js
 |   └── lintstaged-base-config.js
 |
-├── contracts                       # JSONSchema-based binding contracts.
-|   ├── core-contracts
-|   |   └── ...
-|   ├── forum-contracts
-|   |   └── ...
-|   ├── users-contracts
-|   |   └── ...
+├── contracts/                      # JSONSchema-based binding contracts.
+|   ├── core-contracts/
+|   ├── forum-contracts/
+|   ├── users-contracts/
 |   └── ...                         # other contracts, used between deployed services
 |
-├── packages
-|   ├── configuration    # common constants used in all services
-|   |   └── ...
-|   ├── serverless-configuration    # common constants used in all serverless deployed services
-|   |   └── ...
-|   ├── serverless-helpers          # a set of shared helpers
-|   |   └── ...
-|   └── ...                        # other internal shared packages
+├── packages/
+|   ├── configuration/              # common constants used in all services
+|   ├── serverless-configuration/   # common constants used in all serverless deployed services
+|   ├── serverless-helpers/         # a set of shared helpers
+|   └── ...                         # other internal shared packages
 |
 ├── package.json                   # shared dependencies and global scripts
 └── yarn.lock                      # unique lock file, using yarn workspaces
