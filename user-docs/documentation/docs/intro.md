@@ -27,3 +27,14 @@ As your codebase grows, testing and deployment times are likely to skyrocket. Sw
 ### Trust your deployments (beta)
 
 As the number of moving parts in your organization increases, it is paramount to secure the deployment process. At each deployment, Swarmion validates requested changes against all impacted services to prevent breaking changes.
+
+## Main features
+
+- Yarn 3 with workspaces
+- Nx
+- Eslint configuration
+- Prettier configuration
+- Jest configuration
+- End-to-end Typescript
+- Shared Typescript libraries built with babel, with a watch mode
+- Selective tests, package and deploy to remove the need to run all the tests and deploy at every commit.
