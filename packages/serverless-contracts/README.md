@@ -15,3 +15,5 @@ or if using yarn
 ```bash
 yarn add @swarmion/serverless-contracts
 ```
+
+Check out [the docs](https://www.swarmion.dev/docs/contracts/concepts) for more info.
