@@ -24,7 +24,7 @@ export class CloudFormationContract<Name extends string>
   /**
    * Builds a new ApiGateway contract
    *
-   * @param id a unique id to identify the contract among stacks. Beware unicity!
+   * @param id a unique id to identify the contract among stacks. Beware uniqueness!
    * @param name the name of the export
    * See https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html
    */

@@ -2,7 +2,7 @@
 
 A plugin to safely deploy Serverless microservices.
 
-This plugin is part of the [Swarmion](https://github.com/swarmion/swarmion) project. See its documentation for more insights.
+This plugin is part of the [Swarmion](https://www.swarmion.dev) project. See its documentation for more insights.
 
 ## Installation
 
@@ -27,7 +27,7 @@ Add a `contracts` key to your Serverless file:
 import { myFirstContract, mySecondContract } from 'my-contracts-package';
 import { consumedContract } from 'other-contracts';
 
-const serverlessConfigation = {
+const serverlessConfiguration = {
     service: 'my-app',
     provider: {
         name: aws
@@ -48,7 +48,7 @@ const serverlessConfigation = {
 }
 ```
 
-Where all the contracts are defined using [serverless-contracts](https://github.com/swarmion/swarmion).
+Where all the contracts are defined using [serverless-contracts](https://www.swarmion.dev).
 
 ## Commands
 

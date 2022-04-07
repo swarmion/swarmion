@@ -13,7 +13,7 @@ In our examples, we will use and HTTP API, but it is completely equivalent for R
 
 Let's create our first HttpApi contract. First we will need to define the subschemas for each part of our contract:
 
-- the `id` serves to uniquely identify the contract among all stacks. Please note that this id MUST be unique among all stacks. Use a convention to ensure unicity.
+- the `id` serves to uniquely identify the contract among all stacks. Please note that this id MUST be unique among all stacks. Use a convention to ensure uniqueness.
 - the `path` and the http `method` which will trigger the lambda
 - the `integrationType`: `"httpApi"` or `"restApi"`
 - then the different parts of the http request:
