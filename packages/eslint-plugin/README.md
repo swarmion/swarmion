@@ -2,6 +2,8 @@
 
 An eslint plugin with rules to enforces proper usage of contracts.
 
+This package is part of the [Swarmion](https://www.swarmion.dev) project. See its documentation for more insights.
+
 ### Installation
 
 ```bash
