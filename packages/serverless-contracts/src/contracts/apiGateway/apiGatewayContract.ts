@@ -6,8 +6,10 @@ import omitBy from 'lodash/omitBy';
 import { OpenAPIV3 } from 'openapi-types';
 
 import { ConstrainedJSONSchema } from 'types/constrainedJSONSchema';
-import { ContractOpenApiDocumentation } from 'types/contractOpenApiDocumentation';
-import { GenericContract } from 'types/genericContract';
+import {
+  ContractOpenApiDocumentation,
+  DocumentedContract,
+} from 'types/contractOpenApiDocumentation';
 import { HttpMethod } from 'types/http';
 import { fillPathTemplate } from 'utils/fillPathTemplate';
 
@@ -55,7 +57,7 @@ export class ApiGatewayContract<
   OutputType = OutputSchema extends JSONSchema
     ? FromSchema<OutputSchema>
     : undefined,
-> implements GenericContract
+> implements DocumentedContract
 {
   private _id: string;
   private _path: Path;
@@ -78,6 +80,7 @@ export class ApiGatewayContract<
     BodySchema,
     OutputSchema
   >;
+  public openApiDocumentation: ContractOpenApiDocumentation;
 
   /**
    * Builds a new ApiGateway contract
@@ -128,6 +131,7 @@ export class ApiGatewayContract<
 
     this.contractId = id;
     this.fullContractSchema = this.getFullContractSchema();
+    this.openApiDocumentation = this.getOpenApiDocumentation();
   }
 
   /**
@@ -333,7 +337,7 @@ export class ApiGatewayContract<
     });
   }
 
-  getOpenApiDocumentation(): ContractOpenApiDocumentation {
+  private getOpenApiDocumentation(): ContractOpenApiDocumentation {
     const contractDocumentation: OpenAPIV3.OperationObject = {
       responses: {
         '200': {
