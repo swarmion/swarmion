@@ -65,6 +65,18 @@ export class ApiGatewayContract<
   private _bodySchema: BodySchema;
   private _outputSchema: OutputSchema;
 
+  public contractId: string;
+  public fullContractSchema: FullContractSchemaType<
+    Path,
+    Method,
+    IntegrationType,
+    PathParametersSchema,
+    QueryStringParametersSchema,
+    HeadersSchema,
+    BodySchema,
+    OutputSchema
+  >;
+
   /**
    * Builds a new ApiGateway contract
    *
@@ -111,6 +123,9 @@ export class ApiGatewayContract<
     this._headersSchema = headersSchema;
     this._bodySchema = bodySchema;
     this._outputSchema = outputSchema;
+
+    this.contractId = id;
+    this.fullContractSchema = this.getFullContractSchema();
   }
 
   /**
@@ -180,10 +195,6 @@ export class ApiGatewayContract<
     return this._outputSchema;
   }
 
-  get contractId(): string {
-    return this._id;
-  }
-
   /**
    * A type-safe wrapper for api gateway handlers.
    *
@@ -213,7 +224,7 @@ export class ApiGatewayContract<
    *
    * This also enables to infer the type with `json-schema-to-ts`.
    */
-  get fullContractSchema(): FullContractSchemaType<
+  private getFullContractSchema(): FullContractSchemaType<
     Path,
     Method,
     IntegrationType,
