@@ -373,6 +373,9 @@ export class ApiGatewayContract<
           ([variableName, variableDefinition]) => ({
             name: variableName,
             in: 'query',
+            // This cast is done because there is differences between JsonSchema and OpenAPIV3.SchemaObject specs
+            // It may be fixed later
+            // @ref https://swagger.io/specification/
             schema: variableDefinition as OpenAPIV3.SchemaObject,
             required:
               this._queryStringParametersSchema?.required?.includes(
@@ -388,6 +391,9 @@ export class ApiGatewayContract<
       contractDocumentation.requestBody = {
         content: {
           'application/json': {
+            // This cast is done because there is differences between JsonSchema and OpenAPIV3.SchemaObject specs
+            // It may be fixed later
+            // @ref https://swagger.io/specification/
             schema: this._bodySchema as OpenAPIV3.SchemaObject,
           },
         },
