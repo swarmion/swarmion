@@ -1,8 +1,7 @@
-import isNull from 'lodash/isNull';
-import mapValues from 'lodash/mapValues';
-import omitBy from 'lodash/omitBy';
 import { OpenAPIV3 } from 'openapi-types';
 import Serverless from 'serverless';
+
+import { isInstanceOfDocumentedContract } from '@swarmion/serverless-contracts';
 
 import { ServerlessContracts } from 'types/serviceOptions';
 
@@ -12,13 +11,19 @@ export const generateOpenApiDocumentation = (serverless: Serverless): void => {
   const { provides } = serverless.service.initialServerlessConfig
     .contracts as ServerlessContracts;
 
-  const paths: OpenAPIV3.PathsObject = omitBy(
-    mapValues(provides, contract =>
-      contract.getopenApiDocumentation
-        ? contract.getopenApiDocumentation().documentation
-        : null,
-    ),
-    isNull,
+  const contractDocumentations = Object.values(provides)
+    .filter(isInstanceOfDocumentedContract)
+    .map(contract => contract.openApiDocumentation);
+
+  const paths: OpenAPIV3.PathsObject = contractDocumentations.reduce(
+    (pathsObject, pathDocumentation) => {
+      pathsObject[pathDocumentation.path] = {
+        [pathDocumentation.method]: pathDocumentation.documentation,
+      };
+
+      return pathsObject;
+    },
+    {} as OpenAPIV3.PathsObject,
   );
 
   const openApiDocumentation: OpenAPIV3.Document = {
