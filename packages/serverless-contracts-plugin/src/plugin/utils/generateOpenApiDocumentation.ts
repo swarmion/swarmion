@@ -15,16 +15,17 @@ export const generateOpenApiDocumentation = (serverless: Serverless): void => {
     .filter(isInstanceOfDocumentedContract)
     .map(contract => contract.openApiDocumentation);
 
-  const paths: OpenAPIV3.PathsObject = contractDocumentations.reduce(
-    (pathsObject, pathDocumentation) => {
-      pathsObject[pathDocumentation.path] = {
-        [pathDocumentation.method]: pathDocumentation.documentation,
-      };
+  const paths: OpenAPIV3.PathsObject =
+    contractDocumentations.reduce<OpenAPIV3.PathsObject>(
+      (pathsObject, pathDocumentation) => {
+        pathsObject[pathDocumentation.path] = {
+          [pathDocumentation.method]: pathDocumentation.documentation,
+        };
 
-      return pathsObject;
-    },
-    {} as OpenAPIV3.PathsObject,
-  );
+        return pathsObject;
+      },
+      {},
+    );
 
   const openApiDocumentation: OpenAPIV3.Document = {
     openapi: '3.0.1',

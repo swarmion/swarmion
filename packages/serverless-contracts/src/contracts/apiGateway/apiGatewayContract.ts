@@ -351,6 +351,9 @@ export class ApiGatewayContract<
         ...contractDocumentation.responses[200],
         content: {
           'application/json': {
+            // This cast is done because there is differences between JsonSchema and OpenAPIV3.SchemaObject specs
+            // It may be fixed later
+            // @ref https://swagger.io/specification/
             schema: this._outputSchema as OpenAPIV3.SchemaObject,
           },
         },
@@ -363,6 +366,9 @@ export class ApiGatewayContract<
           ([variableName, variableDefinition]) => ({
             name: variableName,
             in: 'path',
+            // This cast is done because there is differences between JsonSchema and OpenAPIV3.SchemaObject specs
+            // It may be fixed later
+            // @ref https://swagger.io/specification/
             schema: variableDefinition as OpenAPIV3.SchemaObject,
             required:
               this._pathParametersSchema?.required?.includes(variableName) ??
