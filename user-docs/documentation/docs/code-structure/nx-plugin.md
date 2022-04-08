@@ -1,10 +1,10 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Nx Plugin
 
-Generate new packages respecting the [monorepo code structure](./monorepo.md#the-monorepo-structure) in one command
+Generate new packages respecting the [monorepo code structure](./monorepo#the-monorepo-structure) in one command
 
 ## Installation
 

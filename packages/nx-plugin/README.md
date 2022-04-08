@@ -4,7 +4,7 @@ Generate new libraries and services in your Serverless monorepo.
 
 This package is part of the [Swarmion](https://www.swarmion.dev) project. See its documentation for more insights.
 
-# Installation
+## Installation
 
 ```bash
 yarn add -D @swarmion/nx-plugin
