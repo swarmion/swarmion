@@ -1,3 +1,5 @@
+import { JSONSchema } from 'json-schema-to-ts';
+
 import { GenericContract } from 'types/genericContract';
 
 import {
@@ -20,6 +22,8 @@ export class CloudFormationContract<Name extends string>
 {
   private _id: string;
   private _name: Name;
+  public contractId: string;
+  public fullContractSchema: JSONSchema;
 
   /**
    * Builds a new ApiGateway contract
@@ -31,6 +35,9 @@ export class CloudFormationContract<Name extends string>
   constructor({ id, name }: { id: string; name: Name }) {
     this._id = id;
     this._name = name;
+
+    this.contractId = id;
+    this.fullContractSchema = this.getFullContractSchema();
   }
 
   /**
@@ -67,11 +74,7 @@ export class CloudFormationContract<Name extends string>
     };
   }
 
-  get contractId(): string {
-    return this._id;
-  }
-
-  get fullContractSchema(): FullContractSchemaType<Name> {
+  private getFullContractSchema(): FullContractSchemaType<Name> {
     return {
       type: 'object',
       properties: {
