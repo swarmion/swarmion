@@ -20,10 +20,6 @@ const serverlessConfiguration: AWS & Lift = {
     app: {
       type: 'single-page-app',
       path: '../documentation/build',
-      domain: ['www.swarmion.dev', 'swarmion.dev'],
-      redirectToMainDomain: true,
-      certificate:
-        'arn:aws:acm:us-east-1:801673046086:certificate/fbf65a9c-2280-4895-af86-3bd180f9605c',
     },
   },
   resources: {
