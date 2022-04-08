@@ -342,14 +342,20 @@ export class ApiGatewayContract<
       responses: {
         '200': {
           description: 'Success',
-          content: {
-            'application/json': {
-              schema: this._outputSchema as OpenAPIV3.SchemaObject,
-            },
-          },
         },
       },
     };
+
+    if (this._outputSchema !== undefined) {
+      contractDocumentation.responses[200] = {
+        ...contractDocumentation.responses[200],
+        content: {
+          'application/json': {
+            schema: this._outputSchema as OpenAPIV3.SchemaObject,
+          },
+        },
+      };
+    }
 
     if (this._pathParametersSchema?.properties !== undefined) {
       contractDocumentation.parameters = [
