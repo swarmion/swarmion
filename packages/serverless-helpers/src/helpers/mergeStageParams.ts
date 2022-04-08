@@ -7,11 +7,13 @@ const mergeStageParams = <
   serviceStageParams: Record<Stage, Record<ServiceParamKeys, unknown>>,
 ): Record<Stage, Record<CommonParamKeys & ServiceParamKeys, unknown>> => {
   return Object.keys(commonStageParams).reduce(
-    (prev, stage: Stage) => ({
+    (prev, stage) => ({
       ...prev,
+      // @ts-ignore TODO ignore inner typing here
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       [stage]: { ...commonStageParams[stage], ...serviceStageParams[stage] },
     }),
-    {} as Record<Stage, Record<string, unknown>>,
+    {} as Record<Stage, Record<CommonParamKeys & ServiceParamKeys, unknown>>,
   );
 };
 

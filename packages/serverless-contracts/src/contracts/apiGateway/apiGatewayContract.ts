@@ -302,7 +302,7 @@ export class ApiGatewayContract<
         headers,
       },
       isUndefined,
-    ) as RequestParameters<BodyType>;
+    ) as unknown as RequestParameters<BodyType>;
   }
 
   /**
