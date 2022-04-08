@@ -72,5 +72,19 @@ describe('restApiContract', () => {
         method: 'POST',
       });
     });
+
+    it('should generate open api documentation', () => {
+      expect(restApiContract.openApiDocumentation).toEqual({
+        path: 'coucou',
+        method: 'post',
+        documentation: {
+          responses: {
+            '200': {
+              description: 'Success',
+            },
+          },
+        },
+      });
+    });
   });
 });
