@@ -57,6 +57,7 @@ Where all the contracts are defined using [serverless-contracts](https://www.swa
 - `serverless localContracts`: prints the local version of the contracts
 - `serverless remoteContracts`: prints the currently deployed version of the contracts
 - `serverless safeDeploy --strategy <strategy>`: a wrapper around the `deploy` command of the Serverless Framework, check if the contracts modification is deployable with the chosen strategy. Choices are `PROVIDER_FIRST` or `CONSUMER_FIRST`
+- `serverless generateOpenApiDocumentation`: prints an OpenApi documentation of your ApiGateway contracts in the provides section of the serverless configuration
 
 ## Typing
 
