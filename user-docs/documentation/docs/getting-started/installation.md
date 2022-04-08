@@ -63,3 +63,11 @@ In order to deploy the stack on a development environment, you will need to setu
 
 At the root of the project, run `yarn deploy`. This will compile and deploy all the stacks in order.
 You can follow the creation of the stacks on [the Cloudformation console](https://console.aws.amazon.com/cloudformation/home)
+
+## Generate new Services
+
+At the root of the project, run `yarn generate-service myService`. This will create a simple service in the repository's structure respecting our guidelines.
+
+## Generate new Libraries
+
+At the root of the project, run `yarn generate-library myLibrary`. This will create a simple internal library in the repository's structure respecting our guidelines.
