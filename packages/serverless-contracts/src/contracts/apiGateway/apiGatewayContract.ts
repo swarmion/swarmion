@@ -66,7 +66,16 @@ export class ApiGatewayContract<
   private _outputSchema: OutputSchema;
 
   public contractId: string;
-  public fullContractSchema: JSONSchema;
+  public fullContractSchema: FullContractSchemaType<
+    Path,
+    Method,
+    IntegrationType,
+    PathParametersSchema,
+    QueryStringParametersSchema,
+    HeadersSchema,
+    BodySchema,
+    OutputSchema
+  >;
 
   /**
    * Builds a new ApiGateway contract

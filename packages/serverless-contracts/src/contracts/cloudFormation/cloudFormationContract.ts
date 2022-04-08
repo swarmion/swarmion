@@ -1,5 +1,3 @@
-import { JSONSchema } from 'json-schema-to-ts';
-
 import { GenericContract } from 'types/genericContract';
 
 import {
@@ -23,7 +21,7 @@ export class CloudFormationContract<Name extends string>
   private _id: string;
   private _name: Name;
   public contractId: string;
-  public fullContractSchema: JSONSchema;
+  public fullContractSchema: FullContractSchemaType<Name>;
 
   /**
    * Builds a new ApiGateway contract
