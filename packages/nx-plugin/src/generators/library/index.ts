@@ -6,8 +6,11 @@ import {
 } from '@nrwl/devkit';
 import { join } from 'path';
 
-import { normalizeOptions, packageGenerator } from '../helpers';
-import { symlinkVsCodeConfiguration } from '../helpers/symlink';
+import {
+  normalizeOptions,
+  packageGenerator,
+  symlinkVsCodeConfiguration,
+} from '../helpers';
 import { GeneratorType, Schema } from '../types';
 import {
   packageBuildTsConfig,
