@@ -10,6 +10,7 @@ import {
   normalizeOptions,
   packageGenerator,
   symlinkVsCodeConfiguration,
+  updatePackages,
 } from '../helpers';
 import { GeneratorType, Schema } from '../types';
 import {
@@ -42,5 +43,6 @@ export default async (tree: Tree, schema: Schema): Promise<() => void> => {
   return () => {
     symlinkVsCodeConfiguration(options);
     installPackagesTask(tree, true);
+    updatePackages(tree, options);
   };
 };
