@@ -36,3 +36,7 @@ A typical Swarmion library has the following structure:
 ## The golden rule of libraries
 
 In order to safely use code from a library outside of it, **all exported code must be explicitly declared at the root level**.
+
+## Generate a library
+
+You can generate a new library respecting these guidelines using the [@swarmion/nx-plugin](./nx-plugin)

@@ -19,3 +19,7 @@ A typical Swarmion service has the following structure:
 |   ├── serverless.ts           # serverless service file
 |   └── tsconfig.json           # typescript config
 ```
+
+## Generate a Service
+
+You can generate a new service respecting these guidelines using the [@swarmion/nx-plugin](./nx-plugin)
