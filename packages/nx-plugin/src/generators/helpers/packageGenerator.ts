@@ -9,6 +9,7 @@ import { join } from 'path';
 import { NormalizedSchema, PackageJson, TsConfig } from '../types';
 import { createFiles } from './createFiles';
 import { updateCodeWorkspace } from './updateCodeWorkspace';
+import { updateRootPackageJson } from './updateRootPackageJson';
 
 interface PackageGeneratorParams {
   tree: Tree;
@@ -45,4 +46,5 @@ export const packageGenerator = ({
   addProjectConfiguration(tree, options.importPath, projectConfiguration);
 
   updateCodeWorkspace(tree, options);
+  updateRootPackageJson(tree, options);
 };
