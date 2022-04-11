@@ -3,9 +3,13 @@ import { AxiosInstance, AxiosResponse } from 'axios';
 import { FromSchema, JSONSchema } from 'json-schema-to-ts';
 import isUndefined from 'lodash/isUndefined';
 import omitBy from 'lodash/omitBy';
+import { OpenAPIV3 } from 'openapi-types';
 
 import { ConstrainedJSONSchema } from 'types/constrainedJSONSchema';
-import { GenericContract } from 'types/genericContract';
+import {
+  ContractOpenApiDocumentation,
+  DocumentedContract,
+} from 'types/contractOpenApiDocumentation';
 import { HttpMethod } from 'types/http';
 import { fillPathTemplate } from 'utils/fillPathTemplate';
 
@@ -53,7 +57,7 @@ export class ApiGatewayContract<
   OutputType = OutputSchema extends JSONSchema
     ? FromSchema<OutputSchema>
     : undefined,
-> implements GenericContract
+> implements DocumentedContract
 {
   private _id: string;
   private _path: Path;
@@ -76,6 +80,7 @@ export class ApiGatewayContract<
     BodySchema,
     OutputSchema
   >;
+  public openApiDocumentation: ContractOpenApiDocumentation;
 
   /**
    * Builds a new ApiGateway contract
@@ -126,6 +131,7 @@ export class ApiGatewayContract<
 
     this.contractId = id;
     this.fullContractSchema = this.getFullContractSchema();
+    this.openApiDocumentation = this.getOpenApiDocumentation();
   }
 
   /**
@@ -329,5 +335,87 @@ export class ApiGatewayContract<
       data: body,
       params: queryStringParameters,
     });
+  }
+
+  private getOpenApiDocumentation(): ContractOpenApiDocumentation {
+    const contractDocumentation: OpenAPIV3.OperationObject = {
+      responses: {
+        '200': {
+          description: 'Success',
+        },
+      },
+    };
+
+    if (this._outputSchema !== undefined) {
+      contractDocumentation.responses[200] = {
+        ...contractDocumentation.responses[200],
+        content: {
+          'application/json': {
+            // This cast is done because there is differences between JsonSchema and OpenAPIV3.SchemaObject specs
+            // It may be fixed later
+            // @ref https://swagger.io/specification/
+            schema: this._outputSchema as OpenAPIV3.SchemaObject,
+          },
+        },
+      };
+    }
+
+    if (this._pathParametersSchema?.properties !== undefined) {
+      contractDocumentation.parameters = [
+        ...Object.entries(this._pathParametersSchema.properties).map(
+          ([variableName, variableDefinition]) => ({
+            name: variableName,
+            in: 'path',
+            // This cast is done because there is differences between JsonSchema and OpenAPIV3.SchemaObject specs
+            // It may be fixed later
+            // @ref https://swagger.io/specification/
+            schema: variableDefinition as OpenAPIV3.SchemaObject,
+            required:
+              this._pathParametersSchema?.required?.includes(variableName) ??
+              false,
+          }),
+        ),
+        ...(contractDocumentation.parameters ?? []),
+      ];
+    }
+
+    if (this._queryStringParametersSchema?.properties !== undefined) {
+      contractDocumentation.parameters = [
+        ...Object.entries(this._queryStringParametersSchema.properties).map(
+          ([variableName, variableDefinition]) => ({
+            name: variableName,
+            in: 'query',
+            // This cast is done because there is differences between JsonSchema and OpenAPIV3.SchemaObject specs
+            // It may be fixed later
+            // @ref https://swagger.io/specification/
+            schema: variableDefinition as OpenAPIV3.SchemaObject,
+            required:
+              this._queryStringParametersSchema?.required?.includes(
+                variableName,
+              ) ?? false,
+          }),
+        ),
+        ...(contractDocumentation.parameters ?? []),
+      ];
+    }
+
+    if (this._bodySchema !== undefined) {
+      contractDocumentation.requestBody = {
+        content: {
+          'application/json': {
+            // This cast is done because there is differences between JsonSchema and OpenAPIV3.SchemaObject specs
+            // It may be fixed later
+            // @ref https://swagger.io/specification/
+            schema: this._bodySchema as OpenAPIV3.SchemaObject,
+          },
+        },
+      };
+    }
+
+    return {
+      path: this._path,
+      method: this._method.toLowerCase(),
+      documentation: contractDocumentation,
+    };
   }
 }
