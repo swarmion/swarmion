@@ -2,6 +2,7 @@ import { AWS } from '@serverless/typescript';
 
 import { httpApiResourceContract } from '@<%= workspaceName %>/core-contracts';
 import {
+  frameworkVersion,
   projectName,
   sharedEsbuildConfig,
   sharedParams,
@@ -12,7 +13,7 @@ import { functions } from './functions';
 
 const serverlessConfiguration: AWS = {
   service: `${projectName}-<%= name %>`, // Keep it short to have role name below 64
-  frameworkVersion: '>=3.0.0',
+  frameworkVersion,
   configValidationMode: 'error',
   plugins: ['serverless-esbuild', 'serverless-iam-roles-per-function'],
   provider: {

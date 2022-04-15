@@ -2,6 +2,7 @@ import { AWS } from '@serverless/typescript';
 import type { Lift } from 'serverless-lift';
 
 import {
+  frameworkVersion,
   projectName,
   sharedParams,
   sharedProviderConfig,
@@ -9,7 +10,7 @@ import {
 
 const serverlessConfiguration: AWS & Lift = {
   service: `${projectName}-documentation`, // Keep it short to have role name below 64
-  frameworkVersion: '>=3.0.0',
+  frameworkVersion,
   plugins: ['serverless-lift'],
   provider: sharedProviderConfig,
   params: sharedParams,

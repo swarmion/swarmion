@@ -2,6 +2,7 @@ import { AWS } from '@serverless/typescript';
 
 import { requestSyncDeployment } from '@swarmion/orchestrator-contracts';
 import {
+  frameworkVersion,
   projectName,
   sharedEsbuildConfig,
   sharedParams,
@@ -14,7 +15,7 @@ import { Resources } from './resources';
 
 const serverlessConfiguration: AWS & ServerlessContracts = {
   service: `${projectName}-orchestrator`, // Keep it short to have role name below 64
-  frameworkVersion: '>=3.0.0',
+  frameworkVersion,
   configValidationMode: 'error',
   plugins: [
     'serverless-esbuild',
