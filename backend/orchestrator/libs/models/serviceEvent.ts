@@ -2,7 +2,7 @@ import { Entity } from 'dynamodb-toolbox';
 
 import { PARTITION_KEY, SORT_KEY } from 'resources/dynamodb';
 
-import { OrchestratorTable } from '../orchestratorTable';
+import OrchestratorTable from '../OrchestratorTable';
 
 const ServiceEventEntity = new Entity({
   name: 'ServiceEvent',
