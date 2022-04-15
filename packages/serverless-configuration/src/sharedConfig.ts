@@ -1,5 +1,6 @@
 export const projectName = 'swarmion';
 export const region = 'eu-west-1';
+export const frameworkVersion = '>=3.0.0';
 
 export const defaultEnvironment = 'dev';
 
