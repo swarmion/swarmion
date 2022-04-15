@@ -14,7 +14,7 @@ export const updatePackages = (tree: Tree, options: NormalizedSchema): void => {
   execSync(
     `yarn workspace \
       @${options.workspaceName}/${options.importPath} \
-      add ${Object.keys(dependencies ?? {}).join(' ')}`,
+      add --cached ${Object.keys(dependencies ?? {}).join(' ')}`,
     {
       cwd: join(tree.root),
       stdio: [0, 1, 2],
@@ -23,7 +23,7 @@ export const updatePackages = (tree: Tree, options: NormalizedSchema): void => {
   execSync(
     `yarn workspace \
       @${options.workspaceName}/${options.importPath} \
-      add -D ${Object.keys(devDependencies ?? {}).join(' ')}`,
+      add --cached -D ${Object.keys(devDependencies ?? {}).join(' ')}`,
     {
       cwd: join(tree.root),
       stdio: [0, 1, 2],

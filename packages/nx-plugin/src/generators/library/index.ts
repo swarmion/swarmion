@@ -1,9 +1,4 @@
-import {
-  formatFiles,
-  installPackagesTask,
-  Tree,
-  writeJson,
-} from '@nrwl/devkit';
+import { formatFiles, Tree, writeJson } from '@nrwl/devkit';
 import { join } from 'path';
 
 import {
@@ -42,7 +37,6 @@ export default async (tree: Tree, schema: Schema): Promise<() => void> => {
 
   return () => {
     symlinkVsCodeConfiguration(options);
-    installPackagesTask(tree, true);
     updatePackages(tree, options);
   };
 };
