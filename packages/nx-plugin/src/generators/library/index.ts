@@ -1,13 +1,12 @@
-import {
-  formatFiles,
-  installPackagesTask,
-  Tree,
-  writeJson,
-} from '@nrwl/devkit';
+import { formatFiles, Tree, writeJson } from '@nrwl/devkit';
 import { join } from 'path';
 
-import { normalizeOptions, packageGenerator } from '../helpers';
-import { symlinkVsCodeConfiguration } from '../helpers/symlink';
+import {
+  normalizeOptions,
+  packageGenerator,
+  symlinkVsCodeConfiguration,
+  updatePackages,
+} from '../helpers';
 import { GeneratorType, Schema } from '../types';
 import {
   packageBuildTsConfig,
@@ -38,6 +37,6 @@ export default async (tree: Tree, schema: Schema): Promise<() => void> => {
 
   return () => {
     symlinkVsCodeConfiguration(options);
-    installPackagesTask(tree, true);
+    updatePackages(tree, options);
   };
 };
