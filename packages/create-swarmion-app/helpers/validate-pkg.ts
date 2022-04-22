@@ -15,8 +15,8 @@ export const validateNpmName = (
   return {
     valid: false,
     problems: [
-      ...(nameValidation.errors || []),
-      ...(nameValidation.warnings || []),
+      ...(nameValidation.errors ?? []),
+      ...(nameValidation.warnings ?? []),
     ],
   };
 };

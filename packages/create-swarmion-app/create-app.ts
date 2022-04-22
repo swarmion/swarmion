@@ -1,10 +1,7 @@
 /* eslint-disable max-lines */
 /* eslint-disable complexity */
-/* eslint-disable import/no-extraneous-dependencies */
 import chalk from 'chalk';
 import cpy from 'cpy';
-import fs from 'fs';
-import os from 'os';
 import path from 'path';
 import { makeDir } from './helpers/make-dir';
 import { tryGitInit } from './helpers/git';
@@ -55,72 +52,7 @@ export const createApp = async ({
    * by installing from a template.
    */
   console.log(chalk.bold(`Using ${packageManager}.`));
-  /**
-   * Create a package.json for the new project.
-   */
-  const packageJson = {
-    name: appName,
-    version: '0.1.0',
-    private: true,
-    scripts: {
-      dev: 'next dev',
-      build: 'next build',
-      start: 'next start',
-      lint: 'next lint',
-    },
-  };
-  /**
-   * Write it to disk.
-   */
-  fs.writeFileSync(
-    path.join(root, 'package.json'),
-    JSON.stringify(packageJson, null, 2) + os.EOL,
-  );
-  /**
-   * These flags will be passed to `install()`.
-   */
-  const installFlags = { packageManager, isOnline };
-  /**
-   * Default dependencies.
-   */
-  const dependencies = ['react', 'react-dom', 'next'];
-  /**
-   * Default devDependencies.
-   */
-  const devDependencies = ['eslint', 'eslint-config-next'];
-  /**
-   * TypeScript projects will have type definitions and other devDependencies.
-   */
-  devDependencies.push(
-    'typescript',
-    '@types/react',
-    '@types/node',
-    '@types/react-dom',
-  );
 
-  /**
-   * Install package.json dependencies if they exist.
-   */
-  console.log();
-  console.log('Installing dependencies:');
-  for (const dependency of dependencies) {
-    console.log(`- ${chalk.cyan(dependency)}`);
-  }
-  console.log();
-
-  await install(root, dependencies, installFlags);
-  /**
-   * Install package.json devDependencies if they exist.
-   */
-  console.log();
-  console.log('Installing devDependencies:');
-  for (const devDependency of devDependencies) {
-    console.log(`- ${chalk.cyan(devDependency)}`);
-  }
-  console.log();
-
-  const devInstallFlags = { devDependencies: true, ...installFlags };
-  await install(root, devDependencies, devInstallFlags);
   console.log();
   /**
    * Copy the template files to the target directory.
@@ -145,6 +77,7 @@ export const createApp = async ({
       }
     },
   });
+  await install({ packageManager, isOnline });
 
   if (tryGitInit(root)) {
     console.log('Initialized a git repository.');

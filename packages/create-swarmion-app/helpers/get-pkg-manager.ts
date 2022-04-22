@@ -5,7 +5,7 @@ export type PackageManager = 'npm' | 'pnpm' | 'yarn';
 export const getPkgManager = (): PackageManager => {
   try {
     const userAgent = process.env.npm_config_user_agent;
-    if (userAgent) {
+    if (userAgent !== undefined) {
       if (userAgent.startsWith('yarn')) {
         return 'yarn';
       } else if (userAgent.startsWith('pnpm')) {
