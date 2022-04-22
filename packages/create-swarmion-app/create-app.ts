@@ -18,8 +18,6 @@ export const createApp = async ({
   appPath: string;
   packageManager: PackageManager;
 }): Promise<void> => {
-  const template = 'default';
-
   const root = path.resolve(appPath);
 
   if (!(await isWriteable(path.dirname(root)))) {
@@ -59,7 +57,7 @@ export const createApp = async ({
    */
   await cpy('**', root, {
     parents: true,
-    cwd: path.join(__dirname, 'templates', template),
+    cwd: path.join(__dirname, 'template'),
     rename: name => {
       switch (name) {
         case 'gitignore':
