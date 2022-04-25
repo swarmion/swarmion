@@ -2413,7 +2413,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.10.3, @babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.17.9, @babel/runtime@npm:^7.8.4":
+"@babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.10.3, @babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.17.2, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.17.9, @babel/runtime@npm:^7.8.4":
   version: 7.17.9
   resolution: "@babel/runtime@npm:7.17.9"
   dependencies:
@@ -5138,8 +5138,10 @@ __metadata:
     constructs: ^10.0.125
     dynamodb-toolbox: ^0.4.0-alpha.2
     esbuild: ^0.14.38
+    esbuild-visualizer: ^0.3.1
     jest: ^27.5.1
     serverless: ^3.15.2
+    serverless-analyze-bundle-plugin: ^1.1.0
     serverless-esbuild: ^1.26.2
     serverless-iam-roles-per-function: ^3.2.0
     ts-jest: ^27.1.4
@@ -7977,6 +7979,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"chalk@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "chalk@npm:3.0.0"
+  dependencies:
+    ansi-styles: ^4.1.0
+    supports-color: ^7.1.0
+  checksum: 8e3ddf3981c4da405ddbd7d9c8d91944ddf6e33d6837756979f7840a29272a69a5189ecae0ff84006750d6d1e92368d413335eab4db5476db6e6703a1d1e0505
+  languageName: node
+  linkType: hard
+
 "change-case@npm:^4.1.2":
   version: 4.1.2
   resolution: "change-case@npm:4.1.2"
@@ -8029,6 +8041,22 @@ __metadata:
   version: 0.7.0
   resolution: "chardet@npm:0.7.0"
   checksum: 6fd5da1f5d18ff5712c1e0aed41da200d7c51c28f11b36ee3c7b483f3696dabc08927fc6b227735eb8f0e1215c9a8abd8154637f3eff8cada5959df7f58b024d
+  languageName: node
+  linkType: hard
+
+"check-node-version@npm:^4.2.1":
+  version: 4.2.1
+  resolution: "check-node-version@npm:4.2.1"
+  dependencies:
+    chalk: ^3.0.0
+    map-values: ^1.0.1
+    minimist: ^1.2.0
+    object-filter: ^1.0.2
+    run-parallel: ^1.1.4
+    semver: ^6.3.0
+  bin:
+    check-node-version: bin.js
+  checksum: a559236ce202125decfc51ffa9be5cfa46f2b791e0c0e7e41c306fb7c0729a4641669228c4b95749e5f518608609ba6cf3b7963116b4e2d49bd45e18c6bd9cb4
   languageName: node
   linkType: hard
 
@@ -10358,6 +10386,19 @@ __metadata:
   version: 0.14.38
   resolution: "esbuild-sunos-64@npm:0.14.38"
   conditions: os=sunos & cpu=x64
+  languageName: node
+  linkType: hard
+
+"esbuild-visualizer@npm:^0.3.1":
+  version: 0.3.1
+  resolution: "esbuild-visualizer@npm:0.3.1"
+  dependencies:
+    nanoid: ^3.1.22
+    open: ^7.4.2
+    yargs: ^16.2.0
+  bin:
+    esbuild-visualizer: dist/bin/cli.js
+  checksum: 24dd40cebbac74587e4ae79255ff132979d9ea8443fb20ebbce9fb31117b874891076f34a3ce0d0dfb1177a23300b6f7e594fd7862a8761ad9e5ac2b1f45607b
   languageName: node
   linkType: hard
 
@@ -15038,6 +15079,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"map-values@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "map-values@npm:1.0.1"
+  checksum: 0ab60d451f4708861641dbb965e27b645c717c68083ff5927b7ad8473bd0bfb6069a561b6a6d83fa3a757fdb55b5772cfc07fd39a9956194f3b1532ad18478e3
+  languageName: node
+  linkType: hard
+
 "markdown-escapes@npm:^1.0.0":
   version: 1.0.4
   resolution: "markdown-escapes@npm:1.0.4"
@@ -15560,12 +15608,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^3.3.1":
-  version: 3.3.2
-  resolution: "nanoid@npm:3.3.2"
+"nanoid@npm:^3.1.22, nanoid@npm:^3.3.1":
+  version: 3.3.3
+  resolution: "nanoid@npm:3.3.3"
   bin:
     nanoid: bin/nanoid.cjs
-  checksum: 376717f0685251fad77850bd84c6b8d57837c71eeb1c05be7c742140cc1835a5a2953562add05166d6dbc8fb65f3fdffa356213037b967a470e1691dc3e7b9cc
+  checksum: ada019402a07464a694553c61d2dca8a4353645a7d92f2830f0d487fedff403678a0bee5323a46522752b2eab95a0bc3da98b6cccaa7c0c55cd9975130e6d6f0
   languageName: node
   linkType: hard
 
@@ -16141,6 +16189,13 @@ __metadata:
   version: 4.1.1
   resolution: "object-assign@npm:4.1.1"
   checksum: fcc6e4ea8c7fe48abfbb552578b1c53e0d194086e2e6bbbf59e0a536381a292f39943c6e9628af05b5528aa5e3318bb30d6b2e53cadaf5b8fe9e12c4b69af23f
+  languageName: node
+  linkType: hard
+
+"object-filter@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "object-filter@npm:1.0.2"
+  checksum: 9542bb51d33b76353587c6e49e3e1d7d8e8c00484b19c6b3d63c2bc7777873e50b842f9588cd506dcb138add559ee7a5dafb7951f6e8df40af1a9558c08412cb
   languageName: node
   linkType: hard
 
@@ -18721,7 +18776,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"run-parallel@npm:^1.1.9":
+"run-parallel@npm:^1.1.4, run-parallel@npm:^1.1.9":
   version: 1.2.0
   resolution: "run-parallel@npm:1.2.0"
   dependencies:
@@ -19053,6 +19108,19 @@ __metadata:
     parseurl: ~1.3.3
     send: 0.17.2
   checksum: d97f3183b1dfcd8ce9c0e37e18e87fd31147ed6c8ee0b2c3a089d795e44ee851ca5061db01574f806d54f4e4b70bc694d9ca64578653514e04a28cbc97a1de05
+  languageName: node
+  linkType: hard
+
+"serverless-analyze-bundle-plugin@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "serverless-analyze-bundle-plugin@npm:1.1.0"
+  dependencies:
+    "@babel/runtime": ^7.17.2
+    check-node-version: ^4.2.1
+  peerDependencies:
+    esbuild-visualizer: ^0.3.1
+    serverless: ^2.60 || ^3
+  checksum: bfc3061a6c1a362b4941e3208e194b3a3f69eb4827047add318963bdd7d2a9a62b9a3e65e1d42e8fc33ef637df1f686e8f8ebf61623b6b9c7837d7d6c76404a6
   languageName: node
   linkType: hard
 

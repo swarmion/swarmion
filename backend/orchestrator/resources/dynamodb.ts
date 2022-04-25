@@ -1,8 +1,7 @@
 import { AttributeType, BillingMode, Table } from 'aws-cdk-lib/aws-dynamodb';
 import { Construct } from 'constructs';
 
-export const PARTITION_KEY = 'pk';
-export const SORT_KEY = 'sk';
+import { PARTITION_KEY, SORT_KEY } from 'libs/dynamodb/primaryKeys';
 
 export class OrchestratorDynamodb extends Construct {
   public dynamodbArn: string;

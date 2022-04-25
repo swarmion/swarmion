@@ -1,6 +1,6 @@
 import { Entity } from 'dynamodb-toolbox';
 
-import { PARTITION_KEY, SORT_KEY } from 'resources/dynamodb';
+import { PARTITION_KEY, SORT_KEY } from 'libs/dynamodb/primaryKeys';
 
 import OrchestratorTable from '../OrchestratorTable';
 
