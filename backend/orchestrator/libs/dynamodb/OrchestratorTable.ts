@@ -3,7 +3,7 @@ import { Table } from 'dynamodb-toolbox';
 
 import { getEnvVariable } from '@swarmion/serverless-helpers';
 
-import { PARTITION_KEY, SORT_KEY } from 'resources/dynamodb';
+import { PARTITION_KEY, SORT_KEY } from 'libs/dynamodb/primaryKeys';
 
 const DocumentClient = new DynamoDB.DocumentClient();
 

@@ -21,6 +21,7 @@ const serverlessConfiguration: AWS & ServerlessContracts = {
     'serverless-esbuild',
     '@swarmion/serverless-plugin',
     'serverless-iam-roles-per-function',
+    'serverless-analyze-bundle-plugin',
   ],
   params: sharedParams,
   provider: {
