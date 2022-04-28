@@ -65,6 +65,14 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      algolia: {
+        // The application ID provided by Algolia
+        appId: 'VEO1D7F20Z',
+        // Public API key: it is safe to commit it
+        apiKey: 'b04115598a45a9d171873757c40344dc',
+        indexName: 'swarmion',
+        searchPagePath: 'search',
+      },
     }),
 };
 
