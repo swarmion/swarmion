@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "nx-plugin",
+  "version": "0.0.1",
+  "executors": {
+    "affected-paths": {
+      "implementation": "./dist/cjs/executors/affected-paths/getAffectedPaths",
+      "schema": "./dist/cjs/executors/affected-paths/schema.json",
+      "description": "affected-paths executor"
+    }
+  }
+}
