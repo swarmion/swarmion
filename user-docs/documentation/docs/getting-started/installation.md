@@ -14,9 +14,9 @@ _Please note: this section supposes that you already have an active AWS account.
 - yarn: [install docs](https://yarnpkg.com/getting-started/install)
 - AWS CLI: [install docs](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 
-## Generate your project from Swarmion template
+## Create a new project from the Swarmion template
 
-We'll start by generating a sample proj
+Head over to the [Swarmion template](https://github.com/swarmion/template) on GitHub. Click the button _Use this template_ and follow the instructions.
 
 ## Change the project general settings
 
