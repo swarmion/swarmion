@@ -35,13 +35,8 @@ If you want to take is as an example to start your own project,
 - `nvm use`: use the version of node set in `.nvmrc`;
 - `yarn`: install node dependencies in all packages;
 - `yarn package`: compile the common packages;
+- `yarn test`: run tests in the packages;
 - `yarn upgrade-interactive --latest` in order to bump all dependencies to their latest version. Be careful as it may introduce breaking changes;
-
-## Test the installation
-
-At the root of the project:
-
-- `yarn test`
 
 ## Configure the deploy user
 
