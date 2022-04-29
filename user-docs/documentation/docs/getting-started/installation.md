@@ -10,8 +10,7 @@ _Please note: this section supposes that you already have an active AWS account.
 
 ## Requirements
 
-- node v14: [install docs](https://nodejs.org/en/download/)
-- nvm: [install docs](https://github.com/nvm-sh/nvm)
+- nvm: [install docs](https://github.com/nvm-sh/nvm#installing-and-updating)
 - yarn: [install docs](https://yarnpkg.com/getting-started/install)
 - AWS CLI: [install docs](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 
