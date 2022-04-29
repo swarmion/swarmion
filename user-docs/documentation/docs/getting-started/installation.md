@@ -4,7 +4,8 @@ sidebar_position: 1
 
 # Installation
 
-In this guide we'll see how to generate a Swarmion project from scratch. If you're looking how to migrate your existing project to Swarmion, please check out [the migration docs](../migrating)
+In this guide we'll see how to generate a Swarmion project from scratch. If you're looking how to migrate your existing project to Swarmion, please check out [the migration docs](../migrating).
+
 _Please note: this section supposes that you already have an active AWS account._
 
 ## Requirements
