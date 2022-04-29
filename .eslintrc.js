@@ -77,6 +77,10 @@ module.exports = {
             message: 'Please use lodash/{module} import instead',
           },
           {
+            name: 'aws-sdk',
+            message: 'Please use aws-sdk/{module} import instead',
+          },
+          {
             name: '.',
             message: 'Please use explicit import file',
           },
