@@ -10,6 +10,7 @@ import { makeDir } from './helpers/make-dir';
 import { install } from './helpers/install';
 import { isFolderEmpty } from './helpers/is-folder-empty';
 import { isWriteable } from './helpers/is-writeable';
+import { renameProject } from './helpers/renameProject';
 
 export class DownloadError extends Error {}
 
@@ -83,6 +84,8 @@ export const createApp = async ({
       //@ts-expect-error ts can't resolve types in async-retry lib
       retries: 3,
     });
+
+    renameProject(appName, root);
   } catch (reason) {
     const isErrorLike = (err: unknown): err is { message: string } => {
       return (
