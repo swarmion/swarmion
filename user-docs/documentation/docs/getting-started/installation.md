@@ -42,7 +42,7 @@ export const sharedParams = {
 - `yarn`: install node dependencies in all packages;
 - `yarn package`: compile the common packages;
 - `yarn test`: run all tests;
-- `yarn upgrade-interactive --latest` in order to bump all dependencies to their latest version. Be careful as it may introduce breaking changes;
+- `yarn upgrade-interactive` in order to bump all dependencies to their latest version. Be careful as it may introduce breaking changes;
 
 ## Configure the deploy user
 
