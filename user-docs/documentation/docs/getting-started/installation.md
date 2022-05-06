@@ -29,6 +29,11 @@ If you want to take is as an example to start your own project,
 - Search and replace "swarmion-starter" and replace it with the same project name
 - Rename the `swarmion-starter.code-workspace` file at the root of the project to `<projectName>.code-workspace`
 - Change the dev profile name to one that suits you
+```
+export const sharedParams = {
+  dev: { profile: 'swarmion-developer' },
+  ...
+```
 
 ## Install modules
 
