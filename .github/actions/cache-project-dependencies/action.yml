@@ -1,0 +1,9 @@
+name: 'Cache project dependencies'
+description: 'Cache both node modules and library builds'
+runs:
+  using: 'composite'
+  steps:
+    - name: Cache node_modules
+      uses: ./.github/actions/cache-node-modules
+    - name: Cache package builds
+      uses: ./.github/actions/cache-package-builds
