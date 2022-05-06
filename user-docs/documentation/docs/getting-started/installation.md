@@ -17,6 +17,7 @@ _Please note: this section supposes that you already have an active AWS account.
 ## Create a new project from the Swarmion template
 
 Head over to the [Swarmion template](https://github.com/swarmion/template) on GitHub. Click the button _Use this template_ and follow the instructions.
+![Use this template button](use_this_template_button.png)
 
 ## Change the project general settings
 
