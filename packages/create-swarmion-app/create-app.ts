@@ -1,6 +1,7 @@
 import retry from 'async-retry';
 import chalk from 'chalk';
 import path from 'path';
+import { execSync } from 'child_process';
 import {
   downloadAndExtractRepo,
   getRepoInfo,
@@ -103,20 +104,28 @@ export const createApp = async ({
   console.log();
 
   await install(root);
-  console.log();
 
-  // let cdpath: string;
-  // if (path.join(originalDirectory, appName) === appPath) {
-  //   cdpath = appName;
-  // } else {
-  //   cdpath = appPath;
-  // }
+  console.log();
+  console.log('Packaging your app.');
+  execSync(`yarn package`, { stdio: [0, 1, 2], cwd: root });
+  console.log();
+  console.log('Please wait a little longer');
+  console.log();
+  execSync(`yarn lint-fix-all`, { stdio: 'ignore', cwd: root });
 
   console.log(`${chalk.green('Success!')} Created ${appName} at ${appPath}`);
   console.log('Inside that directory, you can run several commands:');
   console.log();
 
   // TODO: decide what log to show
+  //
+  //
+  // let cdpath: string;
+  // if (path.join(originalDirectory, appName) === appPath) {
+  //   cdpath = appName;
+  // } else {
+  //   cdpath = appPath;
+  // }
   //
   // console.log(chalk.cyan(`  yarn dev`));
   // console.log('    Starts the development server.');
