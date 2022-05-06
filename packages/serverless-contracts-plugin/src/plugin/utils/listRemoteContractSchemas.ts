@@ -1,4 +1,4 @@
-import * as AWS from 'aws-sdk';
+import * as S3 from 'aws-sdk/clients/s3';
 import Serverless from 'serverless';
 
 import { RemoteServerlessContractSchemas } from 'types/serviceOptions';
@@ -34,7 +34,7 @@ export const listRemoteContractSchemas = async (
     'S3',
     'getObject',
     params,
-  )) as AWS.S3.GetObjectOutput;
+  )) as S3.GetObjectOutput;
 
   if (remoteContractsBuffer === undefined) {
     return {

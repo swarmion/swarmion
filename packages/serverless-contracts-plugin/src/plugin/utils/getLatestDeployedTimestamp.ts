@@ -1,4 +1,4 @@
-import * as AWS from 'aws-sdk';
+import * as CloudFormation from 'aws-sdk/clients/cloudformation';
 import Aws from 'serverless/plugins/aws/provider/awsProvider';
 
 import { LATEST_DEPLOYED_TIMESTAMP_TAG_NAME } from './constants';
@@ -15,7 +15,7 @@ export const getLatestDeployedTimestamp = async (
       {
         StackName: stackName,
       },
-    )) as AWS.CloudFormation.DescribeStacksOutput;
+    )) as CloudFormation.DescribeStacksOutput;
 
     return Stacks !== undefined
       ? Stacks[0].Tags?.find(
