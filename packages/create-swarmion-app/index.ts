@@ -123,14 +123,16 @@ const notifyUpdate = async (): Promise<void> => {
 
       console.log();
       console.log(
-        chalk.yellow.bold('A new version of `create-next-app` is available!'),
+        chalk.yellow.bold(
+          'A new version of `create-swarmion-app` is available!',
+        ),
       );
       console.log(
         'You can update by running: ' +
           chalk.cyan(
             pkgManager === 'yarn'
-              ? 'yarn global add create-next-app'
-              : `${pkgManager} install --global create-next-app`,
+              ? 'yarn global add create-swarmion-app'
+              : `${pkgManager} install --global create-swarmion-app`,
           ),
       );
       console.log();
