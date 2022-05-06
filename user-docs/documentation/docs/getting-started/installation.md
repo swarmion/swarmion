@@ -32,7 +32,7 @@ If you want to take is as an example to start your own project,
 - Change the dev profile name to one that suits you
 ```
 export const sharedParams = {
-  dev: { profile: 'swarmion-developer' },
+  dev: { profile: '<projectName>-developer' },
   ...
 ```
 
