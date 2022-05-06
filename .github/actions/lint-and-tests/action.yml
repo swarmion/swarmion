@@ -16,7 +16,11 @@ runs:
     - name: Run lint
       run: |
         cd ${{ inputs.path }}
-        yarn test-linter --max-warnings 0
+        if [[ $(cat package.json | jq '.scripts["test-linter"]') != null ]]; then
+          yarn test-linter --max-warnings 0
+        else
+          echo "No linter test script found in package.json"
+        fi
       shell: bash
     - name: Run stylelint
       run: |
