@@ -1,17 +1,18 @@
 import retry from 'async-retry';
 import chalk from 'chalk';
-import path from 'path';
 import { execSync } from 'child_process';
+import path from 'path';
+
 import {
   downloadAndExtractRepo,
   getRepoInfo,
   hasRepo,
-} from './helpers/examples';
-import { makeDir } from './helpers/make-dir';
-import { install } from './helpers/install';
-import { isFolderEmpty } from './helpers/is-folder-empty';
-import { isWriteable } from './helpers/is-writeable';
-import { renameProject } from './helpers/renameProject';
+  install,
+  isFolderEmpty,
+  isWriteable,
+  makeDir,
+  renameProject,
+} from './helpers';
 
 export class DownloadError extends Error {}
 
@@ -82,7 +83,6 @@ export const createApp = async ({
     );
     console.log();
     await retry(() => downloadAndExtractRepo(root, repoInfo), {
-      //@ts-expect-error ts can't resolve types in async-retry lib
       retries: 3,
     });
 
