@@ -2,13 +2,13 @@
 /* eslint-disable complexity */
 import chalk from 'chalk';
 import Commander from 'commander';
+import packageJson from 'package.json';
 import path from 'path';
 import prompts from 'prompts';
 import checkForUpdate from 'update-check';
-import { createApp, DownloadError } from './create-app';
-import { getPkgManager } from './helpers/get-pkg-manager';
-import { validateNpmName } from './helpers/validate-pkg';
-import packageJson from './package.json';
+
+import { createApp, DownloadError } from 'create-app';
+import { getPkgManager, validateNpmName } from 'helpers';
 
 let projectPath = '';
 
@@ -38,7 +38,7 @@ const run = async (): Promise<void> => {
           return true;
         }
 
-        return 'Invalid project name: ' + validation.problems![0];
+        return 'Invalid project name: ' + validation.problems[0];
       },
     });
 
@@ -76,7 +76,7 @@ const run = async (): Promise<void> => {
       )} because of npm naming restrictions:`,
     );
 
-    problems!.forEach(p => console.error(`    ${chalk.red.bold('*')} ${p}`));
+    problems.forEach(p => console.error(`    ${chalk.red.bold('*')} ${p}`));
     process.exit(1);
   }
 

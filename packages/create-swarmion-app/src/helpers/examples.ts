@@ -5,8 +5,8 @@
 /* eslint-disable complexity */
 /* eslint-disable import/no-extraneous-dependencies */
 import got from 'got';
-import tar from 'tar';
 import { Stream } from 'stream';
+import tar from 'tar';
 import { promisify } from 'util';
 
 const pipeline = promisify(Stream.pipeline);
@@ -28,8 +28,8 @@ const isUrlOk = async (url: string): Promise<boolean> => {
   }
 };
 
-export const getRepoInfo = async (url: URL): Promise<RepoInfo | undefined> => {
-  const [, username, name, t, branch, ...file] = url.pathname.split('/');
+export const getRepoInfo = async (url: URL): Promise<RepoInfo | void> => {
+  const [, username, name, t, ...file] = url.pathname.split('/');
   const filePath = file.join('/');
 
   // Support repos whose entire purpose is to be a NextJS example, e.g.
@@ -49,10 +49,6 @@ export const getRepoInfo = async (url: URL): Promise<RepoInfo | undefined> => {
       branch: info['default_branch'] as string,
       filePath,
     };
-  }
-
-  if (username && name && branch && t === 'tree') {
-    return { username, name, branch, filePath };
   }
 };
 
