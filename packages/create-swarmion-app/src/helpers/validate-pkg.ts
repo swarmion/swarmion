@@ -1,14 +1,16 @@
 import validateProjectName from 'validate-npm-package-name';
 
-export const validateNpmName = (
-  name: string,
-): {
-  valid: boolean;
-  problems?: string[];
-} => {
+type ValidateOutput =
+  | {
+      valid: false;
+      problems: string[];
+    }
+  | { valid: true; problems: null };
+
+export const validateNpmName = (name: string): ValidateOutput => {
   const nameValidation = validateProjectName(name);
   if (nameValidation.validForNewPackages) {
-    return { valid: true };
+    return { valid: true, problems: null };
   }
 
   return {
