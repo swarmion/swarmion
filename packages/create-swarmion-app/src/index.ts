@@ -2,13 +2,14 @@
 /* eslint-disable complexity */
 import chalk from 'chalk';
 import Commander from 'commander';
-import packageJson from 'package.json';
 import path from 'path';
 import prompts from 'prompts';
 import checkForUpdate from 'update-check';
 
 import { createApp, DownloadError } from 'create-app';
 import { getPkgManager, validateNpmName } from 'helpers';
+
+import packageJson from '../package.json';
 
 let projectPath = '';
 
