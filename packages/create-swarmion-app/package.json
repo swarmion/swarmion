@@ -1,26 +1,22 @@
 {
-  "name": "@swarmion/create-swarmion-app",
+  "name": "create-swarmion-app",
   "sideEffects": false,
   "files": [
     "dist"
   ],
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/types/index.d.ts",
   "scripts": {
     "lint-fix": "yarn linter-base-config --fix",
     "lint-fix-all": "yarn lint-fix .",
     "linter-base-config": "eslint --ext=js,ts .",
-    "package": "rm -rf dist && yarn package-cjs && yarn package-esm && yarn package-types",
-    "package-cjs": "NODE_ENV=cjs yarn transpile --out-dir dist/cjs --source-maps",
-    "package-esm": "NODE_ENV=esm yarn transpile --out-dir dist/esm --source-maps",
-    "package-types": "ttsc -p tsconfig.build.json",
+    "package": "rm -rf dist && yarn package-cjs",
+    "package-cjs": "NODE_ENV=cjs yarn transpile --out-dir dist --source-maps",
     "test": "yarn test-linter && yarn test-type",
     "test-linter": "yarn linter-base-config .",
     "test-type": "tsc --noEmit --emitDeclarationOnly false",
-    "transpile": "babel src --extensions .ts --quiet",
+    "transpile": "babel src --extensions .ts --quiet --copy-files",
     "watch": "rm -rf dist && concurrently 'yarn:package-* --watch'"
   },
+  "bin": "./dist/index.js",
   "devDependencies": {
     "@babel/cli": "^7.17.6",
     "@babel/core": "^7.17.9",
@@ -33,7 +29,6 @@
     "@types/prompts": "^2.0.1",
     "@types/tar": "^4.0.3",
     "@types/validate-npm-package-name": "^3.0.0",
-    "@zerollup/ts-transform-paths": "^1.7.18",
     "async-retry": "^1.3.1",
     "babel-plugin-module-resolver": "^4.1.0",
     "chalk": "^2.4.2",
@@ -46,7 +41,6 @@
     "prompts": "^2.1.0",
     "tar": "^4.4.10",
     "ts-node": "^10.7.0",
-    "ttypescript": "^1.5.13",
     "typescript": "^4.6.3",
     "update-check": "^1.5.4",
     "validate-npm-package-name": "^3.0.0"
