@@ -13,4 +13,5 @@ runs:
       with:
         path: |
           node_modules/@swarmion/**/dist
+          node_modules/create-swarmion-app/dist
         key: ${{ hashFiles('./contracts/**') }}-${{ hashFiles('./packages/**') }}
