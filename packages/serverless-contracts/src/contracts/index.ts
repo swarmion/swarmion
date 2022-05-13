@@ -1,2 +1,2 @@
 export { ApiGatewayContract } from './apiGateway/apiGatewayContract';
-export { CloudFormationContract } from './cloudFormation/cloudFormationContract';
+export * from './cloudFormation';
