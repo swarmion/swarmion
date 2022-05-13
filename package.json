@@ -20,7 +20,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build-all": "nx run-many --target=build --all --parallel=4",
+    "build": "nx run-many --target=build --all --parallel=4",
     "check-audit": "check-audit --yarn",
     "deploy": "nx run-many --target=deploy --all --parallel=4",
     "deploy-affected": "nx affected --target=deploy",
@@ -30,7 +30,7 @@
     "linter-base-config": "eslint",
     "package": "nx run-many --target=package --all --parallel=4",
     "postinstall": "husky install && syncpack format",
-    "release": "yarn package && yarn lerna publish && yarn install",
+    "release": "yarn package && yarn build && yarn lerna publish && yarn install",
     "resolve-audit": "resolve-audit --yarn",
     "test": "nx run-many --target=test --all --parallel=4",
     "test-affected": "nx affected --target=test",
