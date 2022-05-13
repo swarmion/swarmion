@@ -102,7 +102,7 @@ In the `config.ts` file of our lambda, in the `events` section, we need to use t
 export default {
   environment: {},
   handler: getHandlerPath(__dirname),
-  events: [myContract.trigger],
+  events: [getTrigger(myContract)],
 };
 ```
 
@@ -112,7 +112,7 @@ This will only output the `method` and `path`. However, if you need a more fine-
 export default {
   environment: {},
   handler: getHandlerPath(__dirname),
-  events: [myContract.getCompleteTrigger({ authorizer: 'arn::aws...' })],
+  events: [getCompleteTrigger(myContract, { authorizer: 'arn::aws...' })],
 };
 ```
 
@@ -123,7 +123,7 @@ export default {
   environment: {},
   handler: getHandlerPath(__dirname),
   events: [
-    myContract.getCompleteTrigger({
+    getCompleteTrigger(myContract, {
       method: 'delete', // typescript will throw an error
     }),
   ],
@@ -135,7 +135,7 @@ export default {
 JSON Schemas are compatible with `ajv` and `@middy/validator`. You can use
 
 ```ts
-myContract.inputSchema;
+getInputSchema(myContract);
 ```
 
 and
@@ -148,32 +148,36 @@ in order to validate the input and/or the output of your lambda.
 
 ### Type the lambda input and output
 
-On the handler side, you can use the `handler` method on the contract to correctly infer the input and output types from the schema.
+On the handler side, you can use the `HandlerType` generic type on the contract to correctly infer the input and output types from the schema.
 
 ```ts
-const handler = myContract.handler(async event => {
+const handler: HandlerType<typeof myContract> = async event => {
   event.pathParameters.userId; // will have type 'string'
 
   event.toto; // will fail typing
   event.pathParameters.toto; // will also fail
 
   return { id: 'coucou', name: 'coucou' }; // also type-safe!
-});
+};
 ```
 
 ## Consumer-side usage
 
-Simply call the `axiosRequest` method on the schema.
+Simply call the `getAxiosRequest` function with the schema.
 
 ```ts
-await myContract.axiosRequest('https://my-site.com', {
-  pathParameters: { userId: '15', pageNumber: '45' },
-  headers: {
-    myHeader: 'hello',
-  },
-  queryStringParameters: { testId: 'plop' },
-  body: { foo: 'bar' },
-});
+await getAxiosRequest(
+  myContract,
+  ('https://my-site.com',
+  {
+    pathParameters: { userId: '15', pageNumber: '45' },
+    headers: {
+      myHeader: 'hello',
+    },
+    queryStringParameters: { testId: 'plop' },
+    body: { foo: 'bar' },
+  }),
+);
 ```
 
 All parameter types will be inferred from the schemas.
@@ -182,7 +186,7 @@ The return type will be an axios response of the type inferred from the `outputS
 If you do not wish to use `axios`, you can use the type inference to generate request parameters with:
 
 ```ts
-myContract.getRequestParameters({
+getRequestParameters(myContract, {
   pathParameters: { userId: '15', pageNumber: '45' },
   headers: {
     myHeader: 'hello',
