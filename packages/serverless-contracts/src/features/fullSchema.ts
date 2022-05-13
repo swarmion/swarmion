@@ -1,27 +1,19 @@
 import { JSONSchema } from 'json-schema-to-ts';
 
-import { ApiGatewayContract } from 'contracts/apiGateway';
 import { getFullContractSchema as getApiGatewayFullContractSchema } from 'contracts/apiGateway/features';
-import { CloudFormationContract } from 'contracts/cloudFormation';
 import { getFullContractSchema as getCloudFormationFullContractSchema } from 'contracts/cloudFormation/features';
 import { ServerlessContract } from 'index';
 
 export const getContractFullSchema = (
   contract: ServerlessContract,
-): JSONSchema | undefined => {
+): JSONSchema => {
   switch (contract.contractType) {
     case 'apiGateway': {
-      return getApiGatewayFullContractSchema(
-        contract as ApiGatewayContract,
-      ) as JSONSchema;
+      // @ts-expect-error FIXME: problem with types here
+      return getApiGatewayFullContractSchema(contract);
     }
     case 'cloudFormation': {
-      return getCloudFormationFullContractSchema(
-        contract as CloudFormationContract,
-      );
-    }
-    default: {
-      return undefined;
+      return getCloudFormationFullContractSchema(contract);
     }
   }
 };

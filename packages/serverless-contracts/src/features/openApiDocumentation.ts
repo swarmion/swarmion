@@ -1,6 +1,5 @@
 import { OpenAPIV3 } from 'openapi-types';
 
-import { ApiGatewayContract } from 'contracts/apiGateway';
 import { getOpenApiDocumentation as getApiGatewayOpenApiDocumentation } from 'contracts/apiGateway/features';
 import { ServerlessContract } from 'types/serverlessContract';
 
@@ -15,7 +14,7 @@ export const getOpenApiDocumentation = (
 ): ContractOpenApiDocumentation | undefined => {
   switch (contract.contractType) {
     case 'apiGateway': {
-      return getApiGatewayOpenApiDocumentation(contract as ApiGatewayContract);
+      return getApiGatewayOpenApiDocumentation(contract);
     }
     default: {
       return undefined;

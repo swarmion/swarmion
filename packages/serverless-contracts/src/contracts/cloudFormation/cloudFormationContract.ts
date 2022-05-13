@@ -10,7 +10,7 @@ import { CloudFormationExport, CloudFormationImport } from './types';
  * - generation of a contract document that can be checked for breaking changes;
  */
 export class CloudFormationContract<Name extends string = string> {
-  public contractType = 'cloudFormation';
+  public contractType = 'cloudFormation' as const;
   public id: string;
   public name: Name;
 
