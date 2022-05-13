@@ -19,8 +19,9 @@ const serverlessConfiguration: AWS & Lift = {
   },
   constructs: {
     app: {
-      type: 'single-page-app',
+      type: 'static-website',
       path: '../documentation/build',
+      errorPage: '404.html',
     },
   },
   resources: {
