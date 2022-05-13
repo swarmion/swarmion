@@ -1,4 +1,11 @@
 import { ApiGatewayContract } from '../apiGatewayContract';
+import {
+  getCompleteTrigger,
+  getFullContractSchema,
+  getInputSchema,
+  getOpenApiDocumentation,
+  getTrigger,
+} from '../features';
 
 describe('restApiContract', () => {
   describe('when it is instanciated with a subset of schemas', () => {
@@ -15,7 +22,7 @@ describe('restApiContract', () => {
     });
 
     it('should have the correct simple trigger', () => {
-      expect(restApiContract.trigger).toEqual({
+      expect(getTrigger(restApiContract)).toEqual({
         http: {
           path: 'coucou',
           method: 'POST',
@@ -25,7 +32,7 @@ describe('restApiContract', () => {
 
     it('should have the correct complete trigger', () => {
       expect(
-        restApiContract.getCompleteTrigger({
+        getCompleteTrigger(restApiContract, {
           authorizer: '123',
           connectionId: '456',
         }),
@@ -44,7 +51,7 @@ describe('restApiContract', () => {
     });
 
     it('should should have the correct inputSchema', () => {
-      expect(restApiContract.inputSchema).toEqual({
+      expect(getInputSchema(restApiContract)).toEqual({
         type: 'object',
         properties: {},
         required: [],
@@ -53,7 +60,7 @@ describe('restApiContract', () => {
     });
 
     it('should have the correct fullContractSchema', () => {
-      expect(restApiContract.fullContractSchema).toEqual({
+      expect(getFullContractSchema(restApiContract)).toEqual({
         type: 'object',
         properties: {
           contractId: { const: 'testContractRest' },
@@ -66,15 +73,8 @@ describe('restApiContract', () => {
       });
     });
 
-    it('should be requestable with no parameters', () => {
-      expect(restApiContract.getRequestParameters({})).toEqual({
-        path: 'coucou',
-        method: 'POST',
-      });
-    });
-
     it('should generate open api documentation', () => {
-      expect(restApiContract.openApiDocumentation).toEqual({
+      expect(getOpenApiDocumentation(restApiContract)).toEqual({
         path: 'coucou',
         method: 'post',
         documentation: {

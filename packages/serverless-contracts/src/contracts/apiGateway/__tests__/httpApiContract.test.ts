@@ -1,5 +1,12 @@
 /* eslint-disable max-lines */
 import { ApiGatewayContract } from '../apiGatewayContract';
+import {
+  getCompleteTrigger,
+  getFullContractSchema,
+  getInputSchema,
+  getOpenApiDocumentation,
+  getTrigger,
+} from '../features';
 
 describe('httpApiContract', () => {
   const pathParametersSchema = {
@@ -51,7 +58,7 @@ describe('httpApiContract', () => {
     });
 
     it('should have the correct trigger', () => {
-      expect(httpApiContract.trigger).toEqual({
+      expect(getTrigger(httpApiContract)).toEqual({
         httpApi: {
           path: '/users/{userId}',
           method: 'GET',
@@ -60,19 +67,19 @@ describe('httpApiContract', () => {
     });
 
     it('should have the correct complete trigger', () => {
-      expect(httpApiContract.getCompleteTrigger({ authorizer: '123' })).toEqual(
-        {
-          httpApi: {
-            path: '/users/{userId}',
-            method: 'GET',
-            authorizer: '123',
-          },
+      expect(
+        getCompleteTrigger(httpApiContract, { authorizer: '123' }),
+      ).toEqual({
+        httpApi: {
+          path: '/users/{userId}',
+          method: 'GET',
+          authorizer: '123',
         },
-      );
+      });
     });
 
     it('should have the correct inputSchema', () => {
-      expect(httpApiContract.inputSchema).toEqual({
+      expect(getInputSchema(httpApiContract)).toEqual({
         type: 'object',
         properties: {
           pathParameters: pathParametersSchema,
@@ -95,7 +102,7 @@ describe('httpApiContract', () => {
     });
 
     it('should have the correct fullContractSchema', () => {
-      expect(httpApiContract.fullContractSchema).toEqual({
+      expect(getFullContractSchema(httpApiContract)).toEqual({
         type: 'object',
         properties: {
           contractId: { const: 'testContract' },
@@ -123,25 +130,8 @@ describe('httpApiContract', () => {
       });
     });
 
-    it('should be requestable with the correct parameters', () => {
-      expect(
-        httpApiContract.getRequestParameters({
-          pathParameters: { userId: '123', pageNumber: '12' },
-          headers: { myHeader: '12' },
-          queryStringParameters: { testId: '155' },
-          body: { foo: 'bar' },
-        }),
-      ).toEqual({
-        method: 'GET',
-        path: '/users/123',
-        headers: { myHeader: '12' },
-        queryStringParameters: { testId: '155' },
-        body: { foo: 'bar' },
-      });
-    });
-
     it('should generate open api documentation', () => {
-      expect(httpApiContract.openApiDocumentation).toEqual({
+      expect(getOpenApiDocumentation(httpApiContract)).toEqual({
         path: '/users/{userId}',
         method: 'get',
         documentation: {
