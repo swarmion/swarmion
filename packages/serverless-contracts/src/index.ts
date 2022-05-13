@@ -1,3 +1,3 @@
 export * from './contracts';
-export { isInstanceOfDocumentedContract } from './types/contractOpenApiDocumentation';
-export type { GenericContract } from './types/genericContract';
+export * from './features';
+export * from './types';
