@@ -148,17 +148,17 @@ in order to validate the input and/or the output of your lambda.
 
 ### Type the lambda input and output
 
-On the handler side, you can use the `HandlerType` generic type on the contract to correctly infer the input and output types from the schema.
+On the handler side, you can use the `getLambdaHandler` function on the contract to correctly infer the input and output types from the schema.
 
 ```ts
-const handler: HandlerType<typeof myContract> = async event => {
+const handler = getLambdaHandler(myContract)(async event => {
   event.pathParameters.userId; // will have type 'string'
 
   event.toto; // will fail typing
   event.pathParameters.toto; // will also fail
 
   return { id: 'coucou', name: 'coucou' }; // also type-safe!
-};
+});
 ```
 
 ## Consumer-side usage
