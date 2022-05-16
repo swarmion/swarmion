@@ -1,9 +1,11 @@
 import { JSONSchema } from 'json-schema-to-ts';
+import isUndefined from 'lodash/isUndefined';
+import omitBy from 'lodash/omitBy';
 
 import { ConstrainedJSONSchema } from 'types/constrainedJSONSchema';
 import { HttpMethod } from 'types/http';
 
-import { ApiGatewayIntegrationType } from './types';
+import { ApiGatewayIntegrationType, InputSchemaType } from './types';
 
 /**
  * ApiGatewayContract:
@@ -42,6 +44,13 @@ export class ApiGatewayContract<
   public headersSchema: HeadersSchema;
   public bodySchema: BodySchema;
   public outputSchema: OutputSchema;
+  public inputSchema: InputSchemaType<
+    PathParametersSchema,
+    QueryStringParametersSchema,
+    HeadersSchema,
+    BodySchema,
+    true
+  >;
 
   /**
    * Builds a new ApiGateway contract
@@ -79,5 +88,32 @@ export class ApiGatewayContract<
     this.headersSchema = props.headersSchema;
     this.bodySchema = props.bodySchema;
     this.outputSchema = props.outputSchema;
+    this.inputSchema = this.getInputSchema();
+  }
+
+  private getInputSchema(): InputSchemaType<
+    PathParametersSchema,
+    QueryStringParametersSchema,
+    HeadersSchema,
+    BodySchema,
+    true
+  > {
+    const properties = omitBy(
+      {
+        pathParameters: this.pathParametersSchema,
+        queryStringParameters: this.queryStringParametersSchema,
+        headers: this.headersSchema,
+        body: this.bodySchema,
+      } as const,
+      isUndefined,
+    );
+
+    return {
+      type: 'object',
+      properties,
+      // @ts-ignore here object.keys is not precise enough
+      required: Object.keys(properties),
+      additionalProperties: true,
+    };
   }
 }

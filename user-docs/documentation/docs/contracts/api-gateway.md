@@ -135,7 +135,7 @@ export default {
 JSON Schemas are compatible with `ajv` and `@middy/validator`. You can use
 
 ```ts
-getInputSchema(myContract);
+myContract.inputSchema;
 ```
 
 and
