@@ -106,13 +106,13 @@ export default {
 };
 ```
 
-This will only output the `method` and `path`. However, if you need a more fine-grained configuration for your lambda (such as defining an authorizer), you can use the `getCompleteTrigger` method.
+This will output the `method` and `path`. However, if you need a more fine-grained configuration for your lambda (such as defining an authorizer), you can use the add a second method argument.
 
 ```ts
 export default {
   environment: {},
   handler: getHandlerPath(__dirname),
-  events: [getCompleteTrigger(myContract, { authorizer: 'arn::aws...' })],
+  events: [getTrigger(myContract, { authorizer: 'arn::aws...' })],
 };
 ```
 
@@ -123,7 +123,7 @@ export default {
   environment: {},
   handler: getHandlerPath(__dirname),
   events: [
-    getCompleteTrigger(myContract, {
+    getTrigger(myContract, {
       method: 'delete', // typescript will throw an error
     }),
   ],

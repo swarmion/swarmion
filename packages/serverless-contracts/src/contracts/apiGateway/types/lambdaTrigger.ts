@@ -13,13 +13,6 @@ export type ApiGatewayTriggerKey<
 /**
  * The type of an httpApi lambda trigger
  */
-export type ApiGatewayLambdaSimpleTriggerType<Key extends ApiGatewayKey> = {
-  [key in Key]: {
-    path: string;
-    method: string;
-  };
-};
-
 export type ApiGatewayLambdaCompleteTriggerType<Key extends ApiGatewayKey> = {
   [key in Key]: {
     path: string;
