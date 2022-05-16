@@ -2,7 +2,7 @@ import { AxiosInstance, AxiosResponse } from 'axios';
 
 import { ApiGatewayContract } from '../apiGatewayContract';
 import { OutputType, RequestArguments } from '../types';
-import { getRequestParameters } from './getRequestParameters';
+import { getRequestParameters } from './requestParameters';
 
 export const getAxiosRequest = async <Contract extends ApiGatewayContract>(
   contract: Contract,
@@ -13,7 +13,7 @@ export const getAxiosRequest = async <Contract extends ApiGatewayContract>(
     // @ts-ignore: Type instantiation is excessively deep and possibly infinite.
     getRequestParameters(contract, requestArguments);
 
-  return await axiosClient.request({
+  return axiosClient.request({
     method,
     url: path,
     headers,
