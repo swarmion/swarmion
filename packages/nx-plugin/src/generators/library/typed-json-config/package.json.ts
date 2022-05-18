@@ -24,7 +24,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
       'NODE_ENV=esm yarn transpile --out-dir dist/esm --source-maps',
     'package-types': 'ttsc -p tsconfig.build.json',
     test: 'yarn test-linter && yarn test-type && yarn test-unit && yarn test-circular',
-    'test-circular': 'yarn depcruise --validate .dependency-cruiser.js .',
+    'test-circular': 'yarn depcruise --validate .dependency-cruiser.js src',
     'test-linter': 'yarn linter-base-config .',
     'test-type': 'tsc --noEmit --emitDeclarationOnly false',
     'test-unit': 'jest --runInBand --collectCoverage --logHeapUsage',
