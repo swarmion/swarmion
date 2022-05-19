@@ -4,14 +4,14 @@ import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  imgSrc: string;
   description: JSX.Element;
 };
 
 const FeatureList: FeatureItem[] = [
   {
     title: 'Built for Scale',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    imgSrc: require('@site/static/img/hive.png').default,
     description: (
       <>
         Swarmion helps you handle changes in your team organization, by clearly
@@ -21,7 +21,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Built for Dev Experience',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    imgSrc: require('@site/static/img/bee.png').default,
     description: (
       <>
         Using optimized development tools, Swarmion provides a seamless
@@ -32,7 +32,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Built for Stability',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    imgSrc: require('@site/static/img/bee-stable.png').default,
     description: (
       <>
         Using end-to-end typing and validation contracts, Swarmion clearly
@@ -43,11 +43,11 @@ const FeatureList: FeatureItem[] = [
   },
 ];
 
-const Feature = ({ title, Svg, description }: FeatureItem) => {
+const Feature = ({ title, imgSrc, description }: FeatureItem) => {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        <img className={styles.featureImg} src={imgSrc} role="img" />
       </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>

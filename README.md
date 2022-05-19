@@ -1,7 +1,13 @@
 # Swarmion
 
+<p align="center">
+  <img src="./user-docs/documentation/static/img/apitherapy.png" alt="Swarmion logo" width="200" height="200" />
+</p>
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 A set of tools to build and deploy type-safe microservices. In order to see a working example of these tools, check out [Swarmion template](https://github.com/swarmion/template).
@@ -45,3 +51,5 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+<a href="https://www.flaticon.com/" title="icons">Icons created by Smashicons - Flaticon</a>
