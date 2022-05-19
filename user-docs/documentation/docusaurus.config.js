@@ -12,7 +12,7 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/apitherapy-small.png',
   organizationName: 'swarmion',
   projectName: 'swarmion',
   presets: [
@@ -37,11 +37,15 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        respectPrefersColorScheme: true,
+      },
+      image: 'img/apitherapy.png',
       navbar: {
         title: 'Swarmion',
         logo: {
           alt: 'Swarmion Logo',
-          src: 'img/logo.svg',
+          src: 'img/apitherapy.png',
         },
         items: [
           {
@@ -60,6 +64,11 @@ const config = {
       footer: {
         style: 'dark',
         copyright: `Copyright © ${new Date().getFullYear()} Swarmion.`,
+        links: [
+          {
+            html: `<a href="https://www.flaticon.com/" title="icons">Icons created by Smashicons - Flaticon</a>`,
+          },
+        ],
       },
       prism: {
         theme: lightCodeTheme,
