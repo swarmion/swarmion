@@ -12,6 +12,7 @@ import {
   isWriteable,
   makeDir,
   renameProject,
+  tryGitInit,
 } from './helpers';
 
 export class DownloadError extends Error {}
@@ -112,6 +113,11 @@ export const createApp = async ({
   console.log('Please wait a little longer');
   console.log();
   execSync(`yarn lint-fix-all`, { stdio: 'ignore', cwd: root });
+
+  if (tryGitInit(root)) {
+    console.log('Initialized a git repository.');
+    console.log();
+  }
 
   console.log(`${chalk.green('Success!')} Created ${appName} at ${appPath}`);
   console.log('Inside that directory, you can run several commands:');
