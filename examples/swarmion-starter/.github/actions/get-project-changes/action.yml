@@ -1,0 +1,26 @@
+name: 'Get Project Code Changes'
+description: 'Returns the paths of apps and libraries have been modified in a PR'
+outputs:
+  affected_apps:
+    description: Paths of the affected apps
+    value: ${{ steps.affected-apps.outputs.changes }}
+  affected_libs:
+    description: Paths of the affected libs
+    value: ${{ steps.affected-libs.outputs.changes }}
+runs:
+  using: 'composite'
+  steps:
+    - name: Derive appropriate SHAs for base and head for `nx affected` commands
+      uses: nrwl/nx-set-shas@v2
+    - name: Get affected apps
+      id: affected-apps
+      run: |
+        changes="$(./get-affected-paths.sh apps)"
+        echo "::set-output name=changes::$changes"
+      shell: bash
+    - name: Get affected libs
+      id: affected-libs
+      run: |
+        changes="$(./get-affected-paths.sh libs)"
+        echo "::set-output name=changes::$changes"
+      shell: bash
