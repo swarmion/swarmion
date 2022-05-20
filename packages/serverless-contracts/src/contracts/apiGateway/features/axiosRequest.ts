@@ -10,8 +10,7 @@ export const getAxiosRequest = async <Contract extends ApiGatewayContract>(
   requestArguments: RequestArguments<Contract>,
 ): Promise<AxiosResponse<OutputType<Contract>>> => {
   const { path, method, queryStringParameters, body, headers } =
-    // @ts-ignore: Type instantiation is excessively deep and possibly infinite.
-    getRequestParameters(contract, requestArguments);
+    getRequestParameters<Contract>(contract, requestArguments);
 
   return axiosClient.request({
     method,
