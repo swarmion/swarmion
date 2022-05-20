@@ -30,7 +30,7 @@
     "linter-base-config": "eslint",
     "package": "nx run-many --target=package --all --parallel=4",
     "postinstall": "husky install && syncpack format",
-    "release": "yarn package && yarn lerna publish",
+    "release": "yarn package && yarn lerna publish && yarn install",
     "resolve-audit": "resolve-audit --yarn",
     "test": "nx run-many --target=test --all --parallel=4",
     "test-affected": "nx affected --target=test",
