@@ -11,7 +11,7 @@ import { promisify } from 'util';
 
 const pipeline = promisify(Stream.pipeline);
 
-type RepoInfo = {
+export type RepoInfo = {
   username: string;
   name: string;
   branch: string;
@@ -74,7 +74,11 @@ export const downloadAndExtractRepo = (
     ),
     tar.extract(
       { cwd: root, strip: filePath ? filePath.split('/').length + 1 : 1 },
-      [`${name}-${branch}${filePath ? `/${filePath}` : ''}`],
+      [
+        `${name}-${branch.replace(/\//g, '-')}${
+          filePath ? `/${filePath}` : ''
+        }`,
+      ],
     ),
   );
 };
