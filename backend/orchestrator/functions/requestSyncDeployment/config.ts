@@ -1,4 +1,5 @@
 import { requestSyncDeployment } from '@swarmion/orchestrator-contracts';
+import { getTrigger } from '@swarmion/serverless-contracts';
 import { getHandlerPath, LambdaFunction } from '@swarmion/serverless-helpers';
 
 import { cdkStack } from 'resources';
@@ -16,7 +17,7 @@ const config: LambdaFunction = {
     },
   ],
   iamRoleStatementsInherit: true,
-  events: [requestSyncDeployment.trigger],
+  events: [getTrigger(requestSyncDeployment)],
 };
 
 export default config;

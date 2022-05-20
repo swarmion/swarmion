@@ -1,9 +1,11 @@
 import { OpenAPIV3 } from 'openapi-types';
 import Serverless from 'serverless';
 
-import { isInstanceOfDocumentedContract } from '@swarmion/serverless-contracts';
+import { getOpenApiDocumentation } from '@swarmion/serverless-contracts';
 
 import { ServerlessContracts } from 'types/serviceOptions';
+
+import { isDefined } from './isDefined';
 
 export const generateOpenApiDocumentation = (serverless: Serverless): void => {
   // @ts-ignore mistype in the orignals (the animals)
@@ -12,8 +14,8 @@ export const generateOpenApiDocumentation = (serverless: Serverless): void => {
     .contracts as ServerlessContracts;
 
   const contractDocumentations = Object.values(provides)
-    .filter(isInstanceOfDocumentedContract)
-    .map(contract => contract.openApiDocumentation);
+    .map(contract => getOpenApiDocumentation(contract))
+    .filter(isDefined);
 
   const paths: OpenAPIV3.PathsObject =
     contractDocumentations.reduce<OpenAPIV3.PathsObject>(

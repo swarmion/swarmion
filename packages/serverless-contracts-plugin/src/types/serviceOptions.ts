@@ -1,6 +1,6 @@
 import { JSONSchema } from 'json-schema-to-ts';
 
-import { GenericContract } from '@swarmion/serverless-contracts';
+import { ServerlessContract } from '@swarmion/serverless-contracts';
 
 export const serviceOptionsSchema = {
   type: 'object',
@@ -32,8 +32,8 @@ export type ServiceOptions = {
 };
 
 export type ServerlessContracts = {
-  provides: Record<string, GenericContract>;
-  consumes: Record<string, GenericContract>;
+  provides: Record<string, ServerlessContract>;
+  consumes: Record<string, ServerlessContract>;
 };
 
 export interface ServerlessContractSchemas {

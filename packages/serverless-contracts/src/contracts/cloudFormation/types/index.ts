@@ -1,2 +1,2 @@
-export * from './apiGateway';
+export * from './fullContract';
 export * from './cloudFormation';

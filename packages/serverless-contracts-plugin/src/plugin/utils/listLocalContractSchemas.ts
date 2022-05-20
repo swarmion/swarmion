@@ -1,5 +1,10 @@
+import { JSONSchema } from 'json-schema-to-ts';
+import isUndefined from 'lodash/isUndefined';
 import mapValues from 'lodash/mapValues';
+import omitBy from 'lodash/omitBy';
 import Serverless from 'serverless';
+
+import { getContractFullSchema } from '@swarmion/serverless-contracts';
 
 import {
   ServerlessContracts,
@@ -15,7 +20,13 @@ export const listLocalContractSchemas = (
     .contracts as ServerlessContracts;
 
   return {
-    provides: mapValues(provides, contract => contract.fullContractSchema),
-    consumes: mapValues(consumes, contract => contract.fullContractSchema),
+    provides: omitBy(
+      mapValues(provides, contract => getContractFullSchema(contract)),
+      isUndefined,
+    ) as Record<string, JSONSchema>,
+    consumes: omitBy(
+      mapValues(consumes, contract => getContractFullSchema(contract)),
+      isUndefined,
+    ) as Record<string, JSONSchema>,
   };
 };
