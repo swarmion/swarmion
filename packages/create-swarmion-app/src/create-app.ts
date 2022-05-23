@@ -5,13 +5,13 @@ import path from 'path';
 
 import {
   downloadAndExtractRepo,
-  getRepoInfo,
   hasRepo,
   install,
   isFolderEmpty,
   isWriteable,
   makeDir,
   renameProject,
+  RepoInfo,
   tryGitInit,
 } from './helpers';
 
@@ -22,20 +22,15 @@ export const createApp = async ({
 }: {
   appPath: string;
 }): Promise<void> => {
-  const example = 'https://github.com/swarmion/template';
+  const example =
+    'https://github.com/swarmion/swarmion/examples/swarmion-starter';
 
-  const repoUrl = new URL(example);
-
-  const repoInfo = await getRepoInfo(repoUrl);
-
-  if (!repoInfo) {
-    console.error(
-      `Found invalid GitHub URL: ${chalk.red(
-        `"${example}"`,
-      )}. Please fix the URL and try again.`,
-    );
-    process.exit(1);
-  }
+  const repoInfo: RepoInfo = {
+    username: 'swarmion',
+    name: 'swarmion',
+    branch: 'feat/create-swarmion-app/template-from-github',
+    filePath: 'examples/swarmion-starter',
+  };
 
   const found = await hasRepo(repoInfo);
 
