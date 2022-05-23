@@ -28,30 +28,6 @@ const isUrlOk = async (url: string): Promise<boolean> => {
   }
 };
 
-export const getRepoInfo = async (url: URL): Promise<RepoInfo | void> => {
-  const [, username, name, t, ...file] = url.pathname.split('/');
-  const filePath = file.join('/');
-
-  // Support repos whose entire purpose is to be a NextJS example, e.g.
-  // https://github.com/:username/:my-cool-nextjs-example-repo-name.
-  if (!t) {
-    const infoResponse = await got(
-      `https://api.github.com/repos/${username}/${name}`,
-    ).catch(e => e);
-    if (infoResponse.statusCode !== 200) {
-      return;
-    }
-    const info = JSON.parse(infoResponse.body);
-
-    return {
-      username,
-      name,
-      branch: info['default_branch'] as string,
-      filePath,
-    };
-  }
-};
-
 export const hasRepo = ({
   username,
   name,
