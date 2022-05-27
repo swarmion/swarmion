@@ -6,7 +6,7 @@ export const defaultEnvironment = 'dev';
 
 export const sharedProviderConfig = {
   name: 'aws',
-  runtime: 'nodejs14.x',
+  runtime: 'nodejs16.x',
   architecture: 'arm64',
   region,
   profile: '${param:profile}', // Used to point to the right AWS account
@@ -36,7 +36,7 @@ export const sharedEsbuildConfig = {
   keepNames: true,
   sourcemap: true,
   exclude: ['aws-sdk'],
-  target: 'node14',
+  target: 'node16',
   platform: 'node',
   mainFields: ['module', 'main'],
   concurrency: 5,
