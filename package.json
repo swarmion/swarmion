@@ -14,10 +14,10 @@
     "Typescript"
   ],
   "workspaces": [
-    "user-docs/*",
     "backend/*",
     "contracts/*",
-    "packages/*"
+    "packages/*",
+    "user-docs/*"
   ],
   "scripts": {
     "build-all": "nx run-many --target=build --all --parallel=4",
