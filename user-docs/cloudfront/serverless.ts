@@ -36,6 +36,9 @@ const serverlessConfiguration: AWS & Lift = {
       type: 'static-website',
       path: '../documentation/build',
       errorPage: '404.html',
+      domain: '${param:domain}',
+      redirectToMainDomain: '${param:redirectToMainDomain}',
+      certificate: '${param:certificate}',
     },
   },
   resources: {
