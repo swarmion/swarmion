@@ -41,6 +41,7 @@ const serverlessConfiguration: AWS & Lift = {
       certificate: '${param:certificate}',
     },
   },
+  lift: { automaticPermissions: false },
   resources: {
     Description: 'Documentation cloudfront service',
   },
