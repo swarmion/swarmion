@@ -10,7 +10,7 @@ import { ApiGatewayIntegrationType, InputSchemaType } from './types';
 /**
  * ApiGatewayContract:
  *
- * a contract used to define a type-safe interaction between AWS Services through Api Gateway.
+ * A contract used to define a type-safe interaction between AWS Services through Api Gateway.
  *
  * Main features:
  * - input and output dynamic validation with JSONSchemas on both end of the contract;
@@ -34,16 +34,60 @@ export class ApiGatewayContract<
   BodySchema extends JSONSchema | undefined = JSONSchema | undefined,
   OutputSchema extends JSONSchema | undefined = JSONSchema | undefined,
 > {
+  /**
+   * The discriminating type of this contract
+   */
   public contractType = 'apiGateway' as const;
+
+  /**
+   *  An id to uniquely identify the contract among services.
+   */
   public id: string;
+
+  /**
+   * The path on which the lambda will be triggered
+   */
   public path: Path;
+
+  /**
+   * The http method
+   */
   public method: Method;
+
+  /**
+   * Api gateway version, @see https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html
+   */
   public integrationType: IntegrationType;
+
+  /**
+   * A JSONSchema used to validate the path parameters and infer their types.
+   * @see https://github.com/ThomasAribart/json-schema-to-ts#fromschema.
+   */
   public pathParametersSchema: PathParametersSchema;
+
+  /**
+   * A JSONSchema used to validate the query parameters and infer their types
+   */
   public queryStringParametersSchema: QueryStringParametersSchema;
+
+  /**
+   * A JSONSchema used to validate the headers and infer their types
+   */
   public headersSchema: HeadersSchema;
+
+  /**
+   * A JSONSchema used to validate the body and infer its type
+   */
   public bodySchema: BodySchema;
+
+  /**
+   * A JSONSchema used to validate the output and infer its type
+   */
   public outputSchema: OutputSchema;
+
+  /**
+   * A JSONSchema used to validate the input and infer its type
+   */
   public inputSchema: InputSchemaType<
     PathParametersSchema,
     QueryStringParametersSchema,
@@ -58,7 +102,7 @@ export class ApiGatewayContract<
    * @param id an id to uniquely identify the contract among services. Beware of uniqueness!
    * @param path the path on which the lambda will be triggered
    * @param method the http method
-   * @param integrationType httpApi or restApi, see https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html
+   * @param integrationType httpApi or restApi, @see https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html
    * @param pathParametersSchema a JSONSchema used to validate the path parameters and infer their types.
    * Please note that the `as const` directive is necessary to properly infer the type from the schema.
    * See https://github.com/ThomasAribart/json-schema-to-ts#fromschema.

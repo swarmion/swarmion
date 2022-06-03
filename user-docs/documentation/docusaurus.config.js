@@ -3,6 +3,7 @@
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const path = require('path');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -55,6 +56,11 @@ const config = {
             label: 'Documentation',
           },
           {
+            to: 'api',
+            label: 'API',
+            position: 'left',
+          },
+          {
             href: 'https://github.com/swarmion',
             label: 'GitHub',
             position: 'right',
@@ -83,6 +89,18 @@ const config = {
         searchPagePath: 'search',
       },
     }),
+  plugins: [
+    [
+      'docusaurus-plugin-typedoc-api',
+      {
+        projectRoot: path.join(__dirname, '../..'),
+        packages: ['packages/serverless-contracts'],
+        debug: true,
+        readmes: true,
+        tsconfigName: 'packages/serverless-contracts/tsconfig.json',
+      },
+    ],
+  ],
 };
 
 module.exports = config;

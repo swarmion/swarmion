@@ -1,13 +1,5 @@
-import { OpenAPIV3 } from 'openapi-types';
-
 import { getOpenApiDocumentation as getApiGatewayOpenApiDocumentation } from 'contracts/apiGateway/features';
-import { ServerlessContract } from 'types/serverlessContract';
-
-export interface ContractOpenApiDocumentation {
-  path: string;
-  method: string;
-  documentation: OpenAPIV3.OperationObject;
-}
+import { ContractOpenApiDocumentation, ServerlessContract } from 'types';
 
 export const getOpenApiDocumentation = (
   contract: ServerlessContract,

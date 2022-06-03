@@ -8,8 +8,8 @@ import {
 /**
  * Returns a basic serverless function trigger associated to an ApiGatewayContract
  *
- * @argument contract your ApiGatewayContract
- * @argument additionalConfig for example an authorizer reference, ...
+ * @param contract your ApiGatewayContract
+ * @param additionalConfig for example an authorizer reference, ...
  */
 export const getTrigger = <Contract extends ApiGatewayContract>(
   contract: Contract,

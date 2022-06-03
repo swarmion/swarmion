@@ -5,4 +5,5 @@ export {
   getLambdaHandler,
   getRequestParameters,
 } from './features';
-export type { HandlerType } from './types';
+
+export * from './types';
