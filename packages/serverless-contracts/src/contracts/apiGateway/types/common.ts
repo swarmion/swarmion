@@ -23,7 +23,7 @@ export type HeadersType<Contract extends ApiGatewayContract> =
     ? FromSchema<Contract['headersSchema']>
     : undefined;
 export type BodyType<Contract extends ApiGatewayContract> =
-  Contract['bodySchema'] extends ConstrainedJSONSchema
+  Contract['bodySchema'] extends JSONSchema
     ? FromSchema<Contract['bodySchema']>
     : undefined;
 
