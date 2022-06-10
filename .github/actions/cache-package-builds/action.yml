@@ -13,4 +13,4 @@ runs:
       with:
         path: |
           node_modules/@swarmion/**/dist
-        key: ${{ hashFiles('./contracts/**') }}-${{ hashFiles('./packages/**') }}
+        key: ${{ runner.os }}-packages-${{ env.NODE_VERSION }}-${{ hashFiles('./contracts/**') }}-${{ hashFiles('./packages/**') }}
