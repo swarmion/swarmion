@@ -33,6 +33,7 @@ export class ApiGatewayContract<
     | undefined,
   BodySchema extends JSONSchema | undefined = JSONSchema | undefined,
   OutputSchema extends JSONSchema | undefined = JSONSchema | undefined,
+  HasAuthorizer extends boolean = boolean,
 > {
   public contractType = 'apiGateway' as const;
   public id: string;
@@ -51,6 +52,7 @@ export class ApiGatewayContract<
     BodySchema,
     true
   >;
+  public hasAuthorizer: HasAuthorizer;
 
   /**
    * Builds a new ApiGateway contract
@@ -67,6 +69,7 @@ export class ApiGatewayContract<
    * @param headersSchema a JSONSchema used to validate the headers and infer their types (Same constraints).
    * @param bodySchema a JSONSchema used to validate the body and infer its type (Same constraints).
    * @param outputSchema a JSONSchema used to validate the output and infer its type (Same constraints).
+   * @param hasAuthorizer indicates if the endpoint is secured behind an authorizer
    */
   constructor(props: {
     id: string;
@@ -78,6 +81,7 @@ export class ApiGatewayContract<
     headersSchema: HeadersSchema;
     bodySchema: BodySchema;
     outputSchema: OutputSchema;
+    hasAuthorizer: HasAuthorizer;
   }) {
     this.id = props.id;
     this.path = props.path;
@@ -89,6 +93,7 @@ export class ApiGatewayContract<
     this.bodySchema = props.bodySchema;
     this.outputSchema = props.outputSchema;
     this.inputSchema = this.getInputSchema();
+    this.hasAuthorizer = props.hasAuthorizer;
   }
 
   private getInputSchema(): InputSchemaType<
