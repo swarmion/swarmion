@@ -44,6 +44,7 @@ describe('apiGateway lambda handler', () => {
       path: '/users/{userId}',
       method: 'GET',
       integrationType: 'httpApi',
+      hasAuthorizer: true,
       pathParametersSchema,
       queryStringParametersSchema,
       headersSchema,
@@ -56,8 +57,15 @@ describe('apiGateway lambda handler', () => {
       pathParameters,
       queryStringParameters,
       headers,
+      requestContext,
     }) => {
-      console.log(body, pathParameters, queryStringParameters, headers);
+      console.log(
+        body,
+        pathParameters,
+        queryStringParameters,
+        headers,
+        requestContext.authorizer.claims,
+      );
 
       return Promise.resolve({ id: 'hello', name: 'world' });
     };
@@ -73,6 +81,7 @@ describe('apiGateway lambda handler', () => {
       path: '/coucou',
       method: 'POST',
       integrationType: 'restApi',
+      hasAuthorizer: false,
       pathParametersSchema: undefined,
       queryStringParametersSchema: undefined,
       headersSchema: undefined,

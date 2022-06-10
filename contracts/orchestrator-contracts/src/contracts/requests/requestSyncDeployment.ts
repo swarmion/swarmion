@@ -30,4 +30,5 @@ export const requestSyncDeployment = new ApiGatewayContract({
   bodySchema,
   headersSchema: undefined,
   outputSchema,
+  hasAuthorizer: false,
 });
