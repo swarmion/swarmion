@@ -44,7 +44,7 @@ describe('apiGateway lambda handler', () => {
       path: '/users/{userId}',
       method: 'GET',
       integrationType: 'httpApi',
-      hasAuthorizer: false,
+      hasAuthorizer: true,
       pathParametersSchema,
       queryStringParametersSchema,
       headersSchema,
@@ -57,8 +57,15 @@ describe('apiGateway lambda handler', () => {
       pathParameters,
       queryStringParameters,
       headers,
+      requestContext,
     }) => {
-      console.log(body, pathParameters, queryStringParameters, headers);
+      console.log(
+        body,
+        pathParameters,
+        queryStringParameters,
+        headers,
+        requestContext.authorizer.claims,
+      );
 
       return Promise.resolve({ id: 'hello', name: 'world' });
     };
