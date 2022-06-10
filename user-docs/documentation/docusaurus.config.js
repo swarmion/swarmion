@@ -34,6 +34,45 @@ const config = {
     ],
   ],
 
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'getting-started',
+        path: 'getting-started',
+        routeBasePath: 'getting-started',
+        sidebarPath: require.resolve('./sidebars.js'),
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'how-to',
+        path: 'how-to',
+        routeBasePath: 'how-to',
+        sidebarPath: require.resolve('./sidebars.js'),
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'explanations',
+        path: 'explanations',
+        routeBasePath: 'explanations',
+        sidebarPath: require.resolve('./sidebars.js'),
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'references',
+        path: 'references',
+        routeBasePath: 'references',
+        sidebarPath: require.resolve('./sidebars.js'),
+      },
+    ],
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -54,8 +93,32 @@ const config = {
             position: 'left',
             label: 'Documentation',
           },
+          // {
+          //   to: '/getting-started/',
+          //   label: 'Getting started',
+          //   position: 'left',
+          //   activeBaseRegex: `/getting-started/`,
+          // },
+          // {
+          //   to: '/how-to/',
+          //   label: 'User guides',
+          //   position: 'left',
+          //   activeBaseRegex: `/how-to/`,
+          // },
+          // {
+          //   to: '/explanations/',
+          //   label: 'Explanations',
+          //   position: 'left',
+          //   activeBaseRegex: `/explanations/`,
+          // },
+          // {
+          //   to: '/references/',
+          //   label: 'References',
+          //   position: 'left',
+          //   activeBaseRegex: `/references/`,
+          // },
           {
-            href: 'https://github.com/swarmion',
+            href: 'https://github.com/swarmion/swarmion',
             label: 'GitHub',
             position: 'right',
           },
