@@ -15,7 +15,8 @@
     "remove-production": "serverless remove --stage production",
     "remove-staging": "serverless remove --stage staging",
     "sls-info": "serverless info --verbose",
-    "test": "yarn test-linter && yarn test-type && yarn test-unit",
+    "test": "yarn test-linter && yarn test-type && yarn test-unit && yarn test-circular",
+    "test-circular": "yarn depcruise --validate .dependency-cruiser.js .",
     "test-linter": "yarn linter-base-config .",
     "test-type": "tsc --noEmit",
     "test-unit": "jest --group=unit --runInBand --collectCoverage --logHeapUsage --passWithNoTests"
@@ -38,6 +39,7 @@
     "@types/jest": "^27.5.2",
     "@types/node": "^17.0.41",
     "constructs": "^10.1.33",
+    "dependency-cruiser": "^11.9.0",
     "esbuild": "^0.14.43",
     "esbuild-visualizer": "^0.3.1",
     "eslint": "^8.17.0",
