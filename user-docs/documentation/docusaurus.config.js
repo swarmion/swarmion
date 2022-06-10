@@ -118,7 +118,7 @@ const config = {
           //   activeBaseRegex: `/references/`,
           // },
           {
-            href: 'https://github.com/swarmion',
+            href: 'https://github.com/swarmion/swarmion',
             label: 'GitHub',
             position: 'right',
           },
