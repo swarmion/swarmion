@@ -1,3 +1,8 @@
+import type {
+  APIGatewayEventRequestContextWithAuthorizer,
+  APIGatewayProxyCognitoAuthorizer,
+} from 'aws-lambda';
+
 import { ApiGatewayContract } from '../apiGatewayContract';
 import { getLambdaHandler } from '../features';
 import { HandlerType } from '../types';
@@ -38,7 +43,7 @@ describe('apiGateway lambda handler', () => {
     required: ['id', 'name'],
   } as const;
 
-  describe('hhtpApi, when all parameters are set', () => {
+  describe('httpApi, when all parameters are set', () => {
     const httpApiContract = new ApiGatewayContract({
       id: 'testContract',
       path: '/users/{userId}',
@@ -52,49 +57,72 @@ describe('apiGateway lambda handler', () => {
       outputSchema,
     });
 
-    const handler: HandlerType<typeof httpApiContract> = ({
-      body,
-      pathParameters,
-      queryStringParameters,
-      headers,
-      requestContext,
-    }) => {
-      console.log(
+    it('should return a correctly typed handler', async () => {
+      const handler: HandlerType<typeof httpApiContract> = ({
         body,
         pathParameters,
         queryStringParameters,
         headers,
-        requestContext.authorizer.claims,
-      );
+        requestContext,
+      }) => {
+        console.log(
+          body,
+          pathParameters,
+          queryStringParameters,
+          headers,
+          requestContext.authorizer.claims,
+        );
 
-      return Promise.resolve({ id: 'hello', name: 'world' });
-    };
-
-    it('should have the correct handler', () => {
+        return Promise.resolve({ id: 'hello', name: 'world' });
+      };
       expect(getLambdaHandler(httpApiContract)(handler)).toEqual(handler);
+
+      // @ts-expect-error we don't want to generate a full event here
+      const fakeRequestContext: APIGatewayEventRequestContextWithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
+        { authorizer: { claims: { foo: 'bar' } } };
+
+      const { id, name } = await handler({
+        pathParameters: { userId: 'toto', pageNumber: '15' },
+        body: { foo: 'bar' },
+        headers: { myHeader: 'MyCustomHeader', anotherHeader: 'anotherHeader' },
+        queryStringParameters: { testId: 'myTestId' },
+        requestContext: fakeRequestContext,
+      });
+
+      expect(id).toBe('hello');
+      expect(name).toBe('world');
     });
   });
 
-  describe('restApi, when it is instanciated with a subset of schemas', () => {
+  describe('restApi, when it is instantiated with a subset of schemas', () => {
     const restApiContract = new ApiGatewayContract({
       id: 'testContract',
-      path: '/coucou',
+      path: '/hello',
       method: 'POST',
       integrationType: 'restApi',
       hasAuthorizer: false,
       pathParametersSchema: undefined,
       queryStringParametersSchema: undefined,
       headersSchema: undefined,
-      bodySchema: undefined,
+      bodySchema,
       outputSchema: undefined,
     });
 
-    const handler: HandlerType<typeof restApiContract> = () => {
-      return Promise.resolve(undefined);
-    };
-
-    it('should have the correct handler', () => {
+    it('should return a correctly typed handler', async () => {
+      const handler: HandlerType<typeof restApiContract> = async () => {
+        return Promise.resolve(undefined);
+      };
       expect(getLambdaHandler(restApiContract)(handler)).toEqual(handler);
+
+      // @ts-expect-error we don't want to generate a full event here
+      const fakeRequestContext: APIGatewayEventRequestContextWithAuthorizer<undefined> =
+        {};
+      expect(
+        await handler({
+          body: { foo: 'bar' },
+          requestContext: fakeRequestContext,
+        }),
+      ).toBe(undefined);
     });
   });
 });
