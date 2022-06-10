@@ -1,14 +1,20 @@
-import type { APIGatewayProxyWithCognitoAuthorizerEvent } from 'aws-lambda';
+import type {
+  APIGatewayEventRequestContextWithAuthorizer,
+  APIGatewayProxyCognitoAuthorizer,
+} from 'aws-lambda';
 import { FromSchema } from 'json-schema-to-ts';
 
 import { ApiGatewayContract } from '../apiGatewayContract';
 import { OutputType } from './common';
 import { InputSchemaType } from './input';
+import type { DefinedProperties } from './utils';
 
 export type HandlerType<Contract extends ApiGatewayContract> = (
-  event: (Contract['hasAuthorizer'] extends true
-    ? APIGatewayProxyWithCognitoAuthorizerEvent
-    : Record<string, never>) &
+  event: DefinedProperties<{
+    requestContext: Contract['hasAuthorizer'] extends true
+      ? APIGatewayEventRequestContextWithAuthorizer<APIGatewayProxyCognitoAuthorizer>
+      : APIGatewayEventRequestContextWithAuthorizer<undefined>;
+  }> &
     FromSchema<
       InputSchemaType<
         Contract['pathParametersSchema'],
