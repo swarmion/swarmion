@@ -1,5 +1,10 @@
 module.exports = {
-  extends: ['eslint:recommended', 'plugin:prettier/recommended'],
+  plugins: ['prefer-arrow', 'import'],
+  extends: [
+    'eslint:recommended',
+    'plugin:import/recommended',
+    'plugin:prettier/recommended',
+  ],
   rules: {
     'prettier/prettier': 'error',
     'import/extensions': 0,
@@ -29,9 +34,7 @@ module.exports = {
     'import/order': [
       'error',
       {
-        pathGroups: [
-          { pattern: '@swarmion/**', group: 'unknown' },
-        ],
+        pathGroups: [{ pattern: '@swarmion/**', group: 'unknown' }],
         groups: [
           ['external', 'builtin'],
           'unknown',
@@ -46,6 +49,7 @@ module.exports = {
         pathGroupsExcludedImportTypes: ['builtin'],
       },
     ],
+    'import/namespace': 'off',
     'sort-imports': [
       'error',
       {
@@ -106,7 +110,6 @@ module.exports = {
     jest: true,
     browser: true,
   },
-  plugins: ['prefer-arrow', 'import'],
   parserOptions: {
     ecmaVersion: 9,
     sourceType: 'module',
@@ -117,12 +120,14 @@ module.exports = {
       extends: [
         'plugin:@typescript-eslint/recommended',
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
+        'plugin:import/typescript',
         'plugin:prettier/recommended',
       ],
       parser: '@typescript-eslint/parser',
       parserOptions: {
         project: 'tsconfig.json',
       },
+      settings: { 'import/resolver': { typescript: {} } },
       rules: {
         '@typescript-eslint/prefer-optional-chain': 'error',
         'no-shadow': 'off',

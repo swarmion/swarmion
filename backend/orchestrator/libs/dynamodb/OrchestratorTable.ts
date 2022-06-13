@@ -1,11 +1,11 @@
-import DynamoDB from 'aws-sdk/clients/dynamodb';
+import { DocumentClient } from 'aws-sdk/clients/dynamodb';
 import { Table } from 'dynamodb-toolbox';
 
 import { getEnvVariable } from '@swarmion/serverless-helpers';
 
 import { PARTITION_KEY, SORT_KEY } from 'libs/dynamodb/primaryKeys';
 
-const DocumentClient = new DynamoDB.DocumentClient();
+const documentClient = new DocumentClient();
 
 export default new Table({
   name: getEnvVariable('ORCHESTRATOR_TABLE_NAME'),
@@ -13,5 +13,5 @@ export default new Table({
   sortKey: SORT_KEY,
   autoExecute: true,
   autoParse: true,
-  DocumentClient,
+  DocumentClient: documentClient,
 });
