@@ -5,7 +5,9 @@
 </p>
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 A set of tools to build and deploy type-safe microservices. In order to see a working example of these tools, check out [Swarmion template](https://github.com/swarmion/template).
@@ -52,3 +54,15 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 
 <a href="https://www.flaticon.com/" title="icons">Icons created by Smashicons - Flaticon</a>
+
+## Sponsor
+
+Swarmion is sponsored by [Theodo](https://www.theodo.fr/).
+
+<div align="center">
+  <a href="https://www.theodo.fr/" />
+    <img alt="Theodo logo" src="https://cdn2.hubspot.net/hub/2383597/hubfs/Website/Logos/Logo_Theodo_cropped.svg" width="200"/>
+  </a>
+</div>
+
+> Our Paris, London & New York teams of full-stack developers and agile experts bring together the tech, the talent and the experience to develop your web, mobile and software applications in record time.
