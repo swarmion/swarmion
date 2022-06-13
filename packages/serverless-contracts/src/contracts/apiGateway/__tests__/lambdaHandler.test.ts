@@ -43,7 +43,7 @@ describe('apiGateway lambda handler', () => {
     required: ['id', 'name'],
   } as const;
 
-  describe('httpApi, when all parameters are set', () => {
+  describe('httpApi, with authorizer, when all parameters are set', () => {
     const httpApiContract = new ApiGatewayContract({
       id: 'testContract',
       path: '/users/{userId}',
@@ -58,6 +58,11 @@ describe('apiGateway lambda handler', () => {
     });
 
     it('should return a correctly typed handler', async () => {
+      // let's imagine that lambda will send us the following context
+      // @ts-expect-error we don't want to generate a full event here
+      const fakeRequestContext: APIGatewayEventRequestContextWithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
+        { authorizer: { claims: { myClaimFoo: 'myClaimBar' } } };
+
       const handler: HandlerType<typeof httpApiContract> = ({
         body,
         pathParameters,
@@ -73,13 +78,12 @@ describe('apiGateway lambda handler', () => {
           requestContext.authorizer.claims,
         );
 
-        return Promise.resolve({ id: 'hello', name: 'world' });
+        const myCustomClaim: string =
+          requestContext.authorizer.claims.myClaimFoo;
+
+        return Promise.resolve({ id: 'hello', name: myCustomClaim });
       };
       expect(getLambdaHandler(httpApiContract)(handler)).toEqual(handler);
-
-      // @ts-expect-error we don't want to generate a full event here
-      const fakeRequestContext: APIGatewayEventRequestContextWithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
-        { authorizer: { claims: { foo: 'bar' } } };
 
       const { id, name } = await handler({
         pathParameters: { userId: 'toto', pageNumber: '15' },
@@ -90,11 +94,11 @@ describe('apiGateway lambda handler', () => {
       });
 
       expect(id).toBe('hello');
-      expect(name).toBe('world');
+      expect(name).toBe('myClaimBar');
     });
   });
 
-  describe('restApi, when it is instantiated with a subset of schemas', () => {
+  describe('restApi, with no authorizer, when it is instantiated with a subset of schemas', () => {
     const restApiContract = new ApiGatewayContract({
       id: 'testContract',
       path: '/hello',
@@ -114,9 +118,33 @@ describe('apiGateway lambda handler', () => {
       };
       expect(getLambdaHandler(restApiContract)(handler)).toEqual(handler);
 
+      // let's imagine that lambda will send us the following context
       // @ts-expect-error we don't want to generate a full event here
       const fakeRequestContext: APIGatewayEventRequestContextWithAuthorizer<undefined> =
         {};
+      expect(
+        await handler({
+          body: { foo: 'bar' },
+          requestContext: fakeRequestContext,
+        }),
+      ).toBe(undefined);
+    });
+
+    it('should not have claims in its request context', async () => {
+      // let's imagine that lambda will send us the following context
+      // @ts-expect-error we don't want to generate a full event here
+      const fakeRequestContext: APIGatewayEventRequestContextWithAuthorizer<undefined> =
+        {};
+
+      const handler: HandlerType<typeof restApiContract> = async ({
+        requestContext,
+      }) => {
+        const undefinedAuthorizer: undefined = requestContext.authorizer;
+
+        return Promise.resolve(undefinedAuthorizer);
+      };
+      expect(getLambdaHandler(restApiContract)(handler)).toEqual(handler);
+
       expect(
         await handler({
           body: { foo: 'bar' },
