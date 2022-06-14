@@ -1,8 +1,8 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require('prism-react-renderer/themes/github');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -133,7 +133,7 @@ const config = {
             items: [
               {
                 label: 'Sponsored by Theodo',
-                href: 'https://theodo.fr',
+                href: 'https://www.theodo.fr',
               },
               {
                 label: 'Icons created by Smashicons - Flaticon',
