@@ -129,7 +129,17 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Swarmion.`,
         links: [
           {
-            html: `<a href="https://www.flaticon.com/" title="icons">Icons created by Smashicons - Flaticon</a>`,
+            title: 'Acknowledgments',
+            items: [
+              {
+                label: 'Sponsored by Theodo',
+                href: 'https://theodo.fr',
+              },
+              {
+                label: 'Icons created by Smashicons - Flaticon',
+                href: 'https://www.flaticon.com/',
+              },
+            ],
           },
         ],
       },
