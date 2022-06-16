@@ -12,7 +12,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     deployedCommit: 'serverless deployedCommit',
     'lint-fix': 'yarn linter-base-config --fix',
     'lint-fix-all': 'yarn lint-fix .',
-    'linter-base-config': 'eslint --ext=js,ts .',
+    'linter-base-config': 'eslint --ext=js,ts',
     remove: 'serverless remove',
     'remove-production': 'serverless remove --stage production',
     'remove-staging': 'serverless remove --stage staging',
