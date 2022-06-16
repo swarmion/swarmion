@@ -1,4 +1,5 @@
 import type {
+  APIGatewayEventRequestContextV2WithAuthorizer,
   APIGatewayEventRequestContextWithAuthorizer,
   APIGatewayProxyCognitoAuthorizer,
 } from 'aws-lambda';
@@ -49,7 +50,7 @@ describe('apiGateway lambda handler', () => {
       path: '/users/{userId}',
       method: 'GET',
       integrationType: 'httpApi',
-      hasAuthorizer: true,
+      authorizerType: 'cognito',
       pathParametersSchema,
       queryStringParametersSchema,
       headersSchema,
@@ -60,7 +61,7 @@ describe('apiGateway lambda handler', () => {
     it('should return a correctly typed handler', async () => {
       // let's imagine that lambda will send us the following context
       // @ts-expect-error we don't want to generate a full event here
-      const fakeRequestContext: APIGatewayEventRequestContextWithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
+      const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
         { authorizer: { claims: { myClaimFoo: 'myClaimBar' } } };
 
       const handler: HandlerType<typeof httpApiContract> = ({
@@ -104,7 +105,7 @@ describe('apiGateway lambda handler', () => {
       path: '/hello',
       method: 'POST',
       integrationType: 'restApi',
-      hasAuthorizer: false,
+      authorizerType: undefined,
       pathParametersSchema: undefined,
       queryStringParametersSchema: undefined,
       headersSchema: undefined,

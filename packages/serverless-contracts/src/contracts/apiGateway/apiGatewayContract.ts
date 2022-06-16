@@ -5,7 +5,11 @@ import omitBy from 'lodash/omitBy';
 import { ConstrainedJSONSchema } from 'types/constrainedJSONSchema';
 import { HttpMethod } from 'types/http';
 
-import { ApiGatewayIntegrationType, InputSchemaType } from './types';
+import {
+  ApiGatewayAuthorizerType,
+  ApiGatewayIntegrationType,
+  InputSchemaType,
+} from './types';
 
 /**
  * ApiGatewayContract:
@@ -33,7 +37,7 @@ export class ApiGatewayContract<
     | undefined,
   BodySchema extends JSONSchema | undefined = JSONSchema | undefined,
   OutputSchema extends JSONSchema | undefined = JSONSchema | undefined,
-  HasAuthorizer extends boolean = boolean,
+  AuthorizerType extends ApiGatewayAuthorizerType = ApiGatewayAuthorizerType,
 > {
   public contractType = 'apiGateway' as const;
   public id: string;
@@ -52,7 +56,7 @@ export class ApiGatewayContract<
     BodySchema,
     true
   >;
-  public hasAuthorizer: HasAuthorizer;
+  public authorizerType: AuthorizerType;
 
   /**
    * Builds a new ApiGateway contract
@@ -69,7 +73,7 @@ export class ApiGatewayContract<
    * @param headersSchema a JSONSchema used to validate the headers and infer their types (Same constraints).
    * @param bodySchema a JSONSchema used to validate the body and infer its type (Same constraints).
    * @param outputSchema a JSONSchema used to validate the output and infer its type (Same constraints).
-   * @param hasAuthorizer indicates if the endpoint is secured behind an authorizer
+   * @param authorizerType indicates which type of authorizer is used for this contract.
    */
   constructor(props: {
     id: string;
@@ -81,7 +85,7 @@ export class ApiGatewayContract<
     headersSchema: HeadersSchema;
     bodySchema: BodySchema;
     outputSchema: OutputSchema;
-    hasAuthorizer: HasAuthorizer;
+    authorizerType: AuthorizerType;
   }) {
     this.id = props.id;
     this.path = props.path;
@@ -93,7 +97,7 @@ export class ApiGatewayContract<
     this.bodySchema = props.bodySchema;
     this.outputSchema = props.outputSchema;
     this.inputSchema = this.getInputSchema();
-    this.hasAuthorizer = props.hasAuthorizer;
+    this.authorizerType = props.authorizerType;
   }
 
   private getInputSchema(): InputSchemaType<

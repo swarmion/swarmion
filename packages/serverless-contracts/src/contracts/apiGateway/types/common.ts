@@ -9,6 +9,7 @@ import { ApiGatewayContract } from '../apiGatewayContract';
  */
 export type ApiGatewayIntegrationType = 'httpApi' | 'restApi';
 export type ApiGatewayKey = 'httpApi' | 'http';
+export type ApiGatewayAuthorizerType = 'cognito' | 'jwt' | 'lambda' | undefined;
 
 export type PathParametersType<Contract extends ApiGatewayContract> =
   Contract['pathParametersSchema'] extends ConstrainedJSONSchema
