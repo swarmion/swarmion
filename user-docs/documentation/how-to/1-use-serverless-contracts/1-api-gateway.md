@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Using ApiGateway Contracts
+# Using ApiGateway contracts
 
 ApiGateway is an AWS service that makes it possible to trigger lambda functions through HTTP. There are two types of ApiGateways (for more details, see [AWS documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html)):
 

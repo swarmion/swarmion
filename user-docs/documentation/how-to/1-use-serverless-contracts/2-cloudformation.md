@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# CloudFormation Contracts
+# Using CloudFormation contracts
 
 AWS CloudFormation is used by the Serverless Framework to manage resources. In certain cases, it may be necessary to share these resources between services. For example, authentication may be handled by a common authorizer, which should not be re-implemented on each service.
 

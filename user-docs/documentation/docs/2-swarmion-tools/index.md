@@ -16,3 +16,6 @@ In order to manage a scalable codebase, Swarmion uses many optimized tools. In t
 - End-to-end Typescript
 - Shared Typescript libraries built with babel
 - Serverless contracts
+- Create a new Swarmion project through CLI
+- Generate new backend services through CLI
+- Generate new packaged internal library through CLI

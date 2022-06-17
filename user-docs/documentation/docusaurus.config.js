@@ -42,6 +42,8 @@ const config = {
         path: 'getting-started',
         routeBasePath: 'getting-started',
         sidebarPath: require.resolve('./sidebars.js'),
+        editUrl:
+          'https://github.com/swarmion/swarmion/tree/main/user-docs/documentation',
       },
     ],
     [
@@ -51,15 +53,8 @@ const config = {
         path: 'how-to',
         routeBasePath: 'how-to',
         sidebarPath: require.resolve('./sidebars.js'),
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'explanations',
-        path: 'explanations',
-        routeBasePath: 'explanations',
-        sidebarPath: require.resolve('./sidebars.js'),
+        editUrl:
+          'https://github.com/swarmion/swarmion/tree/main/user-docs/documentation',
       },
     ],
     [
@@ -69,6 +64,8 @@ const config = {
         path: 'references',
         routeBasePath: 'references',
         sidebarPath: require.resolve('./sidebars.js'),
+        editUrl:
+          'https://github.com/swarmion/swarmion/tree/main/user-docs/documentation',
       },
     ],
   ],
@@ -91,7 +88,7 @@ const config = {
             type: 'doc',
             docId: 'index',
             position: 'left',
-            label: 'Documentation',
+            label: 'Explanations',
           },
           {
             to: '/getting-started/',
@@ -104,12 +101,6 @@ const config = {
             label: 'User guides',
             position: 'left',
             activeBaseRegex: `/how-to/`,
-          },
-          {
-            to: '/explanations/',
-            label: 'Explanations',
-            position: 'left',
-            activeBaseRegex: `/explanations/`,
           },
           {
             to: '/references/',
