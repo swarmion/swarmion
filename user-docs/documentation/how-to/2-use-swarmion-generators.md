@@ -1,8 +1,8 @@
 ---
-sidebar_position: 5
+sidebar_position: 2
 ---
 
-# Nx Plugin
+# Use Swarmion generators
 
 Generate new packages respecting the [monorepo code structure](./monorepo#the-monorepo-structure) in one command.
 
