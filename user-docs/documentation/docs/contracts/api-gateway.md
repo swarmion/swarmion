@@ -170,24 +170,38 @@ const handler = getLambdaHandler(myContract)(async event => {
 Simply call the `getAxiosRequest` function with the schema.
 
 ```ts
-await getAxiosRequest(
-  myContract,
-  ('https://my-site.com',
-  {
-    pathParameters: { userId: '15', pageNumber: '45' },
-    headers: {
-      myHeader: 'hello',
-    },
-    queryStringParameters: { testId: 'plop' },
-    body: { foo: 'bar' },
-  }),
-);
+await getAxiosRequest(myContract, axiosclient, {
+  pathParameters: { userId: '15', pageNumber: '45' },
+  headers: {
+    myHeader: 'hello',
+  },
+  queryStringParameters: { testId: 'plop' },
+  body: { foo: 'bar' },
+});
 ```
 
 All parameter types will be inferred from the schemas.
 The return type will be an axios response of the type inferred from the `outputSchema`.
 
-If you do not wish to use `axios`, you can use the type inference to generate request parameters with:
+If you want to use fetch, you can try the `getFetchRequest` function:
+
+```ts
+await getFetchRequest(myContract, fetch, {
+  pathParameters: { userId: '15', pageNumber: '45' },
+  headers: {
+    myHeader: 'hello',
+  },
+  queryStringParameters: { testId: 'plop' },
+  body: { foo: 'bar' },
+  baseUrl: 'https://my-site.com',
+});
+```
+
+All parameter types will be inferred from the schemas.
+The return type will be the type inferred from the `outputSchema`.
+The fetch function that you provide can be a custom wrapper where you already define the base URL or some headers for example.
+
+If you want to use another request client, you can use the type inference to generate request parameters with:
 
 ```ts
 getRequestParameters(myContract, {
