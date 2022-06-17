@@ -4,9 +4,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable complexity */
 /* eslint-disable import/no-extraneous-dependencies */
-import got from 'got';
+import { got } from 'got';
 import { Stream } from 'stream';
-import tar from 'tar';
+import { extract } from 'tar';
 import { promisify } from 'util';
 
 const pipeline = promisify(Stream.pipeline);
@@ -48,7 +48,7 @@ export const downloadAndExtractRepo = (
     got.stream(
       `https://codeload.github.com/${username}/${name}/tar.gz/${branch}`,
     ),
-    tar.extract(
+    extract(
       { cwd: root, strip: filePath ? filePath.split('/').length + 1 : 1 },
       [
         `${name}-${branch.replace(/\//g, '-')}${
