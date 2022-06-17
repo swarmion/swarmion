@@ -5,9 +5,7 @@
 </p>
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-16-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 A set of tools to build and deploy type-safe microservices. In order to see a working example of these tools, check out [Swarmion template](https://github.com/swarmion/template).
@@ -32,8 +30,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/fargito"><img src="https://avatars.githubusercontent.com/u/29537204?v=4?s=100" width="100px;" alt=""/><br /><sub><b>François Farge</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=fargito" title="Code">💻</a> <a href="#ideas-fargito" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/swarmion/swarmion/commits?author=fargito" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/adriencaccia"><img src="https://avatars.githubusercontent.com/u/19605940?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Adrien Cacciaguerra</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=adriencaccia" title="Code">💻</a> <a href="#ideas-adriencaccia" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://github.com/fargito"><img src="https://avatars.githubusercontent.com/u/29537204?v=4?s=100" width="100px;" alt=""/><br /><sub><b>François Farge</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=fargito" title="Code">💻</a> <a href="#ideas-fargito" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/swarmion/swarmion/commits?author=fargito" title="Documentation">📖</a> <a href="#infra-fargito" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+    <td align="center"><a href="https://github.com/adriencaccia"><img src="https://avatars.githubusercontent.com/u/19605940?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Adrien Cacciaguerra</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=adriencaccia" title="Code">💻</a> <a href="#ideas-adriencaccia" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-adriencaccia" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
     <td align="center"><a href="https://github.com/MaximeVivier"><img src="https://avatars.githubusercontent.com/u/55386175?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Maxime Vivier</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=MaximeVivier" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/GuillaumeLagrange"><img src="https://avatars.githubusercontent.com/u/19265358?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Guillaume Lagrange</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=GuillaumeLagrange" title="Code">💻</a> <a href="https://github.com/swarmion/swarmion/commits?author=GuillaumeLagrange" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/Sc0ra"><img src="https://avatars.githubusercontent.com/u/25872509?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Axel Fournier</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=Sc0ra" title="Code">💻</a> <a href="https://github.com/swarmion/swarmion/commits?author=Sc0ra" title="Documentation">📖</a></td>
@@ -43,6 +41,15 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/ealain"><img src="https://avatars.githubusercontent.com/u/19293102?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Éloi Alain</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=ealain" title="Documentation">📖</a></td>
     <td align="center"><a href="https://corentindoue.github.io"><img src="https://avatars.githubusercontent.com/u/31917261?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Corentin Doue</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=CorentinDoue" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/LouisPinsard"><img src="https://avatars.githubusercontent.com/u/30240360?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Louis Pinsard</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=LouisPinsard" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/pmilliotte"><img src="https://avatars.githubusercontent.com/u/39985796?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Pierre Milliotte</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=pmilliotte" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/ThomasAribart"><img src="https://avatars.githubusercontent.com/u/38014240?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Thomas Aribart</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=ThomasAribart" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/charlesgery"><img src="https://avatars.githubusercontent.com/u/46850903?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Charles Géry</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=charlesgery" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/StanHannebelle"><img src="https://avatars.githubusercontent.com/u/45121661?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Stan Hannebelle</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=StanHannebelle" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/qhello"><img src="https://avatars.githubusercontent.com/u/9997584?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Quentin Hello</b></sub></a><br /><a href="#infra-qhello" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+    <td align="center"><a href="https://github.com/Paulmolin"><img src="https://avatars.githubusercontent.com/u/5166068?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Paul Molin</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=Paulmolin" title="Code">💻</a></td>
   </tr>
 </table>
 
