@@ -15,7 +15,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
   scripts: {
     'lint-fix': 'yarn linter-base-config --fix',
     'lint-fix-all': 'yarn lint-fix .',
-    'linter-base-config': 'eslint --ext=js,ts .',
+    'linter-base-config': 'eslint --ext=js,ts',
     package:
       'rm -rf dist && yarn package-cjs && yarn package-esm && yarn package-types',
     'package-cjs':
