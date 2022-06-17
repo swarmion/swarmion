@@ -1,0 +1,76 @@
+{
+  "name": "@swarmion/serverless-cdk-plugin",
+  "description": "Serverless plugin to use CDK constructs in serverless framework applications",
+  "version": "0.8.1",
+  "license": "MIT",
+  "homepage": "https://www.swarmion.dev",
+  "bugs": "https://github.com/swarmion/swarmion/issues",
+  "repository": "swarmion/swarmion.git",
+  "keywords": [
+    "CDK",
+    "Serverless",
+    "Typescript"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "lint-fix": "yarn linter-base-config --fix",
+    "lint-fix-all": "yarn lint-fix .",
+    "linter-base-config": "eslint --ext=js,ts",
+    "package": "rm -rf dist && yarn package-cjs && yarn package-esm && yarn package-types",
+    "package-cjs": "NODE_ENV=cjs yarn transpile --out-dir dist/cjs --source-maps",
+    "package-esm": "NODE_ENV=esm yarn transpile --out-dir dist/esm --source-maps",
+    "package-types": "ttsc -p tsconfig.build.json",
+    "test": "yarn test-linter && yarn test-type && yarn test-unit && yarn test-circular",
+    "test-circular": "yarn depcruise --validate .dependency-cruiser.js src",
+    "test-linter": "yarn linter-base-config .",
+    "test-type": "tsc --noEmit --emitDeclarationOnly false",
+    "test-unit": "jest --runInBand --collectCoverage --logHeapUsage",
+    "transpile": "babel src --extensions .ts --quiet",
+    "watch": "rm -rf dist && concurrently 'yarn:package-* --watch'"
+  },
+  "dependencies": {
+    "@babel/runtime": "npm:^7.1.2",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@babel/cli": "npm:^7.17.10",
+    "@babel/core": "npm:7.12.9",
+    "@babel/plugin-transform-runtime": "npm:^7.17.10",
+    "@babel/preset-env": "npm:^7.15.6",
+    "@babel/preset-typescript": "npm:^7.15.0",
+    "@serverless/test": "^11.0.0",
+    "@swarmion/configuration": "workspace:^",
+    "@types/node": "npm:*",
+    "@zerollup/ts-transform-paths": "npm:^1.7.18",
+    "babel-plugin-module-resolver": "npm:^4.1.0",
+    "concurrently": "npm:^7.1.0",
+    "constructs": "^10.1.25",
+    "dependency-cruiser": "npm:latest",
+    "eslint": "npm:^8.14.0",
+    "jest": "npm:^27.5.1",
+    "json-schema-to-ts": "npm:^2.3.0",
+    "prettier": "npm:^2.6.2",
+    "serverless": "npm: ^3.16.0",
+    "ts-node": "npm:^10.6.0",
+    "ttypescript": "npm:^1.5.13",
+    "typescript": "npm:^4.4.3"
+  },
+  "nx": {
+    "targets": {
+      "package": {
+        "outputs": [
+          "packages/serverless-cdk-plugin/dist"
+        ]
+      }
+    }
+  }
+}

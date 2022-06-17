@@ -1388,6 +1388,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/plugin-transform-runtime@npm:^7.17.10":
+  version: 7.18.5
+  resolution: "@babel/plugin-transform-runtime@npm:7.18.5"
+  dependencies:
+    "@babel/helper-module-imports": ^7.16.7
+    "@babel/helper-plugin-utils": ^7.17.12
+    babel-plugin-polyfill-corejs2: ^0.3.0
+    babel-plugin-polyfill-corejs3: ^0.5.0
+    babel-plugin-polyfill-regenerator: ^0.3.0
+    semver: ^6.3.0
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+  checksum: 2a9d9ad0b6393639eeaf3ca3130f52f276f5c3f676f33e29d1b1db5d19308155a5068764e20999fe69331720e83407a400912332e3b4405fa19dfdc54721d00c
+  languageName: node
+  linkType: hard
+
 "@babel/plugin-transform-runtime@npm:^7.18.2":
   version: 7.18.2
   resolution: "@babel/plugin-transform-runtime@npm:7.18.2"
@@ -4249,6 +4265,40 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@serverless/test@npm:^11.0.0":
+  version: 11.0.0
+  resolution: "@serverless/test@npm:11.0.0"
+  dependencies:
+    "@serverless/utils": ^6.6.0
+    bluebird: ^3.7.2
+    chalk: ^4.1.2
+    child-process-ext: ^2.1.1
+    cli-progress-footer: ^2.3.1
+    essentials: ^1.2.0
+    fs-extra: ^10.1.0
+    js-yaml: ^4.1.0
+    lodash: ^4.17.21
+    log: ^6.3.1
+    log-node: ^8.0.3
+    memoizee: ^0.4.15
+    minimist: ^1.2.6
+    ncjsm: ^4.3.0
+    p-limit: ^3.1.0
+    process-utils: ^4.0.0
+    sinon: ^13.0.2
+    timers-ext: ^0.1.7
+    type: ^2.6.0
+  peerDependencies:
+    mocha: 9 || 10
+  peerDependenciesMeta:
+    mocha:
+      optional: true
+  bin:
+    mocha-isolated: bin/mocha-isolated.js
+  checksum: c87b8e0f3775b7214afe3a8a161d14d4f8b262d05f62d4bdf835b5247213f936e335148090b25de9e3c9d69ed7696ebc9dcce346d0c7993438aea92b2d02b8d4
+  languageName: node
+  linkType: hard
+
 "@serverless/typescript@npm:^3.19.0":
   version: 3.19.0
   resolution: "@serverless/typescript@npm:3.19.0"
@@ -4333,12 +4383,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sinonjs/commons@npm:^1.7.0":
+"@sinonjs/commons@npm:^1.6.0, @sinonjs/commons@npm:^1.7.0, @sinonjs/commons@npm:^1.8.3":
   version: 1.8.3
   resolution: "@sinonjs/commons@npm:1.8.3"
   dependencies:
     type-detect: 4.0.8
   checksum: 6159726db5ce6bf9f2297f8427f7ca5b3dff45b31e5cee23496f1fa6ef0bb4eab878b23fb2c5e6446381f6a66aba4968ef2fc255c1180d753d4b8c271636a2e5
+  languageName: node
+  linkType: hard
+
+"@sinonjs/fake-timers@npm:>=5, @sinonjs/fake-timers@npm:^9.1.2":
+  version: 9.1.2
+  resolution: "@sinonjs/fake-timers@npm:9.1.2"
+  dependencies:
+    "@sinonjs/commons": ^1.7.0
+  checksum: 7d3aef54e17c1073101cb64d953157c19d62a40e261a30923fa1ee337b049c5f29cc47b1f0c477880f42b5659848ba9ab897607ac8ea4acd5c30ddcfac57fca6
   languageName: node
   linkType: hard
 
@@ -4348,6 +4407,24 @@ __metadata:
   dependencies:
     "@sinonjs/commons": ^1.7.0
   checksum: 09b5a158ce013a6c37613258bad79ca4efeb99b1f59c41c73cca36cac00b258aefcf46eeea970fccf06b989414d86fe9f54c1102272c0c3bdd51a313cea80949
+  languageName: node
+  linkType: hard
+
+"@sinonjs/samsam@npm:^6.1.1":
+  version: 6.1.1
+  resolution: "@sinonjs/samsam@npm:6.1.1"
+  dependencies:
+    "@sinonjs/commons": ^1.6.0
+    lodash.get: ^4.4.2
+    type-detect: ^4.0.8
+  checksum: a09b0914bf573f0da82bd03c64ba413df81a7c173818dc3f0a90c2652240ac835ef583f4d52f0b215e626633c91a4095c255e0669f6ead97241319f34f05e7fc
+  languageName: node
+  linkType: hard
+
+"@sinonjs/text-encoding@npm:^0.7.1":
+  version: 0.7.1
+  resolution: "@sinonjs/text-encoding@npm:0.7.1"
+  checksum: 130de0bb568c5f8a611ec21d1a4e3f80ab0c5ec333010f49cfc1adc5cba6d8808699c8a587a46b0f0b016a1f4c1389bc96141e773e8460fcbb441875b2e91ba7
   languageName: node
   linkType: hard
 
@@ -4551,7 +4628,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swarmion/configuration@^0.8.1, @swarmion/configuration@workspace:packages/configuration":
+"@swarmion/configuration@^0.8.1, @swarmion/configuration@workspace:^, @swarmion/configuration@workspace:packages/configuration":
   version: 0.0.0-use.local
   resolution: "@swarmion/configuration@workspace:packages/configuration"
   dependencies:
@@ -4727,6 +4804,36 @@ __metadata:
     prettier: ^2.7.1
     syncpack: ^7.2.2
     typescript: ^4.7.3
+  languageName: unknown
+  linkType: soft
+
+"@swarmion/serverless-cdk-plugin@workspace:packages/serverless-cdk-plugin":
+  version: 0.0.0-use.local
+  resolution: "@swarmion/serverless-cdk-plugin@workspace:packages/serverless-cdk-plugin"
+  dependencies:
+    "@babel/cli": "npm:^7.17.10"
+    "@babel/core": "npm:7.12.9"
+    "@babel/plugin-transform-runtime": "npm:^7.17.10"
+    "@babel/preset-env": "npm:^7.15.6"
+    "@babel/preset-typescript": "npm:^7.15.0"
+    "@babel/runtime": "npm:^7.1.2"
+    "@serverless/test": ^11.0.0
+    "@swarmion/configuration": "workspace:^"
+    "@types/node": "npm:*"
+    "@zerollup/ts-transform-paths": "npm:^1.7.18"
+    babel-plugin-module-resolver: "npm:^4.1.0"
+    concurrently: "npm:^7.1.0"
+    constructs: ^10.1.25
+    dependency-cruiser: "npm:latest"
+    eslint: "npm:^8.14.0"
+    jest: "npm:^27.5.1"
+    json-schema-to-ts: "npm:^2.3.0"
+    lodash: ^4.17.21
+    prettier: "npm:^2.6.2"
+    serverless: "npm: ^3.16.0"
+    ts-node: "npm:^10.6.0"
+    ttypescript: "npm:^1.5.13"
+    typescript: "npm:^4.4.3"
   languageName: unknown
   linkType: soft
 
@@ -8003,7 +8110,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"concurrently@npm:^7.2.2":
+"concurrently@npm:^7.1.0, concurrently@npm:^7.2.2":
   version: 7.2.2
   resolution: "concurrently@npm:7.2.2"
   dependencies:
@@ -8082,6 +8189,13 @@ __metadata:
   version: 10.1.34
   resolution: "constructs@npm:10.1.34"
   checksum: 6da995ec7c208efb3a00aa54f43b84950ab5cc2f483a89f5d026d4016c49d067ea41a208b2f74c91ee6afdcb8424cd7d6aacf49c41f58471def223b3f7a672bd
+  languageName: node
+  linkType: hard
+
+"constructs@npm:^10.1.25":
+  version: 10.1.42
+  resolution: "constructs@npm:10.1.42"
+  checksum: c2ab6078fa4d6672506a8de35d66156429aba3ac68ae5e46a7559a1440d7e189361a7776ddf9311a5be361ff9bf0682089b2bc7a0f9e8b43e0aa8f2272b5ddb2
   languageName: node
   linkType: hard
 
@@ -9076,6 +9190,44 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dependency-cruiser@npm:latest":
+  version: 11.10.0
+  resolution: "dependency-cruiser@npm:11.10.0"
+  dependencies:
+    acorn: 8.7.1
+    acorn-jsx: 5.3.2
+    acorn-jsx-walk: 2.0.0
+    acorn-loose: 8.3.0
+    acorn-walk: 8.2.0
+    ajv: 8.11.0
+    chalk: ^4.1.2
+    commander: 9.3.0
+    enhanced-resolve: 5.9.3
+    figures: ^3.2.0
+    get-stream: ^6.0.1
+    glob: 7.2.0
+    handlebars: 4.7.7
+    indent-string: ^4.0.0
+    inquirer: 8.2.4
+    json5: 2.2.1
+    lodash: 4.17.21
+    safe-regex: 2.1.1
+    semver: ^7.3.7
+    semver-try-require: ^5.0.2
+    teamcity-service-messages: 0.1.14
+    tsconfig-paths-webpack-plugin: 3.5.2
+    wrap-ansi: ^7.0.0
+  bin:
+    depcruise: bin/dependency-cruise.js
+    depcruise-baseline: bin/depcruise-baseline.js
+    depcruise-fmt: bin/depcruise-fmt.js
+    depcruise-wrap-stream-in-html: bin/wrap-stream-in-html.js
+    dependency-cruise: bin/dependency-cruise.js
+    dependency-cruiser: bin/dependency-cruise.js
+  checksum: 6dbabc6b19c799f7cfd8d0144edb2f0012c551d67d4cc75d91951b95f706d5ee8b2974cafcefc362606a93492e00965d9c96a1a222e190f6d42d3a5433685e49
+  languageName: node
+  linkType: hard
+
 "deprecation@npm:^2.0.0, deprecation@npm:^2.3.1":
   version: 2.3.1
   resolution: "deprecation@npm:2.3.1"
@@ -9174,6 +9326,13 @@ __metadata:
   version: 4.0.2
   resolution: "diff@npm:4.0.2"
   checksum: f2c09b0ce4e6b301c221addd83bf3f454c0bc00caa3dd837cf6c127d6edf7223aa2bbe3b688feea110b7f262adbfc845b757c44c8a9f8c0c5b15d8fa9ce9d20d
+  languageName: node
+  linkType: hard
+
+"diff@npm:^5.0.0":
+  version: 5.1.0
+  resolution: "diff@npm:5.1.0"
+  checksum: c7bf0df7c9bfbe1cf8a678fd1b2137c4fb11be117a67bc18a0e03ae75105e8533dbfb1cda6b46beb3586ef5aed22143ef9d70713977d5fb1f9114e21455fba90
   languageName: node
   linkType: hard
 
@@ -10182,7 +10341,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.17.0":
+"eslint@npm:^8.14.0, eslint@npm:^8.17.0":
   version: 8.17.0
   resolution: "eslint@npm:8.17.0"
   dependencies:
@@ -13733,7 +13892,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"json-schema-to-ts@npm:^2.5.3":
+"json-schema-to-ts@npm:^2.3.0, json-schema-to-ts@npm:^2.5.3":
   version: 2.5.3
   resolution: "json-schema-to-ts@npm:2.5.3"
   dependencies:
@@ -13872,6 +14031,13 @@ __metadata:
   version: 5.0.2
   resolution: "just-diff@npm:5.0.2"
   checksum: 1c7408432f53ff67ea4ce41adb5579c08a39f990956ddbf2e94f4161f3802a41179d7412538573972433ce9f50e371afdca019964e51cf500577bf1aa732b842
+  languageName: node
+  linkType: hard
+
+"just-extend@npm:^4.0.2":
+  version: 4.2.1
+  resolution: "just-extend@npm:4.2.1"
+  checksum: ff9fdede240fad313efeeeb68a660b942e5586d99c0058064c78884894a2690dc09bba44c994ad4e077e45d913fef01a9240c14a72c657b53687ac58de53b39c
   languageName: node
   linkType: hard
 
@@ -14254,6 +14420,13 @@ __metadata:
   version: 4.5.0
   resolution: "lodash.foreach@npm:4.5.0"
   checksum: a940386b158ca0d62994db41fc16529eb8ae67138f29ced38e91f912cb5435d1b0ed34b18e6f7b9ddfc32ab676afc6dfec60d1e22633d8e3e4b33413402ab4ad
+  languageName: node
+  linkType: hard
+
+"lodash.get@npm:^4.4.2":
+  version: 4.4.2
+  resolution: "lodash.get@npm:4.4.2"
+  checksum: e403047ddb03181c9d0e92df9556570e2b67e0f0a930fcbbbd779370972368f5568e914f913e93f3b08f6d492abc71e14d4e9b7a18916c31fa04bd2306efe545
   languageName: node
   linkType: hard
 
@@ -15241,6 +15414,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nise@npm:^5.1.1":
+  version: 5.1.1
+  resolution: "nise@npm:5.1.1"
+  dependencies:
+    "@sinonjs/commons": ^1.8.3
+    "@sinonjs/fake-timers": ">=5"
+    "@sinonjs/text-encoding": ^0.7.1
+    just-extend: ^4.0.2
+    path-to-regexp: ^1.7.0
+  checksum: d8be29e84a014743c9a10f428fac86f294ac5f92bed1f606fe9b551e935f494d8e0ce1af8a12673c6014010ec7f771f2d48aa5c8e116f223eb4f40c5e1ab44b3
+  languageName: node
+  linkType: hard
+
 "no-case@npm:^3.0.4":
   version: 3.0.4
   resolution: "no-case@npm:3.0.4"
@@ -15995,7 +16181,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"p-limit@npm:^3.0.2":
+"p-limit@npm:^3.0.2, p-limit@npm:^3.1.0":
   version: 3.1.0
   resolution: "p-limit@npm:3.1.0"
   dependencies:
@@ -17022,7 +17208,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.7.1":
+"prettier@npm:^2.6.2, prettier@npm:^2.7.1":
   version: 2.7.1
   resolution: "prettier@npm:2.7.1"
   bin:
@@ -18718,7 +18904,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"serverless@npm:^3.19.0":
+"serverless@npm: ^3.16.0, serverless@npm:^3.19.0":
   version: 3.19.0
   resolution: "serverless@npm:3.19.0"
   dependencies:
@@ -18911,6 +19097,20 @@ __metadata:
     "@kwsites/promise-deferred": ^1.1.1
     debug: ^4.3.3
   checksum: df5361e892cadf73f0bfad2b34f3609809465c4ba1c8f3f95b2650e8a40c366c78a1a99c5e4f0eafc2acd33a85a9660d834690bb6331ef11bc1c064f526cd4a8
+  languageName: node
+  linkType: hard
+
+"sinon@npm:^13.0.2":
+  version: 13.0.2
+  resolution: "sinon@npm:13.0.2"
+  dependencies:
+    "@sinonjs/commons": ^1.8.3
+    "@sinonjs/fake-timers": ^9.1.2
+    "@sinonjs/samsam": ^6.1.1
+    diff: ^5.0.0
+    nise: ^5.1.1
+    supports-color: ^7.2.0
+  checksum: 237f21c8c4a8b31574c71b1b9f4c0f74a63dde5c0e86bd116effa4ce63c52467bd45fb4034a8fa32656a7919d9b19fc7b108ca9e1e6e3144f3735da96dad2877
   languageName: node
   linkType: hard
 
@@ -19681,7 +19881,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"supports-color@npm:^7.0.0, supports-color@npm:^7.1.0":
+"supports-color@npm:^7.0.0, supports-color@npm:^7.1.0, supports-color@npm:^7.2.0":
   version: 7.2.0
   resolution: "supports-color@npm:7.2.0"
   dependencies:
@@ -20215,7 +20415,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-node@npm:^10.7.0, ts-node@npm:^10.8.1":
+"ts-node@npm:^10.6.0, ts-node@npm:^10.7.0, ts-node@npm:^10.8.1":
   version: 10.8.1
   resolution: "ts-node@npm:10.8.1"
   dependencies:
@@ -20348,7 +20548,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type-detect@npm:4.0.8":
+"type-detect@npm:4.0.8, type-detect@npm:^4.0.8":
   version: 4.0.8
   resolution: "type-detect@npm:4.0.8"
   checksum: 62b5628bff67c0eb0b66afa371bd73e230399a8d2ad30d852716efcc4656a7516904570cd8631a49a3ce57c10225adf5d0cbdcb47f6b0255fe6557c453925a15
@@ -20444,7 +20644,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.6.4, typescript@npm:^4.7.3":
+"typescript@npm:^4.4.3, typescript@npm:^4.6.4, typescript@npm:^4.7.3":
   version: 4.7.3
   resolution: "typescript@npm:4.7.3"
   bin:
@@ -20454,7 +20654,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.6.4#~builtin<compat/typescript>, typescript@patch:typescript@^4.7.3#~builtin<compat/typescript>":
+"typescript@patch:typescript@^4.6.4#~builtin<compat/typescript>, typescript@patch:typescript@^4.7.3#~builtin<compat/typescript>, typescript@patch:typescript@npm%3A^4.4.3#~builtin<compat/typescript>":
   version: 4.7.3
   resolution: "typescript@patch:typescript@npm%3A4.7.3#~builtin<compat/typescript>::version=4.7.3&hash=7ad353"
   bin:
