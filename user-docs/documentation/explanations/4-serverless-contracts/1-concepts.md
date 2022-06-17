@@ -26,10 +26,7 @@ In order to make these contracts safe, each side of the contract must be able to
 
 Serverless contracts are based on the idea of defining contracts before implementing them.
 
-Check out the specific documentation for each type of contract:
-
-- [CloudFormation](./cloudformation)
-- [ApiGateway](./api-gateway)
+Check out [how to use these contracts](../../how-to/1-use-serverless-contracts/)!
 
 ## Securing the deploy process (beta)
 
