@@ -1,5 +1,4 @@
-import { AWS } from '@serverless/typescript';
-
+import { AWS } from 'types';
 import { MyConstruct } from './myConstruct';
 
 const serverlessConfiguration: AWS = {
@@ -9,9 +8,7 @@ const serverlessConfiguration: AWS = {
   provider: {
     name: 'aws',
   },
-  custom: {
-    myConstruct: MyConstruct,
-  },
+  serverlessCdkBridge: MyConstruct,
 };
 
 module.exports = serverlessConfiguration;
