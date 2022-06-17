@@ -23,12 +23,12 @@ export const createApp = async ({
   appPath: string;
 }): Promise<void> => {
   const example =
-    'https://github.com/swarmion/swarmion/examples/swarmion-starter';
+    'https://github.com/swarmion/swarmion/tree/main/examples/swarmion-starter';
 
   const repoInfo: RepoInfo = {
     username: 'swarmion',
     name: 'swarmion',
-    branch: 'feat/create-swarmion-app/template-from-github',
+    branch: 'main',
     filePath: 'examples/swarmion-starter',
   };
 
