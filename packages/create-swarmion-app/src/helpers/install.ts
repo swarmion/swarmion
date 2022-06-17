@@ -1,4 +1,4 @@
-import spawn from 'cross-spawn';
+import { spawn } from 'cross-spawn';
 
 export const install = (root: string): Promise<void> => {
   return new Promise((resolve, reject) => {

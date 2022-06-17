@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* eslint-disable complexity */
 import chalk from 'chalk';
-import Commander from 'commander';
+import { Command } from 'commander';
 import path from 'path';
 import prompts from 'prompts';
 import checkForUpdate from 'update-check';
@@ -13,9 +13,9 @@ import packageJson from '../package.json';
 
 let projectPath = '';
 
-const program = new Commander.Command(packageJson.name)
-  .arguments('<project-directory>')
-  .usage(`${chalk.green('<project-directory>')} [options]`)
+const program = new Command(packageJson.name)
+  .arguments('[project-directory]')
+  .usage(`${chalk.green('[project-directory]')} [options]`)
   .action((name: string) => {
     projectPath = name;
   })
