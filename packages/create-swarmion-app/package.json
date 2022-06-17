@@ -29,7 +29,7 @@
     "dev": "ncc build ./src/index.ts -w -o dist/",
     "lint-fix": "yarn linter-base-config --fix",
     "lint-fix-all": "yarn lint-fix .",
-    "linter-base-config": "eslint --ext=js,ts .",
+    "linter-base-config": "eslint --ext=js,ts",
     "test": "yarn test-linter && yarn test-type",
     "test-linter": "yarn linter-base-config .",
     "test-type": "tsc --noEmit --emitDeclarationOnly false",

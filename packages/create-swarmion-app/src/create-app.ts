@@ -105,12 +105,13 @@ export const createApp = async ({
   console.log('Packaging your app.');
   execSync(`yarn package`, { stdio: [0, 1, 2], cwd: root });
   console.log();
-  console.log('Please wait a little longer');
+  console.log('Linting your project...');
   console.log();
   execSync(`yarn lint-fix-all`, { stdio: 'ignore', cwd: root });
 
+  console.log();
+  console.log('Initializing a git repository...');
   if (tryGitInit(root)) {
-    console.log('Initialized a git repository.');
     console.log();
   }
 
