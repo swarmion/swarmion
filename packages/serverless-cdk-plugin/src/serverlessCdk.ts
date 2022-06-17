@@ -1,4 +1,3 @@
-import { AWS } from '@serverless/typescript';
 import { App, Stack } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import merge from 'lodash/merge';
@@ -6,11 +5,12 @@ import * as Serverless from 'serverless';
 import * as Plugin from 'serverless/classes/Plugin';
 import resolveConfigPath from 'serverless/lib/cli/resolve-configuration-path';
 
+import { CloudFormationTemplate } from 'types';
+import { throwIfBootstrapMetadataDetected } from 'utils';
+
 type ServerlessConfigFile = Serverless & {
   cdkConstruct: typeof Construct;
 };
-
-type CloudFormationTemplate = Exclude<AWS['resources'], undefined>;
 
 const resolveServerlessConfigPath = async (): Promise<string> => {
   return resolveConfigPath();
@@ -75,7 +75,10 @@ export class ServerlessCdkPlugin implements Plugin {
 
     this.stackName = 'myStackName';
 
-    this.app = new App();
+    this.app = new App({
+      // Used to detect asset usage through metadata
+      context: { 'aws:cdk:enable-asset-metadata': true },
+    });
     this.stack = new Stack(this.app, this.stackName);
 
     this.hooks = {
@@ -131,6 +134,8 @@ export class ServerlessCdkPlugin implements Plugin {
     const { Resources, Outputs, Conditions, Mappings } = this.app
       .synth()
       .getStackByName(this.stackName).template as CloudFormationTemplate;
+
+    throwIfBootstrapMetadataDetected({ Resources });
 
     merge(this.serverless.service, {
       resources: { Resources, Outputs, Conditions, Mappings },
