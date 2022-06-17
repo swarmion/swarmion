@@ -4299,7 +4299,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@serverless/typescript@npm:^3.19.0":
+"@serverless/typescript@npm:^3.18.0, @serverless/typescript@npm:^3.19.0":
   version: 3.19.0
   resolution: "@serverless/typescript@npm:3.19.0"
   checksum: 6cb3b29720d9766dddc1ca975c8945f2ef4ba7d3b1bc6a5f7a448e96833d5a06a79b649e4df3b09a60ef46b5f22fcc1572a74ff326f47b47fbc922e185ac18a1
@@ -4818,9 +4818,11 @@ __metadata:
     "@babel/preset-typescript": "npm:^7.15.0"
     "@babel/runtime": "npm:^7.1.2"
     "@serverless/test": ^11.0.0
+    "@serverless/typescript": ^3.18.0
     "@swarmion/configuration": "workspace:^"
     "@types/node": "npm:*"
     "@zerollup/ts-transform-paths": "npm:^1.7.18"
+    aws-cdk-lib: ^2.25.0
     babel-plugin-module-resolver: "npm:^4.1.0"
     concurrently: "npm:^7.1.0"
     constructs: ^10.1.25
@@ -6620,6 +6622,25 @@ __metadata:
   peerDependencies:
     constructs: ^10.0.0
   checksum: dc4de6e14078d84171e40c24e3c81ff9def68e5c807ce30218206b0ffd32deea8ce9e1acc52a0c8d243e0805aba61b5bf1c914af9fa7009a6ddee106758f377f
+  languageName: node
+  linkType: hard
+
+"aws-cdk-lib@npm:^2.25.0":
+  version: 2.28.1
+  resolution: "aws-cdk-lib@npm:2.28.1"
+  dependencies:
+    "@balena/dockerignore": ^1.0.2
+    case: 1.6.3
+    fs-extra: ^9.1.0
+    ignore: ^5.2.0
+    jsonschema: ^1.4.1
+    minimatch: ^3.1.2
+    punycode: ^2.1.1
+    semver: ^7.3.7
+    yaml: 1.10.2
+  peerDependencies:
+    constructs: ^10.0.0
+  checksum: 610da8a0d2a96f4d347c15f6cccbb17728dcd10026713068846b26d47e16544a7315032cfade642b706ae4c7f11b8378eef971561f498b2f2929ca5b7a03c4bc
   languageName: node
   linkType: hard
 
@@ -14005,6 +14026,13 @@ __metadata:
   version: 1.4.0
   resolution: "jsonschema@npm:1.4.0"
   checksum: a2f96b5154658f5567b064d6f25fa4cb7e38b923d5dce9dad8d2566a07dd94abc4acedf234333a91f31bc9934e9dd57c270dcc51e5656b4c104408196c768580
+  languageName: node
+  linkType: hard
+
+"jsonschema@npm:^1.4.1":
+  version: 1.4.1
+  resolution: "jsonschema@npm:1.4.1"
+  checksum: 1ef02a6cd9bc32241ec86bbf1300bdbc3b5f2d8df6eb795517cf7d1cd9909e7beba1e54fdf73990fd66be98a182bda9add9607296b0cb00b1348212988e424b2
   languageName: node
   linkType: hard
 

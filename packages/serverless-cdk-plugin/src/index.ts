@@ -1,1 +1,3 @@
-export const toto = 'toto';
+import { ServerlessCdkPlugin } from './serverlessCdk';
+
+module.exports = ServerlessCdkPlugin;
