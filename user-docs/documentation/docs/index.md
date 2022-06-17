@@ -38,3 +38,6 @@ As the number of moving parts in your organization increases, it is paramount to
 - End-to-end Typescript
 - Shared Typescript libraries built with babel, with a watch mode
 - Selective tests, package and deploy to remove the need to run all the tests and deploy at every commit.
+- Create a new Swarmion project through CLI
+- Generate new backend services through CLI
+- Generate new packaged internal library through CLI

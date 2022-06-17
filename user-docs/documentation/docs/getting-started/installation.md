@@ -16,24 +16,10 @@ _Please note: this section supposes that you already have an active AWS account.
 
 ## Create a new project from the Swarmion template
 
-Head over to the [Swarmion template](https://github.com/swarmion/template) on GitHub. Click the button _Use this template_ and follow the instructions.
-![Use this template button](use_this_template_button.png)
+Run the following command to init your Swarmion project
 
-## Change the project general settings
-
-If you only want to run the example, you can skip this section.
-
-If you want to take is as an example to start your own project,
-
-- Go to the shared configuration file in `packages/serverless-configuration/src/sharedConfig.ts`
-- Change the `projectName` variable to the name of your project (note that this name must not be too long)
-- Search and replace "swarmion-starter" and replace it with the same project name
-- Rename the `swarmion-starter.code-workspace` file at the root of the project to `<projectName>.code-workspace`
-- Change the dev profile name to one that suits you
-```
-export const sharedParams = {
-  dev: { profile: '<projectName>-developer' },
-  ...
+```bash
+yarn create swarmion-app
 ```
 
 ## Install modules
@@ -50,15 +36,17 @@ In order to deploy the stack on a development environment, you will need to setu
 
 ⚠️ This step is only for the development environment.
 
-- Head to the [IAM console](https://console.aws.amazon.com/iamv2/home?#/users);
-- Add a new user, give it a name;
-- In "AWS access type", select "Programmatic access", then click on "Next: permissions";
-- Click on the "Attach existing policy directly", then select "AdministratorAccess" and click on "Next: tags";
-- Click "Next: review", then "Create user";
-- Do not close the window yet;
-- Open a terminal and run: `aws configure --profile <your-profile>` (the value of `<your-profile>` depends of your choice in [the personalization section](#change-the-project-general-settings). By default it will be `swarmion-starter-developer`);
-- Fill in the Access Key Id and the Secret Access Key from your user;
-- For the region, use the AWS region chosen for your project. See [the list of AWS regions](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/).
+- Head to the [IAM console](https://console.aws.amazon.com/iamv2/home?#/users)
+- Add a new user, give it a name
+- In "AWS access type", select "Programmatic access", then click on "Next: permissions"
+- Click on the "Attach existing policy directly", then select "AdministratorAccess" and click on "Next: tags"
+- Click "Next: review", then "Create user"
+- Do not close the window yet
+- Choose a profile name for your dev environment
+- Open a terminal and run: `aws configure --profile <your-profile>`
+- Fill in the Access Key Id and the Secret Access Key from your user
+- For the region, use the AWS region chosen for your project. See [the list of AWS regions](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/)
+- Change the dev profile name in `packages/serverless-configuration/src/sharedConfig.ts`
 
 ## Deploy the stacks
 

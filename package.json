@@ -20,7 +20,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build-all": "nx run-many --target=build --all --parallel=4",
+    "build": "nx run-many --target=build --all --parallel=4",
     "check-audit": "check-audit --yarn",
     "deploy": "nx run-many --target=deploy --all --parallel=4",
     "deploy-affected": "nx affected --target=deploy",
@@ -31,7 +31,7 @@
     "linter-base-config": "eslint --ext=js,ts",
     "package": "nx run-many --target=package --all --parallel=4",
     "postinstall": "husky install && syncpack format",
-    "release": "yarn package && yarn lerna publish && yarn install",
+    "release": "yarn package && yarn build && yarn lerna publish && yarn install",
     "resolve-audit": "resolve-audit --yarn",
     "test": "nx run-many --target=test --all --parallel=4",
     "test-affected": "nx affected --target=test",
@@ -63,7 +63,7 @@
     "lodash": "^4.17.21",
     "npm-audit-resolver": "^3.0.0-7",
     "nx": "^14.2.4",
-    "prettier": "^2.6.2",
+    "prettier": "^2.7.1",
     "syncpack": "^7.2.2",
     "typescript": "^4.7.3"
   },
