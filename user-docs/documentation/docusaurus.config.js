@@ -102,12 +102,12 @@ const config = {
             position: 'left',
             activeBaseRegex: `/how-to/`,
           },
-          {
-            to: '/references/',
-            label: 'References',
-            position: 'left',
-            activeBaseRegex: `/references/`,
-          },
+          // {
+          //   to: '/references/',
+          //   label: 'References',
+          //   position: 'left',
+          //   activeBaseRegex: `/references/`,
+          // },
           {
             href: 'https://github.com/swarmion/swarmion',
             label: 'GitHub',

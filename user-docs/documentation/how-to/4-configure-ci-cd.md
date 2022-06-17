@@ -4,29 +4,27 @@ sidebar_position: 4
 
 # Configure your CI/CD
 
-## Choose the correct IAM policy to give your CI user
+## Choose your CI/CD provider
+
+_This documentation is still a work in progress. If you wish to contribute, please [open an issue on Swarmion](https://github.com/swarmion/swarmion/issues)._
+
+By default, Swarmion uses Github Actions to deploy. However, we have already used GitlabCI and CircleCI to deploy Swarmion projects.
+
+## Authorize your CD to access your AWS environments
 
 In order to restrict the abilities of the ci user on the testing and production environment, you need to create one or many policies to give that user.
 
-You can find a sample policy [here](#sample-policy).
+If you use Github Actions, we can recommend to follow [these guidelines to setup OIDC](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services), to authorize your pipeline.
 
-- Go to [the IAM console](https://console.aws.amazon.com/iamv2/home?#/policies);
-- Click on "create policy";
-- Select the JSON tab;
-- Paste the JSON file from the sample policy (or your custom policy);
-- Click on "Next: tags", then "Next: review";
-- Check that your policy is correct;
-- Click on "Create policy".
+This will remove the need to store long lived credentials, and thus the need to specify a policy (we can grant admin access). If you do so, you can skip the following sections.
 
-## Create an IAM user
+### Create a deploy policy
 
-You can follow the same procedure than in the [install docs](../getting-started/2-get-started-on-aws), except:
+You can find a sample policy. Please review it before creating it!
 
-- DO NOT give that user an "Administrator Access"
-- Instead, attach it the policy or policies that you have created in the previous step;
-- Save the Access Key Id and Secret Access Key in order to pass them as credentials in your CI.
-
-## Sample Policy
+<details>
+  <summary>Sample policy</summary>
+  <p>
 
 ```json
 {
@@ -198,3 +196,24 @@ You can follow the same procedure than in the [install docs](../getting-started/
   ]
 }
 ```
+
+  </p>
+</details>
+
+Then create the policy:
+
+- Go to [the IAM console](https://console.aws.amazon.com/iamv2/home?#/policies);
+- Click on "create policy";
+- Select the JSON tab;
+- Paste the JSON file from the sample policy (or your custom policy);
+- Click on "Next: tags", then "Next: review";
+- Check that your policy is correct;
+- Click on "Create policy".
+
+### Create an IAM user
+
+You can follow the same procedure than in the [install docs](../getting-started/2-get-started-on-aws), except:
+
+- DO NOT give that user an "Administrator Access"
+- Instead, attach it the policy or policies that you have created in the previous step;
+- Save the Access Key Id and Secret Access Key in order to pass them as credentials in your CI.
