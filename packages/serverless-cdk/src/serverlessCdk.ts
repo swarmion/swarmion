@@ -27,6 +27,15 @@ const getServerlessObject = async (): Promise<ServerlessCdkBridge> => {
     serverlessCdkBridge: any;
   };
 
+  const MyConstruct = sls.serverlessCdkBridge;
+  const isConstruct =
+    typeof MyConstruct === 'object' ||
+    MyConstruct.prototype instanceof Construct;
+
+  if (!isConstruct) {
+    throw new Error('serverlessCdkBridge is not a construct');
+  }
+
   return sls as ServerlessCdkBridge;
 };
 
@@ -49,11 +58,11 @@ export class ServerlessCdkPlugin implements Plugin {
     { log }: Plugin.Logging,
   ) {
     serverless.configSchemaHandler.defineTopLevelProperty('serverless-cdk', {
-        type: 'object',
-        properties: {
-          serverlessCdkBridge: { type: 'object' },
-        },
-        required: ['serverlessCdkBridge'],
+      type: 'object',
+      properties: {
+        serverlessCdkBridge: { type: 'object' },
+      },
+      required: ['serverlessCdkBridge'],
     });
 
     this.cliOptions = cliOptions;
