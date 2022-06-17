@@ -1,9 +1,17 @@
-import axios from 'axios';
+/// <reference lib="dom" />
 
 import { ApiGatewayContract } from '../apiGatewayContract';
-import { getAxiosRequest } from '../features';
+import { getFetchRequest } from '../features/fetchRequest';
 
-describe('apiGateway axios request', () => {
+const mockedFetch = jest.fn(() =>
+  Promise.resolve({
+    json: () => {
+      return Promise.resolve(undefined);
+    },
+  }),
+);
+
+describe('apiGateway fetch request', () => {
   const pathParametersSchema = {
     type: 'object',
     properties: { userId: { type: 'string' }, pageNumber: { type: 'string' } },
@@ -46,9 +54,9 @@ describe('apiGateway axios request', () => {
     const httpApiContract = new ApiGatewayContract({
       id: 'testContract',
       path: '/users/{userId}',
-      method: 'GET',
+      method: 'POST',
       integrationType: 'httpApi',
-      authorizerType: undefined,
+      hasAuthorizer: false,
       pathParametersSchema,
       queryStringParametersSchema,
       headersSchema,
@@ -57,8 +65,10 @@ describe('apiGateway axios request', () => {
     });
 
     it('should have the correct axiosRequest', async () => {
-      await expect(() =>
-        getAxiosRequest(httpApiContract, axios.create({ baseURL: 'test' }), {
+      await getFetchRequest(
+        httpApiContract,
+        mockedFetch as unknown as typeof fetch,
+        {
           pathParameters: {
             userId: 'azer',
             pageNumber: 'zert',
@@ -73,14 +83,17 @@ describe('apiGateway axios request', () => {
             foo: 'tyui',
             bar: ['yuio'],
           },
-        }),
-      ).rejects.toMatchObject({
-        config: {
-          url: '/users/azer',
-          data: '{"foo":"tyui","bar":["yuio"]}',
-          params: { testId: 'erty' },
+          baseUrl: 'http://localhost:3000',
         },
-      });
+      );
+      expect(mockedFetch).toHaveBeenCalledWith(
+        new URL('http://localhost:3000/users/azer?testId=erty'),
+        {
+          body: '{"foo":"tyui","bar":["yuio"]}',
+          headers: { myHeader: 'rtyu' },
+          method: 'POST',
+        },
+      );
     });
   });
 
@@ -88,9 +101,9 @@ describe('apiGateway axios request', () => {
     const restApiContract = new ApiGatewayContract({
       id: 'testContract',
       path: '/coucou',
-      method: 'POST',
+      method: 'GET',
       integrationType: 'httpApi',
-      authorizerType: undefined,
+      hasAuthorizer: false,
       pathParametersSchema: undefined,
       queryStringParametersSchema: undefined,
       headersSchema: undefined,
@@ -99,13 +112,19 @@ describe('apiGateway axios request', () => {
     });
 
     it('should have the correct axios request ', async () => {
-      await expect(() =>
-        getAxiosRequest(restApiContract, axios.create({ baseURL: 'test' }), {}),
-      ).rejects.toMatchObject({
-        config: {
-          url: '/coucou',
+      await getFetchRequest(
+        restApiContract,
+        mockedFetch as unknown as typeof fetch,
+        { baseUrl: 'http://localhost:3000' },
+      );
+      expect(mockedFetch).toHaveBeenCalledWith(
+        new URL('http://localhost:3000/coucou'),
+        {
+          body: undefined,
+          headers: undefined,
+          method: 'GET',
         },
-      });
+      );
     });
   });
 });
