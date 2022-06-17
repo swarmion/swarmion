@@ -10,7 +10,7 @@
     "deployedCommit": "serverless deployedCommit",
     "lint-fix": "yarn linter-base-config --fix",
     "lint-fix-all": "yarn lint-fix .",
-    "linter-base-config": "eslint --ext=js,ts .",
+    "linter-base-config": "eslint --ext=js,ts",
     "remove": "serverless remove",
     "remove-production": "serverless remove --stage production",
     "remove-staging": "serverless remove --stage staging",
@@ -26,19 +26,19 @@
     "@swarmion-starter/serverless-helpers": "1.0.0"
   },
   "devDependencies": {
-    "@serverless/typescript": "^3.15.2",
+    "@serverless/typescript": "^3.19.0",
     "@swarmion-starter/configuration": "1.0.0",
     "@swarmion-starter/core-contracts": "1.0.0",
-    "@types/jest": "^27.4.1",
-    "@types/node": "^17.0.30",
-    "dependency-cruiser": "^11.6.0",
-    "esbuild": "^0.14.38",
-    "eslint": "^8.14.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^17.0.45",
+    "dependency-cruiser": "^11.10.0",
+    "esbuild": "^0.14.45",
+    "eslint": "^8.17.0",
     "jest": "^27.5.1",
-    "serverless": "^3.15.2",
-    "serverless-esbuild": "^1.26.2",
-    "ts-jest": "^27.1.4",
-    "ts-node": "^10.7.0",
-    "typescript": "^4.6.4"
+    "serverless": "^3.19.0",
+    "serverless-esbuild": "^1.30.0",
+    "ts-jest": "^27.1.5",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.3"
   }
 }
