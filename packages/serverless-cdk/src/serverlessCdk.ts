@@ -1,10 +1,14 @@
 import { AWS } from '@serverless/typescript';
 import { App, Stack } from 'aws-cdk-lib';
+import { Construct } from 'constructs';
 import merge from 'lodash/merge';
 import * as Serverless from 'serverless';
 import * as Plugin from 'serverless/classes/Plugin';
 
 type CloudFormationTemplate = Exclude<AWS['resources'], undefined>;
+type ServerlessCdkBridge = Serverless & {
+  serverlessCdkBridge: typeof Construct;
+};
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-var-requires
 const resolveConfigPath = require('serverless/lib/cli/resolve-configuration-path');
@@ -14,14 +18,16 @@ const resolveServerlessConfigPath = async (): Promise<string> => {
   return await resolveConfigPath();
 };
 
-const getServerlessObject = async (): Promise<Serverless> => {
+const getServerlessObject = async (): Promise<ServerlessCdkBridge> => {
   const configPath = await resolveServerlessConfigPath();
   console.log(configPath);
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const sls = await require(configPath);
+  const sls = (await require(configPath)) as Serverless & {
+    serverlessCdkBridge: any;
+  };
 
-  return sls as Serverless;
+  return sls as ServerlessCdkBridge;
 };
 
 interface OptionsExtended extends Serverless.Options {
@@ -81,8 +87,8 @@ export class ServerlessCdkPlugin implements Plugin {
   async instantiateConstruct(): Promise<void> {
     const sls = await getServerlessObject();
 
-    // @ts-expect-error We well properly type the return of getServerlessObject later
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-    new sls.custom.myConstruct(this.stack, 'myConstructId');
+    const MyConstruct = sls.serverlessCdkBridge;
+
+    new MyConstruct(this.stack, 'myConstructId');
   }
 }
