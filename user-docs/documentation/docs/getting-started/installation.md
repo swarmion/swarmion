@@ -22,29 +22,6 @@ Run the following command to init your Swarmion project
 yarn create swarmion-app
 ```
 
-## Cleanup the boilerplate example
-
-Remove the following :
-
-- `.all-contributorsrc` file
-- `LICENSE.md` file
-- `docs` folder
-- `backend/forum` and `contracts/forum` folders
-- `backend/user` and `contracts/user` folders
-
-Update the following :
-
-- in `workspace.json` remove from `projects`
-  - `backend-forum`
-  - `backend-users`
-  - `user-contracts`
-  - `forum-contracts`
-- in `<app-name>.code-workspace` remove from `folders`
-  - `backend/forum`
-  - `backend/users`
-  - `contracts/user-contracts`
-  - `contracts/forum-contracts`
-
 ## Install modules
 
 - `nvm use`: use the version of node set in `.nvmrc`;
