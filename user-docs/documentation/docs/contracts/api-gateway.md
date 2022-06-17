@@ -64,7 +64,7 @@ const myContract = new ApiGatewayContract({
   path: '/users/{userId}',
   method: 'GET',
   integrationType: 'httpApi',
-  hasAuthorizer: false,
+  authorizerType: undefined,
   pathParametersSchema,
   queryStringParametersSchema,
   headersSchema,
@@ -85,7 +85,7 @@ const myContract = new ApiGatewayContract({
   path: '/users/{userId}',
   method: 'GET',
   integrationType: 'httpApi',
-  hasAuthorizer: false,
+  authorizerType: undefined,
   pathParametersSchema,
   queryStringParametersSchema,
   headersSchema: undefined,
@@ -151,7 +151,8 @@ in order to validate the input and/or the output of your lambda.
 ### Type the lambda input and output
 
 On the handler side, you can use the `getLambdaHandler` function on the contract to correctly infer the input and output types from the schema.
-If you put `true` in the `hasAuthorizer` key in the contract, authorizer claims will be available in the handler event.
+The `authorizerType` key in the contract allow us to type correctly type the request context with claims and other keys.
+It covers `cognito`, `jwt` and `lambda` authorizers.
 
 ```ts
 const handler = getLambdaHandler(myContract)(async event => {
