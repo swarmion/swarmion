@@ -1,4 +1,7 @@
+/* eslint-disable max-lines */
 import type {
+  APIGatewayEventRequestContextJWTAuthorizer,
+  APIGatewayEventRequestContextLambdaAuthorizer,
   APIGatewayEventRequestContextV2WithAuthorizer,
   APIGatewayEventRequestContextWithAuthorizer,
   APIGatewayProxyCognitoAuthorizer,
@@ -44,25 +47,47 @@ describe('apiGateway lambda handler', () => {
     required: ['id', 'name'],
   } as const;
 
-  describe('httpApi, with authorizer, when all parameters are set', () => {
-    const httpApiContract = new ApiGatewayContract({
-      id: 'testContract',
-      path: '/users/{userId}',
-      method: 'GET',
-      integrationType: 'httpApi',
-      authorizerType: 'cognito',
-      pathParametersSchema,
-      queryStringParametersSchema,
-      headersSchema,
-      bodySchema,
-      outputSchema,
-    });
+  const baseRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<undefined> =
+    {
+      authorizer: undefined,
+      accountId: '',
+      apiId: '',
+      domainName: '',
+      domainPrefix: '',
+      http: {
+        method: '',
+        path: '',
+        protocol: '',
+        sourceIp: '',
+        userAgent: '',
+      },
+      requestId: '',
+      routeKey: '',
+      stage: '',
+      time: '',
+      timeEpoch: 0,
+    };
 
-    it('should return a correctly typed handler', async () => {
-      // let's imagine that lambda will send us the following context
-      // @ts-expect-error we don't want to generate a full event here
+  describe('httpApi, with authorizer, when all parameters are set', () => {
+    it('should return a correctly typed handler with cognito authorizer', async () => {
+      const httpApiContract = new ApiGatewayContract({
+        id: 'testContract',
+        path: '/users/{userId}',
+        method: 'GET',
+        integrationType: 'httpApi',
+        authorizerType: 'cognito',
+        pathParametersSchema,
+        queryStringParametersSchema,
+        headersSchema,
+        bodySchema,
+        outputSchema,
+      });
+
       const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
-        { authorizer: { claims: { myClaimFoo: 'myClaimBar' } } };
+        {
+          ...baseRequestContext,
+          authorizer: { claims: { foo: 'claimBar' } },
+        };
 
       const handler: HandlerType<typeof httpApiContract> = ({
         body,
@@ -71,18 +96,16 @@ describe('apiGateway lambda handler', () => {
         headers,
         requestContext,
       }) => {
-        console.log(
-          body,
-          pathParameters,
-          queryStringParameters,
-          headers,
-          requestContext.authorizer.claims,
-        );
+        const myCustomClaim: string = requestContext.authorizer.claims.foo;
 
-        const myCustomClaim: string =
-          requestContext.authorizer.claims.myClaimFoo;
+        const name =
+          body.foo +
+          pathParameters.pageNumber +
+          queryStringParameters.testId +
+          headers.myHeader +
+          myCustomClaim;
 
-        return Promise.resolve({ id: 'hello', name: myCustomClaim });
+        return Promise.resolve({ id: 'hello', name });
       };
       expect(getLambdaHandler(httpApiContract)(handler)).toEqual(handler);
 
@@ -95,7 +118,123 @@ describe('apiGateway lambda handler', () => {
       });
 
       expect(id).toBe('hello');
-      expect(name).toBe('myClaimBar');
+      expect(name).toBe('bar15myTestIdMyCustomHeaderclaimBar');
+    });
+
+    it('should return a correctly typed handler with jwt authorizer', async () => {
+      const httpApiContract = new ApiGatewayContract({
+        id: 'testContract',
+        path: '/users/{userId}',
+        method: 'GET',
+        integrationType: 'httpApi',
+        authorizerType: 'jwt',
+        pathParametersSchema,
+        queryStringParametersSchema,
+        headersSchema,
+        bodySchema,
+        outputSchema,
+      });
+
+      const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayEventRequestContextJWTAuthorizer> =
+        {
+          ...baseRequestContext,
+          authorizer: {
+            principalId: '',
+            integrationLatency: 0,
+            jwt: { claims: { foo: 'claimBar' }, scopes: ['profile'] },
+          },
+        };
+
+      const handler: HandlerType<typeof httpApiContract> = ({
+        body,
+        pathParameters,
+        queryStringParameters,
+        headers,
+        requestContext,
+      }) => {
+        const myCustomClaim = requestContext.authorizer.jwt.claims.foo;
+
+        const name =
+          body.foo +
+          pathParameters.pageNumber +
+          queryStringParameters.testId +
+          headers.myHeader +
+          myCustomClaim.toString();
+
+        return Promise.resolve({ id: 'hello', name });
+      };
+      expect(getLambdaHandler(httpApiContract)(handler)).toEqual(handler);
+
+      const { id, name } = await handler({
+        pathParameters: { userId: 'toto', pageNumber: '15' },
+        body: { foo: 'bar' },
+        headers: { myHeader: 'MyCustomHeader', anotherHeader: 'anotherHeader' },
+        queryStringParameters: { testId: 'myTestId' },
+        requestContext: fakeRequestContext,
+      });
+
+      expect(id).toBe('hello');
+      expect(name).toBe('bar15myTestIdMyCustomHeaderclaimBar');
+    });
+
+    it('should return a correctly typed handler with jwt authorizer', async () => {
+      const httpApiContract = new ApiGatewayContract({
+        id: 'testContract',
+        path: '/users/{userId}',
+        method: 'GET',
+        integrationType: 'httpApi',
+        authorizerType: 'lambda',
+        pathParametersSchema,
+        queryStringParametersSchema,
+        headersSchema,
+        bodySchema,
+        outputSchema,
+      });
+
+      interface LambdaType {
+        foo: string;
+      }
+
+      const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<
+        APIGatewayEventRequestContextLambdaAuthorizer<LambdaType>
+      > = {
+        ...baseRequestContext,
+        authorizer: {
+          lambda: { foo: 'claimBar' },
+        },
+      };
+
+      const handler: HandlerType<typeof httpApiContract> = ({
+        body,
+        pathParameters,
+        queryStringParameters,
+        headers,
+        requestContext,
+      }) => {
+        const myCustomClaim = (requestContext.authorizer.lambda as LambdaType)
+          .foo;
+
+        const name =
+          body.foo +
+          pathParameters.pageNumber +
+          queryStringParameters.testId +
+          headers.myHeader +
+          myCustomClaim;
+
+        return Promise.resolve({ id: 'hello', name });
+      };
+      expect(getLambdaHandler(httpApiContract)(handler)).toEqual(handler);
+
+      const { id, name } = await handler({
+        pathParameters: { userId: 'toto', pageNumber: '15' },
+        body: { foo: 'bar' },
+        headers: { myHeader: 'MyCustomHeader', anotherHeader: 'anotherHeader' },
+        queryStringParameters: { testId: 'myTestId' },
+        requestContext: fakeRequestContext,
+      });
+
+      expect(id).toBe('hello');
+      expect(name).toBe('bar15myTestIdMyCustomHeaderclaimBar');
     });
   });
 
@@ -132,10 +271,37 @@ describe('apiGateway lambda handler', () => {
     });
 
     it('should not have claims in its request context', async () => {
-      // let's imagine that lambda will send us the following context
-      // @ts-expect-error we don't want to generate a full event here
       const fakeRequestContext: APIGatewayEventRequestContextWithAuthorizer<undefined> =
-        {};
+        {
+          accountId: '',
+          apiId: '',
+          authorizer: undefined,
+          protocol: '',
+          httpMethod: '',
+          identity: {
+            accessKey: null,
+            accountId: null,
+            apiKey: null,
+            apiKeyId: null,
+            caller: null,
+            clientCert: null,
+            cognitoAuthenticationProvider: null,
+            cognitoAuthenticationType: null,
+            cognitoIdentityId: null,
+            cognitoIdentityPoolId: null,
+            principalOrgId: null,
+            sourceIp: 'string',
+            user: null,
+            userAgent: null,
+            userArn: null,
+          },
+          path: '',
+          stage: '',
+          requestId: '',
+          requestTimeEpoch: 0,
+          resourceId: '',
+          resourcePath: '',
+        };
 
       const handler: HandlerType<typeof restApiContract> = async ({
         requestContext,
