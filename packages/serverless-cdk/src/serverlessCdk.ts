@@ -42,6 +42,14 @@ export class ServerlessCdkPlugin implements Plugin {
     cliOptions: OptionsExtended,
     { log }: Plugin.Logging,
   ) {
+    serverless.configSchemaHandler.defineTopLevelProperty('serverless-cdk', {
+        type: 'object',
+        properties: {
+          serverlessCdkBridge: { type: 'object' },
+        },
+        required: ['serverlessCdkBridge'],
+    });
+
     this.cliOptions = cliOptions;
     this.log = log;
 
