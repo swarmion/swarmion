@@ -24,7 +24,7 @@ Libraries are packaged modules. Their purpose is to be **built** (or **packaged*
 
 They are divided into two main types of libraries that only differ in their usage.
 
-**Contracts** provide explicit type-safe interfaces between deployed services, that can be statically checked at compile time and and validated at runtime using JSONSchema. For more details on contracts, see the [contracts documentation](../contracts/concepts).
+**Contracts** provide explicit type-safe interfaces between deployed services, that can be statically checked at compile time and and validated at runtime using JSONSchema. For more details on contracts, see the [contracts documentation](../serverless-contracts/concepts).
 
 **Packages** reduce code duplication between services by providing shared logic and configuration. These packages must not become too big in order for them to remain usable and must be well documented.
 

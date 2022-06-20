@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Use Swarmion generators
 
-Generate new packages respecting the [monorepo code structure](./monorepo#the-monorepo-structure) in one command.
+Generate new packages respecting the [monorepo code structure](../docs/swarmion-code-structure/monorepo#the-monorepo-structure) in one command.
 
 ## Installation
 

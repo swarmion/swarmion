@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Generate your first Swarmion app
 
-In this guide we'll see how to generate a Swarmion project from scratch. If you're looking how to migrate your existing project to Swarmion, please check out [the migration docs](../migrating).
+In this guide we'll see how to generate a Swarmion project from scratch. If you're looking how to migrate your existing project to Swarmion, please check out [the migration docs](../how-to/migration-guide).
 
 ## Requirements
 

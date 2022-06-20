@@ -26,8 +26,8 @@ In order to make these contracts safe, each side of the contract must be able to
 
 Serverless contracts are based on the idea of defining contracts before implementing them.
 
-Check out [how to use these contracts](../../how-to/1-use-serverless-contracts/)!
+Check out [how to use these contracts](../../how-to/use-serverless-contracts/)!
 
 ## Securing the deploy process (beta)
 
-Serverless contracts enable validation at deploy time in order to prevent breaking changes to be deployed in production. See the [serverless-plugin](./serverless-plugin) for more details on the available configuration and commands.
+Serverless contracts enable validation at deploy time in order to prevent breaking changes to be deployed in production. See the Serverless-plugin (TODO) for more details on the available configuration and commands.

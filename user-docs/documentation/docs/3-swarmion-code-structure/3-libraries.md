@@ -10,7 +10,7 @@ Libraries are packaged modules. Their purpose is to be **built** (or **packaged*
 
 They are divided into two main types of libraries that only differ in their usage.
 
-**Contracts** provide explicit type-safe interfaces between deployed services, that can be statically checked at compile time and and validated at runtime using JSONSchema. For more details on contracts, see the [contracts documentation](../contracts/concepts).
+**Contracts** provide explicit type-safe interfaces between deployed services, that can be statically checked at compile time and and validated at runtime using JSONSchema. For more details on contracts, see the [contracts documentation](../serverless-contracts/concepts).
 
 **Packages** reduce code duplication between services by providing shared logic and configuration. These packages must not become too big in order for them to remain usable and must be well documented.
 
@@ -39,4 +39,4 @@ In order to safely use code from a library outside of it, **all exported code mu
 
 ## Generate a library
 
-You can generate a new library respecting these guidelines using the [@swarmion/nx-plugin](./nx-plugin)
+You can generate a new library respecting these guidelines using the [@swarmion/nx-plugin](../../how-to/use-swarmion-generators)

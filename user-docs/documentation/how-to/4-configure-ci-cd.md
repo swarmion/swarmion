@@ -212,7 +212,7 @@ Then create the policy:
 
 ### Create an IAM user
 
-You can follow the same procedure than in the [install docs](../getting-started/2-get-started-on-aws), except:
+You can follow the same procedure than in the [install docs](../getting-started/get-started-on-aws), except:
 
 - DO NOT give that user an "Administrator Access"
 - Instead, attach it the policy or policies that you have created in the previous step;

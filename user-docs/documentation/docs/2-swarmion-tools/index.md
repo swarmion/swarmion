@@ -18,7 +18,4 @@ The main philosophy is to allow easy customization of the different tools used i
 - [Shared Typescript libraries built with babel](./shared-typescript-libraries)
 - [VSCode native support](./vscode)
 - Serverless contracts: please see [the dedicated section](../serverless-contracts/)
-- Generators: please see the dedicated section (TODO)
-- Create a new Swarmion project through CLI
-- Generate new backend services through CLI
-- Generate new packaged internal library through CLI
+- Generators: please see [the dedicated section](../../how-to/use-swarmion-generators)
