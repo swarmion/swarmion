@@ -6,7 +6,10 @@
       "source.fixAll.eslint": true,
       "source.fixAll.stylelint": true
     },
-    "stylelint.validate": ["typescript", "typescriptreact"],
+    "stylelint.validate": [
+      "typescript",
+      "typescriptreact"
+    ],
     "stylelint.customSyntax": "@stylelint/postcss-css-in-js",
     "search.exclude": {
       "**/coverage": true,
@@ -27,7 +30,9 @@
     },
     "typescript.tsdk": "node_modules/typescript/lib",
     "jest.autoRun": "off",
-    "jest.disabledWorkspaceFolders": ["swarmion root"],
+    "jest.disabledWorkspaceFolders": [
+      "swarmion root"
+    ],
     "jest.jestCommandLine": "yarn jest",
     "jest.showCoverageOnLoad": true,
     "jest.coverageFormatter": "DefaultFormatter",
@@ -107,6 +112,10 @@
     {
       "path": "packages/create-swarmion-app",
       "name": "create swarmion app [library]"
+    },
+    {
+      "path": "packages/serverless-cdk-plugin",
+      "name": "serverless cdk [library]"
     }
   ]
 }
