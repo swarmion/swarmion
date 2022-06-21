@@ -12,6 +12,14 @@ In this guide we'll see how to generate a Swarmion project from scratch. If you'
 - yarn: [install docs](https://yarnpkg.com/getting-started/install)
 - AWS CLI: [install docs](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 
+Before generating your project, run:
+
+```bash
+node -v
+```
+
+You should get `v16.xx.xx`. It this is not the case, run `nvm use 16`.
+
 ## Create a new project from the Swarmion template
 
 Run the following command to init your Swarmion project
