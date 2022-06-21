@@ -8,7 +8,7 @@ import {
   sharedParams,
   sharedProviderConfig,
 } from '@swarmion-starter/serverless-configuration';
-import { mergeStageParams } from '@swarmion-starter/serverless-helpers';
+import { mergeStageParams } from '@swarmion/serverless-helpers';
 
 import { functions } from './functions';
 
