@@ -28,12 +28,6 @@ export const packageTsConfig = (options: NormalizedSchema): TsConfig => ({
         'packages/serverless-configuration/tsconfig.build.json',
       ),
     },
-    {
-      path: joinPathFragments(
-        options.offsetFromRoot,
-        'packages/serverless-helpers/tsconfig.build.json',
-      ),
-    },
   ],
   include: ['./**/*.ts'],
   'ts-node': {
