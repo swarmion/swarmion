@@ -6,19 +6,38 @@ import * as Serverless from 'serverless';
 import * as Plugin from 'serverless/classes/Plugin';
 import resolveConfigPath from 'serverless/lib/cli/resolve-configuration-path';
 
+type ServerlessConfigFile = Serverless & {
+  custom: { myConstruct: typeof Construct };
+};
+
 type CloudFormationTemplate = Exclude<AWS['resources'], undefined>;
 
 const resolveServerlessConfigPath = async (): Promise<string> => {
   return resolveConfigPath();
 };
 
-const getServerlessObject = async (): Promise<Serverless> => {
+const getServerlessConfigFile = async (): Promise<ServerlessConfigFile> => {
   const configPath = await resolveServerlessConfigPath();
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const sls = await require(configPath);
+  const serverlessConfigFile = (await require(configPath)) as Serverless & {
+    custom?: { myConstruct: unknown };
+  };
 
-  return sls as Serverless;
+  const MyConstruct = serverlessConfigFile.custom?.myConstruct;
+  if (MyConstruct === undefined) {
+    throw new Error('Missing custom.myConstruct property');
+  }
+
+  const isConstruct =
+    typeof MyConstruct === 'function' &&
+    MyConstruct.prototype instanceof Construct;
+
+  if (!isConstruct) {
+    throw new Error('custom.myConstruct is not a construct');
+  }
+
+  return serverlessConfigFile as ServerlessConfigFile;
 };
 
 interface OptionsExtended extends Serverless.Options {
@@ -95,10 +114,10 @@ export class ServerlessCdkPlugin implements Plugin {
   }
 
   async instantiateConstruct(): Promise<void> {
-    const sls = await getServerlessObject();
-    // @ts-expect-error We will properly type the return of getServerlessObject later
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment
-    this.construct = new sls.custom.myConstruct(
+    const serverlessConfigFile = await getServerlessConfigFile();
+    const MyConstruct = serverlessConfigFile.custom.myConstruct;
+
+    this.construct = new MyConstruct(
       this.stack,
       'serverlessCdkBridgeConstruct',
     );
