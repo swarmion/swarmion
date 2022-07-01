@@ -18,9 +18,9 @@
   "files": [
     "dist"
   ],
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/types/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
   "scripts": {
     "lint-fix": "yarn linter-base-config --fix",
     "lint-fix-all": "yarn lint-fix .",
@@ -63,8 +63,21 @@
     "prettier": "^2.7.1",
     "serverless": "^3.21.0",
     "ts-node": "^10.9.1",
+    "ts-toolbelt": "^9.6.0",
     "ttypescript": "^1.5.13",
     "typescript": "^4.7.4"
+  },
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./helper": {
+      "require": "./dist/cjs/helper.js",
+      "import": "./dist/esm/helper.js",
+      "types": "./dist/types/helper.d.ts"
+    }
   },
   "nx": {
     "targets": {
