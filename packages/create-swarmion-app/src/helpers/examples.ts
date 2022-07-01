@@ -28,6 +28,14 @@ const isUrlOk = async (url: string): Promise<boolean> => {
   }
 };
 
+const getFileNameFromBranch = (branch: string): string => {
+  if (branch.match(/v(\d).(\d).(\d)/)) {
+    return branch.slice(1);
+  }
+
+  return branch.replace(/\//g, '-');
+};
+
 export const hasRepo = ({
   username,
   name,
@@ -38,6 +46,15 @@ export const hasRepo = ({
   const packagePath = `${filePath ? `/${filePath}` : ''}/package.json`;
 
   return isUrlOk(contentsUrl + packagePath + `?ref=${branch}`);
+};
+
+export const getRepoUrl = ({
+  username,
+  name,
+  branch,
+  filePath,
+}: RepoInfo): string => {
+  return `https://github.com/${username}/${name}/tree/${branch}/${filePath}`;
 };
 
 export const downloadAndExtractRepo = (
@@ -51,7 +68,7 @@ export const downloadAndExtractRepo = (
     extract(
       { cwd: root, strip: filePath ? filePath.split('/').length + 1 : 1 },
       [
-        `${name}-${branch.replace(/\//g, '-')}${
+        `${name}-${getFileNameFromBranch(branch)}${
           filePath ? `/${filePath}` : ''
         }`,
       ],

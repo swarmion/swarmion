@@ -5,6 +5,7 @@ import path from 'path';
 
 import {
   downloadAndExtractRepo,
+  getRepoUrl,
   hasRepo,
   install,
   isFolderEmpty,
@@ -19,20 +20,20 @@ export class DownloadError extends Error {}
 
 export const createApp = async ({
   appPath,
+  packageVersion,
 }: {
   appPath: string;
+  packageVersion: string;
 }): Promise<void> => {
-  const example =
-    'https://github.com/swarmion/swarmion/tree/main/examples/swarmion-starter';
-
   const repoInfo: RepoInfo = {
     username: 'swarmion',
     name: 'swarmion',
-    branch: 'main',
+    branch: `v${packageVersion}`,
     filePath: 'examples/swarmion-starter',
   };
 
   const found = await hasRepo(repoInfo);
+  const example = getRepoUrl(repoInfo);
 
   if (!found) {
     console.error(
