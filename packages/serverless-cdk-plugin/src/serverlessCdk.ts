@@ -6,19 +6,38 @@ import * as Serverless from 'serverless';
 import * as Plugin from 'serverless/classes/Plugin';
 import resolveConfigPath from 'serverless/lib/cli/resolve-configuration-path';
 
+type ServerlessConfigFile = Serverless & {
+  cdkConstruct: typeof Construct;
+};
+
 type CloudFormationTemplate = Exclude<AWS['resources'], undefined>;
 
 const resolveServerlessConfigPath = async (): Promise<string> => {
   return resolveConfigPath();
 };
 
-const getServerlessObject = async (): Promise<Serverless> => {
+const getServerlessConfigFile = async (): Promise<ServerlessConfigFile> => {
   const configPath = await resolveServerlessConfigPath();
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const sls = await require(configPath);
+  const serverlessConfigFile = (await require(configPath)) as Serverless & {
+    cdkConstruct: unknown;
+  };
 
-  return sls as Serverless;
+  const MyConstruct = serverlessConfigFile.cdkConstruct;
+  if (MyConstruct === undefined) {
+    throw new Error('Missing cdkConstruct property');
+  }
+
+  const isConstruct =
+    typeof MyConstruct === 'function' &&
+    MyConstruct.prototype instanceof Construct;
+
+  if (!isConstruct) {
+    throw new Error('cdkConstruct is not a construct');
+  }
+
+  return serverlessConfigFile as ServerlessConfigFile;
 };
 
 interface OptionsExtended extends Serverless.Options {
@@ -43,6 +62,10 @@ export class ServerlessCdkPlugin implements Plugin {
     cliOptions: OptionsExtended,
     { log }: Plugin.Logging,
   ) {
+    serverless.configSchemaHandler.defineTopLevelProperty('cdkConstruct', {
+      type: 'object', // A class is an object
+    });
+
     this.cliOptions = cliOptions;
     this.log = log;
 
@@ -95,22 +118,22 @@ export class ServerlessCdkPlugin implements Plugin {
   }
 
   async instantiateConstruct(): Promise<void> {
-    const sls = await getServerlessObject();
-    // @ts-expect-error We will properly type the return of getServerlessObject later
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment
-    this.construct = new sls.custom.myConstruct(
+    const serverlessConfigFile = await getServerlessConfigFile();
+    const MyConstruct = serverlessConfigFile.cdkConstruct;
+
+    this.construct = new MyConstruct(
       this.stack,
       'serverlessCdkBridgeConstruct',
     );
   }
 
   appendCloudformationResources(): void {
-    const { Resources, Outputs, Conditions } = this.app
+    const { Resources, Outputs, Conditions, Mappings } = this.app
       .synth()
       .getStackByName(this.stackName).template as CloudFormationTemplate;
 
     merge(this.serverless.service, {
-      resources: { Resources, Outputs, Conditions },
+      resources: { Resources, Outputs, Conditions, Mappings },
     });
   }
 }

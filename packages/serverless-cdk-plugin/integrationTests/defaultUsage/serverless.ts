@@ -1,8 +1,9 @@
 import { AWS } from '@serverless/typescript';
 
+import { CdkPluginConfig } from '../../src/types';
 import { MyConstruct } from './myConstruct';
 
-const serverlessConfiguration: AWS = {
+const serverlessConfiguration: AWS & CdkPluginConfig = {
   service: 'test-app',
   configValidationMode: 'error',
   plugins: ['../../src'],
@@ -18,9 +19,7 @@ const serverlessConfiguration: AWS = {
       handler: './lambda.js',
     },
   },
-  custom: {
-    myConstruct: MyConstruct,
-  },
+  cdkConstruct: MyConstruct,
 };
 
 module.exports = serverlessConfiguration;
