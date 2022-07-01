@@ -105,12 +105,12 @@ export class ServerlessCdkPlugin implements Plugin {
   }
 
   appendCloudformationResources(): void {
-    const { Resources, Outputs, Conditions } = this.app
+    const { Resources, Outputs, Conditions, Mappings } = this.app
       .synth()
       .getStackByName(this.stackName).template as CloudFormationTemplate;
 
     merge(this.serverless.service, {
-      resources: { Resources, Outputs, Conditions },
+      resources: { Resources, Outputs, Conditions, Mappings },
     });
   }
 }
