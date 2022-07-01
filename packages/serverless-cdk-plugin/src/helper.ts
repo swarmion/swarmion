@@ -1,0 +1,1 @@
+export { getCdkProperty } from './serverlessCdk';
