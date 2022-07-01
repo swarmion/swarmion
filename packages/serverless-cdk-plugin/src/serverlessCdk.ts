@@ -7,7 +7,7 @@ import * as Plugin from 'serverless/classes/Plugin';
 import resolveConfigPath from 'serverless/lib/cli/resolve-configuration-path';
 
 type ServerlessConfigFile = Serverless & {
-  custom: { myConstruct: typeof Construct };
+  cdkConstruct: typeof Construct;
 };
 
 type CloudFormationTemplate = Exclude<AWS['resources'], undefined>;
@@ -21,12 +21,12 @@ const getServerlessConfigFile = async (): Promise<ServerlessConfigFile> => {
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const serverlessConfigFile = (await require(configPath)) as Serverless & {
-    custom?: { myConstruct: unknown };
+    cdkConstruct: unknown;
   };
 
-  const MyConstruct = serverlessConfigFile.custom?.myConstruct;
+  const MyConstruct = serverlessConfigFile.cdkConstruct;
   if (MyConstruct === undefined) {
-    throw new Error('Missing custom.myConstruct property');
+    throw new Error('Missing cdkConstruct property');
   }
 
   const isConstruct =
@@ -34,7 +34,7 @@ const getServerlessConfigFile = async (): Promise<ServerlessConfigFile> => {
     MyConstruct.prototype instanceof Construct;
 
   if (!isConstruct) {
-    throw new Error('custom.myConstruct is not a construct');
+    throw new Error('cdkConstruct is not a construct');
   }
 
   return serverlessConfigFile as ServerlessConfigFile;
@@ -62,6 +62,10 @@ export class ServerlessCdkPlugin implements Plugin {
     cliOptions: OptionsExtended,
     { log }: Plugin.Logging,
   ) {
+    serverless.configSchemaHandler.defineTopLevelProperty('cdkConstruct', {
+      type: 'object', // A class is an object
+    });
+
     this.cliOptions = cliOptions;
     this.log = log;
 
@@ -115,7 +119,7 @@ export class ServerlessCdkPlugin implements Plugin {
 
   async instantiateConstruct(): Promise<void> {
     const serverlessConfigFile = await getServerlessConfigFile();
-    const MyConstruct = serverlessConfigFile.custom.myConstruct;
+    const MyConstruct = serverlessConfigFile.cdkConstruct;
 
     this.construct = new MyConstruct(
       this.stack,
