@@ -13,6 +13,21 @@ describe('customCdK', () => {
 
     const template = Template.fromJSON(cfTemplate);
 
+    // Check that the variable name helper resolves to the correct value.
+    const lambda = template.findResources('AWS::Lambda::Function');
+    expect(
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      lambda.TestFunctionLambdaFunction.Properties?.Environment?.Variables
+        ?.ORCHESTRATOR_TABLE_NAME,
+    ).toBe('${serverlessCdkBridgePlugin:dynamodbName}');
+
+    expect(
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      lambda.TestFunctionLambdaFunction.Properties?.Environment?.Variables
+        ?.ORCHESTRATOR_TABLE_ARN,
+    ).toBe('${serverlessCdkBridgePlugin:dynamodbArn}');
+
+    // Check that we created a DynamoDB table
     template.resourceCountIs('AWS::DynamoDB::Table', 1);
   });
 });
