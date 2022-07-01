@@ -11,7 +11,7 @@ import {
 import { ServerlessContracts } from '@swarmion/serverless-plugin';
 
 import { functions } from 'functions';
-import { cdkResources } from 'resources';
+import { MyConstruct } from 'resources/myConstruct';
 
 const serverlessConfiguration: AWS & ServerlessContracts = {
   service: `${projectName}-orchestrator`, // Keep it short to have role name below 64
@@ -20,6 +20,7 @@ const serverlessConfiguration: AWS & ServerlessContracts = {
   plugins: [
     'serverless-esbuild',
     '@swarmion/serverless-plugin',
+    '@swarmion/serverless-cdk-plugin',
     'serverless-iam-roles-per-function',
     'serverless-analyze-bundle-plugin',
   ],
@@ -32,6 +33,7 @@ const serverlessConfiguration: AWS & ServerlessContracts = {
   custom: {
     projectName,
     esbuild: sharedEsbuildConfig,
+    myConstruct: MyConstruct,
   },
   contracts: {
     provides: {
@@ -41,7 +43,6 @@ const serverlessConfiguration: AWS & ServerlessContracts = {
   },
   resources: {
     Description: 'Monorepo deployments orchestrator',
-    ...cdkResources,
   },
 };
 
