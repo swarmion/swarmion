@@ -5,7 +5,7 @@
 </p>
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-17-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-18-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 A set of tools to build and deploy type-safe microservices. In order to see a working example of these tools, check out [Swarmion template](https://github.com/swarmion/template).
@@ -51,6 +51,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/qhello"><img src="https://avatars.githubusercontent.com/u/9997584?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Quentin Hello</b></sub></a><br /><a href="#infra-qhello" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
     <td align="center"><a href="https://github.com/Paulmolin"><img src="https://avatars.githubusercontent.com/u/5166068?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Paul Molin</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=Paulmolin" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/Thomasprelot"><img src="https://avatars.githubusercontent.com/u/56639487?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Thomas Prelot</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=Thomasprelot" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/art049"><img src="https://avatars.githubusercontent.com/u/15641577?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Arthur Pastel</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=art049" title="Documentation">📖</a></td>
   </tr>
 </table>
 
