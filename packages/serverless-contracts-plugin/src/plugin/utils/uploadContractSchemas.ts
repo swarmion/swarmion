@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 import * as Serverless from 'serverless';
 import Plugin from 'serverless/classes/Plugin';
-import simpleGit from 'simple-git';
+import { simpleGit } from 'simple-git';
 
 import { RemoteServerlessContractSchemas } from 'types/serviceOptions';
 
