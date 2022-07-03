@@ -18,7 +18,7 @@ Before generating your project, run:
 node -v
 ```
 
-You should get `v16.xx.xx`. It this is not the case, run `nvm use 16`.
+You should get `v16.xx.xx`. If this is not the case, run `nvm use 16`.
 
 ## Create a new project from the Swarmion template
 
