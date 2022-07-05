@@ -8436,6 +8436,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "create-swarmion-app@workspace:packages/create-swarmion-app"
   dependencies:
+    "@swarmion/configuration": ^0.8.3
     "@types/async-retry": ^1.4.4
     "@types/cross-spawn": ^6.0.2
     "@types/node": ^17.0.45
@@ -8450,12 +8451,15 @@ __metadata:
     commander: ^9.3.0
     concurrently: ^7.2.2
     cross-spawn: ^7.0.3
+    dependency-cruiser: ^11.10.0
     eslint: ^8.19.0
     got: ^12.1.0
+    jest: ^27.5.1
     prettier: ^2.7.1
     prompts: ^2.4.2
     rimraf: ^3.0.2
     tar: ^4.4.19
+    ts-jest: ^27.1.5
     ts-node: ^10.8.2
     typescript: ^4.7.4
     update-check: ^1.5.4
@@ -9089,7 +9093,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dependency-cruiser@npm:^11.11.0":
+"dependency-cruiser@npm:^11.10.0, dependency-cruiser@npm:^11.11.0":
   version: 11.11.0
   resolution: "dependency-cruiser@npm:11.11.0"
   dependencies:

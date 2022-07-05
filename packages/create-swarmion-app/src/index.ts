@@ -88,9 +88,11 @@ const run = async (): Promise<void> => {
     process.exit(1);
   }
 
+  const packageVersion = packageJson.version;
   try {
     await createApp({
       appPath: resolvedProjectPath,
+      packageVersion,
     });
   } catch (reason) {
     if (!(reason instanceof DownloadError)) {
@@ -111,6 +113,7 @@ const run = async (): Promise<void> => {
 
     await createApp({
       appPath: resolvedProjectPath,
+      packageVersion,
     });
   }
 };

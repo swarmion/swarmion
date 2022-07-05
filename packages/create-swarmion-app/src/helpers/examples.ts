@@ -9,6 +9,7 @@ import { Stream } from 'stream';
 import { extract } from 'tar';
 import { promisify } from 'util';
 
+import getFilenameFromBranch from './getFilenameFromBranch';
 const pipeline = promisify(Stream.pipeline);
 
 export type RepoInfo = {
@@ -40,6 +41,15 @@ export const hasRepo = ({
   return isUrlOk(contentsUrl + packagePath + `?ref=${branch}`);
 };
 
+export const getRepoUrl = ({
+  username,
+  name,
+  branch,
+  filePath,
+}: RepoInfo): string => {
+  return `https://github.com/${username}/${name}/tree/${branch}/${filePath}`;
+};
+
 export const downloadAndExtractRepo = (
   root: string,
   { username, name, branch, filePath }: RepoInfo,
@@ -51,7 +61,7 @@ export const downloadAndExtractRepo = (
     extract(
       { cwd: root, strip: filePath ? filePath.split('/').length + 1 : 1 },
       [
-        `${name}-${branch.replace(/\//g, '-')}${
+        `${name}-${getFilenameFromBranch(branch)}${
           filePath ? `/${filePath}` : ''
         }`,
       ],
