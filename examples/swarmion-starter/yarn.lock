@@ -1311,7 +1311,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.18.6, @babel/runtime@npm:^7.8.4":
+"@babel/runtime@npm:^7.18.6, @babel/runtime@npm:^7.8.4":
   version: 7.18.6
   resolution: "@babel/runtime@npm:7.18.6"
   dependencies:
@@ -2302,7 +2302,7 @@ __metadata:
     "@swarmion-starter/configuration": 1.0.0
     "@swarmion-starter/core-contracts": 1.0.0
     "@swarmion-starter/serverless-configuration": 1.0.0
-    "@swarmion/serverless-helpers": ^0.8.3
+    "@swarmion/serverless-helpers": ^0.8.4
     "@types/jest": ^28.1.4
     "@types/node": ^18.0.3
     dependency-cruiser: ^11.11.0
@@ -2353,7 +2353,7 @@ __metadata:
     "@babel/preset-env": ^7.18.6
     "@babel/preset-typescript": ^7.18.6
     "@babel/runtime": ^7.18.6
-    "@swarmion/serverless-contracts": ^0.8.3
+    "@swarmion/serverless-contracts": ^0.8.4
     "@types/node": ^18.0.3
     "@zerollup/ts-transform-paths": ^1.7.18
     babel-plugin-module-resolver: ^4.1.0
@@ -2378,7 +2378,7 @@ __metadata:
     "@nrwl/linter": ^14.4.2
     "@nrwl/tao": ^14.4.2
     "@nrwl/workspace": ^14.4.2
-    "@swarmion/nx-plugin": ^0.8.3
+    "@swarmion/nx-plugin": ^0.8.4
     "@types/jest": ^28.1.4
     "@typescript-eslint/eslint-plugin": ^5.30.5
     "@typescript-eslint/parser": ^5.30.5
@@ -2428,35 +2428,35 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swarmion/nx-plugin@npm:^0.8.3":
-  version: 0.8.3
-  resolution: "@swarmion/nx-plugin@npm:0.8.3"
-  checksum: 21fa58d49a25427c505a3bdb1ff0e4c9d4d596b1bd5ffe05f575f0c1b605648567beefda9327df0781a2774a242a33f1ae6a6baa6cdde345be9a992f4e9c5e46
+"@swarmion/nx-plugin@npm:^0.8.4":
+  version: 0.8.4
+  resolution: "@swarmion/nx-plugin@npm:0.8.4"
+  checksum: d82f7d8f373e89c78a1c5f945d820410c5e53d1d2182acca8d7b9d86467494f5af06805c338f5095bf74be9159258a63aec5453cdc09243298aa79199c19c60d
   languageName: node
   linkType: hard
 
-"@swarmion/serverless-contracts@npm:^0.8.3":
-  version: 0.8.3
-  resolution: "@swarmion/serverless-contracts@npm:0.8.3"
+"@swarmion/serverless-contracts@npm:^0.8.4":
+  version: 0.8.4
+  resolution: "@swarmion/serverless-contracts@npm:0.8.4"
   dependencies:
-    "@babel/runtime": ^7.18.3
+    "@babel/runtime": ^7.18.6
     lodash: ^4.17.21
   peerDependencies:
     axios: ^0.27.2
-  checksum: e0e8e30c09d46724d4d7fc6d9e5c5752beb5cc2c884257de1aa6561f1bbd3b642580f2623a22e22304c55684e6b0eb0dab4d8c56b8999d98e35daad94ba8b0a1
+  checksum: 6a97215c8d13130e3842010a57ee168bdd9f3981715122400b484c21b8ad9dd5f415aa49e81dc94397b9842cfd12dab55f191d42b7eb732e86e97304670af71f
   languageName: node
   linkType: hard
 
-"@swarmion/serverless-helpers@npm:^0.8.3":
-  version: 0.8.3
-  resolution: "@swarmion/serverless-helpers@npm:0.8.3"
+"@swarmion/serverless-helpers@npm:^0.8.4":
+  version: 0.8.4
+  resolution: "@swarmion/serverless-helpers@npm:0.8.4"
   dependencies:
-    "@babel/runtime": ^7.18.3
+    "@babel/runtime": ^7.18.6
     "@middy/core": ^2.5.7
     "@middy/http-error-handler": ^2.5.7
     "@middy/http-json-body-parser": ^2.5.7
     "@middy/validator": ^2.5.7
-  checksum: 90b9da797d7c80d4bdb7f9d9d36631ab9252c2e9bc2d26b81077a71b27cdfc8c926c400cf911d213b0f42bae1928ad563938e65f6df966bbfabf12ba6fa9747d
+  checksum: b6fc23053a6df6d2d3c39a6f143af46034aa91fe7ffb9a5d8a60197bd0134f3b727488ca2eb6b60850c43590ed68e9d7c26ea27163ebce64667317eba5eb0135
   languageName: node
   linkType: hard
 
@@ -2666,14 +2666,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:>=12":
-  version: 18.0.1
-  resolution: "@types/node@npm:18.0.1"
-  checksum: be14b251c54cc2b4ca78ac6eadf2fe5e831e487f2e17848f21d576295945b538271dcc674d0bba582b3f8d95b84f6826e99b6ba4710c76f165a8bdd4d4f0618e
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:^18.0.3":
+"@types/node@npm:*, @types/node@npm:>=12, @types/node@npm:^18.0.3":
   version: 18.0.3
   resolution: "@types/node@npm:18.0.3"
   checksum: 5dec59fbbc1186c808b53df1ca717dad034dbd6a901c75f5b052c845618b531b05f27217122c6254db99529a68618e4cfc534ae3dbf4e88754e9e572df80defa
@@ -2773,16 +2766,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/scope-manager@npm:5.30.4":
-  version: 5.30.4
-  resolution: "@typescript-eslint/scope-manager@npm:5.30.4"
-  dependencies:
-    "@typescript-eslint/types": 5.30.4
-    "@typescript-eslint/visitor-keys": 5.30.4
-  checksum: 3da442dc113ee821c6b1c4510ee4cfd6f6f34838587785b7c486d262af913dca66229a47ebb9a63ad605f8edbe57a8387be24c817c8091783b57c33b7862cbcc
-  languageName: node
-  linkType: hard
-
 "@typescript-eslint/scope-manager@npm:5.30.5":
   version: 5.30.5
   resolution: "@typescript-eslint/scope-manager@npm:5.30.5"
@@ -2809,35 +2792,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/types@npm:5.30.4":
-  version: 5.30.4
-  resolution: "@typescript-eslint/types@npm:5.30.4"
-  checksum: 06181c33551850492ccfd48232f93083c6cf9205d26b26fe6e356b7a4ebb08beffd89ae3b84011da94ffd0e6948422d91d94df7005edeca1c8348117d4776715
-  languageName: node
-  linkType: hard
-
 "@typescript-eslint/types@npm:5.30.5":
   version: 5.30.5
   resolution: "@typescript-eslint/types@npm:5.30.5"
   checksum: c70420618cb875d4e964a20a3fa4cf40cb97a8ad3123e24860e3d829edf3b081c77fa1fe25644700499d27e44aee5783abc7765deee61e2ef59a928db96b2175
-  languageName: node
-  linkType: hard
-
-"@typescript-eslint/typescript-estree@npm:5.30.4":
-  version: 5.30.4
-  resolution: "@typescript-eslint/typescript-estree@npm:5.30.4"
-  dependencies:
-    "@typescript-eslint/types": 5.30.4
-    "@typescript-eslint/visitor-keys": 5.30.4
-    debug: ^4.3.4
-    globby: ^11.1.0
-    is-glob: ^4.0.3
-    semver: ^7.3.7
-    tsutils: ^3.21.0
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-  checksum: 1aaa414993a4e35927e93f929d34a6e07cb8ec46c4ea9a58f018c36ff1fc3027ca5007e6abe922c5869557cd2d7f319e8c57cccd618517781979e669d3b704d0
   languageName: node
   linkType: hard
 
@@ -2859,7 +2817,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/utils@npm:5.30.5":
+"@typescript-eslint/utils@npm:5.30.5, @typescript-eslint/utils@npm:^5.10.0":
   version: 5.30.5
   resolution: "@typescript-eslint/utils@npm:5.30.5"
   dependencies:
@@ -2872,32 +2830,6 @@ __metadata:
   peerDependencies:
     eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
   checksum: 12f68cb34a150d39708f4e09a54964360f29589885cd50f119a2061660011752ec72eff3d90111f0e597575d32aae7250a6e2c730a84963e5e30352759d5f1f4
-  languageName: node
-  linkType: hard
-
-"@typescript-eslint/utils@npm:^5.10.0":
-  version: 5.30.4
-  resolution: "@typescript-eslint/utils@npm:5.30.4"
-  dependencies:
-    "@types/json-schema": ^7.0.9
-    "@typescript-eslint/scope-manager": 5.30.4
-    "@typescript-eslint/types": 5.30.4
-    "@typescript-eslint/typescript-estree": 5.30.4
-    eslint-scope: ^5.1.1
-    eslint-utils: ^3.0.0
-  peerDependencies:
-    eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
-  checksum: 0f680d366701c6ca5a4e1fc53247876e6f6acaee498400d32a7cb767e6187d0d75bc4488350cf6dc6e7c373ea023d62e395ea14ba56ad246b458d6853b213782
-  languageName: node
-  linkType: hard
-
-"@typescript-eslint/visitor-keys@npm:5.30.4":
-  version: 5.30.4
-  resolution: "@typescript-eslint/visitor-keys@npm:5.30.4"
-  dependencies:
-    "@typescript-eslint/types": 5.30.4
-    eslint-visitor-keys: ^3.3.0
-  checksum: ec39680a89b058e8350adc084c2a957e83161e87ac9732c9fef8fd3045ce5004e059b2ddb0c366192806e3998bf3263c8bbb2cc74a4f2ad3313154ed35dd479a
   languageName: node
   linkType: hard
 
@@ -3382,24 +3314,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aws-sdk@npm:^2.1147.0":
-  version: 2.1167.0
-  resolution: "aws-sdk@npm:2.1167.0"
-  dependencies:
-    buffer: 4.9.2
-    events: 1.1.1
-    ieee754: 1.1.13
-    jmespath: 0.16.0
-    querystring: 0.2.0
-    sax: 1.2.1
-    url: 0.10.3
-    uuid: 8.0.0
-    xml2js: 0.4.19
-  checksum: 1135f7e36700a91faeb3e6daee609bf29a52bf7618a033f405a0dcc668b46f556c18905fa27a9b5fbbd1811ebfaa28d023b0842d683b338e46cc58c59ef78dff
-  languageName: node
-  linkType: hard
-
-"aws-sdk@npm:^2.1169.0":
+"aws-sdk@npm:^2.1147.0, aws-sdk@npm:^2.1169.0":
   version: 2.1169.0
   resolution: "aws-sdk@npm:2.1169.0"
   dependencies:
