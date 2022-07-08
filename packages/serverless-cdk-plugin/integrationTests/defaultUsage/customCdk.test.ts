@@ -27,6 +27,12 @@ describe('customCdK', () => {
         ?.ORCHESTRATOR_TABLE_ARN,
     ).toBe('${serverlessCdkBridgePlugin:dynamodbArn}');
 
+    expect(
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      lambda.TestFunctionLambdaFunction.Properties?.Environment?.Variables
+        ?.TEST_OUTPUT_SERVERLESS_CONFIG_VALUE,
+    ).toBe('${serverlessCdkBridgePlugin:testServerlessConfigValue}');
+
     // Check that we created a DynamoDB table
     template.resourceCountIs('AWS::DynamoDB::Table', 1);
   });

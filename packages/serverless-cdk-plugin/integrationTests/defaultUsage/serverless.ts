@@ -17,11 +17,19 @@ const serverlessConfiguration: AWS & CdkPluginConfig = {
       environment: {
         ORCHESTRATOR_TABLE_NAME: getCdkProperty<MyConstruct>('dynamodbName'),
         ORCHESTRATOR_TABLE_ARN: getCdkProperty<MyConstruct>('dynamodbArn'),
+        TEST_OUTPUT_SERVERLESS_CONFIG_VALUE: getCdkProperty<MyConstruct>(
+          'testServerlessConfigValue',
+        ),
       },
       handler: './lambda.js',
     },
   },
-  cdkConstruct: MyConstruct,
+  serverlessConstruct: MyConstruct,
+  resources: {
+    Outputs: {
+      testOutput: { Description: 'Some Test Output' },
+    },
+  },
 };
 
 module.exports = serverlessConfiguration;

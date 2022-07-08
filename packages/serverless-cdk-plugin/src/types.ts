@@ -1,5 +1,5 @@
-import { Construct } from 'constructs';
+import { ServerlessConstruct } from 'helper';
 
 export type CdkPluginConfig = {
-  cdkConstruct: typeof Construct;
+  serverlessConstruct: typeof ServerlessConstruct;
 };
