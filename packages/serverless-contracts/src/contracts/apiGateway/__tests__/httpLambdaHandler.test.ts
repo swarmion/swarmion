@@ -68,7 +68,7 @@ describe('apiGateway lambda handler', () => {
       });
     });
 
-    it('should return a 400 response', async () => {
+    it('should return a error response when throwing httpEror in handler', async () => {
       const httpApiContract = httpApiGatewayContractMock;
 
       const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
@@ -93,7 +93,7 @@ describe('apiGateway lambda handler', () => {
           headers.myHeader +
           myCustomClaim;
 
-        throw createHttpError(400, name);
+        throw createHttpError(500, name, { expose: true });
       };
       const httpHandler = getHttpLambdaHandler(httpApiContract)(handler);
 
@@ -112,6 +112,87 @@ describe('apiGateway lambda handler', () => {
 
       expect(result).toEqual({
         body: 'bar15myTestIdMyCustomHeaderclaimBar',
+        statusCode: 500,
+      });
+    });
+
+    it('should return a error response when input is invalid', async () => {
+      const httpApiContract = httpApiGatewayContractMock;
+
+      const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
+        {
+          ...getRequestContextMockV2(),
+          authorizer: { claims: { foo: 'claimBar' } },
+        };
+
+      const handler: HandlerType<typeof httpApiContract> = ({
+        body,
+        pathParameters,
+        queryStringParameters,
+        headers,
+        requestContext,
+      }) => {
+        const myCustomClaim: string = requestContext.authorizer.claims.foo;
+
+        const name =
+          body.foo +
+          pathParameters.pageNumber +
+          queryStringParameters.testId +
+          headers.myHeader +
+          myCustomClaim;
+
+        throw createHttpError(500, name);
+      };
+      const httpHandler = getHttpLambdaHandler(httpApiContract)(handler);
+
+      const result = await httpHandler({
+        pathParameters: { userId: 'toto', pageNumber: '15' },
+        body: JSON.stringify({ bar: 'foo' }),
+        headers: { myHeader: 'MyCustomHeader', anotherHeader: 'anotherHeader' },
+        queryStringParameters: { testId: 'myTestId' },
+        requestContext: fakeRequestContext,
+        version: '',
+        routeKey: '',
+        rawPath: '',
+        rawQueryString: '',
+        isBase64Encoded: false,
+      });
+
+      expect(result).toEqual({
+        body: 'Invalid input',
+        statusCode: 400,
+      });
+    });
+
+    it('should return a error response when output is invalid', async () => {
+      const httpApiContract = httpApiGatewayContractMock;
+
+      const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
+        {
+          ...getRequestContextMockV2(),
+          authorizer: { claims: { foo: 'claimBar' } },
+        };
+
+      const handler: HandlerType<typeof httpApiContract> = () => {
+        return Promise.resolve({ id: 'hello', name: 5 as unknown as string });
+      };
+      const httpHandler = getHttpLambdaHandler(httpApiContract)(handler);
+
+      const result = await httpHandler({
+        pathParameters: { userId: 'toto', pageNumber: '15' },
+        body: JSON.stringify({ foo: 'bar' }),
+        headers: { myHeader: 'MyCustomHeader', anotherHeader: 'anotherHeader' },
+        queryStringParameters: { testId: 'myTestId' },
+        requestContext: fakeRequestContext,
+        version: '',
+        routeKey: '',
+        rawPath: '',
+        rawQueryString: '',
+        isBase64Encoded: false,
+      });
+
+      expect(result).toEqual({
+        body: 'Invalid output',
         statusCode: 400,
       });
     });
