@@ -1,4 +1,5 @@
-import { isHttpError } from 'http-errors';
+import Ajv from 'ajv';
+import createHttpError, { isHttpError } from 'http-errors';
 
 import { ApiGatewayContract } from '../apiGatewayContract';
 import {
@@ -38,14 +39,27 @@ const handlerResponseToLambdaResult = <Contract extends ApiGatewayContract>(
 
 export const getHttpLambdaHandler =
   <Contract extends ApiGatewayContract>(contract: Contract) =>
-  (
-    handler: HandlerType<typeof contract>,
-  ): CompleteHandlerType<typeof contract> =>
+  (handler: HandlerType<Contract>): CompleteHandlerType<Contract> =>
   async event => {
-    const parsedEvent = proxyEventToHandlerEvent<Contract>(event);
-
     try {
+      const ajv = new Ajv();
+
+      const parsedEvent = proxyEventToHandlerEvent<Contract>(event);
+
+      if (contract.bodySchema !== undefined) {
+        const inputValidator = ajv.compile(contract.bodySchema);
+        if (!inputValidator(parsedEvent.body)) {
+          throw createHttpError(400, 'Invalid input');
+        }
+      }
       const handlerResponse = await handler(parsedEvent);
+
+      if (contract.outputSchema !== undefined) {
+        const outputValidator = ajv.compile(contract.outputSchema);
+        if (!outputValidator(handlerResponse)) {
+          throw createHttpError(400, 'Invalid output');
+        }
+      }
 
       return handlerResponseToLambdaResult(handlerResponse);
     } catch (error) {
