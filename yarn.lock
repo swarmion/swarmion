@@ -4895,6 +4895,7 @@ __metadata:
     "@serverless/typescript": ^3.19.0
     "@swarmion/configuration": ^0.8.4
     "@types/aws-lambda": ^8.10.101
+    "@types/http-errors": ^1.8.2
     "@types/node": ^18.0.3
     "@typescript-eslint/eslint-plugin": ^5.30.5
     "@typescript-eslint/parser": ^5.30.5
@@ -4906,6 +4907,7 @@ __metadata:
     dependency-cruiser: ^11.11.0
     eslint: ^8.19.0
     eslint-plugin-jest: ^26.5.3
+    http-errors: ^2.0.0
     jest: ^27.5.1
     json-schema-to-ts: ^2.5.4
     lodash: ^4.17.21
@@ -5294,6 +5296,13 @@ __metadata:
   version: 4.0.1
   resolution: "@types/http-cache-semantics@npm:4.0.1"
   checksum: 1048aacf627829f0d5f00184e16548205cd9f964bf0841c29b36bc504509230c40bc57c39778703a1c965a6f5b416ae2cbf4c1d4589c889d2838dd9dbfccf6e9
+  languageName: node
+  linkType: hard
+
+"@types/http-errors@npm:^1.8.2":
+  version: 1.8.2
+  resolution: "@types/http-errors@npm:1.8.2"
+  checksum: ecc365eea98d7eca650d593e742571acc3003742f0dd0fbbb15b8fce286e0f7421644b4140fb9bf701bbb7f1b744aea3967ebe025f0f0811aa5ab2c3d40fe111
   languageName: node
   linkType: hard
 
@@ -12171,7 +12180,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"http-errors@npm:2.0.0":
+"http-errors@npm:2.0.0, http-errors@npm:^2.0.0":
   version: 2.0.0
   resolution: "http-errors@npm:2.0.0"
   dependencies:
