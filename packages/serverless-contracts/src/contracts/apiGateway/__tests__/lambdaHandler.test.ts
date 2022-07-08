@@ -7,85 +7,30 @@ import type {
   APIGatewayProxyCognitoAuthorizer,
 } from 'aws-lambda';
 
+import {
+  bodySchema,
+  headersSchema,
+  httpApiGatewayContractMock,
+  outputSchema,
+  pathParametersSchema,
+  queryStringParametersSchema,
+} from '../__mocks__/httpApiGatewayContract';
+import {
+  getRequestContextMock,
+  getRequestContextMockV2,
+} from '../__mocks__/requestContext';
 import { ApiGatewayContract } from '../apiGatewayContract';
 import { getLambdaHandler } from '../features';
 import { HandlerType } from '../types';
 
 describe('apiGateway lambda handler', () => {
-  const pathParametersSchema = {
-    type: 'object',
-    properties: { userId: { type: 'string' }, pageNumber: { type: 'string' } },
-    required: ['userId', 'pageNumber'],
-    additionalProperties: false,
-  } as const;
-
-  const queryStringParametersSchema = {
-    type: 'object',
-    properties: { testId: { type: 'string' } },
-    required: ['testId'],
-    additionalProperties: false,
-  } as const;
-
-  const headersSchema = {
-    type: 'object',
-    properties: { myHeader: { type: 'string' } },
-    required: ['myHeader'],
-  } as const;
-
-  const bodySchema = {
-    type: 'object',
-    properties: { foo: { type: 'string' } },
-    required: ['foo'],
-  } as const;
-
-  const outputSchema = {
-    type: 'object',
-    properties: {
-      id: { type: 'string' },
-      name: { type: 'string' },
-    },
-    required: ['id', 'name'],
-  } as const;
-
-  const baseRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<undefined> =
-    {
-      authorizer: undefined,
-      accountId: '',
-      apiId: '',
-      domainName: '',
-      domainPrefix: '',
-      http: {
-        method: '',
-        path: '',
-        protocol: '',
-        sourceIp: '',
-        userAgent: '',
-      },
-      requestId: '',
-      routeKey: '',
-      stage: '',
-      time: '',
-      timeEpoch: 0,
-    };
-
   describe('httpApi, with authorizer, when all parameters are set', () => {
     it('should return a correctly typed handler with cognito authorizer', async () => {
-      const httpApiContract = new ApiGatewayContract({
-        id: 'testContract',
-        path: '/users/{userId}',
-        method: 'GET',
-        integrationType: 'httpApi',
-        authorizerType: 'cognito',
-        pathParametersSchema,
-        queryStringParametersSchema,
-        headersSchema,
-        bodySchema,
-        outputSchema,
-      });
+      const httpApiContract = httpApiGatewayContractMock;
 
       const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
         {
-          ...baseRequestContext,
+          ...getRequestContextMockV2(),
           authorizer: { claims: { foo: 'claimBar' } },
         };
 
@@ -137,7 +82,7 @@ describe('apiGateway lambda handler', () => {
 
       const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayEventRequestContextJWTAuthorizer> =
         {
-          ...baseRequestContext,
+          ...getRequestContextMockV2(),
           authorizer: {
             principalId: '',
             integrationLatency: 0,
@@ -198,7 +143,7 @@ describe('apiGateway lambda handler', () => {
       const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<
         APIGatewayEventRequestContextLambdaAuthorizer<LambdaType>
       > = {
-        ...baseRequestContext,
+        ...getRequestContextMockV2(),
         authorizer: {
           lambda: { foo: 'claimBar' },
         },
@@ -271,38 +216,6 @@ describe('apiGateway lambda handler', () => {
     });
 
     it('should not have claims in its request context', async () => {
-      const fakeRequestContext: APIGatewayEventRequestContextWithAuthorizer<undefined> =
-        {
-          accountId: '',
-          apiId: '',
-          authorizer: undefined,
-          protocol: '',
-          httpMethod: '',
-          identity: {
-            accessKey: null,
-            accountId: null,
-            apiKey: null,
-            apiKeyId: null,
-            caller: null,
-            clientCert: null,
-            cognitoAuthenticationProvider: null,
-            cognitoAuthenticationType: null,
-            cognitoIdentityId: null,
-            cognitoIdentityPoolId: null,
-            principalOrgId: null,
-            sourceIp: 'string',
-            user: null,
-            userAgent: null,
-            userArn: null,
-          },
-          path: '',
-          stage: '',
-          requestId: '',
-          requestTimeEpoch: 0,
-          resourceId: '',
-          resourcePath: '',
-        };
-
       const handler: HandlerType<typeof restApiContract> = async ({
         requestContext,
       }) => {
@@ -315,7 +228,7 @@ describe('apiGateway lambda handler', () => {
       expect(
         await handler({
           body: { foo: 'bar' },
-          requestContext: fakeRequestContext,
+          requestContext: getRequestContextMock(),
         }),
       ).toBe(undefined);
     });
