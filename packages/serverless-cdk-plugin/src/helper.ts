@@ -7,4 +7,4 @@ export const getCdkPropertyHelper = <T extends Construct>(
   return `$\{serverlessCdkBridgePlugin:${prop}}`;
 };
 
-export { CdkPluginConfig, ServerlessConstruct, ServerlessProps } from './types';
+export { CdkPluginConfig, ServerlessConstruct, ServerlessProps } from 'types';

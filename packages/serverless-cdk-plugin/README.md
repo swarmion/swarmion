@@ -59,7 +59,7 @@ export class MyConstruct extends Construct {
 }
 ```
 
-Then, you would pass the construct to the `serverless.ts` file at the cdkConstruct key:
+Then, you would pass the construct to the `serverless.ts` file at the serverlessConstruct key:
 
 ```ts
 const serverlessConfiguration: AWS & CdkPluginConfig = {
@@ -70,7 +70,7 @@ const serverlessConfiguration: AWS & CdkPluginConfig = {
     name: 'aws',
   },
   // Other properties ...
-  cdkConstruct: MyConstruct,
+  serverlessConstruct: MyConstruct,
 };
 ```
 

@@ -11,7 +11,7 @@ const serverlessConfiguration: AWS & CdkPluginConfig = {
   provider: {
     name: 'aws',
   },
-  cdkConstruct: MyConstruct,
+  serverlessConstruct: MyConstruct,
 };
 
 module.exports = serverlessConfiguration;

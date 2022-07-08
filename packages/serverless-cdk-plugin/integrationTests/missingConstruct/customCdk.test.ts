@@ -7,6 +7,6 @@ describe('customCdK', () => {
         command: 'package',
         cwd: __dirname,
       }),
-    ).rejects.toThrow('Missing cdkConstruct property');
+    ).rejects.toThrow('Missing serverlessConstruct property');
   });
 });
