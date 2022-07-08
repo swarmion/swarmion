@@ -39,8 +39,10 @@
     "watch": "rm -rf dist && concurrently 'yarn:package-* --watch'"
   },
   "dependencies": {
+    "@aws-sdk/client-eventbridge": "^3.121.0",
     "@babel/runtime": "^7.18.3",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "typebridge": "^1.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.10",
