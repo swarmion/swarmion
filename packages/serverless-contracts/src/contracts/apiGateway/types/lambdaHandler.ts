@@ -4,6 +4,10 @@ import type {
   APIGatewayEventRequestContextV2WithAuthorizer,
   APIGatewayEventRequestContextWithAuthorizer,
   APIGatewayProxyCognitoAuthorizer,
+  APIGatewayProxyEventBase,
+  APIGatewayProxyEventV2WithRequestContext,
+  APIGatewayProxyResult,
+  APIGatewayProxyResultV2,
 } from 'aws-lambda';
 import { FromSchema } from 'json-schema-to-ts';
 
@@ -14,7 +18,7 @@ import {
   OutputType,
 } from './common';
 import { InputSchemaType } from './input';
-import type { DefinedProperties } from './utils';
+import { DefinedProperties } from './utils';
 
 type AuthorizerContext<AuthorizerType extends ApiGatewayAuthorizerType> =
   AuthorizerType extends 'cognito'
@@ -26,7 +30,7 @@ type AuthorizerContext<AuthorizerType extends ApiGatewayAuthorizerType> =
       APIGatewayEventRequestContextLambdaAuthorizer<unknown>
     : undefined;
 
-type RequestContext<
+export type RequestContext<
   IntegrationType extends ApiGatewayIntegrationType,
   AuthorizerType extends ApiGatewayAuthorizerType,
 > = IntegrationType extends 'restApi'
@@ -37,8 +41,8 @@ type RequestContext<
       AuthorizerContext<AuthorizerType>
     >;
 
-export type HandlerType<Contract extends ApiGatewayContract> = (
-  event: DefinedProperties<{
+export type HandlerEventType<Contract extends ApiGatewayContract> =
+  DefinedProperties<{
     requestContext: RequestContext<
       Contract['integrationType'],
       Contract['authorizerType']
@@ -52,5 +56,26 @@ export type HandlerType<Contract extends ApiGatewayContract> = (
         Contract['bodySchema'],
         false
       >
-    >,
+    >;
+
+export type HandlerType<Contract extends ApiGatewayContract> = (
+  event: HandlerEventType<Contract>,
 ) => Promise<OutputType<Contract>>;
+
+export type LambdaEventType<Contract extends ApiGatewayContract> =
+  Contract['integrationType'] extends 'restApi'
+    ? APIGatewayProxyEventBase<AuthorizerContext<Contract['authorizerType']>>
+    : APIGatewayProxyEventV2WithRequestContext<
+        APIGatewayEventRequestContextV2WithAuthorizer<
+          AuthorizerContext<Contract['authorizerType']>
+        >
+      >;
+
+export type LambdaReturnType<Contract extends ApiGatewayContract> =
+  Contract['integrationType'] extends 'restApi'
+    ? APIGatewayProxyResult
+    : APIGatewayProxyResultV2<OutputType<Contract>>;
+
+export type CompleteHandlerType<Contract extends ApiGatewayContract> = (
+  event: LambdaEventType<Contract>,
+) => Promise<LambdaReturnType<Contract>>;
