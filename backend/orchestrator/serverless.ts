@@ -22,10 +22,10 @@ const serverlessConfiguration: AWS & ServerlessContracts & CdkPluginConfig = {
   configValidationMode: 'error',
   plugins: [
     'serverless-esbuild',
+    '@swarmion/serverless-cdk-plugin',
     '@swarmion/serverless-plugin',
     'serverless-iam-roles-per-function',
     'serverless-analyze-bundle-plugin',
-    'serverless-cdk-plugin',
   ],
   serverlessConstruct: OrchestratorDynamodb,
   params: sharedParams,
