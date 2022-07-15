@@ -18,6 +18,9 @@
   "files": [
     "dist"
   ],
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
   "scripts": {
     "lint-fix": "yarn linter-base-config --fix",
     "lint-fix-all": "yarn lint-fix .",
@@ -68,24 +71,14 @@
     ".": {
       "require": "./dist/cjs/index.js",
       "import": "./dist/esm/index.js",
-      "default": "./dist/cjs/index.js"
+      "types": "./dist/types/index.d.ts"
     },
     "./helper": {
       "require": "./dist/cjs/helper.js",
       "import": "./dist/esm/helper.js",
-      "default": "./dist/cjs/helper.js"
+      "types": "./dist/types/helper.d.ts"
     }
   },
-  "typesVersions": {
-    "*": {
-      "helper": [
-        "./dist/types/helper.d.ts"
-      ]
-    }
-  },
-  "main": "./dist/cjs/index.js",
-  "module": "node16",
-  "types": "./dist/types/helper.d.ts",
   "nx": {
     "targets": {
       "package": {
