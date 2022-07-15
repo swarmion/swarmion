@@ -5,8 +5,7 @@ import * as Serverless from 'serverless';
 import * as Plugin from 'serverless/classes/Plugin';
 import resolveConfigPath from 'serverless/lib/cli/resolve-configuration-path';
 
-import { ServerlessConstruct } from 'helper';
-import { CdkPluginConfig } from 'types';
+import { CdkPluginConfig, ServerlessConstruct } from 'helper';
 
 type ServerlessConfigFile = Serverless & CdkPluginConfig;
 

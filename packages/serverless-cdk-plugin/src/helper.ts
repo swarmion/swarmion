@@ -21,3 +21,7 @@ export class ServerlessConstruct extends Construct {
     this.serverlessProps = serverlessProps;
   }
 }
+
+export type CdkPluginConfig = {
+  serverlessConstruct: typeof ServerlessConstruct;
+};
