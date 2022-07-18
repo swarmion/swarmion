@@ -17,6 +17,7 @@
     "generate-service": "nx generate @swarmion/nx-plugin:service",
     "graph": "nx dep-graph",
     "info": "nx run-many --target=sls-info --all --parallel=4",
+    "lint-fix": "eslint --ext=js,ts --fix",
     "lint-fix-all": "nx run-many --target=lint-fix-all --all --parallel=4",
     "package": "nx run-many --target=package --all --parallel=4",
     "postinstall": "test -n \"$NO_YARN_POSTINSTALL\" && syncpack format || husky install && syncpack format",
