@@ -131,11 +131,9 @@ export class ServerlessCdkPlugin implements Plugin {
     const serverlessConfigFile = await getServerlessConfigFile();
     const ServerlessCdkConstruct = serverlessConfigFile.serverlessConstruct;
 
-    this.construct = new ServerlessCdkConstruct(
-      this.stack,
-      'serverlessCdkBridgeConstruct',
-      { serverless: serverlessConfigFile },
-    );
+    this.construct = new ServerlessCdkConstruct(this.stack, 'cdk', {
+      serverless: serverlessConfigFile,
+    });
   }
 
   appendCloudformationResources(): void {
