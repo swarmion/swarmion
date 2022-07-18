@@ -33,11 +33,19 @@ module.exports = {
     'import/order': [
       'error',
       {
+        pathGroups: [{ pattern: '@swarmion-starter/**', group: 'unknown' }],
         groups: [
           ['external', 'builtin'],
+          'unknown',
           'internal',
           ['parent', 'sibling', 'index'],
         ],
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: false,
+        },
+        'newlines-between': 'always',
+        pathGroupsExcludedImportTypes: ['builtin'],
       },
     ],
     'sort-imports': [
@@ -123,7 +131,14 @@ module.exports = {
         'no-shadow': 'off',
         '@typescript-eslint/no-shadow': 'error',
         '@typescript-eslint/prefer-nullish-coalescing': 'error',
-        '@typescript-eslint/strict-boolean-expressions': 'error',
+        '@typescript-eslint/strict-boolean-expressions': [
+          'error',
+          {
+            allowString: false,
+            allowNumber: false,
+            allowNullableObject: true,
+          },
+        ],
         '@typescript-eslint/ban-ts-comment': [
           'error',
           {
@@ -161,6 +176,13 @@ module.exports = {
         '@typescript-eslint/no-unnecessary-type-arguments': 'error',
         '@typescript-eslint/prefer-string-starts-ends-with': 'error',
         '@typescript-eslint/switch-exhaustiveness-check': 'error',
+        '@typescript-eslint/restrict-template-expressions': [
+          'error',
+          {
+            allowNumber: true,
+            allowBoolean: true,
+          },
+        ],
       },
     },
   ],

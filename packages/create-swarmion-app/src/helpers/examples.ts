@@ -1,9 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable complexity */
-/* eslint-disable import/no-extraneous-dependencies */
 import { got } from 'got';
 import { Stream } from 'stream';
 import { extract } from 'tar';
@@ -36,7 +30,7 @@ export const hasRepo = ({
   filePath,
 }: RepoInfo): Promise<boolean> => {
   const contentsUrl = `https://api.github.com/repos/${username}/${name}/contents`;
-  const packagePath = `${filePath ? `/${filePath}` : ''}/package.json`;
+  const packagePath = `${filePath !== '' ? `/${filePath}` : ''}/package.json`;
 
   return isUrlOk(contentsUrl + packagePath + `?ref=${branch}`);
 };
@@ -59,10 +53,13 @@ export const downloadAndExtractRepo = (
       `https://codeload.github.com/${username}/${name}/tar.gz/${branch}`,
     ),
     extract(
-      { cwd: root, strip: filePath ? filePath.split('/').length + 1 : 1 },
+      {
+        cwd: root,
+        strip: filePath !== '' ? filePath.split('/').length + 1 : 1,
+      },
       [
         `${name}-${getFilenameFromBranch(branch)}${
-          filePath ? `/${filePath}` : ''
+          filePath !== '' ? `/${filePath}` : ''
         }`,
       ],
     ),

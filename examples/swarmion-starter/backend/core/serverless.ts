@@ -1,4 +1,5 @@
 import { AWS } from '@serverless/typescript';
+import { mergeStageParams } from '@swarmion/serverless-helpers';
 
 import { httpApiResourceContract } from '@swarmion-starter/core-contracts';
 import {
@@ -8,7 +9,6 @@ import {
   sharedParams,
   sharedProviderConfig,
 } from '@swarmion-starter/serverless-configuration';
-import { mergeStageParams } from '@swarmion/serverless-helpers';
 
 import { functions } from './functions';
 

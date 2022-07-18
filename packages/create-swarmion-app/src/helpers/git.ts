@@ -1,4 +1,3 @@
-/* eslint-disable no-empty */
 import { execSync } from 'child_process';
 import path from 'path';
 import { sync } from 'rimraf';
@@ -8,6 +7,7 @@ const isInGitRepository = (): boolean => {
     execSync('git rev-parse --is-inside-work-tree', { stdio: 'ignore' });
 
     return true;
+    // eslint-disable-next-line no-empty
   } catch (_) {}
 
   return false;
@@ -18,6 +18,7 @@ const isInMercurialRepository = (): boolean => {
     execSync('hg --cwd . root', { stdio: 'ignore' });
 
     return true;
+    // eslint-disable-next-line no-empty
   } catch (_) {}
 
   return false;
@@ -46,6 +47,7 @@ export const tryGitInit = (root: string): boolean => {
     if (didInit) {
       try {
         sync(path.join(root, '.git'));
+        // eslint-disable-next-line no-empty
       } catch (_) {}
     }
 
