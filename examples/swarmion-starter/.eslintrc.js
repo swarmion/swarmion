@@ -33,11 +33,19 @@ module.exports = {
     'import/order': [
       'error',
       {
+        pathGroups: [{ pattern: '@swarmion-starter/**', group: 'unknown' }],
         groups: [
           ['external', 'builtin'],
+          'unknown',
           'internal',
           ['parent', 'sibling', 'index'],
         ],
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: false,
+        },
+        'newlines-between': 'always',
+        pathGroupsExcludedImportTypes: ['builtin'],
       },
     ],
     'sort-imports': [
