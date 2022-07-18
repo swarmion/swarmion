@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-/* eslint-disable complexity */
 import chalk from 'chalk';
 import { Command } from 'commander';
 import path from 'path';
@@ -23,12 +22,13 @@ const program = new Command(packageJson.name)
   .allowUnknownOption()
   .parse(process.argv);
 
+// eslint-disable-next-line complexity
 const run = async (): Promise<void> => {
   if (typeof projectPath === 'string') {
     projectPath = projectPath.trim();
   }
 
-  if (!projectPath) {
+  if (projectPath === '') {
     const res = await prompts({
       type: 'text',
       name: 'path',
@@ -49,7 +49,7 @@ const run = async (): Promise<void> => {
     }
   }
 
-  if (!projectPath) {
+  if (projectPath === '') {
     console.log();
     console.log('Please specify the project directory:');
     console.log(
@@ -103,7 +103,7 @@ const run = async (): Promise<void> => {
       type: 'confirm',
       name: 'builtin',
       message:
-        `Could not download Swamion template because of a connectivity issue between your machine and GitHub.\n` +
+        `Could not download Swarmion template because of a connectivity issue between your machine and GitHub.\n` +
         `Do you want to use the default template instead?`,
       initial: true,
     });
