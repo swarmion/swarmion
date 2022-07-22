@@ -38,28 +38,6 @@ const config = {
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'getting-started',
-        path: 'getting-started',
-        routeBasePath: 'getting-started',
-        sidebarPath: require.resolve('./sidebars.js'),
-        editUrl:
-          'https://github.com/swarmion/swarmion/tree/main/user-docs/documentation',
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'how-to',
-        path: 'how-to',
-        routeBasePath: 'how-to',
-        sidebarPath: require.resolve('./sidebars.js'),
-        editUrl:
-          'https://github.com/swarmion/swarmion/tree/main/user-docs/documentation',
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
         id: 'references',
         path: 'references',
         routeBasePath: 'references',
@@ -87,27 +65,15 @@ const config = {
           {
             type: 'doc',
             docId: 'index',
-            position: 'left',
-            label: 'Explanations',
+            position: 'right',
+            label: 'Docs',
           },
           {
-            to: '/getting-started/',
-            label: 'Getting started',
-            position: 'left',
-            activeBaseRegex: `/getting-started/`,
+            to: '/references/',
+            label: 'References',
+            position: 'right',
+            activeBaseRegex: `/references/`,
           },
-          {
-            to: '/how-to/',
-            label: 'User guides',
-            position: 'left',
-            activeBaseRegex: `/how-to/`,
-          },
-          // {
-          //   to: '/references/',
-          //   label: 'References',
-          //   position: 'left',
-          //   activeBaseRegex: `/references/`,
-          // },
           {
             href: 'https://github.com/swarmion/swarmion',
             label: 'GitHub',
