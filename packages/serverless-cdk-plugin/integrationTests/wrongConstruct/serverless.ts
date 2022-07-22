@@ -1,8 +1,8 @@
 import { AWS } from '@serverless/typescript';
 
-import { CdkPluginConfig } from '../../src/types';
+import { ServerlessCdkPluginConfig } from 'types';
 
-const serverlessConfiguration: AWS & CdkPluginConfig = {
+const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
   service: 'test-app',
   configValidationMode: 'error',
   plugins: ['../../src'],
@@ -11,7 +11,7 @@ const serverlessConfiguration: AWS & CdkPluginConfig = {
   },
   // This is the goal of the test
   // @ts-expect-error TS2741: Property 'isConstruct' is missing in type 'ErrorConstructor' but required in type 'typeof Construct'.
-  cdkConstruct: Error,
+  construct: Error,
 };
 
 module.exports = serverlessConfiguration;
