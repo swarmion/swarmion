@@ -4,6 +4,7 @@ import merge from 'lodash/merge';
 import * as Serverless from 'serverless';
 import * as Plugin from 'serverless/classes/Plugin';
 import resolveConfigPath from 'serverless/lib/cli/resolve-configuration-path';
+import { O } from 'ts-toolbelt';
 
 import { CloudFormationTemplate } from 'types';
 import { throwIfBootstrapMetadataDetected } from 'utils';
@@ -109,6 +110,11 @@ export class ServerlessCdkPlugin implements Plugin {
     };
   }
 
+  public static getCdkPropertyHelper = <T extends Construct>(
+    prop: O.SelectKeys<T, string> & string,
+  ): string => {
+    return `$\{serverlessCdkBridgePlugin:${prop}}`;
+  };
   async resolveConstruct(): Promise<void> {
     if (
       this.construct === undefined &&
