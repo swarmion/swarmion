@@ -1,8 +1,9 @@
----
-sidebar_position: 0
----
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
 # Swarmion philosophy
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
 
 ## What is Swarmion?
 
