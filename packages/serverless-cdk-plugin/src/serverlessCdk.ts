@@ -6,12 +6,14 @@ import * as Plugin from 'serverless/classes/Plugin';
 import resolveConfigPath from 'serverless/lib/cli/resolve-configuration-path';
 import { O } from 'ts-toolbelt';
 
-import { CloudFormationTemplate } from 'types';
+import {
+  CloudFormationTemplate,
+  ServerlessCdkPluginConfig,
+  ServerlessConstruct,
+} from 'types';
 import { throwIfBootstrapMetadataDetected } from 'utils';
 
-type ServerlessConfigFile = Serverless & {
-  cdkConstruct: typeof Construct;
-};
+type ServerlessConfigFile = Serverless & ServerlessCdkPluginConfig;
 
 const resolveServerlessConfigPath = async (): Promise<string> => {
   return resolveConfigPath();
@@ -22,20 +24,21 @@ const getServerlessConfigFile = async (): Promise<ServerlessConfigFile> => {
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const serverlessConfigFile = (await require(configPath)) as Serverless & {
-    cdkConstruct: unknown;
+    construct: unknown;
   };
 
-  const MyConstruct = serverlessConfigFile.cdkConstruct;
+  const MyConstruct = serverlessConfigFile.construct;
   if (MyConstruct === undefined) {
-    throw new Error('Missing cdkConstruct property');
+    throw new Error('Missing construct property in serverless configuration');
   }
 
   const isConstruct =
     typeof MyConstruct === 'function' &&
-    MyConstruct.prototype instanceof Construct;
+    (MyConstruct.prototype instanceof ServerlessConstruct ||
+      MyConstruct.prototype instanceof Construct);
 
   if (!isConstruct) {
-    throw new Error('cdkConstruct is not a construct');
+    throw new Error('construct should be a ServerlessConstruct or a Construct');
   }
 
   return serverlessConfigFile as ServerlessConfigFile;
@@ -55,7 +58,7 @@ export class ServerlessCdkPlugin implements Plugin {
   app: App;
   stack: Stack;
   configurationVariablesSources?: Plugin.ConfigurationVariablesSources;
-  construct?: Construct;
+  construct?: ServerlessConstruct | Construct;
   constructInstantiationPromise?: Promise<void> = undefined;
 
   constructor(
@@ -63,7 +66,7 @@ export class ServerlessCdkPlugin implements Plugin {
     cliOptions: OptionsExtended,
     { log }: Plugin.Logging,
   ) {
-    serverless.configSchemaHandler.defineTopLevelProperty('cdkConstruct', {
+    serverless.configSchemaHandler.defineTopLevelProperty('construct', {
       type: 'object', // A class is an object
     });
 
@@ -115,6 +118,9 @@ export class ServerlessCdkPlugin implements Plugin {
   ): string => {
     return `$\{serverlessCdkBridgePlugin:${prop}}`;
   };
+
+  public static ServerlessConstruct = ServerlessConstruct;
+
   async resolveConstruct(): Promise<void> {
     if (
       this.construct === undefined &&
@@ -128,12 +134,19 @@ export class ServerlessCdkPlugin implements Plugin {
 
   async instantiateConstruct(): Promise<void> {
     const serverlessConfigFile = await getServerlessConfigFile();
-    const MyConstruct = serverlessConfigFile.cdkConstruct;
+    const ServerlessCdkConstruct = serverlessConfigFile.construct;
 
-    this.construct = new MyConstruct(
-      this.stack,
-      'serverlessCdkBridgeConstruct',
-    );
+    const isServerlessConstruct =
+      typeof ServerlessCdkConstruct === 'function' &&
+      ServerlessCdkConstruct.prototype instanceof ServerlessConstruct;
+
+    if (isServerlessConstruct) {
+      this.construct = new ServerlessCdkConstruct(this.stack, 'cdk', {
+        serverless: serverlessConfigFile,
+      });
+    } else {
+      this.construct = new ServerlessCdkConstruct(this.stack, 'cdk');
+    }
   }
 
   appendCloudformationResources(): void {
