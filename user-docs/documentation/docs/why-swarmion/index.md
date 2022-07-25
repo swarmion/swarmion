@@ -1,7 +1,7 @@
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
-# Explanations
+# Why Swarmion?
 
 In our opinion, a good technical framework empowers its users. It should not work as black box but instead treat its users as co-developers, able to participate in its elaboration.
 
