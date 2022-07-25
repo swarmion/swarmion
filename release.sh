@@ -39,6 +39,9 @@ else
     yarn lerna publish from-package --force-publish --yes
 fi
 
+# we need to wait for the version to be available on npm
+sleep 5
+
 # upgrade packages in the starter
 HUSKY=0 yarn --cwd examples/swarmion-starter up "@swarmion/*@^${NEW_VERSION}"
 
