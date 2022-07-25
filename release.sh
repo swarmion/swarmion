@@ -40,7 +40,7 @@ else
 fi
 
 # we need to wait for the version to be available on npm
-sleep 5
+sleep 30 # 30 seconds
 
 # upgrade packages in the starter
 HUSKY=0 yarn --cwd examples/swarmion-starter up "@swarmion/*@^${NEW_VERSION}"
