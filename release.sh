@@ -40,10 +40,10 @@ else
 fi
 
 # upgrade packages in the starter
-HUSKY=0 yarn --cwd examples/swarmion-starter up '@swarmion/*'@^$NEW_VERSION
+HUSKY=0 yarn --cwd examples/swarmion-starter up "@swarmion/*@^${NEW_VERSION}"
 
 # commit changes in the starter
-git add examples/swarmion-starter/yarn.lock examples/swarmion-starter/**/package.json
+git add examples/swarmion-starter
 git commit -S -m "chore(starter): bump Swarmion from v${OLD_VERSION} to v${NEW_VERSION}"
 
 # tag new version && push everything
