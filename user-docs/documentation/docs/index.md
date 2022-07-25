@@ -2,10 +2,14 @@
 sidebar_position: 0
 ---
 
-# Explanations
+# Introduction
 
-In our opinion, a good technical framework empowers its users. It should not work as black box but instead treat its users as co-developers, able to participate in its elaboration.
+Welcome to Swarmion! If this is the first time on this framework, you've come to the right place!
 
-This is why we want Swarmion users to clearly grasp the concepts behind it. Every decision made in Swarmion should be explained in this section.
+This getting started guide is still a work in progress.
 
-In these pages, we will try to explain the choices we've made in Swarmion. If you find anything unclear or if you disagree with our explanations, feel free to [open an issue on Swarmion](https://github.com/swarmion/swarmion/issues)!
+We are trying to build a step-by-step documentation to get familiar with Swarmion. If you find any unclear instructions, please [open an issue on Swarmion](https://github.com/swarmion/swarmion/issues).
+
+## Why Swarmion?
+
+You can find a detailed explanation of the framework and its tools in the [Why Swarmion?](/docs/why-swarmion) section.
