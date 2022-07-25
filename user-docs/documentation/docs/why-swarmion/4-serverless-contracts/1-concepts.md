@@ -26,7 +26,7 @@ In order to make these contracts safe, each side of the contract must be able to
 
 Serverless contracts are based on the idea of defining contracts before implementing them.
 
-Check out [how to use these contracts](../../how-to/use-serverless-contracts/)!
+Check out [how to use these contracts](../../how-to-guides/use-serverless-contracts/)!
 
 ## Securing the deploy process (beta)
 

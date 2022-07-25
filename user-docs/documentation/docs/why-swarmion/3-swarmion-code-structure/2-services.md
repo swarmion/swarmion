@@ -22,4 +22,4 @@ A typical Swarmion service has the following structure:
 
 ## Generate a Service
 
-You can generate a new service respecting these guidelines using the [@swarmion/nx-plugin](../../how-to/use-swarmion-generators)
+You can generate a new service respecting these guidelines using the [@swarmion/nx-plugin](../../how-to-guides/use-swarmion-generators)
