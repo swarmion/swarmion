@@ -39,4 +39,4 @@ In order to safely use code from a library outside of it, **all exported code mu
 
 ## Generate a library
 
-You can generate a new library respecting these guidelines using the [@swarmion/nx-plugin](../../how-to/use-swarmion-generators)
+You can generate a new library respecting these guidelines using the [@swarmion/nx-plugin](../../how-to-guides/use-swarmion-generators)
