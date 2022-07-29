@@ -11,12 +11,12 @@ import { getPkgManager, validateNpmName } from 'helpers';
 
 import packageJson from '../package.json';
 
-let projectPath = '';
+let projectPath: string | undefined = '';
 
 const program = new Command(packageJson.name)
   .arguments('[project-directory]')
   .usage(`${chalk.green('[project-directory]')} [options]`)
-  .action((name: string) => {
+  .action((name: string | undefined) => {
     projectPath = name;
   })
   .allowUnknownOption()
@@ -28,7 +28,7 @@ const run = async (): Promise<void> => {
     projectPath = projectPath.trim();
   }
 
-  if (projectPath === '') {
+  if (projectPath === undefined || projectPath === '') {
     const res = await prompts({
       type: 'text',
       name: 'path',
@@ -49,7 +49,7 @@ const run = async (): Promise<void> => {
     }
   }
 
-  if (projectPath === '') {
+  if (projectPath === undefined || projectPath === '') {
     console.log();
     console.log('Please specify the project directory:');
     console.log(
