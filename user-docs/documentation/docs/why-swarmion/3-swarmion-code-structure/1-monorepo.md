@@ -37,7 +37,7 @@ Apart from the various configuration files at the root of the project, Swarmion 
 You should define your own arborescence and keep the same logic for all your teams.
 
 :::note
-The services names in this folder are purely for the sake of the example and should not be considered standard.\_
+The services names in this folder are purely for the sake of the example and should not be considered standard.
 :::
 
 ```
