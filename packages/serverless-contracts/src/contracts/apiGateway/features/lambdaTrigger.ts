@@ -1,7 +1,7 @@
 import { ApiGatewayContract } from '../apiGatewayContract';
 import {
+  ApiGatewayLambdaAdditionalConfigType,
   ApiGatewayLambdaCompleteTriggerType,
-  ApiGatewayLambdaConfigType,
   ApiGatewayTriggerKey,
 } from '../types';
 
@@ -13,11 +13,13 @@ import {
  */
 export const getTrigger = <Contract extends ApiGatewayContract>(
   contract: Contract,
-  additionalConfig?: ApiGatewayLambdaConfigType<
-    ApiGatewayTriggerKey<Contract['integrationType']>
+  additionalConfig: ApiGatewayLambdaAdditionalConfigType<
+    ApiGatewayTriggerKey<Contract['integrationType']>,
+    Contract['authorizerType']
   >,
 ): ApiGatewayLambdaCompleteTriggerType<
-  ApiGatewayTriggerKey<Contract['integrationType']>
+  ApiGatewayTriggerKey<Contract['integrationType']>,
+  Contract['authorizerType']
 > => {
   const key = contract.integrationType === 'httpApi' ? 'httpApi' : 'http';
 
