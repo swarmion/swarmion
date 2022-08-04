@@ -16,6 +16,7 @@ Let's create our first HttpApi contract. First we will need to define the subsch
 - the `id` serves to uniquely identify the contract among all stacks. Please note that this id MUST be unique among all stacks. Use a convention to ensure uniqueness.
 - the `path` and the http `method` which will trigger the lambda
 - the `integrationType`: `"httpApi"` or `"restApi"`
+- the `authorizerType`: `"cognito"`, `"jwt"`, `"lambda"` or `undefined`;
 - then the different parts of the http request:
   - the path parameters: `pathParametersSchema`, which must correspond to a `Record<string, string>`
   - the query string parameters: `queryStringParametersSchema`, which must respect the same constraint
@@ -77,7 +78,7 @@ const myContract = new ApiGatewayContract({
 In order to properly use Typescript's type inference:
 
 - All the schemas **MUST** be created using the `as const` directive. For more information, see [json-schema-to-ts](https://github.com/ThomasAribart/json-schema-to-ts#fromschema)
-- If you do not wish to use one of the subschemas, you need to explicitely set it as `undefined` in the contract. For example, in order to define a contract without headers, we need to create it with:
+- If you do not wish to use one of the subschemas, you need to explicitly set it as `undefined` in the contract. For example, in order to define a contract without headers, we need to create it with:
 
 ```ts
 const myContract = new ApiGatewayContract({
@@ -104,11 +105,11 @@ In the `config.ts` file of our lambda, in the `events` section, we need to use t
 export default {
   environment: {},
   handler: getHandlerPath(__dirname),
-  events: [getTrigger(myContract)],
+  events: [getTrigger(myContract, {})],
 };
 ```
 
-This will output the `method` and `path`. However, if you need a more fine-grained configuration for your lambda (such as defining an authorizer), you can use the add a second method argument.
+This will output the `method` and `path`. However, if you need a more fine-grained configuration for your lambda (such as defining an authorizer), you can use a second method argument.
 
 ```ts
 export default {
@@ -128,6 +129,34 @@ export default {
     getTrigger(myContract, {
       method: 'delete', // typescript will throw an error
     }),
+  ],
+};
+```
+
+The static typing also enforces authenticated contracts by requiring authorizers.
+
+For an unauthenticated contract (`authorizerType: undefined`):
+
+```ts
+export default {
+  environment: {},
+  handler: getHandlerPath(__dirname),
+  events: [
+    getTrigger(myContract, {
+      authorizer: 'arn:aws:...', // typescript will throw an error
+    }),
+  ],
+};
+```
+
+For an authenticated contract:
+
+```ts
+export default {
+  environment: {},
+  handler: getHandlerPath(__dirname),
+  events: [
+    getTrigger(myContract, {}), // error: typescript will request an authorizer property
   ],
 };
 ```
