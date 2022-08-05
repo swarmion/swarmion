@@ -1,0 +1,1 @@
+export { getEventBridgeLambdaTrigger } from './getEventBridgeLambdaTrigger';
