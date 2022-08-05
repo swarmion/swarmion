@@ -41,10 +41,12 @@
     "watch": "pnpm clean && concurrently 'pnpm:package-* --watch'"
   },
   "dependencies": {
+    "@aws-sdk/client-eventbridge": "^3.142.0",
     "@babel/runtime": "^7.19.4",
     "ajv": "^8.11.0",
     "http-errors": "^2.0.0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "typebridge": "^1.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.19.3",
