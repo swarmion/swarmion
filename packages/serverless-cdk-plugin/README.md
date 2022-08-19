@@ -32,24 +32,24 @@ These two challenges motivated the development of the Serverless-CDK Bridge.
 
 Here's a short code snippet to demonstrate how to use the plugin.
 
-backend orchestrator > resources > dynamodb.ts
 
 ```ts
-import type { ServerlessProps } from '@swarmion/serverless-cdk-plugin';
-import ServerlessCdkPlugin from '@swarmion/serverless-cdk-plugin';
+// ./resources/dynamodb.ts
 
-import { PARTITION_KEY, SORT_KEY } from 'libs/dynamodb/primaryKeys';
+import ServerlessCdkPlugin, {
+  ServerlessProps,
+} from '@swarmion/serverless-cdk-plugin';
 
-export class OrchestratorDynamodb extends ServerlessCdkPlugin.ServerlessConstruct {
+export class MyConstruct extends ServerlessCdkPlugin.ServerlessConstruct {
   public dynamodbArn: string;
   public dynamodbName: string;
 
   constructor(scope: Construct, id: string, serverlessProps: ServerlessProps) {
     super(scope, id, serverlessProps);
 
-    const table = new Table(this, 'OrchestratorTable', {
-      partitionKey: { name: PARTITION_KEY, type: AttributeType.STRING },
-      sortKey: { name: SORT_KEY, type: AttributeType.STRING },
+    const table = new Table(this, 'MyDynamoDbTable', {
+      partitionKey: { name: "PK", type: AttributeType.STRING },
+      sortKey: { name: "SK", type: AttributeType.STRING },
       billingMode: BillingMode.PAY_PER_REQUEST,
     });
 
@@ -59,52 +59,71 @@ export class OrchestratorDynamodb extends ServerlessCdkPlugin.ServerlessConstruc
 }
 
 export const getCdkProperty =
-  ServerlessCdkPlugin.getCdkPropertyHelper<OrchestratorDynamodb>;
+  ServerlessCdkPlugin.getCdkPropertyHelper<MyConstruct>;
 ```
 
-Then, pass the construct to the `serverless.ts` file at the serverlessConstruct key:
-
-backend orchestrator > serverless.ts
+Then, pass the construct to the serverless configuration in the `construct` key:
 
 ```ts
-const serverlessConfiguration: AWS &
-  ServerlessContracts &
-  ServerlessCdkPluginConfig = {
-  // Other properties ...
-  construct: OrchestratorDynamodb,
-  params: sharedParams,
-  provider: {
-    ...sharedProviderConfig,
-  },
-};
-```
+// ./serverless.ts
 
-And that's it! Constructs (e.g. dynamodb table) can now be referenced in the Serverless framework code seamlessly (e.g. within lambdas configuration files).
+import type { ServerlessCdkPluginConfig } from '@swarmion/serverless-cdk-plugin';
 
-backend orchestrator > functions > requestSyncDeployment > config.ts
+import { MyConstruct } from './resources/dynamodb'
 
-```ts
-import { requestSyncDeployment } from '@swarmion/orchestrator-contracts';
-import { getTrigger } from '@swarmion/serverless-contracts';
-import { getHandlerPath, LambdaFunction } from '@swarmion/serverless-helpers';
-
-import { getCdkProperty } from 'resources/dynamodb';
-
-const config: LambdaFunction = {
-  environment: {
-    ORCHESTRATOR_TABLE_NAME: getCdkProperty('dynamodbName'),
-  },
-  handler: getHandlerPath(__dirname),
-  iamRoleStatements: [
-    {
-      Effect: 'Allow',
-      Resource: getCdkProperty('dynamodbArn'),
-      Action: ['dynamodb:PutItem'],
-    },
+const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
+  // ...
+  plugins: [
+    '@swarmion/serverless-cdk-plugin',
   ],
-  iamRoleStatementsInherit: true,
-  events: [getTrigger(requestSyncDeployment)],
+  construct: MyConstruct,
+  provider: {
+    // ...
+  },
+  // ...
 };
 
-export default config;
+module.exports = serverlessConfiguration;
+```
+
+And that's it! Constructs (e.g. dynamodb table) can now be used with the Serverless framework code seamlessly !  
+Here is an example in a lambda configuration:
+
+```ts
+// ./serverless.ts
+
+import type { ServerlessCdkPluginConfig } from '@swarmion/serverless-cdk-plugin';
+
+import { MyConstruct, getCdkProperty } from './resources/dynamodb'
+
+const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
+  // ...
+  provider: {
+    // ...
+  },
+  plugins: [
+    '@swarmion/serverless-cdk-plugin',
+    'serverless-iam-roles-per-function',
+  ],
+  functions: {
+    myLambda: {
+      environment: {
+        TABLE_NAME: getCdkProperty('dynamodbName'),
+      },
+      handler: 'functions/myHandler.main',
+      iamRoleStatements: [
+        {
+          Effect: 'Allow',
+          Resource: getCdkProperty('dynamodbArn'),
+          Action: ['dynamodb:PutItem'],
+        },
+      ],
+      events: [ ... ],
+    },
+  },
+  construct: MyConstruct,
+  // ...
+};
+
+module.exports = serverlessConfiguration;
 ```
