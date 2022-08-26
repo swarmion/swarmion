@@ -4925,10 +4925,12 @@ __metadata:
     "@serverless/typescript": ^3.21.0
     "@swarmion/configuration": ^0.9.6
     "@types/aws-lambda": ^8.10.101
+    "@types/http-errors": ^1.8.2
     "@types/node": ^18.6.3
     "@typescript-eslint/eslint-plugin": ^5.31.0
     "@typescript-eslint/parser": ^5.31.0
     "@zerollup/ts-transform-paths": ^1.7.18
+    ajv: ^8.11.0
     aws-sdk: ^2.1185.0
     axios: ^0.27.2
     babel-plugin-module-resolver: ^4.1.0
@@ -4936,6 +4938,7 @@ __metadata:
     dependency-cruiser: ^11.14.0
     eslint: ^8.20.0
     eslint-plugin-jest: ^26.7.0
+    http-errors: ^2.0.0
     jest: ^27.5.1
     json-schema-to-ts: ^2.5.4
     lodash: ^4.17.21
@@ -5324,6 +5327,13 @@ __metadata:
   version: 4.0.1
   resolution: "@types/http-cache-semantics@npm:4.0.1"
   checksum: 1048aacf627829f0d5f00184e16548205cd9f964bf0841c29b36bc504509230c40bc57c39778703a1c965a6f5b416ae2cbf4c1d4589c889d2838dd9dbfccf6e9
+  languageName: node
+  linkType: hard
+
+"@types/http-errors@npm:^1.8.2":
+  version: 1.8.2
+  resolution: "@types/http-errors@npm:1.8.2"
+  checksum: ecc365eea98d7eca650d593e742571acc3003742f0dd0fbbb15b8fce286e0f7421644b4140fb9bf701bbb7f1b744aea3967ebe025f0f0811aa5ab2c3d40fe111
   languageName: node
   linkType: hard
 
@@ -12035,7 +12045,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"http-errors@npm:2.0.0":
+"http-errors@npm:2.0.0, http-errors@npm:^2.0.0":
   version: 2.0.0
   resolution: "http-errors@npm:2.0.0"
   dependencies:

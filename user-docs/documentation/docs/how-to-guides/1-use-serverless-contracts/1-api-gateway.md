@@ -166,6 +166,24 @@ const handler = getLambdaHandler(myContract)(async event => {
 });
 ```
 
+### Serialization/deserialization and input/output validation at runtime
+
+If you use your lambda as an ApiGateway integration, you will need to use middlewares to parse the body, validate the input and output formats and serialize the output body. You may also need to handler error cases with specific http status codes.
+
+This can be done directly by using the `getHttpLambdaHandler` function that offers all those features.
+
+```ts
+const handler = getHttpLambdaHandler(myContract)(async event => {
+  event.pathParameters.userId; // will have type 'string'
+  event.requestContext.authorizer.claims.sub; // will have type 'string' if hasAuthorize is true, otherwise will fail
+
+  event.toto; // will fail typing
+  event.pathParameters.toto; // will also fail
+
+  return { id: 'coucou', name: 'coucou' }; // also type-safe!
+});
+```
+
 ## Consumer-side usage
 
 Simply call the `getAxiosRequest` function with the schema.

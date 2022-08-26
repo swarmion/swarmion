@@ -31,4 +31,4 @@ export type BodyType<Contract extends ApiGatewayContract> =
 export type OutputType<Contract extends ApiGatewayContract> =
   Contract['outputSchema'] extends JSONSchema
     ? FromSchema<Contract['outputSchema']>
-    : undefined;
+    : void;
