@@ -4983,6 +4983,46 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@swarmion/serverless-orchestrator@workspace:packages/serverless-contracts-orchestrator":
+  version: 0.0.0-use.local
+  resolution: "@swarmion/serverless-orchestrator@workspace:packages/serverless-contracts-orchestrator"
+  dependencies:
+    "@babel/cli": ^7.18.9
+    "@babel/core": ^7.18.9
+    "@babel/plugin-transform-runtime": ^7.18.9
+    "@babel/preset-env": ^7.18.9
+    "@babel/preset-typescript": ^7.18.6
+    "@swarmion/configuration": ^0.9.6
+    "@types/glob": ^7.2.0
+    "@types/graphviz": ^0.0.34
+    "@types/node": ^18.6.3
+    "@typescript-eslint/eslint-plugin": ^5.31.0
+    "@typescript-eslint/parser": ^5.31.0
+    "@zerollup/ts-transform-paths": ^1.7.18
+    babel-plugin-module-resolver: ^4.1.0
+    concurrently: ^7.3.0
+    dependency-cruiser: ^11.14.0
+    eslint: ^8.20.0
+    eslint-plugin-jest: ^26.7.0
+    glob: ^8.0.3
+    graphviz: ^0.0.9
+    jest: ^27.5.1
+    json-schema-diff: ^0.17.1
+    json-schema-to-ts: ^2.5.4
+    prettier: ^2.7.1
+    ts-jest: ^27.1.5
+    ts-node: ^10.9.1
+    ttypescript: ^1.5.13
+    typescript: ^4.7.4
+  peerDependencies:
+    "@babel/runtime": ^7.18.9
+    "@swarmion/serverless-plugin": ^0.9.6
+    nx: ^14.5.1
+  bin:
+    serverless-orchestrator: ./dist/cjs/index.js
+  languageName: unknown
+  linkType: soft
+
 "@swarmion/serverless-plugin@^0.9.6, @swarmion/serverless-plugin@workspace:packages/serverless-contracts-plugin":
   version: 0.0.0-use.local
   resolution: "@swarmion/serverless-plugin@workspace:packages/serverless-contracts-plugin"
@@ -5278,7 +5318,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/glob@npm:*":
+"@types/glob@npm:*, @types/glob@npm:^7.2.0":
   version: 7.2.0
   resolution: "@types/glob@npm:7.2.0"
   dependencies:
@@ -5294,6 +5334,15 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: d076bb61f45d0fc42dee496ef8b1c2f8742e15d5e47e90e20d0243386e426c04d4efd408a48875ab432f7960b4ce3414db20ed0fbbfc7bcc89d84e574f6e045a
+  languageName: node
+  linkType: hard
+
+"@types/graphviz@npm:^0.0.34":
+  version: 0.0.34
+  resolution: "@types/graphviz@npm:0.0.34"
+  dependencies:
+    "@types/node": "*"
+  checksum: 12e65016a711eee852c990d805b015b7301f6644629952f295a6420fe31ed98e20c527b5d7f6fc32fd888483014998f4559bcbbfbfb9eba7634a8cad49b792b5
   languageName: node
   linkType: hard
 
@@ -11434,7 +11483,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:8.0.3, glob@npm:^8.0.1":
+"glob@npm:8.0.3, glob@npm:^8.0.1, glob@npm:^8.0.3":
   version: 8.0.3
   resolution: "glob@npm:8.0.3"
   dependencies:
@@ -11628,6 +11677,15 @@ __metadata:
   dependencies:
     lodash: ^4.17.15
   checksum: 1e0db4dea1c8187d59103d5582ecf32008845ebe2103959a51d22cb6dae495e81fb9263e22c922bca3aaecb56064a45cd53424e15a4626cfb5a0c52d0aff61a8
+  languageName: node
+  linkType: hard
+
+"graphviz@npm:^0.0.9":
+  version: 0.0.9
+  resolution: "graphviz@npm:0.0.9"
+  dependencies:
+    temp: ~0.4.0
+  checksum: fb414f89763d568646f2d899f9a2baa19e1cdf1b97db831f64f2b3f7322609ca1e4e43bcb3d2e3bfc992b9e0f657803559d7a98e289d5aa6dc549d578939d599
   languageName: node
   linkType: hard
 
@@ -19604,6 +19662,13 @@ __metadata:
   version: 1.0.0
   resolution: "temp-dir@npm:1.0.0"
   checksum: cb2b58ddfb12efa83e939091386ad73b425c9a8487ea0095fe4653192a40d49184a771a1beba99045fbd011e389fd563122d79f54f82be86a55620667e08a6b2
+  languageName: node
+  linkType: hard
+
+"temp@npm:~0.4.0":
+  version: 0.4.0
+  resolution: "temp@npm:0.4.0"
+  checksum: 8b83f98833b7f6cd03a1f523d17f8b06fe687cbdfc5654ae41edacdf640e71f1057c3cf2534ac44e265834c1af6270d9a0b9baeee6b86ccb2ef379e43dbc0d0a
   languageName: node
   linkType: hard
 

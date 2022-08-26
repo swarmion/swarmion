@@ -1,0 +1,86 @@
+{
+  "name": "@swarmion/serverless-orchestrator",
+  "description": "Orchestrate safe deployment of your Serverless microservices.",
+  "version": "0.9.6",
+  "author": "guillaumeduboc",
+  "license": "MIT",
+  "homepage": "https://www.swarmion.dev",
+  "bugs": "https://github.com/swarmion/swarmion/issues",
+  "repository": "swarmion/swarmion.git",
+  "keywords": [
+    "Contracts",
+    "Serverless",
+    "Typescript"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "lint-fix": "yarn linter-base-config --fix",
+    "lint-fix-all": "yarn lint-fix .",
+    "linter-base-config": "eslint --ext=js,ts",
+    "package": "rm -rf dist && yarn package-cjs && yarn package-esm && yarn package-types",
+    "package-cjs": "NODE_ENV=cjs yarn transpile --out-dir dist/cjs --source-maps",
+    "package-esm": "NODE_ENV=esm yarn transpile --out-dir dist/esm --source-maps",
+    "package-types": "ttsc -p tsconfig.build.json",
+    "test": "yarn test-linter && yarn test-type && yarn test-unit && yarn test-circular",
+    "test-circular": "yarn depcruise --validate .dependency-cruiser.js .",
+    "test-linter": "yarn linter-base-config .",
+    "test-type": "tsc --noEmit --emitDeclarationOnly false",
+    "test-unit": "jest --runInBand --collectCoverage --logHeapUsage --passWithNoTests",
+    "transpile": "babel src --extensions .ts --quiet",
+    "watch": "rm -rf dist && concurrently 'yarn:package-* --watch'"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.18.9",
+    "glob": "^8.0.3",
+    "graphviz": "^0.0.9",
+    "json-schema-diff": "^0.17.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.18.9",
+    "@babel/core": "^7.18.9",
+    "@babel/plugin-transform-runtime": "^7.18.9",
+    "@babel/preset-env": "^7.18.9",
+    "@babel/preset-typescript": "^7.18.6",
+    "@swarmion/configuration": "^0.9.6",
+    "@types/glob": "^7.2.0",
+    "@types/graphviz": "^0.0.34",
+    "@types/node": "^18.6.3",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
+    "@zerollup/ts-transform-paths": "^1.7.18",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "concurrently": "^7.3.0",
+    "dependency-cruiser": "^11.14.0",
+    "eslint": "^8.20.0",
+    "eslint-plugin-jest": "^26.7.0",
+    "jest": "^27.5.1",
+    "json-schema-to-ts": "^2.5.4",
+    "prettier": "^2.7.1",
+    "ts-jest": "^27.1.5",
+    "ts-node": "^10.9.1",
+    "ttypescript": "^1.5.13",
+    "typescript": "^4.7.4"
+  },
+  "nx": {
+    "targets": {
+      "package": {
+        "outputs": [
+          "packages/serverless-contracts-orchestrator/dist"
+        ]
+      }
+    }
+  },
+  "peerDependencies": {
+    "@swarmion/serverless-plugin": "^0.9.6",
+    "nx": "^14.5.1"
+  }
+}
