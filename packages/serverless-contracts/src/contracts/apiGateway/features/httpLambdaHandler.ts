@@ -48,6 +48,7 @@ export const getHttpLambdaHandler =
 
       if (contract.bodySchema !== undefined) {
         const inputValidator = ajv.compile(contract.bodySchema);
+        // @ts-ignore error on type evaluation, body is define on parsedEvent
         if (!inputValidator(parsedEvent.body)) {
           throw createHttpError(400, 'Invalid input');
         }
