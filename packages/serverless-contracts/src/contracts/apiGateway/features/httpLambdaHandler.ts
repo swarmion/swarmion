@@ -34,7 +34,7 @@ const handlerResponseToLambdaResult = <Contract extends ApiGatewayContract>(
   handlerResponse: OutputType<Contract>,
 ): LambdaReturnType<Contract> => ({
   statusCode: 200,
-  body: JSON.stringify(handlerResponse),
+  body: handlerResponse !== undefined ? JSON.stringify(handlerResponse) : '',
 });
 
 export const getHttpLambdaHandler =

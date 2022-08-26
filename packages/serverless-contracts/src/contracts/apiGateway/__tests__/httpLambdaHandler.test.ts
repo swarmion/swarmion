@@ -214,7 +214,9 @@ describe('apiGateway lambda handler', () => {
       });
 
       const handler: HandlerType<typeof restApiContract> = async () => {
-        return Promise.resolve(undefined);
+        await Promise.resolve();
+
+        return;
       };
 
       const httpHandler = getHttpLambdaHandler(restApiContract)(handler);
@@ -235,7 +237,7 @@ describe('apiGateway lambda handler', () => {
       });
 
       expect(result).toEqual({
-        body: JSON.stringify(undefined),
+        body: '',
         statusCode: 200,
       });
     });
