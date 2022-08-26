@@ -38,6 +38,7 @@
     "transpile": "babel src --extensions .ts --quiet",
     "watch": "rm -rf dist && concurrently 'yarn:package-* --watch'"
   },
+  "bin": "./dist/cjs/index.js",
   "dependencies": {
     "@babel/runtime": "^7.18.9",
     "glob": "^8.0.3",
