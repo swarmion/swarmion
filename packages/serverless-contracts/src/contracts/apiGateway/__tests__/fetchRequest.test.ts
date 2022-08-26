@@ -127,4 +127,36 @@ describe('apiGateway fetch request', () => {
       );
     });
   });
+
+  describe('httpApi without base url', () => {
+    const httpApiContract = new ApiGatewayContract({
+      id: 'testContract',
+      path: '/coucou',
+      method: 'GET',
+      integrationType: 'httpApi',
+      authorizerType: undefined,
+      pathParametersSchema: undefined,
+      queryStringParametersSchema,
+      headersSchema: undefined,
+      bodySchema: undefined,
+      outputSchema: undefined,
+    });
+
+    it('should have the correct axios request ', async () => {
+      await getFetchRequest(
+        httpApiContract,
+        mockedFetch as unknown as typeof fetch,
+        {
+          queryStringParameters: {
+            testId: 'erty',
+          },
+        },
+      );
+      expect(mockedFetch).toHaveBeenCalledWith('/coucou?testId=erty', {
+        body: undefined,
+        headers: undefined,
+        method: 'GET',
+      });
+    });
+  });
 });
