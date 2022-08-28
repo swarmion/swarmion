@@ -94,7 +94,26 @@ A **Library** represent a set of reusable code that can be used by multiple serv
 
 The project is organized in a monorepo containing four packages (one service and three libraries):
 
-![dependency graph](../../static/screenshots/basic-swarmion-app-graph.png)
+import ThemedImage from '@theme/ThemedImage';
+import basicSwarmionAppGraphLight from '../../static/screenshots/basic-swarmion-app-graph-light.png';
+import basicSwarmionAppGraphDark from '../../static/screenshots/basic-swarmion-app-graph-dark.png';
+
+<div
+  style={{
+    width: '100%',
+    display: 'flex',
+    'justify-content': 'center',
+    'margin-bottom': 'var(--ifm-leading)',
+  }}
+>
+  <ThemedImage
+    alt="Swarmion app"
+    sources={{
+      light: basicSwarmionAppGraphLight,
+      dark: basicSwarmionAppGraphDark,
+    }}
+  />
+</div>
 
 Here you can see that the `backend-core` service has the `configuration`, `core-contract` and `serverless-configuration` libraries as dependencies.
 

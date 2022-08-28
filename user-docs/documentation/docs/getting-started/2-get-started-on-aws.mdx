@@ -1,0 +1,133 @@
+---
+sidebar_position: 2
+---
+
+# Get started on AWS
+
+Your project is generated, it is almost ready to be deployed to AWS.
+
+## Configure the deploy user
+
+In order to deploy the stack on a development environment, you will need to setup a user on the stack.
+
+:::caution
+This step is only for the _development_ environment. For _staging_ and _production_ environment,
+we recommend following the guidelines in the [configure your CI/CD section](../how-to-guides/configure-ci-cd).
+:::
+
+- Head to the [IAM console](https://console.aws.amazon.com/iamv2/home?#/users)
+- Add a new user, give it a name (we will use `swarmion-dev` in the following steps)
+- In "AWS access type", select "Programmatic access", then click on "Next: permissions"
+- Click on the "Attach existing policies directly", then select "AdministratorAccess" and click on "Next: tags"
+- Click "Next: review", then "Create user"
+- Do not close the window yet
+- Open a terminal and run: `aws configure --profile swarmion-dev`
+- Fill in the Access Key Id and the Secret Access Key from your user
+- For the region, use the AWS region chosen for your project. See [the list of AWS regions](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/)
+- Leave the default output format prompt empty, as the default is `json`
+- Change the dev profile name in `packages/serverless-configuration/src/sharedConfig.ts`:
+  ```typescript
+  export const sharedParams = {
+    dev: { profile: 'swarmion-dev' },
+    staging: { profile: '' }, // leave empty for staging
+    production: { profile: '' }, // leave empty for production
+  };
+  ```
+
+## Deploy the stacks
+
+At the root of the project, run `yarn deploy`. This will compile and deploy all the stacks in order.
+You can follow the creation of the stacks on [the Cloudformation console](https://console.aws.amazon.com/cloudformation/home).
+
+:::note
+At this time, there is only one stack in the project, the `backend-core` stack. We will deploy another stack in the next step of the tutorial.
+:::
+
+The following architecture is deployed:
+
+import backendCoreArchitecture from '../../static/schemas/backend-core-architecture.png';
+
+<div
+  style={{
+    width: '100%',
+    display: 'flex',
+    'justify-content': 'center',
+    'margin-bottom': 'var(--ifm-leading)',
+  }}
+>
+  <img
+    src={backendCoreArchitecture}
+    alt="backend-core architecture"
+    width="500px"
+  />
+</div>
+
+An HTTP API Gateway and a Lamda called `my-project-name-core-dev-health`.
+
+The API Gateway exposes an endpoint `GET /health` which is an integration with the Lambda. Calling the endpoint will execute the Lambda and return the result.
+
+To call the endpoint, you can find the _Invoke URL_ of your API Gateway in the [AWS console](https://us-east-1.console.aws.amazon.com/apigateway/main/apis?region=us-east-1), then append `/health` and call it, for example:
+
+```bash
+http https://b1c15ee1u8.execute-api.us-east-1.amazonaws.com/health
+
+HTTP/1.1 200 OK
+Apigw-Requestid: XHjHzjQcIAMEVBA=
+Connection: keep-alive
+Content-Length: 2
+Content-Type: application/json
+Date: Fri, 19 Aug 2022 15:54:26 GMT
+
+ok
+```
+
+:::info
+Here we use the neat [httpie](https://httpie.org) command line tool to call the endpoint.
+:::
+
+## Deploy a change to the stack
+
+Let's change the result of the `health` lambda and deploy it.
+
+Go to `backend/core/functions/health/handler.ts` and replace the existing code with the following:
+
+```typescript
+export const main = async (): Promise<string> => {
+  return Promise.resolve('Hello Swarmion 🐝');
+};
+```
+
+Then deploy the stack by running the following commands in a terminal located at the root of the project:
+
+```bash
+cd backend/core
+yarn deploy
+```
+
+When you call the endpoint, we can see the updated result:
+
+```bash
+http https://b1c15ee1u8.execute-api.us-east-1.amazonaws.com/health
+
+HTTP/1.1 200 OK
+Apigw-Requestid: XHn0shXfoAMEVdQ=
+Connection: keep-alive
+Content-Length: 19
+Content-Type: application/json
+Date: Fri, 19 Aug 2022 16:26:31 GMT
+
+Hello Swarmion 🐝
+```
+
+:::info
+When, like in this case, you only need update the source code of a lambda, there is no need to deploy the whole stack. You can use the following command to solely deploy the lambda:
+
+```bash
+yarn serverless deploy function -f health
+```
+
+:::
+
+## Wrap up
+
+You now have successfully deployed your project to AWS in a dev environment. It is still a fairly simple one with a single serverless service. In the next part, we will add a second serverless service to the project 🚀
