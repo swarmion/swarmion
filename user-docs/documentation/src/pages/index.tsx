@@ -32,7 +32,7 @@ const Home = (): JSX.Element => {
   return (
     <Layout
       title={`${siteConfig.title} Homepage`}
-      description="A Framework for Serverless Typescript Microservices"
+      description="Build stable Serverless applications that scale with your team"
     >
       <HomepageHeader />
       <main>

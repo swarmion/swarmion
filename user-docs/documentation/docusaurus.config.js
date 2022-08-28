@@ -7,7 +7,7 @@ const lightCodeTheme = require('prism-react-renderer/themes/github');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Swarmion',
-  tagline: 'A Framework for Serverless Typescript Microservices',
+  tagline: 'Build stable Serverless applications that scale with your team',
   url: 'https://www.swarmion.dev',
   baseUrl: '/',
   onBrokenLinks: 'throw',
