@@ -12,9 +12,16 @@ export const getFetchRequest = async <Contract extends ApiGatewayContract>(
   const { path, method, queryStringParameters, body, headers } =
     getRequestParameters<Contract>(contract, options);
 
-  const url = new URL(path, options.baseUrl);
+  let url;
+  const searchString = new URLSearchParams(queryStringParameters).toString();
 
-  url.search = new URLSearchParams(queryStringParameters).toString();
+  if (options.baseUrl !== undefined) {
+    url = new URL(path, options.baseUrl);
+
+    url.search = searchString;
+  } else {
+    url = `${path}?${searchString}`;
+  }
 
   const response = await fetchFunction(url, {
     method,
