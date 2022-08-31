@@ -38,6 +38,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     eslint: 'latest',
     jest: 'latest',
     serverless: 'latest',
+    'serverless-custom-iam-roles-per-function': 'latest',
     'serverless-esbuild': 'latest',
     'serverless-iam-roles-per-function': 'latest',
     'ts-jest': 'latest',

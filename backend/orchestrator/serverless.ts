@@ -25,6 +25,7 @@ const serverlessConfiguration: AWS &
     '@swarmion/serverless-cdk-plugin',
     '@swarmion/serverless-plugin',
     'serverless-iam-roles-per-function',
+    'serverless-custom-iam-roles-per-function',
     'serverless-analyze-bundle-plugin',
   ],
   construct: OrchestratorDynamodb,
