@@ -17,7 +17,7 @@ const config: LambdaFunction = {
     },
   ],
   iamRoleStatementsInherit: true,
-  events: [getTrigger(requestSyncDeployment, {})],
+  events: [getTrigger(requestSyncDeployment)],
 };
 
 export default config;

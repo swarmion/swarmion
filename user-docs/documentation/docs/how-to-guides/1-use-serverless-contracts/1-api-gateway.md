@@ -105,7 +105,7 @@ In the `config.ts` file of our lambda, in the `events` section, we need to use t
 export default {
   environment: {},
   handler: getHandlerPath(__dirname),
-  events: [getTrigger(myContract, {})],
+  events: [getTrigger(myContract)],
 };
 ```
 
@@ -156,7 +156,7 @@ export default {
   environment: {},
   handler: getHandlerPath(__dirname),
   events: [
-    getTrigger(myContract, {}), // error: typescript will request an authorizer property
+    getTrigger(myContract), // error: typescript will request an authorizer property
   ],
 };
 ```

@@ -3,6 +3,7 @@ import { O } from 'ts-toolbelt';
 
 import { CleanEmptyObject, Unpacked } from 'types/utilities';
 
+import { ApiGatewayContract } from '../apiGatewayContract';
 import {
   ApiGatewayAuthorizerType,
   ApiGatewayIntegrationType,
@@ -62,7 +63,7 @@ type ApiGatewayLambdaAdditionalConfigSimpleType<
  *
  * This doesn't include `path` and `method` as they are already defined in the contract itself.
  */
-export type ApiGatewayLambdaAdditionalConfigType<
+type ApiGatewayLambdaAdditionalConfigType<
   IntegrationType extends ApiGatewayKey,
   AuthorizerType extends ApiGatewayAuthorizerType,
 > = AuthorizerType extends undefined
@@ -76,3 +77,28 @@ export type ApiGatewayLambdaAdditionalConfigType<
       ApiGatewayLambdaAdditionalConfigSimpleType<IntegrationType>,
       'authorizer'
     >;
+
+/**
+ * the arguments array of the `getTrigger` function`
+ *
+ * the trick here is that when the contract is authenticated, the additional config
+ * is required, whereas otherwise it is optional
+ */
+export type ApiGatewayTriggerArgs<Contract extends ApiGatewayContract> =
+  Contract['authorizerType'] extends undefined
+    ?
+        | [
+            Contract,
+            ApiGatewayLambdaAdditionalConfigType<
+              ApiGatewayTriggerKey<Contract['integrationType']>,
+              Contract['authorizerType']
+            >,
+          ]
+        | [Contract]
+    : [
+        Contract,
+        ApiGatewayLambdaAdditionalConfigType<
+          ApiGatewayTriggerKey<Contract['integrationType']>,
+          Contract['authorizerType']
+        >,
+      ];

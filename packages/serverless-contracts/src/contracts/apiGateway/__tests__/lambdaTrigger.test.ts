@@ -51,7 +51,7 @@ describe('apiGateway lambda trigger', () => {
         bodySchema,
         outputSchema,
       });
-      expect(getTrigger(httpApiContract, {})).toEqual({
+      expect(getTrigger(httpApiContract)).toEqual({
         httpApi: {
           path: '/users/{userId}',
           method: 'GET',
@@ -96,7 +96,7 @@ describe('apiGateway lambda trigger', () => {
         bodySchema,
         outputSchema,
       });
-      expect(getTrigger(restApiContract, {})).toEqual({
+      expect(getTrigger(restApiContract)).toEqual({
         http: {
           path: '/users/{userId}',
           method: 'GET',
