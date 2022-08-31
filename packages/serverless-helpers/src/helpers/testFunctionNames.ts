@@ -1,14 +1,17 @@
 import { AWS } from '@serverless/typescript';
 
-const MAX_AWS_LAMBDA_NAME_LENGTH = 64;
+const MAX_AWS_ROLE_NAME_LENGTH = 64;
 const STAGE = 'production';
+const LONGEST_REGION = 'ap-northeast-1';
 
 const getFunctionNames = (config: AWS): string[] => {
   return Object.keys(config.functions ?? []);
 };
 
-const getFullFunctionName = (config: AWS, functionName: string): string =>
-  `${config.service}-${STAGE}-${functionName}`;
+const getFunctionRoleName = (config: AWS, functionName: string): string =>
+  `${config.service}-${STAGE}-${functionName}-${
+    config.provider.region ?? LONGEST_REGION
+  }`;
 
 /**
  * Test that all the automatically generated function names will pass the 64 characters AWS limit
@@ -28,12 +31,12 @@ const testFunctionNames = (config: AWS): void => {
   }
 
   it.each(functionNames)(
-    `has function %s which generated name contains less than or equal to ${MAX_AWS_LAMBDA_NAME_LENGTH} chars`,
+    `has function %s which generated role name contains less than or equal to ${MAX_AWS_ROLE_NAME_LENGTH} chars`,
     (functionName: string) => {
-      const fullFunctionName = getFullFunctionName(config, functionName);
+      const functionRoleName = getFunctionRoleName(config, functionName);
 
-      expect(fullFunctionName.length).toBeLessThanOrEqual(
-        MAX_AWS_LAMBDA_NAME_LENGTH,
+      expect(functionRoleName.length).toBeLessThanOrEqual(
+        MAX_AWS_ROLE_NAME_LENGTH,
       );
     },
   );
