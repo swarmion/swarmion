@@ -1,0 +1,156 @@
+---
+sidebar_position: 4
+---
+
+# Add a new shared TypeScript library
+
+## Generate a new shared TypeScript library
+
+Let's add a new `utils` shared TypeScript library to the project:
+
+```bash
+yarn generate-library utils
+```
+
+:::info
+The `generate-library` command is a shorthand for the following command defined in the root `package.json` file:
+
+```bash
+yarn nx generate @swarmion/nx-plugin:library
+```
+
+To have more info on the `@swarmion/nx-plugin`, you can check its [documentation page](../how-to-guides/use-swarmion-generators).
+:::
+
+The `packages/utils` folder containing the `utils` shared TypeScript library has been added. The project dependency graph now looks like the following:
+
+import ThemedImage from '@theme/ThemedImage';
+import swarmionAppUtilsGraphLight from '../../static/screenshots/swarmion-app-utils-graph-light.png';
+import swarmionAppUtilsGraphDark from '../../static/screenshots/swarmion-app-utils-graph-dark.png';
+
+<div
+  style={{
+    width: '100%',
+    display: 'flex',
+    'justify-content': 'center',
+    'margin-bottom': 'var(--ifm-leading)',
+  }}
+>
+  <ThemedImage
+    alt="Swarmion app with utils library"
+    sources={{
+      light: swarmionAppUtilsGraphLight,
+      dark: swarmionAppUtilsGraphDark,
+    }}
+  />
+</div>
+
+Right now the library is not used by any library or services in the projet. Let's how to use it in a service.
+
+## Make sure the code of the library is packaged
+
+The source code of a library is written in TypeScript, but this is not the code that will be used by packages that will use it. In order to be used for all purposes, a library must be packaged in 3 formats:
+
+- commonjs (for older Node.js processes)
+- esm (for newer Node.js processes)
+- .d.ts (for TypeScript and VS Code usage)
+
+There are two commands that can be ran in the `packages/utils` folder to package the library:
+
+```bash
+# package the library in all formats once
+yarn package
+
+# listen for changes and package the library in all formats automatically
+yarn watch
+```
+
+For the rest of the tutorial, we will consider that the `yarn watch` command is running, hence that all changes to the library are automatically packaged.
+
+## Use the library in a service
+
+### Add the library to the service dependencies
+
+To use the `utils` library in the `backend-users` service, you need to first add it a normal npm dependency:
+
+```bash
+cd backend/users
+yarn add @my-project-name/utils
+```
+
+This will add the following line in the `dependencies` of the `backend/users/package.json` file:
+
+```json
+"dependencies": {
+  ...
+  "@my-project-name/utils": "workspace:^",
+  ...
+}
+```
+
+The project dependency graph now looks like the following:
+
+import swarmionAppUtilsUsersGraphLight from '../../static/screenshots/swarmion-app-utils-users-graph-light.png';
+import swarmionAppUtilsUsersGraphDark from '../../static/screenshots/swarmion-app-utils-users-graph-dark.png';
+
+<div
+  style={{
+    width: '100%',
+    display: 'flex',
+    'justify-content': 'center',
+    'margin-bottom': 'var(--ifm-leading)',
+  }}
+>
+  <ThemedImage
+    alt="Swarmion app with utils library used by users service"
+    sources={{
+      light: swarmionAppUtilsUsersGraphLight,
+      dark: swarmionAppUtilsUsersGraphDark,
+    }}
+  />
+</div>
+
+### Reference the library as a TypeScript project
+
+To make **Go to Definition** (the `Ctrl+Click` command) work accross inside `backend-users` when clicking on code defined the `utils` library, you need to reference the `utils` library as a TypeScript project. To do so, add the following in the `backend/users/tsconfig.json` file:
+
+```json
+"references": [
+  ...,
+  {
+    "path": "../../packages/utils/tsconfig.build.json"
+  }
+],
+```
+
+### Import code from the library
+
+The `utils` library exports a single function `utils` defined in `packages/utils/src.utils.ts`. Let's use it in the `backend-users` service:
+
+```typescript
+// backend/users/functions/health/handler.ts
+import { utils } from '@my-project-name/utils';
+
+export const main = async (): Promise<string> => {
+  const utilsValue = utils();
+
+  console.log({ utilsValue });
+
+  return Promise.resolve('ok');
+};
+```
+
+To check that import is working, we can either deploy the lambda and call the `GET /users/health` endpoint, or we can invoke the lambda locally:
+
+```bash
+yarn serverless invoke local --function health
+
+{ utilsValue: 'ok!' }
+"ok"
+```
+
+## Wrap up
+
+You now have a library that can be used to share code accross multiple services and event other libraries.
+
+Next, we will see an important feature of a Swarmion app, contracts 🚀

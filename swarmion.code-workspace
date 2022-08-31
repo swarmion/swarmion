@@ -6,10 +6,7 @@
       "source.fixAll.eslint": true,
       "source.fixAll.stylelint": true
     },
-    "stylelint.validate": [
-      "typescript",
-      "typescriptreact"
-    ],
+    "stylelint.validate": ["typescript", "typescriptreact"],
     "stylelint.customSyntax": "@stylelint/postcss-css-in-js",
     "search.exclude": {
       "**/coverage": true,
@@ -28,11 +25,12 @@
     "[html][javascript][json]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
+    "[markdown][mdx]": {
+      "editor.wordWrap": "on"
+    },
     "typescript.tsdk": "node_modules/typescript/lib",
     "jest.autoRun": "off",
-    "jest.disabledWorkspaceFolders": [
-      "swarmion root"
-    ],
+    "jest.disabledWorkspaceFolders": ["swarmion root"],
     "jest.jestCommandLine": "yarn jest",
     "jest.showCoverageOnLoad": true,
     "jest.coverageFormatter": "DefaultFormatter",
