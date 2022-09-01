@@ -102,6 +102,8 @@ const myContract = new ApiGatewayContract({
 In the `config.ts` file of our lambda, in the `events` section, we need to use the generated trigger to define the path and method that will trigger the lambda:
 
 ```ts
+// config.ts
+
 export default {
   environment: {},
   handler: getHandlerPath(__dirname),
@@ -112,6 +114,8 @@ export default {
 This will output the `method` and `path`. However, if you need a more fine-grained configuration for your lambda (such as defining an authorizer), you can use a second method argument.
 
 ```ts
+// config.ts
+
 export default {
   environment: {},
   handler: getHandlerPath(__dirname),
@@ -122,6 +126,8 @@ export default {
 The static typing helps here to prevent accidental overloading of `path` and `method`:
 
 ```ts
+// config.ts
+
 export default {
   environment: {},
   handler: getHandlerPath(__dirname),
@@ -135,9 +141,11 @@ export default {
 
 The static typing also enforces authenticated contracts by requiring authorizers.
 
-For an unauthenticated contract (`authorizerType: undefined`):
+For an unauthenticated contract: (i.e. that has `authorizerType: undefined`):
 
 ```ts
+// config.ts
+
 export default {
   environment: {},
   handler: getHandlerPath(__dirname),
@@ -149,9 +157,11 @@ export default {
 };
 ```
 
-For an authenticated contract:
+For an authenticated contract (i.e. with an `authorizerType` set):
 
 ```ts
+// config.ts
+
 export default {
   environment: {},
   handler: getHandlerPath(__dirname),
@@ -186,7 +196,7 @@ It covers `cognito`, `jwt` and `lambda` authorizers.
 ```ts
 const handler = getLambdaHandler(myContract)(async event => {
   event.pathParameters.userId; // will have type 'string'
-  event.requestContext.authorizer.claims.sub; // will have type 'string' if hasAuthorize is true, otherwise will fail
+  event.requestContext.authorizer.claims.sub; // will have type 'string' if authorizerType is "cognito", otherwise will fail
 
   event.toto; // will fail typing
   event.pathParameters.toto; // will also fail
@@ -200,7 +210,7 @@ const handler = getLambdaHandler(myContract)(async event => {
 Simply call the `getAxiosRequest` function with the schema.
 
 ```ts
-await getAxiosRequest(myContract, axiosclient, {
+await getAxiosRequest(myContract, axiosClient, {
   pathParameters: { userId: '15', pageNumber: '45' },
   headers: {
     myHeader: 'hello',
