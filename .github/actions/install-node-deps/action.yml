@@ -1,5 +1,10 @@
 name: 'Install Node Dependencies'
 description: 'Install monorepo dependencies using yarn'
+inputs:
+  workingDirectory:
+    description: 'The working directory in which the install should be performed'
+    required: false
+    default: '.'
 runs:
   using: 'composite'
   steps:
@@ -7,10 +12,19 @@ runs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ env.NODE_VERSION }}
+    - name: pwd
+      run: pwd
+      shell: bash
+      working-directory: ${{ inputs.workingDirectory }}
+    - name: cacheFolder
+      run: yarn config get cacheFolder
+      shell: bash
+      working-directory: ${{ inputs.workingDirectory }}
     - name: Get yarn cache directory path
       id: yarn-cache-dir-path
       run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
       shell: bash
+      working-directory: ${{ inputs.workingDirectory }}
     - name: Cache yarn cache
       uses: actions/cache@v2
       with:
@@ -23,3 +37,4 @@ runs:
     - name: Install dependencies
       run: yarn install --immutable
       shell: bash
+      working-directory: ${{ inputs.workingDirectory }}
