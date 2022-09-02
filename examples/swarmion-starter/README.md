@@ -10,6 +10,7 @@ Find the Swarmion documentation on [swarmion.dev](https://www.swarmion.dev)
 
 These commands have to be run at the root of the project.
 
+
 - `nvm use`: set the version of node set in `.nvmrc`
 - `yarn`: install node dependencies in all packages;
 - `yarn package`: compile the common packages;
