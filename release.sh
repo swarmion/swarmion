@@ -43,6 +43,9 @@ fi
 echo "Waiting for changes to be available on npm, please do not stop"
 sleep 90 # 90 seconds
 
+# clean yarn cache. See https://yarnpkg.com/features/offline-cache
+yarn cache clean
+
 # upgrade packages in the starter
 HUSKY=0 yarn --cwd examples/swarmion-starter up "@swarmion/*@^${NEW_VERSION}"
 
