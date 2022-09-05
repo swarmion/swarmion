@@ -68,7 +68,7 @@ describe('apiGateway lambda handler', () => {
       });
     });
 
-    it('should return a error response when throwing httpEror in handler', async () => {
+    it('should return a error response when throwing httpError in handler', async () => {
       const httpApiContract = httpApiGatewayContractMock;
 
       const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =

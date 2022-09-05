@@ -58,8 +58,13 @@ export type HandlerEventType<Contract extends ApiGatewayContract> =
       >
     >;
 
+/**
+ * The type of a Swarmion handler, with type-inferred event
+ * The handler function can define additional arguments
+ */
 export type HandlerType<Contract extends ApiGatewayContract> = (
   event: HandlerEventType<Contract>,
+  ...additionalArgs: never[]
 ) => Promise<OutputType<Contract>>;
 
 export type LambdaEventType<Contract extends ApiGatewayContract> =
