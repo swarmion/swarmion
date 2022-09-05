@@ -3,6 +3,9 @@ set -eo pipefail
 IFS=$'\n\t'
 
 readonly RELEASE_TYPE=$1
+# optional second argument to explicitly define the version. Otherwise let lerna build it
+readonly TARGET_VERSION=$2
+
 IS_ALPHA=false
 OLD_VERSION=$(cat lerna.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[", ]//g')
 
@@ -21,7 +24,13 @@ if [[ "$RELEASE_TYPE" =~ ^(premajor|preminor|prepatch|prerelease)$ ]]; then
 fi
 
 # set the new version
-yarn lerna version $RELEASE_TYPE --no-git-tag-version --no-push --force-publish --yes
+if [[ "$TARGET_VERSION" == "" ]]; then
+    echo 'Using lerna version generation target'
+    yarn lerna version $RELEASE_TYPE --no-git-tag-version --no-push --force-publish --yes
+else
+    echo "Using target version"
+    yarn lerna version $TARGET_VERSION --no-git-tag-version --no-push --force-publish --yes
+fi
 
 # ensuring all packages are up-to-date
 yarn && yarn package --skip-nx-cache && yarn build --skip-nx-cache
