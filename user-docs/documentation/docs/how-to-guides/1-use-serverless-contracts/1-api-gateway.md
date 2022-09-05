@@ -20,7 +20,7 @@ Let's create our first HttpApi contract. First we will need to define the subsch
 - then the different parts of the http request:
   - the path parameters: `pathParametersSchema`, which must correspond to a `Record<string, string>`
   - the query string parameters: `queryStringParametersSchema`, which must respect the same constraint
-  - the headers: `headersSchema`, with the same constraint
+  - the headers: `headersSchema`, with the same constraint (and as per [HTTP/2 specification](https://httpwg.org/specs/rfc7540.html#HttpHeaders), they should be lowercase)
   - the body `bodySchema` which is an unconstrained JSON schema
 - finally, the `outputSchema` in order to be able to validate the output of the lambda. It is also an unconstrained JSON schema.
 
@@ -41,8 +41,8 @@ const queryStringParametersSchema = {
 
 const headersSchema = {
   type: 'object',
-  properties: { myHeader: { type: 'string' } },
-  required: ['myHeader'],
+  properties: { 'my-header': { type: 'string' } }, // Warning: headers must be lowercase in HTTP/2
+  required: ['my-header'],
 } as const;
 
 const bodySchema = {
@@ -231,7 +231,7 @@ Simply call the `getAxiosRequest` function with the schema.
 await getAxiosRequest(myContract, axiosClient, {
   pathParameters: { userId: '15', pageNumber: '45' },
   headers: {
-    myHeader: 'hello',
+    'my-header': 'hello',
   },
   queryStringParameters: { testId: 'plop' },
   body: { foo: 'bar' },
@@ -247,7 +247,7 @@ If you want to use fetch, you can try the `getFetchRequest` function:
 await getFetchRequest(myContract, fetch, {
   pathParameters: { userId: '15', pageNumber: '45' },
   headers: {
-    myHeader: 'hello',
+    'my-header': 'hello',
   },
   queryStringParameters: { testId: 'plop' },
   body: { foo: 'bar' },
@@ -265,7 +265,7 @@ If you want to use another request client, you can use the type inference to gen
 getRequestParameters(myContract, {
   pathParameters: { userId: '15', pageNumber: '45' },
   headers: {
-    myHeader: 'hello',
+    'my-header': 'hello',
   },
   queryStringParameters: { testId: 'plop' },
   body: { foo: 'bar' },
