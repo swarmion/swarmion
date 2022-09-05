@@ -37,21 +37,20 @@ describe('apiGateway lambda trigger', () => {
     required: ['id', 'name'],
   } as const;
 
-  describe('hhtpApi, when all parameters are set', () => {
-    const httpApiContract = new ApiGatewayContract({
-      id: 'testContract',
-      path: '/users/{userId}',
-      method: 'GET',
-      integrationType: 'httpApi',
-      authorizerType: undefined,
-      pathParametersSchema,
-      queryStringParametersSchema,
-      headersSchema,
-      bodySchema,
-      outputSchema,
-    });
-
-    it('should have the correct trigger', () => {
+  describe('httpApi trigger', () => {
+    it('should have the correct trigger without authorizer', () => {
+      const httpApiContract = new ApiGatewayContract({
+        id: 'testContract',
+        path: '/users/{userId}',
+        method: 'GET',
+        integrationType: 'httpApi',
+        authorizerType: undefined,
+        pathParametersSchema,
+        queryStringParametersSchema,
+        headersSchema,
+        bodySchema,
+        outputSchema,
+      });
       expect(getTrigger(httpApiContract)).toEqual({
         httpApi: {
           path: '/users/{userId}',
@@ -60,7 +59,19 @@ describe('apiGateway lambda trigger', () => {
       });
     });
 
-    it('should have the correct complete trigger', () => {
+    it('should have the correct complete trigger with authorizer', () => {
+      const httpApiContract = new ApiGatewayContract({
+        id: 'testContract',
+        path: '/users/{userId}',
+        method: 'GET',
+        integrationType: 'httpApi',
+        authorizerType: 'jwt',
+        pathParametersSchema,
+        queryStringParametersSchema,
+        headersSchema,
+        bodySchema,
+        outputSchema,
+      });
       expect(getTrigger(httpApiContract, { authorizer: '123' })).toEqual({
         httpApi: {
           path: '/users/{userId}',
@@ -71,21 +82,20 @@ describe('apiGateway lambda trigger', () => {
     });
   });
 
-  describe('restApi, when all parameters are set', () => {
-    const restApiContract = new ApiGatewayContract({
-      id: 'testContract',
-      path: '/users/{userId}',
-      method: 'GET',
-      integrationType: 'restApi',
-      authorizerType: undefined,
-      pathParametersSchema,
-      queryStringParametersSchema,
-      headersSchema,
-      bodySchema,
-      outputSchema,
-    });
-
-    it('should have the correct trigger', () => {
+  describe('restApi trigger', () => {
+    it('should have the correct trigger without authorizer', () => {
+      const restApiContract = new ApiGatewayContract({
+        id: 'testContract',
+        path: '/users/{userId}',
+        method: 'GET',
+        integrationType: 'restApi',
+        authorizerType: undefined,
+        pathParametersSchema,
+        queryStringParametersSchema,
+        headersSchema,
+        bodySchema,
+        outputSchema,
+      });
       expect(getTrigger(restApiContract)).toEqual({
         http: {
           path: '/users/{userId}',
@@ -94,7 +104,19 @@ describe('apiGateway lambda trigger', () => {
       });
     });
 
-    it('should have the correct complete trigger', () => {
+    it('should have the correct complete trigger with authorizer', () => {
+      const restApiContract = new ApiGatewayContract({
+        id: 'testContract',
+        path: '/users/{userId}',
+        method: 'GET',
+        integrationType: 'restApi',
+        authorizerType: 'jwt',
+        pathParametersSchema,
+        queryStringParametersSchema,
+        headersSchema,
+        bodySchema,
+        outputSchema,
+      });
       expect(getTrigger(restApiContract, { authorizer: '123' })).toEqual({
         http: {
           path: '/users/{userId}',

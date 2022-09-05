@@ -1,7 +1,7 @@
 import { ApiGatewayContract } from '../apiGatewayContract';
 import {
   ApiGatewayLambdaCompleteTriggerType,
-  ApiGatewayLambdaConfigType,
+  ApiGatewayTriggerArgs,
   ApiGatewayTriggerKey,
 } from '../types';
 
@@ -9,15 +9,13 @@ import {
  * Returns a basic serverless function trigger associated to an ApiGatewayContract
  *
  * @argument contract your ApiGatewayContract
- * @argument additionalConfig for example an authorizer reference, ...
+ * @argument additionalConfig for example an authorizer reference. Only required when the contract requires authentication
  */
 export const getTrigger = <Contract extends ApiGatewayContract>(
-  contract: Contract,
-  additionalConfig?: ApiGatewayLambdaConfigType<
-    ApiGatewayTriggerKey<Contract['integrationType']>
-  >,
+  ...[contract, additionalConfig]: ApiGatewayTriggerArgs<Contract>
 ): ApiGatewayLambdaCompleteTriggerType<
-  ApiGatewayTriggerKey<Contract['integrationType']>
+  ApiGatewayTriggerKey<Contract['integrationType']>,
+  Contract['authorizerType']
 > => {
   const key = contract.integrationType === 'httpApi' ? 'httpApi' : 'http';
 

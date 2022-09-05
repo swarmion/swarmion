@@ -26,6 +26,7 @@ export class ApiGatewayContract<
   Path extends string = string,
   Method extends HttpMethod = HttpMethod,
   IntegrationType extends ApiGatewayIntegrationType = ApiGatewayIntegrationType,
+  AuthorizerType extends ApiGatewayAuthorizerType = ApiGatewayAuthorizerType,
   PathParametersSchema extends ConstrainedJSONSchema | undefined =
     | ConstrainedJSONSchema
     | undefined,
@@ -37,13 +38,13 @@ export class ApiGatewayContract<
     | undefined,
   BodySchema extends JSONSchema | undefined = JSONSchema | undefined,
   OutputSchema extends JSONSchema | undefined = JSONSchema | undefined,
-  AuthorizerType extends ApiGatewayAuthorizerType = ApiGatewayAuthorizerType,
 > {
   public contractType = 'apiGateway' as const;
   public id: string;
   public path: Path;
   public method: Method;
   public integrationType: IntegrationType;
+  public authorizerType: AuthorizerType;
   public pathParametersSchema: PathParametersSchema;
   public queryStringParametersSchema: QueryStringParametersSchema;
   public headersSchema: HeadersSchema;
@@ -56,7 +57,6 @@ export class ApiGatewayContract<
     BodySchema,
     true
   >;
-  public authorizerType: AuthorizerType;
 
   /**
    * Builds a new ApiGateway contract
