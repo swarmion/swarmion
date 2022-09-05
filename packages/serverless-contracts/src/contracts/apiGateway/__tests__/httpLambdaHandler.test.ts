@@ -196,6 +196,56 @@ describe('apiGateway lambda handler', () => {
         statusCode: 400,
       });
     });
+
+    it('should accept optional additional arguments', async () => {
+      const outputSchema = {
+        type: 'object',
+        properties: { name: { type: 'string' } },
+        required: ['name'],
+        additionalProperties: false,
+      } as const;
+
+      const httpApiContract = new ApiGatewayContract({
+        id: 'testContract',
+        path: '/hello',
+        method: 'POST',
+        integrationType: 'httpApi',
+        authorizerType: undefined,
+        pathParametersSchema: undefined,
+        queryStringParametersSchema: undefined,
+        headersSchema: undefined,
+        bodySchema: undefined,
+        outputSchema,
+      });
+
+      const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<undefined> =
+        getRequestContextMockV2({ routeKey: 'blob' });
+
+      const handler: HandlerType<typeof httpApiContract> = (
+        { requestContext },
+        toto: { tata: string } = { tata: 'coucou' },
+      ) => {
+        const name = toto.tata + requestContext.routeKey;
+
+        return Promise.resolve({ name });
+      };
+      const httpHandler = getHttpLambdaHandler(httpApiContract)(handler);
+
+      const result = await httpHandler({
+        headers: { myHeader: 'MyCustomHeader', anotherHeader: 'anotherHeader' },
+        requestContext: fakeRequestContext,
+        version: '',
+        routeKey: fakeRequestContext.routeKey,
+        rawPath: '',
+        rawQueryString: '',
+        isBase64Encoded: false,
+      });
+
+      expect(result).toEqual({
+        body: '{"name":"coucoublob"}',
+        statusCode: 200,
+      });
+    });
   });
 
   describe('restApi, without authorizer, with subset of parameters', () => {
