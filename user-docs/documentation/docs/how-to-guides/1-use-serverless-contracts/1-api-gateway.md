@@ -205,6 +205,33 @@ const handler = getLambdaHandler(myContract)(async event => {
 });
 ```
 
+You can also pass additional arguments to the handler, but keep in mind that you will need to provide default values as Lambda will not pass them for you.
+
+```ts
+interface AdditionalArgs {
+  toto: string;
+}
+
+const additionalArgs = {
+  toto: 'tata',
+};
+
+const handler = getLambdaHandler(myContract)(
+  async (
+    event, // type will be properly inferred
+    myAdditionalArg: AdditionalArgs = additionalArgs, // here you need to manually define a default
+  ) => {
+    event.pathParameters.userId; // will have type 'string'
+    event.requestContext.authorizer.claims.sub; // will have type 'string' if authorizerType is "cognito", otherwise will fail
+
+    event.toto; // will fail typing
+    event.pathParameters.toto; // will also fail
+
+    return { id: 'coucou', name: 'coucou' }; // also type-safe!
+  },
+);
+```
+
 ### Serialization/deserialization and input/output validation at runtime
 
 If you use your lambda as an ApiGateway integration, you will need to use middlewares to parse the body, validate the input and output formats and serialize the output body. You may also need to handler error cases with specific http status codes.
