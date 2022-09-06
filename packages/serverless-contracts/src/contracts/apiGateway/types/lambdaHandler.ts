@@ -3,11 +3,14 @@ import type {
   APIGatewayEventRequestContextLambdaAuthorizer,
   APIGatewayEventRequestContextV2WithAuthorizer,
   APIGatewayEventRequestContextWithAuthorizer,
+  APIGatewayProxyCallback,
+  APIGatewayProxyCallbackV2,
   APIGatewayProxyCognitoAuthorizer,
   APIGatewayProxyEventBase,
   APIGatewayProxyEventV2WithRequestContext,
   APIGatewayProxyResult,
   APIGatewayProxyResultV2,
+  Context,
 } from 'aws-lambda';
 import { FromSchema } from 'json-schema-to-ts';
 
@@ -58,12 +61,19 @@ export type HandlerEventType<Contract extends ApiGatewayContract> =
       >
     >;
 
+type HandlerCallbackType<Contract extends ApiGatewayContract> =
+  Contract['integrationType'] extends 'restApi'
+    ? APIGatewayProxyCallback
+    : APIGatewayProxyCallbackV2;
+
 /**
  * The type of a Swarmion handler, with type-inferred event
  * The handler function can define additional arguments
  */
 export type HandlerType<Contract extends ApiGatewayContract> = (
   event: HandlerEventType<Contract>,
+  context: Context,
+  callback: HandlerCallbackType<Contract>,
   ...additionalArgs: never[]
 ) => Promise<OutputType<Contract>>;
 
@@ -83,4 +93,6 @@ export type LambdaReturnType<Contract extends ApiGatewayContract> =
 
 export type CompleteHandlerType<Contract extends ApiGatewayContract> = (
   event: LambdaEventType<Contract>,
+  context: Context,
+  callback: HandlerCallbackType<Contract>,
 ) => Promise<LambdaReturnType<Contract>>;

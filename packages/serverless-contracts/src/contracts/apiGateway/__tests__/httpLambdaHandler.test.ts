@@ -9,6 +9,7 @@ import { ApiGatewayContract } from 'contracts';
 
 import { httpApiGatewayContractMock } from '../__mocks__/httpApiGatewayContract';
 import {
+  getHandlerContextMock,
   getRequestContextMock,
   getRequestContextMockV2,
 } from '../__mocks__/requestContext';
@@ -25,6 +26,7 @@ describe('apiGateway lambda handler', () => {
           ...getRequestContextMockV2(),
           authorizer: { claims: { foo: 'claimBar' } },
         };
+      const fakeContext = getHandlerContextMock();
 
       const handler: HandlerType<typeof httpApiContract> = ({
         body,
@@ -46,18 +48,25 @@ describe('apiGateway lambda handler', () => {
       };
       const httpHandler = getHttpLambdaHandler(httpApiContract)(handler);
 
-      const result = await httpHandler({
-        pathParameters: { userId: 'toto', pageNumber: '15' },
-        body: JSON.stringify({ foo: 'bar' }),
-        headers: { myHeader: 'MyCustomHeader', anotherHeader: 'anotherHeader' },
-        queryStringParameters: { testId: 'myTestId' },
-        requestContext: fakeRequestContext,
-        version: '',
-        routeKey: '',
-        rawPath: '',
-        rawQueryString: '',
-        isBase64Encoded: false,
-      });
+      const result = await httpHandler(
+        {
+          pathParameters: { userId: 'toto', pageNumber: '15' },
+          body: JSON.stringify({ foo: 'bar' }),
+          headers: {
+            myHeader: 'MyCustomHeader',
+            anotherHeader: 'anotherHeader',
+          },
+          queryStringParameters: { testId: 'myTestId' },
+          requestContext: fakeRequestContext,
+          version: '',
+          routeKey: '',
+          rawPath: '',
+          rawQueryString: '',
+          isBase64Encoded: false,
+        },
+        fakeContext,
+        () => null,
+      );
 
       expect(result).toEqual({
         body: JSON.stringify({
@@ -76,6 +85,7 @@ describe('apiGateway lambda handler', () => {
           ...getRequestContextMockV2(),
           authorizer: { claims: { foo: 'claimBar' } },
         };
+      const fakeContext = getHandlerContextMock();
 
       const handler: HandlerType<typeof httpApiContract> = ({
         body,
@@ -97,18 +107,25 @@ describe('apiGateway lambda handler', () => {
       };
       const httpHandler = getHttpLambdaHandler(httpApiContract)(handler);
 
-      const result = await httpHandler({
-        pathParameters: { userId: 'toto', pageNumber: '15' },
-        body: JSON.stringify({ foo: 'bar' }),
-        headers: { myHeader: 'MyCustomHeader', anotherHeader: 'anotherHeader' },
-        queryStringParameters: { testId: 'myTestId' },
-        requestContext: fakeRequestContext,
-        version: '',
-        routeKey: '',
-        rawPath: '',
-        rawQueryString: '',
-        isBase64Encoded: false,
-      });
+      const result = await httpHandler(
+        {
+          pathParameters: { userId: 'toto', pageNumber: '15' },
+          body: JSON.stringify({ foo: 'bar' }),
+          headers: {
+            myHeader: 'MyCustomHeader',
+            anotherHeader: 'anotherHeader',
+          },
+          queryStringParameters: { testId: 'myTestId' },
+          requestContext: fakeRequestContext,
+          version: '',
+          routeKey: '',
+          rawPath: '',
+          rawQueryString: '',
+          isBase64Encoded: false,
+        },
+        fakeContext,
+        () => null,
+      );
 
       expect(result).toEqual({
         body: 'bar15myTestIdMyCustomHeaderclaimBar',
@@ -124,6 +141,7 @@ describe('apiGateway lambda handler', () => {
           ...getRequestContextMockV2(),
           authorizer: { claims: { foo: 'claimBar' } },
         };
+      const fakeContext = getHandlerContextMock();
 
       const handler: HandlerType<typeof httpApiContract> = ({
         body,
@@ -145,18 +163,25 @@ describe('apiGateway lambda handler', () => {
       };
       const httpHandler = getHttpLambdaHandler(httpApiContract)(handler);
 
-      const result = await httpHandler({
-        pathParameters: { userId: 'toto', pageNumber: '15' },
-        body: JSON.stringify({ bar: 'foo' }),
-        headers: { myHeader: 'MyCustomHeader', anotherHeader: 'anotherHeader' },
-        queryStringParameters: { testId: 'myTestId' },
-        requestContext: fakeRequestContext,
-        version: '',
-        routeKey: '',
-        rawPath: '',
-        rawQueryString: '',
-        isBase64Encoded: false,
-      });
+      const result = await httpHandler(
+        {
+          pathParameters: { userId: 'toto', pageNumber: '15' },
+          body: JSON.stringify({ bar: 'foo' }),
+          headers: {
+            myHeader: 'MyCustomHeader',
+            anotherHeader: 'anotherHeader',
+          },
+          queryStringParameters: { testId: 'myTestId' },
+          requestContext: fakeRequestContext,
+          version: '',
+          routeKey: '',
+          rawPath: '',
+          rawQueryString: '',
+          isBase64Encoded: false,
+        },
+        fakeContext,
+        () => null,
+      );
 
       expect(result).toEqual({
         body: 'Invalid input',
@@ -172,24 +197,32 @@ describe('apiGateway lambda handler', () => {
           ...getRequestContextMockV2(),
           authorizer: { claims: { foo: 'claimBar' } },
         };
+      const fakeContext = getHandlerContextMock();
 
       const handler: HandlerType<typeof httpApiContract> = () => {
         return Promise.resolve({ id: 'hello', name: 5 as unknown as string });
       };
       const httpHandler = getHttpLambdaHandler(httpApiContract)(handler);
 
-      const result = await httpHandler({
-        pathParameters: { userId: 'toto', pageNumber: '15' },
-        body: JSON.stringify({ foo: 'bar' }),
-        headers: { myHeader: 'MyCustomHeader', anotherHeader: 'anotherHeader' },
-        queryStringParameters: { testId: 'myTestId' },
-        requestContext: fakeRequestContext,
-        version: '',
-        routeKey: '',
-        rawPath: '',
-        rawQueryString: '',
-        isBase64Encoded: false,
-      });
+      const result = await httpHandler(
+        {
+          pathParameters: { userId: 'toto', pageNumber: '15' },
+          body: JSON.stringify({ foo: 'bar' }),
+          headers: {
+            myHeader: 'MyCustomHeader',
+            anotherHeader: 'anotherHeader',
+          },
+          queryStringParameters: { testId: 'myTestId' },
+          requestContext: fakeRequestContext,
+          version: '',
+          routeKey: '',
+          rawPath: '',
+          rawQueryString: '',
+          isBase64Encoded: false,
+        },
+        fakeContext,
+        () => null,
+      );
 
       expect(result).toEqual({
         body: 'Invalid output',
@@ -223,6 +256,8 @@ describe('apiGateway lambda handler', () => {
 
       const handler: HandlerType<typeof httpApiContract> = (
         { requestContext },
+        _context,
+        _callback,
         toto: { tata: string } = { tata: 'coucou' },
       ) => {
         const name = toto.tata + requestContext.routeKey;
@@ -230,16 +265,24 @@ describe('apiGateway lambda handler', () => {
         return Promise.resolve({ name });
       };
       const httpHandler = getHttpLambdaHandler(httpApiContract)(handler);
+      const fakeContext = getHandlerContextMock();
 
-      const result = await httpHandler({
-        headers: { myHeader: 'MyCustomHeader', anotherHeader: 'anotherHeader' },
-        requestContext: fakeRequestContext,
-        version: '',
-        routeKey: fakeRequestContext.routeKey,
-        rawPath: '',
-        rawQueryString: '',
-        isBase64Encoded: false,
-      });
+      const result = await httpHandler(
+        {
+          headers: {
+            myHeader: 'MyCustomHeader',
+            anotherHeader: 'anotherHeader',
+          },
+          requestContext: fakeRequestContext,
+          version: '',
+          routeKey: fakeRequestContext.routeKey,
+          rawPath: '',
+          rawQueryString: '',
+          isBase64Encoded: false,
+        },
+        fakeContext,
+        () => null,
+      );
 
       expect(result).toEqual({
         body: '{"name":"coucoublob"}',
@@ -268,23 +311,31 @@ describe('apiGateway lambda handler', () => {
 
         return;
       };
+      const fakeContext = getHandlerContextMock();
 
       const httpHandler = getHttpLambdaHandler(restApiContract)(handler);
 
-      const result = await httpHandler({
-        pathParameters: { userId: 'toto', pageNumber: '15' },
-        body: JSON.stringify({ foo: 'bar' }),
-        headers: { myHeader: 'MyCustomHeader', anotherHeader: 'anotherHeader' },
-        queryStringParameters: { testId: 'myTestId' },
-        requestContext: getRequestContextMock(),
-        multiValueHeaders: {},
-        httpMethod: '',
-        isBase64Encoded: false,
-        path: '',
-        multiValueQueryStringParameters: null,
-        stageVariables: null,
-        resource: '',
-      });
+      const result = await httpHandler(
+        {
+          pathParameters: { userId: 'toto', pageNumber: '15' },
+          body: JSON.stringify({ foo: 'bar' }),
+          headers: {
+            myHeader: 'MyCustomHeader',
+            anotherHeader: 'anotherHeader',
+          },
+          queryStringParameters: { testId: 'myTestId' },
+          requestContext: getRequestContextMock(),
+          multiValueHeaders: {},
+          httpMethod: '',
+          isBase64Encoded: false,
+          path: '',
+          multiValueQueryStringParameters: null,
+          stageVariables: null,
+          resource: '',
+        },
+        fakeContext,
+        () => null,
+      );
 
       expect(result).toEqual({
         body: '',
