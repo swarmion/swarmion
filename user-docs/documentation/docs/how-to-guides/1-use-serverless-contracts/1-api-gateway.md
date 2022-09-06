@@ -205,7 +205,7 @@ const handler = getLambdaHandler(myContract)(async event => {
 });
 ```
 
-You can also pass additional arguments to the handler, but keep in mind that you will need to provide default values as Lambda will not pass them for you.
+You can also pass additional arguments to the handler, but keep in mind that you will need to provide default values as Lambda will not pass them for you. Also bear in mind that lambda passes `context` and `callback` to your lambda, so any additional argument **MUST** be after. See https://docs.aws.amazon.com/lambda/latest/dg/typescript-handler.html.
 
 ```ts
 interface AdditionalArgs {
@@ -219,6 +219,8 @@ const additionalArgs = {
 const handler = getLambdaHandler(myContract)(
   async (
     event, // type will be properly inferred
+    _context, // be careful to define these arguments even if you don't use them!
+    _callback,
     myAdditionalArg: AdditionalArgs = additionalArgs, // here you need to manually define a default
   ) => {
     event.pathParameters.userId; // will have type 'string'
