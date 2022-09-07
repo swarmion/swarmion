@@ -50,6 +50,7 @@ export const getHttpLambdaHandler =
 
       const inputValidator = ajv.compile(contract.inputSchema);
       if (!inputValidator(parsedEvent)) {
+        console.error('Error: Invalid input');
         throw createHttpError(400, 'Invalid input');
       }
 
@@ -62,6 +63,7 @@ export const getHttpLambdaHandler =
       if (contract.outputSchema !== undefined) {
         const outputValidator = ajv.compile(contract.outputSchema);
         if (!outputValidator(handlerResponse)) {
+          console.error('Error: Invalid output');
           throw createHttpError(400, 'Invalid output');
         }
       }
