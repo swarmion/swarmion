@@ -73,7 +73,6 @@ type HandlerCallbackType<Contract extends ApiGatewayContract> =
 export type HandlerType<Contract extends ApiGatewayContract> = (
   event: HandlerEventType<Contract>,
   context: Context,
-  callback: HandlerCallbackType<Contract>,
   ...additionalArgs: never[]
 ) => Promise<OutputType<Contract>>;
 

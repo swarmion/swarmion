@@ -40,7 +40,9 @@ const handlerResponseToLambdaResult = <Contract extends ApiGatewayContract>(
 export const getHttpLambdaHandler =
   <Contract extends ApiGatewayContract>(contract: Contract) =>
   (handler: HandlerType<Contract>): CompleteHandlerType<Contract> =>
-  async (event, context, callback, ...additionalArgs) => {
+  async (event, context, _callback, ...additionalArgs) => {
+    // here we decide to not use the callback argument passed by lambda
+    // because we have asynchronous handlers
     try {
       const ajv = new Ajv();
 
@@ -54,7 +56,6 @@ export const getHttpLambdaHandler =
       const handlerResponse = await handler(
         parsedEvent,
         context,
-        callback,
         ...additionalArgs,
       );
 

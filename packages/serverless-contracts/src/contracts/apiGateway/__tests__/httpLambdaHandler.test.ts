@@ -257,7 +257,6 @@ describe('apiGateway lambda handler', () => {
       const handler: HandlerType<typeof httpApiContract> = (
         { requestContext },
         _context,
-        _callback,
         toto: { tata: string } = { tata: 'coucou' },
       ) => {
         const name = toto.tata + requestContext.routeKey;
