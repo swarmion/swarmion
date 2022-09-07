@@ -3,12 +3,12 @@ import createHttpError, { isHttpError } from 'http-errors';
 
 import { ApiGatewayContract } from '../apiGatewayContract';
 import {
+  ApiGatewayEvent,
+  ApiGatewayHandler,
+  ApiGatewayResult,
   BodyType,
-  CompleteHandlerType,
   HandlerEventType,
   HandlerType,
-  LambdaEventType,
-  LambdaReturnType,
   OutputType,
 } from '../types';
 
@@ -18,7 +18,7 @@ const proxyEventToHandlerEvent = <Contract extends ApiGatewayContract>({
   headers,
   pathParameters,
   queryStringParameters,
-}: LambdaEventType<Contract>): HandlerEventType<Contract> => {
+}: ApiGatewayEvent<Contract>): HandlerEventType<Contract> => {
   return {
     requestContext,
     body: (proxyEventBody !== null
@@ -32,14 +32,14 @@ const proxyEventToHandlerEvent = <Contract extends ApiGatewayContract>({
 
 const handlerResponseToLambdaResult = <Contract extends ApiGatewayContract>(
   handlerResponse: OutputType<Contract>,
-): LambdaReturnType<Contract> => ({
+): ApiGatewayResult<Contract> => ({
   statusCode: 200,
   body: handlerResponse !== undefined ? JSON.stringify(handlerResponse) : '',
 });
 
 export const getHandler =
   <Contract extends ApiGatewayContract>(contract: Contract) =>
-  (handler: HandlerType<Contract>): CompleteHandlerType<Contract> =>
+  (handler: HandlerType<Contract>): ApiGatewayHandler<Contract> =>
   async (event, context, _callback, ...additionalArgs) => {
     // here we decide to not use the callback argument passed by lambda
     // because we have asynchronous handlers
