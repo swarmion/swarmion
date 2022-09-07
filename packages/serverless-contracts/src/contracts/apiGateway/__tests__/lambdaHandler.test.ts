@@ -16,6 +16,7 @@ import {
   queryStringParametersSchema,
 } from '../__mocks__/httpApiGatewayContract';
 import {
+  getHandlerContextMock,
   getRequestContextMock,
   getRequestContextMockV2,
 } from '../__mocks__/requestContext';
@@ -53,14 +54,22 @@ describe('apiGateway lambda handler', () => {
         return Promise.resolve({ id: 'hello', name });
       };
       expect(getLambdaHandler(httpApiContract)(handler)).toEqual(handler);
+      const fakeContext = getHandlerContextMock();
 
-      const { id, name } = await handler({
-        pathParameters: { userId: 'toto', pageNumber: '15' },
-        body: { foo: 'bar' },
-        headers: { myHeader: 'MyCustomHeader', anotherHeader: 'anotherHeader' },
-        queryStringParameters: { testId: 'myTestId' },
-        requestContext: fakeRequestContext,
-      });
+      const { id, name } = await handler(
+        {
+          pathParameters: { userId: 'toto', pageNumber: '15' },
+          body: { foo: 'bar' },
+          headers: {
+            myHeader: 'MyCustomHeader',
+            anotherHeader: 'anotherHeader',
+          },
+          queryStringParameters: { testId: 'myTestId' },
+          requestContext: fakeRequestContext,
+        },
+        fakeContext,
+        () => null,
+      );
 
       expect(id).toBe('hello');
       expect(name).toBe('bar15myTestIdMyCustomHeaderclaimBar');
@@ -89,6 +98,7 @@ describe('apiGateway lambda handler', () => {
             jwt: { claims: { foo: 'claimBar' }, scopes: ['profile'] },
           },
         };
+      const fakeContext = getHandlerContextMock();
 
       const handler: HandlerType<typeof httpApiContract> = ({
         body,
@@ -110,13 +120,20 @@ describe('apiGateway lambda handler', () => {
       };
       expect(getLambdaHandler(httpApiContract)(handler)).toEqual(handler);
 
-      const { id, name } = await handler({
-        pathParameters: { userId: 'toto', pageNumber: '15' },
-        body: { foo: 'bar' },
-        headers: { myHeader: 'MyCustomHeader', anotherHeader: 'anotherHeader' },
-        queryStringParameters: { testId: 'myTestId' },
-        requestContext: fakeRequestContext,
-      });
+      const { id, name } = await handler(
+        {
+          pathParameters: { userId: 'toto', pageNumber: '15' },
+          body: { foo: 'bar' },
+          headers: {
+            myHeader: 'MyCustomHeader',
+            anotherHeader: 'anotherHeader',
+          },
+          queryStringParameters: { testId: 'myTestId' },
+          requestContext: fakeRequestContext,
+        },
+        fakeContext,
+        () => null,
+      );
 
       expect(id).toBe('hello');
       expect(name).toBe('bar15myTestIdMyCustomHeaderclaimBar');
@@ -148,6 +165,7 @@ describe('apiGateway lambda handler', () => {
           lambda: { foo: 'claimBar' },
         },
       };
+      const fakeContext = getHandlerContextMock();
 
       const handler: HandlerType<typeof httpApiContract> = ({
         body,
@@ -170,13 +188,20 @@ describe('apiGateway lambda handler', () => {
       };
       expect(getLambdaHandler(httpApiContract)(handler)).toEqual(handler);
 
-      const { id, name } = await handler({
-        pathParameters: { userId: 'toto', pageNumber: '15' },
-        body: { foo: 'bar' },
-        headers: { myHeader: 'MyCustomHeader', anotherHeader: 'anotherHeader' },
-        queryStringParameters: { testId: 'myTestId' },
-        requestContext: fakeRequestContext,
-      });
+      const { id, name } = await handler(
+        {
+          pathParameters: { userId: 'toto', pageNumber: '15' },
+          body: { foo: 'bar' },
+          headers: {
+            myHeader: 'MyCustomHeader',
+            anotherHeader: 'anotherHeader',
+          },
+          queryStringParameters: { testId: 'myTestId' },
+          requestContext: fakeRequestContext,
+        },
+        fakeContext,
+        () => null,
+      );
 
       expect(id).toBe('hello');
       expect(name).toBe('bar15myTestIdMyCustomHeaderclaimBar');
@@ -207,11 +232,17 @@ describe('apiGateway lambda handler', () => {
       // @ts-expect-error we don't want to generate a full event here
       const fakeRequestContext: APIGatewayEventRequestContextWithAuthorizer<undefined> =
         {};
+      const fakeContext = getHandlerContextMock();
+
       expect(
-        await handler({
-          body: { foo: 'bar' },
-          requestContext: fakeRequestContext,
-        }),
+        await handler(
+          {
+            body: { foo: 'bar' },
+            requestContext: fakeRequestContext,
+          },
+          fakeContext,
+          () => null,
+        ),
       ).toBe(undefined);
     });
 
@@ -224,12 +255,17 @@ describe('apiGateway lambda handler', () => {
         return Promise.resolve(undefinedAuthorizer);
       };
       expect(getLambdaHandler(restApiContract)(handler)).toEqual(handler);
+      const fakeContext = getHandlerContextMock();
 
       expect(
-        await handler({
-          body: { foo: 'bar' },
-          requestContext: getRequestContextMock(),
-        }),
+        await handler(
+          {
+            body: { foo: 'bar' },
+            requestContext: getRequestContextMock(),
+          },
+          fakeContext,
+          () => null,
+        ),
       ).toBe(undefined);
     });
   });
