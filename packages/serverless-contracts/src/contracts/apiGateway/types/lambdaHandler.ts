@@ -95,4 +95,5 @@ export type CompleteHandlerType<Contract extends ApiGatewayContract> = (
   event: LambdaEventType<Contract>,
   context: Context,
   callback: HandlerCallbackType<Contract>,
+  ...additionalArgs: never[]
 ) => Promise<LambdaReturnType<Contract>>;

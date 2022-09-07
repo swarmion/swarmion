@@ -40,7 +40,7 @@ const handlerResponseToLambdaResult = <Contract extends ApiGatewayContract>(
 export const getHttpLambdaHandler =
   <Contract extends ApiGatewayContract>(contract: Contract) =>
   (handler: HandlerType<Contract>): CompleteHandlerType<Contract> =>
-  async (event, context, callback) => {
+  async (event, context, callback, ...additionalArgs) => {
     try {
       const ajv = new Ajv();
 
@@ -51,7 +51,12 @@ export const getHttpLambdaHandler =
         throw createHttpError(400, 'Invalid input');
       }
 
-      const handlerResponse = await handler(parsedEvent, context, callback);
+      const handlerResponse = await handler(
+        parsedEvent,
+        context,
+        callback,
+        ...additionalArgs,
+      );
 
       if (contract.outputSchema !== undefined) {
         const outputValidator = ajv.compile(contract.outputSchema);
