@@ -2,40 +2,11 @@ import Ajv from 'ajv';
 import createHttpError, { isHttpError } from 'http-errors';
 
 import { ApiGatewayContract } from '../apiGatewayContract';
+import { ApiGatewayHandler, HandlerType } from '../types';
 import {
-  ApiGatewayEvent,
-  ApiGatewayHandler,
-  ApiGatewayResult,
-  BodyType,
-  HandlerEventType,
-  HandlerType,
-  OutputType,
-} from '../types';
-
-const proxyEventToHandlerEvent = <Contract extends ApiGatewayContract>({
-  requestContext,
-  body: proxyEventBody = null,
-  headers,
-  pathParameters,
-  queryStringParameters,
-}: ApiGatewayEvent<Contract>): HandlerEventType<Contract> => {
-  return {
-    requestContext,
-    body: (proxyEventBody !== null
-      ? JSON.parse(proxyEventBody)
-      : undefined) as BodyType<Contract>,
-    headers,
-    pathParameters,
-    queryStringParameters,
-  } as unknown as HandlerEventType<Contract>;
-};
-
-const handlerResponseToLambdaResult = <Contract extends ApiGatewayContract>(
-  handlerResponse: OutputType<Contract>,
-): ApiGatewayResult<Contract> => ({
-  statusCode: 200,
-  body: handlerResponse !== undefined ? JSON.stringify(handlerResponse) : '',
-});
+  handlerResponseToLambdaResult,
+  proxyEventToHandlerEvent,
+} from '../utils';
 
 export const getHandler =
   <Contract extends ApiGatewayContract>(contract: Contract) =>
