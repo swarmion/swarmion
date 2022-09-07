@@ -4,7 +4,7 @@ import createHttpError, { isHttpError } from 'http-errors';
 import { ApiGatewayContract } from '../apiGatewayContract';
 import { ApiGatewayHandler, HandlerType } from '../types';
 import {
-  handlerResponseToLambdaResult,
+  handlerResponseToProxyResult,
   proxyEventToHandlerEvent,
 } from '../utils';
 
@@ -39,7 +39,7 @@ export const getHandler =
         }
       }
 
-      return handlerResponseToLambdaResult(handlerResponse);
+      return handlerResponseToProxyResult(handlerResponse);
     } catch (error) {
       if (isHttpError(error) && error.expose) {
         return {

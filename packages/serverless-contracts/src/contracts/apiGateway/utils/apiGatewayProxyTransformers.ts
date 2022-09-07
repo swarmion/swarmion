@@ -25,7 +25,7 @@ export const proxyEventToHandlerEvent = <Contract extends ApiGatewayContract>({
   } as unknown as HandlerEventType<Contract>;
 };
 
-export const handlerResponseToLambdaResult = <
+export const handlerResponseToProxyResult = <
   Contract extends ApiGatewayContract,
 >(
   handlerResponse: OutputType<Contract>,
