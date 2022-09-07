@@ -5,4 +5,3 @@ export * from './requestParameters';
 export * from './axiosRequest';
 export * from './lambdaHandler';
 export * from './fetchRequest';
-export * from './httpLambdaHandler';

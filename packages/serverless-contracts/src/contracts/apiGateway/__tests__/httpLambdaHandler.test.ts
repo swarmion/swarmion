@@ -13,7 +13,7 @@ import {
   getRequestContextMock,
   getRequestContextMockV2,
 } from '../__mocks__/requestContext';
-import { getHttpLambdaHandler } from '../features';
+import { getHandler } from '../features';
 import { HandlerType } from '../types';
 
 describe('apiGateway lambda handler', () => {
@@ -46,7 +46,7 @@ describe('apiGateway lambda handler', () => {
 
         return Promise.resolve({ id: 'hello', name });
       };
-      const httpHandler = getHttpLambdaHandler(httpApiContract)(handler);
+      const httpHandler = getHandler(httpApiContract)(handler);
 
       const result = await httpHandler(
         {
@@ -105,7 +105,7 @@ describe('apiGateway lambda handler', () => {
 
         throw createHttpError(500, name, { expose: true });
       };
-      const httpHandler = getHttpLambdaHandler(httpApiContract)(handler);
+      const httpHandler = getHandler(httpApiContract)(handler);
 
       const result = await httpHandler(
         {
@@ -161,7 +161,7 @@ describe('apiGateway lambda handler', () => {
 
         throw createHttpError(500, name);
       };
-      const httpHandler = getHttpLambdaHandler(httpApiContract)(handler);
+      const httpHandler = getHandler(httpApiContract)(handler);
 
       const result = await httpHandler(
         {
@@ -202,7 +202,7 @@ describe('apiGateway lambda handler', () => {
       const handler: HandlerType<typeof httpApiContract> = () => {
         return Promise.resolve({ id: 'hello', name: 5 as unknown as string });
       };
-      const httpHandler = getHttpLambdaHandler(httpApiContract)(handler);
+      const httpHandler = getHandler(httpApiContract)(handler);
 
       const result = await httpHandler(
         {
@@ -263,7 +263,7 @@ describe('apiGateway lambda handler', () => {
 
         return Promise.resolve({ name });
       };
-      const httpHandler = getHttpLambdaHandler(httpApiContract)(handler);
+      const httpHandler = getHandler(httpApiContract)(handler);
       const fakeContext = getHandlerContextMock();
 
       const result = await httpHandler(
@@ -312,7 +312,7 @@ describe('apiGateway lambda handler', () => {
       };
       const fakeContext = getHandlerContextMock();
 
-      const httpHandler = getHttpLambdaHandler(restApiContract)(handler);
+      const httpHandler = getHandler(restApiContract)(handler);
 
       const result = await httpHandler(
         {
