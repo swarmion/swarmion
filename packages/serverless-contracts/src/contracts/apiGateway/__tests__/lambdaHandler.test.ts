@@ -68,7 +68,6 @@ describe('apiGateway lambda handler', () => {
           requestContext: fakeRequestContext,
         },
         fakeContext,
-        () => null,
       );
 
       expect(id).toBe('hello');
@@ -132,7 +131,6 @@ describe('apiGateway lambda handler', () => {
           requestContext: fakeRequestContext,
         },
         fakeContext,
-        () => null,
       );
 
       expect(id).toBe('hello');
@@ -200,7 +198,6 @@ describe('apiGateway lambda handler', () => {
           requestContext: fakeRequestContext,
         },
         fakeContext,
-        () => null,
       );
 
       expect(id).toBe('hello');
@@ -241,7 +238,6 @@ describe('apiGateway lambda handler', () => {
             requestContext: fakeRequestContext,
           },
           fakeContext,
-          () => null,
         ),
       ).toBe(undefined);
     });
@@ -264,7 +260,6 @@ describe('apiGateway lambda handler', () => {
             requestContext: getRequestContextMock(),
           },
           fakeContext,
-          () => null,
         ),
       ).toBe(undefined);
     });
