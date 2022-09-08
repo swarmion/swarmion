@@ -25,6 +25,8 @@ Let's create our first HttpApi contract. First we will need to define the subsch
 - finally, the `outputSchema` in order to be able to validate the output of the lambda. It is also an unconstrained JSON schema.
 
 ```ts
+import { ApiGatewayContract } from '@swarmion/serverless-contracts';
+
 const pathParametersSchema = {
   type: 'object',
   properties: { userId: { type: 'string' }, pageNumber: { type: 'string' } },
@@ -81,6 +83,8 @@ In order to properly use Typescript's type inference:
 - If you do not wish to use one of the subschemas, you need to explicitly set it as `undefined` in the contract. For example, in order to define a contract without headers, we need to create it with:
 
 ```ts
+import { ApiGatewayContract } from '@swarmion/serverless-contracts';
+
 const myContract = new ApiGatewayContract({
   id: 'my-unique-id',
   path: '/users/{userId}',
@@ -103,6 +107,7 @@ In the `config.ts` file of our lambda, in the `events` section, we need to use t
 
 ```ts
 // config.ts
+import { getTrigger } from '@swarmion/serverless-contracts';
 
 export default {
   environment: {},
@@ -115,6 +120,7 @@ This will output the `method` and `path`. However, if you need a more fine-grain
 
 ```ts
 // config.ts
+import { getTrigger } from '@swarmion/serverless-contracts';
 
 export default {
   environment: {},
@@ -127,6 +133,7 @@ The static typing helps here to prevent accidental overloading of `path` and `me
 
 ```ts
 // config.ts
+import { getTrigger } from '@swarmion/serverless-contracts';
 
 export default {
   environment: {},
@@ -145,6 +152,7 @@ For an unauthenticated contract: (i.e. that has `authorizerType: undefined`):
 
 ```ts
 // config.ts
+import { getTrigger } from '@swarmion/serverless-contracts';
 
 export default {
   environment: {},
@@ -161,6 +169,7 @@ For an authenticated contract (i.e. with an `authorizerType` set):
 
 ```ts
 // config.ts
+import { getTrigger } from '@swarmion/serverless-contracts';
 
 export default {
   environment: {},
@@ -194,6 +203,8 @@ The `authorizerType` key in the contract allow us to type correctly type the req
 It covers `cognito`, `jwt` and `lambda` authorizers.
 
 ```ts
+import { getLambdaHandler } from '@swarmion/serverless-contracts';
+
 const handler = getLambdaHandler(myContract)(async event => {
   event.pathParameters.userId; // will have type 'string'
   event.requestContext.authorizer.claims.sub; // will have type 'string' if authorizerType is "cognito", otherwise will fail
@@ -212,6 +223,8 @@ If you use your lambda as an ApiGateway integration, you will need to use middle
 This can be done directly by using the `getHandler` function that offers all those features.
 
 ```ts
+import { getHandler } from '@swarmion/serverless-contracts';
+
 const handler = getHandler(myContract)(async event => {
   event.pathParameters.userId; // will have type 'string'
   event.requestContext.authorizer.claims.sub; // will have type 'string' if hasAuthorize is true, otherwise will fail
@@ -228,6 +241,8 @@ const handler = getHandler(myContract)(async event => {
 Simply call the `getAxiosRequest` function with the schema.
 
 ```ts
+import { getAxiosRequest } from '@swarmion/serverless-contracts';
+
 await getAxiosRequest(myContract, axiosClient, {
   pathParameters: { userId: '15', pageNumber: '45' },
   headers: {
@@ -244,6 +259,8 @@ The return type will be an axios response of the type inferred from the `outputS
 If you want to use fetch, you can try the `getFetchRequest` function:
 
 ```ts
+import { getFetchRequest } from '@swarmion/serverless-contracts';
+
 await getFetchRequest(myContract, fetch, {
   pathParameters: { userId: '15', pageNumber: '45' },
   headers: {
@@ -262,6 +279,8 @@ The fetch function that you provide can be a custom wrapper where you already de
 If you want to use another request client, you can use the type inference to generate request parameters with:
 
 ```ts
+import { getRequestParameters } from '@swarmion/serverless-contracts';
+
 getRequestParameters(myContract, {
   pathParameters: { userId: '15', pageNumber: '45' },
   headers: {
