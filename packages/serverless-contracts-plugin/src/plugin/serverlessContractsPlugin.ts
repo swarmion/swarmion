@@ -11,6 +11,7 @@ import {
 import { getTimestampFromArtifactDirectoryName } from './utils/artifactDirectory';
 import { LATEST_DEPLOYED_TIMESTAMP_TAG_NAME } from './utils/constants';
 import { generateOpenApiDocumentation } from './utils/generateOpenApiDocumentation';
+import { listContractSchemas } from './utils/listContractSchemas';
 import { listLocalContractSchemas } from './utils/listLocalContractSchemas';
 import { listRemoteContractSchemas } from './utils/listRemoteContractSchemas';
 import { printContractSchemas } from './utils/printContractSchemas';
@@ -60,6 +61,10 @@ export class ServerlessContractsPlugin implements Plugin {
         usage: 'Show local Serverless contracts',
         lifecycleEvents: ['run'],
       },
+      listContractSchemas: {
+        usage: 'List Serverless contract Schemas',
+        lifecycleEvents: ['run'],
+      },
       remoteContracts: {
         usage: 'Show currently deployed Serverless contracts',
         lifecycleEvents: ['run'],
@@ -86,6 +91,7 @@ export class ServerlessContractsPlugin implements Plugin {
     };
     this.hooks = {
       'localContracts:run': this.printLocalServerlessContractSchemas.bind(this),
+      'listContractSchemas:run': this.listContractSchemas.bind(this),
       'remoteContracts:run':
         this.printRemoteServerlessContractSchemas.bind(this),
       'safeDeploy:run': this.deployWithContractSchemasValidation.bind(this),
@@ -115,6 +121,9 @@ export class ServerlessContractsPlugin implements Plugin {
   printLocalServerlessContractSchemas(): void {
     const contractSchemas = this.listLocalContractSchemas();
     printContractSchemas(contractSchemas, ContractSchemasLocation.LOCAL);
+  }
+  async listContractSchemas(): Promise<void> {
+    return await listContractSchemas(this.serverless);
   }
 
   async printRemoteServerlessContractSchemas(): Promise<void> {
