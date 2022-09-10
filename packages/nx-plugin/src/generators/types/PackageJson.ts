@@ -25,7 +25,7 @@ export interface PackageJson {
   devDependencies: {
     [key: string]: string;
     '@types/node': string;
-    jest: string;
+    vitest: string;
     'ts-node': string;
     typescript: string;
   };

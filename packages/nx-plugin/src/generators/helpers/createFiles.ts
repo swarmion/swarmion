@@ -1,5 +1,4 @@
 import { generateFiles, names, Tree } from '@nrwl/devkit';
-import { join } from 'path';
 
 import { NormalizedSchema } from '../types';
 
@@ -19,12 +18,5 @@ export const createFiles = (
     cliCommand: 'nx',
     strict: undefined,
     tmpl: '',
-    hasUnitTestRunner: options.unitTestRunner !== 'none',
   });
-
-  if (options.unitTestRunner === 'none') {
-    tree.delete(
-      join(options.packageRoot, 'src/lib', `${options.fileName}.spec.ts`),
-    );
-  }
 };

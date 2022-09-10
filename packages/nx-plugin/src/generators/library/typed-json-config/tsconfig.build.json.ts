@@ -5,5 +5,5 @@ export const packageBuildTsConfig: TsConfig = {
   compilerOptions: {
     rootDir: 'src',
   },
-  exclude: ['./jest.config.ts', './**/*.test.ts'],
+  exclude: ['./vite*', './**/*.test.ts'],
 };
