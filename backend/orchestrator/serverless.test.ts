@@ -6,11 +6,6 @@ import * as sc from './serverless';
 
 const serverlessConfiguration = sc as AWS;
 
-/**
- * serverless tests
- *
- * @group unit/serverless
- */
 describe('root service serverless.ts', () => {
   testFunctionNames(serverlessConfiguration);
 });
