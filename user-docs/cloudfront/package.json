@@ -13,7 +13,7 @@
     "test": "yarn test-linter && yarn test-type && yarn test-circular",
     "test-circular": "yarn depcruise --validate .dependency-cruiser.js .",
     "test-linter": "yarn linter-base-config .",
-    "test-type": "tsc --noEmit"
+    "test-type": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
     "@swarmion/serverless-configuration": "^0.9.6"
