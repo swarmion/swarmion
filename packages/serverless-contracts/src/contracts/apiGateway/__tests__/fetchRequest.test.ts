@@ -3,7 +3,7 @@
 import { ApiGatewayContract } from '../apiGatewayContract';
 import { getFetchRequest } from '../features/fetchRequest';
 
-const mockedFetch = jest.fn(() =>
+const mockedFetch = vi.fn(() =>
   Promise.resolve({
     json: () => {
       return Promise.resolve(undefined);
