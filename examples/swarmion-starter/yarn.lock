@@ -2479,7 +2479,7 @@ __metadata:
     "@serverless/typescript": ^3.21.0
     "@swarmion-starter/core-contracts": 1.0.0
     "@swarmion-starter/serverless-configuration": 1.0.0
-    "@swarmion/serverless-helpers": ^0.9.6
+    "@swarmion/serverless-helpers": ^0.10.0
     "@types/node": ^18.6.3
     "@vitest/coverage-c8": ^0.23.1
     dependency-cruiser: ^11.14.0
@@ -2504,7 +2504,7 @@ __metadata:
     "@babel/preset-env": ^7.18.9
     "@babel/preset-typescript": ^7.18.6
     "@babel/runtime": ^7.18.9
-    "@swarmion/serverless-contracts": ^0.9.6
+    "@swarmion/serverless-contracts": ^0.10.0
     "@types/node": ^18.6.3
     "@zerollup/ts-transform-paths": ^1.7.18
     babel-plugin-module-resolver: ^4.1.0
@@ -2525,7 +2525,7 @@ __metadata:
     "@commitlint/cli": ^17.0.3
     "@commitlint/config-conventional": ^17.0.3
     "@nrwl/workspace": ^14.5.1
-    "@swarmion/nx-plugin": ^0.9.6
+    "@swarmion/nx-plugin": ^0.10.0
     "@typescript-eslint/eslint-plugin": ^5.31.0
     "@typescript-eslint/parser": ^5.31.0
     aws-sdk: ^2.1185.0
@@ -2571,35 +2571,37 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swarmion/nx-plugin@npm:^0.9.6":
-  version: 0.9.6
-  resolution: "@swarmion/nx-plugin@npm:0.9.6"
-  checksum: 01f239f7226fcce1ae234ca65eb173a5b84fcc47c6dd796707ff7447b48c6c4503f5074e315466d7b6bef5840f310927c8cce78ce5fab861069bc894957bf0e9
+"@swarmion/nx-plugin@npm:^0.10.0":
+  version: 0.10.0
+  resolution: "@swarmion/nx-plugin@npm:0.10.0"
+  checksum: abfaf0bd565e6940f366b2dc7f6cf48007cd8375661e201bc083227af14dc976cbe9fb4ea1e2892960f5df41dee7c4e3805fe7d20f7d5b55a010e1e7b72e3067
   languageName: node
   linkType: hard
 
-"@swarmion/serverless-contracts@npm:^0.9.6":
-  version: 0.9.6
-  resolution: "@swarmion/serverless-contracts@npm:0.9.6"
+"@swarmion/serverless-contracts@npm:^0.10.0":
+  version: 0.10.0
+  resolution: "@swarmion/serverless-contracts@npm:0.10.0"
   dependencies:
     "@babel/runtime": ^7.18.9
+    ajv: ^8.11.0
+    http-errors: ^2.0.0
     lodash: ^4.17.21
   peerDependencies:
     axios: ^0.27.2
-  checksum: 7a45bd70cdaba2d6112b52dfb74b2a817c2d335eb46ed1002aafaa06e7dac2471b7f9620b06b59235a167e3f5d5caf13814ea42155593f93a5338cc885643cb5
+  checksum: 613f26727f0a516f51f5e72fca84293a867646c8f2480b5b4654c470d4419fd9be16106c5b415032ac7568619fb95b0fc62397e31c4ad23237d87249e193a376
   languageName: node
   linkType: hard
 
-"@swarmion/serverless-helpers@npm:^0.9.6":
-  version: 0.9.6
-  resolution: "@swarmion/serverless-helpers@npm:0.9.6"
+"@swarmion/serverless-helpers@npm:^0.10.0":
+  version: 0.10.0
+  resolution: "@swarmion/serverless-helpers@npm:0.10.0"
   dependencies:
     "@babel/runtime": ^7.18.9
     "@middy/core": ^2.5.7
     "@middy/http-error-handler": ^2.5.7
     "@middy/http-json-body-parser": ^2.5.7
     "@middy/validator": ^2.5.7
-  checksum: ce075122d821bf785611639158cc090ea77ac36e73b3fe66316ccae5db3e0145bf4edf5baaf6baa28273ced3ba4a1b6830aa75792cc1bc977e22b4ae3b6ef7b5
+  checksum: eb5f8f7760ac77ff7df03a0e17a36e94fe870c26ed8a58d1b5193c1a3b50e554a4bd1a965dd452c227657a72d555dd9ce9ec49c3194d19c14add9e8afce3cb9e
   languageName: node
   linkType: hard
 
@@ -4781,6 +4783,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"depd@npm:2.0.0":
+  version: 2.0.0
+  resolution: "depd@npm:2.0.0"
+  checksum: abbe19c768c97ee2eed6282d8ce3031126662252c58d711f646921c9623f9052e3e1906443066beec1095832f534e57c523b7333f8e7e0d93051ab6baef5ab3a
+  languageName: node
+  linkType: hard
+
 "depd@npm:^1.1.2":
   version: 1.1.2
   resolution: "depd@npm:1.1.2"
@@ -6902,6 +6911,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"http-errors@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "http-errors@npm:2.0.0"
+  dependencies:
+    depd: 2.0.0
+    inherits: 2.0.4
+    setprototypeof: 1.2.0
+    statuses: 2.0.1
+    toidentifier: 1.0.1
+  checksum: 9b0a3782665c52ce9dc658a0d1560bcb0214ba5699e4ea15aefb2a496e2ca83db03ebc42e1cce4ac1f413e4e0d2d736a3fd755772c556a9a06853ba2a0b7d920
+  languageName: node
+  linkType: hard
+
 "http-proxy-agent@npm:^5.0.0":
   version: 5.0.0
   resolution: "http-proxy-agent@npm:5.0.0"
@@ -7061,7 +7083,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"inherits@npm:2, inherits@npm:^2.0.3, inherits@npm:^2.0.4, inherits@npm:~2.0.3":
+"inherits@npm:2, inherits@npm:2.0.4, inherits@npm:^2.0.3, inherits@npm:^2.0.4, inherits@npm:~2.0.3":
   version: 2.0.4
   resolution: "inherits@npm:2.0.4"
   checksum: 4a48a733847879d6cf6691860a6b1e3f0f4754176e4d71494c41f3475553768b10f84b5ce1d40fbd0e34e6bfbb864ee35858ad4dd2cf31e02fc4a154b724d7f1
@@ -10449,6 +10471,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"setprototypeof@npm:1.2.0":
+  version: 1.2.0
+  resolution: "setprototypeof@npm:1.2.0"
+  checksum: be18cbbf70e7d8097c97f713a2e76edf84e87299b40d085c6bf8b65314e994cc15e2e317727342fa6996e38e1f52c59720b53fe621e2eb593a6847bf0356db89
+  languageName: node
+  linkType: hard
+
 "shebang-command@npm:^1.2.0":
   version: 1.2.0
   resolution: "shebang-command@npm:1.2.0"
@@ -10741,6 +10770,13 @@ __metadata:
   dependencies:
     escape-string-regexp: ^2.0.0
   checksum: 76b69da0f5b48a34a0f93c98ee2a96544d2c4ca2557f7eef5ddb961d3bdc33870b46f498a84a7c4f4ffb781df639840e7ebf6639164ed4da5e1aeb659615b9c7
+  languageName: node
+  linkType: hard
+
+"statuses@npm:2.0.1":
+  version: 2.0.1
+  resolution: "statuses@npm:2.0.1"
+  checksum: 18c7623fdb8f646fb213ca4051be4df7efb3484d4ab662937ca6fbef7ced9b9e12842709872eb3020cc3504b93bde88935c9f6417489627a7786f24f8031cbcb
   languageName: node
   linkType: hard
 
@@ -11241,6 +11277,13 @@ __metadata:
   dependencies:
     is-number: ^7.0.0
   checksum: f76fa01b3d5be85db6a2a143e24df9f60dd047d151062d0ba3df62953f2f697b16fe5dad9b0ac6191c7efc7b1d9dcaa4b768174b7b29da89d4428e64bc0a20ed
+  languageName: node
+  linkType: hard
+
+"toidentifier@npm:1.0.1":
+  version: 1.0.1
+  resolution: "toidentifier@npm:1.0.1"
+  checksum: 952c29e2a85d7123239b5cfdd889a0dde47ab0497f0913d70588f19c53f7e0b5327c95f4651e413c74b785147f9637b17410ac8c846d5d4a20a5a33eb6dc3a45
   languageName: node
   linkType: hard
 
