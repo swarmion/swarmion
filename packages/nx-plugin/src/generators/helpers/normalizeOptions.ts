@@ -25,8 +25,6 @@ export const normalizeOptions = (
     name,
   );
 
-  const unitTestRunner = options.skipJestConfig === true ? 'none' : 'jest';
-
   const linter = Linter.EsLint;
 
   const projectName = name.replace(new RegExp('/', 'g'), '-');
@@ -47,7 +45,6 @@ export const normalizeOptions = (
     name: projectName,
     packageRoot,
     offsetFromRoot,
-    unitTestRunner,
     workspaceName: npmScope,
   };
 };

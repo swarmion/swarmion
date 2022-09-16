@@ -58,7 +58,7 @@ const run = async (): Promise<void> => {
     console.log();
     console.log('For example:');
     console.log(
-      `  ${chalk.cyan(program.name())} ${chalk.green('my-next-app')}`,
+      `  ${chalk.cyan(program.name())} ${chalk.green('my-swarmion-app')}`,
     );
     console.log();
     console.log(
