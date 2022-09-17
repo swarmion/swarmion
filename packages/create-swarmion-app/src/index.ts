@@ -8,13 +8,16 @@ import checkForUpdate from 'update-check';
 
 import { createApp, DownloadError } from 'create-app';
 import { getPkgManager, validateNpmName } from 'helpers';
+import { isValidTemplate, Template } from 'templates';
 
 import packageJson from '../package.json';
 
 let projectPath: string | undefined = '';
+let template: Template = 'swarmion-starter';
 
 const program = new Command(packageJson.name)
   .arguments('[project-directory]')
+  .option('-t, --template', 'template choice')
   .usage(`${chalk.green('[project-directory]')} [options]`)
   .action((name: string | undefined) => {
     projectPath = name;
@@ -29,7 +32,7 @@ const run = async (): Promise<void> => {
   }
 
   if (projectPath === undefined || projectPath === '') {
-    const res = await prompts({
+    const pathRes = await prompts({
       type: 'text',
       name: 'path',
       message: 'What is your project named?',
@@ -44,8 +47,8 @@ const run = async (): Promise<void> => {
       },
     });
 
-    if (typeof res.path === 'string') {
-      projectPath = res.path.trim();
+    if (typeof pathRes.path === 'string') {
+      projectPath = pathRes.path.trim();
     }
   }
 
@@ -88,10 +91,36 @@ const run = async (): Promise<void> => {
     process.exit(1);
   }
 
+  const templateRes = await prompts({
+    type: 'select',
+    name: 'template',
+    message: 'Choose your starting template',
+    choices: [
+      {
+        title: 'Swarmion Starter',
+        // @ts-ignore bad typing
+        description: 'Simple example with a single backend',
+        value: 'swarmion-starter',
+      },
+      {
+        title: 'Swarmion Fullstack',
+        // @ts-ignore bad typing
+        description:
+          'More complete example with a backend, a frontend and a shared lib',
+        value: 'swarmion-full-stack',
+      },
+    ],
+  });
+
+  if (isValidTemplate(templateRes.template)) {
+    template = templateRes.template;
+  }
+
   const packageVersion = packageJson.version;
   try {
     await createApp({
       appPath: resolvedProjectPath,
+      template,
       packageVersion,
     });
   } catch (reason) {
@@ -113,6 +142,7 @@ const run = async (): Promise<void> => {
 
     await createApp({
       appPath: resolvedProjectPath,
+      template,
       packageVersion,
     });
   }

@@ -3,6 +3,8 @@ import chalk from 'chalk';
 import { execSync } from 'child_process';
 import path from 'path';
 
+import { Template } from 'templates';
+
 import {
   downloadAndExtractRepo,
   getRepoUrl,
@@ -20,17 +22,21 @@ export class DownloadError extends Error {}
 
 export const createApp = async ({
   appPath,
+  template,
   packageVersion,
 }: {
   appPath: string;
+  template: Template;
   packageVersion: string;
 }): Promise<void> => {
   const repoInfo: RepoInfo = {
     username: 'swarmion',
     name: 'swarmion',
     branch: `v${packageVersion}`,
-    filePath: 'examples/swarmion-starter',
+    filePath: `examples/${template}`,
   };
+
+  console.log('template', template);
 
   const found = await hasRepo(repoInfo);
   const example = getRepoUrl(repoInfo);
@@ -83,7 +89,7 @@ export const createApp = async ({
       retries: 3,
     });
 
-    renameProject(appName, root);
+    renameProject(appName, template, root);
   } catch (reason) {
     const isErrorLike = (err: unknown): err is { message: string } => {
       return (

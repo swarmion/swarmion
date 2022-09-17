@@ -1,6 +1,6 @@
 # create-swarmion-app
 
-Create a new project using the [Swarmion template](https://github.com/swarmion/template)
+Create a new project using the [Swarmion examples](https://github.com/swarmion/swarmion/tree/main/examples)
 
 This package is part of the [Swarmion](https://www.swarmion.dev) project. See its documentation for more insights.
 
