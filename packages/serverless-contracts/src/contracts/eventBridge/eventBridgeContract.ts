@@ -1,8 +1,8 @@
 import { JSONSchema } from 'json-schema-to-ts';
 
 export class EventBridgeContract<
-  Source extends string,
-  EventType extends string,
+  Source extends string = string,
+  EventType extends string = string,
   PayloadSchema extends JSONSchema = JSONSchema,
 > {
   public id: string;
