@@ -36,7 +36,7 @@ describe('apiGateway contracts', () => {
     required: ['id', 'name'],
   } as const;
 
-  describe('hhtpApi, when all parameters are set', () => {
+  describe('httpApi, when all parameters are set', () => {
     const httpApiContract = new ApiGatewayContract({
       id: 'testContract',
       path: '/users/{userId}',

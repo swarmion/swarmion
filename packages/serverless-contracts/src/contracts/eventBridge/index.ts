@@ -1,0 +1,1 @@
+export { EventBridgeContract } from './eventBridgeContract';

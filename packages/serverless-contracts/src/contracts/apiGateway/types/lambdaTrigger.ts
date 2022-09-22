@@ -1,7 +1,7 @@
-import { AWS } from '@serverless/typescript';
 import { O } from 'ts-toolbelt';
 
-import { CleanEmptyObject, Unpacked } from 'types/utilities';
+import { LambdaEvents } from 'types/lambdaTriggerEvents';
+import { CleanEmptyObject } from 'types/utilities';
 
 import { ApiGatewayContract } from '../apiGatewayContract';
 import {
@@ -30,16 +30,6 @@ export type ApiGatewayLambdaCompleteTriggerType<
     method: string;
   } & ApiGatewayLambdaAdditionalConfigType<Key, AuthorizerType>;
 };
-
-/**
- * From @serverless/typescript, we get the type of a single lambda config
- */
-export type LambdaFunction = Exclude<AWS['functions'], undefined>[string];
-
-/**
- * Narrowing the type of a lambda config to the type of its events
- */
-type LambdaEvents = Unpacked<LambdaFunction['events']>;
 
 /**
  * basic additional config a user can define on an ApiGateway trigger.
