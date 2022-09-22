@@ -6,6 +6,7 @@ export class EventBridgeContract<
   PayloadSchema extends JSONSchema = JSONSchema,
 > {
   public id: string;
+  public contractType = 'eventBridge' as const;
   public source: Source;
   public eventType: EventType;
   public payloadSchema: PayloadSchema;
