@@ -2,6 +2,7 @@ import { JSONSchema } from 'json-schema-to-ts';
 
 import { getFullContractSchema as getApiGatewayFullContractSchema } from 'contracts/apiGateway/features';
 import { getFullContractSchema as getCloudFormationFullContractSchema } from 'contracts/cloudFormation/features';
+import { getFullContractSchema as getEventBridgeFullContractSchema } from 'contracts/eventBridge/features';
 
 import { ServerlessContract } from '../types';
 
@@ -17,7 +18,7 @@ export const getContractFullSchema = (
       return getCloudFormationFullContractSchema(contract);
     }
     case 'eventBridge': {
-      throw new Error('not implemented');
+      return getEventBridgeFullContractSchema(contract);
     }
   }
 };
