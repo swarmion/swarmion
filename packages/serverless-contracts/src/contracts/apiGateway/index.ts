@@ -1,6 +1,5 @@
 export { ApiGatewayContract } from './apiGatewayContract';
 export {
-  getTrigger,
   getAxiosRequest,
   getFetchRequest,
   getLambdaHandler,

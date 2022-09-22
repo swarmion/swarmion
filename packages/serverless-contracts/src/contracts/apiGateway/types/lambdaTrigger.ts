@@ -1,6 +1,6 @@
 import { O } from 'ts-toolbelt';
 
-import { LambdaEvents } from 'types/lambdaTriggerEvents';
+import { LambdaEvents } from 'types/lambdaEvents';
 import { CleanEmptyObject } from 'types/utilities';
 
 import { ApiGatewayContract } from '../apiGatewayContract';
@@ -14,7 +14,7 @@ import {
  * map between our integration types (httpApi vs restApi) and
  * serverless's triggers
  */
-export type ApiGatewayTriggerKey<
+type ApiGatewayTriggerKey<
   ApiGatewayIntegration extends ApiGatewayIntegrationType,
 > = ApiGatewayIntegration extends 'httpApi' ? 'httpApi' : 'http';
 
@@ -22,13 +22,15 @@ export type ApiGatewayTriggerKey<
  * The type of an httpApi lambda trigger
  */
 export type ApiGatewayLambdaCompleteTriggerType<
-  Key extends ApiGatewayKey,
-  AuthorizerType extends ApiGatewayAuthorizerType,
+  Contract extends ApiGatewayContract,
 > = {
-  [key in Key]: {
+  [key in Contract['integrationType']]: {
     path: string;
     method: string;
-  } & ApiGatewayLambdaAdditionalConfigType<Key, AuthorizerType>;
+  } & ApiGatewayLambdaAdditionalConfigType<
+    ApiGatewayTriggerKey<Contract['integrationType']>,
+    Contract['authorizerType']
+  >;
 };
 
 /**

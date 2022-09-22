@@ -2,7 +2,6 @@ import { ApiGatewayContract } from '../apiGatewayContract';
 import {
   ApiGatewayLambdaCompleteTriggerType,
   ApiGatewayTriggerArgs,
-  ApiGatewayTriggerKey,
 } from '../types';
 
 /**
@@ -13,10 +12,7 @@ import {
  */
 export const getTrigger = <Contract extends ApiGatewayContract>(
   ...[contract, additionalConfig]: ApiGatewayTriggerArgs<Contract>
-): ApiGatewayLambdaCompleteTriggerType<
-  ApiGatewayTriggerKey<Contract['integrationType']>,
-  Contract['authorizerType']
-> => {
+): ApiGatewayLambdaCompleteTriggerType<Contract> => {
   const key = contract.integrationType === 'httpApi' ? 'httpApi' : 'http';
 
   // @ts-ignore somehow the type inference does not work here
