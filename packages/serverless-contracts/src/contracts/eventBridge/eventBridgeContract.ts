@@ -1,12 +1,14 @@
 import { JSONSchema } from 'json-schema-to-ts';
 
 export class EventBridgeContract<
+  Source extends string,
+  EventType extends string,
   PayloadSchema extends JSONSchema = JSONSchema,
 > {
   public id: string;
-  public source: string;
-  public eventType: string;
-  private payloadSchema: PayloadSchema;
+  public source: Source;
+  public eventType: EventType;
+  public payloadSchema: PayloadSchema;
 
   constructor({
     id,
@@ -15,8 +17,8 @@ export class EventBridgeContract<
     payloadSchema,
   }: {
     id: string;
-    source: string;
-    eventType: string;
+    source: Source;
+    eventType: EventType;
     payloadSchema: PayloadSchema;
   }) {
     this.id = id;
