@@ -86,8 +86,8 @@ const run = async (): Promise<void> => {
   }
 
   const packageManager = getPkgManager();
-  if (packageManager !== 'yarn') {
-    console.error('Please use yarn as package manager with Swarmion.');
+  if (packageManager !== 'pnpm') {
+    console.error('Please use pnpm as package manager with Swarmion.');
     process.exit(1);
   }
 

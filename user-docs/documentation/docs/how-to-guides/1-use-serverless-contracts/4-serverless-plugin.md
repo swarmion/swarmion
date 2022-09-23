@@ -9,13 +9,14 @@ _This is a beta feature of Swarmion._
 ## Installation
 
 ```bash
-npm install @swarmion/serverless-plugin --save-dev
-```
+# using pnpm
+pnpm add --save-dev @swarmion/serverless-plugin
 
-Or if you're using yarn
+# using yarn
+yarn add --save-dev @swarmion/serverless-plugin
 
-```bash
-yarn add -D @swarmion/serverless-plugin
+# using npm
+npm install --save-dev @swarmion/serverless-plugin
 ```
 
 Then in your `serverless.ts` files, add `@swarmion/serverless-plugin` to the list of your plugins.

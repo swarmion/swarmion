@@ -12,4 +12,4 @@ runs:
       uses: actions/cache@v2
       with:
         path: '**/node_modules'
-        key: ${{ runner.os }}-modules-${{ env.NODE_VERSION }}-${{ hashFiles('./yarn.lock') }}
+        key: ${{ runner.os }}-modules-${{ env.NODE_VERSION }}-${{ hashFiles('./pnpm-lock.yaml') }}

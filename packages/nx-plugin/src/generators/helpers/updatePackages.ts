@@ -12,18 +12,16 @@ export const updatePackages = (tree: Tree, options: NormalizedSchema): void => {
   }>(tree, join(options.packageRoot, `package.json`));
 
   execSync(
-    `yarn workspace \
-      @${options.workspaceName}/${options.importPath} \
-      add --cached ${Object.keys(dependencies ?? {}).join(' ')}`,
+    `pnpm --dir @${options.offsetFromRoot} \
+      add ${Object.keys(dependencies ?? {}).join(' ')}`,
     {
       cwd: join(tree.root),
       stdio: [0, 1, 2],
     },
   );
   execSync(
-    `yarn workspace \
-      @${options.workspaceName}/${options.importPath} \
-      add --cached -D ${Object.keys(devDependencies ?? {}).join(' ')}`,
+    `pnpm --dir @${options.offsetFromRoot} \
+      --save-dev ${Object.keys(devDependencies ?? {}).join(' ')}`,
     {
       cwd: join(tree.root),
       stdio: [0, 1, 2],
