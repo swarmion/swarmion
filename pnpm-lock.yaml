@@ -108,7 +108,7 @@ importers:
       ts-node: 10.9.1_e2tlcjkk7tlngjdlhzx5hjlnv4
       ts-toolbelt: 6.15.5
       typescript: 4.7.4
-      vite-tsconfig-paths: 3.5.0
+      vite-tsconfig-paths: 3.5.0_vite@3.1.0
       vitest: 0.23.1
 
   contracts/orchestrator-contracts:
@@ -6004,6 +6004,17 @@ packages:
         optional: true
     dependencies:
       ajv: 8.11.0
+
+  /ajv-formats/2.1.1_ajv@8.11.0:
+    resolution: {integrity: sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==}
+    peerDependencies:
+      ajv: ^8.0.0
+    peerDependenciesMeta:
+      ajv:
+        optional: true
+    dependencies:
+      ajv: 8.11.0
+    dev: true
 
   /ajv-i18n/4.1.0_ajv@8.6.3:
     resolution: {integrity: sha512-GmRKPqWbZc+wn77IVPixJ336h9opyWSd4iTEGv825jxbccN1JKVEG/JnJX9wxYa1/yPmT/4v/YZN3ymmHwY4ag==}
@@ -15229,7 +15240,7 @@ packages:
       '@serverless/platform-client': 4.3.2_supports-color@8.1.1
       '@serverless/utils': 6.7.0
       ajv: 8.11.0
-      ajv-formats: 2.1.1
+      ajv-formats: 2.1.1_ajv@8.11.0
       archiver: 5.3.1
       aws-sdk: 2.1185.0
       bluebird: 3.7.2
@@ -16845,6 +16856,20 @@ packages:
       globrex: 0.1.2
       recrawl-sync: 2.2.2
       tsconfig-paths: 4.0.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /vite-tsconfig-paths/3.5.0_vite@3.1.0:
+    resolution: {integrity: sha512-NKIubr7gXgh/3uniQaOytSg+aKWPrjquP6anAy+zCWEn6h9fB8z2/qdlfQrTgZWaXJ2pHVlllrSdRZltHn9P4g==}
+    peerDependencies:
+      vite: '>2.0.0-0'
+    dependencies:
+      debug: 4.3.4
+      globrex: 0.1.2
+      recrawl-sync: 2.2.2
+      tsconfig-paths: 4.0.0
+      vite: 3.1.0
     transitivePeerDependencies:
       - supports-color
     dev: true
