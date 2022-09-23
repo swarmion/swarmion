@@ -5,11 +5,11 @@ import type {
 } from 'aws-lambda';
 import createHttpError from 'http-errors';
 
+import { getHandlerContextMock } from '__mocks__/requestContext';
 import { ApiGatewayContract } from 'contracts';
 
 import { httpApiGatewayContractMock } from '../__mocks__/httpApiGatewayContract';
 import {
-  getHandlerContextMock,
   getRequestContextMock,
   getRequestContextMockV2,
 } from '../__mocks__/requestContext';

@@ -7,6 +7,8 @@ import type {
   APIGatewayProxyCognitoAuthorizer,
 } from 'aws-lambda';
 
+import { getHandlerContextMock } from '__mocks__/requestContext';
+
 import {
   bodySchema,
   headersSchema,
@@ -16,7 +18,6 @@ import {
   queryStringParametersSchema,
 } from '../__mocks__/httpApiGatewayContract';
 import {
-  getHandlerContextMock,
   getRequestContextMock,
   getRequestContextMockV2,
 } from '../__mocks__/requestContext';
