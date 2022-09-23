@@ -1,0 +1,37 @@
+name: 'Deploy app'
+description: 'Deploy app'
+inputs:
+  app:
+    description: App name that needs to be deployed
+    required: true
+  stage:
+    description: Stage to deploy to, either 'staging' or 'production'
+    required: true
+  region:
+    description: AWS Region in which to deploy the app
+    default: eu-west-1
+    required: true
+  aws_role_arn:
+    description: AWS IAM Role to assume by Github Runner
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Use Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+    - name: Use cached project dependencies
+      uses: ./.github/actions/cache-project-dependencies
+
+    - name: Configure AWS credentials with assume role
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        role-to-assume: ${{ inputs.aws_role_arn }}
+        aws-region: ${{ inputs.region }}
+
+    - name: Deploy app
+      # nx run-many is used here, because it will not throw an error if our target action isn't found in the project, which is exactly what we want!
+      run: yarn nx run-many --target=deploy --projects=${{ inputs.app }} --stage=${{ inputs.stage }}
+      shell: bash

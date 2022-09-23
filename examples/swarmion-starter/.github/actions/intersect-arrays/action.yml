@@ -1,0 +1,31 @@
+name: 'Intersect JSON arrays'
+description: 'return intersection of two JSON arrays'
+inputs:
+  first-array:
+    description: 'First array'
+    required: true
+  second-array:
+    description: 'Second array'
+    required: true
+outputs:
+  intersection:
+    description: 'array intersection'
+    value: ${{ steps.intersect-array.outputs.intersection }}
+runs:
+  using: 'composite'
+  steps:
+    # Couldn't find a better way to do this, feel free to modify :)
+    # note the single quote echo below: very important! because we are printing JSON into the console -> with double quote it'd break the json format
+    - run: |
+        echo '${{ inputs.first-array }}' > a.json
+        echo '${{ inputs.second-array }}' > b.json
+      shell: bash
+
+    - id: intersect-array
+      run: echo "::set-output name=intersection::$(jq -s -c ".[0] - (.[0] - .[1])" a.json b.json)"
+      shell: bash
+
+    - run: |
+        rm a.json
+        rm b.json
+      shell: bash

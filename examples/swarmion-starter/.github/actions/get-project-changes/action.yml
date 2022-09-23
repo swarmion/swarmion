@@ -1,26 +1,20 @@
 name: 'Get Project Code Changes'
-description: 'Returns the paths of apps and libraries have been modified in a PR'
+description: 'Returns which projects have been modified'
+inputs:
+  base-branch:
+    description: 'reference branch to compare current HEAD with'
+    required: true
 outputs:
-  affected_apps:
-    description: Paths of the affected apps
-    value: ${{ steps.affected-apps.outputs.changes }}
-  affected_libs:
-    description: Paths of the affected libs
-    value: ${{ steps.affected-libs.outputs.changes }}
+  projects:
+    description: Names of the projects being changed
+    value: ${{ steps.affected-projects.outputs.projects }}
 runs:
   using: 'composite'
   steps:
-    - name: Derive appropriate SHAs for base and head for `nx affected` commands
-      uses: nrwl/nx-set-shas@v2
-    - name: Get affected apps
-      id: affected-apps
-      run: |
-        changes="$(./get-affected-paths.sh apps)"
-        echo "::set-output name=changes::$changes"
-      shell: bash
-    - name: Get affected libs
-      id: affected-libs
-      run: |
-        changes="$(./get-affected-paths.sh libs)"
-        echo "::set-output name=changes::$changes"
+    - uses: nrwl/nx-set-shas@v2
+      with:
+        main-branch-name: ${{ inputs.base-branch }}
+
+    - id: affected-projects
+      run: echo "::set-output name=projects::$(npx nx print-affected | jq -c ".projects")"
       shell: bash

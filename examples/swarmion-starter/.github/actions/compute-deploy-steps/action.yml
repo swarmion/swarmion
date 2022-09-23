@@ -1,0 +1,48 @@
+name: 'Compute deployment steps'
+description: 'Returns deployment strategy (step 1, 2, 3) based on list of changed projects'
+inputs:
+  projects:
+    description: Names of the projects being changed
+    required: true
+outputs:
+  apps-step-1:
+    description: Names of the apps to deploy in step 1
+    value: ${{ steps.affected-apps-step-1.outputs.intersection }}
+  apps-step-2:
+    description: Names of the apps to deploy in step 2
+    value: ${{ steps.affected-apps-step-2.outputs.intersection }}
+  apps-step-3:
+    description: Names of the apps to deploy in step 3
+    value: ${{ steps.affected-apps-step-3.outputs.intersection }}
+runs:
+  using: 'composite'
+  steps:
+    - id: apps-step-1
+      run: echo "::set-output name=apps::$(jq -c "." .github/steps/step-1-apps.json)"
+      shell: bash
+
+    - id: apps-step-2
+      run: echo "::set-output name=apps::$(jq -c "." .github/steps/step-2-apps.json)"
+      shell: bash
+
+    - id: apps-step-3
+      run: echo "::set-output name=apps::$(jq -c "." .github/steps/step-3-apps.json)"
+      shell: bash
+
+    - id: affected-apps-step-1
+      uses: ./.github/actions/intersect-arrays
+      with:
+        first-array: ${{ inputs.projects }}
+        second-array: ${{ steps.apps-step-1.outputs.apps }}
+
+    - id: affected-apps-step-2
+      uses: ./.github/actions/intersect-arrays
+      with:
+        first-array: ${{ inputs.projects }}
+        second-array: ${{ steps.apps-step-2.outputs.apps }}
+
+    - id: affected-apps-step-3
+      uses: ./.github/actions/intersect-arrays
+      with:
+        first-array: ${{ inputs.projects }}
+        second-array: ${{ steps.apps-step-3.outputs.apps }}

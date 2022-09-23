@@ -1,9 +1,11 @@
 name: 'Lint & Test'
 description: 'Run linters and tests on app or library'
+
 inputs:
-  path:
+  project:
+    description: 'Project name of the app or library being tested'
     required: true
-    description: 'Path to the directory to lint and test'
+
 runs:
   using: 'composite'
   steps:
@@ -11,46 +13,27 @@ runs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ env.NODE_VERSION }}
+
     - name: Use cached project dependencies
       uses: ./.github/actions/cache-project-dependencies
+
     - name: Run lint
-      run: |
-        cd ${{ inputs.path }}
-        yarn test-linter --max-warnings 0
+      # nx run-many is used here, because it will not throw an error if our target action isn't found in the project, which is exactly what we want!
+      run: npx nx run-many --target=test-linter --projects=${{ inputs.project }} --parallel
       shell: bash
-    - name: Run stylelint
-      run: |
-        cd ${{ inputs.path }}
-        if [[ $(cat package.json | jq '.scripts["test-stylelint"]') != null ]]; then
-          yarn test-stylelint
-        else
-          echo "No stylelint test script found in package.json"
-        fi
-      shell: bash
-    - name: Run unit tests
-      run: |
-        cd ${{ inputs.path }}
-        if [[ $(cat package.json | jq '.scripts["test-unit"]') != null ]]; then
-          yarn test-unit
-        else
-          echo "No unit test script found in package.json"
-        fi
-      shell: bash
+
     - name: Run type test
-      run: |
-        cd ${{ inputs.path }}
-        if [[ $(cat package.json | jq '.scripts["test-type"]') != null ]]; then
-          yarn test-type
-        else
-          echo "No type test script found in package.json"
-        fi
+      run: npx nx run-many --target=test-type --projects=${{ inputs.project }} --parallel
       shell: bash
+
     - name: Run circular dependencies test
-      run: |
-        cd ${{ inputs.path }}
-        if [[ $(cat package.json | jq '.scripts["test-circular"]') != null ]]; then
-          yarn test-circular
-        else
-          echo "No circular dependencies test script found in package.json"
-        fi
+      run: npx nx run-many --target=test-circular --projects=${{ inputs.project }} --parallel
+      shell: bash
+
+    - name: Run stylelint
+      run: npx nx run-many --target=test-stylelint --projects=${{ inputs.project }} --parallel
+      shell: bash
+
+    - name: Run unit tests
+      run: npx nx run-many --target=test-unit --projects=${{ inputs.project }} --parallel
       shell: bash

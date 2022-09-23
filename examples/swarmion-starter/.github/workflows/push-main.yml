@@ -1,0 +1,223 @@
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      projects:
+        description: |
+          Name of projects to deploy, ex: "backend-core backend-toto".
+          Default is "*", which will deploy everything
+        default: '*'
+        required: true
+
+name: Deploy Production
+concurrency: push_main
+
+permissions: write-all
+
+env:
+  CI: true
+  NODE_VERSION: 16
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    timeout-minutes: 30
+    outputs:
+      projects: ${{ steps.print-changed-projects.outputs.projects }}
+      apps-step-1: ${{ steps.compute-deploy-steps.outputs.apps-step-1 }}
+      apps-step-2: ${{ steps.compute-deploy-steps.outputs.apps-step-2 }}
+      apps-step-3: ${{ steps.compute-deploy-steps.outputs.apps-step-3 }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # We need to fetch all branches and commits so that Nx affected has a base to compare against.
+
+      - name: Install Node.js dependencies
+        uses: ./.github/actions/install-node-deps
+
+      - name: Package project
+        uses: ./.github/actions/package
+
+      - if: ${{ github.event_name == 'push' }}
+        name: Get project changes
+        id: get-project-changes
+        uses: ./.github/actions/get-project-changes
+        with:
+          base-branch: main
+
+      - if: ${{ github.event_name == 'workflow_dispatch' }}
+        name: Compute projects input
+        id: compute-projects-input
+        uses: ./.github/actions/compute-projects-input
+        with:
+          projects: ${{ github.event.inputs.projects }}
+
+      - id: print-changed-projects
+        name: Print changed projects
+        # note the single quote echo below: very important! because we are printing JSON into the console -> with double quote it'd break the json format
+        run: echo '::set-output name=projects::${{ steps.get-project-changes.outputs.projects || steps.compute-projects-input.outputs.projects }}'
+        shell: bash
+
+      - name: Compute deploy steps
+        id: compute-deploy-steps
+        uses: ./.github/actions/compute-deploy-steps
+        with:
+          projects: ${{ steps.print-changed-projects.outputs.projects }}
+
+  test:
+    name: Test
+    needs: build
+    runs-on: ubuntu-latest
+    if: |
+      !contains(github.event.head_commit.message, '[ci skip]')
+      && join(fromJson(needs.build.outputs.projects)) != ''
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        project: ${{ fromJson(needs.build.outputs.projects) }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Run tests
+        uses: ./.github/actions/lint-and-tests
+        with:
+          project: ${{ matrix.project }}
+
+      - id: get-project-path
+        run: echo "::set-output name=path::$(jq -r '.projects[${{ toJson(matrix.project) }}]' workspace.json)"
+        shell: bash
+
+      # - name: Check if SonarCloud Scan should run
+      #   id: check_sonarcloud_scan_should_run
+      #   uses: andstor/file-existence-action@v1
+      #   with:
+      #     files: '${{ steps.get-project-path.outputs.path }}/sonar-project.properties'
+
+      # - name: SonarCloud Scan
+      #   if: steps.check_sonarcloud_scan_should_run.outputs.files_exists == 'true'
+      #   uses: SonarSource/sonarcloud-github-action@master
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #   with:
+      #     projectBaseDir: ${{ steps.get-project-path.outputs.path }}
+
+  deploy-step-1-apps:
+    name: Deploy step 1 apps
+    needs: [build, test]
+    runs-on: ubuntu-latest
+    if: |
+      always()
+      && !contains(github.event.head_commit.message, '[ci skip]')
+      && join(fromJson(needs.build.outputs.apps-step-1)) != ''
+      && needs.test.result != 'failure'
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        project: ${{ fromJson(needs.build.outputs.apps-step-1) }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Deploy app
+        uses: ./.github/actions/deploy-app
+        with:
+          stage: production
+          app: ${{ matrix.project }}
+          aws_role_arn: ${{ secrets.AWS_ROLE_ARN_PRODUCTION }}
+
+  deploy-step-2-apps:
+    name: Deploy step 2 apps
+    needs: [build, test, deploy-step-1-apps]
+    runs-on: ubuntu-latest
+    if: |
+      always()
+      && !contains(github.event.head_commit.message, '[ci skip]')
+      && join(fromJson(needs.build.outputs.apps-step-2)) != ''
+      && needs.test.result != 'failure'
+      && needs.deploy-step-1-apps.result != 'failure'
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        project: ${{ fromJson(needs.build.outputs.apps-step-2) }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Deploy app
+        uses: ./.github/actions/deploy-app
+        with:
+          stage: production
+          app: ${{ matrix.project }}
+          aws_role_arn: ${{ secrets.AWS_ROLE_ARN_PRODUCTION }}
+
+  deploy-step-3-apps:
+    name: Deploy step 3 apps
+    needs:
+      [
+        build,
+        deploy-step-1-apps,
+        deploy-step-2-apps,
+      ]
+    runs-on: ubuntu-latest
+    if: "
+      always()
+      && !contains(github.event.head_commit.message, '[ci skip]')
+      && join(fromJson(needs.build.outputs.apps-step-3)) != ''
+      && needs.test.result != 'failure'
+      && needs.deploy-step-1-apps.result != 'failure'
+      && needs.deploy-step-2-apps.result != 'failure'"
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        project: ${{ fromJson(needs.build.outputs.apps-step-3) }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Deploy app
+        uses: ./.github/actions/deploy-app
+        with:
+          stage: production
+          app: ${{ matrix.project }}
+          aws_role_arn: ${{ secrets.AWS_ROLE_ARN_PRODUCTION }}
+
+  merge-main-in-staging:
+    name: Merge main in staging
+    needs: deploy-step-3-apps
+    runs-on: ubuntu-latest
+    if: |
+      always()
+      && !contains(github.event.head_commit.message, '[ci skip]')
+      && needs.deploy-step-3-apps.result != 'failure'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Merge main -> staging
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          target_branch: staging
+          github_token: ${{ github.token }}
+          message: Merge 'main' into 'staging'
+
+  send-fail-message:
+    name: Post Slack message if `merge-main-in-staging` step failed
+    needs: [merge-main-in-staging]
+    runs-on: ubuntu-latest
+    if: "always() && needs.merge-main-in-staging.result == 'failure'"
+    steps:
+      - uses: slackapi/slack-github-action@v1.16.0
+        name: Send message
+        with:
+          payload: '{"text":":warning: *SOS* :warning: `main` failed to merge into `staging`."}'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

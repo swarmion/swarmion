@@ -1,0 +1,22 @@
+name: 'Concat JSON Arrays'
+description: 'Concat two JSON Arrays'
+inputs:
+  first_array:
+    description: 'First Array'
+    required: true
+  second_array:
+    description: 'Second Array'
+    required: true
+  third_array:
+    description: 'Third Array'
+    required: true
+outputs:
+  array:
+    description: 'Concated Array'
+    value: ${{ steps.concat-array.outputs.array }}
+runs:
+  using: 'composite'
+  steps:
+    - id: concat-array
+      run: echo "::set-output name=array::$(echo -e '${{ inputs.first_array }}\n${{ inputs.second_array }}\n${{ inputs.third_array }}' | jq '.[]' | jq -s -c)"
+      shell: bash

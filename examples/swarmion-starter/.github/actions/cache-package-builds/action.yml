@@ -11,6 +11,5 @@ runs:
       id: package-cache
       uses: actions/cache@v2
       with:
-        path: |
-          node_modules/@swarmion-starter/**/dist
-        key: ${{ hashFiles('./contracts/**') }}-${{ hashFiles('./packages/**') }}
+        path: nx-cache
+        key: nx-cache-${{ hashFiles('./contracts/**') }}-${{ hashFiles('./packages/**') }}-${{ hashFiles('yarn.lock') }}

@@ -1,0 +1,42 @@
+name: 'Compute deployment steps'
+description: 'Returns projects names in a CI-readable form, according to dev. input (used in manual CI trigger)'
+inputs:
+  projects:
+    description: Names of the projects being changed
+    required: true
+outputs:
+  projects:
+    description: Names of the projects being changed
+    value: ${{ steps.print-result.outputs.projects }}
+runs:
+  using: 'composite'
+  steps:
+    - id: is-full-redeploy
+      run: echo "::set-output name=bool::${{ inputs.projects == '*' }}"
+      shell: bash
+
+    - id: list-all-projects
+      run: echo "::set-output name=projects::$(jq -c ".projects | keys" workspace.json)"
+      shell: bash
+
+    - id: process-projects-input
+      if: steps.is-full-redeploy.outputs.bool == 'false'
+      run: echo "::set-output name=projects::$(jq -cR 'split(" ")' <<< '${{ inputs.projects }}')"
+      shell: bash
+
+    - id: pick-projects-from-input
+      if: steps.is-full-redeploy.outputs.bool == 'false'
+      uses: ./.github/actions/intersect-arrays
+      with:
+        first-array: ${{ steps.process-projects-input.outputs.projects }}
+        second-array: ${{ steps.list-all-projects.outputs.projects }}
+
+    - id: print-result
+      # note the single quote echo below: very important! because we are printing JSON into the console -> with double quote it'd break the json format
+      run: |
+        if [[ ${{ steps.is-full-redeploy.outputs.bool }} == true ]]; then
+          echo '::set-output name=projects::${{ steps.list-all-projects.outputs.projects }}'
+        else
+          echo '::set-output name=projects::${{ steps.pick-projects-from-input.outputs.intersection }}'
+        fi
+      shell: bash
