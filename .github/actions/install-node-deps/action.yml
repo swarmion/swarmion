@@ -4,8 +4,6 @@ runs:
   using: 'composite'
   steps:
     - uses: pnpm/action-setup@v2.2.2
-      with:
-        version: 7
     - name: Use Node.js ${{ env.NODE_VERSION }}
       uses: actions/setup-node@v2
       with:
