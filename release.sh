@@ -55,12 +55,16 @@ sleep 90 # 90 seconds
 # clean yarn cache. See https://yarnpkg.com/features/offline-cache
 yarn cache clean
 
-# upgrade packages in the starter
+# upgrade packages in examples
 HUSKY=0 yarn --cwd examples/swarmion-starter up "@swarmion/*@^${NEW_VERSION}"
+HUSKY=0 yarn --cwd examples/swarmion-full-stack up "@swarmion/*@^${NEW_VERSION}"
 
-# commit changes in the starter
+# commit changes in examples
 git add examples/swarmion-starter
 git commit -S -m "chore(starter): bump Swarmion from v${OLD_VERSION} to v${NEW_VERSION}"
+
+git add examples/swarmion-full-stack
+git commit -S -m "chore(full-stack): bump Swarmion from v${OLD_VERSION} to v${NEW_VERSION}"
 
 # tag new version && push everything
 git tag v$NEW_VERSION -m "v${NEW_VERSION}" -s

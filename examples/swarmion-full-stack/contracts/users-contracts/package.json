@@ -1,0 +1,62 @@
+{
+  "name": "@swarmion-full-stack/users-contracts",
+  "private": true,
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "contracts": true,
+  "scripts": {
+    "lint-fix": "yarn linter-base-config --fix",
+    "lint-fix-all": "yarn lint-fix .",
+    "linter-base-config": "eslint --ext=js,ts .",
+    "package": "rm -rf dist && yarn package-cjs && yarn package-esm && yarn package-types",
+    "package-cjs": "NODE_ENV=cjs yarn transpile --out-dir dist/cjs --source-maps",
+    "package-esm": "NODE_ENV=esm yarn transpile --out-dir dist/esm --source-maps",
+    "package-types": "ttsc -p tsconfig.build.json",
+    "test": "yarn test-linter && yarn test-type && yarn test-circular",
+    "test-circular": "yarn depcruise --validate .dependency-cruiser.js src",
+    "test-linter": "yarn linter-base-config .",
+    "test-type": "tsc --noEmit --emitDeclarationOnly false",
+    "transpile": "babel src --extensions .ts --quiet",
+    "watch": "rm -rf dist && concurrently 'yarn:package-* --watch'"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.18.3",
+    "@swarmion/serverless-contracts": "0.8.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.18.5",
+    "@babel/plugin-transform-runtime": "^7.18.5",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-typescript": "^7.17.12",
+    "@types/node": "^17.0.45",
+    "@vitest/coverage-c8": "^0.23.1",
+    "@zerollup/ts-transform-paths": "^1.7.18",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "concurrently": "^7.2.2",
+    "dependency-cruiser": "^11.10.0",
+    "eslint": "^8.18.0",
+    "json-schema-to-ts": "^2.5.3",
+    "prettier": "^2.7.1",
+    "ts-node": "^10.8.1",
+    "ttypescript": "^1.5.13",
+    "typescript": "^4.7.4",
+    "vitest": "^0.23.1"
+  },
+  "nx": {
+    "targets": {
+      "package": {
+        "outputs": [
+          "contracts/users-contracts/dist"
+        ]
+      }
+    }
+  }
+}

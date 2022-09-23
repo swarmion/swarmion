@@ -1,0 +1,6 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# "exec < /dev/tty" is to prevent husky from exiting immediately, allowing terminal to be interactive 😀
+# npx is used here, to allow fresko to be ran even if not installed yet 🤯
+exec < /dev/tty && npx fresko || true
