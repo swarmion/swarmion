@@ -110,11 +110,11 @@ export const createApp = async ({
 
   console.log();
   console.log('Packaging your app.');
-  execSync(`yarn package`, { stdio: [0, 1, 2], cwd: root });
+  execSync(`pnpm package`, { stdio: [0, 1, 2], cwd: root });
   console.log();
   console.log('Linting your project...');
   console.log();
-  execSync(`yarn lint-fix-all`, { stdio: 'ignore', cwd: root });
+  execSync(`pnpm lint-fix-all`, { stdio: 'ignore', cwd: root });
 
   console.log();
   console.log('Initializing a git repository...');
@@ -136,18 +136,18 @@ export const createApp = async ({
   //   cdpath = appPath;
   // }
   //
-  // console.log(chalk.cyan(`  yarn dev`));
+  // console.log(chalk.cyan(`  pnpm dev`));
   // console.log('    Starts the development server.');
   // console.log();
-  // console.log(chalk.cyan(`  yarn build`));
+  // console.log(chalk.cyan(`  pnpm build`));
   // console.log('    Builds the app for production.');
   // console.log();
-  // console.log(chalk.cyan(`  yarn start`));
+  // console.log(chalk.cyan(`  pnpm start`));
   // console.log('    Runs the built app in production mode.');
   // console.log();
   // console.log('We suggest that you begin by typing:');
   // console.log();
   // console.log(chalk.cyan('  cd'), cdpath);
-  // console.log(`  ${chalk.cyan(`yarn dev`)}`);
+  // console.log(`  ${chalk.cyan(`pnpm dev`)}`);
   // console.log();
 };

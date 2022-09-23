@@ -6,7 +6,7 @@ sidebar_position: 1
 
 To leverage the decoupling capabilities of microservices while keeping the flexibility to rearrange your teams according to your needs, Swarmion is structured as a monorepo.
 
-Therefore, it defines a set of _internal modules_ managed by [Nx](https://nx.dev/) and [Yarn workspaces](https://yarnpkg.com/features/workspaces).
+Therefore, it defines a set of _internal modules_ managed by [Nx](https://nx.dev/) and [pnpm workspaces](https://pnpm.io/workspaces).
 
 ## Types of internal modules
 
@@ -69,11 +69,11 @@ The services names in this folder are purely for the sake of the example and sho
 |   └── ...                         # other internal shared packages
 |
 ├── package.json                   # shared dependencies and global scripts
-└── yarn.lock                      # unique lock file, using yarn workspaces
+└── pnpm-lock.yaml                 # unique lock file, using pnpm workspaces
 
 ```
 
-## Nx and Yarn workspaces
+## Nx and pnpm workspaces
 
 These tools work in sync but provide slightly different features.
 
@@ -81,7 +81,7 @@ Nx:
 
 - Filter changes, run commands
 
-Yarn workspaces:
+pnpm workspaces:
 
 - Handle dependencies anywhere in the repository
 

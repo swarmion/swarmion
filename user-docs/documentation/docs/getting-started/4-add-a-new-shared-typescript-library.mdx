@@ -9,14 +9,14 @@ sidebar_position: 4
 Let's add a new `utils` shared TypeScript library to the project:
 
 ```bash
-yarn generate-library utils
+pnpm generate-library utils
 ```
 
 :::info
 The `generate-library` command is a shorthand for the following command defined in the root `package.json` file:
 
 ```bash
-yarn nx generate @swarmion/nx-plugin:library
+pnpm nx generate @swarmion/nx-plugin:library
 ```
 
 To have more info on the `@swarmion/nx-plugin`, you can check its [documentation page](../how-to-guides/use-swarmion-generators).
@@ -59,13 +59,13 @@ There are two commands that can be ran in the `packages/utils` folder to package
 
 ```bash
 # package the library in all formats once
-yarn package
+pnpm package
 
 # listen for changes and package the library in all formats automatically
-yarn watch
+pnpm watch
 ```
 
-For the rest of the tutorial, we will consider that the `yarn watch` command is running, hence that all changes to the library are automatically packaged.
+For the rest of the tutorial, we will consider that the `pnpm watch` command is running, hence that all changes to the library are automatically packaged.
 
 ## Use the library in a service
 
@@ -75,7 +75,7 @@ To use the `utils` library in the `backend-users` service, you need to first add
 
 ```bash
 cd backend/users
-yarn add @my-project-name/utils
+pnpm add @my-project-name/utils
 ```
 
 This will add the following line in the `dependencies` of the `backend/users/package.json` file:
@@ -143,7 +143,7 @@ export const main = async (): Promise<string> => {
 To check that import is working, we can either deploy the lambda and call the `GET /users/health` endpoint, or we can invoke the lambda locally:
 
 ```bash
-yarn serverless invoke local --function health
+pnpm serverless invoke local --function health
 
 { utilsValue: 'ok!' }
 "ok"

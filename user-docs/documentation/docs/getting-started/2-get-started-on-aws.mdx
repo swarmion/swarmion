@@ -36,7 +36,7 @@ we recommend following the guidelines in the [configure your CI/CD section](../h
 
 ## Deploy the stacks
 
-At the root of the project, run `yarn deploy`. This will compile and deploy all the stacks in order.
+At the root of the project, run `pnpm deploy`. This will compile and deploy all the stacks in order.
 You can follow the creation of the stacks on [the Cloudformation console](https://console.aws.amazon.com/cloudformation/home).
 
 :::note
@@ -101,7 +101,7 @@ Then deploy the stack by running the following commands in a terminal located at
 
 ```bash
 cd backend/core
-yarn deploy
+pnpm deploy
 ```
 
 When you call the endpoint, we can see the updated result:
@@ -123,7 +123,7 @@ Hello Swarmion 🐝
 When, like in this case, you only need update the source code of a lambda, there is no need to deploy the whole stack. You can use the following command to solely deploy the lambda:
 
 ```bash
-yarn serverless deploy function -f health
+pnpm serverless deploy function -f health
 ```
 
 :::

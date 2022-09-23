@@ -13,23 +13,23 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
   module: 'dist/esm/index.js',
   types: 'dist/types/index.d.ts',
   scripts: {
-    'lint-fix': 'yarn linter-base-config --fix',
-    'lint-fix-all': 'yarn lint-fix .',
+    'lint-fix': 'pnpm linter-base-config --fix',
+    'lint-fix-all': 'pnpm lint-fix .',
     'linter-base-config': 'eslint --ext=js,ts',
     package:
-      'rm -rf dist && yarn package-cjs && yarn package-esm && yarn package-types',
+      'rm -rf dist && pnpm package-cjs && pnpm package-esm && pnpm package-types',
     'package-cjs':
-      'NODE_ENV=cjs yarn transpile --out-dir dist/cjs --source-maps',
+      'NODE_ENV=cjs pnpm transpile --out-dir dist/cjs --source-maps',
     'package-esm':
-      'NODE_ENV=esm yarn transpile --out-dir dist/esm --source-maps',
+      'NODE_ENV=esm pnpm transpile --out-dir dist/esm --source-maps',
     'package-types': 'ttsc -p tsconfig.build.json',
-    test: 'yarn test-linter && yarn test-type && yarn test-unit && yarn test-circular',
-    'test-circular': 'yarn depcruise --validate .dependency-cruiser.js src',
-    'test-linter': 'yarn linter-base-config .',
+    test: 'pnpm test-linter && pnpm test-type && pnpm test-unit && pnpm test-circular',
+    'test-circular': 'pnpm depcruise --validate .dependency-cruiser.js src',
+    'test-linter': 'pnpm linter-base-config .',
     'test-type': 'tsc --noEmit --emitDeclarationOnly false',
     'test-unit': 'vitest run --coverage',
     transpile: 'babel src --extensions .ts --quiet',
-    watch: "rm -rf dist && concurrently 'yarn:package-* --watch'",
+    watch: "rm -rf dist && concurrently 'pnpm:package-* --watch'",
   },
   dependencies: {
     '@babel/runtime': 'latest',

@@ -9,7 +9,11 @@ This package is part of the [Swarmion](https://www.swarmion.dev) project. See it
 Run the following command
 
 ```bash
+# using yarn
 yarn create swarmion-app
+
+# using npx
+npx create-swarmion-app
 ```
 
 Check out [the docs](https://www.swarmion.dev/docs/getting-started/installation#generate-your-project-from-swarmion-template) for more info.
