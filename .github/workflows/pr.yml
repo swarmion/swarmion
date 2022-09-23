@@ -4,7 +4,7 @@ on:
 
 # cancel previous runs on the same PR
 concurrency:
-  group: ${{ github.ref }}
+  group: ${{ github.ref }}/swarmion
   cancel-in-progress: true
 
 name: ⛷ PR tests
@@ -76,12 +76,16 @@ jobs:
         uses: ./.github/actions/lint-and-tests
         with:
           path: ${{ matrix.AFFECTED_LIB }}
+  
+  starter-example-ci:
+    name: 🖼️ Run examples/swarmion-starter CI
+    uses: ./.github/workflows/swarmion-starter-pr.yml
 
   validate-pr:
     name: ✅ Validate the PR
     runs-on: ubuntu-latest
     if: ${{ always() }}
-    needs: [build, library-lint-and-tests, app-lint-and-tests]
+    needs: [build, library-lint-and-tests, app-lint-and-tests, starter-example-ci]
     steps:
       - name: Validate build
         run: |
