@@ -9,6 +9,8 @@ runs:
   steps:
     - name: Install & cache node dependencies
       uses: ./.github/actions/install-node-deps
+    - name: Package and cache builds
+      uses: ./.github/actions/package
     - name: Run lint
       run: |
         cd ${{ inputs.path }}
