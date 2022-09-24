@@ -1,9 +1,10 @@
 import runServerless from '@serverless/test/run-serverless';
+import { join } from 'path';
 
 describe('assetDetection', () => {
   it('should create all required resources', async () => {
     await expect(() =>
-      runServerless('../../node_modules/serverless', {
+      runServerless(join(__dirname, '../../node_modules/serverless'), {
         command: 'package',
         cwd: __dirname,
       }),

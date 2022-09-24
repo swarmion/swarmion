@@ -1,10 +1,11 @@
 import runServerless from '@serverless/test/run-serverless';
 import { Template } from 'aws-cdk-lib/assertions';
+import { join } from 'path';
 
 describe('customCdK', () => {
   it('should create all required resources', async () => {
     const { cfTemplate } = await runServerless(
-      '../../node_modules/serverless',
+      join(__dirname, '../../node_modules/serverless'),
       {
         command: 'package',
         cwd: __dirname,
