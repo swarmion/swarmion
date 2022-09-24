@@ -12,5 +12,13 @@ runs:
       uses: actions/cache@v2
       with:
         path: |
-          node_modules/@swarmion/**/dist
+          packages/**/dist
+          contracts/**/dist
+          !packages/**/node_modules
+          !contracts/**/node_modules
         key: ${{ runner.os }}-packages-${{ env.NODE_VERSION }}-${{ hashFiles('./contracts/**') }}-${{ hashFiles('./packages/**') }}
+        restore-keys: |
+          ${{ runner.os }}-packages-${{ env.NODE_VERSION }}-${{ hashFiles('./contracts/**') }}
+          ${{ runner.os }}-packages-${{ env.NODE_VERSION }}
+          ${{ runner.os }}-packages-
+          ${{ runner.os }}-
