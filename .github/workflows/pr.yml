@@ -107,6 +107,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - name: Install & cache node dependencies
         uses: ./.github/actions/install-node-deps
       - name: Build docs
