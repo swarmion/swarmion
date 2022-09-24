@@ -1,6 +1,8 @@
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+  # Enable this when the `pr-simple` workflow is not enough anymore
+  # pull_request:
+  #   types: [opened, synchronize, reopened]
 
 # cancel previous runs on the same PR
 concurrency:
