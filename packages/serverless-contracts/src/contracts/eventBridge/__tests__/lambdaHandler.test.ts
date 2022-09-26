@@ -64,4 +64,36 @@ describe('EventBridgeContract handler test', () => {
       ),
     ).rejects.toThrowError();
   });
+
+  it('should accept additional arguments', async () => {
+    const mockSideEffect = vitest.fn(() => 'tata');
+    interface SideEffects {
+      mySideEffect: () => string;
+    }
+
+    const handler = getHandler(eventBridgeContract)(
+      async (
+        event,
+        _context,
+        { mySideEffect }: SideEffects = { mySideEffect: mockSideEffect },
+      ) => {
+        await Promise.resolve();
+
+        const sideEffectRes = mySideEffect();
+
+        return `${event.detail.userId}-${sideEffectRes}`;
+      },
+    );
+
+    const result = await handler(
+      {
+        ...baseEvent,
+        detail: { userId: 'toto' },
+      },
+      fakeContext,
+      () => null,
+    );
+    expect(result).toBe('toto-tata');
+    expect(mockSideEffect).toHaveBeenCalledOnce();
+  });
 });
