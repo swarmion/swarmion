@@ -4,8 +4,15 @@ import { EventBridgeContract } from '../eventBridgeContract';
 import { EventBridgeHandlerType, HandlerType } from '../types/lambdaHandler';
 
 export const getHandler =
-  <Contract extends EventBridgeContract>(contract: Contract) =>
-  (handler: HandlerType<Contract>): EventBridgeHandlerType<Contract> =>
+  <
+    Contract extends EventBridgeContract,
+    AdditionalArgs extends never[] = never[],
+  >(
+    contract: Contract,
+  ) =>
+  (
+    handler: HandlerType<Contract, AdditionalArgs>,
+  ): EventBridgeHandlerType<Contract, AdditionalArgs> =>
   async (event, context, _callback, ...additionalArgs) => {
     // here we decide to not use the callback argument passed by lambda
     // because we have asynchronous handlers

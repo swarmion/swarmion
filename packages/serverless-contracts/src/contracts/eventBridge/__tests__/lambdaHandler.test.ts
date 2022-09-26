@@ -71,12 +71,10 @@ describe('EventBridgeContract handler test', () => {
       mySideEffect: () => string;
     }
 
+    const sideEffects = { mySideEffect: mockSideEffect };
+
     const handler = getHandler(eventBridgeContract)(
-      async (
-        event,
-        _context,
-        { mySideEffect }: SideEffects = { mySideEffect: mockSideEffect },
-      ) => {
+      async (event, _context, { mySideEffect }: SideEffects = sideEffects) => {
         await Promise.resolve();
 
         const sideEffectRes = mySideEffect();
@@ -95,5 +93,41 @@ describe('EventBridgeContract handler test', () => {
     );
     expect(result).toBe('toto-tata');
     expect(mockSideEffect).toHaveBeenCalledOnce();
+  });
+
+  it('should allow overriding of additional arguments', async () => {
+    const mockSideEffect = vitest.fn(() => 'blob');
+    const mockUnusedSideEffect = vitest.fn(() => 'tata');
+    interface SideEffects {
+      mySideEffect: () => string;
+    }
+
+    const handler = getHandler(eventBridgeContract)(
+      async (
+        event,
+        _context,
+        { mySideEffect }: SideEffects = { mySideEffect: mockUnusedSideEffect },
+      ) => {
+        await Promise.resolve();
+
+        const sideEffectRes = mySideEffect();
+
+        return `${event.detail.userId}-${sideEffectRes}`;
+      },
+    );
+
+    const result = await handler(
+      {
+        ...baseEvent,
+        detail: { userId: 'toto' },
+      },
+      fakeContext,
+      () => null,
+      // @ts-expect-error typing is not great here yet
+      { mySideEffect: mockSideEffect },
+    );
+    expect(result).toBe('toto-blob');
+    expect(mockSideEffect).toHaveBeenCalledOnce();
+    expect(mockUnusedSideEffect).toHaveBeenCalledTimes(0);
   });
 });
