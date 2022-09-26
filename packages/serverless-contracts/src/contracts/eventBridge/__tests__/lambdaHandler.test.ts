@@ -123,7 +123,6 @@ describe('EventBridgeContract handler test', () => {
       },
       fakeContext,
       () => null,
-      // @ts-expect-error typing is not great here yet
       { mySideEffect: mockSideEffect },
     );
     expect(result).toBe('toto-blob');

@@ -1,19 +1,21 @@
 import Ajv from 'ajv';
 
 import { EventBridgeContract } from '../eventBridgeContract';
+import { PayloadType } from '../types/common';
 import { EventBridgeHandlerType, HandlerType } from '../types/lambdaHandler';
 
 export const getHandler =
   <
     Contract extends EventBridgeContract,
-    AdditionalArgs extends never[] = never[],
+    EventType extends string = Contract['eventType'],
+    Payload = PayloadType<Contract>,
   >(
     contract: Contract,
   ) =>
-  (
-    handler: HandlerType<Contract, AdditionalArgs>,
-  ): EventBridgeHandlerType<Contract, AdditionalArgs> =>
-  async (event, context, _callback, ...additionalArgs) => {
+  <AdditionalArgs extends unknown[] = []>(
+    handler: HandlerType<EventType, Payload, AdditionalArgs>,
+  ): EventBridgeHandlerType<EventType, Payload, AdditionalArgs> =>
+  async (event, context, _callback, ...additionalArgs: AdditionalArgs) => {
     // here we decide to not use the callback argument passed by lambda
     // because we have asynchronous handlers
     const ajv = new Ajv();
