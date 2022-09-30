@@ -74,6 +74,7 @@ describe('apiGateway lambda handler', () => {
           name: 'bar15myTestIdMyCustomHeaderclaimBar',
         }),
         statusCode: 200,
+        headers: { 'Content-Type': 'application/json' },
       });
     });
 
@@ -286,6 +287,7 @@ describe('apiGateway lambda handler', () => {
       expect(result).toEqual({
         body: '{"name":"coucoublob"}',
         statusCode: 200,
+        headers: { 'Content-Type': 'application/json' },
       });
     });
   });
@@ -336,7 +338,7 @@ describe('apiGateway lambda handler', () => {
         () => null,
       );
 
-      expect(result).toEqual({
+      expect(result).toMatchObject({
         body: '',
         statusCode: 200,
       });
