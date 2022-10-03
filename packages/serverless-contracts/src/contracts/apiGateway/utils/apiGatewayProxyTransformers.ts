@@ -32,4 +32,8 @@ export const handlerResponseToProxyResult = <
 ): ApiGatewayResult<Contract> => ({
   statusCode: 200,
   body: handlerResponse !== undefined ? JSON.stringify(handlerResponse) : '',
+  headers:
+    handlerResponse !== undefined
+      ? { 'Content-Type': 'application/json' }
+      : undefined,
 });
