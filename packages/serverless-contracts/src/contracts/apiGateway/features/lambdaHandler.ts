@@ -41,6 +41,8 @@ export const getHandler =
 
       return handlerResponseToProxyResult(handlerResponse);
     } catch (error) {
+      console.error(error);
+
       if (isHttpError(error) && error.expose) {
         return {
           headers: error.headers,
