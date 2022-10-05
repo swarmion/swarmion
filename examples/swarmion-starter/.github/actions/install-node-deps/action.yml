@@ -1,25 +1,15 @@
 name: 'Install Node Dependencies'
-description: 'Install monorepo dependencies using yarn'
+description: 'Install monorepo dependencies using pnpm'
 runs:
   using: 'composite'
   steps:
-    - name: Use Node.js
+    - uses: pnpm/action-setup@v2.2.2
+      with:
+        version: 7
+    - name: Use Node.js ${{ env.NODE_VERSION }}
       uses: actions/setup-node@v2
       with:
         node-version: ${{ env.NODE_VERSION }}
-    - name: Get yarn cache directory path
-      id: yarn-cache-dir-path
-      run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
-      shell: bash
-    - name: Cache yarn cache
-      uses: actions/cache@v2
-      with:
-        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-        key: ${{ runner.os }}-yarn-${{ hashFiles('./yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-yarn-
-    - name: Cache node modules
-      uses: ./.github/actions/cache-node-modules
-    - name: Install dependencies
-      run: yarn install --immutable
+        cache: 'pnpm'
+      run: pnpm install
       shell: bash

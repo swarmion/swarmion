@@ -32,7 +32,7 @@ export const sharedParams = {
 };
 
 export const sharedEsbuildConfig = {
-  packager: 'yarn',
+  packager: 'pnpm',
   bundle: true,
   minify: true,
   keepNames: true,
