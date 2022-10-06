@@ -18,7 +18,7 @@ replace() {
 
 export -f replace
 
-readonly AFFECTED_STRING=$(yarn nx affected:"$PROJECT_TYPE" --plain)
+readonly AFFECTED_STRING=$(pnpm nx affected:"$PROJECT_TYPE" --plain)
 readonly AFFECTED_ARRAY=($(echo "$AFFECTED_STRING" | tr ' ' '\n'))
 
 RESULT=''

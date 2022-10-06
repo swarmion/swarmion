@@ -7,5 +7,5 @@ runs:
       id: package-cache
       uses: ./.github/actions/cache-package-builds
     - name: Run package
-      run: if [ '${{ steps.package-cache.outputs.cache-hit }}' != 'true' ]; then yarn package; fi
+      run: if [ '${{ steps.package-cache.outputs.cache-hit }}' != 'true' ]; then pnpm package; fi
       shell: bash

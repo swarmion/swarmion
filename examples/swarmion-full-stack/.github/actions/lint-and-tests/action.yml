@@ -16,13 +16,13 @@ runs:
     - name: Run lint
       run: |
         cd ${{ inputs.path }}
-        yarn test-linter --max-warnings 0
+        pnpm test-linter --max-warnings 0
       shell: bash
     - name: Run stylelint
       run: |
         cd ${{ inputs.path }}
         if [[ $(cat package.json | jq '.scripts["test-stylelint"]') != null ]]; then
-          yarn test-stylelint
+          pnpm test-stylelint
         else
           echo "No stylelint test script found in package.json"
         fi
@@ -31,7 +31,7 @@ runs:
       run: |
         cd ${{ inputs.path }}
         if [[ $(cat package.json | jq '.scripts["test-unit"]') != null ]]; then
-          yarn test-unit
+          pnpm test-unit
         else
           echo "No unit test script found in package.json"
         fi
@@ -40,7 +40,7 @@ runs:
       run: |
         cd ${{ inputs.path }}
         if [[ $(cat package.json | jq '.scripts["test-type"]') != null ]]; then
-          yarn test-type
+          pnpm test-type
         else
           echo "No type test script found in package.json"
         fi
@@ -49,7 +49,7 @@ runs:
       run: |
         cd ${{ inputs.path }}
         if [[ $(cat package.json | jq '.scripts["test-circular"]') != null ]]; then
-          yarn test-circular
+          pnpm test-circular
         else
           echo "No circular dependencies test script found in package.json"
         fi

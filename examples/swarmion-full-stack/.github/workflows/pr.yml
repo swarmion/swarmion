@@ -26,11 +26,6 @@ jobs:
       affected_apps: ${{ steps.get-project-changes.outputs.affected_apps }}
       affected_libs: ${{ steps.get-project-changes.outputs.affected_libs }}
     steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-          # We need to fetch all branches and commits so that Nx affected has a base to compare against.
-          fetch-depth: 0
       - name: Install & cache node dependencies
         uses: ./.github/actions/install-node-deps
       - name: Package and cache builds
