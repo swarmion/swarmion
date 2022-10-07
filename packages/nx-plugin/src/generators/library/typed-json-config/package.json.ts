@@ -1,5 +1,3 @@
-import { join } from 'path';
-
 import { NormalizedSchema, PackageJson } from '../../types';
 
 export const packageJson = (options: NormalizedSchema): PackageJson => ({
@@ -55,12 +53,5 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     vite: 'latest',
     'vite-tsconfig-paths': 'latest',
     vitest: 'latest',
-  },
-  nx: {
-    targets: {
-      package: {
-        outputs: [join(options.packageRoot, 'dist')],
-      },
-    },
   },
 });
