@@ -43,7 +43,7 @@ const run = async (): Promise<void> => {
           return true;
         }
 
-        return 'Invalid project name: ' + validation.problems[0];
+        return 'Invalid project name: ' + (validation.problems[0] as string);
       },
     });
 

@@ -20,6 +20,8 @@ export class MyConstruct extends ServerlessConstruct {
     this.dynamodbArn = tableArn;
     this.dynamodbName = tableName;
     this.testServerlessConfigValue =
-      props.serverless.resources.Outputs?.testOutput.Description;
+      // eslint has issues resolving the type of testOutput
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+      props.serverless.resources.Outputs?.testOutput?.Description;
   }
 }
