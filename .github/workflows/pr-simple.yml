@@ -44,13 +44,13 @@ jobs:
             ${{ runner.os }}-nx-cache-${{ env.NODE_VERSION }}-
             ${{ runner.os }}-nx-cache-
       - name: '🧪 Test linter'
-        run: yarn nx affected --target=test-linter --parallel=2
+        run: pnpm nx affected --target=test-linter --parallel=2
       - name: '🧪 Test type'
-        run: yarn nx affected --target=test-type --parallel=2
+        run: pnpm nx affected --target=test-type --parallel=2
       - name: '🧪 Test unit'
-        run: yarn nx affected --target=test-unit --parallel=2
+        run: pnpm nx affected --target=test-unit --parallel=2
       - name: '🧪 Test circular'
-        run: yarn nx affected --target=test-circular --parallel=2
+        run: pnpm nx affected --target=test-circular --parallel=2
 
   deploy-docs-preview-to-netlify:
     name: 🚀 Deploy docs preview to Netlify
