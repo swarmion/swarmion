@@ -52,6 +52,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     'ts-node': 'latest',
     ttypescript: 'latest',
     typescript: 'latest',
+    vite: 'latest',
     'vite-tsconfig-paths': 'latest',
     vitest: 'latest',
   },

@@ -12,7 +12,7 @@ export const updatePackages = (tree: Tree, options: NormalizedSchema): void => {
   }>(tree, join(options.packageRoot, `package.json`));
 
   execSync(
-    `pnpm --dir @${options.offsetFromRoot} \
+    `pnpm --dir ${options.directory}/${options.name} \
       add ${Object.keys(dependencies ?? {}).join(' ')}`,
     {
       cwd: join(tree.root),
@@ -20,8 +20,8 @@ export const updatePackages = (tree: Tree, options: NormalizedSchema): void => {
     },
   );
   execSync(
-    `pnpm --dir @${options.offsetFromRoot} \
-      --save-dev ${Object.keys(devDependencies ?? {}).join(' ')}`,
+    `pnpm --dir ${options.directory}/${options.name} \
+      add --save-dev ${Object.keys(devDependencies ?? {}).join(' ')}`,
     {
       cwd: join(tree.root),
       stdio: [0, 1, 2],

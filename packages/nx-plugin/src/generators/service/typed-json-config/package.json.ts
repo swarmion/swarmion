@@ -41,6 +41,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     'serverless-iam-roles-per-function': 'latest',
     'ts-node': 'latest',
     typescript: 'latest',
+    vite: 'latest',
     'vite-tsconfig-paths': 'latest',
     vitest: 'latest',
   },
