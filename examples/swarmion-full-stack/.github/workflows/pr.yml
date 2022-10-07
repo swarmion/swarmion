@@ -10,7 +10,6 @@ concurrency:
 name: ⛷ PR tests
 
 env:
-  CI: true
   NODE_VERSION: 16
 
 defaults:
@@ -18,81 +17,47 @@ defaults:
     shell: bash
 
 jobs:
-  build:
-    name: 🏗 Build Project
+  build-and-test:
+    name: 🏗 Build Project & 🧪 Run Tests
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    outputs:
-      affected_apps: ${{ steps.get-project-changes.outputs.affected_apps }}
-      affected_libs: ${{ steps.get-project-changes.outputs.affected_libs }}
-    steps:
-      - name: Install & cache node dependencies
-        uses: ./.github/actions/install-node-deps
-      - name: Package and cache builds
-        uses: ./.github/actions/package
-      - name: Get project changes
-        id: get-project-changes
-        uses: ./.github/actions/get-project-changes
-
-  app-lint-and-tests:
-    name: 🏛 App Tests
-    needs: build
-    runs-on: ubuntu-latest
-    if: join(fromJson(needs.build.outputs.affected_apps)) != ''
-    timeout-minutes: 30
-    strategy:
-      fail-fast: false
-      matrix:
-        AFFECTED_APP: ${{ fromJson(needs.build.outputs.affected_apps) }}
     steps:
       - uses: actions/checkout@v2
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-      - name: Run tests
-        uses: ./.github/actions/lint-and-tests
+          # We need to fetch all branches and commits so that Nx affected has a base to compare against.
+          fetch-depth: 0
+      - uses: nrwl/nx-set-shas@v3
+      - uses: pnpm/action-setup@v2.2.2
         with:
-          path: ${{ matrix.AFFECTED_APP }}
-
-  library-lint-and-tests:
-    name: 📚 Library Tests
-    needs: build
-    runs-on: ubuntu-latest
-    if: join(fromJson(needs.build.outputs.affected_libs)) != ''
-    timeout-minutes: 30
-    strategy:
-      fail-fast: false
-      matrix:
-        AFFECTED_LIB: ${{ fromJson(needs.build.outputs.affected_libs) }}
-    steps:
-      - uses: actions/checkout@v2
+          version: 7.11.0
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v3
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
-      - name: Run tests
-        uses: ./.github/actions/lint-and-tests
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+        shell: bash
+      - name: 💾 Cache Nx cache
+        id: package-cache
+        uses: actions/cache@v2
         with:
-          path: ${{ matrix.AFFECTED_LIB }}
-
-  validate-pr:
-    name: ✅ Validate the PR
-    runs-on: ubuntu-latest
-    if: ${{ always() }}
-    needs: [build, library-lint-and-tests, app-lint-and-tests]
-    steps:
-      - name: Validate build
-        run: |
-          if [[ ${{ needs.build.result }} = "failure" ]]; then
-            echo "build failed"
-            exit 1
-          fi
-      - name: Validate app tests
-        run: |
-          if [[ ${{ needs.app-lint-and-tests.result }} = "failure" ]]; then
-            echo "App tests failed"
-            exit 1
-          fi
-      - name: Validate library tests
-        run: |
-          if [[ ${{ needs.library-lint-and-tests.result }} = "failure" ]]; then
-            echo "Library tests failed"
-            exit 1
-          fi
+          path: |
+            nx-cache
+          # Cache will be updated at every run: https://github.com/actions/cache/blob/main/workarounds.md#update-a-cache
+          key: ${{ runner.os }}-nx-cache-${{ env.NODE_VERSION }}-${{github.event.number}}-${{ github.run_id }}
+          restore-keys: |
+            ${{ runner.os }}-nx-cache-${{ env.NODE_VERSION }}-${{github.event.number}}-
+            ${{ runner.os }}-nx-cache-${{ env.NODE_VERSION }}-
+            ${{ runner.os }}-nx-cache-
+      - name: '🏗 Package'
+        run: pnpm nx affected --target=package --parallel=2
+      - name: '🧪 Test linter'
+        run: pnpm nx affected --target=test-linter --parallel=2
+      - name: '🧪 Test type'
+        run: pnpm nx affected --target=test-type --parallel=2
+      - name: '🧪 Test unit'
+        run: pnpm nx affected --target=test-unit --parallel=2
+      - name: '🧪 Test circular'
+        run: pnpm nx affected --target=test-circular --parallel=2
