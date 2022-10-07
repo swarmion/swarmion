@@ -21,7 +21,10 @@ describe('apiGateway fetch request', () => {
 
   const queryStringParametersSchema = {
     type: 'object',
-    properties: { testId: { type: 'string' } },
+    properties: {
+      testId: { type: 'string' },
+      optionalParam: { type: 'string' },
+    },
     required: ['testId'],
     additionalProperties: false,
   } as const;
@@ -64,7 +67,40 @@ describe('apiGateway fetch request', () => {
       outputSchema,
     });
 
-    it('should have the correct axiosRequest', async () => {
+    it('should have the correct axiosRequest when all values are defined', async () => {
+      await getFetchRequest(
+        httpApiContract,
+        mockedFetch as unknown as typeof fetch,
+        {
+          pathParameters: {
+            userId: 'azer',
+            pageNumber: 'zert',
+          },
+          queryStringParameters: {
+            testId: 'er',
+            optionalParam: 'ty',
+          },
+          headers: {
+            myHeader: 'rtyu',
+          },
+          body: {
+            foo: 'tyui',
+            bar: ['yuio'],
+          },
+          baseUrl: 'http://localhost:3000',
+        },
+      );
+      expect(mockedFetch).toHaveBeenCalledWith(
+        new URL('http://localhost:3000/users/azer?testId=er&optionalParam=ty'),
+        {
+          body: '{"foo":"tyui","bar":["yuio"]}',
+          headers: { myHeader: 'rtyu' },
+          method: 'POST',
+        },
+      );
+    });
+
+    it('should have the correct axiosRequest when some queryStringParameters are undefined', async () => {
       await getFetchRequest(
         httpApiContract,
         mockedFetch as unknown as typeof fetch,
@@ -75,6 +111,7 @@ describe('apiGateway fetch request', () => {
           },
           queryStringParameters: {
             testId: 'erty',
+            optionalParam: undefined,
           },
           headers: {
             myHeader: 'rtyu',
