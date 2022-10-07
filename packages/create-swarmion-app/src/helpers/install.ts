@@ -2,7 +2,7 @@ import { spawn } from 'cross-spawn';
 
 export const install = (root: string): Promise<void> => {
   return new Promise((resolve, reject) => {
-    const command = 'yarn';
+    const command = 'pnpm';
     process.chdir(root);
 
     const args = ['install'];

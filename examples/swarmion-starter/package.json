@@ -10,7 +10,6 @@
   ],
   "scripts": {
     "build-all": "nx run-many --target=build --all --parallel=4",
-    "check-audit": "check-audit --yarn",
     "deploy": "nx run-many --target=deploy --all --parallel=4",
     "deploy-affected": "nx affected --target=deploy",
     "generate-library": "nx generate @swarmion/nx-plugin:library",
@@ -21,7 +20,6 @@
     "lint-fix-all": "nx run-many --target=lint-fix-all --all --parallel=4",
     "package": "nx run-many --target=package --all --parallel=4",
     "postinstall": "test -n \"$NO_YARN_POSTINSTALL\" && syncpack format || husky install && syncpack format",
-    "resolve-audit": "resolve-audit --yarn",
     "test": "nx run-many --target=test --all --parallel=4",
     "test-affected": "nx affected --target=test",
     "test-circular": "nx run-many --target=test-circular --all --parallel=4",
@@ -57,5 +55,5 @@
   "engines": {
     "node": "^16.17.0"
   },
-  "packageManager": "yarn@3.2.1"
+  "packageManager": "pnpm@7.11.0"
 }

@@ -1,9 +1,8 @@
 {
-  "extends": "@nrwl/workspace/presets/npm.json",
   "npmScope": "swarmion",
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
+      "runner": "nx/tasks-runners/default",
       "options": {
         "cacheableOperations": [
           "build",
@@ -19,57 +18,44 @@
       }
     }
   },
-  "targetDependencies": {
-    "build": [
-      {
-        "target": "package",
-        "projects": "dependencies"
-      }
-    ],
-    "deploy": [
-      {
-        "target": "package",
-        "projects": "dependencies"
-      },
-      {
-        "target": "build",
-        "projects": "dependencies"
-      },
-      {
-        "target": "deploy",
-        "projects": "dependencies"
-      }
-    ],
-    "package": [
-      {
-        "target": "package",
-        "projects": "dependencies"
-      }
-    ],
-    "test": [
-      {
-        "target": "package",
-        "projects": "dependencies"
-      }
-    ],
-    "test-linter": [
-      {
-        "target": "package",
-        "projects": "dependencies"
-      }
-    ],
-    "test-type": [
-      {
-        "target": "package",
-        "projects": "dependencies"
-      }
-    ],
-    "test-unit": [
-      {
-        "target": "package",
-        "projects": "dependencies"
-      }
-    ]
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*"],
+    "production": ["!{projectRoot}/**/*.test.tsx?"]
+  },
+  "targetDefaults": {
+    "build": {
+      "inputs": ["production", "^production"],
+      "dependsOn": ["^build", "^package"]
+    },
+    "package": {
+      "inputs": ["production", "^production"],
+      "dependsOn": ["^package"],
+      "outputs": ["{projectRoot}/dist"]
+    },
+    "deploy": {
+      "inputs": ["production", "^production"],
+      "dependsOn": ["^package", "^deploy", "^build"]
+    },
+    "test": {
+      "inputs": ["default", "^production"],
+      "dependsOn": ["^package"]
+    },
+    "test-linter": {
+      "inputs": ["default", "^production"],
+      "dependsOn": ["^package"]
+    },
+    "test-unit": {
+      "inputs": ["default", "^production"],
+      "dependsOn": ["^package"]
+    },
+    "test-type": {
+      "inputs": ["default", "^production"],
+      "dependsOn": ["^package"]
+    },
+    "test-circular": {
+      "inputs": ["default", "^production"],
+      "dependsOn": ["^package"]
+    }
   },
   "affected": {
     "defaultBase": "main"

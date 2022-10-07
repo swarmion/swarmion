@@ -5,7 +5,15 @@ runs:
   steps:
     - name: Cache package builds
       id: package-cache
-      uses: ./.github/actions/cache-package-builds
+      uses: actions/cache@v2
+      with:
+        path: |
+          nx-cache
+        key: ${{ runner.os }}-packages-${{ env.NODE_VERSION }}-${{ hashFiles('contracts/**/*.ts', 'packages/**/*.ts') }}
+        restore-keys: |
+          ${{ runner.os }}-packages-${{ env.NODE_VERSION }}-
+          ${{ runner.os }}-packages-
+          ${{ runner.os }}-
     - name: Run package
-      run: if [ '${{ steps.package-cache.outputs.cache-hit }}' != 'true' ]; then yarn package; fi
+      run: pnpm package
       shell: bash

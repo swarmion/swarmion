@@ -9,14 +9,14 @@ sidebar_position: 3
 Let's add a new `users` service to the project by running the following command at the root of the repository:
 
 ```bash
-yarn generate-service users
+pnpm generate-service users
 ```
 
 :::info
 The `generate-service` command is a shorthand for the following command defined in the root `package.json` file:
 
 ```bash
-yarn nx generate @swarmion/nx-plugin:service
+pnpm nx generate @swarmion/nx-plugin:service
 ```
 
 To have more info on the `@swarmion/nx-plugin`, you can check its [documentation page](../how-to-guides/use-swarmion-generators).
@@ -80,7 +80,7 @@ You can deploy the service by running the following command at the root of the r
 
 ```bash
 cd backend/users
-yarn serverless deploy
+pnpm serverless deploy
 # It should prompt something like the following:
 Deploying my-project-name-users to stage dev (us-east-1)
 
@@ -110,7 +110,7 @@ ok
 Now that the project has two services, it would be really cumbersome to deploy them one after the other. Thankfully, we can deploy the whole project in order by running the following command at the root of the repository:
 
 ```bash
-yarn deploy
+pnpm deploy
 ```
 
 This command will leverage the dependency graph of the project and deploy all the services in the right order. This means that `backend-core` will be deployed, then `backend-users`.

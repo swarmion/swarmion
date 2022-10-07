@@ -5,15 +5,15 @@
   "license": "UNLICENSED",
   "scripts": {
     "deploy": "./deploy.sh",
-    "lint-fix": "yarn linter-base-config --fix",
-    "lint-fix-all": "yarn lint-fix .",
+    "lint-fix": "pnpm linter-base-config --fix",
+    "lint-fix-all": "pnpm lint-fix .",
     "linter-base-config": "eslint --ext=js,ts",
     "remove": "serverless remove",
     "sls-info": "serverless info --verbose",
-    "test": "yarn test-linter && yarn test-type && yarn test-circular",
-    "test-circular": "yarn depcruise --validate .dependency-cruiser.js .",
-    "test-linter": "yarn linter-base-config .",
-    "test-type": "tsc --noEmit"
+    "test": "pnpm test-linter && pnpm test-type && pnpm test-circular",
+    "test-circular": "pnpm depcruise --validate .dependency-cruiser.js .",
+    "test-linter": "pnpm linter-base-config .",
+    "test-type": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
     "@swarmion-full-stack/serverless-configuration": "1.0.0",

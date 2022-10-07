@@ -22,20 +22,20 @@
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "lint-fix": "yarn linter-base-config --fix",
-    "lint-fix-all": "yarn lint-fix .",
+    "lint-fix": "pnpm linter-base-config --fix",
+    "lint-fix-all": "pnpm lint-fix .",
     "linter-base-config": "eslint --ext=js,ts",
-    "package": "rm -rf dist && yarn package-cjs && yarn package-esm && yarn package-types",
-    "package-cjs": "NODE_ENV=cjs yarn transpile --out-dir dist/cjs --source-maps",
-    "package-esm": "NODE_ENV=esm yarn transpile --out-dir dist/esm --source-maps",
+    "package": "rm -rf dist && pnpm package-cjs && pnpm package-esm && pnpm package-types",
+    "package-cjs": "NODE_ENV=cjs pnpm transpile --out-dir dist/cjs --source-maps",
+    "package-esm": "NODE_ENV=esm pnpm transpile --out-dir dist/esm --source-maps",
     "package-types": "ttsc -p tsconfig.build.json",
-    "test": "yarn test-linter && yarn test-type && yarn test-unit && yarn test-circular",
-    "test-circular": "yarn depcruise --validate .dependency-cruiser.js src",
-    "test-linter": "yarn linter-base-config .",
+    "test": "pnpm test-linter && pnpm test-type && pnpm test-unit && pnpm test-circular",
+    "test-circular": "pnpm depcruise --validate .dependency-cruiser.js src",
+    "test-linter": "pnpm linter-base-config .",
     "test-type": "tsc --noEmit --emitDeclarationOnly false",
     "test-unit": "jest --runInBand --collectCoverage --logHeapUsage",
     "transpile": "babel src --extensions .ts --quiet",
-    "watch": "rm -rf dist && concurrently 'yarn:package-* --watch'"
+    "watch": "rm -rf dist && concurrently 'pnpm:package-* --watch'"
   },
   "dependencies": {
     "@babel/runtime": "^7.18.9",
@@ -50,8 +50,10 @@
     "@babel/preset-env": "^7.18.9",
     "@babel/preset-typescript": "^7.18.6",
     "@serverless/test": "^11.0.1",
-    "@types/jest": "^28.1.6",
+    "@types/jest": "^27.4.1",
+    "@types/lodash": "^4.14.185",
     "@types/node": "^18.6.3",
+    "@types/serverless": "^3.12.8",
     "@zerollup/ts-transform-paths": "^1.7.18",
     "aws-cdk-lib": "^2.34.2",
     "babel-plugin-module-resolver": "^4.1.0",
@@ -67,15 +69,6 @@
     "ts-node": "^10.9.1",
     "ttypescript": "^1.5.13",
     "typescript": "^4.7.4"
-  },
-  "nx": {
-    "targets": {
-      "package": {
-        "outputs": [
-          "packages/serverless-cdk-plugin/dist"
-        ]
-      }
-    }
   },
   "peerDependencies": {
     "aws-cdk-lib": "^2.34.2",

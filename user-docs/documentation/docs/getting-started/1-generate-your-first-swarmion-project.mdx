@@ -13,7 +13,7 @@ If you're looking how to migrate your existing project to Swarmion, please check
 ## Requirements
 
 - nvm: [install docs](https://github.com/nvm-sh/nvm#installing-and-updating)
-- yarn: [install docs](https://yarnpkg.com/getting-started/install)
+- pnpm: [install docs](https://pnpm.io/installation)
 - AWS CLI: [install docs](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 
 Before generating your project, run in a terminal:
@@ -29,7 +29,11 @@ You should get `v16.xx.xx`. If this is not the case, run `nvm use 16`.
 Run the following command:
 
 ```bash
-yarn create swarmion-app
+pnpm create swarmion-app
+
+# or using npx
+
+npx create-swarmion-app
 ```
 
 You will be prompted with the question "What is your project named?", simply enter your project name and hit _enter_.
@@ -37,7 +41,7 @@ The following will happen:
 
 - A new folder with your project name in the current directory
 - It will be populated with the Swarmion template
-- `yarn install` will be run inside the project to install all the dependencies
+- `pnpm install` will be run inside the project to install all the dependencies
 - The libraries of the project will be packaged
 - A git repository will be initialized
 
@@ -45,7 +49,11 @@ The following will happen:
 You can add an argument to the `create swarmion-app` command to skip the prompt and instantly generate your project:
 
 ```bash
-yarn create swarmion-app my-project-name
+pnpm create swarmion-app my-project-name
+
+# or using npx
+
+npx create-swarmion-app my-project-name
 ```
 
 :::
@@ -86,7 +94,7 @@ In the _Explorer_ tab, you should see the following workspaces:
 - `serverless configuration [library]`: the folder containing the serverless configuration library.
 - `contracts core [library]`: the folder containing the contracts library for the core service.
 
-A **Service** represent a backend serverless service using the [Serverless framework](https://serverless.com/framework/). When the command `yarn deploy` is run inside, it will deploy a stack to AWS.
+A **Service** represent a backend serverless service using the [Serverless framework](https://serverless.com/framework/). When the command `pnpm deploy` is run inside, it will deploy a stack to AWS.
 
 A **Library** represent a set of reusable code that can be used by multiple services or other libraries. It cannot be deployed, since it is only containing code.
 
@@ -122,8 +130,8 @@ Here you can see that the `backend-core` service has the `configuration`, `core-
 At the root level, the following scripts are available:
 
 - `nvm use`: use the version of node set in `.nvmrc`
-- `yarn`: install npm dependencies in all packages
-- `yarn nx graph`: start an app to visualize dependencies in your monorepo (see more: [Nx graph](https://nx.dev/nx/dep-graph#graph))
-- `yarn package`: compile the libraries
-- `yarn test`: run tests in all the services and libraries
-- `yarn upgrade-interactive` in order to bump all dependencies to their latest version. Be careful as it may introduce breaking changes
+- `pnpm i`: install npm dependencies in all packages
+- `pnpm nx graph`: start an app to visualize dependencies in your monorepo (see more: [Nx graph](https://nx.dev/nx/dep-graph#graph))
+- `pnpm package`: compile the libraries
+- `pnpm test`: run tests in all the services and libraries
+- `pnpm update --interactive` in order to bump all dependencies to their latest version. Be careful as it may introduce breaking changes

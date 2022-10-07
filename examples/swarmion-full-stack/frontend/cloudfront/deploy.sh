@@ -17,10 +17,10 @@ if [[ -n "${stage}" ]] && [[ ! "${stages[*]}" =~ "${stage}" ]]; then
 fi
 
 cd ../app || exit 1
-yarn build --mode "$stage"
+pnpm build --mode "$stage"
 cd ../cloudfront || exit 1
 if [[ -z "${stage}" ]]; then
-  yarn serverless deploy
+  pnpm serverless deploy
 else
-  yarn serverless deploy --stage "$stage"
+  pnpm serverless deploy --stage "$stage"
 fi

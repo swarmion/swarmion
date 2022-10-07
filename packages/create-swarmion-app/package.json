@@ -28,16 +28,16 @@
   "scripts": {
     "build": "ncc build ./src/index.ts -o ./dist/ --minify --no-cache --no-source-map-register",
     "dev": "ncc build ./src/index.ts -w -o dist/",
-    "lint-fix": "yarn linter-base-config --fix",
-    "lint-fix-all": "yarn lint-fix .",
+    "lint-fix": "pnpm linter-base-config --fix",
+    "lint-fix-all": "pnpm lint-fix .",
     "linter-base-config": "eslint --ext=js,ts",
-    "test": "yarn test-linter && yarn test-type && yarn test-unit && yarn test-circular",
-    "test-circular": "yarn depcruise --validate .dependency-cruiser.js .",
-    "test-linter": "yarn linter-base-config .",
+    "test": "pnpm test-linter && pnpm test-type && pnpm test-unit && pnpm test-circular",
+    "test-circular": "pnpm depcruise --validate .dependency-cruiser.js .",
+    "test-linter": "pnpm linter-base-config .",
     "test-type": "tsc --noEmit --emitDeclarationOnly false",
     "test-unit": "vitest run --coverage --passWithNoTests",
     "transpile": "babel src --extensions .ts --quiet --copy-files",
-    "watch": "rm -rf dist && concurrently 'yarn:package-* --watch'"
+    "watch": "rm -rf dist && concurrently 'pnpm:package-* --watch'"
   },
   "bin": "./dist/index.js",
   "devDependencies": {
