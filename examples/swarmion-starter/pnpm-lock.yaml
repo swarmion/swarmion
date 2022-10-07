@@ -7,7 +7,7 @@ importers:
       '@commitlint/cli': ^17.0.3
       '@commitlint/config-conventional': ^17.0.3
       '@nrwl/workspace': ^14.5.1
-      '@swarmion/nx-plugin': ^0.10.2
+      '@swarmion/nx-plugin': ^0.11.0-alpha.0
       '@typescript-eslint/eslint-plugin': ^5.31.0
       '@typescript-eslint/parser': ^5.31.0
       aws-sdk: ^2.1185.0
@@ -29,8 +29,8 @@ importers:
     devDependencies:
       '@commitlint/cli': 17.1.2
       '@commitlint/config-conventional': 17.1.0
-      '@nrwl/workspace': 14.8.2_eql32ujbt4u3pn5es2dvw62g6m
-      '@swarmion/nx-plugin': 0.10.2
+      '@nrwl/workspace': 14.8.2_ziyb7trtqx4pg67xuzyybfz3my
+      '@swarmion/nx-plugin': 0.11.0-alpha.0
       '@typescript-eslint/eslint-plugin': 5.38.1_c7qepppml3d4ahu5cnfwqe6ltq
       '@typescript-eslint/parser': 5.38.1_ypn2ylkkyfa5i233caldtndbqa
       aws-sdk: 2.1226.0
@@ -1999,7 +1999,7 @@ packages:
       - typescript
     dev: true
 
-  /@nrwl/jest/14.8.2_7hpflwm5w5pvy6y6jzeinjbgoe:
+  /@nrwl/jest/14.8.2_hm5miu53x6pfbsijhechpt6fna:
     resolution: {integrity: sha512-16i8RqQ5pnx60XYdE/rfpQPfGJrzR/TE6sGVAGjYzNavnIRH6nZghwIL3KTDKOieUu6xPSDfdTcPWA+GRqTucA==}
     dependencies:
       '@jest/reporters': 28.1.1
@@ -2009,7 +2009,7 @@ packages:
       chalk: 4.1.0
       dotenv: 10.0.0
       identity-obj-proxy: 3.0.0
-      jest-config: 28.1.1_nbdbbfjifcxuz7by3j2q2wpbgq
+      jest-config: 28.1.1_pkv5rbbrzvo2m73htz5zokbhy4
       jest-resolve: 28.1.1
       jest-util: 28.1.1
       resolve.exports: 1.1.0
@@ -2023,7 +2023,7 @@ packages:
       - typescript
     dev: true
 
-  /@nrwl/linter/14.8.2_yjynf3yks6qtrouqdtkfj5yp3m:
+  /@nrwl/linter/14.8.2_ha7f7iqadx7ibitztpmqsup5ia:
     resolution: {integrity: sha512-9ZQnVpEpQIx2QWGYahASgQO89FKKivPtXpOPzDyxxqmX9TAOFYF6dY27CwKjV4ZJ4LyHZ6MtC4L9PyRoS3I8ig==}
     peerDependencies:
       eslint: ^8.0.0
@@ -2032,7 +2032,7 @@ packages:
         optional: true
     dependencies:
       '@nrwl/devkit': 14.8.2_nx@14.8.2+typescript@4.8.4
-      '@nrwl/jest': 14.8.2_7hpflwm5w5pvy6y6jzeinjbgoe
+      '@nrwl/jest': 14.8.2_hm5miu53x6pfbsijhechpt6fna
       '@phenomnomnominal/tsquery': 4.1.1_typescript@4.8.4
       eslint: 8.24.0
       nx: 14.8.2
@@ -2058,7 +2058,7 @@ packages:
       - '@swc/core'
     dev: true
 
-  /@nrwl/workspace/14.8.2_eql32ujbt4u3pn5es2dvw62g6m:
+  /@nrwl/workspace/14.8.2_ziyb7trtqx4pg67xuzyybfz3my:
     resolution: {integrity: sha512-I/i8JKqnWUo/Ogt8Oze7LgvB906DF6as+Ti6bSLw9EyEUIL7/g95NbgDSppUZl+K+IH1eFPPh0z0+I9zFhMwlA==}
     peerDependencies:
       prettier: ^2.6.2
@@ -2067,8 +2067,8 @@ packages:
         optional: true
     dependencies:
       '@nrwl/devkit': 14.8.2_nx@14.8.2+typescript@4.8.4
-      '@nrwl/jest': 14.8.2_7hpflwm5w5pvy6y6jzeinjbgoe
-      '@nrwl/linter': 14.8.2_yjynf3yks6qtrouqdtkfj5yp3m
+      '@nrwl/jest': 14.8.2_hm5miu53x6pfbsijhechpt6fna
+      '@nrwl/linter': 14.8.2_ha7f7iqadx7ibitztpmqsup5ia
       '@parcel/watcher': 2.0.4
       chalk: 4.1.0
       chokidar: 3.5.3
@@ -2263,8 +2263,8 @@ packages:
       '@sinonjs/commons': 1.8.3
     dev: true
 
-  /@swarmion/nx-plugin/0.10.2:
-    resolution: {integrity: sha512-1N4bbTPrvlGAZNDpzJ3KeiA+iKzSufPyadpu0fHgd6CQ1LPyuC5GnEuzisG5lsqMk5fpF9hOIICWcy/HXbfD5Q==}
+  /@swarmion/nx-plugin/0.11.0-alpha.0:
+    resolution: {integrity: sha512-9zc2Gn0NTW2wm1rj4dW9f/zCCNqoV/Q0A//MfkZREt3NVar+PPnAW2P99IFM6+ac2GBVsxQJeWrYv4M2uSleVA==}
     dev: true
 
   /@swarmion/serverless-contracts/0.10.2_axios@0.27.2:
@@ -2418,6 +2418,10 @@ packages:
 
   /@types/node/18.7.23:
     resolution: {integrity: sha512-DWNcCHolDq0ZKGizjx2DZjR/PqsYwAcYUJmfMWqtVU2MBMG5Mo+xFZrhGId5r/O5HOuMPyQEcM6KUBp5lBZZBg==}
+    dev: true
+
+  /@types/node/18.8.3:
+    resolution: {integrity: sha512-0os9vz6BpGwxGe9LOhgP/ncvYN5Tx1fNcd2TM3rD/aCGBkysb+ZWpXEocG24h6ZzOi13+VB8HndAQFezsSOw1w==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -5341,7 +5345,7 @@ packages:
       source-map: 0.6.1
       wordwrap: 1.0.0
     optionalDependencies:
-      uglify-js: 3.17.2
+      uglify-js: 3.17.3
     dev: true
 
   /hard-rejection/2.1.0:
@@ -5892,7 +5896,7 @@ packages:
       - supports-color
     dev: true
 
-  /jest-config/28.1.1_nbdbbfjifcxuz7by3j2q2wpbgq:
+  /jest-config/28.1.1_pkv5rbbrzvo2m73htz5zokbhy4:
     resolution: {integrity: sha512-tASynMhS+jVV85zKvjfbJ8nUyJS/jUSYZ5KQxLUN2ZCvcQc/OmhQl2j6VEL3ezQkNofxn5pQ3SPYWPHb0unTZA==}
     engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
     peerDependencies:
@@ -5907,7 +5911,7 @@ packages:
       '@babel/core': 7.19.3
       '@jest/test-sequencer': 28.1.3
       '@jest/types': 28.1.3
-      '@types/node': 14.18.31
+      '@types/node': 18.8.3
       babel-jest: 28.1.3_@babel+core@7.19.3
       chalk: 4.1.0
       ci-info: 3.4.0
@@ -5927,7 +5931,7 @@ packages:
       pretty-format: 28.1.3
       slash: 3.0.0
       strip-json-comments: 3.1.1
-      ts-node: 10.9.1_fk6arlf3j7tudlucddpzvj2plq
+      ts-node: 10.9.1_xtdkmayvpbwqd3kc4kczaw2zvm
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -8625,6 +8629,37 @@ packages:
       yn: 3.1.1
     dev: true
 
+  /ts-node/10.9.1_xtdkmayvpbwqd3kc4kczaw2zvm:
+    resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
+    hasBin: true
+    peerDependencies:
+      '@swc/core': '>=1.2.50'
+      '@swc/wasm': '>=1.2.50'
+      '@types/node': '*'
+      typescript: '>=2.7'
+    peerDependenciesMeta:
+      '@swc/core':
+        optional: true
+      '@swc/wasm':
+        optional: true
+    dependencies:
+      '@cspotcode/source-map-support': 0.8.1
+      '@tsconfig/node10': 1.0.9
+      '@tsconfig/node12': 1.0.11
+      '@tsconfig/node14': 1.0.3
+      '@tsconfig/node16': 1.0.3
+      '@types/node': 18.8.3
+      acorn: 8.8.0
+      acorn-walk: 8.2.0
+      arg: 4.1.3
+      create-require: 1.1.1
+      diff: 4.0.2
+      make-error: 1.3.6
+      typescript: 4.8.4
+      v8-compile-cache-lib: 3.0.1
+      yn: 3.1.1
+    dev: true
+
   /tsconfig-paths-webpack-plugin/4.0.0:
     resolution: {integrity: sha512-fw/7265mIWukrSHd0i+wSwx64kYUSAKPfxRDksjKIYTxSAp9W9/xcZVBF4Kl0eqQd5eBpAQ/oQrc5RyM/0c1GQ==}
     engines: {node: '>=10.13.0'}
@@ -8737,8 +8772,8 @@ packages:
     hasBin: true
     dev: true
 
-  /uglify-js/3.17.2:
-    resolution: {integrity: sha512-bbxglRjsGQMchfvXZNusUcYgiB9Hx2K4AHYXQy2DITZ9Rd+JzhX7+hoocE5Winr7z2oHvPsekkBwXtigvxevXg==}
+  /uglify-js/3.17.3:
+    resolution: {integrity: sha512-JmMFDME3iufZnBpyKL+uS78LRiC+mK55zWfM5f/pWBJfpOttXAqYfdDGRukYhJuyRinvPVAtUhvy7rlDybNtFg==}
     engines: {node: '>=0.8.0'}
     hasBin: true
     requiresBuild: true
