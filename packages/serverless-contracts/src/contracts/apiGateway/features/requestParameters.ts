@@ -14,7 +14,7 @@ export const getRequestParameters = <Contract extends ApiGatewayContract>(
   const { pathParameters, queryStringParameters, headers, body } =
     requestArguments as {
       pathParameters: Record<string, string>;
-      queryStringParameters: Record<string, string>;
+      queryStringParameters: Record<string, string | undefined>;
       headers: Record<string, string>;
       body: BodyType<Contract>;
     };
@@ -29,7 +29,10 @@ export const getRequestParameters = <Contract extends ApiGatewayContract>(
       method: contract.method,
       path,
       body,
-      queryStringParameters,
+      queryStringParameters: omitBy(
+        queryStringParameters,
+        isUndefined,
+      ) as Record<string, string>,
       headers,
     },
     isUndefined,
