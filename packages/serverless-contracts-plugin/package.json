@@ -26,10 +26,11 @@
     "lint-fix": "pnpm linter-base-config --fix",
     "lint-fix-all": "pnpm lint-fix .",
     "linter-base-config": "eslint --ext=js,ts",
-    "package": "rm -rf dist && pnpm package-cjs && pnpm package-esm && pnpm package-types",
+    "package": "rm -rf dist && pnpm package-cjs && pnpm package-esm && pnpm package-types && pnpm package-types-aliases",
     "package-cjs": "NODE_ENV=cjs pnpm transpile --out-dir dist/cjs --source-maps",
     "package-esm": "NODE_ENV=esm pnpm transpile --out-dir dist/esm --source-maps",
-    "package-types": "ttsc -p tsconfig.build.json",
+    "package-types": "tsc -p tsconfig.build.json",
+    "package-types-aliases": "tsc-alias -p tsconfig.build.json",
     "test": "pnpm test-linter && pnpm test-type && pnpm test-unit && pnpm test-circular",
     "test-circular": "pnpm depcruise --validate .dependency-cruiser.js .",
     "test-linter": "pnpm linter-base-config .",
@@ -56,7 +57,6 @@
     "@types/node": "^18.6.3",
     "@types/serverless": "^3.12.7",
     "@vitest/coverage-c8": "^0.23.1",
-    "@zerollup/ts-transform-paths": "^1.7.18",
     "aws-sdk": "^2.1185.0",
     "babel-plugin-module-resolver": "^4.1.0",
     "concurrently": "^7.3.0",
@@ -68,10 +68,10 @@
     "serverless": "^3.21.0",
     "simple-git": "^3.11.0",
     "ts-node": "^10.9.1",
-    "ttypescript": "^1.5.13",
-    "typescript": "^4.7.4",
-    "vite-tsconfig-paths": "^3.5.0",
-    "vitest": "^0.23.1"
+    "tsc-alias": "^1.7.0",
+    "typescript": "^4.8.4",
+    "vite-tsconfig-paths": "^3.5.1",
+    "vitest": "^0.23.4"
   },
   "peerDependencies": {
     "serverless": "^2.60 || 3"
