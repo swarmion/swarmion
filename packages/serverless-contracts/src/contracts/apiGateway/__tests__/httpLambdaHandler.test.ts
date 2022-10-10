@@ -132,7 +132,7 @@ describe('apiGateway lambda handler', () => {
         () => null,
       );
 
-      expect(result).toEqual({
+      expect(result).toMatchObject({
         body: 'bar15myTestIdMyCustomHeaderclaimBar',
         statusCode: 500,
       });
@@ -230,7 +230,7 @@ describe('apiGateway lambda handler', () => {
         () => null,
       );
 
-      expect(result).toEqual({
+      expect(result).toMatchObject({
         body: 'Invalid output',
         statusCode: 400,
       });
@@ -277,6 +277,7 @@ describe('apiGateway lambda handler', () => {
       expect(result).toEqual({
         body: '{"name":"coucou","id":"miam"}',
         statusCode: 200,
+        headers: { 'Content-Type': 'application/json' },
       });
     });
 
