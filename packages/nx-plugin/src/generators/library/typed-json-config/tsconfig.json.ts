@@ -7,8 +7,6 @@ export const packageTsConfig = (options: NormalizedSchema): TsConfig => ({
   compilerOptions: {
     baseUrl: 'src',
     composite: true,
-    // @ts-expect-error ttypescript types are not defined
-    plugins: [{ transform: '@zerollup/ts-transform-paths' }],
     outDir: './dist/types',
   },
   exclude: ['./dist'],

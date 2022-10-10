@@ -5,5 +5,5 @@ export const packageBuildTsConfig: TsConfig = {
   compilerOptions: {
     rootDir: 'src',
   },
-  exclude: ['./vite*', './**/*.test.ts'],
+  exclude: ['./vite*', './**/*.test.ts', './dist'],
 };

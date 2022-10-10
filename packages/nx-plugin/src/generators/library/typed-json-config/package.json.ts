@@ -15,12 +15,13 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     'lint-fix-all': 'pnpm lint-fix .',
     'linter-base-config': 'eslint --ext=js,ts',
     package:
-      'rm -rf dist && pnpm package-cjs && pnpm package-esm && pnpm package-types',
+      'rm -rf dist && pnpm package-cjs && pnpm package-esm && pnpm package-types && pnpm package-types-aliases',
     'package-cjs':
       'NODE_ENV=cjs pnpm transpile --out-dir dist/cjs --source-maps',
     'package-esm':
       'NODE_ENV=esm pnpm transpile --out-dir dist/esm --source-maps',
-    'package-types': 'ttsc -p tsconfig.build.json',
+    'package-types': 'tsc -p tsconfig.build.json',
+    'package-types-aliases': 'tsc-alias -p tsconfig.build.json',
     test: 'pnpm test-linter && pnpm test-type && pnpm test-unit && pnpm test-circular',
     'test-circular': 'pnpm depcruise --validate .dependency-cruiser.js src',
     'test-linter': 'pnpm linter-base-config .',
@@ -40,7 +41,6 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     '@babel/preset-typescript': 'latest',
     '@types/node': 'latest',
     '@vitest/coverage-c8': 'latest',
-    '@zerollup/ts-transform-paths': 'latest',
     'babel-plugin-module-resolver': 'latest',
     concurrently: 'latest',
     'dependency-cruiser': 'latest',
@@ -48,7 +48,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     'json-schema-to-ts': 'latest',
     prettier: 'latest',
     'ts-node': 'latest',
-    ttypescript: 'latest',
+    'tsc-alias': 'latest',
     typescript: 'latest',
     vite: 'latest',
     'vite-tsconfig-paths': 'latest',
