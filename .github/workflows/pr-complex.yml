@@ -28,7 +28,7 @@ jobs:
       affected_apps: ${{ steps.get-project-changes.outputs.affected_apps }}
       affected_libs: ${{ steps.get-project-changes.outputs.affected_libs }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           # We need to fetch all branches and commits so that Nx affected has a base to compare against.
@@ -52,7 +52,7 @@ jobs:
       matrix:
         AFFECTED_APP: ${{ fromJson(needs.build.outputs.affected_apps) }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Run tests
@@ -71,7 +71,7 @@ jobs:
       matrix:
         AFFECTED_LIB: ${{ fromJson(needs.build.outputs.affected_libs) }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Run tests
@@ -109,7 +109,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Install & cache node dependencies
