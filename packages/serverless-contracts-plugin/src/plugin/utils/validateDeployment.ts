@@ -1,5 +1,4 @@
 import JsonSchemaDiff from 'json-schema-diff';
-import { JSONSchema } from 'json-schema-to-ts';
 
 import { DeploymentStrategies } from 'types/deploymentTypes';
 import {
@@ -39,9 +38,7 @@ const validateProviderFirstDeployment = async (
   await Promise.all(
     Object.entries(remoteProvides).map(
       async ([contractName, remoteContractSchema]) => {
-        const localContractSchema = localProvides[contractName] as
-          | JSONSchema
-          | undefined;
+        const localContractSchema = localProvides[contractName];
 
         if (localContractSchema === undefined) {
           throw new Error(`Expected to find local contract: ${contractName}`);
@@ -84,9 +81,7 @@ const validateConsumerFirstDeployment = async (
   await Promise.all(
     Object.entries(localConsumes).map(
       async ([contractName, localContractSchema]) => {
-        const remoteContractSchema = remoteConsumes[contractName] as
-          | JSONSchema
-          | undefined;
+        const remoteContractSchema = remoteConsumes[contractName];
 
         if (remoteContractSchema === undefined) {
           throw new Error(`Expected to find remote contract: ${contractName}`);

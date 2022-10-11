@@ -15,7 +15,10 @@ export const getOpenApiDocumentation = <Contract extends ApiGatewayContract>(
     },
   };
 
-  if (contract.outputSchema !== undefined) {
+  if (
+    contract.outputSchema !== undefined &&
+    contractDocumentation.responses[200] !== undefined
+  ) {
     contractDocumentation.responses[200] = {
       ...contractDocumentation.responses[200],
       content: {

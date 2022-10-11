@@ -42,7 +42,7 @@ describe('apiGateway lambda handler', () => {
         headers,
         requestContext,
       }) => {
-        const myCustomClaim: string = requestContext.authorizer.claims.foo;
+        const myCustomClaim = requestContext.authorizer.claims.foo ?? '';
 
         const name =
           body.foo +
@@ -106,7 +106,7 @@ describe('apiGateway lambda handler', () => {
         headers,
         requestContext,
       }) => {
-        const myCustomClaim = requestContext.authorizer.jwt.claims.foo;
+        const myCustomClaim = requestContext.authorizer.jwt.claims.foo ?? '';
 
         const name =
           body.foo +

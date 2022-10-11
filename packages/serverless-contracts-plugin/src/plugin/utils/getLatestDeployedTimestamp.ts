@@ -6,6 +6,9 @@ import { LATEST_DEPLOYED_TIMESTAMP_TAG_NAME } from './constants';
 export const getLatestDeployedTimestamp = async (
   provider: Aws,
 ): Promise<string | undefined> => {
+  if (provider.naming.getStackName === undefined) {
+    throw new Error('Could not get stack name');
+  }
   const stackName = provider.naming.getStackName();
 
   try {
@@ -18,7 +21,7 @@ export const getLatestDeployedTimestamp = async (
     )) as CloudFormation.DescribeStacksOutput;
 
     return Stacks !== undefined
-      ? Stacks[0].Tags?.find(
+      ? Stacks[0]?.Tags?.find(
           ({ Key }) => Key === LATEST_DEPLOYED_TIMESTAMP_TAG_NAME,
         )?.Value
       : undefined;

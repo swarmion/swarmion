@@ -8,6 +8,12 @@ export const getTimestampFromArtifactDirectoryName = (
 ): string => {
   const [, , , timestamp] = artifactDirectoryName.split('/');
 
+  if (timestamp === undefined) {
+    throw new Error(
+      `${artifactDirectoryName} is not of the form 'serverless/{service}/{stage}/{timestamp}'`,
+    );
+  }
+
   return timestamp;
 };
 
