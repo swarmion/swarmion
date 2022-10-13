@@ -10,7 +10,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build-all": "nx run-many --target=build --all --parallel=4",
+    "build": "nx run-many --target=build --all --parallel=4",
     "deploy": "nx run-many --target=deploy --all --parallel=4",
     "deploy-affected": "nx affected --target=deploy",
     "generate-library": "nx generate @swarmion/nx-plugin:library",
@@ -31,16 +31,16 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^17.0.2",
-    "@nrwl/devkit": "^14.3.6",
-    "@nrwl/linter": "^14.3.6",
-    "@nrwl/tao": "^14.3.6",
-    "@nrwl/workspace": "^14.3.6",
+    "@nrwl/devkit": "^14.8.4",
+    "@nrwl/linter": "^14.8.4",
+    "@nrwl/tao": "^14.8.4",
+    "@nrwl/workspace": "^14.8.4",
     "@swarmion/nx-plugin": "^0.11.0",
-    "@typescript-eslint/eslint-plugin": "^5.29.0",
-    "@typescript-eslint/parser": "^5.29.0",
-    "aws-sdk": "^2.1160.0",
+    "@typescript-eslint/eslint-plugin": "^5.40.0",
+    "@typescript-eslint/parser": "^5.40.0",
+    "aws-sdk": "^2.1231.0",
     "dependency-cruiser": "^11.10.0",
-    "eslint": "^8.18.0",
+    "eslint": "^8.25.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^2.7.1",
     "eslint-plugin-import": "^2.26.0",
@@ -51,7 +51,7 @@
     "lint-staged": "^13.0.2",
     "lodash": "^4.17.21",
     "npm-audit-resolver": "^3.0.0-7",
-    "nx": "^14.3.6",
+    "nx": "^14.8.4",
     "prettier": "^2.7.1",
     "syncpack": "^7.2.2",
     "typescript": "^4.8.4"
@@ -59,5 +59,5 @@
   "engines": {
     "node": "^16.15.0"
   },
-  "packageManager": "pnpm@7.13.3"
+  "packageManager": "pnpm@7.13.4"
 }
