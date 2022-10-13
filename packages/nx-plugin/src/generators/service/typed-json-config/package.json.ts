@@ -20,7 +20,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     test: 'pnpm test-linter && pnpm test-type && pnpm test-unit && pnpm test-circular',
     'test-circular': 'pnpm depcruise --validate .dependency-cruiser.js .',
     'test-linter': 'pnpm linter-base-config .',
-    'test-type': 'tsc --noEmit',
+    'test-type': 'tsc --noEmit --emitDeclarationOnly false',
     'test-unit': 'vitest run --coverage',
   },
   dependencies: {
