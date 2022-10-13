@@ -7,13 +7,19 @@ This package is part of the [Swarmion](https://www.swarmion.dev) project. See it
 ### Installation
 
 ```bash
-npm install --save-dev @swarmion/eslint-plugin
+pnpm add --save-dev @swarmion/eslint-plugin
 ```
 
 or if using yarn
 
 ```bash
 yarn add --dev @swarmion/eslint-plugin
+```
+
+or if using npm
+
+```bash
+npm install --save-dev @swarmion/eslint-plugin
 ```
 
 ### Usage

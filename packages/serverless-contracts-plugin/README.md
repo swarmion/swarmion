@@ -7,13 +7,19 @@ This plugin is part of the [Swarmion](https://www.swarmion.dev) project. See its
 ## Installation
 
 ```bash
-npm install @swarmion/serverless-plugin --save-dev
+pnpm add --save-dev @swarmion/serverless-plugin
 ```
 
-Or if you're using yarn
+or if using yarn
 
 ```bash
-yarn add -D @swarmion/serverless-plugin
+yarn add --dev @swarmion/serverless-plugin
+```
+
+or if using npm
+
+```bash
+npm install --save-dev @swarmion/serverless-plugin
 ```
 
 Check out [the docs](https://www.swarmion.dev/docs/contracts/serverless-plugin) for more info.
