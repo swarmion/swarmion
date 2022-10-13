@@ -26,7 +26,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     'test-circular': 'pnpm depcruise --validate .dependency-cruiser.js src',
     'test-linter': 'pnpm linter-base-config .',
     'test-type': 'tsc --noEmit --emitDeclarationOnly false',
-    'test-unit': 'vitest run --coverage',
+    'test-unit': 'vitest run --coverage --passWithNoTests',
     transpile: 'babel src --extensions .ts --quiet',
     watch: "rm -rf dist && concurrently 'pnpm:package-* --watch'",
   },
