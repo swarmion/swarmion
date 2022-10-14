@@ -3,6 +3,9 @@
   "compilerOptions": {
     "baseUrl": "src"
   },
-  "include": ["./**/*.ts"],
-  "exclude": ["./dist"]
+  "references": [
+    { "path": "../../packages/serverless-helpers/tsconfig.build.json" }
+  ],
+  "exclude": ["./dist"],
+  "include": ["./**/*.ts"]
 }
