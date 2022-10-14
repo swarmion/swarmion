@@ -15,11 +15,11 @@ import type {
 import { FromSchema } from 'json-schema-to-ts';
 
 import { ApiGatewayContract } from '../apiGatewayContract';
+import { OutputType } from './common';
 import {
   ApiGatewayAuthorizerType,
   ApiGatewayIntegrationType,
-  OutputType,
-} from './common';
+} from './constants';
 import { InputSchemaType } from './input';
 import { DefinedProperties } from './utils';
 
