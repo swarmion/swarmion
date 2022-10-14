@@ -56,7 +56,7 @@ sleep 90 # 90 seconds
 for example in examples/*; do
     echo "Upgrading packages in $example"
     cd "$example"
-    HUSKY=0 pnpm up "@swarmion/*@^${NEW_VERSION}"
+    HUSKY=0 pnpm up "@swarmion/*@^${NEW_VERSION}" --recursive
     cd ../..
     git add "$example"
     git commit -S -m "chore($example): bump Swarmion from v${OLD_VERSION} to v${NEW_VERSION}"
