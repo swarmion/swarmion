@@ -1,0 +1,232 @@
+---
+sidebar_position: 5
+---
+
+# Add a new serverless contract
+
+Serverless contracts are a central part of Swarmion. They let you define interactions between your services to enable more stability and type safety. You can learn more in the [dedicated documentation section](../how-to-guides/use-serverless-contracts)
+
+In this section, we will create a contract library for the users backend, and how to use it.
+
+## Prerequisites
+
+For this section, we will suppose that there is an existing frontend service in the monorepo application:
+
+import ThemedImage from '@theme/ThemedImage';
+import swarmionAppFrontendGraphLight from '../../static/screenshots/swarmion-app-frontend-graph-light.png';
+import swarmionAppFrontendGraphDark from '../../static/screenshots/swarmion-app-frontend-graph-dark.png';
+
+<div
+  style={{
+    width: '100%',
+    display: 'flex',
+    'justify-content': 'center',
+    'margin-bottom': 'var(--ifm-leading)',
+  }}
+>
+  <ThemedImage
+    alt="Swarmion app with frontend"
+    sources={{
+      light: swarmionAppFrontendGraphLight,
+      dark: swarmionAppFrontendGraphDark,
+    }}
+  />
+</div>
+
+:::info
+The `generate-frontend-service` command is a planned development by the Swarmion core team.
+:::
+
+## Generate and link the contract library
+
+First, lets generate the library, with the generator we used in the previous section:
+
+```bash
+pnpm generate-library users-contracts --directory contracts
+```
+
+:::info
+The `--directory` option let you chose the path containing your generated library. Default value is `packages`
+:::
+
+Then, we will add this contract library as a dependency for the users-backend and the frontend:
+
+```bash
+cd backend/users
+pnpm add @my-project-name/users-contracts
+
+cd ../../frontend
+pnpm add @my-project-name/users-contracts
+```
+
+The project dependency graph should now looks like the following:
+
+import swarmionAppUsersContractsGraphLight from '../../static/screenshots/swarmion-app-users-contracts-graph-light.png';
+import swarmionAppUsersContractsGraphDark from '../../static/screenshots/swarmion-app-users-contracts-graph-dark.png';
+
+<div
+  style={{
+    width: '100%',
+    display: 'flex',
+    'justify-content': 'center',
+    'margin-bottom': 'var(--ifm-leading)',
+  }}
+>
+  <ThemedImage
+    alt="Swarmion app with users contracts lib"
+    sources={{
+      light: swarmionAppUsersContractsGraphLight,
+      dark: swarmionAppUsersContractsGraphDark,
+    }}
+  />
+</div>
+
+At last, you should reference the contracts library tsconfig.build.json file in both contract consumers
+in order to have live type updates without the need to package the contracts library.
+
+```json title="backend/users/tsconfig.json"
+{
+  "compilerOptions": {
+    // ...
+    "references": [{ "path": "../../contracts/users-contracts" }]
+  }
+  // ...
+}
+```
+
+```json title="frontend/tsconfig.json"
+{
+  // ...
+  "compilerOptions": {
+    // ...
+    "references": [{ "path": "../contracts/users-contracts" }]
+  }
+  // ...
+}
+```
+
+## Define our first contract
+
+Now lets write our first contract to define a get user operation.
+
+```typescript title="contracts/users-contracts/src/contracts/getUser.ts"
+import { ApiGatewayContract } from '@swarmion/serverless-contracts';
+
+const pathParametersSchema = {
+  type: 'object',
+  properties: {
+    userId: { type: 'string' },
+  },
+  required: ['userId'],
+  additionalProperties: false,
+} as const;
+
+const userEntitySchema = {
+  type: 'object',
+  properties: {
+    userId: { type: 'string' },
+    userName: { type: 'string' },
+    email: { type: 'string' },
+  },
+  required: ['userId', 'userName', 'email'],
+  additionalProperties: false,
+} as const;
+
+const getUserContract = new ApiGatewayContract({
+  id: 'users-getUser',
+  path: '/users/{userId}',
+  method: 'GET',
+  integrationType: 'httpApi',
+  pathParametersSchema,
+  queryStringParametersSchema: undefined,
+  bodySchema: undefined,
+  headersSchema: undefined,
+  outputSchema: userEntitySchema,
+  authorizerType: undefined,
+});
+
+export default getUserContract;
+```
+
+There is a lot of things to see here
+
+### Schemas
+
+`pathParametersSchema` and `userEntitySchema` are JSON schemas that define the shape of the data that will be consumed and produced by the contract.
+You can learn more about JSON schemas [here](https://json-schema.org/).
+
+### Contract definition
+
+Then, the `getUserContract` completely defines the contract, from the API path and method, the expected input and output, to the implementation details such as integration type or authorizer type.
+
+### Exporting the contract
+
+In order to use your newly created contract, you will need to export it from the `contracts/users-contracts/src/index.ts` file:
+
+```typescript title="contracts/users-contracts/src/index.ts"
+export { default as getUserContract } from './contracts/getUser';
+```
+
+## Using contract features
+
+Now that we have defined our first contract, we can use it in our services.
+First, we will be able to define the trigger of our function with the `getTrigger` feature:
+
+```typescript title="backend/users/src/functions/getUser/config.ts"
+import { getTrigger } from '@swarmion/serverless-contracts';
+import { getHandlerPath, LambdaFunction } from '@swarmion/serverless-helpers';
+
+import { getUserContract } from '@my-project-name/users-contracts';
+
+const config: LambdaFunction = {
+  environment: {},
+  handler: getHandlerPath(__dirname),
+  events: [getTrigger(getUserContract)],
+};
+
+export default config;
+```
+
+This will create an http-api endpoint that will trigger the `getUser` function when a request is made to the `/users/{userId}` path.
+
+Then, you can use the `getHandler` feature to define a type safe handler of your function:
+
+```typescript title="backend/users/src/functions/getUser/handler.ts"
+import { getHandler } from '@swarmion/serverless-contracts';
+import { getUserContract } from '@my-project-name/users-contracts';
+
+export const handler = getHandler(getUserContract, async event => {
+  const { userId } = event.pathParameters; // userId will be typed as string
+
+  console.log(userId);
+
+  return {
+    userId,
+    userName: 'John Doe',
+    email: 'john.doe@swarmion.com',
+  }; // The return type is checked against the contract output schema
+});
+```
+
+Finally, in your frontend service, you can use the `getFetchRequest` feature to create a type safe client for your contract:
+
+```typescript title="frontend/src/services/getUser.ts"
+import { getFetchRequest } from '@swarmion/serverless-contracts';
+import { getUserContract } from '@my-project-name/users-contracts';
+
+export const getUser = (userId: string) => {
+  return getFetchRequest(getUserContract, fetch, {
+    pathParameters: {
+      userId,
+    },
+  });
+};
+```
+
+# Wrap up
+
+In this tutorial, we have seen how to use the `@swarmion/serverless-contracts` package to define and use contracts in our services.
+
+If you want to learn more about serverless contracts, you can read [this documentation](/docs/how-to-guides/use-serverless-contracts).
+
+You should now be able to create a full stack application using Swarmion 🎉.

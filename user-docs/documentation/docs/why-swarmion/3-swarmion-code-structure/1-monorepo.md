@@ -63,7 +63,6 @@ The services names in this folder are purely for the sake of the example and sho
 |   └── ...                         # other contracts, used between deployed services
 |
 ├── packages/
-|   ├── configuration/              # common constants used in all services
 |   ├── serverless-configuration/   # common constants used in all serverless deployed services
 |   ├── serverless-helpers/         # a set of shared helpers
 |   └── ...                         # other internal shared packages
