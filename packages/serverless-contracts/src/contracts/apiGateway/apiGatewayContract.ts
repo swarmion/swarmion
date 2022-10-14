@@ -8,8 +8,8 @@ import { HttpMethod } from 'types/http';
 import {
   ApiGatewayAuthorizerType,
   ApiGatewayIntegrationType,
-  InputSchemaType,
-} from './types';
+} from './types/constants';
+import { InputSchemaType } from './types/input';
 
 /**
  * ApiGatewayContract:

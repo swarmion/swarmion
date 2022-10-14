@@ -8,7 +8,7 @@ import {
   ApiGatewayAuthorizerType,
   ApiGatewayIntegrationType,
   ApiGatewayKey,
-} from './common';
+} from './constants';
 
 /**
  * map between our integration types (httpApi vs restApi) and

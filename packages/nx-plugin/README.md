@@ -7,13 +7,19 @@ This package is part of the [Swarmion](https://www.swarmion.dev) project. See it
 ## Installation
 
 ```bash
-yarn add -D @swarmion/nx-plugin
+pnpm add --save-dev @swarmion/nx-plugin
+```
+
+or if using yarn
+
+```bash
+yarn add --dev @swarmion/nx-plugin
 ```
 
 or if using npm
 
 ```bash
-npm install @swarmion/nx-plugin --save-dev
+npm install --save-dev @swarmion/nx-plugin
 ```
 
 Check out [the docs](https://www.swarmion.dev/docs/code-structure/nx-plugin) for more info.

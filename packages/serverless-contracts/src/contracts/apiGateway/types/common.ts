@@ -1,15 +1,8 @@
 import { FromSchema, JSONSchema } from 'json-schema-to-ts';
 
-import { ConstrainedJSONSchema } from '../../../types/constrainedJSONSchema';
-import { ApiGatewayContract } from '../apiGatewayContract';
+import { ConstrainedJSONSchema } from 'types/constrainedJSONSchema';
 
-/**
- * The integration type: HTTP API or REST API
- * For more information, see https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html
- */
-export type ApiGatewayIntegrationType = 'httpApi' | 'restApi';
-export type ApiGatewayKey = 'httpApi' | 'http';
-export type ApiGatewayAuthorizerType = 'cognito' | 'jwt' | 'lambda' | undefined;
+import { ApiGatewayContract } from '../apiGatewayContract';
 
 export type PathParametersType<Contract extends ApiGatewayContract> =
   Contract['pathParametersSchema'] extends ConstrainedJSONSchema
