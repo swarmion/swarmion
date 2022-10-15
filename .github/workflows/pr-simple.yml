@@ -33,7 +33,7 @@ jobs:
         uses: ./.github/actions/install-node-deps
       - name: 💾 Cache Nx cache
         id: package-cache
-        uses: actions/cache@v3
+        uses: actions/cache@v3.0.11
         with:
           path: |
             nx-cache
