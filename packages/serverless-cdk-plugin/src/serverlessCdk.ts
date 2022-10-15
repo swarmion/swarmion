@@ -155,7 +155,8 @@ export class ServerlessCdkPlugin implements Plugin {
 
     if (isServerlessConstruct) {
       this.construct = new ServerlessCdkConstruct(this.stack, 'cdk', {
-        serverless: serverlessConfigFile,
+        config: serverlessConfigFile,
+        service: this.serverless.service,
       });
     } else {
       this.construct = new ServerlessCdkConstruct(this.stack, 'cdk');
