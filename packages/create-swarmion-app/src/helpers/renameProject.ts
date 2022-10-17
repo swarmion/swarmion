@@ -1,10 +1,8 @@
 import { execSync } from 'child_process';
 
-import { Template } from 'templates';
-
 export const renameProject = (
   appName: string,
-  template: Template,
+  template: string,
   root: string,
 ): void => {
   execSync(`mv ${template}.code-workspace ${appName}.code-workspace`, {
