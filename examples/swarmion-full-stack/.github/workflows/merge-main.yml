@@ -1,13 +1,17 @@
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - main
 
-# cancel previous runs on the same PR
+# cancel previous deploy runs
 concurrency:
-  group: ${{ github.ref }}
+  group: main
   cancel-in-progress: true
 
-name: ⛷ PR tests
+name: 🚀 Deploy main
+
+env:
+  AWS_REGION: eu-west-1 # update with your region
 
 defaults:
   run:
@@ -15,9 +19,11 @@ defaults:
 
 jobs:
   build-and-test:
-    name: 🏗 Build Project & 🧪 Run Tests
+    name: 🏗 Build Project, 🧪 Run Tests & 🚀 Deploy
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    permissions:
+      id-token: write
     steps:
       - uses: actions/checkout@v3
         with:
@@ -58,3 +64,10 @@ jobs:
         run: pnpm nx affected --target=test-unit --parallel=2
       - name: '🧪 Test circular'
         run: pnpm nx affected --target=test-circular --parallel=2
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@master
+        with:
+          aws-region: ${{ env.AWS_REGION }}
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }} # Create the role in AWS and add it to the secrets
+      - name: '🚀 Deploy main'
+        run: pnpm nx affected --target=deploy-production --parallel=2
