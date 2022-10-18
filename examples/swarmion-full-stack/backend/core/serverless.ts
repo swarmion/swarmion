@@ -45,7 +45,6 @@ const serverlessConfiguration: AWS = {
     },
   }),
   custom: {
-    projectName,
     esbuild: sharedEsbuildConfig,
   },
   resources: {

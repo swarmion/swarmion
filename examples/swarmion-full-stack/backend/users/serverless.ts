@@ -26,7 +26,6 @@ const serverlessConfiguration: AWS = {
   functions,
   package: { individually: true },
   custom: {
-    projectName,
     esbuild: sharedEsbuildConfig,
   },
   resources: {

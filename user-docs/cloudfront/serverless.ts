@@ -28,9 +28,6 @@ const serverlessConfiguration: AWS & Lift = {
         'arn:aws:acm:us-east-1:801673046086:certificate/fbf65a9c-2280-4895-af86-3bd180f9605c',
     },
   }),
-  custom: {
-    projectName,
-  },
   constructs: {
     app: {
       type: 'static-website',
