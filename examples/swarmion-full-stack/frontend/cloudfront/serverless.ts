@@ -14,9 +14,6 @@ const serverlessConfiguration: AWS & Lift = {
   plugins: ['serverless-lift'],
   provider: sharedProviderConfig,
   params: sharedParams,
-  custom: {
-    projectName,
-  },
   constructs: {
     app: {
       type: 'static-website',
