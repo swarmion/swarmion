@@ -10,9 +10,6 @@ concurrency:
 
 name: 🚀 Deploy main
 
-env:
-  AWS_REGION: eu-west-1 # update with your region
-
 defaults:
   run:
     shell: bash
@@ -64,10 +61,14 @@ jobs:
         run: pnpm nx affected --target=test-unit --parallel=2
       - name: '🧪 Test circular'
         run: pnpm nx affected --target=test-circular --parallel=2
+      - name: 'Get serverless stack region'
+        id: get-stack-region
+        run: |
+          echo "AWS_REGION=$(pnpm --silent -C backend/core run sls-get-region)" >> $GITHUB_OUTPUT
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@master
         with:
-          aws-region: ${{ env.AWS_REGION }}
+          aws-region: ${{ steps.get-stack-region.outputs.AWS_REGION }}
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }} # Create the role in AWS and add it to the secrets
       - name: '🚀 Deploy main'
         run: pnpm nx affected --target=deploy-production --parallel=2
