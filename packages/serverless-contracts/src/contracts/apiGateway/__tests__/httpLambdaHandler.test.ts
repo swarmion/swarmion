@@ -292,6 +292,70 @@ describe('apiGateway lambda handler', () => {
     });
   });
 
+  it('query string parameters key should be optional if all query string parameters are optional', async () => {
+    const outputSchema = {
+      type: 'object',
+      properties: { testIdQueryStringParameter: { type: 'string' } },
+      required: ['testIdQueryStringParameter'],
+      additionalProperties: false,
+    } as const;
+
+    const queryStringParametersSchema = {
+      type: 'object',
+      properties: { testId: { type: 'string' } },
+      additionalProperties: false,
+    } as const;
+
+    const httpApiContract = new ApiGatewayContract({
+      id: 'testContract',
+      path: '/hello',
+      method: 'POST',
+      integrationType: 'httpApi',
+      authorizerType: undefined,
+      pathParametersSchema: undefined,
+      queryStringParametersSchema,
+      headersSchema: undefined,
+      bodySchema: undefined,
+      outputSchema,
+    });
+
+    const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<undefined> =
+      getRequestContextMockV2();
+
+    const handler: HandlerType<typeof httpApiContract> = ({
+      queryStringParameters,
+    }) => {
+      // queryStringParameters can be undefined because all its keys are optionals
+      const testIdQueryStringParameter =
+        queryStringParameters?.testId ?? 'no query string parameters';
+
+      return Promise.resolve({ testIdQueryStringParameter });
+    };
+    const httpHandler = getHandler(httpApiContract)(handler);
+    const fakeContext = getHandlerContextMock();
+
+    const result = await httpHandler(
+      {
+        headers: {},
+        queryStringParameters: undefined,
+        requestContext: fakeRequestContext,
+        version: '',
+        routeKey: fakeRequestContext.routeKey,
+        rawPath: '',
+        rawQueryString: '',
+        isBase64Encoded: false,
+      },
+      fakeContext,
+      () => null,
+    );
+
+    expect(result).toEqual({
+      body: '{"testIdQueryStringParameter":"no query string parameters"}',
+      statusCode: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  });
+
   describe('restApi, without authorizer, with subset of parameters', () => {
     it('should return a 200 response', async () => {
       const restApiContract = new ApiGatewayContract({

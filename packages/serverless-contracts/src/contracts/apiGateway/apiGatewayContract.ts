@@ -117,11 +117,18 @@ export class ApiGatewayContract<
       isUndefined,
     );
 
+    const propertyKeys = Object.keys(properties);
+
+    const required =
+      this.queryStringParametersSchema?.required === undefined
+        ? propertyKeys.filter(key => key !== 'queryStringParameters')
+        : propertyKeys;
+
     return {
       type: 'object',
       properties,
       // @ts-ignore here object.keys is not precise enough
-      required: Object.keys(properties),
+      required,
       additionalProperties: true,
     };
   }
