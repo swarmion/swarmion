@@ -3,8 +3,8 @@ import traverse from 'traverse';
 import { CloudFormationTemplate, ResolveVariable } from 'types';
 
 const resolveVariablesInString = async (
-  resolveVariable: ResolveVariable,
   stringToResolve: string,
+  resolveVariable: ResolveVariable,
 ) => {
   try {
     const resolvedString = await resolveVariable(stringToResolve);
@@ -22,8 +22,8 @@ const resolveVariablesInString = async (
 };
 
 export const resolveVariablesInCdkOutput = async (
-  resolveVariable: ResolveVariable,
   cdkOutput: CloudFormationTemplate,
+  resolveVariable?: ResolveVariable,
 ): Promise<void> => {
   const toResolvePaths: string[][] = [];
 
@@ -35,11 +35,21 @@ export const resolveVariablesInCdkOutput = async (
     }
   });
 
+  if (toResolvePaths.length === 0) {
+    return;
+  }
+
+  if (resolveVariable === undefined) {
+    console.warn('Serverless variables wont be resolved !');
+
+    return;
+  }
+
   await Promise.all(
     toResolvePaths.map(async path => {
       const newValue = await resolveVariablesInString(
-        resolveVariable,
         traversedOutput.get(path) as string,
+        resolveVariable,
       );
 
       traversedOutput.set(path, newValue);

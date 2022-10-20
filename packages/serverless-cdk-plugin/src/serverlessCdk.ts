@@ -174,13 +174,7 @@ export class ServerlessCdkPlugin implements Plugin {
 
     const cdkCloudFormationData = { Resources, Outputs, Conditions, Mappings };
 
-    if (resolveVariable !== undefined) {
-      await resolveVariablesInCdkOutput(resolveVariable, cdkCloudFormationData);
-    } else {
-      // If the user did not use a plugin variable, we do not have access to the variable resolver
-      // Sls variables will not be resolved, only print a warning
-      console.warn('Serverless variables wont be resolved !');
-    }
+    await resolveVariablesInCdkOutput(cdkCloudFormationData, resolveVariable);
 
     throwIfBootstrapMetadataDetected({ Resources });
 
