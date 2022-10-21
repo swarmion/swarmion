@@ -23,10 +23,11 @@
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
+    "clean": "rimraf dist",
     "lint-fix": "pnpm linter-base-config --fix",
     "lint-fix-all": "pnpm lint-fix .",
     "linter-base-config": "eslint --ext=js,ts",
-    "package": "rm -rf dist && pnpm package-cjs && pnpm package-esm && pnpm package-types && pnpm package-types-aliases",
+    "package": "pnpm clean && pnpm package-cjs && pnpm package-esm && pnpm package-types && pnpm package-types-aliases",
     "package-cjs": "NODE_ENV=cjs pnpm transpile --out-dir dist/cjs --source-maps",
     "package-esm": "NODE_ENV=esm pnpm transpile --out-dir dist/esm --source-maps",
     "package-types": "tsc -p tsconfig.build.json",
@@ -37,7 +38,7 @@
     "test-type": "tsc --noEmit --emitDeclarationOnly false",
     "test-unit": "vitest run --coverage --passWithNoTests",
     "transpile": "babel src --extensions .ts --quiet",
-    "watch": "rm -rf dist && concurrently 'pnpm:package-* --watch'"
+    "watch": "pnpm clean && concurrently 'pnpm:package-* --watch'"
   },
   "dependencies": {
     "@babel/runtime": "^7.19.4",
@@ -68,6 +69,7 @@
     "json-schema-to-ts": "^2.5.4",
     "openapi-types": "12.0.0",
     "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
     "serverless": "^3.23.0",
     "ts-node": "^10.9.1",
     "ts-toolbelt": "^9.6.0",

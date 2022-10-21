@@ -11,11 +11,12 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
   module: 'dist/esm/index.js',
   types: 'dist/types/index.d.ts',
   scripts: {
+    clean: 'pnpm clean',
     'lint-fix': 'pnpm linter-base-config --fix',
     'lint-fix-all': 'pnpm lint-fix .',
     'linter-base-config': 'eslint --ext=js,ts',
     package:
-      'rm -rf dist && pnpm package-cjs && pnpm package-esm && pnpm package-types && pnpm package-types-aliases',
+      'pnpm clean && pnpm package-cjs && pnpm package-esm && pnpm package-types && pnpm package-types-aliases',
     'package-cjs':
       'NODE_ENV=cjs pnpm transpile --out-dir dist/cjs --source-maps',
     'package-esm':
@@ -28,7 +29,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     'test-type': 'tsc --noEmit --emitDeclarationOnly false',
     'test-unit': 'vitest run --coverage --passWithNoTests',
     transpile: 'babel src --extensions .ts --quiet',
-    watch: "rm -rf dist && concurrently 'pnpm:package-* --watch'",
+    watch: "pnpm clean dist && concurrently 'pnpm:package-* --watch'",
   },
   dependencies: {
     '@babel/runtime': 'latest',
@@ -47,6 +48,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     eslint: 'latest',
     'json-schema-to-ts': 'latest',
     prettier: 'latest',
+    rimraf: 'latest',
     'ts-node': 'latest',
     'tsc-alias': 'latest',
     typescript: 'latest',
