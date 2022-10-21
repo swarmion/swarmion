@@ -16,6 +16,7 @@ This project is composed of the following packages:
 - [@swarmion/serverless-plugin](./packages/serverless-contracts-plugin): a Serverless plugin to safely deploy microservices ([view on npm](https://www.npmjs.com/package/@swarmion/serverless-plugin))
 - [@swarmion/eslint-plugin](./packages/eslint-plugin): an eslint plugin with rules to enforces proper usage of contracts ([view on npm](https://www.npmjs.com/package/@swarmion/eslint-plugin))
 - [@swarmion/nx-plugin](./packages/nx-plugin): an Nx plugin to simplify modules generation ([view on npm](https://www.npmjs.com/package/@swarmion/nx-plugin))
+- [@swarmion/serverless-cdk-plugin](./packages/serverless-cdk-plugin): a Serverless plugin to deploy CDK constructs ([view on npm](https://www.npmjs.com/package/@swarmion/serverless-cdk-plugin))
 
 ## User Documentation
 

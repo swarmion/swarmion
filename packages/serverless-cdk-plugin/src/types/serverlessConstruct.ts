@@ -1,8 +1,16 @@
+import { AWS } from '@serverless/typescript';
 import { Construct } from 'constructs';
-import * as Serverless from 'serverless';
+import Service from 'serverless/classes/Service';
+
+export type ServerlessCdkPluginConfig = {
+  construct: typeof ServerlessConstruct | typeof Construct;
+};
+
+export type ServerlessConfigFile = AWS & ServerlessCdkPluginConfig;
 
 export interface ServerlessProps {
-  serverless: Serverless;
+  config: ServerlessConfigFile;
+  service: Service;
 }
 
 export class ServerlessConstruct extends Construct {
