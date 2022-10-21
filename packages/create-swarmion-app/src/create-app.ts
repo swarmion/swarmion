@@ -3,7 +3,7 @@ import chalk from 'chalk';
 import { execSync } from 'child_process';
 import path from 'path';
 
-import { Template } from 'templates';
+import { Template } from 'getProjectTemplate';
 
 import {
   downloadAndExtractRepo,
@@ -23,16 +23,16 @@ export class DownloadError extends Error {}
 export const createApp = async ({
   appPath,
   template,
-  packageVersion,
+  ref,
 }: {
   appPath: string;
   template: Template;
-  packageVersion: string;
+  ref: string;
 }): Promise<void> => {
   const repoInfo: RepoInfo = {
     username: 'swarmion',
     name: 'swarmion',
-    branch: `v${packageVersion}`,
+    ref,
     filePath: `examples/${template}`,
   };
 

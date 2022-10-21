@@ -9,7 +9,7 @@ const pipeline = promisify(Stream.pipeline);
 export type RepoInfo = {
   username: string;
   name: string;
-  branch: string;
+  ref: string;
   filePath: string;
 };
 
@@ -26,39 +26,37 @@ const isUrlOk = async (url: string): Promise<boolean> => {
 export const hasRepo = ({
   username,
   name,
-  branch,
+  ref,
   filePath,
 }: RepoInfo): Promise<boolean> => {
   const contentsUrl = `https://api.github.com/repos/${username}/${name}/contents`;
   const packagePath = `${filePath !== '' ? `/${filePath}` : ''}/package.json`;
 
-  return isUrlOk(contentsUrl + packagePath + `?ref=${branch}`);
+  return isUrlOk(contentsUrl + packagePath + `?ref=${ref}`);
 };
 
 export const getRepoUrl = ({
   username,
   name,
-  branch,
+  ref,
   filePath,
 }: RepoInfo): string => {
-  return `https://github.com/${username}/${name}/tree/${branch}/${filePath}`;
+  return `https://github.com/${username}/${name}/tree/${ref}/${filePath}`;
 };
 
 export const downloadAndExtractRepo = (
   root: string,
-  { username, name, branch, filePath }: RepoInfo,
+  { username, name, ref, filePath }: RepoInfo,
 ): Promise<void> => {
   return pipeline(
-    got.stream(
-      `https://codeload.github.com/${username}/${name}/tar.gz/${branch}`,
-    ),
+    got.stream(`https://codeload.github.com/${username}/${name}/tar.gz/${ref}`),
     extract(
       {
         cwd: root,
         strip: filePath !== '' ? filePath.split('/').length + 1 : 1,
       },
       [
-        `${name}-${getFilenameFromBranch(branch)}${
+        `${name}-${getFilenameFromBranch(ref)}${
           filePath !== '' ? `/${filePath}` : ''
         }`,
       ],

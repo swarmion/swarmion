@@ -5,6 +5,8 @@
   "license": "UNLICENSED",
   "scripts": {
     "deploy": "./deploy.sh",
+    "deploy-production": "./deploy.sh --stage production",
+    "deploy-staging": "./deploy.sh --stage staging",
     "lint-fix": "pnpm linter-base-config --fix",
     "lint-fix-all": "pnpm lint-fix .",
     "linter-base-config": "eslint --ext=js,ts",
