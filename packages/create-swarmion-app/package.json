@@ -27,6 +27,7 @@
   ],
   "scripts": {
     "build": "ncc build ./src/index.ts -o ./dist/ --minify --no-cache --no-source-map-register",
+    "clean": "rimraf dist",
     "dev": "ncc build ./src/index.ts -w -o dist/",
     "lint-fix": "pnpm linter-base-config --fix",
     "lint-fix-all": "pnpm lint-fix .",
@@ -37,7 +38,7 @@
     "test-type": "tsc --noEmit --emitDeclarationOnly false",
     "test-unit": "vitest run --coverage --passWithNoTests",
     "transpile": "babel src --extensions .ts --quiet --copy-files",
-    "watch": "rm -rf dist && concurrently 'pnpm:package-* --watch'"
+    "watch": "pnpm clean && concurrently 'pnpm:package-* --watch'"
   },
   "bin": "./dist/index.js",
   "devDependencies": {
