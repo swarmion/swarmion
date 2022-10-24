@@ -39,7 +39,7 @@ function getTrigger<Contract extends ServerlessContract>(
       return getEventBridgeTrigger(contract, additionalConfig);
 
     case 'cloudFormation':
-      throw new Error('EventBridge contract has no trigger');
+      throw new Error('CloudFormation contract has no trigger');
 
     default:
       // exhaustiveness check
