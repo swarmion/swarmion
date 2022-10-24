@@ -47,7 +47,7 @@ function getHandler<Contract extends ServerlessContract>(
     case 'apiGateway':
       return getApiGatewayHandler(contract);
     case 'cloudFormation':
-      throw new Error('EventBridge contract has no handler');
+      throw new Error('CloudFormation contract has no handler');
     default:
       // exhaustiveness check
       // eslint-disable-next-line no-case-declarations
