@@ -1,4 +1,4 @@
-import { getTrigger as getApiGatewayTrigger } from 'contracts/apiGateway/features';
+import { getApiGatewayTrigger } from 'contracts/apiGateway/features';
 import { getTrigger as getEventBridgeTrigger } from 'contracts/eventBridge/features';
 import { ServerlessContract } from 'types';
 import { GetTriggerArgs, GetTriggerReturn } from 'types/lambdaTrigger';

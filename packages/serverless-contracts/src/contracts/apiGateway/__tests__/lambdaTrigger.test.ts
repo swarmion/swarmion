@@ -1,5 +1,6 @@
+import { getTrigger } from 'features/lambdaTrigger';
+
 import { ApiGatewayContract } from '../apiGatewayContract';
-import { getTrigger } from '../features';
 
 describe('apiGateway lambda trigger', () => {
   const pathParametersSchema = {
