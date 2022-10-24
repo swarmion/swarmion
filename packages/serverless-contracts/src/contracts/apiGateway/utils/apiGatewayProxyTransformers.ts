@@ -21,7 +21,7 @@ export const proxyEventToHandlerEvent = <Contract extends ApiGatewayContract>({
       : undefined) as BodyType<Contract>,
     headers,
     pathParameters,
-    queryStringParameters,
+    queryStringParameters: queryStringParameters ?? {},
   } as unknown as HandlerEventType<Contract>;
 };
 
