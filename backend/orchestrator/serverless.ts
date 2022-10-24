@@ -1,6 +1,6 @@
 import { AWS } from '@serverless/typescript';
 
-import { requestSyncDeployment } from '@swarmion/orchestrator-contracts';
+import { requestSyncDeploymentContract } from '@swarmion/orchestrator-contracts';
 import { ServerlessCdkPluginConfig } from '@swarmion/serverless-cdk-plugin';
 import {
   frameworkVersion,
@@ -40,7 +40,7 @@ const serverlessConfiguration: AWS &
   },
   contracts: {
     provides: {
-      requestSyncDeployment,
+      requestSyncDeploymentContract,
     },
     consumes: {},
   },

@@ -20,7 +20,7 @@ const outputSchema = {
   additionalProperties: false,
 } as const;
 
-export const requestSyncDeployment = new ApiGatewayContract({
+export const requestSyncDeploymentContract = new ApiGatewayContract({
   id: 'orchestrator-requestSyncDeployment',
   path: '/request-sync-deployment',
   method: 'POST',
