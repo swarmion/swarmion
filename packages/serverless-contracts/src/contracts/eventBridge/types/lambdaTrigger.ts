@@ -8,7 +8,7 @@ export type EventBridgeLambdaTrigger<Contract extends EventBridgeContract> = {
   eventBus: string;
 };
 
-export type EventBridgeTriggerArgs<Contract extends EventBridgeContract> = [
-  Contract,
-  { eventBus: string },
-];
+/**
+ * the EventBridge arguments other than the contract itself
+ */
+export type EventBridgeTriggerArgs = { eventBus: string };
