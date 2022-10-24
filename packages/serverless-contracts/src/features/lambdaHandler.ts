@@ -46,7 +46,13 @@ function getHandler<Contract extends ServerlessContract>(
       return getEventBridgeHandler(contract);
     case 'apiGateway':
       return getApiGatewayHandler(contract);
+    case 'cloudFormation':
+      throw new Error('EventBridge contract has no handler');
     default:
+      // exhaustiveness check
+      // eslint-disable-next-line no-case-declarations
+      const _neverContract: never = contract;
+      console.error('Not implemented for contract', _neverContract);
       throw new Error('Not implemented');
   }
 }
