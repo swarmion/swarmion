@@ -8,7 +8,7 @@ import {
   proxyEventToHandlerEvent,
 } from '../utils';
 
-export const getHandler =
+export const getApiGatewayHandler =
   <Contract extends ApiGatewayContract>(contract: Contract) =>
   (handler: HandlerType<Contract>): ApiGatewayHandler<Contract> =>
   async (event, context, _callback, ...additionalArgs) => {

@@ -7,13 +7,13 @@ import createHttpError from 'http-errors';
 
 import { getHandlerContextMock } from '__mocks__/requestContext';
 import { ApiGatewayContract } from 'contracts';
+import { getHandler } from 'features/lambdaHandler';
 
 import { httpApiGatewayContractMock } from '../__mocks__/httpApiGatewayContract';
 import {
   getRequestContextMock,
   getRequestContextMockV2,
 } from '../__mocks__/requestContext';
-import { getHandler } from '../features';
 import { HandlerType } from '../types';
 
 describe('apiGateway lambda handler', () => {
