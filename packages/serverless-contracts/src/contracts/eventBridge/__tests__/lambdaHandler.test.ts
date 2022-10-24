@@ -1,7 +1,7 @@
 import { getHandlerContextMock } from '__mocks__/requestContext';
+import { getHandler } from 'features/lambdaHandler';
 
 import { EventBridgeContract } from '../eventBridgeContract';
-import { getHandler } from '../features/lambdaHandler';
 
 describe('EventBridgeContract handler test', () => {
   const eventBridgeContract = new EventBridgeContract({
