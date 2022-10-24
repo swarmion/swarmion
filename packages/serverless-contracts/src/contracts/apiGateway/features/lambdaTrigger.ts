@@ -11,7 +11,8 @@ import {
  * @argument additionalConfig for example an authorizer reference. Only required when the contract requires authentication
  */
 export const getApiGatewayTrigger = <Contract extends ApiGatewayContract>(
-  ...[contract, additionalConfig]: ApiGatewayTriggerArgs<Contract>
+  contract: Contract,
+  ...[additionalConfig]: ApiGatewayTriggerArgs<Contract>
 ): ApiGatewayLambdaCompleteTriggerType<Contract> => {
   const key = contract.integrationType === 'httpApi' ? 'httpApi' : 'http';
 

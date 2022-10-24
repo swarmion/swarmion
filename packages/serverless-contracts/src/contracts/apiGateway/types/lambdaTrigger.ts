@@ -71,7 +71,7 @@ type ApiGatewayLambdaAdditionalConfigType<
     >;
 
 /**
- * the arguments array of the `getTrigger` function`
+ * the arguments array of the `getTrigger` function`, except the contract itself
  *
  * the trick here is that when the contract is authenticated, the additional config
  * is required, whereas otherwise it is optional
@@ -80,15 +80,13 @@ export type ApiGatewayTriggerArgs<Contract extends ApiGatewayContract> =
   Contract['authorizerType'] extends undefined
     ?
         | [
-            Contract,
             ApiGatewayLambdaAdditionalConfigType<
               ApiGatewayTriggerKey<Contract['integrationType']>,
               Contract['authorizerType']
             >,
           ]
-        | [Contract]
+        | []
     : [
-        Contract,
         ApiGatewayLambdaAdditionalConfigType<
           ApiGatewayTriggerKey<Contract['integrationType']>,
           Contract['authorizerType']
