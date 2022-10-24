@@ -4,7 +4,7 @@ import { EventBridgeContract } from '../eventBridgeContract';
 import { PayloadType } from '../types/common';
 import { EventBridgeHandlerType, HandlerType } from '../types/lambdaHandler';
 
-export const getHandler =
+export const getEventBridgeHandler =
   <
     Contract extends EventBridgeContract,
     EventType extends string = Contract['eventType'],
