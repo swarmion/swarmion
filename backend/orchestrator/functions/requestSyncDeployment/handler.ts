@@ -1,11 +1,11 @@
 import { ulid } from 'ulid';
 
-import { requestSyncDeployment } from '@swarmion/orchestrator-contracts';
+import { requestSyncDeploymentContract } from '@swarmion/orchestrator-contracts';
 import { getHandler } from '@swarmion/serverless-contracts';
 
 import ServiceEventEntity from 'libs/dynamodb/models/serviceEvent';
 
-export const main = getHandler(requestSyncDeployment)(async event => {
+export const main = getHandler(requestSyncDeploymentContract)(async event => {
   const { serviceId, applicationId } = event.body;
 
   const eventId = ulid();

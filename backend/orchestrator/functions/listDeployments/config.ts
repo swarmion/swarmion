@@ -1,4 +1,4 @@
-import { requestSyncDeploymentContract } from '@swarmion/orchestrator-contracts';
+import { listDeploymentsContract } from '@swarmion/orchestrator-contracts';
 import { getTrigger } from '@swarmion/serverless-contracts';
 import { getHandlerPath, LambdaFunction } from '@swarmion/serverless-helpers';
 
@@ -13,11 +13,11 @@ const config: LambdaFunction = {
     {
       Effect: 'Allow',
       Resource: getCdkProperty('dynamodbArn'),
-      Action: ['dynamodb:PutItem'],
+      Action: ['dynamodb:Query'],
     },
   ],
   iamRoleStatementsInherit: true,
-  events: [getTrigger(requestSyncDeploymentContract)],
+  events: [getTrigger(listDeploymentsContract)],
 };
 
 export default config;

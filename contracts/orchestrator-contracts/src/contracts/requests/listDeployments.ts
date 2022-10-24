@@ -1,33 +1,31 @@
 import { ApiGatewayContract } from '@swarmion/serverless-contracts';
 
-const bodySchema = {
+const queryStringParametersSchema = {
   type: 'object',
   properties: {
-    serviceId: { type: 'string' },
     applicationId: { type: 'string' },
   },
-  required: ['serviceId', 'applicationId'],
+  required: [],
   additionalProperties: false,
 } as const;
 
 const outputSchema = {
   type: 'object',
   properties: {
-    status: { enum: ['ACCEPTED', 'REJECTED'] },
-    message: { type: 'string' },
+    id: { type: 'string' },
   },
-  required: ['status', 'message'],
+  required: ['id'],
   additionalProperties: false,
 } as const;
 
-export const requestSyncDeploymentContract = new ApiGatewayContract({
-  id: 'orchestrator-requestSyncDeployment',
-  path: '/request-sync-deployment',
-  method: 'POST',
+export const listDeploymentsContract = new ApiGatewayContract({
+  id: 'orchestrator-listDeployments',
+  path: '/deployments',
+  method: 'GET',
   integrationType: 'httpApi',
   pathParametersSchema: undefined,
-  queryStringParametersSchema: undefined,
-  bodySchema,
+  queryStringParametersSchema,
+  bodySchema: undefined,
   headersSchema: undefined,
   outputSchema,
   authorizerType: undefined,
