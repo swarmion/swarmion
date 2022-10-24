@@ -26,10 +26,10 @@ fi
 # set the new version
 if [[ "$TARGET_VERSION" == "" ]]; then
     echo 'Using lerna version generation target'
-    pnpm lerna version $RELEASE_TYPE --no-git-tag-version --no-push --force-publish --yes
+    pnpm lerna version $RELEASE_TYPE --no-git-tag-version --no-push --force-publish
 else
     echo "Using target version"
-    pnpm lerna version $TARGET_VERSION --no-git-tag-version --no-push --force-publish --yes
+    pnpm lerna version $TARGET_VERSION --no-git-tag-version --no-push --force-publish
 fi
 
 # ensuring all packages are up-to-date
@@ -43,9 +43,9 @@ git commit -S -m "v${NEW_VERSION}"
 
 # publish new version to npm
 if $IS_ALPHA; then
-    pnpm lerna publish from-package --force-publish --dist-tag alpha --yes
+    pnpm lerna publish from-package --force-publish --dist-tag alpha
 else
-    pnpm lerna publish from-package --force-publish --yes
+    pnpm lerna publish from-package --force-publish
 fi
 
 # we need to wait for the version to be available on npm
