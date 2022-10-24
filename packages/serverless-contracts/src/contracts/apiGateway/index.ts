@@ -3,7 +3,7 @@ export {
   getAxiosRequest,
   getFetchRequest,
   getLambdaHandler,
-  getHandler as getApiGatewayHandler,
+  getApiGatewayHandler,
   getRequestParameters,
 } from './features';
 export type { HandlerType } from './types';
