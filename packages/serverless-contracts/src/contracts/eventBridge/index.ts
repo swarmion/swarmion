@@ -1,2 +1,2 @@
 export { EventBridgeContract } from './eventBridgeContract';
-export { getEventBridgeHandler } from './features';
+export { getEventBridgeHandler, getEventBridgeTrigger } from './features';
