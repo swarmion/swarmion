@@ -3,12 +3,12 @@ import {
   ApiGatewayHandler,
   EventBridgeContract,
   EventBridgeHandler,
+  EventBridgePayloadType,
   getApiGatewayHandler,
   getEventBridgeHandler,
   SwarmionApiGatewayHandler,
   SwarmionEventBridgeHandler,
 } from 'contracts';
-import { PayloadType } from 'contracts/eventBridge/types/common';
 import { ServerlessContract } from 'types';
 
 /**
@@ -26,7 +26,7 @@ export function getHandler<Contract extends ApiGatewayContract>(
 export function getHandler<
   Contract extends EventBridgeContract,
   EventType extends string = Contract['eventType'],
-  Payload = PayloadType<Contract>,
+  Payload = EventBridgePayloadType<Contract>,
 >(
   contract: Contract,
 ): <AdditionalArgs extends unknown[]>(
