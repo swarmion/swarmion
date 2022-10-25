@@ -1,29 +1,29 @@
 import { JSONSchema } from 'json-schema-to-ts';
 
 export class EventBridgeContract<
-  Source extends string = string,
+  Sources extends readonly string[] = readonly string[],
   EventType extends string = string,
   PayloadSchema extends JSONSchema = JSONSchema,
 > {
   public id: string;
   public contractType = 'eventBridge' as const;
-  public source: Source;
+  public sources: Sources;
   public eventType: EventType;
   public payloadSchema: PayloadSchema;
 
   constructor({
     id,
-    source,
+    sources,
     eventType,
     payloadSchema,
   }: {
     id: string;
-    source: Source;
+    sources: Sources;
     eventType: EventType;
     payloadSchema: PayloadSchema;
   }) {
     this.id = id;
-    this.source = source;
+    this.sources = sources;
     this.eventType = eventType;
     this.payloadSchema = payloadSchema;
   }

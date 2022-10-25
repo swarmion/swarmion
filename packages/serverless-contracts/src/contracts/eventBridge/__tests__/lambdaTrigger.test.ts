@@ -6,7 +6,7 @@ describe('EventBridge contract lambdaTrigger tests', () => {
   it('should generate a proper trigger', () => {
     const eventBridgeContract = new EventBridgeContract({
       id: 'myAwesomeEventBridgeContract',
-      source: 'toto.tata',
+      sources: ['toto.tata'] as const,
       eventType: 'MY_DETAIL_TYPE',
       payloadSchema: { type: 'object' } as const,
     });

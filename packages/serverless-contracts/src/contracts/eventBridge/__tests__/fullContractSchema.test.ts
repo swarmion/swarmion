@@ -5,7 +5,7 @@ describe('EventBridge contract fullContract tests', () => {
   it('should generate a proper full Contract', () => {
     const eventBridgeContract = new EventBridgeContract({
       id: 'myAwesomeEventBridgeContract',
-      source: 'toto.tata',
+      sources: ['toto.tata'] as const,
       eventType: 'MY_DETAIL_TYPE',
       payloadSchema: { type: 'object' } as const,
     });
@@ -16,11 +16,11 @@ describe('EventBridge contract fullContract tests', () => {
       properties: {
         id: { const: 'myAwesomeEventBridgeContract' },
         contractType: { const: 'eventBridge' },
-        source: { const: 'toto.tata' },
+        sources: { enum: ['toto.tata'] },
         eventType: { const: 'MY_DETAIL_TYPE' },
         payloadSchema: { type: 'object' },
       },
-      required: ['id', 'contractType', 'source', 'eventType', 'payloadSchema'],
+      required: ['id', 'contractType', 'sources', 'eventType', 'payloadSchema'],
       additionalProperties: false,
     });
   });
