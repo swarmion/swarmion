@@ -14,7 +14,7 @@ export const getFullContractSchema = <Contract extends EventBridgeContract>(
   const properties = {
     id: { const: contract.id },
     contractType: { const: contract.contractType },
-    source: { const: contract.source },
+    sources: { enum: contract.sources },
     eventType: { const: contract.eventType },
     payloadSchema: contract.payloadSchema,
   };
@@ -22,7 +22,7 @@ export const getFullContractSchema = <Contract extends EventBridgeContract>(
   return {
     type: 'object',
     properties,
-    required: ['id', 'contractType', 'source', 'eventType', 'payloadSchema'],
+    required: ['id', 'contractType', 'sources', 'eventType', 'payloadSchema'],
     additionalProperties: false,
   };
 };

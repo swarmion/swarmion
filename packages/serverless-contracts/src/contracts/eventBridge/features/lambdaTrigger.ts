@@ -14,7 +14,7 @@ export const getEventBridgeTrigger = <Contract extends EventBridgeContract>(
   { eventBus }: EventBridgeTriggerArgs,
 ): EventBridgeLambdaTrigger<Contract> => ({
   pattern: {
-    source: [contract.source],
+    source: contract.sources,
     'detail-type': [contract.eventType],
   },
   eventBus,

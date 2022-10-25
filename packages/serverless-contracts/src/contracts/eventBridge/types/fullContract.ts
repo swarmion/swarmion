@@ -10,10 +10,10 @@ export interface FullContractSchemaType<Contract extends EventBridgeContract> {
   properties: {
     id: { const: Contract['id'] };
     contractType: { const: Contract['contractType'] };
-    source: { const: Contract['source'] };
+    sources: { enum: Contract['sources'] };
     eventType: { const: Contract['eventType'] };
     payloadSchema: Contract['payloadSchema'];
   };
-  required: ['id', 'contractType', 'source', 'eventType', 'payloadSchema'];
+  required: ['id', 'contractType', 'sources', 'eventType', 'payloadSchema'];
   additionalProperties: false;
 }

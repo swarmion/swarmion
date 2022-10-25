@@ -6,7 +6,7 @@ import { EventBridgeContract } from '../eventBridgeContract';
 describe('EventBridgeContract handler test', () => {
   const eventBridgeContract = new EventBridgeContract({
     id: 'myAwesomeEventBridgeContract',
-    source: 'toto.tata',
+    sources: ['toto.tata'] as const,
     eventType: 'MY_DETAIL_TYPE',
     payloadSchema: {
       type: 'object',
