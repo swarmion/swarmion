@@ -1,13 +1,11 @@
 import {
   ApiGatewayContract,
+  ApiGatewayHandler,
   EventBridgeContract,
   getApiGatewayHandler,
   getEventBridgeHandler,
+  SwarmionApiGatewayHandler,
 } from 'contracts';
-import {
-  ApiGatewayHandler,
-  HandlerType as ApiGatewayInnerHandlerType,
-} from 'contracts/apiGateway/types/lambdaHandler';
 import { PayloadType } from 'contracts/eventBridge/types/common';
 import {
   EventBridgeHandlerType,
@@ -21,7 +19,7 @@ import { ServerlessContract } from 'types';
 export function getHandler<Contract extends ApiGatewayContract>(
   contract: Contract,
 ): (
-  handler: ApiGatewayInnerHandlerType<Contract>,
+  handler: SwarmionApiGatewayHandler<Contract>,
 ) => ApiGatewayHandler<Contract>;
 
 /**

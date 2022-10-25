@@ -14,7 +14,7 @@ import {
   getRequestContextMock,
   getRequestContextMockV2,
 } from '../__mocks__/requestContext';
-import { HandlerType } from '../types';
+import { SwarmionApiGatewayHandler } from '../types';
 
 describe('apiGateway lambda handler', () => {
   describe('httpApi, with authorizer, when all parameters are set', () => {
@@ -345,7 +345,9 @@ describe('apiGateway lambda handler', () => {
         outputSchema: undefined,
       });
 
-      const handler: HandlerType<typeof restApiContract> = async () => {
+      const handler: SwarmionApiGatewayHandler<
+        typeof restApiContract
+      > = async () => {
         await Promise.resolve();
 
         return;
