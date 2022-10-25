@@ -2,7 +2,10 @@ import Ajv from 'ajv';
 
 import { EventBridgeContract } from '../eventBridgeContract';
 import { PayloadType } from '../types/common';
-import { EventBridgeHandlerType, HandlerType } from '../types/lambdaHandler';
+import {
+  EventBridgeHandler,
+  SwarmionEventBridgeHandler,
+} from '../types/lambdaHandler';
 
 export const getEventBridgeHandler =
   <
@@ -13,8 +16,8 @@ export const getEventBridgeHandler =
     contract: Contract,
   ) =>
   <AdditionalArgs extends unknown[] = []>(
-    handler: HandlerType<EventType, Payload, AdditionalArgs>,
-  ): EventBridgeHandlerType<EventType, Payload, AdditionalArgs> =>
+    handler: SwarmionEventBridgeHandler<EventType, Payload, AdditionalArgs>,
+  ): EventBridgeHandler<EventType, Payload, AdditionalArgs> =>
   async (event, context, _callback, ...additionalArgs: AdditionalArgs) => {
     // here we decide to not use the callback argument passed by lambda
     // because we have asynchronous handlers
