@@ -1,7 +1,7 @@
 import Ajv from 'ajv';
 
 import { EventBridgeContract } from '../eventBridgeContract';
-import { PayloadType } from '../types/common';
+import { EventBridgePayloadType } from '../types/common';
 import {
   EventBridgeHandler,
   SwarmionEventBridgeHandler,
@@ -11,7 +11,7 @@ export const getEventBridgeHandler =
   <
     Contract extends EventBridgeContract,
     EventType extends string = Contract['eventType'],
-    Payload = PayloadType<Contract>,
+    Payload = EventBridgePayloadType<Contract>,
   >(
     contract: Contract,
   ) =>
