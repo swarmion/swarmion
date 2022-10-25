@@ -2,15 +2,13 @@ import {
   ApiGatewayContract,
   ApiGatewayHandler,
   EventBridgeContract,
+  EventBridgeHandler,
   getApiGatewayHandler,
   getEventBridgeHandler,
   SwarmionApiGatewayHandler,
+  SwarmionEventBridgeHandler,
 } from 'contracts';
 import { PayloadType } from 'contracts/eventBridge/types/common';
-import {
-  EventBridgeHandlerType,
-  HandlerType as EventBridgeInnerHandlerType,
-} from 'contracts/eventBridge/types/lambdaHandler';
 import { ServerlessContract } from 'types';
 
 /**
@@ -32,8 +30,8 @@ export function getHandler<
 >(
   contract: Contract,
 ): <AdditionalArgs extends unknown[]>(
-  handler: EventBridgeInnerHandlerType<EventType, Payload, AdditionalArgs>,
-) => EventBridgeHandlerType<EventType, Payload, AdditionalArgs>;
+  handler: SwarmionEventBridgeHandler<EventType, Payload, AdditionalArgs>,
+) => EventBridgeHandler<EventType, Payload, AdditionalArgs>;
 
 // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
 export function getHandler<Contract extends ServerlessContract>(

@@ -1,6 +1,14 @@
-import { Context, EventBridgeEvent, EventBridgeHandler } from 'aws-lambda';
+import {
+  EventBridgeHandler as AwsLambdaEventBridgeHandler,
+  Context,
+  EventBridgeEvent,
+} from 'aws-lambda';
 
-export type HandlerType<
+/**
+ * The type of a Swarmion handler, with type-inferred event
+ * The handler function can define additional arguments
+ */
+export type SwarmionEventBridgeHandler<
   EventType extends string,
   Payload,
   AdditionalArgs extends unknown[],
@@ -10,12 +18,21 @@ export type HandlerType<
   ...additionalArgs: AdditionalArgs
 ) => Promise<unknown>;
 
+/**
+ * a simple helper type to build EventBridgeHandler
+ */
 type EventBridgeHandlerParameters<
   EventType extends string,
   Payload,
-> = Parameters<EventBridgeHandler<EventType, Payload, unknown>>;
+> = Parameters<AwsLambdaEventBridgeHandler<EventType, Payload, unknown>>;
 
-export type EventBridgeHandlerType<
+/**
+ * The type of an EventBridge handler. This is the actual version that will
+ * be executed by the lambda, not the Swarmion inferred one.
+ *
+ * See https://docs.aws.amazon.com/lambda/latest/dg/typescript-handler.html.
+ */
+export type EventBridgeHandler<
   EventType extends string,
   Payload,
   AdditionalArgs extends unknown[],
