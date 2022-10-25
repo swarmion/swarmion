@@ -18,7 +18,7 @@ import { ServerlessContract } from 'types';
 /**
  * must match the type of getApiGatewayHandler
  */
-function getHandler<Contract extends ApiGatewayContract>(
+export function getHandler<Contract extends ApiGatewayContract>(
   contract: Contract,
 ): (
   handler: ApiGatewayInnerHandlerType<Contract>,
@@ -27,7 +27,7 @@ function getHandler<Contract extends ApiGatewayContract>(
 /**
  * must match the type of getEventBridgeHandler
  */
-function getHandler<
+export function getHandler<
   Contract extends EventBridgeContract,
   EventType extends string = Contract['eventType'],
   Payload = PayloadType<Contract>,
@@ -38,7 +38,7 @@ function getHandler<
 ) => EventBridgeHandlerType<EventType, Payload, AdditionalArgs>;
 
 // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
-function getHandler<Contract extends ServerlessContract>(
+export function getHandler<Contract extends ServerlessContract>(
   contract: Contract,
 ): unknown {
   switch (contract.contractType) {
@@ -56,5 +56,3 @@ function getHandler<Contract extends ServerlessContract>(
       throw new Error('Not implemented');
   }
 }
-
-export { getHandler };

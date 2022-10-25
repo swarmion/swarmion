@@ -14,18 +14,18 @@ import {
 } from 'contracts/eventBridge/types';
 import { ServerlessContract } from 'types';
 
-function getTrigger<Contract extends ApiGatewayContract>(
+export function getTrigger<Contract extends ApiGatewayContract>(
   contract: Contract,
   ...[additionalConfig]: ApiGatewayTriggerArgs<Contract>
 ): ApiGatewayLambdaCompleteTriggerType<Contract>;
 
-function getTrigger<Contract extends EventBridgeContract>(
+export function getTrigger<Contract extends EventBridgeContract>(
   contract: Contract,
   additionalConfig: EventBridgeTriggerArgs,
 ): EventBridgeLambdaTrigger<Contract>;
 
 // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
-function getTrigger<Contract extends ServerlessContract>(
+export function getTrigger<Contract extends ServerlessContract>(
   contract: Contract,
   additionalConfig?: unknown,
 ): unknown {
@@ -49,5 +49,3 @@ function getTrigger<Contract extends ServerlessContract>(
       throw new Error('Not implemented');
   }
 }
-
-export { getTrigger };
