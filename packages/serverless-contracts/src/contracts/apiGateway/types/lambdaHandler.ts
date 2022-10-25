@@ -70,7 +70,7 @@ type HandlerCallback<Contract extends ApiGatewayContract> =
  * The type of a Swarmion handler, with type-inferred event
  * The handler function can define additional arguments
  */
-export type HandlerType<Contract extends ApiGatewayContract> = (
+export type SwarmionApiGatewayHandler<Contract extends ApiGatewayContract> = (
   event: HandlerEventType<Contract>,
   context: Context,
   ...additionalArgs: never[]
