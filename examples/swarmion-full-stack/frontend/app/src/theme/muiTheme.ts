@@ -1,5 +1,5 @@
 import '@mui/lab/themeAugmentation';
-import { createTheme, ThemeOptions } from '@mui/material/styles';
+import { createTheme, ThemeOptions } from '@mui/material';
 
 import { UNIT } from './helpers';
 import { MuiButtonOverrides } from './overrides';
