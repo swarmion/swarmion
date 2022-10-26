@@ -1,11 +1,13 @@
 import { EventBridgeContract } from '../eventBridgeContract';
 
 export type EventBridgeLambdaTrigger<Contract extends EventBridgeContract> = {
-  pattern: {
-    source: Contract['sources'];
-    'detail-type': [Contract['eventType']];
+  eventBridge: {
+    pattern: {
+      source: Contract['sources'];
+      'detail-type': [Contract['eventType']];
+    };
+    eventBus: string;
   };
-  eventBus: string;
 };
 
 /**

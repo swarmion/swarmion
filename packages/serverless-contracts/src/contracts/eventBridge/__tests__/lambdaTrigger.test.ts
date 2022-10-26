@@ -15,8 +15,10 @@ describe('EventBridge contract lambdaTrigger tests', () => {
       eventBus: 'totoBus',
     });
     expect(trigger).toEqual({
-      eventBus: 'totoBus',
-      pattern: { source: ['toto.tata'], 'detail-type': ['MY_DETAIL_TYPE'] },
+      eventBridge: {
+        eventBus: 'totoBus',
+        pattern: { source: ['toto.tata'], 'detail-type': ['MY_DETAIL_TYPE'] },
+      },
     });
   });
 });
