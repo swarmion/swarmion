@@ -1,5 +1,6 @@
-export { default as applyHttpMiddlewares } from './applyHttpMiddlewares';
-export { default as getEnvVariable } from './getEnvVariable';
-export { default as getHandlerPath } from './getHandlerPath';
-export { default as testFunctionNames } from './testFunctionNames';
-export { default as mergeStageParams } from './mergeStageParams';
+export { applyHttpMiddlewares } from './applyHttpMiddlewares';
+export { getEnvVariable } from './getEnvVariable';
+export { getHandlerPath } from './getHandlerPath';
+export { testFunctionNames } from './testFunctionNames';
+export { mergeStageParams } from './mergeStageParams';
+export { getCdkHandlerPath } from './getCdkHandlerPath';

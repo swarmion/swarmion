@@ -17,7 +17,7 @@ const getFullFunctionName = (config: AWS, functionName: string): string =>
  *
  * @param config serverless configuration object
  */
-const testFunctionNames = (config: AWS): void => {
+export const testFunctionNames = (config: AWS): void => {
   const functionNames = getFunctionNames(config);
   if (functionNames.length === 0) {
     it('has no functions declared', () => {
@@ -38,5 +38,3 @@ const testFunctionNames = (config: AWS): void => {
     },
   );
 };
-
-export default testFunctionNames;

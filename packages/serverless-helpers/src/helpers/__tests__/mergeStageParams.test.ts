@@ -1,4 +1,4 @@
-import mergeStageParams from '../mergeStageParams';
+import { mergeStageParams } from '../mergeStageParams';
 
 describe('mergeStageParams', () => {
   it('should merge single stage params', () => {

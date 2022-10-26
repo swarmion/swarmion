@@ -10,7 +10,7 @@ interface Options {
   outputSchema?: JSONSchema;
 }
 
-const applyHttpMiddlewares = <Event, Result>(
+export const applyHttpMiddlewares = <Event, Result>(
   handler: Handler<Event, Result>,
   { inputSchema, outputSchema }: Options,
 ): middy.MiddyfiedHandler<Event, Result> => {
@@ -23,5 +23,3 @@ const applyHttpMiddlewares = <Event, Result>(
 
   return middyfiedHandler;
 };
-
-export default applyHttpMiddlewares;
