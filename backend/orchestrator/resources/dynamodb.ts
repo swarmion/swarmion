@@ -1,18 +1,14 @@
 import { AttributeType, BillingMode, Table } from 'aws-cdk-lib/aws-dynamodb';
 import { Construct } from 'constructs';
 
-import ServerlessCdkPlugin, {
-  ServerlessProps,
-} from '@swarmion/serverless-cdk-plugin';
-
 import { PARTITION_KEY, SORT_KEY } from 'libs/dynamodb/primaryKeys';
 
-export class OrchestratorDynamodb extends ServerlessCdkPlugin.ServerlessConstruct {
+export class OrchestratorDynamodb extends Construct {
   public dynamodbArn: string;
   public dynamodbName: string;
 
-  constructor(scope: Construct, id: string, serverlessProps: ServerlessProps) {
-    super(scope, id, serverlessProps);
+  constructor(scope: Construct, id: string) {
+    super(scope, id);
 
     const table = new Table(this, 'OrchestratorTable', {
       partitionKey: { name: PARTITION_KEY, type: AttributeType.STRING },
@@ -24,6 +20,3 @@ export class OrchestratorDynamodb extends ServerlessCdkPlugin.ServerlessConstruc
     this.dynamodbName = table.tableName;
   }
 }
-
-export const getCdkProperty =
-  ServerlessCdkPlugin.getCdkPropertyHelper<OrchestratorDynamodb>;
