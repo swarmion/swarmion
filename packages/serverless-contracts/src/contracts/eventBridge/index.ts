@@ -1,5 +1,9 @@
 export { EventBridgeContract } from './eventBridgeContract';
-export { getEventBridgeHandler, getEventBridgeTrigger } from './features';
+export {
+  getEventBridgeHandler,
+  getEventBridgeTrigger,
+  buildPutEvent,
+} from './features';
 export type {
   EventBridgeHandler,
   SwarmionEventBridgeHandler,
