@@ -33,7 +33,7 @@ export const getRequestParameters = <Contract extends ApiGatewayContract>(
         queryStringParameters,
         isUndefined,
       ) as Record<string, string>,
-      headers,
+      headers: { ...headers, 'Content-Type': 'application/json' },
     },
     isUndefined,
   ) as unknown as RequestParameters<BodyType<Contract>>;
