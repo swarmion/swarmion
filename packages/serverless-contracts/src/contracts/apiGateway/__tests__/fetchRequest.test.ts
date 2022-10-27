@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /// <reference lib="dom" />
 
 import { ApiGatewayContract } from '../apiGatewayContract';
@@ -67,6 +68,10 @@ describe('apiGateway fetch request', () => {
       outputSchema,
     });
 
+    beforeEach(() => {
+      vi.clearAllMocks();
+    });
+
     it('should have the correct axiosRequest when all values are defined', async () => {
       await getFetchRequest(
         httpApiContract,
@@ -94,7 +99,7 @@ describe('apiGateway fetch request', () => {
         new URL('http://localhost:3000/users/azer?testId=er&optionalParam=ty'),
         {
           body: '{"foo":"tyui","bar":["yuio"]}',
-          headers: { myHeader: 'rtyu' },
+          headers: { myHeader: 'rtyu', 'Content-Type': 'application/json' },
           method: 'POST',
         },
       );
@@ -127,7 +132,7 @@ describe('apiGateway fetch request', () => {
         new URL('http://localhost:3000/users/azer?testId=erty'),
         {
           body: '{"foo":"tyui","bar":["yuio"]}',
-          headers: { myHeader: 'rtyu' },
+          headers: { myHeader: 'rtyu', 'Content-Type': 'application/json' },
           method: 'POST',
         },
       );
@@ -158,7 +163,7 @@ describe('apiGateway fetch request', () => {
         new URL('http://localhost:3000/coucou'),
         {
           body: undefined,
-          headers: undefined,
+          headers: { 'Content-Type': 'application/json' },
           method: 'GET',
         },
       );
@@ -191,7 +196,7 @@ describe('apiGateway fetch request', () => {
       );
       expect(mockedFetch).toHaveBeenCalledWith('/coucou?testId=erty', {
         body: undefined,
-        headers: undefined,
+        headers: { 'Content-Type': 'application/json' },
         method: 'GET',
       });
     });

@@ -180,7 +180,27 @@ export default {
 };
 ```
 
-### Validate the lambda
+### Generate the lambda handler
+
+If you use your lambda as an ApiGateway integration, you would typically need to use middlewares to parse the body, validate the input and output formats and serialize the output body. You may also need to handle error cases with specific http status codes.
+
+All this can be directly done directly by using the `getHandler` function that offers all those features.
+
+```ts
+import { getHandler } from '@swarmion/serverless-contracts';
+
+const handler = getHandler(myContract)(async event => {
+  event.pathParameters.userId; // will have type 'string'
+  event.requestContext.authorizer.claims.sub; // will exist depending on `authorizerType`
+
+  event.toto; // will fail typing
+  event.pathParameters.toto; // will also fail
+
+  return { id: 'coucou', name: 'coucou' }; // also type-safe!
+});
+```
+
+### Override default parsing and validation from the contract
 
 JSON Schemas are compatible with `ajv` and `@middy/validator`. You can use
 
@@ -196,14 +216,19 @@ myContract.outputSchema;
 
 in order to validate the input and/or the output of your lambda.
 
-### Type the lambda input and output
+On the handler side, you can use the `getLambdaHandler` function on the contract to still infer the input and output types from the schema.
 
-On the handler side, you can use the `getLambdaHandler` function on the contract to correctly infer the input and output types from the schema.
-The `authorizerType` key in the contract allow us to type correctly type the request context with claims and other keys.
-It covers `cognito`, `jwt` and `lambda` authorizers.
+:::caution
+The `getLambdaHandler` is only a pass-through adding typing capabilities, without any parsing nor validation.
+
+This method is not recommended, use `getHandler` when possible.
+:::
+
+In order to safely use `getLambdaHandler` combine it with `applyHttpMiddlewares
 
 ```ts
 import { getLambdaHandler } from '@swarmion/serverless-contracts';
+import { applyHttpMiddlewares } from '@swarmion/serverless-helpers';
 
 const handler = getLambdaHandler(myContract)(async event => {
   event.pathParameters.userId; // will have type 'string'
@@ -214,25 +239,10 @@ const handler = getLambdaHandler(myContract)(async event => {
 
   return { id: 'coucou', name: 'coucou' }; // also type-safe!
 });
-```
 
-### Serialization/deserialization and input/output validation at runtime
-
-If you use your lambda as an ApiGateway integration, you will need to use middlewares to parse the body, validate the input and output formats and serialize the output body. You may also need to handler error cases with specific http status codes.
-
-This can be done directly by using the `getHandler` function that offers all those features.
-
-```ts
-import { getHandler } from '@swarmion/serverless-contracts';
-
-const handler = getHandler(myContract)(async event => {
-  event.pathParameters.userId; // will have type 'string'
-  event.requestContext.authorizer.claims.sub; // will have type 'string' if hasAuthorize is true, otherwise will fail
-
-  event.toto; // will fail typing
-  event.pathParameters.toto; // will also fail
-
-  return { id: 'coucou', name: 'coucou' }; // also type-safe!
+export const main = applyHttpMiddlewares(handler, {
+  inputSchema: myContract.inputSchema,
+  outputSchema: myContract.outputSchema, // optional output validation
 });
 ```
 
