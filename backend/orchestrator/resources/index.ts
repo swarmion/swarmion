@@ -16,20 +16,14 @@ export class OrchestratorService extends ServerlessCdkPlugin.ServerlessConstruct
   constructor(scope: Construct, id: string, serverlessProps: ServerlessProps) {
     super(scope, id, serverlessProps);
 
-    const { dynamodbName, dynamodbArn } = new OrchestratorDynamodb(
-      this,
-      'Table',
-    );
+    const { dynamodb } = new OrchestratorDynamodb(this, 'Table');
 
-    const { eventBusName, eventBusArn } = new OrchestratorEventBus(
-      this,
-      'EventBus',
-    );
+    const { eventBus } = new OrchestratorEventBus(this, 'EventBus');
 
-    this.dynamodbArn = dynamodbArn;
-    this.dynamodbName = dynamodbName;
-    this.eventBusName = eventBusName;
-    this.eventBusArn = eventBusArn;
+    this.dynamodbArn = dynamodb.tableArn;
+    this.dynamodbName = dynamodb.tableName;
+    this.eventBusName = eventBus.eventBusName;
+    this.eventBusArn = eventBus.eventBusArn;
   }
 }
 
