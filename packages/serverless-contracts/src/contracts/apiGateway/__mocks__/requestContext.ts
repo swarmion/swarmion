@@ -1,7 +1,6 @@
 import {
   APIGatewayEventRequestContextV2WithAuthorizer,
   APIGatewayEventRequestContextWithAuthorizer,
-  Context,
 } from 'aws-lambda';
 
 export const getRequestContextMock = (
@@ -60,17 +59,3 @@ export const getRequestContextMockV2 = (
   timeEpoch: 0,
   ...args,
 });
-
-export const getHandlerContextMock = (args?: Partial<Context>): Context =>
-  // @ts-expect-error only partial typing here
-  ({
-    callbackWaitsForEmptyEventLoop: false,
-    functionName: '',
-    functionVersion: '',
-    invokedFunctionArn: '',
-    memoryLimitInMB: '',
-    awsRequestId: '',
-    logGroupName: '',
-    logStreamName: '',
-    ...args,
-  });

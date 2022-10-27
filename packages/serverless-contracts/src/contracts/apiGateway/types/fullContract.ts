@@ -5,7 +5,7 @@ import { DefinedProperties } from './utils';
 /**
  * The intermediary type used to determine the contract type of the lambda.
  *
- * Each schema property is possibily undefined (no schema) or is a JSONSchema.
+ * Each schema property is possibly undefined (no schema) or is a JSONSchema.
  * Do not use this type directly, use it with `DefinedProperties`
  */
 type AllFullContractProperties<

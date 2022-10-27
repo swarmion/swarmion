@@ -7,6 +7,8 @@ import type {
   APIGatewayProxyCognitoAuthorizer,
 } from 'aws-lambda';
 
+import { getHandlerContextMock } from '__mocks__/requestContext';
+
 import {
   bodySchema,
   headersSchema,
@@ -16,13 +18,12 @@ import {
   queryStringParametersSchema,
 } from '../__mocks__/httpApiGatewayContract';
 import {
-  getHandlerContextMock,
   getRequestContextMock,
   getRequestContextMockV2,
 } from '../__mocks__/requestContext';
 import { ApiGatewayContract } from '../apiGatewayContract';
 import { getLambdaHandler } from '../features';
-import { HandlerType } from '../types';
+import { SwarmionApiGatewayHandler } from '../types';
 
 describe('apiGateway lambda handler', () => {
   describe('httpApi, with authorizer, when all parameters are set', () => {
@@ -35,7 +36,7 @@ describe('apiGateway lambda handler', () => {
           authorizer: { claims: { foo: 'claimBar' } },
         };
 
-      const handler: HandlerType<typeof httpApiContract> = ({
+      const handler: SwarmionApiGatewayHandler<typeof httpApiContract> = ({
         body,
         pathParameters,
         queryStringParameters,
@@ -99,7 +100,7 @@ describe('apiGateway lambda handler', () => {
         };
       const fakeContext = getHandlerContextMock();
 
-      const handler: HandlerType<typeof httpApiContract> = ({
+      const handler: SwarmionApiGatewayHandler<typeof httpApiContract> = ({
         body,
         pathParameters,
         queryStringParameters,
@@ -165,7 +166,7 @@ describe('apiGateway lambda handler', () => {
       };
       const fakeContext = getHandlerContextMock();
 
-      const handler: HandlerType<typeof httpApiContract> = ({
+      const handler: SwarmionApiGatewayHandler<typeof httpApiContract> = ({
         body,
         pathParameters,
         queryStringParameters,
@@ -220,7 +221,9 @@ describe('apiGateway lambda handler', () => {
     });
 
     it('should return a correctly typed handler', async () => {
-      const handler: HandlerType<typeof restApiContract> = async () => {
+      const handler: SwarmionApiGatewayHandler<
+        typeof restApiContract
+      > = async () => {
         return Promise.resolve(undefined);
       };
       expect(getLambdaHandler(restApiContract)(handler)).toEqual(handler);
@@ -243,9 +246,9 @@ describe('apiGateway lambda handler', () => {
     });
 
     it('should not have claims in its request context', async () => {
-      const handler: HandlerType<typeof restApiContract> = async ({
-        requestContext,
-      }) => {
+      const handler: SwarmionApiGatewayHandler<
+        typeof restApiContract
+      > = async ({ requestContext }) => {
         const undefinedAuthorizer: undefined = requestContext.authorizer;
 
         return Promise.resolve(undefinedAuthorizer);

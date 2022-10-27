@@ -2,6 +2,7 @@ import { AWS } from '@serverless/typescript';
 
 import {
   listDeploymentsContract,
+  onDeploymentRequestedContract,
   requestSyncDeploymentContract,
 } from '@swarmion/orchestrator-contracts';
 import { ServerlessCdkPluginConfig } from '@swarmion/serverless-cdk-plugin';
@@ -15,7 +16,7 @@ import {
 import { ServerlessContracts } from '@swarmion/serverless-plugin';
 
 import { functions } from 'functions';
-import { OrchestratorDynamodb } from 'resources/dynamodb';
+import { OrchestratorService } from 'resources';
 
 const serverlessConfiguration: AWS &
   ServerlessContracts &
@@ -31,7 +32,7 @@ const serverlessConfiguration: AWS &
     'serverless-custom-iam-roles-per-function',
     'serverless-analyze-bundle-plugin',
   ],
-  construct: OrchestratorDynamodb,
+  construct: OrchestratorService,
   params: sharedParams,
   provider: {
     ...sharedProviderConfig,
@@ -45,8 +46,9 @@ const serverlessConfiguration: AWS &
     provides: {
       requestSyncDeploymentContract,
       listDeploymentsContract,
+      onDeploymentRequestedContract,
     },
-    consumes: {},
+    consumes: { onDeploymentRequestedContract },
   },
   resources: {
     Description: 'Monorepo deployments orchestrator',

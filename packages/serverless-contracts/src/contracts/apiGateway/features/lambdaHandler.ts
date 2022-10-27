@@ -2,15 +2,15 @@ import Ajv from 'ajv';
 import createHttpError, { isHttpError } from 'http-errors';
 
 import { ApiGatewayContract } from '../apiGatewayContract';
-import { ApiGatewayHandler, HandlerType } from '../types';
+import { ApiGatewayHandler, SwarmionApiGatewayHandler } from '../types';
 import {
   handlerResponseToProxyResult,
   proxyEventToHandlerEvent,
 } from '../utils';
 
-export const getHandler =
+export const getApiGatewayHandler =
   <Contract extends ApiGatewayContract>(contract: Contract) =>
-  (handler: HandlerType<Contract>): ApiGatewayHandler<Contract> =>
+  (handler: SwarmionApiGatewayHandler<Contract>): ApiGatewayHandler<Contract> =>
   async (event, context, _callback, ...additionalArgs) => {
     // here we decide to not use the callback argument passed by lambda
     // because we have asynchronous handlers
@@ -66,5 +66,7 @@ export const getHandler =
  */
 export const getLambdaHandler =
   <Contract extends ApiGatewayContract>(contract: Contract) =>
-  (handler: HandlerType<typeof contract>): HandlerType<typeof contract> =>
+  (
+    handler: SwarmionApiGatewayHandler<typeof contract>,
+  ): SwarmionApiGatewayHandler<typeof contract> =>
     handler;

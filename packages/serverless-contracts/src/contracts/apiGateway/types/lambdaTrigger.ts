@@ -1,7 +1,7 @@
-import { AWS } from '@serverless/typescript';
 import { O } from 'ts-toolbelt';
 
-import { CleanEmptyObject, Unpacked } from 'types/utilities';
+import { LambdaEvents } from 'types/lambdaEvents';
+import { CleanEmptyObject } from 'types/utilities';
 
 import { ApiGatewayContract } from '../apiGatewayContract';
 import {
@@ -14,7 +14,7 @@ import {
  * map between our integration types (httpApi vs restApi) and
  * serverless's triggers
  */
-export type ApiGatewayTriggerKey<
+type ApiGatewayTriggerKey<
   ApiGatewayIntegration extends ApiGatewayIntegrationType,
 > = ApiGatewayIntegration extends 'httpApi' ? 'httpApi' : 'http';
 
@@ -22,24 +22,16 @@ export type ApiGatewayTriggerKey<
  * The type of an httpApi lambda trigger
  */
 export type ApiGatewayLambdaCompleteTriggerType<
-  Key extends ApiGatewayKey,
-  AuthorizerType extends ApiGatewayAuthorizerType,
+  Contract extends ApiGatewayContract,
 > = {
-  [key in Key]: {
+  [key in Contract['integrationType']]: {
     path: string;
     method: string;
-  } & ApiGatewayLambdaAdditionalConfigType<Key, AuthorizerType>;
+  } & ApiGatewayLambdaAdditionalConfigType<
+    ApiGatewayTriggerKey<Contract['integrationType']>,
+    Contract['authorizerType']
+  >;
 };
-
-/**
- * From @serverless/typescript, we get the type of a single lambda config
- */
-export type LambdaFunction = Exclude<AWS['functions'], undefined>[string];
-
-/**
- * Narrowing the type of a lambda config to the type of its events
- */
-type LambdaEvents = Unpacked<LambdaFunction['events']>;
 
 /**
  * basic additional config a user can define on an ApiGateway trigger.
@@ -79,7 +71,7 @@ type ApiGatewayLambdaAdditionalConfigType<
     >;
 
 /**
- * the arguments array of the `getTrigger` function`
+ * the arguments array of the `getTrigger` function`, except the contract itself
  *
  * the trick here is that when the contract is authenticated, the additional config
  * is required, whereas otherwise it is optional
@@ -88,15 +80,13 @@ export type ApiGatewayTriggerArgs<Contract extends ApiGatewayContract> =
   Contract['authorizerType'] extends undefined
     ?
         | [
-            Contract,
             ApiGatewayLambdaAdditionalConfigType<
               ApiGatewayTriggerKey<Contract['integrationType']>,
               Contract['authorizerType']
             >,
           ]
-        | [Contract]
+        | []
     : [
-        Contract,
         ApiGatewayLambdaAdditionalConfigType<
           ApiGatewayTriggerKey<Contract['integrationType']>,
           Contract['authorizerType']

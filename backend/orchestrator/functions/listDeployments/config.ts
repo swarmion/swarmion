@@ -2,7 +2,7 @@ import { listDeploymentsContract } from '@swarmion/orchestrator-contracts';
 import { getTrigger } from '@swarmion/serverless-contracts';
 import { getHandlerPath, LambdaFunction } from '@swarmion/serverless-helpers';
 
-import { getCdkProperty } from 'resources/dynamodb';
+import { getCdkProperty } from 'resources';
 
 const config: LambdaFunction = {
   environment: {

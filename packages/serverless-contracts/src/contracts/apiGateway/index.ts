@@ -1,10 +1,10 @@
 export { ApiGatewayContract } from './apiGatewayContract';
 export {
-  getTrigger,
+  getApiGatewayTrigger,
   getAxiosRequest,
   getFetchRequest,
   getLambdaHandler,
-  getHandler,
+  getApiGatewayHandler,
   getRequestParameters,
 } from './features';
-export type { HandlerType } from './types';
+export type { SwarmionApiGatewayHandler, ApiGatewayHandler } from './types';
