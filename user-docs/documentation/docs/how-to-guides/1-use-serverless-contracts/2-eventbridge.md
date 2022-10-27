@@ -103,6 +103,7 @@ In order to optimize Lambda cold starts, instantiating the EventBridge sdk must 
 ```ts
 import { buildPutEvent, getHandler } from '@swarmion/serverless-contracts';
 import { getEnvVariable } from '@swarmion/serverless-helpers';
+import { EventBridgeClient } from '@aws-sdk/client-eventbridge';
 
 // instantiate the sdk
 const eventBridgeClient = new EventBridgeClient({});
@@ -122,3 +123,7 @@ export const main = getHandler(anotherContract)(async event => {
   // rest of the lambda
 });
 ```
+
+:::caution
+This only works with the AWS sdk v3
+:::
