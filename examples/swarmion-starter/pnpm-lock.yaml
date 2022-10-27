@@ -7,7 +7,7 @@ importers:
       '@commitlint/cli': ^17.0.3
       '@commitlint/config-conventional': ^17.0.3
       '@nrwl/workspace': ^14.8.4
-      '@swarmion/nx-plugin': ^0.12.2
+      '@swarmion/nx-plugin': ^0.13.0
       '@typescript-eslint/eslint-plugin': ^5.40.0
       '@typescript-eslint/parser': ^5.40.0
       aws-sdk: ^2.1231.0
@@ -30,7 +30,7 @@ importers:
       '@commitlint/cli': 17.1.2
       '@commitlint/config-conventional': 17.1.0
       '@nrwl/workspace': 14.8.4_szwrzi5cgy4pqe64edo22ykhry
-      '@swarmion/nx-plugin': 0.12.2
+      '@swarmion/nx-plugin': 0.13.0
       '@typescript-eslint/eslint-plugin': 5.40.0_25sstg4uu2sk4pm7xcyzuov7xq
       '@typescript-eslint/parser': 5.40.0_z4bbprzjrhnsfa24uvmcbu7f5q
       aws-sdk: 2.1231.0
@@ -55,7 +55,7 @@ importers:
       '@serverless/typescript': ^3.21.0
       '@swarmion-starter/core-contracts': 1.0.0
       '@swarmion-starter/serverless-configuration': 1.0.0
-      '@swarmion/serverless-helpers': ^0.12.2
+      '@swarmion/serverless-helpers': ^0.13.0
       '@types/node': ^18.8.4
       '@vitest/coverage-c8': ^0.23.1
       dependency-cruiser: ^11.14.0
@@ -70,7 +70,7 @@ importers:
       vitest: ^0.23.1
     dependencies:
       '@swarmion-starter/serverless-configuration': link:../../packages/serverless-configuration
-      '@swarmion/serverless-helpers': 0.12.2
+      '@swarmion/serverless-helpers': 0.13.0
     devDependencies:
       '@serverless/typescript': 3.21.0
       '@swarmion-starter/core-contracts': link:../../contracts/core-contracts
@@ -95,7 +95,7 @@ importers:
       '@babel/preset-env': ^7.19.4
       '@babel/preset-typescript': ^7.18.6
       '@babel/runtime': ^7.19.4
-      '@swarmion/serverless-contracts': ^0.12.2
+      '@swarmion/serverless-contracts': ^0.13.0
       '@types/node': ^18.8.4
       babel-plugin-module-resolver: ^4.1.0
       concurrently: ^7.3.0
@@ -109,7 +109,7 @@ importers:
       vitest: ^0.23.1
     dependencies:
       '@babel/runtime': 7.19.4
-      '@swarmion/serverless-contracts': 0.12.2_axios@0.27.2
+      '@swarmion/serverless-contracts': 0.13.0_axios@0.27.2
     devDependencies:
       '@babel/cli': 7.19.3_@babel+core@7.19.3
       '@babel/core': 7.19.3
@@ -1405,6 +1405,13 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.9
+    dev: false
+
+  /@babel/runtime/7.20.0:
+    resolution: {integrity: sha512-NDYdls71fTXoU8TZHfbBWg7DiZfNzClcKui/+kyi6ppD2L1qnWW3VV6CjtaBXSUGGhiTWJ6ereOIkUvenif66Q==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.13.10
 
   /@babel/template/7.18.10:
     resolution: {integrity: sha512-TI+rCtooWHr3QJ27kJxfjutghu44DLnasDMwpDqCXVTal9RLp3RSYNh4NdBrRP2cQAoG9A8juOQl6P6oZG4JxA==}
@@ -2321,12 +2328,12 @@ packages:
       '@sinonjs/commons': 1.8.3
     dev: true
 
-  /@swarmion/nx-plugin/0.12.2:
-    resolution: {integrity: sha512-rTMZXyOeyuNjoFEs16UnyZmyLhO2i2tHBo3SnCtSNwB9MVfoiEihb74Gb1CurSgYAPrWazOTamR0Vok0YS+osg==}
+  /@swarmion/nx-plugin/0.13.0:
+    resolution: {integrity: sha512-pFEX540R1zo7ZswERqnLJILLCN6IvXtvsvzIKYyJOU9fVfCF4QLy5xQIcCDEYgNngE3da4znJ38HeudExpH3DA==}
     dev: true
 
-  /@swarmion/serverless-contracts/0.12.2_axios@0.27.2:
-    resolution: {integrity: sha512-eWvcW8YRbja0vTr1stVxmtRXTLDesyGudS5+1xISlcbbMUthEHYSJ/8AtTtI+yKixNOk2k02ESLPOxUo8MHjyQ==}
+  /@swarmion/serverless-contracts/0.13.0_axios@0.27.2:
+    resolution: {integrity: sha512-zEijl7BW8oNwHSiWgdp1/P3IHjtiIHxgM6IQ5CQ9zjSEQU0RfeGOUbY4bXnfcuOllm8JiZedLIQfBrmkJGjr9Q==}
     peerDependencies:
       axios: ^0.27.2
     dependencies:
@@ -2337,10 +2344,10 @@ packages:
       lodash: 4.17.21
     dev: false
 
-  /@swarmion/serverless-helpers/0.12.2:
-    resolution: {integrity: sha512-/cu9bmakkhhghsBJEakccY6xe9oobz0B8YoxyC/kHDaN5FBo+DnLf+HoV5L5sAN2acD0Ed9mgdbR2imSx1yy7g==}
+  /@swarmion/serverless-helpers/0.13.0:
+    resolution: {integrity: sha512-WxvQVR/wce2bjMMZv5sQRKu95WbN+uxieVXUJS/SbFW7OJFFdKHtW7Ho9jx0axv8CbcDwwmNC6l1EWpTCT5BoA==}
     dependencies:
-      '@babel/runtime': 7.19.4
+      '@babel/runtime': 7.20.0
       '@middy/core': 2.5.7
       '@middy/http-error-handler': 2.5.7
       '@middy/http-json-body-parser': 2.5.7
@@ -7925,13 +7932,17 @@ packages:
     resolution: {integrity: sha512-zrceR/XhGYU/d/opr2EKO7aRHUeiBI8qjtfHqADTwZd6Szfy16la6kqD0MIUs5z5hx6AaKa+PixpPrR289+I0A==}
     dev: true
 
+  /regenerator-runtime/0.13.10:
+    resolution: {integrity: sha512-KepLsg4dU12hryUO7bp/axHAKvwGOCV0sGloQtpagJ12ai+ojVDqkeGSiRX1zlq+kjIMZ1t7gpze+26QqtdGqw==}
+
   /regenerator-runtime/0.13.9:
     resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==}
+    dev: false
 
   /regenerator-transform/0.15.0:
     resolution: {integrity: sha512-LsrGtPmbYg19bcPHwdtmXwbW+TqNvtY4riE3P83foeHRroMbH6/2ddFBfab3t7kbzc7v7p4wbkIecHImqt0QNg==}
     dependencies:
-      '@babel/runtime': 7.19.4
+      '@babel/runtime': 7.20.0
     dev: true
 
   /regexp-tree/0.1.24:
