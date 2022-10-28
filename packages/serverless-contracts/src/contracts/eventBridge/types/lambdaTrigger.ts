@@ -1,3 +1,5 @@
+import { AwsArn } from '@serverless/typescript';
+
 import { EventBridgeContract } from '../eventBridgeContract';
 
 export type EventBridgeLambdaTrigger<Contract extends EventBridgeContract> = {
@@ -11,6 +13,18 @@ export type EventBridgeLambdaTrigger<Contract extends EventBridgeContract> = {
 };
 
 /**
- * the EventBridge arguments other than the contract itself
+ * the EventBridge arguments other than the contract itself.
+ *
+ * The @serverless/typescript is not precise on this
+ *
+ * See https://www.serverless.com/framework/docs/providers/aws/events/event-bridge
  */
-export type EventBridgeTriggerArgs = { eventBus: string };
+export type EventBridgeTriggerArgs = {
+  eventBus: string;
+  deadLetterQueueArn?: AwsArn;
+  retryPolicy?: {
+    maximumEventAge?: number;
+    maximumRetryAttempts?: number;
+  };
+  [key: string]: unknown;
+};
