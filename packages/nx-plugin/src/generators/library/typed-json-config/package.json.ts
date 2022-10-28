@@ -11,7 +11,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
   module: 'dist/esm/index.js',
   types: 'dist/types/index.d.ts',
   scripts: {
-    clean: 'pnpm clean',
+    clean: 'rimraf dist',
     'lint-fix': 'pnpm linter-base-config --fix',
     'lint-fix-all': 'pnpm lint-fix .',
     'linter-base-config': 'eslint --ext=js,ts',
