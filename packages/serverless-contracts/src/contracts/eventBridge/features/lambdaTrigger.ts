@@ -11,13 +11,13 @@ import {
  */
 export const getEventBridgeTrigger = <Contract extends EventBridgeContract>(
   contract: Contract,
-  { eventBus }: EventBridgeTriggerArgs,
+  additionalTriggerArgs: EventBridgeTriggerArgs,
 ): EventBridgeLambdaTrigger<Contract> => ({
   eventBridge: {
     pattern: {
       source: contract.sources,
       'detail-type': [contract.eventType],
     },
-    eventBus,
+    ...additionalTriggerArgs,
   },
 });
