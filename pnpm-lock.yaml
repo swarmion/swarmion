@@ -59,9 +59,9 @@ importers:
       '@swarmion/serverless-plugin': ^0.13.1
       '@types/node': ^18.8.5
       '@vitest/coverage-c8': ^0.24.3
-      aws-cdk-lib: ^2.46.0
+      aws-cdk-lib: ^2.49.0
       aws-sdk: ^2.1232.0
-      constructs: ^10.1.131
+      constructs: ^10.1.144
       dependency-cruiser: ^11.16.1
       dynamodb-toolbox: ^0.4.3
       esbuild: ^0.14.54
@@ -87,7 +87,7 @@ importers:
       '@swarmion/serverless-contracts': link:../../packages/serverless-contracts
       '@swarmion/serverless-helpers': link:../../packages/serverless-helpers
       '@swarmion/serverless-plugin': link:../../packages/serverless-contracts-plugin
-      aws-cdk-lib: 2.46.0_constructs@10.1.131
+      aws-cdk-lib: 2.49.0_constructs@10.1.144
       aws-sdk: 2.1232.0
       dynamodb-toolbox: 0.4.3
       ulid: 2.3.0
@@ -96,7 +96,7 @@ importers:
       '@swarmion/eslint-plugin': link:../../packages/eslint-plugin
       '@types/node': 18.8.5
       '@vitest/coverage-c8': 0.24.3
-      constructs: 10.1.131
+      constructs: 10.1.144
       dependency-cruiser: 11.16.1
       esbuild: 0.14.54
       esbuild-visualizer: 0.3.1
@@ -322,10 +322,10 @@ importers:
       '@types/node': ^18.8.5
       '@types/serverless': ^3.12.8
       '@types/traverse': ^0.6.32
-      aws-cdk-lib: ^2.46.0
+      aws-cdk-lib: ^2.49.0
       babel-plugin-module-resolver: ^4.1.0
       concurrently: ^7.4.0
-      constructs: ^10.1.131
+      constructs: ^10.1.144
       dependency-cruiser: ^11.16.1
       eslint: ^8.25.0
       jest: ^29.2.0
@@ -358,10 +358,10 @@ importers:
       '@types/node': 18.8.5
       '@types/serverless': 3.12.8
       '@types/traverse': 0.6.32
-      aws-cdk-lib: 2.46.0_constructs@10.1.131
+      aws-cdk-lib: 2.49.0_constructs@10.1.144
       babel-plugin-module-resolver: 4.1.0
       concurrently: 7.4.0
-      constructs: 10.1.131
+      constructs: 10.1.144
       dependency-cruiser: 11.16.1
       eslint: 8.25.0
       jest: 29.2.0_omll4mx5m2hnzy3nvxfn74lw6e
@@ -3142,6 +3142,7 @@ packages:
 
   /@balena/dockerignore/1.0.2:
     resolution: {integrity: sha512-wMue2Sy4GAVTk6Ic4tJVcnfdau+gx2EnG7S+uAEe+TWJFqE4YoWN4/H8MSLj4eYJKxGg26lZwboEniNiNwZQ6Q==}
+    dev: true
 
   /@bcoe/v8-coverage/0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
@@ -7878,6 +7879,25 @@ packages:
       punycode: 2.1.1
       semver: 7.3.8
       yaml: 1.10.2
+    dev: true
+    bundledDependencies:
+      - '@balena/dockerignore'
+      - case
+      - fs-extra
+      - ignore
+      - jsonschema
+      - minimatch
+      - punycode
+      - semver
+      - yaml
+
+  /aws-cdk-lib/2.49.0_constructs@10.1.144:
+    resolution: {integrity: sha512-HMrV41VaYVLFhm5i35bXuxiiib8IXPwuspDF7W3LJ4WVwxQZWx4eGcvRAdaXuNM7dDwM52cF5BNl8lYa/xCt5Q==}
+    engines: {node: '>= 14.15.0'}
+    peerDependencies:
+      constructs: ^10.0.0
+    dependencies:
+      constructs: 10.1.144
     bundledDependencies:
       - '@balena/dockerignore'
       - case
@@ -8572,6 +8592,7 @@ packages:
   /case/1.6.3:
     resolution: {integrity: sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==}
     engines: {node: '>= 0.8.0'}
+    dev: true
 
   /ccount/1.1.0:
     resolution: {integrity: sha512-vlNK021QdI7PNeiUh/lKkC/mNHHfV0m/Ad5JoI0TYtlBnJAslM/JIkm/tGC88bkLIwO6OQ5uV6ztS6kVAtCDlg==}
@@ -9112,6 +9133,11 @@ packages:
 
   /constructs/10.1.131:
     resolution: {integrity: sha512-H7p2jsa3aFQK+tuSbXivqdADU5GENtMrnOM5GdYL/9LcCjYc8hsfJBvpaeZA0sixdcILHh/vxJIA7iCtR7keKQ==}
+    engines: {node: '>= 14.17.0'}
+    dev: true
+
+  /constructs/10.1.144:
+    resolution: {integrity: sha512-mFHa7o+uG3Lag1oIjeh2N75ce8BDX5LYCOE67rm+P/b0dYiPS0iQz5PQgcWFdVFjTNJ3o4vvzw0rlui4j6i0+g==}
     engines: {node: '>= 14.17.0'}
 
   /content-disposition/0.5.2:
@@ -14027,6 +14053,7 @@ packages:
 
   /jsonschema/1.4.1:
     resolution: {integrity: sha512-S6cATIPVv1z0IlxdN+zUk5EPjkGCdnhN4wVSBlvoUO1tOLJootbo9CquNJmbIh4yikWHiUedhRYrNPn1arpEmQ==}
+    dev: true
 
   /jszip/3.9.1:
     resolution: {integrity: sha512-H9A60xPqJ1CuC4Ka6qxzXZeU8aNmgOeP5IFqwJbQQwtu2EUYxota3LdsiZWplF7Wgd9tkAd0mdu36nceSaPuYw==}
