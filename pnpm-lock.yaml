@@ -437,7 +437,7 @@ importers:
       ajv: ^8.11.0
       aws-sdk: ^2.1232.0
       aws-sdk-client-mock: ^2.0.0
-      axios: ^0.27.2
+      axios: ^1.1.3
       babel-plugin-module-resolver: ^4.1.0
       concurrently: ^7.4.0
       dependency-cruiser: ^11.16.1
@@ -477,7 +477,7 @@ importers:
       '@vitest/coverage-c8': 0.24.3
       aws-sdk: 2.1232.0
       aws-sdk-client-mock: 2.0.0
-      axios: 0.27.2
+      axios: 1.1.3
       babel-plugin-module-resolver: 4.1.0
       concurrently: 7.4.0
       dependency-cruiser: 11.16.1
@@ -509,7 +509,7 @@ importers:
       '@types/serverless': ^3.12.8
       '@vitest/coverage-c8': ^0.24.3
       aws-sdk: ^2.1232.0
-      axios: ^0.27.2
+      axios: ^1.1.3
       babel-plugin-module-resolver: ^4.1.0
       concurrently: ^7.4.0
       dependency-cruiser: ^11.16.1
@@ -529,7 +529,7 @@ importers:
       vitest: ^0.24.3
     dependencies:
       '@babel/runtime': 7.19.4
-      axios: 0.27.2
+      axios: 1.1.3
       json-schema-diff: 0.17.1
       lodash: 4.17.21
     devDependencies:
@@ -7943,14 +7943,6 @@ packages:
     transitivePeerDependencies:
       - debug
 
-  /axios/0.27.2:
-    resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
-    dependencies:
-      follow-redirects: 1.14.9
-      form-data: 4.0.0
-    transitivePeerDependencies:
-      - debug
-
   /axios/1.1.3:
     resolution: {integrity: sha512-00tXVRwKx/FZr/IDVFt4C+f9FYairX517WoGCL6dpOntqLkZofjhu43F/Xl44UOpqa+9sLFDrG/XAnFsUYgkDA==}
     dependencies:
@@ -7959,7 +7951,6 @@ packages:
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
-    dev: true
 
   /babel-jest/28.1.3_@babel+core@7.19.6:
     resolution: {integrity: sha512-epUaPOEWMk3cWX0M/sPvCHHCe9fMFAa/9hXEgKP8nFfNl/jlGkE9ucq9NqkZGXLDduCJYS0UvSlPUwC0S+rH6Q==}
@@ -11515,15 +11506,6 @@ packages:
     transitivePeerDependencies:
       - encoding
     dev: false
-
-  /follow-redirects/1.14.9:
-    resolution: {integrity: sha512-MQDfihBQYMcyy5dhRDJUHcw7lb2Pv/TuE6xP1vyraLukNDHKbDxDNaOE3NbCAdKQApno+GPRyo1YAp89yCjK4w==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
 
   /follow-redirects/1.15.2:
     resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
@@ -16371,7 +16353,6 @@ packages:
 
   /proxy-from-env/1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
-    dev: true
 
   /pump/3.0.0:
     resolution: {integrity: sha512-LwZy+p3SFs1Pytd/jYct4wpv49HiYCqd9Rlc5ZVdk0V+8Yzv6jR5Blk3TRmPL1ft69TxP0IMZGJ+WPFU2BFhww==}

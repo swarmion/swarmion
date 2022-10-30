@@ -42,7 +42,7 @@ describe('apiGateway axios request', () => {
     required: ['id', 'name'],
   } as const;
 
-  describe('restApi, when all parameters are set', () => {
+  describe('httpApi, when all parameters are set', () => {
     const httpApiContract = new ApiGatewayContract({
       id: 'testContract',
       path: '/users/{userId}',
@@ -58,22 +58,26 @@ describe('apiGateway axios request', () => {
 
     it('should have the correct axiosRequest', async () => {
       await expect(() =>
-        getAxiosRequest(httpApiContract, axios.create({ baseURL: 'test' }), {
-          pathParameters: {
-            userId: 'azer',
-            pageNumber: 'zert',
+        getAxiosRequest(
+          httpApiContract,
+          axios.create({ baseURL: 'http://blob.test' }),
+          {
+            pathParameters: {
+              userId: 'azer',
+              pageNumber: 'zert',
+            },
+            queryStringParameters: {
+              testId: 'erty',
+            },
+            headers: {
+              myHeader: 'rtyu',
+            },
+            body: {
+              foo: 'tyui',
+              bar: ['yuio'],
+            },
           },
-          queryStringParameters: {
-            testId: 'erty',
-          },
-          headers: {
-            myHeader: 'rtyu',
-          },
-          body: {
-            foo: 'tyui',
-            bar: ['yuio'],
-          },
-        }),
+        ),
       ).rejects.toMatchObject({
         config: {
           url: '/users/azer',
@@ -84,7 +88,7 @@ describe('apiGateway axios request', () => {
     });
   });
 
-  describe('httpApi, when it is instanciated with a subset of schemas', () => {
+  describe('restApi, when it is instantiated with a subset of schemas', () => {
     const restApiContract = new ApiGatewayContract({
       id: 'testContract',
       path: '/coucou',
@@ -100,7 +104,11 @@ describe('apiGateway axios request', () => {
 
     it('should have the correct axios request ', async () => {
       await expect(() =>
-        getAxiosRequest(restApiContract, axios.create({ baseURL: 'test' }), {}),
+        getAxiosRequest(
+          restApiContract,
+          axios.create({ baseURL: 'http://blob.test' }),
+          {},
+        ),
       ).rejects.toMatchObject({
         config: {
           url: '/coucou',
