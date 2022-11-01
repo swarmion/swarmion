@@ -426,6 +426,9 @@ importers:
       '@babel/preset-env': ^7.19.4
       '@babel/preset-typescript': ^7.18.6
       '@babel/runtime': ^7.20.0
+      '@middy/core': ^3.6.2
+      '@middy/error-logger': ^3.6.2
+      '@middy/http-cors': ^3.6.2
       '@serverless/typescript': ^3.21.0
       '@types/aws-lambda': ^8.10.108
       '@types/http-errors': ^2.0.0
@@ -467,6 +470,9 @@ importers:
       '@babel/plugin-transform-runtime': 7.19.6_@babel+core@7.19.6
       '@babel/preset-env': 7.19.4_@babel+core@7.19.6
       '@babel/preset-typescript': 7.18.6_@babel+core@7.19.6
+      '@middy/core': 3.6.2
+      '@middy/error-logger': 3.6.2
+      '@middy/http-cors': 3.6.2
       '@serverless/typescript': 3.21.0
       '@types/aws-lambda': 8.10.108
       '@types/http-errors': 2.0.0
@@ -6465,6 +6471,23 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
+  /@middy/core/3.6.2:
+    resolution: {integrity: sha512-/vyvG34RIt7CTmuB/jksGkk9vs6RCoOlRFPfdQq11dHkiKlT2mm8j/jZx7gSpEhXXh9LeaEMuKPnsgWBIlGS1g==}
+    engines: {node: '>=14'}
+    dev: true
+
+  /@middy/error-logger/3.6.2:
+    resolution: {integrity: sha512-7pGHuYWbBHsowtb+s4IDkfackp/kNe/iDTdqMzV8RoFfa+w3Oljre54fVquLVMe9+O98mA/woXYPJtv4MGVnUw==}
+    engines: {node: '>=14'}
+    dev: true
+
+  /@middy/http-cors/3.6.2:
+    resolution: {integrity: sha512-ULsa5TKVsW31s14ctQYTB1YkoMIAGyKc0fhScft6wujL6FCg4U4OxWRVCeviCAegRgyWtYI/fxj1aa4jBgdT4g==}
+    engines: {node: '>=14'}
+    dependencies:
+      '@middy/util': 3.6.2
+    dev: true
+
   /@middy/http-error-handler/2.5.7:
     resolution: {integrity: sha512-1/7L3OHGlQ2IuxL4e4Ylt81sfq5OX2G7q+uZoV5tP4d4KKVN8ftS1ExiMrZGH1r1fyVR3Voh9b2rHD6t/TZZyQ==}
     engines: {node: '>=12'}
@@ -6483,6 +6506,11 @@ packages:
     resolution: {integrity: sha512-4CwEVfUyvF0n1qtEzrcrV56L7iQYyt6zChYQ9N5/uvQgAhdExLzOinW6ki1ZjTMgaMypqdHNUyDAEiAuNJLRUw==}
     engines: {node: '>=12'}
     dev: false
+
+  /@middy/util/3.6.2:
+    resolution: {integrity: sha512-zjyjF5BdSNnDlZbTvfQwwuUIs3H5PpN/R3wOAipXhaGD/SjpIUBcJJPLUQHySeHoZym1FC3MJYczJDbYQWKWdg==}
+    engines: {node: '>=14'}
+    dev: true
 
   /@middy/validator/2.5.7:
     resolution: {integrity: sha512-zCWNCu7mDbnkGLEsFCbsRGo7FGhN62I5sbJjgcMHtVNksjtJUoImM/KQPT4tH+o81JAg8UZRZVMNWDgZGn1lTw==}
@@ -8610,7 +8638,7 @@ packages:
       call-bind: 1.0.2
       define-properties: 1.1.4
       es-abstract: 1.20.1
-      get-intrinsic: 1.1.1
+      get-intrinsic: 1.1.3
       is-string: 1.0.7
     dev: true
 
@@ -12344,14 +12372,6 @@ packages:
 
   /get-func-name/2.0.0:
     resolution: {integrity: sha512-Hm0ixYtaSZ/V7C8FJrtZIuBBI+iSgL+1Aq82zSu8VQNB4S3Gk8e7Qs3VwBDJAhmRZcFqkl3tQu36g/Foh5I5ig==}
-    dev: true
-
-  /get-intrinsic/1.1.1:
-    resolution: {integrity: sha512-kWZrnVM42QCiEA2Ig1bG8zjoIMOgxWwYCEeNdwY6Tv/cOSeGpcoX4pXHfKUxNKVoArnrEr2e9srnAxxGIraS9Q==}
-    dependencies:
-      function-bind: 1.1.1
-      has: 1.0.3
-      has-symbols: 1.0.3
     dev: true
 
   /get-intrinsic/1.1.3:

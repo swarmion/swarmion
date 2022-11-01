@@ -1,5 +1,6 @@
 import {
   EventBridgeHandler as AwsLambdaEventBridgeHandler,
+  Callback,
   Context,
   EventBridgeEvent,
 } from 'aws-lambda';
@@ -15,6 +16,7 @@ export type SwarmionEventBridgeHandler<
 > = (
   event: EventBridgeEvent<EventType, Payload>,
   context: Context,
+  callback?: Callback,
   ...additionalArgs: AdditionalArgs
 ) => Promise<unknown>;
 

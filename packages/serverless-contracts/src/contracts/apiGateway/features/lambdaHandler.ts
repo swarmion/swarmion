@@ -11,9 +11,7 @@ import {
 export const getApiGatewayHandler =
   <Contract extends ApiGatewayContract>(contract: Contract) =>
   (handler: SwarmionApiGatewayHandler<Contract>): ApiGatewayHandler<Contract> =>
-  async (event, context, _callback, ...additionalArgs) => {
-    // here we decide to not use the callback argument passed by lambda
-    // because we have asynchronous handlers
+  async (event, context, callback, ...additionalArgs) => {
     try {
       const ajv = new Ajv();
 
@@ -29,6 +27,7 @@ export const getApiGatewayHandler =
       const handlerResponse = await handler(
         parsedEvent,
         context,
+        callback,
         ...additionalArgs,
       );
 

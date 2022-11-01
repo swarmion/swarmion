@@ -74,7 +74,12 @@ describe('EventBridgeContract handler test', () => {
     const sideEffects = { mySideEffect: mockSideEffect };
 
     const handler = getHandler(eventBridgeContract)(
-      async (event, _context, { mySideEffect }: SideEffects = sideEffects) => {
+      async (
+        event,
+        _context,
+        _callback,
+        { mySideEffect }: SideEffects = sideEffects,
+      ) => {
         await Promise.resolve();
 
         const sideEffectRes = mySideEffect();
@@ -106,6 +111,7 @@ describe('EventBridgeContract handler test', () => {
       async (
         event,
         _context,
+        _callback,
         { mySideEffect }: SideEffects = { mySideEffect: mockUnusedSideEffect },
       ) => {
         await Promise.resolve();
