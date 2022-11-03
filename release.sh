@@ -50,7 +50,7 @@ fi
 
 # we need to wait for the version to be available on npm
 echo "Waiting for changes to be available on npm, please do not stop"
-sleep 90 # 90 seconds
+sleep 10 # 10 seconds
 
 # upgrade packages in the examples
 for example in examples/*; do
