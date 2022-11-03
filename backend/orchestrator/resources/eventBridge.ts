@@ -7,6 +7,6 @@ export class OrchestratorEventBus extends Construct {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
-    this.eventBus = new EventBus(this, 'OrchestratorTable');
+    this.eventBus = new EventBus(this, 'EventBus');
   }
 }
