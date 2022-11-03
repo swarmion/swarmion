@@ -22,6 +22,7 @@ export const getApiGatewayHandler =
       const inputValidator = ajv.compile(contract.inputSchema);
       if (!inputValidator(parsedEvent)) {
         console.error('Error: Invalid input');
+        console.error(inputValidator.errors);
         throw createHttpError(400, 'Invalid input');
       }
 
@@ -35,6 +36,7 @@ export const getApiGatewayHandler =
         const outputValidator = ajv.compile(contract.outputSchema);
         if (!outputValidator(handlerResponse)) {
           console.error('Error: Invalid output');
+          console.error(outputValidator.errors);
           throw createHttpError(400, 'Invalid output');
         }
       }

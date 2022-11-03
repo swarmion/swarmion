@@ -26,6 +26,7 @@ export const getEventBridgeHandler =
     const payloadValidator = ajv.compile(contract.payloadSchema);
     if (!payloadValidator(event.detail)) {
       console.error('Error: Invalid payload');
+      console.error(payloadValidator.errors);
       throw new Error('Invalid payload');
     }
 
