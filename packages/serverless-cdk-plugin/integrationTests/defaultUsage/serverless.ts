@@ -3,9 +3,9 @@ import { AWS } from '@serverless/typescript';
 import { ServerlessCdkPlugin } from 'serverlessCdk';
 import { ServerlessCdkPluginConfig } from 'types';
 
-import { MyConstruct } from './myConstruct';
+import { MyStack } from './myStack';
 
-const getCdkProperty = ServerlessCdkPlugin.getCdkPropertyHelper<MyConstruct>;
+const getCdkProperty = ServerlessCdkPlugin.getCdkPropertyHelper<MyStack>;
 
 const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
   service: 'test-app',
@@ -26,7 +26,11 @@ const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
       handler: './lambda.js',
     },
   },
-  construct: MyConstruct,
+  custom: {
+    cdkPlugin: {
+      stack: MyStack,
+    },
+  },
   resources: {
     Outputs: {
       testOutput: { Description: 'Some Test Output' },

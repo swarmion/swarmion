@@ -8,6 +8,6 @@ describe('customCdK', () => {
         command: 'package',
         cwd: __dirname,
       }),
-    ).rejects.toThrow('Missing construct property');
+    ).rejects.toThrow('Missing custom.cdkPlugin.stack property');
   });
 });

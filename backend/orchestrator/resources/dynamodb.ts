@@ -9,7 +9,7 @@ export class OrchestratorDynamodb extends Construct {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
-    this.dynamodb = new Table(this, 'OrchestratorTable', {
+    this.dynamodb = new Table(this, 'Table', {
       partitionKey: { name: PARTITION_KEY, type: AttributeType.STRING },
       sortKey: { name: SORT_KEY, type: AttributeType.STRING },
       billingMode: BillingMode.PAY_PER_REQUEST,

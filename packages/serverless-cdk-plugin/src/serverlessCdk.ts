@@ -1,54 +1,28 @@
-import { AWS } from '@serverless/typescript';
 import { App, Stack } from 'aws-cdk-lib';
-import { Construct } from 'constructs';
 import merge from 'lodash/merge';
 import * as Serverless from 'serverless';
 import * as Plugin from 'serverless/classes/Plugin';
-import resolveConfigPath from 'serverless/lib/cli/resolve-configuration-path';
 import { O } from 'ts-toolbelt';
 
 import {
+  cdkPluginConfigSchema,
+  CdkPluginConfigType,
   CloudFormationTemplate,
   ResolveVariable,
-  ServerlessConfigFile,
-  ServerlessConstruct,
+  ServerlessStack,
 } from 'types';
 import {
+  camelize,
+  getServerlessConfigFile,
   resolveVariablesInCdkOutput,
   throwIfBootstrapMetadataDetected,
 } from 'utils';
 
-const resolveServerlessConfigPath = async (): Promise<string> => {
-  return resolveConfigPath();
-};
-
-const getServerlessConfigFile = async (): Promise<ServerlessConfigFile> => {
-  const configPath = await resolveServerlessConfigPath();
-
-  const serverlessConfigFile = (await require(configPath)) as AWS & {
-    construct: unknown;
-  };
-
-  const MyConstruct = serverlessConfigFile.construct;
-  if (MyConstruct === undefined) {
-    throw new Error('Missing construct property in serverless configuration');
-  }
-
-  const isConstruct =
-    typeof MyConstruct === 'function' &&
-    (MyConstruct.prototype instanceof ServerlessConstruct ||
-      MyConstruct.prototype instanceof Construct);
-
-  if (!isConstruct) {
-    throw new Error('construct should be a ServerlessConstruct or a Construct');
-  }
-
-  return serverlessConfigFile as ServerlessConfigFile;
-};
-
 interface OptionsExtended extends Serverless.Options {
   verbose?: boolean;
 }
+
+const DEFAULT_STACK_NAME = 'ServerlessCdkPlugin';
 
 export class ServerlessCdkPlugin implements Plugin {
   cliOptions: OptionsExtended;
@@ -58,9 +32,8 @@ export class ServerlessCdkPlugin implements Plugin {
   log: Plugin.Logging['log'];
   stackName: string;
   app: App;
-  stack: Stack;
+  stack?: ServerlessStack | Stack;
   configurationVariablesSources?: Plugin.ConfigurationVariablesSources;
-  construct?: ServerlessConstruct | Construct;
   constructInstantiationPromise?: Promise<void> = undefined;
 
   constructor(
@@ -68,8 +41,12 @@ export class ServerlessCdkPlugin implements Plugin {
     cliOptions: OptionsExtended,
     { log }: Plugin.Logging,
   ) {
-    serverless.configSchemaHandler.defineTopLevelProperty('construct', {
-      type: 'object', // A class is an object
+    serverless.configSchemaHandler.defineCustomProperties({
+      type: 'object',
+      properties: {
+        cdkPlugin: cdkPluginConfigSchema,
+      },
+      required: ['cdkPlugin'],
     });
 
     this.cliOptions = cliOptions;
@@ -79,16 +56,15 @@ export class ServerlessCdkPlugin implements Plugin {
 
     this.commands = {};
 
-    this.stackName = 'myStackName';
+    this.stackName = this.getStackName();
 
     this.app = new App({
       // Used to detect asset usage through metadata
       context: { 'aws:cdk:enable-asset-metadata': true },
     });
-    this.stack = new Stack(this.app, this.stackName);
 
     this.hooks = {
-      'after:package:compileEvents': async () => await this.resolveConstruct(),
+      'after:package:compileEvents': async () => await this.resolveStack(),
     };
 
     this.configurationVariablesSources = {
@@ -100,10 +76,10 @@ export class ServerlessCdkPlugin implements Plugin {
           resolveVariable: ResolveVariable;
           address: string;
         }) => {
-          await this.resolveConstruct(resolveVariable);
+          await this.resolveStack(resolveVariable);
 
-          if (this.construct === undefined) {
-            throw new Error('Construct has not been instanciated');
+          if (this.stack === undefined) {
+            throw new Error('Stack has not been instanciated');
           }
 
           // Used to trigger variable resolution artificially, do not resolve cdk attribute here
@@ -111,55 +87,55 @@ export class ServerlessCdkPlugin implements Plugin {
             return { value: 'magicValue' };
           }
 
-          if (!(address in this.construct)) {
+          if (!(address in this.stack)) {
             throw new Error('Unexpected');
           }
 
           return {
             // @ts-expect-error we cannot know at build time if the adress key is indeed in the construct
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-            value: this.stack.resolve(this.construct[address]),
+            value: this.stack.resolve(this.stack[address]),
           };
         },
       },
     };
   }
 
-  public static getCdkPropertyHelper = <T extends Construct>(
-    prop: O.SelectKeys<T, string> & string,
+  public static getCdkPropertyHelper = <T extends Stack>(
+    prop: O.SelectKeys<Omit<T, keyof Stack>, string> & string,
   ): string => {
     return `$\{serverlessCdkBridgePlugin:${prop}}`;
   };
 
-  public static ServerlessConstruct = ServerlessConstruct;
+  public static ServerlessStack = ServerlessStack;
 
-  async resolveConstruct(resolveVariable?: ResolveVariable): Promise<void> {
+  async resolveStack(resolveVariable?: ResolveVariable): Promise<void> {
     if (
-      this.construct === undefined &&
+      this.stack === undefined &&
       this.constructInstantiationPromise === undefined
     ) {
       this.constructInstantiationPromise =
-        this.instantiateConstruct(resolveVariable);
+        this.instantiateStack(resolveVariable);
     }
 
     await this.constructInstantiationPromise;
   }
 
-  async instantiateConstruct(resolveVariable?: ResolveVariable): Promise<void> {
+  async instantiateStack(resolveVariable?: ResolveVariable): Promise<void> {
     const serverlessConfigFile = await getServerlessConfigFile();
-    const ServerlessCdkConstruct = serverlessConfigFile.construct;
+    const ConfigServerlessStack = serverlessConfigFile.custom.cdkPlugin.stack;
 
-    const isServerlessConstruct =
-      typeof ServerlessCdkConstruct === 'function' &&
-      ServerlessCdkConstruct.prototype instanceof ServerlessConstruct;
+    const isServerlessStack =
+      typeof ConfigServerlessStack === 'function' &&
+      ConfigServerlessStack.prototype instanceof ServerlessStack;
 
-    if (isServerlessConstruct) {
-      this.construct = new ServerlessCdkConstruct(this.stack, 'cdk', {
+    if (isServerlessStack) {
+      this.stack = new ConfigServerlessStack(this.app, this.stackName, {
         config: serverlessConfigFile,
         service: this.serverless.service,
       });
     } else {
-      this.construct = new ServerlessCdkConstruct(this.stack, 'cdk');
+      this.stack = new ConfigServerlessStack(this.app, this.stackName);
     }
 
     await this.appendCloudformationResources(resolveVariable);
@@ -181,5 +157,22 @@ export class ServerlessCdkPlugin implements Plugin {
     merge(this.serverless.service, {
       resources: cdkCloudFormationData,
     });
+  }
+
+  getStackName(): string {
+    const { stackName: configStackName } = this.serverless.service.custom
+      .cdkPlugin as CdkPluginConfigType;
+
+    const serviceName = this.serverless.service.service;
+
+    if (configStackName !== undefined) {
+      return configStackName;
+    }
+
+    if (serviceName !== null) {
+      return camelize(serviceName);
+    }
+
+    return DEFAULT_STACK_NAME;
   }
 }
