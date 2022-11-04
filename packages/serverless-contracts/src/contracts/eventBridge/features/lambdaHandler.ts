@@ -18,9 +18,7 @@ export const getEventBridgeHandler =
   <AdditionalArgs extends unknown[] = []>(
     handler: SwarmionEventBridgeHandler<EventType, Payload, AdditionalArgs>,
   ): EventBridgeHandler<EventType, Payload, AdditionalArgs> =>
-  async (event, context, _callback, ...additionalArgs: AdditionalArgs) => {
-    // here we decide to not use the callback argument passed by lambda
-    // because we have asynchronous handlers
+  async (event, context, callback, ...additionalArgs: AdditionalArgs) => {
     const ajv = new Ajv();
 
     const payloadValidator = ajv.compile(contract.payloadSchema);
@@ -30,7 +28,12 @@ export const getEventBridgeHandler =
       throw new Error('Invalid payload');
     }
 
-    const handlerResponse = await handler(event, context, ...additionalArgs);
+    const handlerResponse = await handler(
+      event,
+      context,
+      callback,
+      ...additionalArgs,
+    );
 
     return handlerResponse;
   };

@@ -10,6 +10,7 @@ import type {
   APIGatewayProxyEventV2WithRequestContext,
   APIGatewayProxyResult,
   APIGatewayProxyResultV2,
+  Callback,
   Context,
 } from 'aws-lambda';
 import { FromSchema } from 'json-schema-to-ts';
@@ -73,6 +74,7 @@ type HandlerCallback<Contract extends ApiGatewayContract> =
 export type SwarmionApiGatewayHandler<Contract extends ApiGatewayContract> = (
   event: HandlerEventType<Contract>,
   context: Context,
+  callback?: Callback,
   ...additionalArgs: never[]
 ) => Promise<OutputType<Contract>>;
 

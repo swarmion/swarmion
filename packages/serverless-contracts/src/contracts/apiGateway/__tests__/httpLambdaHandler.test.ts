@@ -1,4 +1,7 @@
 /* eslint-disable max-lines */
+import middy from '@middy/core';
+import errorLogger from '@middy/error-logger';
+import cors from '@middy/http-cors';
 import type {
   APIGatewayEventRequestContextV2WithAuthorizer,
   APIGatewayProxyCognitoAuthorizer,
@@ -236,6 +239,81 @@ describe('apiGateway lambda handler', () => {
       });
     });
 
+    it('should work well with middified handler (cors)', async () => {
+      const httpApiContract = httpApiGatewayContractMock;
+
+      const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
+        {
+          ...getRequestContextMockV2(),
+          http: {
+            method: 'OPTIONS',
+            path: '',
+            protocol: '',
+            sourceIp: '',
+            userAgent: '',
+          },
+          authorizer: { claims: { foo: 'claimBar' } },
+        };
+      const fakeContext = getHandlerContextMock();
+
+      const handler: SwarmionApiGatewayHandler<
+        typeof httpApiContract
+      > = async ({
+        body,
+        pathParameters,
+        queryStringParameters,
+        headers,
+        requestContext,
+      }) => {
+        await Promise.resolve();
+        const myCustomClaim = requestContext.authorizer.claims.foo ?? '';
+
+        const name =
+          body.foo +
+          pathParameters.pageNumber +
+          queryStringParameters.testId +
+          headers.myHeader +
+          myCustomClaim;
+
+        return Promise.resolve({ id: 'hello', name });
+      };
+
+      const middifiedHandler = middy(handler).use(errorLogger());
+
+      const httpHandler = middy(
+        getHandler(httpApiContract)(middifiedHandler),
+      ).use(cors());
+
+      const result = await httpHandler(
+        {
+          pathParameters: { userId: 'toto', pageNumber: '15' },
+          body: JSON.stringify({ foo: 'bar' }),
+          headers: {
+            myHeader: 'MyCustomHeader',
+            anotherHeader: 'anotherHeader',
+          },
+          queryStringParameters: { testId: 'myTestId' },
+          requestContext: fakeRequestContext,
+          version: '2.0',
+          routeKey: '',
+          rawPath: '',
+          rawQueryString: '',
+          isBase64Encoded: false,
+        },
+        fakeContext,
+        () => null,
+      );
+
+      expect(result).toMatchObject({
+        body: '{"id":"hello","name":"bar15myTestIdMyCustomHeaderclaimBar"}',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+        },
+        statusCode: 200,
+      });
+    });
+
     it('should accept optional additional arguments', async () => {
       const httpApiContract = httpApiGatewayContractMock;
 
@@ -246,7 +324,12 @@ describe('apiGateway lambda handler', () => {
         };
 
       const httpHandler = getHandler(httpApiContract)(
-        (_event, _context, toto: { tata: string } = { tata: 'coucou' }) => {
+        (
+          _event,
+          _context,
+          _callback,
+          toto: { tata: string } = { tata: 'coucou' },
+        ) => {
           const name = toto.tata;
 
           return Promise.resolve({ name, id: 'miam' });
@@ -291,7 +374,12 @@ describe('apiGateway lambda handler', () => {
         };
 
       const httpHandler = getHandler(httpApiContract)(
-        async (_event, _context, toto: { tata: string } = { tata: 'blob' }) => {
+        async (
+          _event,
+          _context,
+          _callback,
+          toto: { tata: string } = { tata: 'blob' },
+        ) => {
           await Promise.resolve();
           const name = toto.tata;
 
