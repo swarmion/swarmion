@@ -1,0 +1,52 @@
+{
+  "name": "@swarmion-with-next/serverless-configuration",
+  "private": true,
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "clean": "rimraf dist",
+    "lint-fix": "pnpm linter-base-config --fix",
+    "lint-fix-all": "pnpm lint-fix .",
+    "linter-base-config": "eslint --ext=js,ts",
+    "package": "pnpm clean && pnpm package-cjs && pnpm package-esm && pnpm package-types && pnpm package-types-aliases",
+    "package-cjs": "NODE_ENV=cjs pnpm transpile --out-dir dist/cjs --source-maps",
+    "package-esm": "NODE_ENV=esm pnpm transpile --out-dir dist/esm --source-maps",
+    "package-types": "tsc -p tsconfig.build.json",
+    "package-types-aliases": "tsc-alias -p tsconfig.build.json",
+    "test": "pnpm test-linter && pnpm test-type && pnpm test-circular",
+    "test-circular": "pnpm depcruise --validate .dependency-cruiser.js src",
+    "test-linter": "pnpm linter-base-config .",
+    "test-type": "tsc --noEmit --emitDeclarationOnly false",
+    "transpile": "babel src --extensions .ts --quiet",
+    "watch": "pnpm clean && concurrently 'pnpm:package-* --watch'"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.19.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.18.9",
+    "@babel/core": "^7.18.9",
+    "@babel/plugin-transform-runtime": "^7.18.9",
+    "@babel/preset-env": "^7.19.4",
+    "@babel/preset-typescript": "^7.18.6",
+    "@serverless/typescript": "^3.21.0",
+    "@types/node": "^18.8.4",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "concurrently": "^7.3.0",
+    "dependency-cruiser": "^11.14.0",
+    "eslint": "^8.25.0",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.9.1",
+    "tsc-alias": "^1.7.0",
+    "typescript": "^4.8.4",
+    "vitest": "^0.23.1"
+  }
+}

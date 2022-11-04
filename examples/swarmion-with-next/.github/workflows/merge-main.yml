@@ -1,0 +1,74 @@
+on:
+  push:
+    branches:
+      - main
+
+# cancel previous deploy runs
+concurrency:
+  group: main
+  cancel-in-progress: true
+
+name: 🚀 Deploy main
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build-and-test:
+    name: 🏗 Build Project, 🧪 Run Tests & 🚀 Deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          # We need to fetch all branches and commits so that Nx affected has a base to compare against.
+          fetch-depth: 0
+      - uses: nrwl/nx-set-shas@v3
+      - uses: pnpm/action-setup@v2.2.3
+        with:
+          version: 7.13.4
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+        shell: bash
+      - name: 💾 Cache Nx cache
+        id: package-cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            nx-cache
+          # Cache will be updated at every run: https://github.com/actions/cache/blob/main/workarounds.md#update-a-cache
+          key: ${{ runner.os }}-nx-cache-${{ env.NODE_VERSION }}-${{github.event.number}}-${{ github.run_id }}
+          restore-keys: |
+            ${{ runner.os }}-nx-cache-${{ env.NODE_VERSION }}-${{github.event.number}}-
+            ${{ runner.os }}-nx-cache-${{ env.NODE_VERSION }}-
+            ${{ runner.os }}-nx-cache-
+      - name: '🏗 Package'
+        run: pnpm nx affected --target=package --parallel=2
+      - name: '🧪 Test linter'
+        run: pnpm nx affected --target=test-linter --parallel=2
+      - name: '🧪 Test type'
+        run: pnpm nx affected --target=test-type --parallel=2
+      - name: '🧪 Test unit'
+        run: pnpm nx affected --target=test-unit --parallel=2
+      - name: '🧪 Test circular'
+        run: pnpm nx affected --target=test-circular --parallel=2
+      - name: 'Get serverless stack region'
+        id: get-stack-region
+        run: |
+          echo "AWS_REGION=$(pnpm --silent -C backend/core run sls-get-region)" >> $GITHUB_OUTPUT
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@master
+        with:
+          aws-region: ${{ steps.get-stack-region.outputs.AWS_REGION }}
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }} # Create the role in AWS and add it to the secrets
+      - name: '🚀 Deploy main'
+        run: pnpm nx affected --target=deploy-production --parallel=2
