@@ -1,8 +1,9 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Head from 'next/head';
+import Image from 'next/image';
 
-export default function Home() {
+import styles from '../styles/Home.module.css';
+
+const Home = (): JSX.Element => {
   return (
     <div className={styles.container}>
       <Head>
@@ -67,5 +68,7 @@ export default function Home() {
         </a>
       </footer>
     </div>
-  )
-}
+  );
+};
+
+export default Home;

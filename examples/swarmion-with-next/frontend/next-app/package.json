@@ -1,12 +1,15 @@
 {
-  "name": "next-app",
+  "name": "@swarmion-with-next/frontend-next-app",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "lint": "next lint",
-    "start": "next start"
+    "lint-fix": "pnpm linter-base-config --fix",
+    "lint-fix-all": "pnpm lint-fix .",
+    "linter-base-config": "eslint --ext=js,ts,jsx,tsx .",
+    "start": "next start",
+    "test-linter": "pnpm linter-base-config"
   },
   "dependencies": {
     "@types/node": "^18.8.4",
