@@ -9,6 +9,8 @@
     "lint-fix-all": "pnpm lint-fix .",
     "linter-base-config": "eslint --ext=js,ts,jsx,tsx .",
     "start": "next start",
+    "test": "pnpm test-linter",
+    "test-circular": "pnpm depcruise --validate .dependency-cruiser.js src",
     "test-linter": "pnpm linter-base-config"
   },
   "dependencies": {
@@ -20,6 +22,7 @@
     "@types/node": "^18.11.9",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
+    "dependency-cruiser": "^11.14.0",
     "eslint": "^8.27.0",
     "eslint-config-next": "^13.0.2",
     "eslint-plugin-jsx-a11y": "^6.5.1",
