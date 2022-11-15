@@ -11,7 +11,7 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: 'Built for Scale',
-    imgSrc: require('@site/static/img/hive.png').default,
+    imgSrc: require('@site/static/img/scalability.png').default,
     description: (
       <>
         Swarmion helps you handle changes in your team organization, by clearly
@@ -21,7 +21,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Built for Dev Experience',
-    imgSrc: require('@site/static/img/bee.png').default,
+    imgSrc: require('@site/static/img/devx.png').default,
     description: (
       <>
         Using optimized development tools, Swarmion provides a seamless
@@ -32,7 +32,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Built for Stability',
-    imgSrc: require('@site/static/img/bee-stable.png').default,
+    imgSrc: require('@site/static/img/stability.png').default,
     description: (
       <>
         Using end-to-end typing and validation contracts, Swarmion clearly
@@ -47,7 +47,9 @@ const Feature = ({ title, imgSrc, description }: FeatureItem) => {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <img className={styles.featureImg} src={imgSrc} role="img" />
+        <div className={styles.featureImgWrapper}>
+          <img className={styles.featureImg} src={imgSrc} role="img" />
+        </div>
       </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>

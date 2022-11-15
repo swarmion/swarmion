@@ -1,11 +1,13 @@
 # Swarmion
 
 <p align="center">
-  <img src="./user-docs/documentation/static/img/apitherapy.png" alt="Swarmion logo" width="200" height="200" />
+  <img src="./user-docs/documentation/static/img/logo.svg" alt="Swarmion logo" width="200" height="200" />
 </p>
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-21-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 A set of tools to build and deploy type-safe microservices. In order to see a working example of these tools, check out [Swarmion template](https://github.com/swarmion/template).
