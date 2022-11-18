@@ -54,7 +54,7 @@ const config = {
       colorMode: {
         respectPrefersColorScheme: true,
       },
-      image: 'img/logo.svg',
+      image: 'img/social-media-image.png',
       navbar: {
         title: 'swarmion',
         logo: {
