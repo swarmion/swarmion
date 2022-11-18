@@ -1,0 +1,36 @@
+{
+  "version": "0.2.0",
+  "inputs": [
+    {
+      "id": "functionName",
+      "description": "Enter the name of the function to test",
+      "default": "health",
+      "type": "promptString"
+    }
+  ],
+  "configurations": [
+    {
+      "name": "Debug a lambda function λ",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "pnpm",
+      "args": [
+        "serverless",
+        "invoke",
+        "local",
+        "-f",
+        "${input:functionName}",
+        "--path",
+        "functions/${input:functionName}/handler.mock.json"
+      ],
+      "sourceMaps": true,
+      "smartStep": true,
+      "outFiles": ["**/.esbuild/**/*.js"],
+      "protocol": "inspector",
+      "autoAttachChildProcesses": true,
+      "console": "integratedTerminal",
+      "outputCapture": "console"
+    }
+  ]
+}

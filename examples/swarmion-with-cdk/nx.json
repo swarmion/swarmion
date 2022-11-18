@@ -1,0 +1,63 @@
+{
+  "npmScope": "swarmion-with-cdk",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "package",
+          "test",
+          "test-circular",
+          "test-linter",
+          "test-stylelint",
+          "test-type",
+          "test-unit"
+        ],
+        "cacheDirectory": "nx-cache"
+      }
+    }
+  },
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*"],
+    "production": ["!{projectRoot}/**/*.test.tsx?"]
+  },
+  "targetDefaults": {
+    "build": {
+      "inputs": ["production", "^production"],
+      "dependsOn": ["^build", "^package"]
+    },
+    "package": {
+      "inputs": ["production", "^production"],
+      "dependsOn": ["^package"],
+      "outputs": ["{projectRoot}/dist"]
+    },
+    "deploy": {
+      "inputs": ["production", "^production"],
+      "dependsOn": ["^package", "^deploy", "^build"]
+    },
+    "test": {
+      "inputs": ["default", "^production"],
+      "dependsOn": ["^package"]
+    },
+    "test-linter": {
+      "inputs": ["default", "^production"],
+      "dependsOn": ["^package"]
+    },
+    "test-unit": {
+      "inputs": ["default", "^production"],
+      "dependsOn": ["^package"]
+    },
+    "test-type": {
+      "inputs": ["default", "^production"],
+      "dependsOn": ["^package"]
+    },
+    "test-circular": {
+      "inputs": ["default", "^production"],
+      "dependsOn": ["^package"]
+    }
+  },
+  "affected": {
+    "defaultBase": "main"
+  }
+}
