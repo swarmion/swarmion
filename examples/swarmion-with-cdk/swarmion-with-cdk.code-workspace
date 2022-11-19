@@ -15,6 +15,7 @@
       "**/build": true,
       "**/bundles": true,
       "**/dist": true,
+      "**/cdk.out": true,
       "pnpm-lock.yaml": true
     },
     "[dotenv][ignore][properties][shellscript]": {
@@ -26,7 +27,8 @@
     "typescript.tsdk": "node_modules/typescript/lib",
     "vitest.commandLine": "pnpm vitest",
     "vitest.disabledWorkspaceFolders": ["swarmion-with-cdk root"],
-    "cSpell.words": ["esbuild", "swarmion"]
+    "cSpell.words": ["esbuild", "swarmion"],
+    "files.exclude": {}
   },
   "extensions": {
     "recommendations": [
