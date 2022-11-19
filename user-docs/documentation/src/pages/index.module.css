@@ -4,10 +4,11 @@
  */
 
 .heroBanner {
-  padding: 4rem 0;
+  padding: 3rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(to top right, #f6bc12, #f68b51);
 }
 
 @media screen and (max-width: 996px) {
@@ -20,4 +21,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.heroBanner * {
+  font-weight: normal;
+  font-family: 'Cartograph' !important;
 }

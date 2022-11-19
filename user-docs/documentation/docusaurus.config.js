@@ -6,13 +6,13 @@ const lightCodeTheme = require('prism-react-renderer/themes/github');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Swarmion',
+  title: 'swarmion',
   tagline: 'Build stable Serverless applications that scale with your team',
   url: 'https://www.swarmion.dev',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/apitherapy-small.png',
+  favicon: 'img/logo.svg',
   organizationName: 'swarmion',
   projectName: 'swarmion',
   presets: [
@@ -54,12 +54,12 @@ const config = {
       colorMode: {
         respectPrefersColorScheme: true,
       },
-      image: 'img/apitherapy.png',
+      image: 'img/social-media-image.png',
       navbar: {
-        title: 'Swarmion',
+        title: 'swarmion',
         logo: {
           alt: 'Swarmion Logo',
-          src: 'img/apitherapy.png',
+          src: 'img/logo.svg',
         },
         items: [
           {

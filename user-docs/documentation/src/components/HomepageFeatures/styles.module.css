@@ -5,7 +5,21 @@
   width: 100%;
 }
 
+.featureImgWrapper {
+  height: 400px;
+  display: flex;
+}
+
 .featureImg {
-  height: 200px;
-  width: 200px;
+  margin: auto;
+}
+
+@media screen and (max-width: 996px) {
+  .featureImgWrapper {
+    height: 150px;
+  }
+
+  .featureImg {
+    max-width: 25%;
+  }
 }
