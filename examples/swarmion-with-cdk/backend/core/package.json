@@ -23,7 +23,9 @@
     "test-unit": "vitest run --coverage --passWithNoTests"
   },
   "dependencies": {
+    "@swarmion-with-cdk/core-contracts": "workspace:^",
     "@swarmion-with-cdk/serverless-configuration": "workspace:^",
+    "@swarmion/serverless-contracts": "^0.13.2",
     "@swarmion/serverless-helpers": "^0.13.2"
   },
   "devDependencies": {
@@ -36,6 +38,7 @@
     "dotenv": "^16.0.3",
     "esbuild": "^0.15.14",
     "eslint": "^8.27.0",
+    "json-schema-to-ts": "^2.6.0",
     "ts-node": "^10.9.1",
     "typescript": "^4.8.4",
     "vite": "3.2.3",

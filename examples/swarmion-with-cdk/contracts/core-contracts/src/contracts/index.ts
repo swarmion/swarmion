@@ -1,1 +1,1 @@
-export * from './cloudFormation';
+export { default as healthContract } from './healthContract';
