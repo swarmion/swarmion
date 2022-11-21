@@ -7,4 +7,5 @@ export interface FullContractSchemaType<Name extends string> {
   };
   required: ['contractId', 'name', 'contractType'];
   additionalProperties: false;
+  [key: string]: unknown;
 }

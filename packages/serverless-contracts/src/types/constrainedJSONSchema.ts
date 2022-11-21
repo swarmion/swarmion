@@ -2,6 +2,7 @@ interface ConstrainedJSONSchemaProperty {
   readonly type?: 'string';
   readonly const?: string;
   readonly enum?: readonly string[];
+  readonly [key: string]: unknown;
 }
 
 /**
@@ -16,4 +17,5 @@ export interface ConstrainedJSONSchema {
     readonly [key: string]: ConstrainedJSONSchemaProperty;
   };
   readonly required?: readonly string[];
+  readonly [key: string]: unknown;
 }

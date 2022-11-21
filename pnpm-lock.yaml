@@ -127,7 +127,7 @@ importers:
       concurrently: ^7.5.0
       dependency-cruiser: ^12.0.0
       eslint: ^8.28.0
-      json-schema-to-ts: ^2.5.4
+      json-schema-to-ts: ^2.6.1
       prettier: ^2.7.1
       rimraf: ^3.0.2
       ts-node: ^10.9.1
@@ -148,7 +148,7 @@ importers:
       concurrently: 7.5.0
       dependency-cruiser: 12.0.0
       eslint: 8.28.0
-      json-schema-to-ts: 2.5.4
+      json-schema-to-ts: 2.6.1
       prettier: 2.7.1
       rimraf: 3.0.2
       ts-node: 10.9.1_cbe7ovvae6zqfnmtgctpgpys54
@@ -329,7 +329,7 @@ importers:
       dependency-cruiser: ^12.0.0
       eslint: ^8.28.0
       jest: ^29.3.1
-      json-schema-to-ts: ^2.5.5
+      json-schema-to-ts: ^2.6.1
       lodash: ^4.17.21
       prettier: ^2.7.1
       rimraf: ^3.0.2
@@ -365,7 +365,7 @@ importers:
       dependency-cruiser: 12.0.0
       eslint: 8.28.0
       jest: 29.3.1_odkjkoia5xunhxkdrka32ib6vi
-      json-schema-to-ts: 2.5.5
+      json-schema-to-ts: 2.6.1
       prettier: 2.7.1
       rimraf: 3.0.2
       serverless: 3.24.1
@@ -388,7 +388,7 @@ importers:
       concurrently: ^7.5.0
       dependency-cruiser: ^12.0.0
       eslint: ^8.28.0
-      json-schema-to-ts: ^2.5.4
+      json-schema-to-ts: ^2.6.1
       prettier: ^2.7.1
       rimraf: ^3.0.2
       ts-node: ^10.9.1
@@ -409,7 +409,7 @@ importers:
       concurrently: 7.5.0
       dependency-cruiser: 12.0.0
       eslint: 8.28.0
-      json-schema-to-ts: 2.5.4
+      json-schema-to-ts: 2.6.1
       prettier: 2.7.1
       rimraf: 3.0.2
       ts-node: 10.9.1_cbe7ovvae6zqfnmtgctpgpys54
@@ -446,7 +446,7 @@ importers:
       dependency-cruiser: ^12.0.0
       eslint: ^8.28.0
       http-errors: ^2.0.0
-      json-schema-to-ts: ^2.5.4
+      json-schema-to-ts: ^2.6.1
       lodash: ^4.17.21
       openapi-types: 12.0.2
       prettier: ^2.7.1
@@ -488,7 +488,7 @@ importers:
       concurrently: 7.5.0
       dependency-cruiser: 12.0.0
       eslint: 8.28.0
-      json-schema-to-ts: 2.5.4
+      json-schema-to-ts: 2.6.1
       openapi-types: 12.0.2
       prettier: 2.7.1
       rimraf: 3.0.2
@@ -521,7 +521,7 @@ importers:
       dependency-cruiser: ^12.0.0
       eslint: ^8.28.0
       json-schema-diff: ^0.18.0
-      json-schema-to-ts: ^2.5.4
+      json-schema-to-ts: ^2.6.1
       lodash: ^4.17.21
       openapi-types: 12.0.2
       prettier: ^2.7.1
@@ -555,7 +555,7 @@ importers:
       concurrently: 7.5.0
       dependency-cruiser: 12.0.0
       eslint: 8.28.0
-      json-schema-to-ts: 2.5.4
+      json-schema-to-ts: 2.6.1
       openapi-types: 12.0.2
       prettier: 2.7.1
       rimraf: 3.0.2
@@ -587,7 +587,7 @@ importers:
       concurrently: ^7.5.0
       dependency-cruiser: ^12.0.0
       eslint: ^8.28.0
-      json-schema-to-ts: ^2.5.4
+      json-schema-to-ts: ^2.6.1
       prettier: ^2.7.1
       rimraf: ^3.0.2
       ts-node: ^10.9.1
@@ -615,7 +615,7 @@ importers:
       concurrently: 7.5.0
       dependency-cruiser: 12.0.0
       eslint: 8.28.0
-      json-schema-to-ts: 2.5.4
+      json-schema-to-ts: 2.6.1
       prettier: 2.7.1
       rimraf: 3.0.2
       ts-node: 10.9.1_cbe7ovvae6zqfnmtgctpgpys54
@@ -13472,17 +13472,11 @@ packages:
     resolution: {integrity: sha512-MDl8fA8ONckmQOm2+eXKJaFJNvxk7eGin+XFofNjS3q3PRKSoEvgMVb0ehOpCAYkUiLoMiqdU7obV7AmzAmyLw==}
     dev: false
 
-  /json-schema-to-ts/2.5.4:
-    resolution: {integrity: sha512-wlaYrGg+aYq0aEjSDY3cAFNzJVD2GvdrVIlvMdrbOLwkaMarXBiX+k0qm5Myb2aI3xjvdqsZoGs63JPS/M8+dg==}
+  /json-schema-to-ts/2.6.1:
+    resolution: {integrity: sha512-SQ/L0BBDxYzd7AiF7WK5oKTF/3Y007XRH6Ss4ZQUfnBEtsbLmtG0GDiPw831eNzcF5WYqdUtbxS1NSb8hBu6Tg==}
+    engines: {node: ^16.10.0}
     dependencies:
-      '@types/json-schema': 7.0.11
-      ts-algebra: 1.1.1
-      ts-toolbelt: 9.6.0
-    dev: true
-
-  /json-schema-to-ts/2.5.5:
-    resolution: {integrity: sha512-GFD5t0fUnX/B0gE9xbHjxv2BwFXRJND2+OKoLoMElJ3XRJ7dOBlLT7KXpg96aETeZ0RJbAZOfqHALBf5k4aIIA==}
-    dependencies:
+      '@babel/runtime': 7.20.1
       '@types/json-schema': 7.0.11
       ts-algebra: 1.1.1
       ts-toolbelt: 9.6.0
