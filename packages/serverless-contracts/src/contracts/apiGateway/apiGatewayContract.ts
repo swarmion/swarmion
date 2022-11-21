@@ -61,30 +61,73 @@ export class ApiGatewayContract<
   /**
    * Builds a new ApiGateway contract
    *
-   * @param id an id to uniquely identify the contract among services. Beware of uniqueness!
-   * @param path the path on which the lambda will be triggered
-   * @param method the http method
-   * @param integrationType httpApi or restApi, see https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html
-   * @param pathParametersSchema a JSONSchema used to validate the path parameters and infer their types.
-   * Please note that the `as const` directive is necessary to properly infer the type from the schema.
-   * See https://github.com/ThomasAribart/json-schema-to-ts#fromschema.
-   * Also please note that for Typescript reasons, you need to explicitly pass `undefined` if you don't want to use the schema.
-   * @param queryStringParametersSchema a JSONSchema used to validate the query parameters and infer their types (Same constraints).
-   * @param headersSchema a JSONSchema used to validate the headers and infer their types (Same constraints).
-   * @param bodySchema a JSONSchema used to validate the body and infer its type (Same constraints).
-   * @param outputSchema a JSONSchema used to validate the output and infer its type (Same constraints).
-   * @param authorizerType indicates which type of authorizer is used for this contract.
+   * @param props - the contract properties
    */
   constructor(props: {
+    /**
+     * An id to uniquely identify the contract among services. Beware of uniqueness!
+     */
     id: string;
+    /**
+     * The path on which the lambda will be triggered
+     */
     path: Path;
+    /**
+     * The http method
+     */
     method: Method;
+    /**
+     * `'httpApi'` or `'restApi'`, see https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html
+     */
     integrationType: IntegrationType;
+    /**
+     * A JSONSchema used to validate the path parameters and infer their types.
+     *
+     * Please note that the `as const` directive is necessary to properly infer the type from the schema.
+     * See https://github.com/ThomasAribart/json-schema-to-ts#fromschema.
+     *
+     * Also please note that for Typescript reasons, you need to explicitly pass `undefined` if you don't want to use the schema.
+     */
     pathParametersSchema: PathParametersSchema;
+    /**
+     * A JSONSchema used to validate the query parameters and infer their types.
+     *
+     * Please note that the `as const` directive is necessary to properly infer the type from the schema.
+     * See https://github.com/ThomasAribart/json-schema-to-ts#fromschema.
+     *
+     * Also please note that for Typescript reasons, you need to explicitly pass `undefined` if you don't want to use the schema.
+     */
     queryStringParametersSchema: QueryStringParametersSchema;
+    /**
+     * A JSONSchema used to validate the headers and infer their types.
+     *
+     * Please note that the `as const` directive is necessary to properly infer the type from the schema.
+     * See https://github.com/ThomasAribart/json-schema-to-ts#fromschema.
+     *
+     * Also please note that for Typescript reasons, you need to explicitly pass `undefined` if you don't want to use the schema.
+     */
     headersSchema: HeadersSchema;
+    /**
+     * A JSONSchema used to validate the body and infer its type.
+     *
+     * Please note that the `as const` directive is necessary to properly infer the type from the schema.
+     * See https://github.com/ThomasAribart/json-schema-to-ts#fromschema.
+     *
+     * Also please note that for Typescript reasons, you need to explicitly pass `undefined` if you don't want to use the schema.
+     */
     bodySchema: BodySchema;
+    /**
+     * A JSONSchema used to validate the output and infer its type.
+     *
+     * Please note that the `as const` directive is necessary to properly infer the type from the schema.
+     * See https://github.com/ThomasAribart/json-schema-to-ts#fromschema.
+     *
+     * Also please note that for Typescript reasons, you need to explicitly pass `undefined` if you don't want to use the schema.
+     */
     outputSchema: OutputSchema;
+    /**
+     * Indicates which type of authorizer is used for this contract.
+     */
     authorizerType: AuthorizerType;
   }) {
     this.id = props.id;
