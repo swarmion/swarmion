@@ -22,7 +22,7 @@ importers:
       lint-staged: ^13.0.3
       lodash: ^4.17.21
       npm-audit-resolver: ^3.0.0-7
-      nx: ^14.8.4
+      nx: ^15.2.1
       prettier: ^2.7.1
       syncpack: ^8.2.4
       typescript: ^4.8.4
@@ -33,7 +33,7 @@ importers:
       '@swarmion/nx-plugin': 0.13.2
       '@typescript-eslint/eslint-plugin': 5.40.0_5iv6rqlafmjjzdp525sdy6yo2a
       '@typescript-eslint/parser': 5.40.0_rmayb2veg2btbq6mbmnyivgasy
-      aws-sdk: 2.1231.0
+      aws-sdk: 2.1258.0
       dependency-cruiser: 11.16.1
       eslint: 8.27.0
       eslint-config-prettier: 8.5.0_eslint@8.27.0
@@ -45,7 +45,7 @@ importers:
       lint-staged: 13.0.3
       lodash: 4.17.21
       npm-audit-resolver: 3.0.0-7
-      nx: 14.8.4
+      nx: 15.2.1
       prettier: 2.7.1
       syncpack: 8.2.4
       typescript: 4.8.4
@@ -69,7 +69,7 @@ importers:
       ts-node: ^10.9.1
       typescript: ^4.8.4
       vite: 3.2.3
-      vite-tsconfig-paths: ^3.5.2
+      vite-tsconfig-paths: ^3.6.0
       vitest: ^0.25.2
     dependencies:
       '@swarmion-with-cdk/core-contracts': link:../../contracts/core-contracts
@@ -90,7 +90,7 @@ importers:
       ts-node: 10.9.1_cbe7ovvae6zqfnmtgctpgpys54
       typescript: 4.8.4
       vite: 3.2.3_@types+node@18.11.9
-      vite-tsconfig-paths: 3.5.2_vite@3.2.3
+      vite-tsconfig-paths: 3.6.0_vite@3.2.3
       vitest: 0.25.2
 
   contracts/core-contracts:
@@ -2732,6 +2732,16 @@ packages:
       - debug
     dev: true
 
+  /@nrwl/cli/15.2.1:
+    resolution: {integrity: sha512-ufBJ5o3WCixdp6/TPkpn4rH3QBFJcqCMG1d14A/SvAkEnXu3vWlj3E+4GXf3CK+sGNjjf3ZGoNm7OFV+/Ml4GA==}
+    dependencies:
+      nx: 15.2.1
+    transitivePeerDependencies:
+      - '@swc-node/register'
+      - '@swc/core'
+      - debug
+    dev: true
+
   /@nrwl/devkit/14.8.4_nx@14.8.4+typescript@4.8.4:
     resolution: {integrity: sha512-GmHZ8SVE0aL4iRfkYRzzE5I09rl6MgHpLDkuGAYQOPLOm4REjZ5jFjoODS2M7AydrJ34JxAq9eAFXGFr4cKauA==}
     peerDependencies:
@@ -2741,7 +2751,7 @@ packages:
       ejs: 3.1.8
       ignore: 5.2.0
       nx: 14.8.4
-      tslib: 2.4.0
+      tslib: 2.4.1
     transitivePeerDependencies:
       - typescript
     dev: true
@@ -2760,7 +2770,7 @@ packages:
       jest-resolve: 28.1.1
       jest-util: 28.1.1
       resolve.exports: 1.1.0
-      tslib: 2.4.0
+      tslib: 2.4.1
     transitivePeerDependencies:
       - '@types/node'
       - node-notifier
@@ -2784,7 +2794,7 @@ packages:
       eslint: 8.27.0
       nx: 14.8.4
       tmp: 0.2.1
-      tslib: 2.4.0
+      tslib: 2.4.1
     transitivePeerDependencies:
       - '@swc-node/register'
       - '@swc/core'
@@ -2801,6 +2811,17 @@ packages:
     hasBin: true
     dependencies:
       nx: 14.8.4
+    transitivePeerDependencies:
+      - '@swc-node/register'
+      - '@swc/core'
+      - debug
+    dev: true
+
+  /@nrwl/tao/15.2.1:
+    resolution: {integrity: sha512-6ApglWKORasLhtjlJmqo2co/UexSSiD7mWVxT2886oKG2Y/T/5RnPFNhJgGnKJIURCNMxiSKhq7GAA+CE9zRZg==}
+    hasBin: true
+    dependencies:
+      nx: 15.2.1
     transitivePeerDependencies:
       - '@swc-node/register'
       - '@swc/core'
@@ -3215,7 +3236,7 @@ packages:
     engines: {node: '>=14.15.0'}
     dependencies:
       js-yaml: 3.14.1
-      tslib: 2.4.0
+      tslib: 2.4.1
     dev: true
 
   /@zkochan/js-yaml/0.0.6:
@@ -3524,8 +3545,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /aws-sdk/2.1231.0:
-    resolution: {integrity: sha512-ONBuRsOxsu0zL8u/Vmz49tPWi9D4ls2pjb6szdfSx9VQef7bOnWe9gJpWoA94OTzcjOWsvjsG7UgjvQJkIuPBg==}
+  /aws-sdk/2.1258.0:
+    resolution: {integrity: sha512-siqNFXlhJZVN1BizPZebJViFXtTUPgcA+yLfHKl2eC4Ied7kE7spOjZmAzpuiGUTzFagk1oWCaJ1Hit4llIoGg==}
     engines: {node: '>= 10.0.0'}
     dependencies:
       buffer: 4.9.2
@@ -3929,6 +3950,15 @@ packages:
 
   /cliui/7.0.4:
     resolution: {integrity: sha512-OcRE68cOsVMXp1Yvonl/fzkQOyjLSu/8bhPDfQt0e0/Eb283TKP20Fs2MqoPsr9SwA595rRCA+QMzYc9nBP+JQ==}
+    dependencies:
+      string-width: 4.2.3
+      strip-ansi: 6.0.1
+      wrap-ansi: 7.0.0
+    dev: true
+
+  /cliui/8.0.1:
+    resolution: {integrity: sha512-BSeNnyus75C4//NQ9gQt1/csTXyo/8Sb+afLAkzAptFuMsod9HFokGNudZpi/oQV73hnVK+sR+5PVRMd+Dr7YQ==}
+    engines: {node: '>=12'}
     dependencies:
       string-width: 4.2.3
       strip-ansi: 6.0.1
@@ -6893,10 +6923,62 @@ packages:
       tar-stream: 2.2.0
       tmp: 0.2.1
       tsconfig-paths: 3.14.1
-      tslib: 2.4.0
+      tslib: 2.4.1
       v8-compile-cache: 2.3.0
-      yargs: 17.5.1
+      yargs: 17.6.2
       yargs-parser: 21.0.1
+    transitivePeerDependencies:
+      - debug
+    dev: true
+
+  /nx/15.2.1:
+    resolution: {integrity: sha512-vVeT5D02cDDiSmS3P2Bos/waYQa3m0yl/rouzsKpusVSmzAQGQbKXhxPb4WnNIj8Iz/8KjFeBM/RZO021BtGNg==}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@swc-node/register': ^1.4.2
+      '@swc/core': ^1.2.173
+    peerDependenciesMeta:
+      '@swc-node/register':
+        optional: true
+      '@swc/core':
+        optional: true
+    dependencies:
+      '@nrwl/cli': 15.2.1
+      '@nrwl/tao': 15.2.1
+      '@parcel/watcher': 2.0.4
+      '@yarnpkg/lockfile': 1.1.0
+      '@yarnpkg/parsers': 3.0.0-rc.22
+      '@zkochan/js-yaml': 0.0.6
+      axios: 1.1.2
+      chalk: 4.1.0
+      chokidar: 3.5.3
+      cli-cursor: 3.1.0
+      cli-spinners: 2.6.1
+      cliui: 7.0.4
+      dotenv: 10.0.0
+      enquirer: 2.3.6
+      fast-glob: 3.2.7
+      figures: 3.2.0
+      flat: 5.0.2
+      fs-extra: 10.1.0
+      glob: 7.1.4
+      ignore: 5.2.0
+      js-yaml: 4.1.0
+      jsonc-parser: 3.2.0
+      minimatch: 3.0.5
+      npm-run-path: 4.0.1
+      open: 8.4.0
+      semver: 7.3.4
+      string-width: 4.2.3
+      strong-log-transformer: 2.1.0
+      tar-stream: 2.2.0
+      tmp: 0.2.1
+      tsconfig-paths: 3.14.1
+      tslib: 2.4.1
+      v8-compile-cache: 2.3.0
+      yargs: 17.6.2
+      yargs-parser: 21.1.1
     transitivePeerDependencies:
       - debug
     dev: true
@@ -8366,8 +8448,8 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite-tsconfig-paths/3.5.2_vite@3.2.3:
-    resolution: {integrity: sha512-xJMgHA2oJ28QCG2f+hXrcqzo7IttrSRK4A//Tp94CfuX5eetOx33qiwXHUdi3FwkHP2ocpxHuvE45Ix67gwEmQ==}
+  /vite-tsconfig-paths/3.6.0_vite@3.2.3:
+    resolution: {integrity: sha512-UfsPYonxLqPD633X8cWcPFVuYzx/CMNHAjZTasYwX69sXpa4gNmQkR0XCjj82h7zhLGdTWagMjC1qfb9S+zv0A==}
     peerDependencies:
       vite: '>2.0.0-0'
     dependencies:
@@ -8700,6 +8782,19 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       cliui: 7.0.4
+      escalade: 3.1.1
+      get-caller-file: 2.0.5
+      require-directory: 2.1.1
+      string-width: 4.2.3
+      y18n: 5.0.8
+      yargs-parser: 21.1.1
+    dev: true
+
+  /yargs/17.6.2:
+    resolution: {integrity: sha512-1/9UrdHjDZc0eOU0HxOHoS78C69UD3JRMvzlJ7S79S2nTaWRA/whGCTV8o9e/N/1Va9YIV7Q4sOxD8VV4pCWOw==}
+    engines: {node: '>=12'}
+    dependencies:
+      cliui: 8.0.1
       escalade: 3.1.1
       get-caller-file: 2.0.5
       require-directory: 2.1.1
