@@ -50,13 +50,13 @@ importers:
     specifiers:
       '@aws-sdk/client-eventbridge': ^3.213.0
       '@serverless/typescript': ^3.21.0
-      '@swarmion/eslint-plugin': ^0.13.2
-      '@swarmion/orchestrator-contracts': ^0.13.2
-      '@swarmion/serverless-cdk-plugin': ^0.13.2
-      '@swarmion/serverless-configuration': ^0.13.2
-      '@swarmion/serverless-contracts': ^0.13.2
-      '@swarmion/serverless-helpers': ^0.13.2
-      '@swarmion/serverless-plugin': ^0.13.2
+      '@swarmion/eslint-plugin': ^0.13.3
+      '@swarmion/orchestrator-contracts': ^0.13.3
+      '@swarmion/serverless-cdk-plugin': ^0.13.3
+      '@swarmion/serverless-configuration': ^0.13.3
+      '@swarmion/serverless-contracts': ^0.13.3
+      '@swarmion/serverless-helpers': ^0.13.3
+      '@swarmion/serverless-plugin': ^0.13.3
       '@types/node': ^18.11.9
       '@vitest/coverage-c8': ^0.25.2
       aws-cdk-lib: ^2.51.1
@@ -121,7 +121,7 @@ importers:
       '@babel/preset-env': ^7.19.4
       '@babel/preset-typescript': ^7.18.6
       '@babel/runtime': ^7.20.0
-      '@swarmion/serverless-contracts': ^0.13.2
+      '@swarmion/serverless-contracts': ^0.13.3
       '@types/node': ^18.11.9
       babel-plugin-module-resolver: ^4.1.0
       concurrently: ^7.5.0
@@ -509,7 +509,7 @@ importers:
       '@babel/preset-typescript': ^7.18.6
       '@babel/runtime': ^7.20.0
       '@serverless/typescript': ^3.21.0
-      '@swarmion/serverless-contracts': ^0.13.2
+      '@swarmion/serverless-contracts': ^0.13.3
       '@types/lodash': ^4.14.189
       '@types/node': ^18.11.9
       '@types/serverless': ^3.12.9
@@ -627,8 +627,8 @@ importers:
   user-docs/cloudfront:
     specifiers:
       '@serverless/typescript': ^3.21.0
-      '@swarmion/serverless-configuration': ^0.13.2
-      '@swarmion/serverless-helpers': ^0.13.2
+      '@swarmion/serverless-configuration': ^0.13.3
+      '@swarmion/serverless-helpers': ^0.13.3
       '@types/node': ^18.11.9
       dependency-cruiser: ^12.0.0
       eslint: ^8.28.0
@@ -1931,7 +1931,7 @@ packages:
       '@babel/core': ^7.4.0-0
     dependencies:
       '@babel/core': 7.19.6
-      '@babel/helper-compilation-targets': 7.20.0_@babel+core@7.19.6
+      '@babel/helper-compilation-targets': 7.19.3_@babel+core@7.19.6
       '@babel/helper-plugin-utils': 7.19.0
       debug: 4.3.4
       lodash.debounce: 4.0.8
@@ -5081,7 +5081,7 @@ packages:
     peerDependencies:
       react: '*'
     dependencies:
-      '@types/react': 18.0.24
+      '@types/react': 18.0.25
       prop-types: 15.8.1
       react: 17.0.2
 
@@ -8140,7 +8140,7 @@ packages:
     resolution: {integrity: sha512-YYknwy0D0iOwKQgz9v8nOzt2J6l4gouBmDnWqUUznltOTaon+r8US8ky8HvN0tXvc38U9m6z/t2RsVsnd1zM0g==}
     dependencies:
       '@types/history': 4.7.11
-      '@types/react': 18.0.24
+      '@types/react': 18.0.25
 
   /@types/react/17.0.43:
     resolution: {integrity: sha512-8Q+LNpdxf057brvPu1lMtC5Vn7J119xrP1aq4qiaefNioQUYANF/CYeK4NsKorSZyUGJ66g0IM+4bbjwx45o2A==}
@@ -8149,20 +8149,12 @@ packages:
       '@types/scheduler': 0.16.2
       csstype: 3.0.11
 
-  /@types/react/18.0.24:
-    resolution: {integrity: sha512-wRJWT6ouziGUy+9uX0aW4YOJxAY0bG6/AOk5AW5QSvZqI7dk6VBIbXvcVgIw/W5Jrl24f77df98GEKTJGOLx7Q==}
-    dependencies:
-      '@types/prop-types': 15.7.5
-      '@types/scheduler': 0.16.2
-      csstype: 3.1.1
-
   /@types/react/18.0.25:
     resolution: {integrity: sha512-xD6c0KDT4m7n9uD4ZHi02lzskaiqcBxf4zi+tXZY98a04wvc0hi/TcCPC2FOESZi51Nd7tlUeOJY8RofL799/g==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
       csstype: 3.1.1
-    dev: false
 
   /@types/responselike/1.0.0:
     resolution: {integrity: sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==}
@@ -19483,7 +19475,7 @@ packages:
       '@tsconfig/node14': 1.0.1
       '@tsconfig/node16': 1.0.2
       '@types/node': 14.18.33
-      acorn: 8.8.1
+      acorn: 8.8.0
       acorn-walk: 8.2.0
       arg: 4.1.3
       create-require: 1.1.1
