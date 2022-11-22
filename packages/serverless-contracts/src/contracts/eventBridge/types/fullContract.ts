@@ -16,4 +16,5 @@ export interface FullContractSchemaType<Contract extends EventBridgeContract> {
   };
   required: ['id', 'contractType', 'sources', 'eventType', 'payloadSchema'];
   additionalProperties: false;
+  [key: string]: unknown;
 }

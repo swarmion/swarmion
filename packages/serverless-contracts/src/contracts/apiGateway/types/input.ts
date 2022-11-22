@@ -8,7 +8,7 @@ import { DefinedProperties } from './utils';
  * Each property is either undefined (no schema) or is a JSONSchema.
  * Do not use this type directly, use it with `DefinedProperties`
  */
-type AllInputProperties<
+export type AllInputProperties<
   PathParametersSchema extends JSONSchema | undefined,
   QueryStringParametersSchema extends JSONSchema | undefined,
   HeadersSchema extends JSONSchema | undefined,
