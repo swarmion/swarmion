@@ -110,7 +110,7 @@ ok
 Now that the project has two services, it would be really cumbersome to deploy them one after the other. Thankfully, we can deploy the whole project in order by running the following command at the root of the repository:
 
 ```bash
-pnpm deploy
+pnpm run deploy
 ```
 
 This command will leverage the dependency graph of the project and deploy all the services in the right order. This means that `backend-core` will be deployed, then `backend-users`.

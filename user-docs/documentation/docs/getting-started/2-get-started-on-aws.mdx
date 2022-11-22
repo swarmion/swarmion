@@ -36,7 +36,7 @@ we recommend following the guidelines in the [configure your CI/CD section](../h
 
 ## Deploy the stacks
 
-At the root of the project, run `pnpm deploy`. This will compile and deploy all the stacks in order.
+At the root of the project, run `pnpm run deploy`. This will compile and deploy all the stacks in order.
 You can follow the creation of the stacks on [the Cloudformation console](https://console.aws.amazon.com/cloudformation/home).
 
 :::note
@@ -101,7 +101,7 @@ Then deploy the stack by running the following commands in a terminal located at
 
 ```bash
 cd backend/core
-pnpm deploy
+pnpm run deploy
 ```
 
 When you call the endpoint, we can see the updated result:
