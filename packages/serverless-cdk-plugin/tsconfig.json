@@ -1,11 +1,9 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.options.json",
   "compilerOptions": {
     "types": ["node", "jest"],
-    "baseUrl": "src",
-    "composite": true,
-    "outDir": "./dist/types"
+    "baseUrl": "src"
   },
-  "exclude": ["./dist"],
-  "include": ["./**/*.ts"]
+  "include": ["./**/*.ts"],
+  "exclude": ["./dist"]
 }

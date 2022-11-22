@@ -30,7 +30,7 @@
     "package": {
       "inputs": ["production", "^production"],
       "dependsOn": ["^package"],
-      "outputs": ["{projectRoot}/dist"]
+      "outputs": ["{projectRoot}/dist", "{projectRoot}/tsconfig.tsbuildinfo"]
     },
     "deploy": {
       "inputs": ["production", "^production"],

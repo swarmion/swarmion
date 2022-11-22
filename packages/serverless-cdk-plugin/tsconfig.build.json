@@ -1,12 +1,16 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "../../tsconfig.options.json",
   "compilerOptions": {
-    "rootDir": "src"
+    "types": ["node", "jest"],
+    "baseUrl": "src",
+    "rootDir": "src",
+    "outDir": "./dist/types"
   },
   "exclude": [
     "./jest.config.ts",
     "./**/*.test.ts",
     "./integrationTests",
     "./dist"
-  ]
+  ],
+  "include": ["./**/*.ts"]
 }
