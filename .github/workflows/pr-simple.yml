@@ -31,18 +31,6 @@ jobs:
       - uses: nrwl/nx-set-shas@v3
       - name: Install & cache node dependencies
         uses: ./.github/actions/install-node-deps
-      - name: 💾 Cache Nx cache
-        id: package-cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            nx-cache
-          # Cache will be updated at every run: https://github.com/actions/cache/blob/main/workarounds.md#update-a-cache
-          key: ${{ runner.os }}-nx-cache-${{ env.NODE_VERSION }}-${{github.event.number}}-${{ github.run_id }}
-          restore-keys: |
-            ${{ runner.os }}-nx-cache-${{ env.NODE_VERSION }}-${{github.event.number}}-
-            ${{ runner.os }}-nx-cache-${{ env.NODE_VERSION }}-
-            ${{ runner.os }}-nx-cache-
       - name: '🧪 Test linter'
         run: pnpm nx affected --target=test-linter --parallel=2
       - name: '🧪 Test type'
@@ -65,18 +53,6 @@ jobs:
       - uses: nrwl/nx-set-shas@v3
       - name: Install & cache node dependencies
         uses: ./.github/actions/install-node-deps
-      - name: 💾 Cache Nx cache
-        id: package-cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            nx-cache-examples
-          # Cache will be updated at every run: https://github.com/actions/cache/blob/main/workarounds.md#update-a-cache
-          key: ${{ runner.os }}-nx-cache-examples-${{ env.NODE_VERSION }}-${{github.event.number}}-${{ github.run_id }}
-          restore-keys: |
-            ${{ runner.os }}-nx-cache-examples-${{ env.NODE_VERSION }}-${{github.event.number}}-
-            ${{ runner.os }}-nx-cache-examples-${{ env.NODE_VERSION }}-
-            ${{ runner.os }}-nx-cache-examples-
       - name: '🔍 Check examples'
         run: REF=${{ github.event.pull_request.head.sha }} sh ./scripts/check-examples.sh
 
