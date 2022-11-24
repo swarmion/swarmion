@@ -10,7 +10,7 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-A set of tools to build and deploy type-safe microservices. In order to see a working example of these tools, check out [Swarmion template](https://github.com/swarmion/template).
+A set of tools to build and deploy type-safe microservices. In order to see working examples of these tools, check out the [examples folder](https://github.com/swarmion/swarmion/tree/main/examples).
 
 This project is composed of the following packages:
 
