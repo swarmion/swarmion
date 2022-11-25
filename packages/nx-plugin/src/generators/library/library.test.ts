@@ -9,7 +9,7 @@ import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import { Schema } from '../types';
 import generator from './index';
 
-describe('packages-generator generator', () => {
+describe('library generator', () => {
   let appTree: Tree;
   const options: Schema = { name: 'test', directory: 'packages' };
 
