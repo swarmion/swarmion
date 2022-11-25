@@ -1,11 +1,11 @@
 module.exports = {
   extends: [
-    'next/core-web-vitals',
+    'plugin:@next/next/recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:react/recommended',
     'prettier',
   ],
-  plugins: ['react-hooks', 'jsx-a11y', 'risxss'],
+  plugins: ['react-hooks', 'jsx-a11y', 'risxss', 'testing-library'],
   rules: {
     'react/prop-types': 'off',
     'react-hooks/rules-of-hooks': 'error',
@@ -18,7 +18,13 @@ module.exports = {
     'react/jsx-curly-brace-presence': 'error',
   },
   settings: { react: { version: 'detect' } },
-
+  overrides: [
+    // Only uses Testing Library lint rules in test files
+    {
+      files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+      extends: ['plugin:testing-library/react'],
+    },
+  ],
   parserOptions: {
     project: ['./tsconfig.json'],
     tsconfigRootDir: __dirname,
