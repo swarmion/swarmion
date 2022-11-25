@@ -10,6 +10,7 @@ import { NormalizedSchema, PackageJson, TsConfig } from '../types';
 import { createFiles } from './createFiles';
 import { updateCodeWorkspace } from './updateCodeWorkspace';
 import { updateRootPackageJson } from './updateRootPackageJson';
+import { updateRootTsConfig } from './updateRootTsConfig';
 
 interface PackageGeneratorParams {
   tree: Tree;
@@ -47,4 +48,5 @@ export const packageGenerator = ({
 
   updateCodeWorkspace(tree, options);
   updateRootPackageJson(tree, options);
+  updateRootTsConfig(tree, options);
 };

@@ -1,9 +1,9 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.options.json",
   "compilerOptions": {
-    "preserveSymlinks": true,
     "baseUrl": ".",
-    "esModuleInterop": true
+    "emitDeclarationOnly": false,
+    "noEmit": true
   },
   "references": [
     { "path": "../../packages/serverless-configuration/tsconfig.build.json" },

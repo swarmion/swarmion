@@ -15,7 +15,7 @@
     "test": "pnpm test-linter && pnpm test-type && pnpm test-circular",
     "test-circular": "pnpm depcruise --validate .dependency-cruiser.js .",
     "test-linter": "pnpm linter-base-config .",
-    "test-type": "tsc --noEmit --emitDeclarationOnly false"
+    "test-type": "tsc"
   },
   "dependencies": {
     "@swarmion-full-stack/serverless-configuration": "1.0.0",

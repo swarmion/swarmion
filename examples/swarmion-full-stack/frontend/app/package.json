@@ -17,7 +17,7 @@
     "test-circular": "pnpm depcruise --validate .dependency-cruiser.js src",
     "test-linter": "pnpm linter-base-config src",
     "test-stylelint": "pnpm stylelint-base-config **/*.{ts,tsx}",
-    "test-type": "tsc --noEmit --emitDeclarationOnly false",
+    "test-type": "tsc",
     "test-unit": "vitest run --coverage --passWithNoTests"
   },
   "dependencies": {

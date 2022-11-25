@@ -14,7 +14,7 @@ These commands have to be run at the root of the project.
 - `pnpm`: install node dependencies in all packages;
 - `pnpm package`: compile the common packages;
 - `pnpm test`: launch the tests in all packages;
-- `pnpm deploy`: deploy all the end services in order;
+- `pnpm run deploy`: deploy all the end services in order;
 - `pnpm generate-service myService`: create a simple service in the repository's structure respecting our guidelines
 - `pnpm generate-library myLibrary`: create a simple internal library in the repository's structure respecting our guidelines
 - `cd frontend/app && pnpm start`: start the frontend application

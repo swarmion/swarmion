@@ -1,21 +1,14 @@
 {
-  "compilerOptions": {
-    "target": "es2019",
-    "esModuleInterop": true,
-    "types": ["node", "vitest/globals"],
-    "lib": ["es2020"],
-    "moduleResolution": "node",
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "sourceMap": true,
-    "strict": true,
-    "noImplicitReturns": true,
-    "skipLibCheck": true,
-    "declaration": true,
-    "declarationMap": true,
-    "noUncheckedIndexedAccess": true
-  },
-  "ts-node": {
-    "require": ["tsconfig-paths/register"]
-  }
+  "extends": "./tsconfig.options.json",
+  "files": [],
+  "references": [
+    { "path": "./backend/core/tsconfig.json" },
+    { "path": "./backend/users/tsconfig.json" },
+    { "path": "./contracts/core-contracts/tsconfig.build.json" },
+    { "path": "./contracts/users-contracts/tsconfig.build.json" },
+    { "path": "./frontend/app/tsconfig.json" },
+    { "path": "./frontend/shared/tsconfig.build.json" },
+    { "path": "./frontend/cloudfront/tsconfig.json" },
+    { "path": "./packages/serverless-configuration/tsconfig.build.json" }
+  ]
 }

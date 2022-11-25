@@ -14,12 +14,12 @@
     "remove": "serverless remove",
     "remove-production": "serverless remove --stage production",
     "remove-staging": "serverless remove --stage staging",
-    "sls-info": "serverless info --verbose",
     "sls-get-region": "serverless print --path provider.region",
+    "sls-info": "serverless info --verbose",
     "test": "pnpm test-linter && pnpm test-type && pnpm test-unit && pnpm test-circular",
     "test-circular": "pnpm depcruise --validate .dependency-cruiser.js .",
     "test-linter": "pnpm linter-base-config .",
-    "test-type": "tsc --noEmit  --emitDeclarationOnly false",
+    "test-type": "tsc",
     "test-unit": "vitest run --coverage --passWithNoTests"
   },
   "dependencies": {
