@@ -5,7 +5,6 @@ import { NormalizedSchema, TsConfig } from '../../types';
 export const packageTsConfig = (options: NormalizedSchema): TsConfig => ({
   extends: joinPathFragments(options.offsetFromRoot, 'tsconfig.json'),
   compilerOptions: {
-    preserveSymlinks: true,
     baseUrl: '.',
     esModuleInterop: true,
   },
