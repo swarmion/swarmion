@@ -1,14 +1,10 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.options.json",
   "compilerOptions": {
     "baseUrl": "src",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "esModuleInterop": true,
-    "composite": true,
-    "emitDeclarationOnly": true,
-    "jsx": "react-jsx",
-    "outDir": "./dist/types"
+    "jsx": "react-jsx"
   },
-  "exclude": ["./dist"],
-  "include": ["./**/*.ts", "./**/*.tsx"]
+  "include": ["./**/*.ts", "./**/*.tsx"],
+  "exclude": ["./dist"]
 }

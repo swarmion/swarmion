@@ -1,8 +1,9 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.options.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "esModuleInterop": true
+    "emitDeclarationOnly": false,
+    "noEmit": true
   },
   "references": [
     { "path": "../../contracts/core-contracts/tsconfig.build.json" },

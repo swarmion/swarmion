@@ -1,7 +1,12 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "../../tsconfig.options.json",
   "compilerOptions": {
-    "rootDir": "src"
+    "baseUrl": "src",
+    "rootDir": "src",
+    "outDir": "./dist/types",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "jsx": "react-jsx"
   },
-  "exclude": ["./**/*.test.ts", "./**/*.test.tsx", "./vite*", "./dist"]
+  "include": ["./**/*.ts", "./**/*.tsx"],
+  "exclude": ["./vite*", "./**/*.test.ts", "./**/*.test.tsx", "./dist"]
 }
