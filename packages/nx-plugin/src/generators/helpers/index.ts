@@ -5,3 +5,4 @@ export * from './symlink';
 export * from './updateCodeWorkspace';
 export * from './updatePackages';
 export * from './updateRootPackageJson';
+export * from './updateRootTsConfig';

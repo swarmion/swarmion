@@ -20,11 +20,26 @@ describe('service generator', () => {
       `${getWorkspaceLayout(appTree).npmScope}.code-workspace`,
       { folders: [] },
     );
+    writeJson(appTree, 'tsconfig.json', { references: [] });
   });
 
   it('should run successfully', async () => {
     await generator(appTree, options);
     const config = readProjectConfiguration(appTree, 'backend-test');
     expect(config).toBeDefined();
+  });
+
+  it('should add a reference to the root tsconfig.json', async () => {
+    await generator(appTree, options);
+
+    expect(
+      JSON.parse(appTree.read('tsconfig.json', 'utf8') ?? ''),
+    ).toStrictEqual({
+      references: [
+        {
+          path: './backend/test/tsconfig.json',
+        },
+      ],
+    });
   });
 });

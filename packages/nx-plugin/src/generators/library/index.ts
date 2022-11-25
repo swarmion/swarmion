@@ -31,7 +31,7 @@ export default async (tree: Tree, schema: Schema): Promise<() => void> => {
   writeJson(
     tree,
     join(options.packageRoot, `tsconfig.build.json`),
-    packageBuildTsConfig,
+    packageBuildTsConfig(options),
   );
   await formatFiles(tree);
 
