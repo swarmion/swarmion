@@ -24,7 +24,4 @@ export const packageTsConfig = (options: NormalizedSchema): TsConfig => ({
     },
   ],
   include: ['./**/*.ts'],
-  'ts-node': {
-    files: true,
-  },
 });
