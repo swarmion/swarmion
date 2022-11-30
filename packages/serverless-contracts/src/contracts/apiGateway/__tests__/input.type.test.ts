@@ -1,51 +1,31 @@
-import { FromSchema, JSONSchema } from 'json-schema-to-ts';
 import { A } from 'ts-toolbelt';
 
 import {
   bodySchema,
   headersSchema,
-  httpApiGatewayContractMock,
   pathParametersSchema,
   queryStringParametersSchema,
 } from '../__mocks__/httpApiGatewayContract';
-import { AllInputProperties, InputSchemaType } from '../types';
-import { DefinedProperties } from '../types/utils';
+import { InputType } from '../types';
 
 /******************* INSTANTIATE Schemas ****************/
 
-type ClosedInputSchema = InputSchemaType<
+type ClosedInputSchema = InputType<
   typeof pathParametersSchema,
   typeof queryStringParametersSchema,
   undefined,
-  typeof bodySchema,
-  false
+  typeof bodySchema
 >;
 
-type OpenInputSchema = InputSchemaType<
+type OpenInputSchema = InputType<
   typeof pathParametersSchema,
   typeof queryStringParametersSchema,
   typeof headersSchema,
-  undefined,
-  true
+  undefined
 >;
-
-/******************* Check they extend JSONSchema ****************/
-
-type CheckClosedExtendsJSONSchema = ClosedInputSchema extends JSONSchema
-  ? 'pass'
-  : 'fail';
-const checkClosedExtendsJSONSchema: CheckClosedExtendsJSONSchema = 'pass';
-checkClosedExtendsJSONSchema;
-
-type CheckOpenExtendsJSONSchema = OpenInputSchema extends JSONSchema
-  ? 'pass'
-  : 'fail';
-const checkOpenExtendsJSONSchema: CheckOpenExtendsJSONSchema = 'pass';
-checkOpenExtendsJSONSchema;
 
 /******************* Check the resolution with FromSchema ****************/
 
-type ResolvedClosedInput = FromSchema<ClosedInputSchema>;
 type ExpectedClosedInput = {
   pathParameters: {
     userId: string;
@@ -60,14 +40,12 @@ type ExpectedClosedInput = {
   };
 };
 
-type CheckClosedResolved = A.Equals<ResolvedClosedInput, ExpectedClosedInput>;
+type CheckClosedResolved = A.Equals<ClosedInputSchema, ExpectedClosedInput>;
 
 const checkClosedResolved: CheckClosedResolved = 1;
 checkClosedResolved;
 
-type ResolvedOpenInput = FromSchema<OpenInputSchema>;
 type ExpectedOpenInput = {
-  [x: string]: unknown;
   pathParameters: {
     userId: string;
     pageNumber: string;
@@ -81,22 +59,31 @@ type ExpectedOpenInput = {
   };
 };
 
-type CheckOpenResolved = A.Equals<ResolvedOpenInput, ExpectedOpenInput>;
+type CheckOpenResolved = A.Equals<OpenInputSchema, ExpectedOpenInput>;
 
 const checkOpenResolved: CheckOpenResolved = 1;
 checkOpenResolved;
 
 /******************* Check the resolution with FromSchema ****************/
 
-type InputKeys = (keyof DefinedProperties<
-  AllInputProperties<
-    typeof httpApiGatewayContractMock['pathParametersSchema'],
-    typeof httpApiGatewayContractMock['queryStringParametersSchema'],
-    typeof httpApiGatewayContractMock['headersSchema'],
-    typeof httpApiGatewayContractMock['bodySchema']
-  >
->)[];
+type InputKeys = keyof ClosedInputSchema;
 
-type CheckInputKeys = InputKeys extends string[] ? 'pass' : 'fail';
+type CheckInputKeys = InputKeys extends
+  | 'pathParameters'
+  | 'body'
+  | 'queryStringParameters'
+  ? 'pass'
+  : 'fail';
 const checkInputKeys: CheckInputKeys = 'pass';
 checkInputKeys;
+
+type PartialInputKeys = keyof OpenInputSchema;
+
+type CheckPartialInputKeys = PartialInputKeys extends
+  | 'pathParameters'
+  | 'headers'
+  | 'queryStringParameters'
+  ? 'pass'
+  : 'fail';
+const checkPartialInputKeys: CheckPartialInputKeys = 'pass';
+checkPartialInputKeys;

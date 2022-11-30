@@ -1,4 +1,4 @@
-import { JSONSchema } from 'json-schema-to-ts';
+import type { JSONSchema } from 'json-schema-to-ts';
 import isUndefined from 'lodash/isUndefined';
 import omitBy from 'lodash/omitBy';
 
@@ -9,7 +9,6 @@ import {
   ApiGatewayAuthorizerType,
   ApiGatewayIntegrationType,
 } from './types/constants';
-import { InputSchemaType } from './types/input';
 
 /**
  * ApiGatewayContract:
@@ -50,13 +49,7 @@ export class ApiGatewayContract<
   public headersSchema: HeadersSchema;
   public bodySchema: BodySchema;
   public outputSchema: OutputSchema;
-  public inputSchema: InputSchemaType<
-    PathParametersSchema,
-    QueryStringParametersSchema,
-    HeadersSchema,
-    BodySchema,
-    true
-  >;
+  public inputSchema: JSONSchema;
 
   /**
    * Builds a new ApiGateway contract
@@ -143,13 +136,7 @@ export class ApiGatewayContract<
     this.authorizerType = props.authorizerType;
   }
 
-  private getInputSchema(): InputSchemaType<
-    PathParametersSchema,
-    QueryStringParametersSchema,
-    HeadersSchema,
-    BodySchema,
-    true
-  > {
+  private getInputSchema(): JSONSchema {
     const properties = omitBy(
       {
         pathParameters: this.pathParametersSchema,
@@ -163,9 +150,8 @@ export class ApiGatewayContract<
     return {
       type: 'object',
       properties,
-      // @ts-ignore here object.keys is not precise enough
       required: Object.keys(properties),
       additionalProperties: true,
-    };
+    } as unknown as JSONSchema;
   }
 }
