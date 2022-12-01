@@ -16,7 +16,7 @@ export const getRequestParameters = <Contract extends ApiGatewayContract>(
       pathParameters: Record<string, string>;
       queryStringParameters: Record<string, string | undefined>;
       headers: Record<string, string>;
-      body: BodyType<Contract>;
+      body: unknown; // we cast at the return of the function anyway
     };
 
   const path =

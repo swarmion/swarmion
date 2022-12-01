@@ -13,7 +13,6 @@ import type {
   Callback,
   Context,
 } from 'aws-lambda';
-import { FromSchema } from 'json-schema-to-ts';
 
 import { ApiGatewayContract } from '../apiGatewayContract';
 import { OutputType } from './common';
@@ -21,7 +20,7 @@ import {
   ApiGatewayAuthorizerType,
   ApiGatewayIntegrationType,
 } from './constants';
-import { InputSchemaType } from './input';
+import { InputType } from './input';
 import { DefinedProperties } from './utils';
 
 type AuthorizerContext<AuthorizerType extends ApiGatewayAuthorizerType> =
@@ -52,14 +51,11 @@ export type HandlerEventType<Contract extends ApiGatewayContract> =
       Contract['authorizerType']
     >;
   }> &
-    FromSchema<
-      InputSchemaType<
-        Contract['pathParametersSchema'],
-        Contract['queryStringParametersSchema'],
-        Contract['headersSchema'],
-        Contract['bodySchema'],
-        false
-      >
+    InputType<
+      Contract['pathParametersSchema'],
+      Contract['queryStringParametersSchema'],
+      Contract['headersSchema'],
+      Contract['bodySchema']
     >;
 
 type HandlerCallback<Contract extends ApiGatewayContract> =
