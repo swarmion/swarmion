@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Using EventBridge contracts
+# Use EventBridge contracts
 
 In event-driven architectures, events enable interactions between loosely coupled services of an application. In Serverless applications, EventBridge is a stable and sure way to implement asynchronous flows.
 

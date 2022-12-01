@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Using ApiGateway contracts
+# Use ApiGateway contracts
 
 ApiGateway is an AWS service that makes it possible to trigger lambda functions through HTTP. There are two types of ApiGateways (for more details, see [AWS documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html)):
 
@@ -16,8 +16,8 @@ Let's create our first HttpApi contract. First we will need to define the subsch
 - the `id` serves to uniquely identify the contract among all stacks. Please note that this id MUST be unique among all stacks. Use a convention to ensure uniqueness.
 - the `path` and the http `method` which will trigger the lambda
 - the `integrationType`: `"httpApi"` or `"restApi"`
-- the `authorizerType`: `"cognito"`, `"jwt"`, `"lambda"` or `undefined`;
-- then the different parts of the http request:
+- the `authorizerType`: `"cognito"`, `"jwt"`, `"lambda"` or `undefined`
+- then the different parts of the HTTP request:
   - the path parameters: `pathParametersSchema`, which must correspond to a `Record<string, string>`
   - the query string parameters: `queryStringParametersSchema`, which must respect the same constraint
   - the headers: `headersSchema`, with the same constraint (and as per [HTTP/2 specification](https://httpwg.org/specs/rfc7540.html#HttpHeaders), they should be lowercase)
@@ -200,6 +200,23 @@ const handler = getHandler(myContract)(async event => {
 });
 ```
 
+### Use Middy middlewares
+
+`ApiGatewayContract` is compatible with middy. For example, if you wish to use Middy for Cors and logging:
+
+```ts
+import middy from '@middy/core';
+import errorLogger from '@middy/error-logger';
+import cors from '@middy/http-cors';
+import { getHandler } from '@swarmion/serverless-contracts';
+
+const handler = getHandler(myContract)(async event => {
+  // my handler...
+});
+
+const main = middy(handler).use(cors()).use(errorLogger());
+```
+
 ### Override default parsing and validation from the contract
 
 JSON Schemas are compatible with `ajv` and `@middy/validator`. You can use
@@ -224,7 +241,7 @@ The `getLambdaHandler` is only a pass-through adding typing capabilities, withou
 This method is not recommended, use `getHandler` when possible.
 :::
 
-In order to safely use `getLambdaHandler` combine it with `applyHttpMiddlewares
+In order to safely use `getLambdaHandler` combine it with `applyHttpMiddlewares`
 
 ```ts
 import { getLambdaHandler } from '@swarmion/serverless-contracts';
