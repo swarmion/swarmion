@@ -15,12 +15,17 @@ import type {
 } from 'aws-lambda';
 
 import { ApiGatewayContract } from '../apiGatewayContract';
-import { OutputType } from './common';
+import {
+  BodyType,
+  HeadersType,
+  OutputType,
+  PathParametersType,
+  QueryStringParametersType,
+} from './common';
 import {
   ApiGatewayAuthorizerType,
   ApiGatewayIntegrationType,
 } from './constants';
-import { InputType } from './input';
 import { DefinedProperties } from './utils';
 
 type AuthorizerContext<AuthorizerType extends ApiGatewayAuthorizerType> =
@@ -44,35 +49,79 @@ export type RequestContext<
       AuthorizerContext<AuthorizerType>
     >;
 
-export type HandlerEventType<Contract extends ApiGatewayContract> =
-  DefinedProperties<{
-    requestContext: RequestContext<
-      Contract['integrationType'],
-      Contract['authorizerType']
-    >;
-  }> &
-    InputType<
-      Contract['pathParametersSchema'],
-      Contract['queryStringParametersSchema'],
-      Contract['headersSchema'],
-      Contract['bodySchema']
-    >;
+export type HandlerEventType<
+  IntegrationType extends ApiGatewayIntegrationType,
+  AuthorizerType extends ApiGatewayAuthorizerType,
+  PathParameters,
+  QueryStringParameters,
+  Headers,
+  Body,
+> = DefinedProperties<{
+  requestContext: RequestContext<IntegrationType, AuthorizerType>;
+  pathParameters: PathParameters;
+  queryStringParameters: QueryStringParameters;
+  headers: Headers;
+  body: Body;
+}>;
 
-type HandlerCallback<Contract extends ApiGatewayContract> =
-  Contract['integrationType'] extends 'restApi'
-    ? APIGatewayProxyCallback
-    : APIGatewayProxyCallbackV2;
+type HandlerCallback<IntegrationType> = IntegrationType extends 'restApi'
+  ? APIGatewayProxyCallback
+  : APIGatewayProxyCallbackV2;
+
+/**
+ * The **internal** type of a Swarmion handler, with type-inferred event
+ * The handler function can define additional arguments.
+ *
+ * For external use, prefer `SwarmionApiGatewayHandler`
+ */
+export type InternalSwarmionApiGatewayHandler<
+  IntegrationType extends ApiGatewayIntegrationType,
+  AuthorizerType extends ApiGatewayAuthorizerType,
+  PathParameters,
+  QueryStringParameters,
+  Headers,
+  Body,
+  Output,
+  AdditionalArgs extends unknown[] = never[],
+  Event = HandlerEventType<
+    IntegrationType,
+    AuthorizerType,
+    PathParameters,
+    QueryStringParameters,
+    Headers,
+    Body
+  >,
+> = (
+  event: Event,
+  context: Context,
+  callback?: Callback,
+  ...additionalArgs: AdditionalArgs
+) => Promise<Output>;
 
 /**
  * The type of a Swarmion handler, with type-inferred event
- * The handler function can define additional arguments
+ * The handler function can define additional arguments.
  */
-export type SwarmionApiGatewayHandler<Contract extends ApiGatewayContract> = (
-  event: HandlerEventType<Contract>,
-  context: Context,
-  callback?: Callback,
-  ...additionalArgs: never[]
-) => Promise<OutputType<Contract>>;
+export type SwarmionApiGatewayHandler<
+  Contract extends ApiGatewayContract,
+  AdditionalArgs extends unknown[] = never[],
+  IntegrationType extends ApiGatewayIntegrationType = Contract['integrationType'],
+  AuthorizerType extends ApiGatewayAuthorizerType = Contract['authorizerType'],
+  PathParameters = PathParametersType<Contract>,
+  QueryStringParameters = QueryStringParametersType<Contract>,
+  Headers = HeadersType<Contract>,
+  Body = BodyType<Contract>,
+  Output = OutputType<Contract>,
+> = InternalSwarmionApiGatewayHandler<
+  IntegrationType,
+  AuthorizerType,
+  PathParameters,
+  QueryStringParameters,
+  Headers,
+  Body,
+  Output,
+  AdditionalArgs
+>;
 
 /**
  * The type of an ApiGateway event. This is the actual event that will
@@ -80,14 +129,16 @@ export type SwarmionApiGatewayHandler<Contract extends ApiGatewayContract> = (
  *
  * See https://docs.aws.amazon.com/lambda/latest/dg/typescript-handler.html.
  */
-export type ApiGatewayEvent<Contract extends ApiGatewayContract> =
-  Contract['integrationType'] extends 'restApi'
-    ? APIGatewayProxyEventBase<AuthorizerContext<Contract['authorizerType']>>
-    : APIGatewayProxyEventV2WithRequestContext<
-        APIGatewayEventRequestContextV2WithAuthorizer<
-          AuthorizerContext<Contract['authorizerType']>
-        >
-      >;
+export type ApiGatewayEvent<
+  IntegrationType extends ApiGatewayIntegrationType,
+  AuthorizerType extends ApiGatewayAuthorizerType,
+> = IntegrationType extends 'restApi'
+  ? APIGatewayProxyEventBase<AuthorizerContext<AuthorizerType>>
+  : APIGatewayProxyEventV2WithRequestContext<
+      APIGatewayEventRequestContextV2WithAuthorizer<
+        AuthorizerContext<AuthorizerType>
+      >
+    >;
 
 /**
  * The type of an ApiGateway event. This is the actual event that will
@@ -95,10 +146,12 @@ export type ApiGatewayEvent<Contract extends ApiGatewayContract> =
  *
  * See https://docs.aws.amazon.com/lambda/latest/dg/typescript-handler.html.
  */
-export type ApiGatewayResult<Contract extends ApiGatewayContract> =
-  Contract['integrationType'] extends 'restApi'
-    ? APIGatewayProxyResult
-    : APIGatewayProxyResultV2<OutputType<Contract>>;
+export type ApiGatewayResult<
+  IntegrationType extends ApiGatewayIntegrationType,
+  Output,
+> = IntegrationType extends 'restApi'
+  ? APIGatewayProxyResult
+  : APIGatewayProxyResultV2<Output>;
 
 /**
  * The type of an ApiGateway handler. This is the actual version that will
@@ -106,9 +159,14 @@ export type ApiGatewayResult<Contract extends ApiGatewayContract> =
  *
  * See https://docs.aws.amazon.com/lambda/latest/dg/typescript-handler.html.
  */
-export type ApiGatewayHandler<Contract extends ApiGatewayContract> = (
-  event: ApiGatewayEvent<Contract>,
+export type ApiGatewayHandler<
+  IntegrationType extends ApiGatewayIntegrationType,
+  AuthorizerType extends ApiGatewayAuthorizerType,
+  Output,
+  AdditionalArgs extends unknown[] = never[],
+> = (
+  event: ApiGatewayEvent<IntegrationType, AuthorizerType>,
   context: Context,
-  callback: HandlerCallback<Contract>,
-  ...additionalArgs: never[]
-) => Promise<ApiGatewayResult<Contract>>;
+  callback: HandlerCallback<IntegrationType>,
+  ...additionalArgs: AdditionalArgs
+) => Promise<ApiGatewayResult<IntegrationType, Output>>;

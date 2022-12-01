@@ -2,20 +2,66 @@ import Ajv from 'ajv';
 import createHttpError, { isHttpError } from 'http-errors';
 
 import { ApiGatewayContract } from '../apiGatewayContract';
-import { ApiGatewayHandler, SwarmionApiGatewayHandler } from '../types';
+import {
+  ApiGatewayHandler,
+  BodyType,
+  HeadersType,
+  InternalSwarmionApiGatewayHandler,
+  OutputType,
+  PathParametersType,
+  QueryStringParametersType,
+} from '../types';
+import {
+  ApiGatewayAuthorizerType,
+  ApiGatewayIntegrationType,
+} from '../types/constants';
 import {
   handlerResponseToProxyResult,
   proxyEventToHandlerEvent,
 } from '../utils';
 
 export const getApiGatewayHandler =
-  <Contract extends ApiGatewayContract>(contract: Contract) =>
-  (handler: SwarmionApiGatewayHandler<Contract>): ApiGatewayHandler<Contract> =>
+  <
+    Contract extends ApiGatewayContract,
+    IntegrationType extends ApiGatewayIntegrationType = Contract['integrationType'],
+    AuthorizerType extends ApiGatewayAuthorizerType = Contract['authorizerType'],
+    PathParameters = PathParametersType<Contract>,
+    QueryStringParameters = QueryStringParametersType<Contract>,
+    Headers = HeadersType<Contract>,
+    Body = BodyType<Contract>,
+    Output = OutputType<Contract>,
+  >(
+    contract: Contract,
+  ) =>
+  <AdditionalArgs extends unknown[] = never[]>(
+    handler: InternalSwarmionApiGatewayHandler<
+      IntegrationType,
+      AuthorizerType,
+      PathParameters,
+      QueryStringParameters,
+      Headers,
+      Body,
+      Output,
+      AdditionalArgs
+    >,
+  ): ApiGatewayHandler<
+    IntegrationType,
+    AuthorizerType,
+    Output,
+    AdditionalArgs
+  > =>
   async (event, context, callback, ...additionalArgs) => {
     try {
       const ajv = new Ajv();
 
-      const parsedEvent = proxyEventToHandlerEvent<Contract>(event);
+      const parsedEvent = proxyEventToHandlerEvent<
+        IntegrationType,
+        AuthorizerType,
+        PathParameters,
+        QueryStringParameters,
+        Headers,
+        Body
+      >(event);
 
       const inputValidator = ajv.compile(contract.inputSchema);
       if (!inputValidator(parsedEvent)) {
@@ -40,7 +86,9 @@ export const getApiGatewayHandler =
         }
       }
 
-      return handlerResponseToProxyResult(handlerResponse);
+      return handlerResponseToProxyResult<IntegrationType, Output>(
+        handlerResponse,
+      );
     } catch (error) {
       console.error(error);
 
@@ -66,8 +114,36 @@ export const getApiGatewayHandler =
  * Use `getHandler` for a more advanced usage
  */
 export const getLambdaHandler =
-  <Contract extends ApiGatewayContract>(contract: Contract) =>
+  <
+    Contract extends ApiGatewayContract,
+    IntegrationType extends ApiGatewayIntegrationType = Contract['integrationType'],
+    AuthorizerType extends ApiGatewayAuthorizerType = Contract['authorizerType'],
+    PathParameters = PathParametersType<Contract>,
+    QueryStringParameters = QueryStringParametersType<Contract>,
+    Headers = HeadersType<Contract>,
+    Body = BodyType<Contract>,
+    Output = OutputType<Contract>,
+  >(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _contract: Contract,
+  ) =>
   (
-    handler: SwarmionApiGatewayHandler<typeof contract>,
-  ): SwarmionApiGatewayHandler<typeof contract> =>
+    handler: InternalSwarmionApiGatewayHandler<
+      IntegrationType,
+      AuthorizerType,
+      PathParameters,
+      QueryStringParameters,
+      Headers,
+      Body,
+      Output
+    >,
+  ): InternalSwarmionApiGatewayHandler<
+    IntegrationType,
+    AuthorizerType,
+    PathParameters,
+    QueryStringParameters,
+    Headers,
+    Body,
+    Output
+  > =>
     handler;
