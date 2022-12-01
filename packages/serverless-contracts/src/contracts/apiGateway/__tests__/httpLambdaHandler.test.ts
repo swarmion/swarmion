@@ -256,33 +256,29 @@ describe('apiGateway lambda handler', () => {
         };
       const fakeContext = getHandlerContextMock();
 
-      const handler: SwarmionApiGatewayHandler<
-        typeof httpApiContract
-      > = async ({
-        body,
-        pathParameters,
-        queryStringParameters,
-        headers,
-        requestContext,
-      }) => {
-        await Promise.resolve();
-        const myCustomClaim = requestContext.authorizer.claims.foo ?? '';
+      const handler = getHandler(httpApiContract)(
+        async ({
+          body,
+          pathParameters,
+          queryStringParameters,
+          headers,
+          requestContext,
+        }) => {
+          await Promise.resolve();
+          const myCustomClaim = requestContext.authorizer.claims.foo ?? '';
 
-        const name =
-          body.foo +
-          pathParameters.pageNumber +
-          queryStringParameters.testId +
-          headers.myHeader +
-          myCustomClaim;
+          const name =
+            body.foo +
+            pathParameters.pageNumber +
+            queryStringParameters.testId +
+            headers.myHeader +
+            myCustomClaim;
 
-        return Promise.resolve({ id: 'hello', name });
-      };
+          return Promise.resolve({ id: 'hello', name });
+        },
+      );
 
-      const middifiedHandler = middy(handler).use(errorLogger());
-
-      const httpHandler = middy(
-        getHandler(httpApiContract)(middifiedHandler),
-      ).use(cors());
+      const httpHandler = middy(handler).use(cors()).use(errorLogger());
 
       const result = await httpHandler(
         {
@@ -406,7 +402,6 @@ describe('apiGateway lambda handler', () => {
         },
         fakeContext,
         () => null,
-        // @ts-expect-error typing is not yet great here
         { tata: 'blib' },
       );
 

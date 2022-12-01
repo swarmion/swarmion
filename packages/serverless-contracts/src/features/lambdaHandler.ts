@@ -6,19 +6,48 @@ import {
   EventBridgePayloadType,
   getApiGatewayHandler,
   getEventBridgeHandler,
-  SwarmionApiGatewayHandler,
   SwarmionEventBridgeHandler,
 } from 'contracts';
+import {
+  BodyType,
+  HeadersType,
+  InternalSwarmionApiGatewayHandler,
+  OutputType,
+  PathParametersType,
+  QueryStringParametersType,
+} from 'contracts/apiGateway/types';
+import {
+  ApiGatewayAuthorizerType,
+  ApiGatewayIntegrationType,
+} from 'contracts/apiGateway/types/constants';
 import { ServerlessContract } from 'types';
 
 /**
  * must match the type of getApiGatewayHandler
  */
-export function getHandler<Contract extends ApiGatewayContract>(
+export function getHandler<
+  Contract extends ApiGatewayContract,
+  IntegrationType extends ApiGatewayIntegrationType = Contract['integrationType'],
+  AuthorizerType extends ApiGatewayAuthorizerType = Contract['authorizerType'],
+  PathParameters = PathParametersType<Contract>,
+  QueryStringParameters = QueryStringParametersType<Contract>,
+  Headers = HeadersType<Contract>,
+  Body = BodyType<Contract>,
+  Output = OutputType<Contract>,
+>(
   contract: Contract,
-): (
-  handler: SwarmionApiGatewayHandler<Contract>,
-) => ApiGatewayHandler<Contract>;
+): <AdditionalArgs extends unknown[] = never[]>(
+  handler: InternalSwarmionApiGatewayHandler<
+    IntegrationType,
+    AuthorizerType,
+    PathParameters,
+    QueryStringParameters,
+    Headers,
+    Body,
+    Output,
+    AdditionalArgs
+  >,
+) => ApiGatewayHandler<IntegrationType, AuthorizerType, Output, AdditionalArgs>;
 
 /**
  * must match the type of getEventBridgeHandler

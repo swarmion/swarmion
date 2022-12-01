@@ -1,35 +1,54 @@
-import { ApiGatewayContract } from '../apiGatewayContract';
+import { ApiGatewayEvent, ApiGatewayResult, HandlerEventType } from '../types';
 import {
-  ApiGatewayEvent,
-  ApiGatewayResult,
-  BodyType,
-  HandlerEventType,
-  OutputType,
-} from '../types';
+  ApiGatewayAuthorizerType,
+  ApiGatewayIntegrationType,
+} from '../types/constants';
 
-export const proxyEventToHandlerEvent = <Contract extends ApiGatewayContract>({
+export const proxyEventToHandlerEvent = <
+  IntegrationType extends ApiGatewayIntegrationType,
+  AuthorizerType extends ApiGatewayAuthorizerType,
+  PathParameters,
+  QueryStringParameters,
+  Headers,
+  Body,
+>({
   requestContext,
   body: proxyEventBody = null,
   headers,
   pathParameters,
   queryStringParameters,
-}: ApiGatewayEvent<Contract>): HandlerEventType<Contract> => {
+}: ApiGatewayEvent<IntegrationType, AuthorizerType>): HandlerEventType<
+  IntegrationType,
+  AuthorizerType,
+  PathParameters,
+  QueryStringParameters,
+  Headers,
+  Body
+> => {
   return {
     requestContext,
     body: (proxyEventBody !== null
       ? JSON.parse(proxyEventBody)
-      : undefined) as BodyType<Contract>,
+      : undefined) as Body,
     headers,
     pathParameters,
     queryStringParameters: queryStringParameters ?? {},
-  } as unknown as HandlerEventType<Contract>;
+  } as unknown as HandlerEventType<
+    IntegrationType,
+    AuthorizerType,
+    PathParameters,
+    QueryStringParameters,
+    Headers,
+    Body
+  >;
 };
 
 export const handlerResponseToProxyResult = <
-  Contract extends ApiGatewayContract,
+  IntegrationType extends ApiGatewayIntegrationType,
+  Output,
 >(
-  handlerResponse: OutputType<Contract>,
-): ApiGatewayResult<Contract> => ({
+  handlerResponse: Output,
+): ApiGatewayResult<IntegrationType, Output> => ({
   statusCode: 200,
   body: handlerResponse !== undefined ? JSON.stringify(handlerResponse) : '',
   headers:
