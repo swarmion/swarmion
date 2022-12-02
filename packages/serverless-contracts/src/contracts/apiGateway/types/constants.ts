@@ -4,4 +4,9 @@
  */
 export type ApiGatewayIntegrationType = 'httpApi' | 'restApi';
 export type ApiGatewayKey = 'httpApi' | 'http';
-export type ApiGatewayAuthorizerType = 'cognito' | 'jwt' | 'lambda' | undefined;
+export type ApiGatewayAuthorizerType =
+  | 'cognito'
+  | 'jwt'
+  | 'lambda'
+  | 'aws_iam'
+  | undefined;
