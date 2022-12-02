@@ -245,7 +245,7 @@ describe('apiGateway lambda handler', () => {
 
       const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
         {
-          ...getRequestContextMockV2(),
+          ...getAPIGatewayV2EventRequestContextMock(),
           http: {
             method: 'OPTIONS',
             path: '',
