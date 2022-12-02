@@ -5,6 +5,7 @@
       "runner": "nx/tasks-runners/default",
       "options": {
         "cacheableOperations": [
+          "bootstrap",
           "build",
           "package",
           "test",
@@ -34,7 +35,7 @@
     },
     "deploy": {
       "inputs": ["production", "^production"],
-      "dependsOn": ["^package", "^deploy", "^build"]
+      "dependsOn": ["^package", "^deploy", "^build", "bootstrap"]
     },
     "test": {
       "inputs": ["default", "^production"],
