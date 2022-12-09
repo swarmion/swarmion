@@ -1,0 +1,26 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base", ":rebaseStalePrs"],
+  "ignorePaths": ["**/node_modules/**", "**/bower_components/**"],
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "matchDatasources": ["npm"],
+      "stabilityDays": 3
+    },
+    {
+      "matchPaths": ["examples/**"],
+      "extends": [
+        ":semanticCommitTypeAll(examples)",
+        ":semanticCommitScope({{parentDir}})"
+      ]
+    },
+    {
+      "matchPaths": ["packages/**"],
+      "extends": [
+        ":semanticCommitTypeAll(fix)",
+        ":semanticCommitScope({{parentDir}})"
+      ]
+    }
+  ]
+}
