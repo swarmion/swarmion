@@ -1,9 +1,10 @@
 import {
   APIGatewayEventRequestContextV2WithAuthorizer,
   APIGatewayEventRequestContextWithAuthorizer,
+  Context,
 } from 'aws-lambda';
 
-export const getRequestContextMock = (
+export const getAPIGatewayEventRequestContextMock = (
   args?: Partial<APIGatewayEventRequestContextWithAuthorizer<undefined>>,
 ): APIGatewayEventRequestContextWithAuthorizer<undefined> => ({
   accountId: '',
@@ -37,7 +38,7 @@ export const getRequestContextMock = (
   ...args,
 });
 
-export const getRequestContextMockV2 = (
+export const getAPIGatewayV2EventRequestContextMock = (
   args?: Partial<APIGatewayEventRequestContextV2WithAuthorizer<undefined>>,
 ): APIGatewayEventRequestContextV2WithAuthorizer<undefined> => ({
   authorizer: undefined,
@@ -59,3 +60,19 @@ export const getRequestContextMockV2 = (
   timeEpoch: 0,
   ...args,
 });
+
+export const getAPIGatewayEventHandlerContextMock = (
+  args?: Partial<Context>,
+): Context =>
+  // @ts-expect-error only partial typing here
+  ({
+    callbackWaitsForEmptyEventLoop: false,
+    functionName: '',
+    functionVersion: '',
+    invokedFunctionArn: '',
+    memoryLimitInMB: '',
+    awsRequestId: '',
+    logGroupName: '',
+    logStreamName: '',
+    ...args,
+  });

@@ -1,32 +1,36 @@
-import { EventBridgeClient } from '@aws-sdk/client-eventbridge';
-import { ulid } from 'ulid';
+import { requestSyncDeploymentContract } from '@swarmion/orchestrator-contracts';
+import { getHandler } from '@swarmion/serverless-contracts';
 
-import {
-  onDeploymentRequestedContract,
-  requestSyncDeploymentContract,
-} from '@swarmion/orchestrator-contracts';
-import { buildPutEvent, getHandler } from '@swarmion/serverless-contracts';
-import { getEnvVariable } from '@swarmion/serverless-helpers';
+import { GenerateUlidType } from 'interfaces/generateUlid';
+import { PutRequestedContractEvent } from 'interfaces/putRequestedContractEvent';
+import { StoreServiceEventType } from 'interfaces/storeServiceEvent';
 
-import ServiceEventEntity from 'libs/dynamodb/models/serviceEvent';
+import { sideEffects } from './sideEffects';
 
-const eventBridgeClient = new EventBridgeClient({});
-const eventBusName = getEnvVariable('EVENT_BUS_NAME');
+type SideEffects = {
+  storeServiceEvent: StoreServiceEventType;
+  putRequestedContractEvent: PutRequestedContractEvent;
+  generateUlid: GenerateUlidType;
+};
 
-const putRequestedContractEvent = buildPutEvent(onDeploymentRequestedContract, {
-  source: 'swarmion.orchestrator',
-  eventBridgeClient,
-  eventBusName,
-});
+export const main = getHandler(requestSyncDeploymentContract)(
+  async (
+    event,
+    _context,
+    _callback,
+    {
+      putRequestedContractEvent,
+      storeServiceEvent,
+      generateUlid,
+    }: SideEffects = sideEffects,
+  ) => {
+    const { serviceId, applicationId } = event.body;
+    const eventId = generateUlid();
 
-export const main = getHandler(requestSyncDeploymentContract)(async event => {
-  const { serviceId, applicationId } = event.body;
+    await storeServiceEvent({ serviceId, applicationId, eventId });
 
-  const eventId = ulid();
+    await putRequestedContractEvent({ serviceId, applicationId, eventId });
 
-  await ServiceEventEntity.put({ serviceId, applicationId, eventId });
-
-  await putRequestedContractEvent({ serviceId, applicationId, eventId });
-
-  return { status: 'ACCEPTED', message: 'processing' };
-});
+    return { status: 'ACCEPTED', message: 'processing' };
+  },
+);

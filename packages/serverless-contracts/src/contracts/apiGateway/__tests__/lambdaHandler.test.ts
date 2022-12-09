@@ -7,6 +7,11 @@ import type {
   APIGatewayProxyCognitoAuthorizer,
 } from 'aws-lambda';
 
+import {
+  getAPIGatewayEventRequestContextMock,
+  getAPIGatewayV2EventRequestContextMock,
+} from '@swarmion/serverless-helpers';
+
 import { getHandlerContextMock } from '__mocks__/requestContext';
 
 import {
@@ -17,10 +22,6 @@ import {
   pathParametersSchema,
   queryStringParametersSchema,
 } from '../__mocks__/httpApiGatewayContract';
-import {
-  getRequestContextMock,
-  getRequestContextMockV2,
-} from '../__mocks__/requestContext';
 import { ApiGatewayContract } from '../apiGatewayContract';
 import { getLambdaHandler } from '../features';
 import { SwarmionApiGatewayHandler } from '../types';
@@ -32,7 +33,7 @@ describe('apiGateway lambda handler', () => {
 
       const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
         {
-          ...getRequestContextMockV2(),
+          ...getAPIGatewayV2EventRequestContextMock(),
           authorizer: { claims: { foo: 'claimBar' } },
         };
 
@@ -91,7 +92,7 @@ describe('apiGateway lambda handler', () => {
 
       const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayEventRequestContextJWTAuthorizer> =
         {
-          ...getRequestContextMockV2(),
+          ...getAPIGatewayV2EventRequestContextMock(),
           authorizer: {
             principalId: '',
             integrationLatency: 0,
@@ -159,7 +160,7 @@ describe('apiGateway lambda handler', () => {
       const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<
         APIGatewayEventRequestContextLambdaAuthorizer<LambdaType>
       > = {
-        ...getRequestContextMockV2(),
+        ...getAPIGatewayV2EventRequestContextMock(),
         authorizer: {
           lambda: { foo: 'claimBar' },
         },
@@ -260,7 +261,7 @@ describe('apiGateway lambda handler', () => {
         await handler(
           {
             body: { foo: 'bar' },
-            requestContext: getRequestContextMock(),
+            requestContext: getAPIGatewayEventRequestContextMock(),
           },
           fakeContext,
         ),

@@ -8,15 +8,16 @@ import type {
 } from 'aws-lambda';
 import createHttpError from 'http-errors';
 
+import {
+  getAPIGatewayEventRequestContextMock,
+  getAPIGatewayV2EventRequestContextMock,
+} from '@swarmion/serverless-helpers';
+
 import { getHandlerContextMock } from '__mocks__/requestContext';
 import { ApiGatewayContract } from 'contracts';
 import { getHandler } from 'features/lambdaHandler';
 
 import { httpApiGatewayContractMock } from '../__mocks__/httpApiGatewayContract';
-import {
-  getRequestContextMock,
-  getRequestContextMockV2,
-} from '../__mocks__/requestContext';
 import { SwarmionApiGatewayHandler } from '../types';
 
 describe('apiGateway lambda handler', () => {
@@ -26,7 +27,7 @@ describe('apiGateway lambda handler', () => {
 
       const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
         {
-          ...getRequestContextMockV2(),
+          ...getAPIGatewayV2EventRequestContextMock(),
           authorizer: { claims: { foo: 'claimBar' } },
         };
       const fakeContext = getHandlerContextMock();
@@ -88,7 +89,7 @@ describe('apiGateway lambda handler', () => {
 
       const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
         {
-          ...getRequestContextMockV2(),
+          ...getAPIGatewayV2EventRequestContextMock(),
           authorizer: { claims: { foo: 'claimBar' } },
         };
       const fakeContext = getHandlerContextMock();
@@ -146,7 +147,7 @@ describe('apiGateway lambda handler', () => {
 
       const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
         {
-          ...getRequestContextMockV2(),
+          ...getAPIGatewayV2EventRequestContextMock(),
           authorizer: { claims: { foo: 'claimBar' } },
         };
       const fakeContext = getHandlerContextMock();
@@ -204,7 +205,7 @@ describe('apiGateway lambda handler', () => {
 
       const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
         {
-          ...getRequestContextMockV2(),
+          ...getAPIGatewayV2EventRequestContextMock(),
           authorizer: { claims: { foo: 'claimBar' } },
         };
       const fakeContext = getHandlerContextMock();
@@ -244,7 +245,7 @@ describe('apiGateway lambda handler', () => {
 
       const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
         {
-          ...getRequestContextMockV2(),
+          ...getAPIGatewayV2EventRequestContextMock(),
           http: {
             method: 'OPTIONS',
             path: '',
@@ -315,7 +316,7 @@ describe('apiGateway lambda handler', () => {
 
       const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
         {
-          ...getRequestContextMockV2(),
+          ...getAPIGatewayV2EventRequestContextMock(),
           authorizer: { claims: { foo: 'claimBar' } },
         };
 
@@ -365,7 +366,7 @@ describe('apiGateway lambda handler', () => {
 
       const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
         {
-          ...getRequestContextMockV2(),
+          ...getAPIGatewayV2EventRequestContextMock(),
           authorizer: { claims: { foo: 'claimBar' } },
         };
 
@@ -448,7 +449,7 @@ describe('apiGateway lambda handler', () => {
             anotherHeader: 'anotherHeader',
           },
           queryStringParameters: { testId: 'myTestId' },
-          requestContext: getRequestContextMock(),
+          requestContext: getAPIGatewayEventRequestContextMock(),
           multiValueHeaders: {},
           httpMethod: '',
           isBase64Encoded: false,
