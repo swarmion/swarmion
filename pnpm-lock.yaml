@@ -452,6 +452,7 @@ importers:
       dependency-cruiser: ^12.1.0
       eslint: ^8.28.0
       http-errors: ^2.0.0
+      http-status-codes: ^2.2.0
       json-schema-to-ts: ^2.6.1
       lodash: ^4.17.21
       openapi-types: 12.0.2
@@ -494,6 +495,7 @@ importers:
       concurrently: 7.6.0
       dependency-cruiser: 12.1.0
       eslint: 8.28.0
+      http-status-codes: 2.2.0
       json-schema-to-ts: 2.6.1
       openapi-types: 12.0.2
       prettier: 2.8.0
@@ -12717,7 +12719,7 @@ packages:
   /history/4.10.1:
     resolution: {integrity: sha512-36nwAD620w12kuzPAsyINPWJqlNbij+hpK1k9XRloDtym8mxzGYl2c17LnV6IAGB2Dmg4tEa7G7DlawS0+qjew==}
     dependencies:
-      '@babel/runtime': 7.20.1
+      '@babel/runtime': 7.20.6
       loose-envify: 1.4.0
       resolve-pathname: 3.0.0
       tiny-invariant: 1.2.0
@@ -12885,6 +12887,10 @@ packages:
       requires-port: 1.0.0
     transitivePeerDependencies:
       - debug
+
+  /http-status-codes/2.2.0:
+    resolution: {integrity: sha512-feERVo9iWxvnejp3SEfm/+oNG517npqL2/PIA8ORjyOZjGC7TwCRQsZylciLS64i6pJ0wRYz3rkXLRwbtFa8Ng==}
+    dev: true
 
   /http2-wrapper/1.0.3:
     resolution: {integrity: sha512-V+23sDMr12Wnz7iTcDeJr3O6AIxlnvT/bmaAAAP/Xda35C90p9599p0F1eHR/N1KILWSoWVAiOMFjBBXaXSMxg==}
@@ -14490,6 +14496,7 @@ packages:
   /json-schema-ref-parser/9.0.9:
     resolution: {integrity: sha512-qcP2lmGy+JUoQJ4DOQeLaZDqH9qSkeGCK3suKWxJXS82dg728Mn3j97azDMaOUmJAN4uCq91LdPx4K7E8F1a7Q==}
     engines: {node: '>=10'}
+    deprecated: Please switch to @apidevtools/json-schema-ref-parser
     dependencies:
       '@apidevtools/json-schema-ref-parser': 9.0.9
     dev: false
@@ -15241,7 +15248,7 @@ packages:
       prop-types: ^15.0.0
       react: ^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
     dependencies:
-      '@babel/runtime': 7.20.1
+      '@babel/runtime': 7.20.6
       prop-types: 15.8.1
       react: 17.0.2
       tiny-warning: 1.0.3
@@ -17475,7 +17482,7 @@ packages:
       react: ^16.6.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.6.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@babel/runtime': 7.20.1
+      '@babel/runtime': 7.20.6
       invariant: 2.2.4
       prop-types: 15.8.1
       react: 17.0.2
@@ -17518,7 +17525,7 @@ packages:
       react-loadable: '*'
       webpack: '>=4.41.1 || 5.x'
     dependencies:
-      '@babel/runtime': 7.20.1
+      '@babel/runtime': 7.20.6
       react-loadable: /@docusaurus/react-loadable/5.5.2_react@17.0.2
       webpack: 5.73.0
 
@@ -17528,7 +17535,7 @@ packages:
       react: '>=15'
       react-router: '>=5'
     dependencies:
-      '@babel/runtime': 7.20.1
+      '@babel/runtime': 7.20.6
       react: 17.0.2
       react-router: 5.3.3_react@17.0.2
 
@@ -17537,7 +17544,7 @@ packages:
     peerDependencies:
       react: '>=15'
     dependencies:
-      '@babel/runtime': 7.20.1
+      '@babel/runtime': 7.20.6
       history: 4.10.1
       loose-envify: 1.4.0
       prop-types: 15.8.1
@@ -17551,7 +17558,7 @@ packages:
     peerDependencies:
       react: '>=15'
     dependencies:
-      '@babel/runtime': 7.20.1
+      '@babel/runtime': 7.20.6
       history: 4.10.1
       hoist-non-react-statics: 3.3.2
       loose-envify: 1.4.0
@@ -17569,7 +17576,7 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0
     dependencies:
-      '@babel/runtime': 7.20.1
+      '@babel/runtime': 7.20.6
       react: 17.0.2
       use-composed-ref: 1.2.1_react@17.0.2
       use-latest: 1.2.0_qnxonbsml5syl42mqdnwkqq4yu
