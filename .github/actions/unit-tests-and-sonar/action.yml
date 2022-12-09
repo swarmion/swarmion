@@ -1,0 +1,42 @@
+name: 'Unit Tests & Sonar'
+description: 'Run unit tests and SonarCloud scan'
+inputs:
+  path:
+    required: true
+    description: 'Path to the directory to unit test and upload SonarCloud scan'
+  github_token:
+    description: Github Token
+    required: true
+  sonar_token:
+    description: SonarCloud Token
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - name: Install & cache node dependencies
+      uses: ./.github/actions/install-node-deps
+    - name: Package and cache builds
+      uses: ./.github/actions/package
+    - name: Run unit tests
+      run: |
+        cd ${{ inputs.path }}
+        if [[ $(cat package.json | jq '.scripts["test-unit"]') != null ]]; then
+          pnpm test-unit
+        else
+          echo "No unit test script found in package.json"
+        fi
+      shell: bash
+    - name: Check if SonarCloud Scan should run
+      id: check_sonarcloud_scan_should_run
+      uses: andstor/file-existence-action@v1
+      with:
+        files: '${{ inputs.path }}/sonar-project.properties'
+
+    - name: SonarCloud Scan
+      if: steps.check_sonarcloud_scan_should_run.outputs.files_exists == 'true'
+      uses: SonarSource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ inputs.SONAR_TOKEN }}
+      with:
+        projectBaseDir: ${{ inputs.path }}
