@@ -37,6 +37,14 @@
       "inputs": ["production", "^production"],
       "dependsOn": ["^package", "^deploy", "^build"]
     },
+    "deploy-staging": {
+      "inputs": ["production", "^production"],
+      "dependsOn": ["^package", "^build"]
+    },
+    "deploy-production": {
+      "inputs": ["production", "^production"],
+      "dependsOn": ["^package", "^build"]
+    },
     "test": {
       "inputs": ["default", "^production"],
       "dependsOn": ["^package"],

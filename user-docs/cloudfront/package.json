@@ -5,6 +5,8 @@
   "license": "MIT",
   "scripts": {
     "deploy": "serverless deploy",
+    "deploy-production": "serverless deploy --stage production",
+    "deploy-staging": "serverless deploy --stage staging",
     "lint-fix": "pnpm linter-base-config --fix",
     "lint-fix-all": "pnpm lint-fix .",
     "linter-base-config": "eslint --ext=js,ts",
