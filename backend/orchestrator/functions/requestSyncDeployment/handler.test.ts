@@ -1,12 +1,6 @@
-process.env.ORCHESTRATOR_TABLE_NAME = 'orchestrator-table-name';
-
 import { getAPIGatewayEventHandlerContextMock } from '@swarmion/serverless-helpers';
 
-import ServiceEventEntity from 'libs/dynamodb/models/serviceEvent';
-
-import { main } from '../handler';
-
-vi.mock('libs/dynamodb/models/serviceEvent');
+import { main } from './handler';
 
 const eventMock = {
   body: JSON.stringify({
@@ -15,20 +9,34 @@ const eventMock = {
   }),
 } as Parameters<typeof main>[0];
 
+const generateUlid = () => 'ulid';
+
 describe('requestSyncDeployment handler', () => {
   it('should put a service event entity inside the orchestrator table', async () => {
+    const mockStoreServiceEvent = vitest.fn(() => Promise.resolve());
+    const mockPutRequestedContractEvent = vitest.fn(() => Promise.resolve());
+
     const response = await main(
       eventMock,
       getAPIGatewayEventHandlerContextMock(),
       () => null,
+      {
+        storeServiceEvent: mockStoreServiceEvent,
+        putRequestedContractEvent: mockPutRequestedContractEvent,
+        generateUlid,
+      },
     );
 
-    // eslint-disable-next-line @typescript-eslint/unbound-method
-    expect(ServiceEventEntity.put).toHaveBeenCalledWith({
+    expect(mockStoreServiceEvent).toHaveBeenCalledWith({
       serviceId: 'serviceId',
       applicationId: 'applicationId',
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      eventId: expect.any(String),
+      eventId: 'ulid',
+    });
+
+    expect(mockPutRequestedContractEvent).toHaveBeenCalledWith({
+      serviceId: 'serviceId',
+      applicationId: 'applicationId',
+      eventId: 'ulid',
     });
 
     expect(response).toStrictEqual({
