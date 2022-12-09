@@ -1,7 +1,8 @@
+import { Stack } from 'aws-cdk-lib';
 import { AttributeType, BillingMode, Table } from 'aws-cdk-lib/aws-dynamodb';
 import { Construct } from 'constructs';
 
-export class MyConstruct extends Construct {
+export class MyStack extends Stack {
   public dynamodbArn: string;
   public dynamodbName: string;
   public testServerlessConfigValue: string | undefined;

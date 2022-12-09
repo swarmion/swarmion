@@ -7,7 +7,7 @@ import ServerlessCdkPlugin, {
 import { OrchestratorDynamodb } from './dynamodb';
 import { OrchestratorEventBus } from './eventBridge';
 
-export class OrchestratorService extends ServerlessCdkPlugin.ServerlessConstruct {
+export class OrchestratorStack extends ServerlessCdkPlugin.ServerlessStack {
   public dynamodbArn: string;
   public dynamodbName: string;
   public eventBusArn: string;
@@ -16,9 +16,9 @@ export class OrchestratorService extends ServerlessCdkPlugin.ServerlessConstruct
   constructor(scope: Construct, id: string, serverlessProps: ServerlessProps) {
     super(scope, id, serverlessProps);
 
-    const { dynamodb } = new OrchestratorDynamodb(this, 'Table');
+    const { dynamodb } = new OrchestratorDynamodb(this, 'OrchestratorDynamodb');
 
-    const { eventBus } = new OrchestratorEventBus(this, 'EventBus');
+    const { eventBus } = new OrchestratorEventBus(this, 'OrchestratorEventBus');
 
     this.dynamodbArn = dynamodb.tableArn;
     this.dynamodbName = dynamodb.tableName;
@@ -28,4 +28,4 @@ export class OrchestratorService extends ServerlessCdkPlugin.ServerlessConstruct
 }
 
 export const getCdkProperty =
-  ServerlessCdkPlugin.getCdkPropertyHelper<OrchestratorService>;
+  ServerlessCdkPlugin.getCdkPropertyHelper<OrchestratorStack>;

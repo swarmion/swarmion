@@ -9,9 +9,13 @@ const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
   provider: {
     name: 'aws',
   },
-  // This is the goal of the test
-  // @ts-expect-error TS2741: Property 'isConstruct' is missing in type 'ErrorConstructor' but required in type 'typeof Construct'.
-  construct: Error,
+  custom: {
+    cdkPlugin: {
+      // This is the goal of the test
+      // @ts-expect-error Type 'ErrorConstructor' is not assignable to type 'typeof ServerlessStack | typeof Stack'.
+      stack: Error,
+    },
+  },
 };
 
 module.exports = serverlessConfiguration;

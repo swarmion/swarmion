@@ -1,3 +1,3 @@
 export * from './cloudFormationTemplate';
-export * from './serverlessConstruct';
+export * from './serverlessStack';
 export * from './resolveVariable';

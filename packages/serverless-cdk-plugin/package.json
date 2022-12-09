@@ -31,17 +31,18 @@
     "package-esm": "NODE_ENV=esm pnpm transpile --out-dir dist/esm --source-maps",
     "package-types": "tsc -p tsconfig.build.json",
     "package-types-aliases": "tsc-alias -p tsconfig.build.json",
-    "test": "pnpm test-linter && pnpm test-type && pnpm test-unit && pnpm test-circular",
+    "test": "pnpm test-linter && pnpm test-type && pnpm test-circular",
     "test-circular": "pnpm depcruise --validate .dependency-cruiser.js src",
     "test-linter": "pnpm linter-base-config .",
     "test-type": "tsc --noEmit --emitDeclarationOnly false",
-    "test-unit": "jest --runInBand --collectCoverage --logHeapUsage",
+    "test-cdk": "jest --runInBand --collectCoverage --logHeapUsage",
     "transpile": "babel src --extensions .ts --quiet",
     "watch": "pnpm clean && concurrently 'pnpm:package-* --watch'"
   },
   "dependencies": {
     "@babel/runtime": "^7.20.6",
     "@serverless/typescript": "^3.25.0",
+    "@types/serverless": "^3.12.8",
     "lodash": "^4.17.21",
     "traverse": "^0.6.7",
     "ts-toolbelt": "^9.6.0"

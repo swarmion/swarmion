@@ -16,7 +16,7 @@ import {
 import { ServerlessContracts } from '@swarmion/serverless-plugin';
 
 import { functions } from 'functions';
-import { OrchestratorService } from 'resources';
+import { OrchestratorStack } from 'resources';
 
 const serverlessConfiguration: AWS &
   ServerlessContracts &
@@ -32,7 +32,6 @@ const serverlessConfiguration: AWS &
     'serverless-custom-iam-roles-per-function',
     'serverless-analyze-bundle-plugin',
   ],
-  construct: OrchestratorService,
   params: sharedParams,
   provider: {
     ...sharedProviderConfig,
@@ -41,6 +40,9 @@ const serverlessConfiguration: AWS &
   package: { individually: true },
   custom: {
     esbuild: sharedEsbuildConfig,
+    cdkPlugin: {
+      stack: OrchestratorStack,
+    },
   },
   contracts: {
     provides: {

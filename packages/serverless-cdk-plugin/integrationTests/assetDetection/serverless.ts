@@ -2,7 +2,7 @@ import { AWS } from '@serverless/typescript';
 
 import { ServerlessCdkPluginConfig } from 'types';
 
-import { MyConstruct } from './myConstruct';
+import { MyStack } from './myStack';
 
 const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
   service: 'test-app',
@@ -11,7 +11,11 @@ const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
   provider: {
     name: 'aws',
   },
-  construct: MyConstruct,
+  custom: {
+    cdkPlugin: {
+      stack: MyStack,
+    },
+  },
 };
 
 module.exports = serverlessConfiguration;

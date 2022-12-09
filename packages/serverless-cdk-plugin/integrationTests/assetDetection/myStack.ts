@@ -1,8 +1,9 @@
+import { Stack } from 'aws-cdk-lib';
 import { Code, Function, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
 import path from 'path';
 
-export class MyConstruct extends Construct {
+export class MyStack extends Stack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 

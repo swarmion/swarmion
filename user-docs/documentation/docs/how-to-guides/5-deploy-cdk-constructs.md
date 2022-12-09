@@ -2,22 +2,24 @@
 sidebar_position: 5
 ---
 
-# Deploy CDK Constructs
+# Deploy CDK constructs
 
 ## Deploy a simple CDK construct
 
-Define your CDK construct and provide it in the `construct` key in your `serverless.ts` configuration file.
+Include any `Construct` you want to deploy in a `Stack`, and provide the stack in your `serverless.ts` configuration.
 
 :::note
 This is only compatible with constructs defined using the CDK V2.
 :::
 
 ```typescript
+import { Stack } from 'aws-cdk-lib';
+import { AttributeType, BillingMode, Table } from 'aws-cdk-lib/aws-dynamodb';
 import { Construct } from 'constructs';
 import { AWS } from '@serverless/typescript';
 import { ServerlessCdkPluginConfig } from '@swarmion/serverless-cdk-plugin';
 
-class MyConstruct extends Construct {
+class MyStack extends Stack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
@@ -30,33 +32,38 @@ class MyConstruct extends Construct {
 }
 
 const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
-  service: "my-cdk-construct-service",
+  service: "my-cdk-service",
 
   plugins: [
-    ...
+    // ...
     '@swarmion/serverless-cdk-plugin',
-    ...
+    // ...
   ],
-
-  provider: {...},
-  functions: {...},
-  resources: {...},
-  construct: MyConstruct, // This defines the CDK entry point to the plugin
+  // provider: {...},
+  // functions: {...},
+  // resources: {...},
+  custom: {
+    cdkPlugin: {
+      stack: MyStack, // This defines the CDK entry point to the plugin
+    },
+  },
 };
 ```
 
 ## Export information from CDK to serverless
 
-If you need to export any information from the CDK to the serverless framework, you can do so by adding the data to export as a public attribute of your construct, and using `getCdkPropertyHelper`.
+If you need to export any information from the CDK to the serverless framework, you can do so by adding the data to export as a public attribute of your `Stack`, and using `getCdkPropertyHelper`.
 
 ```typescript
+import { Stack } from 'aws-cdk-lib';
+import { AttributeType, BillingMode, Table } from 'aws-cdk-lib/aws-dynamodb';
 import { Construct } from 'constructs';
 import { AWS } from '@serverless/typescript';
 import ServerlessCdkPlugin, {
   ServerlessCdkPluginConfig,
 } from '@swarmion/serverless-cdk-plugin';
 
-class MyConstruct extends Construct {
+class MyStack extends Stack {
   public dynamodbArn: string;
   public dynamodbName: string;
 
@@ -74,31 +81,32 @@ class MyConstruct extends Construct {
   }
 }
 
-// Argument types are defined by MyConstruct's public string attributes
-const getCdkProperty = ServerlessCdkPlugin.getCdkPropertyHelper<MyConstruct>;
+// Argument types are defined by MyStack's public string attributes
+const getCdkProperty = ServerlessCdkPlugin.getCdkPropertyHelper<MyStack>;
 
 const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
-  service: "my-cdk-construct-service",
+  service: "my-cdk-service",
 
   plugins: [
-    ...
+    // ...
     '@swarmion/serverless-cdk-plugin',
-    ...
+    // ...
   ],
-
-  provider: {...},
+  // provider: {...},
   functions: {
     myLambda: {
-      ...
       environment: {
         TABLE_NAME: getCdkProperty('dynamodbName'),
         TABLE_ARN: getCdkProperty('dynamodbArn'),
       },
-      ...
     },
   },
-  resources: {...},
-  construct: MyConstruct,
+  // resources: {...},
+  custom: {
+    cdkPlugin: {
+      stack: MyStack,
+    },
+  },
 };
 ```
 
@@ -106,9 +114,11 @@ const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
 
 ### Using the serverless props
 
-The plugin exposes a construct wrapper to access the config file and the runtime serverless service object if you need it. The example below shows how to retrieve the stage value.
+The plugin exposes a `Stack` wrapper to access the config file and the runtime serverless service object if you need it. The example below shows how to retrieve the stage value.
 
 ```typescript
+import { Construct } from 'constructs';
+import { AttributeType, BillingMode, Table } from 'aws-cdk-lib/aws-dynamodb';
 import { AWS } from '@serverless/typescript';
 import ServerlessCdkPlugin, {
   ServerlessProps,
@@ -116,7 +126,7 @@ import ServerlessCdkPlugin, {
 } from '@swarmion/serverless-cdk-plugin';
 
 
-class MyConstruct extends ServerlessCdkPlugin.ServerlessConstruct {
+class MyStack extends ServerlessCdkPlugin.ServerlessStack {
   constructor(scope: Construct, id: string, serverlessProps: ServerlessProps) {
     super(scope, id);
 
@@ -134,18 +144,21 @@ class MyConstruct extends ServerlessCdkPlugin.ServerlessConstruct {
 }
 
 const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
-  service: "my-cdk-construct-service",
+  service: "my-cdk-service",
 
   plugins: [
-    ...
+    // ...
     '@swarmion/serverless-cdk-plugin',
-    ...
+    // ...
   ],
-
-  provider: {...},
-  functions: {...},
-  resources: {...},
-  construct: MyConstruct, // You can provide either a Construct or a ServerlessConstruct here
+  // provider: {...},
+  // functions: {...},
+  // resources: {...},
+  custom: {
+    cdkPlugin: {
+      stack: MyStack, // You can provide either a Stack or a ServerlessStack here
+    },
+  },
 };
 ```
 
@@ -161,9 +174,11 @@ You can bypass this issue by wrapping the problematic string in [Fn cloudformati
 
 
 ```typescript
+import { Stack } from 'aws-cdk-lib';
+import { AttributeType, BillingMode, Table } from 'aws-cdk-lib/aws-dynamodb';
 import { Construct } from 'constructs';
 
-class MyConstruct extends Construct {
+class MyStack extends Stack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
@@ -184,10 +199,6 @@ If you use the `getCdkPropertyHelper` in your config, you're all set
 
 You can also add `'${serverlessCdkBridgePlugin:magicValue}'` to any `custom` key of your serverless config.
 :::
-
-## Deploy multiple CDK constructs
-
-If you need to deploy multiple constructs, you can follow the example below which defines two Dynamodb tables.
 
 ## CDK caveats
 
@@ -213,18 +224,20 @@ const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
   service: "my-cdk-construct-service",
 
   plugins: [
-    ...
+    // ...
     '@swarmion/serverless-cdk-plugin',
-    ...
+    // ...
   ],
-
-  construct: MyConstruct, // You can provide either a Construct or a ServerlessConstruct here
 
   custom: {
     deploymentId: {
       variableSyntax: 'ApiGatewayDeployment',
     },
+    cdkPlugin: {
+      stack: MyStack, // You can provide either a Stack or a ServerlessStack here
+    },
   },
+
   resources: {
     extensions: {
       ApiGatewayDeployment: {

@@ -8,8 +8,6 @@ describe('customCdK', () => {
         command: 'package',
         cwd: __dirname,
       }),
-    ).rejects.toThrow(
-      'construct should be a ServerlessConstruct or a Construct',
-    );
+    ).rejects.toThrow('stack should be a ServerlessStack or a Stack');
   });
 });
