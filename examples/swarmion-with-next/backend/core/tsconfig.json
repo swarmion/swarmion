@@ -1,16 +1,13 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.options.json",
   "compilerOptions": {
-    "preserveSymlinks": true,
     "baseUrl": ".",
-    "esModuleInterop": true
+    "emitDeclarationOnly": false,
+    "noEmit": true
   },
   "references": [
     { "path": "../../contracts/core-contracts/tsconfig.build.json" },
     { "path": "../../packages/serverless-configuration/tsconfig.build.json" }
   ],
-  "include": ["./**/*.ts"],
-  "ts-node": {
-    "files": true
-  }
+  "include": ["./**/*.ts"]
 }
