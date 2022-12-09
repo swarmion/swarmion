@@ -3,10 +3,7 @@ on:
     branches:
       - main
 
-# cancel previous deploy runs
-concurrency:
-  group: main
-  cancel-in-progress: true
+concurrency: deploy_main
 
 name: 🚀 Deploy main
 
