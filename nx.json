@@ -39,7 +39,8 @@
     },
     "test": {
       "inputs": ["default", "^production"],
-      "dependsOn": ["^package"]
+      "dependsOn": ["^package"],
+      "outputs": ["{projectRoot}/coverage"]
     },
     "test-linter": {
       "inputs": ["default", "^production"],
@@ -47,7 +48,8 @@
     },
     "test-unit": {
       "inputs": ["default", "^production"],
-      "dependsOn": ["^package"]
+      "dependsOn": ["^package"],
+      "outputs": ["{projectRoot}/coverage"]
     },
     "test-type": {
       "inputs": ["default", "^production"],
