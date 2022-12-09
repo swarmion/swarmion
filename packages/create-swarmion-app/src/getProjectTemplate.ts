@@ -22,13 +22,11 @@ const getProjectTemplate = async (
     choices: [
       {
         title: 'Swarmion Starter',
-        // @ts-ignore bad typing
         description: 'Simple example with a single backend',
         value: 'swarmion-starter',
       },
       {
         title: 'Swarmion Fullstack',
-        // @ts-ignore bad typing
         description:
           'More complete example with a backend, a frontend and a shared lib',
         value: 'swarmion-full-stack',
