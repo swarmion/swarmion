@@ -1,8 +1,8 @@
-import type { InitialOptionsTsJest } from 'ts-jest/dist/types';
+import type { JestConfigWithTsJest } from 'ts-jest/dist/types';
 
 const TEST_REGEX = '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|js?|tsx?|ts?)$';
 
-const config: InitialOptionsTsJest = {
+const config: JestConfigWithTsJest = {
   preset: 'ts-jest',
   testRegex: TEST_REGEX,
   globals: {
