@@ -1,4 +1,5 @@
-import type { JSONSchema } from 'json-schema-to-ts';
+import { StatusCodes } from 'http-status-codes';
+import { JSONSchema } from 'json-schema-to-ts';
 import isUndefined from 'lodash/isUndefined';
 import omitBy from 'lodash/omitBy';
 
@@ -37,6 +38,9 @@ export class ApiGatewayContract<
     | undefined,
   BodySchema extends JSONSchema | undefined = JSONSchema | undefined,
   OutputSchema extends JSONSchema | undefined = JSONSchema | undefined,
+  OutputSchemas extends Partial<Record<StatusCodes, JSONSchema>> = {
+    [StatusCodes.OK]: OutputSchema;
+  },
 > {
   public contractType = 'apiGateway' as const;
   public id: string;
@@ -48,7 +52,7 @@ export class ApiGatewayContract<
   public queryStringParametersSchema: QueryStringParametersSchema;
   public headersSchema: HeadersSchema;
   public bodySchema: BodySchema;
-  public outputSchema: OutputSchema;
+  public outputSchemas: OutputSchemas;
   public inputSchema: JSONSchema;
 
   /**
@@ -122,7 +126,40 @@ export class ApiGatewayContract<
      * Indicates which type of authorizer is used for this contract.
      */
     authorizerType: AuthorizerType;
-  }) {
+  });
+  constructor(props: {
+    id: string;
+    path: Path;
+    method: Method;
+    integrationType: IntegrationType;
+    pathParametersSchema: PathParametersSchema;
+    queryStringParametersSchema: QueryStringParametersSchema;
+    headersSchema: HeadersSchema;
+    bodySchema: BodySchema;
+    // a object mapping http status codes with JSONSchema used to validate the outputs and infer their types (Same constraints).
+    outputSchemas: OutputSchemas;
+    authorizerType: AuthorizerType;
+  });
+  constructor(
+    props: {
+      id: string;
+      path: Path;
+      method: Method;
+      integrationType: IntegrationType;
+      pathParametersSchema: PathParametersSchema;
+      queryStringParametersSchema: QueryStringParametersSchema;
+      headersSchema: HeadersSchema;
+      bodySchema: BodySchema;
+      authorizerType: AuthorizerType;
+    } & (
+      | {
+          outputSchema: OutputSchema;
+        }
+      | {
+          outputSchemas: OutputSchemas;
+        }
+    ),
+  ) {
     this.id = props.id;
     this.path = props.path;
     this.method = props.method;
@@ -131,7 +168,12 @@ export class ApiGatewayContract<
     this.queryStringParametersSchema = props.queryStringParametersSchema;
     this.headersSchema = props.headersSchema;
     this.bodySchema = props.bodySchema;
-    this.outputSchema = props.outputSchema;
+    this.outputSchemas =
+      'outputSchemas' in props
+        ? props.outputSchemas
+        : ({
+            [StatusCodes.OK]: props.outputSchema,
+          } as OutputSchemas);
     this.inputSchema = this.getInputSchema();
     this.authorizerType = props.authorizerType;
   }

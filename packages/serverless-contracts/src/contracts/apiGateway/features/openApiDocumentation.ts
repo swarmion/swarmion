@@ -1,3 +1,4 @@
+import { StatusCodes } from 'http-status-codes';
 import { OpenAPIV3 } from 'openapi-types';
 
 import { ContractOpenApiDocumentation } from 'types/contractOpenApiDocumentation';
@@ -16,7 +17,7 @@ export const getOpenApiDocumentation = <Contract extends ApiGatewayContract>(
   };
 
   if (
-    contract.outputSchema !== undefined &&
+    contract.outputSchemas[StatusCodes.OK] !== undefined &&
     contractDocumentation.responses[200] !== undefined
   ) {
     contractDocumentation.responses[200] = {
@@ -26,7 +27,9 @@ export const getOpenApiDocumentation = <Contract extends ApiGatewayContract>(
           // This cast is done because there is differences between JsonSchema and OpenAPIV3.SchemaObject specs
           // It may be fixed later
           // @ref https://swagger.io/specification/
-          schema: contract.outputSchema as OpenAPIV3.SchemaObject,
+          schema: contract.outputSchemas[
+            StatusCodes.OK
+          ] as OpenAPIV3.SchemaObject,
         },
       },
     };

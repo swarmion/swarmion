@@ -21,7 +21,7 @@ export const getFullContractSchema = <Contract extends ApiGatewayContract>(
   Contract['queryStringParametersSchema'],
   Contract['headersSchema'],
   Contract['bodySchema'],
-  Contract['outputSchema']
+  Contract['outputSchemas']
 > => {
   const properties = {
     contractId: { const: contract.id },
@@ -34,7 +34,11 @@ export const getFullContractSchema = <Contract extends ApiGatewayContract>(
         queryStringParameters: contract.queryStringParametersSchema,
         headers: contract.headersSchema,
         body: contract.bodySchema,
-        output: contract.outputSchema,
+        outputs: {
+          type: 'object',
+          properties: contract.outputSchemas,
+          required: Object.keys(contract.outputSchemas),
+        },
       },
       isUndefined,
     ),

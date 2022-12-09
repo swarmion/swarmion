@@ -63,7 +63,13 @@ describe('apiGateway full contract schema', () => {
           queryStringParameters: queryStringParametersSchema,
           headers: headersSchema,
           body: bodySchema,
-          output: outputSchema,
+          outputs: {
+            type: 'object',
+            properties: {
+              '200': outputSchema,
+            },
+            required: ['200'],
+          },
         },
         required: [
           'contractId',
@@ -74,7 +80,7 @@ describe('apiGateway full contract schema', () => {
           'queryStringParameters',
           'headers',
           'body',
-          'output',
+          'outputs',
         ],
         additionalProperties: false,
       });
@@ -107,7 +113,13 @@ describe('apiGateway full contract schema', () => {
           queryStringParameters: queryStringParametersSchema,
           headers: headersSchema,
           body: bodySchema,
-          output: outputSchema,
+          outputs: {
+            type: 'object',
+            properties: {
+              '200': outputSchema,
+            },
+            required: ['200'],
+          },
         },
         required: [
           'contractId',
@@ -118,7 +130,7 @@ describe('apiGateway full contract schema', () => {
           'queryStringParameters',
           'headers',
           'body',
-          'output',
+          'outputs',
         ],
         additionalProperties: false,
       });

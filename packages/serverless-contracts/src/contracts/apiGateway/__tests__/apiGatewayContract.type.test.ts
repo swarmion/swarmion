@@ -1,4 +1,8 @@
+import { StatusCodes } from 'http-status-codes';
+import { A } from 'ts-toolbelt';
+
 import { ApiGatewayContract } from 'contracts';
+import { OutputType } from 'contracts/apiGateway/types/common';
 
 export const pathParametersSchema = {
   type: 'object',
@@ -33,6 +37,16 @@ export const outputSchema = {
     name: { type: 'string' },
   },
   required: ['id', 'name'],
+  additionalProperties: false,
+} as const;
+
+export const errorOutputSchema = {
+  type: 'object',
+  properties: {
+    message: { type: 'string' },
+  },
+  required: ['message'],
+  additionalProperties: false,
 } as const;
 
 export const httpApiGatewayContract = new ApiGatewayContract({
@@ -53,3 +67,37 @@ type ContractCheck = typeof httpApiGatewayContract extends ApiGatewayContract
   : 'fail';
 const contractCheck: ContractCheck = 'pass';
 contractCheck;
+
+export const httpApiGatewayContract2 = new ApiGatewayContract({
+  id: 'testContract',
+  path: '/users/{userId}',
+  method: 'GET',
+  integrationType: 'httpApi',
+  authorizerType: 'cognito',
+  pathParametersSchema,
+  queryStringParametersSchema,
+  headersSchema,
+  bodySchema,
+  outputSchemas: {
+    [StatusCodes.OK]: outputSchema,
+    [StatusCodes.BAD_REQUEST]: errorOutputSchema,
+  },
+});
+
+type ContractOutputType = OutputType<typeof httpApiGatewayContract2>;
+
+type OutputCheck = A.Equals<
+  ContractOutputType,
+  | {
+      statusCode: StatusCodes.OK;
+      body: { id: string; name: string };
+    }
+  | {
+      statusCode: StatusCodes.BAD_REQUEST;
+      body: { message: string };
+    }
+  | { id: string; name: string }
+>;
+
+const outputCheck: OutputCheck = 1;
+outputCheck;

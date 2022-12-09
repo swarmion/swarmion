@@ -17,8 +17,9 @@ import type {
 import { ApiGatewayContract } from '../apiGatewayContract';
 import {
   BodyType,
+  FullOutputType,
   HeadersType,
-  OutputType,
+  OutputsType,
   PathParametersType,
   QueryStringParametersType,
 } from './common';
@@ -104,6 +105,7 @@ export type InternalSwarmionApiGatewayHandler<
  */
 export type SwarmionApiGatewayHandler<
   Contract extends ApiGatewayContract,
+  ShorthandOutput extends boolean = true,
   AdditionalArgs extends unknown[] = never[],
   IntegrationType extends ApiGatewayIntegrationType = Contract['integrationType'],
   AuthorizerType extends ApiGatewayAuthorizerType = Contract['authorizerType'],
@@ -111,7 +113,9 @@ export type SwarmionApiGatewayHandler<
   QueryStringParameters = QueryStringParametersType<Contract>,
   Headers = HeadersType<Contract>,
   Body = BodyType<Contract>,
-  Output = OutputType<Contract>,
+  Output = ShorthandOutput extends true
+    ? OutputsType<Contract>[200]['body']
+    : FullOutputType<Contract>,
 > = InternalSwarmionApiGatewayHandler<
   IntegrationType,
   AuthorizerType,
