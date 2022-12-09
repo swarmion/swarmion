@@ -123,7 +123,7 @@ importers:
       '@swarmion-full-stack/core-contracts': link:../../contracts/core-contracts
       '@swarmion-full-stack/serverless-configuration': link:../../packages/serverless-configuration
       '@swarmion-full-stack/users-contracts': link:../../contracts/users-contracts
-      '@swarmion/serverless-contracts': 0.15.1_axios@1.2.0
+      '@swarmion/serverless-contracts': 0.15.1_axios@1.2.1
       '@swarmion/serverless-helpers': 0.15.1
       aws-sdk: 2.1266.0
       http-errors: 2.0.0
@@ -167,7 +167,7 @@ importers:
       vitest: ^0.25.3
     dependencies:
       '@babel/runtime': 7.20.6
-      '@swarmion/serverless-contracts': 0.15.1_axios@1.2.0
+      '@swarmion/serverless-contracts': 0.15.1_axios@1.2.1
     devDependencies:
       '@babel/cli': 7.19.3_@babel+core@7.20.5
       '@babel/core': 7.20.5
@@ -211,7 +211,7 @@ importers:
       vitest: ^0.25.3
     dependencies:
       '@babel/runtime': 7.20.6
-      '@swarmion/serverless-contracts': 0.15.1_axios@1.2.0
+      '@swarmion/serverless-contracts': 0.15.1_axios@1.2.1
     devDependencies:
       '@babel/cli': 7.19.3_@babel+core@7.20.5
       '@babel/core': 7.20.5
@@ -260,7 +260,7 @@ importers:
       '@types/testing-library__jest-dom': ^5.14.5
       '@vitejs/plugin-react': ^2.2.0
       '@vitest/coverage-c8': ^0.25.3
-      axios: 1.2.0
+      axios: 1.2.1
       dependency-cruiser: ^12.1.0
       dotenv-flow: ^3.2.0
       eslint: ^8.28.0
@@ -302,9 +302,9 @@ importers:
       '@reduxjs/toolkit': 1.9.1_3m5k4ry2nwm36zz5ojtujpfkvq
       '@swarmion-full-stack/frontend-shared': link:../shared
       '@swarmion-full-stack/users-contracts': link:../../contracts/users-contracts
-      '@swarmion/serverless-contracts': 0.15.1_axios@1.2.0
+      '@swarmion/serverless-contracts': 0.15.1_axios@1.2.1
       '@types/testing-library__jest-dom': 5.14.5
-      axios: 1.2.0
+      axios: 1.2.1
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-intl: 6.2.4_5puyc4jev3j735enew7cnutksu
@@ -2687,6 +2687,10 @@ packages:
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
 
+  /@balena/dockerignore/1.0.2:
+    resolution: {integrity: sha512-wMue2Sy4GAVTk6Ic4tJVcnfdau+gx2EnG7S+uAEe+TWJFqE4YoWN4/H8MSLj4eYJKxGg26lZwboEniNiNwZQ6Q==}
+    dev: true
+
   /@bcoe/v8-coverage/0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
@@ -4162,7 +4166,7 @@ packages:
     resolution: {integrity: sha512-FKq2vnmeNdSjHlvukERxLC0dxraojOkifpaVkBk7+KXch3/w2IcRk3jACQn1YuMAJImM+pz8Wb448sMElSWXMQ==}
     dev: true
 
-  /@swarmion/serverless-contracts/0.15.1_axios@1.2.0:
+  /@swarmion/serverless-contracts/0.15.1_axios@1.2.1:
     resolution: {integrity: sha512-ynqvfhCaaMAIWzIkUGdnAHAzJ3IpN1HOd+0kWoAThcUDLSR7hg+74UHa9qTdTOmO4dg8Q3mO6o2XTIodKxF1TA==}
     peerDependencies:
       axios: ^1.2.0
@@ -4170,7 +4174,7 @@ packages:
       '@aws-sdk/client-eventbridge': 3.222.0
       '@babel/runtime': 7.20.6
       ajv: 8.11.2
-      axios: 1.2.0
+      axios: 1.2.1
       http-errors: 2.0.0
       lodash: 4.17.21
     transitivePeerDependencies:
@@ -5124,7 +5128,16 @@ packages:
       '@aws-cdk/asset-awscli-v1': 2.2.25
       '@aws-cdk/asset-kubectl-v20': 2.1.1
       '@aws-cdk/asset-node-proxy-agent-v5': 2.0.31
+      '@balena/dockerignore': 1.0.2
+      case: 1.6.3
       constructs: 10.1.177
+      fs-extra: 9.1.0
+      ignore: 5.2.1
+      jsonschema: 1.4.1
+      minimatch: 3.1.2
+      punycode: 2.1.1
+      semver: 7.3.8
+      yaml: 1.10.2
     dev: true
     bundledDependencies:
       - '@balena/dockerignore'
@@ -5181,8 +5194,8 @@ packages:
       - debug
     dev: true
 
-  /axios/1.2.0:
-    resolution: {integrity: sha512-zT7wZyNYu3N5Bu0wuZ6QccIf93Qk1eV8LOewxgjOZFd2DenOs98cJ7+Y6703d0wkaXGY6/nZd4EweJaHz9uzQw==}
+  /axios/1.2.1:
+    resolution: {integrity: sha512-I88cFiGu9ryt/tfVEi4kX2SITsvDddTajXTOFmt2uK1ZVA8LytjtdeyefdQWEf5PU8w+4SSJDoYnggflB5tW4A==}
     dependencies:
       follow-redirects: 1.15.2
       form-data: 4.0.0
@@ -5544,6 +5557,11 @@ packages:
       no-case: 3.0.4
       tslib: 2.4.1
       upper-case-first: 2.0.2
+    dev: true
+
+  /case/1.6.3:
+    resolution: {integrity: sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==}
+    engines: {node: '>= 0.8.0'}
     dev: true
 
   /chai/4.3.7:
@@ -9138,6 +9156,10 @@ packages:
     engines: {'0': node >= 0.2.0}
     dev: true
 
+  /jsonschema/1.4.1:
+    resolution: {integrity: sha512-S6cATIPVv1z0IlxdN+zUk5EPjkGCdnhN4wVSBlvoUO1tOLJootbo9CquNJmbIh4yikWHiUedhRYrNPn1arpEmQ==}
+    dev: true
+
   /jsx-ast-utils/3.3.3:
     resolution: {integrity: sha512-fYQHZTZ8jSfmWZ0iyzfwiU4WDX4HpHbMCZ3gPlWYiCl3BoeOTsqKBqnTVfH2rYT7eP5c3sVbeSPHnnJOaTrWiw==}
     engines: {node: '>=4.0'}
@@ -9933,7 +9955,7 @@ packages:
       '@yarnpkg/lockfile': 1.1.0
       '@yarnpkg/parsers': 3.0.0-rc.32
       '@zkochan/js-yaml': 0.0.6
-      axios: 1.2.0
+      axios: 1.2.1
       chalk: 4.1.0
       chokidar: 3.5.3
       cli-cursor: 3.1.0
