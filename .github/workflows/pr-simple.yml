@@ -70,7 +70,7 @@ jobs:
           cd user-docs/documentation
           pnpm build
       - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v1.2
+        uses: nwtgck/actions-netlify@v2.0
         with:
           publish-dir: './user-docs/documentation/build'
           production-branch: main
