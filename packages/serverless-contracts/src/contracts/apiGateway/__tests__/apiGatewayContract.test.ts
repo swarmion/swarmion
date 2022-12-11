@@ -98,7 +98,7 @@ describe('apiGateway contracts', () => {
           body: bodySchema,
         },
         required: [
-          'pathParameters',
+          'pathParameterss',
           'queryStringParameters',
           'headers',
           'body',

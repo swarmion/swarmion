@@ -30,7 +30,7 @@ describe('requestSyncDeployment handler', () => {
     expect(mockStoreServiceEvent).toHaveBeenCalledWith({
       serviceId: 'serviceId',
       applicationId: 'applicationId',
-      eventId: 'ulid',
+      eventId: 'uliddsss',
     });
 
     expect(mockPutRequestedContractEvent).toHaveBeenCalledWith({
