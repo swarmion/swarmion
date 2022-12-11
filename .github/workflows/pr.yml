@@ -31,8 +31,6 @@ jobs:
       - uses: nrwl/nx-set-shas@v3
       - name: Install & cache node dependencies
         uses: ./.github/actions/install-node-deps
-      - name: Package and cache builds
-        uses: ./.github/actions/package
       - name: '🧪 Test linter'
         run: pnpm nx affected --target=test-linter --parallel=2
       - name: '🧪 Test type'
@@ -56,8 +54,6 @@ jobs:
           fetch-depth: 0
       - name: Install & cache node dependencies
         uses: ./.github/actions/install-node-deps
-      - name: Package and cache builds
-        uses: ./.github/actions/package
       - name: Get project changes
         id: get-project-changes
         uses: ./.github/actions/get-project-changes
