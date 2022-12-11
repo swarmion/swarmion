@@ -22,7 +22,7 @@ runs:
       shell: bash
     - name: Get project path from project name
       id: get-project-path
-      run: echo "::set-output name=path::$(jq -r '.projects[${{ toJson(inputs.project) }}]' workspace.json)"
+      run: echo "path=$(jq -r '.projects[${{ toJson(inputs.project) }}]' workspace.json)" >> $GITHUB_OUTPUT
       shell: bash
     - name: Check if SonarCloud Scan should run
       id: check_sonarcloud_scan_should_run

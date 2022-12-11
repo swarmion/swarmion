@@ -12,5 +12,5 @@ runs:
     - name: Get affected projects
       id: affected-projects
       run: |
-        echo "::set-output name=projects::$(npx nx print-affected | jq -c ".projects")"
+        echo "projects=$(npx nx print-affected | jq -c ".projects")" >> $GITHUB_OUTPUT
       shell: bash
