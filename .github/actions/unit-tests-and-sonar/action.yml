@@ -1,9 +1,9 @@
 name: 'Unit Tests & Sonar'
 description: 'Run unit tests and SonarCloud scan'
 inputs:
-  path:
+  project:
     required: true
-    description: 'Path to the directory to unit test and upload SonarCloud scan'
+    description: 'Name of the project to unit test and upload SonarCloud scan'
   github_token:
     description: Github Token
     required: true
@@ -17,26 +17,25 @@ runs:
       uses: ./.github/actions/install-node-deps
     - name: Package and cache builds
       uses: ./.github/actions/package
-    - name: Run unit tests
+    - name: 🧪 Run unit tests
+      # nx run-many is used here, because it will not throw an error if our target action isn't found in the project, which is exactly what we want!
       run: |
-        cd ${{ inputs.path }}
-        if [[ $(cat package.json | jq '.scripts["test-unit"]') != null ]]; then
-          pnpm test-unit
-        else
-          echo "No unit test script found in package.json"
-        fi
+        npx nx run-many --target=test-unit --projects=${{ inputs.project }} --parallel
+      shell: bash
+    - name: Get project path from project name
+      id: get-project-path
+      run: echo "::set-output name=path::$(jq -r '.projects[${{ toJson(inputs.project) }}]' workspace.json)"
       shell: bash
     - name: Check if SonarCloud Scan should run
       id: check_sonarcloud_scan_should_run
       uses: andstor/file-existence-action@v1
       with:
-        files: '${{ inputs.path }}/sonar-project.properties'
-
-    - name: SonarCloud Scan
+        files: '${{ steps.get-project-path.outputs.path }}/sonar-project.properties'
+    - name: 🔎 SonarCloud Scan
       if: steps.check_sonarcloud_scan_should_run.outputs.files_exists == 'true'
       uses: SonarSource/sonarcloud-github-action@master
       env:
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ inputs.SONAR_TOKEN }}
       with:
-        projectBaseDir: ${{ inputs.path }}
+        projectBaseDir: ${{ steps.get-project-path.outputs.path }}
