@@ -37,9 +37,18 @@
       "inputs": ["production", "^production"],
       "dependsOn": ["^package", "^deploy", "^build"]
     },
+    "deploy-staging": {
+      "inputs": ["production", "^production"],
+      "dependsOn": ["^package", "^build"]
+    },
+    "deploy-production": {
+      "inputs": ["production", "^production"],
+      "dependsOn": ["^package", "^build"]
+    },
     "test": {
       "inputs": ["default", "^production"],
-      "dependsOn": ["^package"]
+      "dependsOn": ["^package"],
+      "outputs": ["{projectRoot}/coverage"]
     },
     "test-linter": {
       "inputs": ["default", "^production"],
@@ -47,7 +56,8 @@
     },
     "test-unit": {
       "inputs": ["default", "^production"],
-      "dependsOn": ["^package"]
+      "dependsOn": ["^package"],
+      "outputs": ["{projectRoot}/coverage"]
     },
     "test-type": {
       "inputs": ["default", "^production"],

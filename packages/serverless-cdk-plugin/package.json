@@ -32,10 +32,10 @@
     "package-types": "tsc -p tsconfig.build.json",
     "package-types-aliases": "tsc-alias -p tsconfig.build.json",
     "test": "pnpm test-linter && pnpm test-type && pnpm test-circular",
+    "test-cdk": "jest --runInBand --collectCoverage --logHeapUsage",
     "test-circular": "pnpm depcruise --validate .dependency-cruiser.js src",
     "test-linter": "pnpm linter-base-config .",
     "test-type": "tsc --noEmit --emitDeclarationOnly false",
-    "test-cdk": "jest --runInBand --collectCoverage --logHeapUsage",
     "transpile": "babel src --extensions .ts --quiet",
     "watch": "pnpm clean && concurrently 'pnpm:package-* --watch'"
   },
