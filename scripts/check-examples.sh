@@ -13,5 +13,3 @@ for template in swarmion-starter swarmion-full-stack; do
   pnpm build
   cd $BASE_DIR
 done
-
-rm -rf $TEMP_DIR
