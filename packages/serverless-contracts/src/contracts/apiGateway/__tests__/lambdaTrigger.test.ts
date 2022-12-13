@@ -1,4 +1,5 @@
 import { getTrigger } from 'features/lambdaTrigger';
+import { LambdaFunction } from 'types/lambdaEvents';
 
 import { ApiGatewayContract } from '../apiGatewayContract';
 
@@ -52,12 +53,25 @@ describe('apiGateway lambda trigger', () => {
         bodySchema,
         outputSchema,
       });
-      expect(getTrigger(httpApiContract)).toEqual({
-        httpApi: {
-          path: '/users/{userId}',
-          method: 'GET',
-        },
+
+      const trigger = getTrigger(httpApiContract);
+      const lambdaConfig: LambdaFunction = {
+        events: [trigger],
+      };
+
+      expect(lambdaConfig).toEqual({
+        events: [
+          {
+            httpApi: {
+              path: '/users/{userId}',
+              method: 'GET',
+            },
+          },
+        ],
       });
+
+      // @ts-expect-error it should not be possible to pass an authorizer
+      getTrigger(httpApiContract, { authorizer: '123' });
     });
 
     it('should have the correct complete trigger with authorizer', () => {
@@ -73,13 +87,24 @@ describe('apiGateway lambda trigger', () => {
         bodySchema,
         outputSchema,
       });
-      expect(getTrigger(httpApiContract, { authorizer: '123' })).toEqual({
-        httpApi: {
-          path: '/users/{userId}',
-          method: 'GET',
-          authorizer: '123',
-        },
+      const trigger = getTrigger(httpApiContract, { authorizer: '123' });
+      const lambdaConfig: LambdaFunction = {
+        events: [trigger],
+      };
+      expect(lambdaConfig).toEqual({
+        events: [
+          {
+            httpApi: {
+              path: '/users/{userId}',
+              method: 'GET',
+              authorizer: '123',
+            },
+          },
+        ],
       });
+
+      // @ts-expect-error the second parameter should be required since there is an authorizer to define
+      getTrigger(httpApiContract);
     });
   });
 
@@ -97,12 +122,30 @@ describe('apiGateway lambda trigger', () => {
         bodySchema,
         outputSchema,
       });
+
+      const trigger = getTrigger(restApiContract);
+      const lambdaConfig: LambdaFunction = {
+        events: [trigger],
+      };
+      expect(lambdaConfig).toEqual({
+        events: [
+          {
+            http: {
+              path: '/users/{userId}',
+              method: 'GET',
+            },
+          },
+        ],
+      });
       expect(getTrigger(restApiContract)).toEqual({
         http: {
           path: '/users/{userId}',
           method: 'GET',
         },
       });
+
+      // @ts-expect-error it should not be possible to pass an authorizer
+      getTrigger(restApiContract, { authorizer: '123' });
     });
 
     it('should have the correct complete trigger with authorizer', () => {
@@ -125,6 +168,9 @@ describe('apiGateway lambda trigger', () => {
           authorizer: '123',
         },
       });
+
+      // @ts-expect-error the second parameter should be required since there is an authorizer to define
+      getTrigger(restApiContract);
     });
   });
 });
