@@ -24,7 +24,7 @@ type ApiGatewayTriggerKey<
 export type ApiGatewayLambdaCompleteTriggerType<
   Contract extends ApiGatewayContract,
 > = {
-  [key in Contract['integrationType']]: {
+  [key in ApiGatewayTriggerKey<Contract['integrationType']>]: {
     path: string;
     method: string;
   } & ApiGatewayLambdaAdditionalConfigType<
