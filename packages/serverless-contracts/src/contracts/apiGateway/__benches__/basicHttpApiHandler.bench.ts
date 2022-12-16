@@ -7,6 +7,7 @@ import { getAPIGatewayV2EventRequestContextMock } from '@swarmion/serverless-hel
 
 import { getHandlerContextMock } from '__mocks__/requestContext';
 import { getHandler } from 'features';
+import { HttpStatusCodes } from 'types';
 
 import { httpApiGatewayContractMock } from '../__mocks__/httpApiGatewayContract.bench';
 
@@ -37,7 +38,10 @@ const httpHandler = getHandler(httpApiContract)(
       headers.myHeader +
       myCustomClaim;
 
-    return Promise.resolve({ id: 'hello', name });
+    return Promise.resolve({
+      statusCode: HttpStatusCodes.OK,
+      body: { id: 'hello', name },
+    });
   },
 );
 
@@ -81,7 +85,10 @@ const basicHttpApiHandlerInstantiationBench = (): void => {
         headers.myHeader +
         myCustomClaim;
 
-      return Promise.resolve({ id: 'hello', name });
+      return Promise.resolve({
+        statusCode: HttpStatusCodes.OK,
+        body: { id: 'hello', name },
+      });
     },
   );
 };

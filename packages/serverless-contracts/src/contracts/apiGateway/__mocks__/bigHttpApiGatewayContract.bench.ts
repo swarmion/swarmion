@@ -1,6 +1,7 @@
 import { JSONSchema } from 'json-schema-to-ts';
 
 import { ApiGatewayContract } from 'contracts';
+import { HttpStatusCodes } from 'types';
 
 // object with 100 properties to test the performance
 const bigObject: Record<string, JSONSchema> = {};
@@ -79,6 +80,6 @@ export const bigHttpApiContract = new ApiGatewayContract({
   queryStringParametersSchema,
   headersSchema,
   bodySchema,
-  outputSchema,
+  outputSchemas: { [HttpStatusCodes.OK]: outputSchema },
   requestContextSchema,
 });

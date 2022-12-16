@@ -1,4 +1,5 @@
 import { ApiGatewayContract } from 'contracts';
+import { HttpStatusCodes } from 'types';
 
 export const pathParametersSchema = {
   type: 'object',
@@ -66,6 +67,6 @@ export const httpApiGatewayContractMock = new ApiGatewayContract({
   queryStringParametersSchema,
   headersSchema,
   bodySchema,
-  outputSchema,
+  outputSchemas: { [HttpStatusCodes.OK]: outputSchema },
   requestContextSchema,
 });
