@@ -1,9 +1,10 @@
-import type { JSONSchema } from 'json-schema-to-ts';
+/* eslint-disable max-lines */
+import { JSONSchema } from 'json-schema-to-ts';
 import isUndefined from 'lodash/isUndefined';
 import omitBy from 'lodash/omitBy';
 
 import { ConstrainedJSONSchema } from 'types/constrainedJSONSchema';
-import { HttpMethod } from 'types/http';
+import { HttpMethod, StatusCodes } from 'types/http';
 
 import {
   ApiGatewayAuthorizerType,
@@ -36,7 +37,10 @@ export class ApiGatewayContract<
     | ConstrainedJSONSchema
     | undefined,
   BodySchema extends JSONSchema | undefined = JSONSchema | undefined,
-  OutputSchema extends JSONSchema | undefined = JSONSchema | undefined,
+  PropsOutputSchemas extends
+    | Partial<Record<StatusCodes, JSONSchema>>
+    | undefined = Partial<Record<StatusCodes, JSONSchema>> | undefined,
+  OutputSchemas = Exclude<PropsOutputSchemas, undefined>,
 > {
   public contractType = 'apiGateway' as const;
   public id: string;
@@ -48,7 +52,7 @@ export class ApiGatewayContract<
   public queryStringParametersSchema: QueryStringParametersSchema;
   public headersSchema: HeadersSchema;
   public bodySchema: BodySchema;
-  public outputSchema: OutputSchema;
+  public outputSchemas: OutputSchemas;
   public inputSchema: JSONSchema;
 
   /**
@@ -110,14 +114,14 @@ export class ApiGatewayContract<
      */
     bodySchema: BodySchema;
     /**
-     * A JSONSchema used to validate the output and infer its type.
+     * A record of JSONSchemas used to validate different outputs and infer their types depending on the return status code.
      *
      * Please note that the `as const` directive is necessary to properly infer the type from the schema.
      * See https://github.com/ThomasAribart/json-schema-to-ts#fromschema.
      *
      * Also please note that for Typescript reasons, you need to explicitly pass `undefined` if you don't want to use the schema.
      */
-    outputSchema: OutputSchema;
+    outputSchemas: PropsOutputSchemas;
     /**
      * Indicates which type of authorizer is used for this contract.
      */
@@ -131,7 +135,9 @@ export class ApiGatewayContract<
     this.queryStringParametersSchema = props.queryStringParametersSchema;
     this.headersSchema = props.headersSchema;
     this.bodySchema = props.bodySchema;
-    this.outputSchema = props.outputSchema;
+    this.outputSchemas = (
+      props.outputSchemas !== undefined ? props.outputSchemas : {}
+    ) as OutputSchemas;
     this.inputSchema = this.getInputSchema();
     this.authorizerType = props.authorizerType;
   }

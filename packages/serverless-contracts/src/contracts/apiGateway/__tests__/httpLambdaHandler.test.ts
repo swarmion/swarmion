@@ -16,6 +16,7 @@ import {
 import { getHandlerContextMock } from '__mocks__/requestContext';
 import { ApiGatewayContract } from 'contracts';
 import { getHandler } from 'features/lambdaHandler';
+import { StatusCodes } from 'types/http';
 
 import { httpApiGatewayContractMock } from '../__mocks__/httpApiGatewayContract';
 import { SwarmionApiGatewayHandler } from '../types';
@@ -50,7 +51,10 @@ describe('apiGateway lambda handler', () => {
             headers.myHeader +
             myCustomClaim;
 
-          return Promise.resolve({ id: 'hello', name });
+          return Promise.resolve({
+            statusCode: StatusCodes.OK,
+            body: { id: 'hello', name },
+          });
         },
       );
 
@@ -211,7 +215,10 @@ describe('apiGateway lambda handler', () => {
       const fakeContext = getHandlerContextMock();
 
       const httpHandler = getHandler(httpApiContract)(() => {
-        return Promise.resolve({ id: 'hello', name: 5 as unknown as string });
+        return Promise.resolve({
+          statusCode: StatusCodes.OK,
+          body: { id: 'hello', name: 5 as unknown as string },
+        });
       });
 
       const result = await httpHandler(
@@ -275,7 +282,10 @@ describe('apiGateway lambda handler', () => {
             headers.myHeader +
             myCustomClaim;
 
-          return Promise.resolve({ id: 'hello', name });
+          return Promise.resolve({
+            statusCode: StatusCodes.OK,
+            body: { id: 'hello', name },
+          });
         },
       );
 
@@ -329,7 +339,10 @@ describe('apiGateway lambda handler', () => {
         ) => {
           const name = toto.tata;
 
-          return Promise.resolve({ name, id: 'miam' });
+          return Promise.resolve({
+            statusCode: StatusCodes.OK,
+            body: { name, id: 'miam' },
+          });
         },
       );
       const fakeContext = getHandlerContextMock();
@@ -380,7 +393,10 @@ describe('apiGateway lambda handler', () => {
           await Promise.resolve();
           const name = toto.tata;
 
-          return Promise.resolve({ name, id: 'toto' });
+          return Promise.resolve({
+            statusCode: StatusCodes.OK,
+            body: { name, id: 'toto' },
+          });
         },
       );
       const fakeContext = getHandlerContextMock();
@@ -426,7 +442,7 @@ describe('apiGateway lambda handler', () => {
         queryStringParametersSchema: undefined,
         headersSchema: undefined,
         bodySchema: undefined,
-        outputSchema: undefined,
+        outputSchemas: undefined,
       });
 
       const handler: SwarmionApiGatewayHandler<
@@ -434,7 +450,7 @@ describe('apiGateway lambda handler', () => {
       > = async () => {
         await Promise.resolve();
 
-        return;
+        return { statusCode: StatusCodes.OK, body: undefined };
       };
       const fakeContext = getHandlerContextMock();
 

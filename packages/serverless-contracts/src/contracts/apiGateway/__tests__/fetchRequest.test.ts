@@ -1,6 +1,8 @@
 /* eslint-disable max-lines */
 /// <reference lib="dom" />
 
+import { StatusCodes } from 'types/http';
+
 import { ApiGatewayContract } from '../apiGatewayContract';
 import { getFetchRequest } from '../features/fetchRequest';
 
@@ -65,7 +67,9 @@ describe('apiGateway fetch request', () => {
       queryStringParametersSchema,
       headersSchema,
       bodySchema,
-      outputSchema,
+      outputSchemas: {
+        [StatusCodes.OK]: outputSchema,
+      },
     });
 
     beforeEach(() => {
@@ -150,7 +154,7 @@ describe('apiGateway fetch request', () => {
       queryStringParametersSchema: undefined,
       headersSchema: undefined,
       bodySchema: undefined,
-      outputSchema: undefined,
+      outputSchemas: undefined,
     });
 
     it('should have the correct axios request ', async () => {
@@ -181,7 +185,7 @@ describe('apiGateway fetch request', () => {
       queryStringParametersSchema,
       headersSchema: undefined,
       bodySchema: undefined,
-      outputSchema: undefined,
+      outputSchemas: undefined,
     });
 
     it('should have the correct axios request ', async () => {

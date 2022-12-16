@@ -1,3 +1,5 @@
+import { StatusCodes } from 'types/http';
+
 import { ApiGatewayContract } from '../apiGatewayContract';
 import { getOpenApiDocumentation } from '../features';
 
@@ -37,6 +39,10 @@ describe('apiGateway openApi documentation', () => {
     required: ['id', 'name'],
   } as const;
 
+  const outputSchemas = {
+    [StatusCodes.OK]: outputSchema,
+  };
+
   describe('hhtpApi, when all parameters are set', () => {
     const httpApiContract = new ApiGatewayContract({
       id: 'testContract',
@@ -48,7 +54,7 @@ describe('apiGateway openApi documentation', () => {
       queryStringParametersSchema,
       headersSchema,
       bodySchema,
-      outputSchema,
+      outputSchemas,
     });
 
     it('should generate open api documentation', () => {
@@ -134,7 +140,7 @@ describe('apiGateway openApi documentation', () => {
       queryStringParametersSchema: undefined,
       headersSchema: undefined,
       bodySchema: undefined,
-      outputSchema: undefined,
+      outputSchemas: undefined,
     });
 
     it('should generate open api documentation', () => {

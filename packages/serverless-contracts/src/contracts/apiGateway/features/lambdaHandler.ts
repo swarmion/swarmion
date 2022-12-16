@@ -1,6 +1,8 @@
 import Ajv from 'ajv';
 import createHttpError, { isHttpError } from 'http-errors';
 
+import { StatusCodes } from 'types/http';
+
 import { ApiGatewayContract } from '../apiGatewayContract';
 import {
   ApiGatewayHandler,
@@ -29,7 +31,10 @@ export const getApiGatewayHandler =
     QueryStringParameters = QueryStringParametersType<Contract>,
     Headers = HeadersType<Contract>,
     Body = BodyType<Contract>,
-    Output = OutputType<Contract>,
+    Output extends {
+      statusCode: number | string | symbol;
+      body: unknown;
+    } = OutputType<Contract>,
   >(
     contract: Contract,
   ) =>
@@ -77,9 +82,12 @@ export const getApiGatewayHandler =
         ...additionalArgs,
       );
 
-      if (contract.outputSchema !== undefined) {
-        const outputValidator = ajv.compile(contract.outputSchema);
-        if (!outputValidator(handlerResponse)) {
+      const outputSchema =
+        contract.outputSchemas[handlerResponse.statusCode as StatusCodes];
+
+      if (outputSchema !== undefined) {
+        const outputValidator = ajv.compile(outputSchema);
+        if (!outputValidator(handlerResponse.body)) {
           console.error('Error: Invalid output');
           console.error(outputValidator.errors);
           throw createHttpError(400, 'Invalid output');
@@ -87,7 +95,8 @@ export const getApiGatewayHandler =
       }
 
       return handlerResponseToProxyResult<IntegrationType, Output>(
-        handlerResponse,
+        handlerResponse.statusCode as StatusCodes,
+        handlerResponse.body,
       );
     } catch (error) {
       console.error(error);
@@ -101,7 +110,7 @@ export const getApiGatewayHandler =
       }
 
       return {
-        statusCode: 500,
+        statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
         body: 'Internal server error',
       };
     }
