@@ -1,5 +1,7 @@
 import { JSONSchema } from 'json-schema-to-ts';
 
+import { HttpStatusCodes } from 'types/http';
+
 import { DefinedProperties } from './utils';
 
 /**
@@ -16,7 +18,9 @@ type AllFullContractProperties<
   QueryStringParametersSchema extends JSONSchema | undefined,
   HeadersSchema extends JSONSchema | undefined,
   BodySchema extends JSONSchema | undefined,
-  OutputSchema extends JSONSchema | undefined,
+  OutputSchema extends Partial<Record<HttpStatusCodes, JSONSchema>> = {
+    [HttpStatusCodes.OK]: JSONSchema | undefined;
+  },
 > = {
   contractId: { const: string };
   contractType: { const: IntegrationType };
@@ -42,7 +46,9 @@ export interface FullContractSchemaType<
   QueryStringParametersSchema extends JSONSchema | undefined,
   HeadersSchema extends JSONSchema | undefined,
   BodySchema extends JSONSchema | undefined,
-  OutputSchema extends JSONSchema | undefined,
+  OutputSchema extends Partial<Record<HttpStatusCodes, JSONSchema>> = {
+    [HttpStatusCodes.OK]: JSONSchema | undefined;
+  },
   DefinedFullContractProperties = DefinedProperties<
     AllFullContractProperties<
       Path,

@@ -1,9 +1,10 @@
-import type { JSONSchema } from 'json-schema-to-ts';
+/* eslint-disable max-lines */
+import { JSONSchema } from 'json-schema-to-ts';
 import isUndefined from 'lodash/isUndefined';
 import omitBy from 'lodash/omitBy';
 
 import { ConstrainedJSONSchema } from 'types/constrainedJSONSchema';
-import { HttpMethod } from 'types/http';
+import { HttpMethod, HttpStatusCodes } from 'types/http';
 
 import {
   ApiGatewayAuthorizerType,
@@ -32,7 +33,10 @@ export class ApiGatewayContract<
   HeadersSchema extends ConstrainedJSONSchema | undefined = undefined,
   RequestContextSchema extends JSONSchema | undefined = undefined,
   BodySchema extends JSONSchema | undefined = undefined,
-  OutputSchema extends JSONSchema | undefined = undefined,
+  PropsOutputSchemas extends
+    | Partial<Record<HttpStatusCodes, JSONSchema>>
+    | undefined = undefined,
+  OutputSchemas = Exclude<PropsOutputSchemas, undefined>,
 > {
   public contractType = 'apiGateway' as const;
   public id: string;
@@ -45,7 +49,7 @@ export class ApiGatewayContract<
   public headersSchema: HeadersSchema;
   public requestContextSchema: RequestContextSchema;
   public bodySchema: BodySchema;
-  public outputSchema: OutputSchema;
+  public outputSchemas: OutputSchemas;
   public inputSchema: JSONSchema;
 
   /**
@@ -110,12 +114,12 @@ export class ApiGatewayContract<
      */
     bodySchema?: BodySchema;
     /**
-     * A JSONSchema used to validate the output and infer its type.
+     * A record of JSONSchemas used to validate different outputs and infer their types depending on the return status code.
      *
      * Please note that the `as const` directive is necessary to properly infer the type from the schema.
      * See https://github.com/ThomasAribart/json-schema-to-ts#fromschema.
      */
-    outputSchema?: OutputSchema;
+    outputSchemas?: PropsOutputSchemas;
   }) {
     this.id = props.id;
     this.path = props.path;
@@ -130,7 +134,9 @@ export class ApiGatewayContract<
     this.requestContextSchema = (props.requestContextSchema ??
       undefined) as RequestContextSchema;
     this.bodySchema = (props.bodySchema ?? undefined) as BodySchema;
-    this.outputSchema = (props.outputSchema ?? undefined) as OutputSchema;
+    this.outputSchemas = (
+      props.outputSchemas !== undefined ? props.outputSchemas : {}
+    ) as OutputSchemas;
     this.inputSchema = this.getInputSchema();
   }
 
@@ -170,5 +176,5 @@ export type GenericApiGatewayContract = ApiGatewayContract<
   ConstrainedJSONSchema | undefined,
   JSONSchema | undefined,
   JSONSchema | undefined,
-  JSONSchema | undefined
+  Partial<Record<HttpStatusCodes, JSONSchema>>
 >;

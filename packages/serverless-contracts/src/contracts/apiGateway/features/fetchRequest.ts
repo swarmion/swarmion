@@ -31,5 +31,8 @@ export const getFetchRequest = async <
     body: JSON.stringify(body),
   });
 
-  return response.json() as Promise<OutputType<Contract>>;
+  return {
+    statusCode: response.status,
+    body: (await response.json()) as OutputType<Contract>['body'],
+  } as OutputType<Contract>;
 };
