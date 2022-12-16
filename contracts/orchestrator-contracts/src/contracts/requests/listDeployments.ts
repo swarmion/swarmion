@@ -1,4 +1,7 @@
-import { ApiGatewayContract } from '@swarmion/serverless-contracts';
+import {
+  ApiGatewayContract,
+  StatusCodes,
+} from '@swarmion/serverless-contracts';
 
 const queryStringParametersSchema = {
   type: 'object',
@@ -24,5 +27,7 @@ export const listDeploymentsContract = new ApiGatewayContract({
   method: 'GET',
   integrationType: 'httpApi',
   queryStringParametersSchema,
-  outputSchema,
+  outputSchemas: {
+    [StatusCodes.OK]: outputSchema,
+  },
 });
