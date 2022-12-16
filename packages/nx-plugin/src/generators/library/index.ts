@@ -15,7 +15,10 @@ import {
   packageTsConfig,
 } from './typed-json-config';
 
-const SOURCE_FOLDER = './files';
+const SOURCE_FOLDER =
+  process.env.NODE_ENV === 'test'
+    ? '../../../schemas/library/files'
+    : '../schemas/library/files';
 
 export default async (tree: Tree, schema: Schema): Promise<() => void> => {
   const options = normalizeOptions(tree, schema, GeneratorType.LIBRARY);
