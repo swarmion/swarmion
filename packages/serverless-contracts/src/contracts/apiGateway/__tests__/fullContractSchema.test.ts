@@ -1,3 +1,5 @@
+import { StatusCodes } from 'types/http';
+
 import { ApiGatewayContract } from '../apiGatewayContract';
 import { getFullContractSchema } from '../features';
 
@@ -37,6 +39,10 @@ describe('apiGateway full contract schema', () => {
     required: ['id', 'name'],
   } as const;
 
+  const outputSchemas = {
+    [StatusCodes.OK]: outputSchema,
+  };
+
   describe('htttpApi, when all parameters are set', () => {
     const httpApiContract = new ApiGatewayContract({
       id: 'testContract',
@@ -47,7 +53,7 @@ describe('apiGateway full contract schema', () => {
       queryStringParametersSchema,
       headersSchema,
       bodySchema,
-      outputSchema,
+      outputSchemas,
     });
 
     it('should have the correct fullContractSchema', () => {
@@ -62,7 +68,13 @@ describe('apiGateway full contract schema', () => {
           queryStringParameters: queryStringParametersSchema,
           headers: headersSchema,
           body: bodySchema,
-          output: outputSchema,
+          outputs: {
+            type: 'object',
+            properties: {
+              '200': outputSchema,
+            },
+            required: ['200'],
+          },
         },
         required: [
           'contractId',
@@ -73,7 +85,7 @@ describe('apiGateway full contract schema', () => {
           'queryStringParameters',
           'headers',
           'body',
-          'output',
+          'outputs',
         ],
         additionalProperties: false,
       });
@@ -90,7 +102,7 @@ describe('apiGateway full contract schema', () => {
       queryStringParametersSchema,
       headersSchema,
       bodySchema,
-      outputSchema,
+      outputSchemas,
     });
 
     it('should have the correct fullContractSchema', () => {
@@ -105,7 +117,13 @@ describe('apiGateway full contract schema', () => {
           queryStringParameters: queryStringParametersSchema,
           headers: headersSchema,
           body: bodySchema,
-          output: outputSchema,
+          outputs: {
+            type: 'object',
+            properties: {
+              '200': outputSchema,
+            },
+            required: ['200'],
+          },
         },
         required: [
           'contractId',
@@ -116,7 +134,7 @@ describe('apiGateway full contract schema', () => {
           'queryStringParameters',
           'headers',
           'body',
-          'output',
+          'outputs',
         ],
         additionalProperties: false,
       });
