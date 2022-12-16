@@ -4,6 +4,8 @@ import {
 } from 'aws-lambda';
 import { A } from 'ts-toolbelt';
 
+import { HttpStatusCodes } from 'types/http';
+
 import {
   bodySchema,
   headersSchema,
@@ -33,7 +35,9 @@ export const httpApiGatewayContract = new ApiGatewayContract({
   queryStringParametersSchema,
   headersSchema,
   bodySchema,
-  outputSchema,
+  outputSchemas: {
+    [HttpStatusCodes.OK]: outputSchema,
+  },
   requestContextSchema,
 });
 

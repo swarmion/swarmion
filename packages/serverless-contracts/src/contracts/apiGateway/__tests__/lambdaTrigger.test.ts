@@ -1,4 +1,5 @@
 import { getTrigger } from 'features/lambdaTrigger';
+import { HttpStatusCodes } from 'types/http';
 import { LambdaFunction } from 'types/lambdaEvents';
 
 import { ApiGatewayContract } from '../apiGatewayContract';
@@ -39,6 +40,10 @@ describe('apiGateway lambda trigger', () => {
     required: ['id', 'name'],
   } as const;
 
+  const outputSchemas = {
+    [HttpStatusCodes.OK]: outputSchema,
+  };
+
   describe('httpApi trigger', () => {
     it('should have the correct trigger without authorizer', () => {
       const httpApiContract = new ApiGatewayContract({
@@ -50,7 +55,7 @@ describe('apiGateway lambda trigger', () => {
         queryStringParametersSchema,
         headersSchema,
         bodySchema,
-        outputSchema,
+        outputSchemas,
       });
 
       const trigger = getTrigger(httpApiContract);
@@ -84,7 +89,7 @@ describe('apiGateway lambda trigger', () => {
         queryStringParametersSchema,
         headersSchema,
         bodySchema,
-        outputSchema,
+        outputSchemas,
       });
       const trigger = getTrigger(httpApiContract, { authorizer: '123' });
       const lambdaConfig: LambdaFunction = {
@@ -118,7 +123,7 @@ describe('apiGateway lambda trigger', () => {
         queryStringParametersSchema,
         headersSchema,
         bodySchema,
-        outputSchema,
+        outputSchemas,
       });
 
       const trigger = getTrigger(restApiContract);
@@ -157,7 +162,7 @@ describe('apiGateway lambda trigger', () => {
         queryStringParametersSchema,
         headersSchema,
         bodySchema,
-        outputSchema,
+        outputSchemas,
       });
       expect(getTrigger(restApiContract, { authorizer: '123' })).toEqual({
         http: {

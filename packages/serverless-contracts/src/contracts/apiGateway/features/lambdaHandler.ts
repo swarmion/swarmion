@@ -1,5 +1,7 @@
-import Ajv from 'ajv';
+import Ajv, { ValidateFunction } from 'ajv';
 import createHttpError, { isHttpError } from 'http-errors';
+
+import { HttpStatusCodes } from 'types/http';
 
 import { GenericApiGatewayContract } from '../apiGatewayContract';
 import {
@@ -31,7 +33,10 @@ export const getApiGatewayHandler =
     Headers = HeadersType<Contract>,
     CustomRequestContext = CustomRequestContextType<Contract>,
     Body = BodyType<Contract>,
-    Output = OutputType<Contract>,
+    Output extends {
+      statusCode: number | string | symbol;
+      body: unknown;
+    } = OutputType<Contract>,
   >(
     contract: Contract,
   ) =>
@@ -53,13 +58,19 @@ export const getApiGatewayHandler =
     Output,
     AdditionalArgs
   > => {
-    const ajv = new Ajv();
-    const inputValidator = ajv.compile(contract.inputSchema);
+    const { inputSchema, outputSchemas } = contract;
 
-    const outputValidator =
-      contract.outputSchema !== undefined
-        ? ajv.compile(contract.outputSchema)
-        : undefined;
+    const ajv = new Ajv();
+    const inputValidator = ajv.compile(inputSchema);
+
+    const outputValidators: Record<string, ValidateFunction | undefined> = {};
+    Object.keys(outputSchemas).forEach(statusCode => {
+      const outputSchema =
+        outputSchemas[statusCode as unknown as keyof typeof outputSchemas];
+
+      outputValidators[statusCode] =
+        outputSchema !== undefined ? ajv.compile(outputSchema) : undefined;
+    });
 
     return async (event, context, callback, ...additionalArgs) => {
       try {
@@ -86,8 +97,11 @@ export const getApiGatewayHandler =
           ...additionalArgs,
         );
 
+        const outputValidator =
+          outputValidators[handlerResponse.statusCode as HttpStatusCodes];
+
         if (outputValidator !== undefined) {
-          if (!outputValidator(handlerResponse)) {
+          if (!outputValidator(handlerResponse.body)) {
             console.error('Error: Invalid output');
             console.error(outputValidator.errors);
             throw createHttpError(400, 'Invalid output');
@@ -95,7 +109,8 @@ export const getApiGatewayHandler =
         }
 
         return handlerResponseToProxyResult<IntegrationType, Output>(
-          handlerResponse,
+          handlerResponse.statusCode as HttpStatusCodes,
+          handlerResponse.body,
         );
       } catch (error) {
         console.error(error);
@@ -109,7 +124,7 @@ export const getApiGatewayHandler =
         }
 
         return {
-          statusCode: 500,
+          statusCode: HttpStatusCodes.INTERNAL_SERVER_ERROR,
           body: 'Internal server error',
         };
       }

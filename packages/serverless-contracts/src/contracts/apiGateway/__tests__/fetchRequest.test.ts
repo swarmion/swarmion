@@ -1,6 +1,8 @@
 /* eslint-disable max-lines */
 /// <reference lib="dom" />
 
+import { HttpStatusCodes } from 'types/http';
+
 import { ApiGatewayContract } from '../apiGatewayContract';
 import { getFetchRequest } from '../features/fetchRequest';
 
@@ -64,7 +66,9 @@ describe('apiGateway fetch request', () => {
       queryStringParametersSchema,
       headersSchema,
       bodySchema,
-      outputSchema,
+      outputSchemas: {
+        [HttpStatusCodes.OK]: outputSchema,
+      },
     });
 
     beforeEach(() => {

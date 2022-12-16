@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { HttpStatusCodes } from 'types/http';
+
 import { ApiGatewayContract } from '../apiGatewayContract';
 import { getAxiosRequest } from '../features';
 
@@ -52,7 +54,9 @@ describe('apiGateway axios request', () => {
       queryStringParametersSchema,
       headersSchema,
       bodySchema,
-      outputSchema,
+      outputSchemas: {
+        [HttpStatusCodes.OK]: outputSchema,
+      },
     });
 
     it('should have the correct axiosRequest', async () => {
