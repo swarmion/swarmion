@@ -52,8 +52,7 @@ The services names in this folder are purely for the sake of the example and sho
 |   ├── cloudfront/
 |   └── ...                         # other deployed services
 |
-├── commonConfiguration/            # configuration files such as babel, dependency-cruiser...
-|   ├── babel.config.js
+├── commonConfiguration/            # configuration files such as dependency-cruiser...
 |   └── dependency-cruiser.config.js
 |
 ├── contracts/                      # JSONSchema-based binding contracts.
