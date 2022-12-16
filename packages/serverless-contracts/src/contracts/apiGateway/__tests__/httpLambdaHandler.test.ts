@@ -14,7 +14,7 @@ import {
 } from '@swarmion/serverless-helpers';
 
 import { getHandlerContextMock } from '__mocks__/requestContext';
-import { ApiGatewayContract } from 'contracts';
+import { createApiGatewayContract } from 'contracts';
 import { getHandler } from 'features/lambdaHandler';
 import { StatusCodes } from 'types/http';
 
@@ -432,17 +432,11 @@ describe('apiGateway lambda handler', () => {
 
   describe('restApi, without authorizer, with subset of parameters', () => {
     it('should return a 200 response', async () => {
-      const restApiContract = new ApiGatewayContract({
+      const restApiContract = createApiGatewayContract({
         id: 'testContract',
         path: '/hello',
         method: 'POST',
         integrationType: 'restApi',
-        authorizerType: undefined,
-        pathParametersSchema: undefined,
-        queryStringParametersSchema: undefined,
-        headersSchema: undefined,
-        bodySchema: undefined,
-        outputSchemas: undefined,
       });
 
       const handler: SwarmionApiGatewayHandler<

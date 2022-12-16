@@ -3,7 +3,7 @@
 
 import { StatusCodes } from 'types/http';
 
-import { ApiGatewayContract } from '../apiGatewayContract';
+import { createApiGatewayContract } from '../apiGatewayContract';
 import { getFetchRequest } from '../features/fetchRequest';
 
 const mockedFetch = vi.fn(() =>
@@ -57,12 +57,11 @@ describe('apiGateway fetch request', () => {
   } as const;
 
   describe('restApi, when all parameters are set', () => {
-    const httpApiContract = new ApiGatewayContract({
+    const httpApiContract = createApiGatewayContract({
       id: 'testContract',
       path: '/users/{userId}',
       method: 'POST',
       integrationType: 'httpApi',
-      authorizerType: undefined,
       pathParametersSchema,
       queryStringParametersSchema,
       headersSchema,
@@ -144,17 +143,11 @@ describe('apiGateway fetch request', () => {
   });
 
   describe('httpApi, when it is instanciated with a subset of schemas', () => {
-    const restApiContract = new ApiGatewayContract({
+    const restApiContract = createApiGatewayContract({
       id: 'testContract',
       path: '/coucou',
       method: 'GET',
       integrationType: 'httpApi',
-      authorizerType: undefined,
-      pathParametersSchema: undefined,
-      queryStringParametersSchema: undefined,
-      headersSchema: undefined,
-      bodySchema: undefined,
-      outputSchemas: undefined,
     });
 
     it('should have the correct axios request ', async () => {
@@ -175,17 +168,12 @@ describe('apiGateway fetch request', () => {
   });
 
   describe('httpApi without base url', () => {
-    const httpApiContract = new ApiGatewayContract({
+    const httpApiContract = createApiGatewayContract({
       id: 'testContract',
       path: '/coucou',
       method: 'GET',
       integrationType: 'httpApi',
-      authorizerType: undefined,
-      pathParametersSchema: undefined,
       queryStringParametersSchema,
-      headersSchema: undefined,
-      bodySchema: undefined,
-      outputSchemas: undefined,
     });
 
     it('should have the correct axios request ', async () => {

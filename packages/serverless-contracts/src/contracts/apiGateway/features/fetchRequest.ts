@@ -1,10 +1,12 @@
 /// <reference lib="dom" />
 
-import { ApiGatewayContract } from '../apiGatewayContract';
+import { GenericApiGatewayContract } from '../apiGatewayContract';
 import { OutputType, RequestArguments } from '../types';
 import { getRequestParameters } from './requestParameters';
 
-export const getFetchRequest = async <Contract extends ApiGatewayContract>(
+export const getFetchRequest = async <
+  Contract extends GenericApiGatewayContract,
+>(
   contract: Contract,
   fetchFunction: typeof fetch,
   options: RequestArguments<Contract> & { baseUrl?: URL | string },

@@ -1,6 +1,6 @@
 import { StatusCodes } from 'types/http';
 
-import { ApiGatewayContract } from '../apiGatewayContract';
+import { createApiGatewayContract } from '../apiGatewayContract';
 import { getOpenApiDocumentation } from '../features';
 
 describe('apiGateway openApi documentation', () => {
@@ -44,12 +44,11 @@ describe('apiGateway openApi documentation', () => {
   };
 
   describe('hhtpApi, when all parameters are set', () => {
-    const httpApiContract = new ApiGatewayContract({
+    const httpApiContract = createApiGatewayContract({
       id: 'testContract',
       path: '/users/{userId}',
       method: 'GET',
       integrationType: 'httpApi',
-      authorizerType: undefined,
       pathParametersSchema,
       queryStringParametersSchema,
       headersSchema,
@@ -130,17 +129,11 @@ describe('apiGateway openApi documentation', () => {
   });
 
   describe('restApi, when it is instanciated with a subset of schemas', () => {
-    const restApiContract = new ApiGatewayContract({
+    const restApiContract = createApiGatewayContract({
       id: 'testContract',
       path: 'coucou',
       method: 'POST',
       integrationType: 'restApi',
-      authorizerType: undefined,
-      pathParametersSchema: undefined,
-      queryStringParametersSchema: undefined,
-      headersSchema: undefined,
-      bodySchema: undefined,
-      outputSchemas: undefined,
     });
 
     it('should generate open api documentation', () => {

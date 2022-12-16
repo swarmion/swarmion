@@ -1,6 +1,6 @@
 import { StatusCodes } from 'types/http';
 
-import { ApiGatewayContract } from '../apiGatewayContract';
+import { createApiGatewayContract } from '../apiGatewayContract';
 
 export const pathParametersSchema = {
   type: 'object',
@@ -52,7 +52,7 @@ export const outputSchema2 = {
   required: ['id', 'age'],
 } as const;
 
-export const httpApiGatewayContractMock = new ApiGatewayContract({
+export const httpApiGatewayContractMock = createApiGatewayContract({
   id: 'testContract',
   path: '/users/{userId}',
   method: 'GET',

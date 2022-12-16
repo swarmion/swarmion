@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { StatusCodes } from 'types/http';
 
-import { ApiGatewayContract } from '../apiGatewayContract';
+import { createApiGatewayContract } from '../apiGatewayContract';
 import { getAxiosRequest } from '../features';
 
 describe('apiGateway axios request', () => {
@@ -45,12 +45,11 @@ describe('apiGateway axios request', () => {
   } as const;
 
   describe('httpApi, when all parameters are set', () => {
-    const httpApiContract = new ApiGatewayContract({
+    const httpApiContract = createApiGatewayContract({
       id: 'testContract',
       path: '/users/{userId}',
       method: 'GET',
       integrationType: 'httpApi',
-      authorizerType: undefined,
       pathParametersSchema,
       queryStringParametersSchema,
       headersSchema,
@@ -93,17 +92,11 @@ describe('apiGateway axios request', () => {
   });
 
   describe('restApi, when it is instantiated with a subset of schemas', () => {
-    const restApiContract = new ApiGatewayContract({
+    const restApiContract = createApiGatewayContract({
       id: 'testContract',
       path: '/coucou',
       method: 'POST',
       integrationType: 'httpApi',
-      authorizerType: undefined,
-      pathParametersSchema: undefined,
-      queryStringParametersSchema: undefined,
-      headersSchema: undefined,
-      bodySchema: undefined,
-      outputSchemas: undefined,
     });
 
     it('should have the correct axios request ', async () => {

@@ -1,6 +1,6 @@
 import { StatusCodes } from 'types/http';
 
-import { ApiGatewayContract } from '../apiGatewayContract';
+import { createApiGatewayContract } from '../apiGatewayContract';
 import { getFullContractSchema } from '../features';
 
 describe('apiGateway full contract schema', () => {
@@ -44,12 +44,11 @@ describe('apiGateway full contract schema', () => {
   };
 
   describe('htttpApi, when all parameters are set', () => {
-    const httpApiContract = new ApiGatewayContract({
+    const httpApiContract = createApiGatewayContract({
       id: 'testContract',
       path: '/users/{userId}',
       method: 'GET',
       integrationType: 'httpApi',
-      authorizerType: undefined,
       pathParametersSchema,
       queryStringParametersSchema,
       headersSchema,
@@ -94,12 +93,11 @@ describe('apiGateway full contract schema', () => {
   });
 
   describe('restAPi, when all parameters are set', () => {
-    const restApiContract = new ApiGatewayContract({
+    const restApiContract = createApiGatewayContract({
       id: 'testContract',
       path: '/users/{userId}',
       method: 'GET',
       integrationType: 'restApi',
-      authorizerType: undefined,
       pathParametersSchema,
       queryStringParametersSchema,
       headersSchema,

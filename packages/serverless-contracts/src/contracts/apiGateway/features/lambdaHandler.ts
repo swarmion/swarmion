@@ -3,7 +3,10 @@ import createHttpError, { isHttpError } from 'http-errors';
 
 import { StatusCodes } from 'types/http';
 
-import { ApiGatewayContract } from '../apiGatewayContract';
+import {
+  GenericApiGatewayContract,
+  getInputSchema,
+} from '../apiGatewayContract';
 import {
   ApiGatewayHandler,
   BodyType,
@@ -24,7 +27,7 @@ import {
 
 export const getApiGatewayHandler =
   <
-    Contract extends ApiGatewayContract,
+    Contract extends GenericApiGatewayContract,
     IntegrationType extends ApiGatewayIntegrationType = Contract['integrationType'],
     AuthorizerType extends ApiGatewayAuthorizerType = Contract['authorizerType'],
     PathParameters = PathParametersType<Contract>,
@@ -68,7 +71,7 @@ export const getApiGatewayHandler =
         Body
       >(event);
 
-      const inputValidator = ajv.compile(contract.inputSchema);
+      const inputValidator = ajv.compile(getInputSchema(contract));
       if (!inputValidator(parsedEvent)) {
         console.error('Error: Invalid input');
         console.error(inputValidator.errors);
@@ -83,7 +86,7 @@ export const getApiGatewayHandler =
       );
 
       const outputSchema =
-        contract.outputSchemas[handlerResponse.statusCode as StatusCodes];
+        contract.outputSchemas?.[handlerResponse.statusCode as StatusCodes];
 
       if (outputSchema !== undefined) {
         const outputValidator = ajv.compile(outputSchema);
@@ -124,7 +127,7 @@ export const getApiGatewayHandler =
  */
 export const getLambdaHandler =
   <
-    Contract extends ApiGatewayContract,
+    Contract extends GenericApiGatewayContract,
     IntegrationType extends ApiGatewayIntegrationType = Contract['integrationType'],
     AuthorizerType extends ApiGatewayAuthorizerType = Contract['authorizerType'],
     PathParameters = PathParametersType<Contract>,

@@ -2,7 +2,7 @@ import { getTrigger } from 'features/lambdaTrigger';
 import { StatusCodes } from 'types/http';
 import { LambdaFunction } from 'types/lambdaEvents';
 
-import { ApiGatewayContract } from '../apiGatewayContract';
+import { createApiGatewayContract } from '../apiGatewayContract';
 
 describe('apiGateway lambda trigger', () => {
   const pathParametersSchema = {
@@ -46,12 +46,11 @@ describe('apiGateway lambda trigger', () => {
 
   describe('httpApi trigger', () => {
     it('should have the correct trigger without authorizer', () => {
-      const httpApiContract = new ApiGatewayContract({
+      const httpApiContract = createApiGatewayContract({
         id: 'testContract',
         path: '/users/{userId}',
         method: 'GET',
         integrationType: 'httpApi',
-        authorizerType: undefined,
         pathParametersSchema,
         queryStringParametersSchema,
         headersSchema,
@@ -80,7 +79,7 @@ describe('apiGateway lambda trigger', () => {
     });
 
     it('should have the correct complete trigger with authorizer', () => {
-      const httpApiContract = new ApiGatewayContract({
+      const httpApiContract = createApiGatewayContract({
         id: 'testContract',
         path: '/users/{userId}',
         method: 'GET',
@@ -115,12 +114,11 @@ describe('apiGateway lambda trigger', () => {
 
   describe('restApi trigger', () => {
     it('should have the correct trigger without authorizer', () => {
-      const restApiContract = new ApiGatewayContract({
+      const restApiContract = createApiGatewayContract({
         id: 'testContract',
         path: '/users/{userId}',
         method: 'GET',
         integrationType: 'restApi',
-        authorizerType: undefined,
         pathParametersSchema,
         queryStringParametersSchema,
         headersSchema,
@@ -154,7 +152,7 @@ describe('apiGateway lambda trigger', () => {
     });
 
     it('should have the correct complete trigger with authorizer', () => {
-      const restApiContract = new ApiGatewayContract({
+      const restApiContract = createApiGatewayContract({
         id: 'testContract',
         path: '/users/{userId}',
         method: 'GET',

@@ -1,10 +1,10 @@
 import {
-  ApiGatewayContract,
   CloudFormationContract,
   EventBridgeContract,
+  GenericApiGatewayContract,
 } from 'contracts';
 
 export type ServerlessContract =
-  | ApiGatewayContract
+  | GenericApiGatewayContract
   | CloudFormationContract
   | EventBridgeContract;

@@ -23,7 +23,7 @@ import {
   pathParametersSchema,
   queryStringParametersSchema,
 } from '../__mocks__/httpApiGatewayContract';
-import { ApiGatewayContract } from '../apiGatewayContract';
+import { createApiGatewayContract } from '../apiGatewayContract';
 import { getLambdaHandler } from '../features';
 import { SwarmionApiGatewayHandler } from '../types';
 
@@ -84,7 +84,7 @@ describe('apiGateway lambda handler', () => {
     });
 
     it('should return a correctly typed handler with jwt authorizer', async () => {
-      const httpApiContract = new ApiGatewayContract({
+      const httpApiContract = createApiGatewayContract({
         id: 'testContract',
         path: '/users/{userId}',
         method: 'GET',
@@ -153,7 +153,7 @@ describe('apiGateway lambda handler', () => {
     });
 
     it('should return a correctly typed handler with jwt authorizer', async () => {
-      const httpApiContract = new ApiGatewayContract({
+      const httpApiContract = createApiGatewayContract({
         id: 'testContract',
         path: '/users/{userId}',
         method: 'GET',
@@ -227,17 +227,12 @@ describe('apiGateway lambda handler', () => {
   });
 
   describe('restApi, with no authorizer, when it is instantiated with a subset of schemas', () => {
-    const restApiContract = new ApiGatewayContract({
+    const restApiContract = createApiGatewayContract({
       id: 'testContract',
       path: '/hello',
       method: 'POST',
       integrationType: 'restApi',
-      authorizerType: undefined,
-      pathParametersSchema: undefined,
-      queryStringParametersSchema: undefined,
-      headersSchema: undefined,
       bodySchema,
-      outputSchemas: undefined,
     });
 
     it('should return a correctly typed handler', async () => {

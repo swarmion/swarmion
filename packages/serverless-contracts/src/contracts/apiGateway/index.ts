@@ -1,4 +1,5 @@
-export { ApiGatewayContract } from './apiGatewayContract';
+export { createApiGatewayContract } from './apiGatewayContract';
+export type { GenericApiGatewayContract } from './apiGatewayContract';
 export {
   getApiGatewayTrigger,
   getAxiosRequest,

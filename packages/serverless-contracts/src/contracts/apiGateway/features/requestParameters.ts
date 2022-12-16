@@ -3,10 +3,12 @@ import omitBy from 'lodash/omitBy';
 
 import { fillPathTemplate } from 'utils';
 
-import { ApiGatewayContract } from '../apiGatewayContract';
+import { GenericApiGatewayContract } from '../apiGatewayContract';
 import { BodyType, RequestArguments, RequestParameters } from '../types';
 
-export const getRequestParameters = <Contract extends ApiGatewayContract>(
+export const getRequestParameters = <
+  Contract extends GenericApiGatewayContract,
+>(
   contract: Contract,
   requestArguments: RequestArguments<Contract>,
 ): RequestParameters<BodyType<Contract>> => {

@@ -1,8 +1,10 @@
 import { A } from 'ts-toolbelt';
 
-import { ApiGatewayContract } from 'contracts';
+import { createApiGatewayContract } from 'contracts';
 import { OutputType } from 'contracts/apiGateway/types/common';
 import { StatusCodes } from 'types/http';
+
+import { GenericApiGatewayContract } from '../apiGatewayContract';
 
 export const pathParametersSchema = {
   type: 'object',
@@ -49,7 +51,7 @@ export const errorOutputSchema = {
   additionalProperties: false,
 } as const;
 
-export const httpApiGatewayContract = new ApiGatewayContract({
+export const httpApiGatewayContract = createApiGatewayContract({
   id: 'testContract',
   path: '/users/{userId}',
   method: 'GET',
@@ -64,13 +66,14 @@ export const httpApiGatewayContract = new ApiGatewayContract({
   },
 });
 
-type ContractCheck = typeof httpApiGatewayContract extends ApiGatewayContract
-  ? 'pass'
-  : 'fail';
+type ContractCheck =
+  typeof httpApiGatewayContract extends GenericApiGatewayContract
+    ? 'pass'
+    : 'fail';
 const contractCheck: ContractCheck = 'pass';
 contractCheck;
 
-export const httpApiGatewayContract2 = new ApiGatewayContract({
+export const httpApiGatewayContract2 = createApiGatewayContract({
   id: 'testContract',
   path: '/users/{userId}',
   method: 'GET',

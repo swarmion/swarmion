@@ -18,9 +18,7 @@ type AllFullContractProperties<
   QueryStringParametersSchema extends JSONSchema | undefined,
   HeadersSchema extends JSONSchema | undefined,
   BodySchema extends JSONSchema | undefined,
-  OutputSchema extends Partial<Record<StatusCodes, JSONSchema>> = {
-    [StatusCodes.OK]: JSONSchema | undefined;
-  },
+  OutputSchemas extends Partial<Record<StatusCodes, JSONSchema>> | undefined,
 > = {
   contractId: { const: string };
   contractType: { const: IntegrationType };
@@ -30,7 +28,7 @@ type AllFullContractProperties<
   queryStringParameters: QueryStringParametersSchema;
   headers: HeadersSchema;
   body: BodySchema;
-  output: OutputSchema;
+  output: OutputSchemas;
 };
 
 /**
@@ -46,9 +44,7 @@ export interface FullContractSchemaType<
   QueryStringParametersSchema extends JSONSchema | undefined,
   HeadersSchema extends JSONSchema | undefined,
   BodySchema extends JSONSchema | undefined,
-  OutputSchema extends Partial<Record<StatusCodes, JSONSchema>> = {
-    [StatusCodes.OK]: JSONSchema | undefined;
-  },
+  OutputSchemas extends Partial<Record<StatusCodes, JSONSchema>> | undefined,
   DefinedFullContractProperties = DefinedProperties<
     AllFullContractProperties<
       Path,
@@ -58,7 +54,7 @@ export interface FullContractSchemaType<
       QueryStringParametersSchema,
       HeadersSchema,
       BodySchema,
-      OutputSchema
+      OutputSchemas
     >
   >,
 > {

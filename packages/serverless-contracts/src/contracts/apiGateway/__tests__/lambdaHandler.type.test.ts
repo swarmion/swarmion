@@ -13,7 +13,7 @@ import {
   pathParametersSchema,
   queryStringParametersSchema,
 } from '../__mocks__/httpApiGatewayContract';
-import { ApiGatewayContract } from '../apiGatewayContract';
+import { createApiGatewayContract } from '../apiGatewayContract';
 import {
   BodyType,
   HandlerEventType,
@@ -22,7 +22,7 @@ import {
   QueryStringParametersType,
 } from '../types';
 
-export const httpApiGatewayContract = new ApiGatewayContract({
+export const httpApiGatewayContract = createApiGatewayContract({
   id: 'testContract',
   path: '/users/{userId}',
   method: 'GET',

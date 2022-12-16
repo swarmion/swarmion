@@ -1,6 +1,9 @@
 import { StatusCodes } from 'types/http';
 
-import { ApiGatewayContract } from '../apiGatewayContract';
+import {
+  createApiGatewayContract,
+  getInputSchema,
+} from '../apiGatewayContract';
 
 describe('apiGateway contracts', () => {
   const pathParametersSchema = {
@@ -43,12 +46,11 @@ describe('apiGateway contracts', () => {
   };
 
   describe('httpApi, when all parameters are set - outputSchema', () => {
-    const httpApiContract = new ApiGatewayContract({
+    const httpApiContract = createApiGatewayContract({
       id: 'testContract',
       path: '/users/{userId}',
       method: 'GET',
       integrationType: 'httpApi',
-      authorizerType: undefined,
       pathParametersSchema,
       queryStringParametersSchema,
       headersSchema,
@@ -57,7 +59,7 @@ describe('apiGateway contracts', () => {
     });
 
     it('should have the correct inputSchema', () => {
-      expect(httpApiContract.inputSchema).toEqual({
+      expect(getInputSchema(httpApiContract)).toEqual({
         type: 'object',
         properties: {
           pathParameters: pathParametersSchema,
@@ -83,12 +85,11 @@ describe('apiGateway contracts', () => {
   });
 
   describe('httpApi, when all parameters are set - outputSchemas', () => {
-    const httpApiContract = new ApiGatewayContract({
+    const httpApiContract = createApiGatewayContract({
       id: 'testContract',
       path: '/users/{userId}',
       method: 'GET',
       integrationType: 'httpApi',
-      authorizerType: undefined,
       pathParametersSchema,
       queryStringParametersSchema,
       headersSchema,
@@ -97,7 +98,7 @@ describe('apiGateway contracts', () => {
     });
 
     it('should have the correct inputSchema', () => {
-      expect(httpApiContract.inputSchema).toEqual({
+      expect(getInputSchema(httpApiContract)).toEqual({
         type: 'object',
         properties: {
           pathParameters: pathParametersSchema,
@@ -121,12 +122,11 @@ describe('apiGateway contracts', () => {
   });
 
   describe('restApi, when all parameters are set', () => {
-    const restApiContract = new ApiGatewayContract({
+    const restApiContract = createApiGatewayContract({
       id: 'testContract',
       path: '/users/{userId}',
       method: 'GET',
       integrationType: 'restApi',
-      authorizerType: undefined,
       pathParametersSchema,
       queryStringParametersSchema,
       headersSchema,
@@ -135,7 +135,7 @@ describe('apiGateway contracts', () => {
     });
 
     it('should have the correct inputSchema', () => {
-      expect(restApiContract.inputSchema).toEqual({
+      expect(getInputSchema(restApiContract)).toEqual({
         type: 'object',
         properties: {
           pathParameters: pathParametersSchema,
@@ -152,35 +152,18 @@ describe('apiGateway contracts', () => {
         additionalProperties: true,
       });
     });
-
-    it('should have the correct outputSchemas', () => {
-      expect(restApiContract.outputSchemas).toEqual({
-        [StatusCodes.OK]: outputSchema,
-      });
-    });
   });
 
   describe('restAPi, when it is instanciated with a subset of schemas', () => {
-    const restApiContract = new ApiGatewayContract({
+    const restApiContract = createApiGatewayContract({
       id: 'testContractRest',
       path: 'coucou',
       method: 'POST',
       integrationType: 'restApi',
-      authorizerType: undefined,
-      pathParametersSchema: undefined,
-      queryStringParametersSchema: undefined,
-      headersSchema: undefined,
-      bodySchema: undefined,
-      outputSchemas: undefined,
-    });
-    it('should should have the correct outputSchema', () => {
-      expect(restApiContract.outputSchemas).toEqual({
-        [StatusCodes.OK]: undefined,
-      });
     });
 
     it('should should have the correct inputSchema', () => {
-      expect(restApiContract.inputSchema).toEqual({
+      expect(getInputSchema(restApiContract)).toEqual({
         type: 'object',
         properties: {},
         required: [],
