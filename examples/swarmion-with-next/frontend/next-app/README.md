@@ -43,12 +43,6 @@ To deploy the NextJs application to an Amplify stack, in the frontend next app d
 
    _NB: `pnpm bootstrap` is required only once to bootstrap a CDK stack._
 
-3. Retrieve the app id from the shell output. Then, to enable NextJs, change the Amplify platform to "WEB_COMPUTE" by running
-
-   ```sh
-   aws amplify update-app --region <AWS region> --app-id <app id> --platform WEB_COMPUTE
-   ```
-
 ### Uninstall
 
 To destroy the Amplify stack, run
