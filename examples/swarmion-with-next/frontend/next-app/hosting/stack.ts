@@ -1,6 +1,11 @@
 import { App } from '@aws-cdk/aws-amplify-alpha';
 import { aws_iam, CfnOutput, Stack, StackProps } from 'aws-cdk-lib';
 import { BuildSpec } from 'aws-cdk-lib/aws-codebuild';
+import {
+  AwsCustomResource,
+  AwsCustomResourcePolicy,
+  PhysicalResourceId,
+} from 'aws-cdk-lib/custom-resources';
 import { Construct } from 'constructs';
 
 import {
@@ -41,6 +46,24 @@ export class AmplifyStack extends Stack {
       autoBranchDeletion: true,
     });
     amplifyApp.addBranch(MAIN_BRANCH, mainBranchSettings);
+
+    new AwsCustomResource(this, 'AmplifySetPlatform', {
+      onCreate: {
+        service: 'Amplify',
+        action: 'updateApp',
+        parameters: {
+          appId: amplifyApp.appId,
+          platform: 'WEB_COMPUTE',
+        },
+        physicalResourceId: PhysicalResourceId.of(
+          'AmplifyCustomResourceSetPlatform',
+        ),
+      },
+
+      policy: AwsCustomResourcePolicy.fromSdkCalls({
+        resources: [amplifyApp.arn],
+      }),
+    });
 
     new CfnOutput(this, 'appId', {
       value: amplifyApp.appId,
