@@ -43,7 +43,6 @@ describe('apiGateway openApi documentation', () => {
       path: '/users/{userId}',
       method: 'GET',
       integrationType: 'httpApi',
-      authorizerType: undefined,
       pathParametersSchema,
       queryStringParametersSchema,
       headersSchema,
@@ -129,12 +128,6 @@ describe('apiGateway openApi documentation', () => {
       path: 'coucou',
       method: 'POST',
       integrationType: 'restApi',
-      authorizerType: undefined,
-      pathParametersSchema: undefined,
-      queryStringParametersSchema: undefined,
-      headersSchema: undefined,
-      bodySchema: undefined,
-      outputSchema: undefined,
     });
 
     it('should generate open api documentation', () => {

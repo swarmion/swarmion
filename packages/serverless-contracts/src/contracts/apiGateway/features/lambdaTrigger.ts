@@ -1,4 +1,4 @@
-import { ApiGatewayContract } from '../apiGatewayContract';
+import { GenericApiGatewayContract } from '../apiGatewayContract';
 import {
   ApiGatewayLambdaCompleteTriggerType,
   ApiGatewayTriggerArgs,
@@ -10,7 +10,9 @@ import {
  * @argument contract your ApiGatewayContract
  * @argument additionalConfig for example an authorizer reference. Only required when the contract requires authentication
  */
-export const getApiGatewayTrigger = <Contract extends ApiGatewayContract>(
+export const getApiGatewayTrigger = <
+  Contract extends GenericApiGatewayContract,
+>(
   contract: Contract,
   ...[additionalConfig]: ApiGatewayTriggerArgs<Contract>
 ): ApiGatewayLambdaCompleteTriggerType<Contract> => {

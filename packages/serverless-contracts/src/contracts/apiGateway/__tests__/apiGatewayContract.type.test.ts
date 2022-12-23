@@ -1,5 +1,7 @@
 import { ApiGatewayContract } from 'contracts';
 
+import { GenericApiGatewayContract } from '../apiGatewayContract';
+
 export const pathParametersSchema = {
   type: 'object',
   properties: { userId: { type: 'string' }, pageNumber: { type: 'string' } },
@@ -48,8 +50,9 @@ export const httpApiGatewayContract = new ApiGatewayContract({
   outputSchema,
 });
 
-type ContractCheck = typeof httpApiGatewayContract extends ApiGatewayContract
-  ? 'pass'
-  : 'fail';
+type ContractCheck =
+  typeof httpApiGatewayContract extends GenericApiGatewayContract
+    ? 'pass'
+    : 'fail';
 const contractCheck: ContractCheck = 'pass';
 contractCheck;

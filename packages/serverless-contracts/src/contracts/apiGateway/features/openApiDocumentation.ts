@@ -2,9 +2,11 @@ import { OpenAPIV3 } from 'openapi-types';
 
 import { ContractOpenApiDocumentation } from 'types/contractOpenApiDocumentation';
 
-import { ApiGatewayContract } from '../apiGatewayContract';
+import { GenericApiGatewayContract } from '../apiGatewayContract';
 
-export const getOpenApiDocumentation = <Contract extends ApiGatewayContract>(
+export const getOpenApiDocumentation = <
+  Contract extends GenericApiGatewayContract,
+>(
   contract: Contract,
 ): ContractOpenApiDocumentation => {
   const contractDocumentation: OpenAPIV3.OperationObject = {

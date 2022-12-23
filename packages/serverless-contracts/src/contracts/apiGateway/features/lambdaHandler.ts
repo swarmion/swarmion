@@ -1,7 +1,7 @@
 import Ajv from 'ajv';
 import createHttpError, { isHttpError } from 'http-errors';
 
-import { ApiGatewayContract } from '../apiGatewayContract';
+import { GenericApiGatewayContract } from '../apiGatewayContract';
 import {
   ApiGatewayHandler,
   BodyType,
@@ -22,7 +22,7 @@ import {
 
 export const getApiGatewayHandler =
   <
-    Contract extends ApiGatewayContract,
+    Contract extends GenericApiGatewayContract,
     IntegrationType extends ApiGatewayIntegrationType = Contract['integrationType'],
     AuthorizerType extends ApiGatewayAuthorizerType = Contract['authorizerType'],
     PathParameters = PathParametersType<Contract>,
@@ -115,7 +115,7 @@ export const getApiGatewayHandler =
  */
 export const getLambdaHandler =
   <
-    Contract extends ApiGatewayContract,
+    Contract extends GenericApiGatewayContract,
     IntegrationType extends ApiGatewayIntegrationType = Contract['integrationType'],
     AuthorizerType extends ApiGatewayAuthorizerType = Contract['authorizerType'],
     PathParameters = PathParametersType<Contract>,
