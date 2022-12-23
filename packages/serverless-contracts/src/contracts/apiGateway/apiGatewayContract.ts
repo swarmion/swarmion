@@ -77,8 +77,6 @@ export class ApiGatewayContract<
      *
      * Please note that the `as const` directive is necessary to properly infer the type from the schema.
      * See https://github.com/ThomasAribart/json-schema-to-ts#fromschema.
-     *
-     * Also please note that for Typescript reasons, you need to explicitly pass `undefined` if you don't want to use the schema.
      */
     pathParametersSchema?: PathParametersSchema;
     /**
@@ -86,8 +84,6 @@ export class ApiGatewayContract<
      *
      * Please note that the `as const` directive is necessary to properly infer the type from the schema.
      * See https://github.com/ThomasAribart/json-schema-to-ts#fromschema.
-     *
-     * Also please note that for Typescript reasons, you need to explicitly pass `undefined` if you don't want to use the schema.
      */
     queryStringParametersSchema?: QueryStringParametersSchema;
     /**
@@ -95,8 +91,6 @@ export class ApiGatewayContract<
      *
      * Please note that the `as const` directive is necessary to properly infer the type from the schema.
      * See https://github.com/ThomasAribart/json-schema-to-ts#fromschema.
-     *
-     * Also please note that for Typescript reasons, you need to explicitly pass `undefined` if you don't want to use the schema.
      */
     headersSchema?: HeadersSchema;
     /**
@@ -104,8 +98,6 @@ export class ApiGatewayContract<
      *
      * Please note that the `as const` directive is necessary to properly infer the type from the schema.
      * See https://github.com/ThomasAribart/json-schema-to-ts#fromschema.
-     *
-     * Also please note that for Typescript reasons, you need to explicitly pass `undefined` if you don't want to use the schema.
      */
     bodySchema?: BodySchema;
     /**
@@ -113,8 +105,6 @@ export class ApiGatewayContract<
      *
      * Please note that the `as const` directive is necessary to properly infer the type from the schema.
      * See https://github.com/ThomasAribart/json-schema-to-ts#fromschema.
-     *
-     * Also please note that for Typescript reasons, you need to explicitly pass `undefined` if you don't want to use the schema.
      */
     outputSchema?: OutputSchema;
   }) {
@@ -153,6 +143,11 @@ export class ApiGatewayContract<
   }
 }
 
+/**
+ * The type of an ApiGateway contract using all default types.
+ *
+ * It is used internally to type contract features input
+ */
 export type GenericApiGatewayContract = ApiGatewayContract<
   string,
   HttpMethod,
