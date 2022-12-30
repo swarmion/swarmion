@@ -200,6 +200,46 @@ If you use the `getCdkPropertyHelper` in your config, you're all set
 You can also add `'${serverlessCdkBridgePlugin:magicValue}'` to any `custom` key of your serverless config.
 :::
 
+## Override your CDK stack name
+
+You can use the `stackName` config property to set the stack name used when instantiating your Stack.
+
+```typescript
+import { Stack } from 'aws-cdk-lib';
+import { Construct } from 'constructs';
+import { AWS } from '@serverless/typescript';
+import { ServerlessCdkPluginConfig } from '@swarmion/serverless-cdk-plugin';
+
+class MyStack extends Stack {
+  constructor(scope: Construct, id: string) {
+    super(scope, id);
+  }
+}
+
+const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
+  service: "my-cdk-service",
+
+  plugins: [
+    // ...
+    '@swarmion/serverless-cdk-plugin',
+    // ...
+  ],
+  // provider: {...},
+  // functions: { ... },
+  // resources: {...},
+  custom: {
+    cdkPlugin: {
+      stack: MyStack,
+      stackName: 'myStackName', // Optional
+    },
+  },
+};
+
+```
+
+While the actual cloudformation stack name is defined by serverless, This can be useful if you need a bit more control over the logicalId of elements defined in your CDK Stack.  
+When undefined, the stack name defaults to the name of the serverless service.
+
 ## CDK caveats
 
 The plugin comes with some limitations and will not be able to use some CDK features.
