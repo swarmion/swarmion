@@ -260,7 +260,7 @@ importers:
       '@types/testing-library__jest-dom': ^5.14.5
       '@vitejs/plugin-react': ^3.0.0
       '@vitest/coverage-c8': ^0.25.7
-      axios: 1.2.1
+      axios: 1.2.2
       dependency-cruiser: ^12.1.0
       dotenv-flow: ^3.2.0
       eslint: ^8.29.0
@@ -302,9 +302,9 @@ importers:
       '@reduxjs/toolkit': 1.9.1_3m5k4ry2nwm36zz5ojtujpfkvq
       '@swarmion-full-stack/frontend-shared': link:../shared
       '@swarmion-full-stack/users-contracts': link:../../contracts/users-contracts
-      '@swarmion/serverless-contracts': 0.17.0_axios@1.2.1
+      '@swarmion/serverless-contracts': 0.17.0_axios@1.2.2
       '@types/testing-library__jest-dom': 5.14.5
-      axios: 1.2.1
+      axios: 1.2.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-intl: 6.2.5_j5wiu4n3r332he5vjh7engy24e
@@ -4391,23 +4391,6 @@ packages:
     resolution: {integrity: sha512-MACEazUQ7KneB+FyAdJomLnWWAgszRGn0VCHKqelv7OOrEoVQsCMJcYXSB73y2hG79ypu0TlP06nD32iYGqO/g==}
     dev: true
 
-  /@swarmion/serverless-contracts/0.17.0_axios@1.2.1:
-    resolution: {integrity: sha512-jRJjvoD/EfKmSUEJDJYydmeWuuFiZ+/nAplmHQvSl1fvmTLFntFh0q96MEmnnM6Gdla01mI1q54Ebb8j0mrS5g==}
-    peerDependencies:
-      axios: ^1.2.0
-    dependencies:
-      '@aws-sdk/client-eventbridge': 3.241.0
-      '@babel/runtime': 7.20.7
-      '@swarmion/serverless-helpers': 0.17.0
-      ajv: 8.12.0
-      axios: 1.2.1
-      http-errors: 2.0.0
-      lodash: 4.17.21
-    transitivePeerDependencies:
-      - '@aws-sdk/signature-v4-crt'
-      - aws-crt
-    dev: false
-
   /@swarmion/serverless-contracts/0.17.0_axios@1.2.2:
     resolution: {integrity: sha512-jRJjvoD/EfKmSUEJDJYydmeWuuFiZ+/nAplmHQvSl1fvmTLFntFh0q96MEmnnM6Gdla01mI1q54Ebb8j0mrS5g==}
     peerDependencies:
@@ -5389,15 +5372,6 @@ packages:
       - debug
     dev: true
 
-  /axios/1.2.1:
-    resolution: {integrity: sha512-I88cFiGu9ryt/tfVEi4kX2SITsvDddTajXTOFmt2uK1ZVA8LytjtdeyefdQWEf5PU8w+4SSJDoYnggflB5tW4A==}
-    dependencies:
-      follow-redirects: 1.15.2
-      form-data: 4.0.0
-      proxy-from-env: 1.1.0
-    transitivePeerDependencies:
-      - debug
-
   /axios/1.2.2:
     resolution: {integrity: sha512-bz/J4gS2S3I7mpN/YZfGFTqhXTYzRho8Ay38w2otuuDR322KzFIWm/4W2K6gIwvWaws5n+mnb7D1lN9uD+QH6Q==}
     dependencies:
@@ -5406,7 +5380,6 @@ packages:
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
-    dev: false
 
   /axobject-query/2.2.0:
     resolution: {integrity: sha512-Td525n+iPOOyUQIeBfcASuG6uJsDOITl7Mds5gFyerkWiX7qhUTdYUBlSgNMyVqtSJqwpt1kXGLdUt6SykLMRA==}
@@ -9386,7 +9359,7 @@ packages:
       '@yarnpkg/lockfile': 1.1.0
       '@yarnpkg/parsers': 3.0.0-rc.33
       '@zkochan/js-yaml': 0.0.6
-      axios: 1.2.1
+      axios: 1.2.2
       chalk: 4.1.0
       chokidar: 3.5.3
       cli-cursor: 3.1.0
