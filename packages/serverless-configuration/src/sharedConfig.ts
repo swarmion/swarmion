@@ -1,3 +1,5 @@
+import { swarmionEsbuildConfig } from '@swarmion/serverless-helpers';
+
 export const projectName = 'swarmion';
 export const region = 'eu-west-1';
 export const frameworkVersion = '>=3.0.0';
@@ -30,15 +32,4 @@ export const sharedParams = {
   production: { profile: '' },
 };
 
-export const sharedEsbuildConfig = {
-  packager: 'pnpm',
-  bundle: true,
-  minify: true,
-  keepNames: true,
-  sourcemap: true,
-  exclude: ['aws-sdk'],
-  target: 'node16',
-  platform: 'node',
-  mainFields: ['module', 'main'],
-  concurrency: 5,
-};
+export const sharedEsbuildConfig = swarmionEsbuildConfig;
