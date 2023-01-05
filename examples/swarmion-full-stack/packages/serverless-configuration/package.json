@@ -14,7 +14,7 @@
     "clean": "rimraf dist",
     "lint-fix": "pnpm linter-base-config --fix",
     "lint-fix-all": "pnpm lint-fix .",
-    "linter-base-config": "eslint --ext=js,ts .",
+    "linter-base-config": "eslint --ext=js,ts",
     "package": "pnpm clean && pnpm package-cjs && pnpm package-esm && pnpm package-types && pnpm package-types-aliases",
     "package-cjs": "NODE_ENV=cjs pnpm transpile --out-dir dist/cjs --source-maps",
     "package-esm": "NODE_ENV=esm pnpm transpile --out-dir dist/esm --source-maps",
