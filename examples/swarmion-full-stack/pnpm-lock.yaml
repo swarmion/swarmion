@@ -193,13 +193,13 @@ importers:
       vitest: ^0.25.7
     dependencies:
       '@swarmion/serverless-contracts': 0.17.0_axios@1.2.2
+      json-schema-to-ts: 2.6.2
     devDependencies:
       '@types/node': 18.11.13
       '@vitest/coverage-c8': 0.25.7
       concurrently: 7.6.0
       dependency-cruiser: 12.1.0
       eslint: 8.29.0
-      json-schema-to-ts: 2.6.2
       prettier: 2.8.1
       rimraf: 3.0.2
       ts-node: 10.9.1_73migmg77y47omm5253gettkxi
@@ -275,6 +275,7 @@ importers:
       '@mui/material': 5.10.17_4wd34aebdv526jtgrkn4ukifdm
       '@mui/system': 5.10.17_4o7fodc3it7lqfcqf2uhe6rcni
       '@react-hookz/web': 20.0.1_sfoxds7t5ydpegc3knd667wn6m
+      '@redux-devtools/extension': 3.2.3_redux@4.2.0
       '@reduxjs/toolkit': 1.9.1_3m5k4ry2nwm36zz5ojtujpfkvq
       '@swarmion-full-stack/frontend-shared': link:../shared
       '@swarmion-full-stack/users-contracts': link:../../contracts/users-contracts
@@ -288,7 +289,6 @@ importers:
       react-router-dom: 6.4.5_sfoxds7t5ydpegc3knd667wn6m
       redux: 4.2.0
     devDependencies:
-      '@redux-devtools/extension': 3.2.3_redux@4.2.0
       '@stylelint/postcss-css-in-js': 0.38.0_britvnvafsaqvp7ihzdwtiasju
       '@testing-library/dom': 8.19.0
       '@testing-library/jest-dom': 5.16.5
@@ -2847,7 +2847,7 @@ packages:
       '@babel/runtime': 7.20.6
       immutable: 4.1.0
       redux: 4.2.0
-    dev: true
+    dev: false
 
   /@reduxjs/toolkit/1.9.1_3m5k4ry2nwm36zz5ojtujpfkvq:
     resolution: {integrity: sha512-HikrdY+IDgRfRYlCTGUQaiCxxDDgM1mQrRbZ6S1HFZX5ZYuJ4o8EstNmhTwHdPl2rTmLxzwSu0b3AyeyTlR+RA==}
@@ -3349,7 +3349,6 @@ packages:
 
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
-    dev: true
 
   /@types/json5/0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
@@ -6882,7 +6881,7 @@ packages:
 
   /immutable/4.1.0:
     resolution: {integrity: sha512-oNkuqVTA8jqG1Q6c+UglTOD1xhC1BtjKI7XkCXRkZHrN5m18/XsnUp8Q89GkQO/z+0WjonSvl0FLhDYftp46nQ==}
-    dev: true
+    dev: false
 
   /import-fresh/3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
@@ -7437,7 +7436,6 @@ packages:
       '@types/json-schema': 7.0.11
       ts-algebra: 1.1.1
       ts-toolbelt: 9.6.0
-    dev: true
 
   /json-schema-traverse/0.4.1:
     resolution: {integrity: sha512-xbbCH5dCYU5T8LcEhhuh7HJ88HXuW3qsI3Y0zOZFKfZEHcpWiHU/Jxzk629Brsab/mMiHQti9wMP+845RPe3Vg==}
@@ -10350,7 +10348,6 @@ packages:
     resolution: {integrity: sha512-W43a3/BN0Tp4SgRNERQF/QPVuY1rnHkgCr/fISLY0Ycu05P0NWPYRuViU8JFn+pFZuY6/zp9TgET1fxMzppR/Q==}
     dependencies:
       ts-toolbelt: 9.6.0
-    dev: true
 
   /ts-interface-checker/0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
@@ -10420,7 +10417,6 @@ packages:
 
   /ts-toolbelt/9.6.0:
     resolution: {integrity: sha512-nsZd8ZeNUzukXPlJmTBwUAuABDe/9qtVDelJeT/qW0ow3ZS3BsQJtNkan1802aM9Uf68/Y8ljw86Hu0h5IUW3w==}
-    dev: true
 
   /tsc-alias/1.8.2:
     resolution: {integrity: sha512-ukBkcNekOgwtnSWYLD5QsMX3yQWg7JviAs8zg3qJGgu4LGtY3tsV4G6vnqvOXIDkbC+XL9vbhObWSpRA5/6wbg==}
