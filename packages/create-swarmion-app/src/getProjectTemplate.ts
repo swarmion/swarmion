@@ -1,7 +1,11 @@
 // eslint-disable-next-line import/no-named-as-default
 import prompts from 'prompts';
 
-const TEMPLATES = ['swarmion-starter', 'swarmion-full-stack'] as const;
+const TEMPLATES = [
+  'swarmion-starter',
+  'swarmion-full-stack',
+  'swarmion-with-next',
+] as const;
 
 export type Template = typeof TEMPLATES[number];
 
@@ -42,7 +46,7 @@ const getProjectTemplate = async (
   if (isValidTemplate(templateRes.template)) {
     return templateRes.template;
   } else {
-    throw new Error();
+    throw new Error(`The template should be one of : ${TEMPLATES.join(', ')}`);
   }
 };
 
