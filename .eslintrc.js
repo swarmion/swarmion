@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 module.exports = {
   plugins: ['prefer-arrow', 'import'],
   extends: [
@@ -182,6 +183,20 @@ module.exports = {
           {
             allowNumber: true,
             allowBoolean: true,
+          },
+        ],
+      },
+    },
+    {
+      files: ['**/src/**'],
+      excludedFiles: ['**/__tests__/**', '**/*.test.ts?(x)'],
+      rules: {
+        'import/no-extraneous-dependencies': [
+          'error',
+          {
+            devDependencies: false,
+            optionalDependencies: false,
+            peerDependencies: true,
           },
         ],
       },

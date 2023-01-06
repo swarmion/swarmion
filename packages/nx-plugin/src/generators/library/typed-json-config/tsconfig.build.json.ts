@@ -10,5 +10,5 @@ export const packageBuildTsConfig = (options: NormalizedSchema): TsConfig => ({
     outDir: './dist/types',
   },
   include: ['./**/*.ts'],
-  exclude: ['./vite*', './**/*.test.ts', './dist'],
+  exclude: ['./vite*', './**/*.test.ts', './dist', './tsup.config.ts'],
 });

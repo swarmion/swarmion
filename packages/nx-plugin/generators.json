@@ -4,13 +4,13 @@
   "version": "0.0.1",
   "generators": {
     "library": {
-      "factory": "./dist/cjs/index#libraryGenerator",
-      "schema": "./dist/cjs/generators/library/schema.json",
+      "factory": "./dist/index.cjs.js#libraryGenerator",
+      "schema": "./schemas/library/schema.json",
       "description": "library generator"
     },
     "service": {
-      "factory": "./dist/cjs/index#serviceGenerator",
-      "schema": "./dist/cjs/generators/service/schema.json",
+      "factory": "./dist/index.cjs.js#serviceGenerator",
+      "schema": "./schemas/service/schema.json",
       "description": "service generator"
     }
   }

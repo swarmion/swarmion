@@ -19,7 +19,7 @@ export interface PackageJson {
     'test-type': string;
     'test-unit': string;
   };
-  dependencies: {
+  dependencies?: {
     [key: string]: string;
   };
   devDependencies: {

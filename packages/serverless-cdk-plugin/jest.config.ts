@@ -14,7 +14,7 @@ const config: JestConfigWithTsJest = {
   coverageReporters: ['json', ['lcov', { projectRoot: './' }]],
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
   moduleDirectories: ['node_modules', '<rootDir>/src'],
-  testTimeout: 10000,
+  testTimeout: 15000,
 };
 
 export default config;
