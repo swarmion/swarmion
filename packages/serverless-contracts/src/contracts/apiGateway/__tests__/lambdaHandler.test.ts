@@ -13,12 +13,13 @@ import {
 } from '@swarmion/serverless-helpers';
 
 import { getHandlerContextMock } from '__mocks__/requestContext';
+import { StatusCodes } from 'types/http';
 
 import {
   bodySchema,
   headersSchema,
   httpApiGatewayContractMock,
-  outputSchema,
+  outputSchemas,
   pathParametersSchema,
   queryStringParametersSchema,
 } from '../__mocks__/httpApiGatewayContract';
@@ -53,12 +54,15 @@ describe('apiGateway lambda handler', () => {
           headers.myHeader +
           myCustomClaim;
 
-        return Promise.resolve({ id: 'hello', name });
+        return Promise.resolve({
+          statusCode: StatusCodes.OK,
+          body: { id: 'hello', name },
+        });
       };
       expect(getLambdaHandler(httpApiContract)(handler)).toEqual(handler);
       const fakeContext = getHandlerContextMock();
 
-      const { id, name } = await handler(
+      const { statusCode, body } = await handler(
         {
           pathParameters: { userId: 'toto', pageNumber: '15' },
           body: { foo: 'bar' },
@@ -72,8 +76,11 @@ describe('apiGateway lambda handler', () => {
         fakeContext,
       );
 
-      expect(id).toBe('hello');
-      expect(name).toBe('bar15myTestIdMyCustomHeaderclaimBar');
+      expect(statusCode).toBe(StatusCodes.OK);
+      expect(body).toEqual({
+        id: 'hello',
+        name: 'bar15myTestIdMyCustomHeaderclaimBar',
+      });
     });
 
     it('should return a correctly typed handler with jwt authorizer', async () => {
@@ -87,7 +94,7 @@ describe('apiGateway lambda handler', () => {
         queryStringParametersSchema,
         headersSchema,
         bodySchema,
-        outputSchema,
+        outputSchemas,
       });
 
       const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayEventRequestContextJWTAuthorizer> =
@@ -117,11 +124,14 @@ describe('apiGateway lambda handler', () => {
           headers.myHeader +
           myCustomClaim.toString();
 
-        return Promise.resolve({ id: 'hello', name });
+        return Promise.resolve({
+          statusCode: StatusCodes.OK,
+          body: { id: 'hello', name },
+        });
       };
       expect(getLambdaHandler(httpApiContract)(handler)).toEqual(handler);
 
-      const { id, name } = await handler(
+      const { statusCode, body } = await handler(
         {
           pathParameters: { userId: 'toto', pageNumber: '15' },
           body: { foo: 'bar' },
@@ -135,8 +145,11 @@ describe('apiGateway lambda handler', () => {
         fakeContext,
       );
 
-      expect(id).toBe('hello');
-      expect(name).toBe('bar15myTestIdMyCustomHeaderclaimBar');
+      expect(statusCode).toBe(StatusCodes.OK);
+      expect(body).toEqual({
+        id: 'hello',
+        name: 'bar15myTestIdMyCustomHeaderclaimBar',
+      });
     });
 
     it('should return a correctly typed handler with jwt authorizer', async () => {
@@ -150,7 +163,7 @@ describe('apiGateway lambda handler', () => {
         queryStringParametersSchema,
         headersSchema,
         bodySchema,
-        outputSchema,
+        outputSchemas,
       });
 
       interface LambdaType {
@@ -184,11 +197,14 @@ describe('apiGateway lambda handler', () => {
           headers.myHeader +
           myCustomClaim;
 
-        return Promise.resolve({ id: 'hello', name });
+        return Promise.resolve({
+          statusCode: StatusCodes.OK,
+          body: { id: 'hello', name },
+        });
       };
       expect(getLambdaHandler(httpApiContract)(handler)).toEqual(handler);
 
-      const { id, name } = await handler(
+      const { statusCode, body } = await handler(
         {
           pathParameters: { userId: 'toto', pageNumber: '15' },
           body: { foo: 'bar' },
@@ -202,8 +218,11 @@ describe('apiGateway lambda handler', () => {
         fakeContext,
       );
 
-      expect(id).toBe('hello');
-      expect(name).toBe('bar15myTestIdMyCustomHeaderclaimBar');
+      expect(statusCode).toBe(StatusCodes.OK);
+      expect(body).toEqual({
+        id: 'hello',
+        name: 'bar15myTestIdMyCustomHeaderclaimBar',
+      });
     });
   });
 
@@ -220,7 +239,7 @@ describe('apiGateway lambda handler', () => {
       const handler: SwarmionApiGatewayHandler<
         typeof restApiContract
       > = async () => {
-        return Promise.resolve(undefined);
+        return Promise.resolve({ statusCode: StatusCodes.OK, body: undefined });
       };
       expect(getLambdaHandler(restApiContract)(handler)).toEqual(handler);
 
@@ -238,7 +257,10 @@ describe('apiGateway lambda handler', () => {
           },
           fakeContext,
         ),
-      ).toBe(undefined);
+      ).toEqual({
+        statusCode: StatusCodes.OK,
+        body: undefined,
+      });
     });
 
     it('should not have claims in its request context', async () => {
@@ -247,7 +269,10 @@ describe('apiGateway lambda handler', () => {
       > = async ({ requestContext }) => {
         const undefinedAuthorizer: undefined = requestContext.authorizer;
 
-        return Promise.resolve(undefinedAuthorizer);
+        return Promise.resolve({
+          statusCode: StatusCodes.OK,
+          body: undefinedAuthorizer,
+        });
       };
       expect(getLambdaHandler(restApiContract)(handler)).toEqual(handler);
       const fakeContext = getHandlerContextMock();
@@ -260,7 +285,10 @@ describe('apiGateway lambda handler', () => {
           },
           fakeContext,
         ),
-      ).toBe(undefined);
+      ).toEqual({
+        statusCode: StatusCodes.OK,
+        body: undefined,
+      });
     });
   });
 });

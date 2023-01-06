@@ -110,7 +110,10 @@ in order to have live type updates without the need to package the contracts lib
 Now lets write our first contract to define a get user operation.
 
 ```typescript title="contracts/users-contracts/src/contracts/getUser.ts"
-import { ApiGatewayContract } from '@swarmion/serverless-contracts';
+import {
+  ApiGatewayContract,
+  StatusCodes,
+} from '@swarmion/serverless-contracts';
 
 const pathParametersSchema = {
   type: 'object',
@@ -138,7 +141,9 @@ const getUserContract = new ApiGatewayContract({
   method: 'GET',
   integrationType: 'httpApi',
   pathParametersSchema,
-  outputSchema: userEntitySchema,
+  outputSchemas: {
+    [StatusCodes.OK]: userEntitySchema,
+  },
 });
 
 export default getUserContract;
@@ -188,34 +193,43 @@ This will create an http-api endpoint that will trigger the `getUser` function w
 Then, you can use the `getHandler` feature to define a type safe handler of your function:
 
 ```typescript title="backend/users/src/functions/getUser/handler.ts"
-import { getHandler } from '@swarmion/serverless-contracts';
+import { getHandler, StatusCodes } from '@swarmion/serverless-contracts';
 import { getUserContract } from '@my-project-name/users-contracts';
 
-export const handler = getHandler(getUserContract, async event => {
+export const handler = getHandler(getUserContract)(async event => {
   const { userId } = event.pathParameters; // userId will be typed as string
 
   console.log(userId);
 
   return {
-    userId,
-    userName: 'John Doe',
-    email: 'john.doe@swarmion.com',
-  }; // The return type is checked against the contract output schema
+    statusCode: StatusCodes.OK,
+    body: {
+      userId,
+      userName: 'John Doe',
+      email: 'john.doe@swarmion.com',
+    },
+  }; // The return type is checked against the contract output schemas
 });
 ```
 
 Finally, in your frontend service, you can use the `getFetchRequest` feature to create a type safe client for your contract:
 
 ```typescript title="frontend/src/services/getUser.ts"
-import { getFetchRequest } from '@swarmion/serverless-contracts';
+import { getFetchRequest, StatusCodes } from '@swarmion/serverless-contracts';
 import { getUserContract } from '@my-project-name/users-contracts';
 
 export const getUser = (userId: string) => {
-  return getFetchRequest(getUserContract, fetch, {
+  const { statusCode, body } = getFetchRequest(getUserContract, fetch, {
     pathParameters: {
       userId,
     },
   });
+
+  if (statusCode !== StatusCodes.OK) {
+    // manage error cases
+  }
+
+  return body;
 };
 ```
 

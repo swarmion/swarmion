@@ -1,4 +1,6 @@
-import { ApiGatewayContract } from 'contracts';
+import { StatusCodes } from 'types/http';
+
+import { ApiGatewayContract } from '../apiGatewayContract';
 
 export const pathParametersSchema = {
   type: 'object',
@@ -33,6 +35,21 @@ export const outputSchema = {
     name: { type: 'string' },
   },
   required: ['id', 'name'],
+  additionalProperties: false,
+} as const;
+
+export const outputSchemas = {
+  [StatusCodes.OK]: outputSchema,
+};
+
+export const outputSchema2 = {
+  type: 'object',
+  properties: {
+    id: { type: 'string' },
+    age: { type: 'number' },
+  },
+  additionalProperties: false,
+  required: ['id', 'age'],
 } as const;
 
 export const httpApiGatewayContractMock = new ApiGatewayContract({
@@ -45,5 +62,8 @@ export const httpApiGatewayContractMock = new ApiGatewayContract({
   queryStringParametersSchema,
   headersSchema,
   bodySchema,
-  outputSchema,
+  outputSchemas: {
+    [StatusCodes.OK]: outputSchema,
+    [StatusCodes.BAD_REQUEST]: outputSchema2,
+  },
 });

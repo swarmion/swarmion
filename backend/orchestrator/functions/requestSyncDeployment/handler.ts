@@ -1,5 +1,5 @@
 import { requestSyncDeploymentContract } from '@swarmion/orchestrator-contracts';
-import { getHandler } from '@swarmion/serverless-contracts';
+import { getHandler, StatusCodes } from '@swarmion/serverless-contracts';
 
 import { GenerateUlidType } from 'interfaces/generateUlid';
 import { PutRequestedContractEvent } from 'interfaces/putRequestedContractEvent';
@@ -31,6 +31,9 @@ export const main = getHandler(requestSyncDeploymentContract)(
 
     await putRequestedContractEvent({ serviceId, applicationId, eventId });
 
-    return { status: 'ACCEPTED', message: 'processing' };
+    return {
+      statusCode: StatusCodes.OK,
+      body: { status: 'ACCEPTED', message: 'processing' },
+    };
   },
 );

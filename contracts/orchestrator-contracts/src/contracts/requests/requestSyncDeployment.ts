@@ -1,4 +1,7 @@
-import { ApiGatewayContract } from '@swarmion/serverless-contracts';
+import {
+  ApiGatewayContract,
+  StatusCodes,
+} from '@swarmion/serverless-contracts';
 
 const bodySchema = {
   type: 'object',
@@ -26,5 +29,7 @@ export const requestSyncDeploymentContract = new ApiGatewayContract({
   method: 'POST',
   integrationType: 'httpApi',
   bodySchema,
-  outputSchema,
+  outputSchemas: {
+    [StatusCodes.OK]: outputSchema,
+  },
 });

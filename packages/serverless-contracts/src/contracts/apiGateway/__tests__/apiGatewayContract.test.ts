@@ -1,3 +1,5 @@
+import { StatusCodes } from 'types/http';
+
 import { ApiGatewayContract } from '../apiGatewayContract';
 
 describe('apiGateway contracts', () => {
@@ -36,7 +38,11 @@ describe('apiGateway contracts', () => {
     required: ['id', 'name'],
   } as const;
 
-  describe('httpApi, when all parameters are set', () => {
+  const outputSchemas = {
+    [StatusCodes.OK]: outputSchema,
+  };
+
+  describe('httpApi, when all parameters are set - outputSchema', () => {
     const httpApiContract = new ApiGatewayContract({
       id: 'testContract',
       path: '/users/{userId}',
@@ -46,7 +52,7 @@ describe('apiGateway contracts', () => {
       queryStringParametersSchema,
       headersSchema,
       bodySchema,
-      outputSchema,
+      outputSchemas,
     });
 
     it('should have the correct inputSchema', () => {
@@ -68,8 +74,48 @@ describe('apiGateway contracts', () => {
       });
     });
 
-    it('should have the correct outputSchema', () => {
-      expect(httpApiContract.outputSchema).toEqual(outputSchema);
+    it('should have the correct outputSchemas', () => {
+      expect(httpApiContract.outputSchemas).toEqual({
+        [StatusCodes.OK]: outputSchema,
+      });
+    });
+  });
+
+  describe('httpApi, when all parameters are set - outputSchemas', () => {
+    const httpApiContract = new ApiGatewayContract({
+      id: 'testContract',
+      path: '/users/{userId}',
+      method: 'GET',
+      integrationType: 'httpApi',
+      authorizerType: undefined,
+      pathParametersSchema,
+      queryStringParametersSchema,
+      headersSchema,
+      bodySchema,
+      outputSchemas: { 201: outputSchema },
+    });
+
+    it('should have the correct inputSchema', () => {
+      expect(httpApiContract.inputSchema).toEqual({
+        type: 'object',
+        properties: {
+          pathParameters: pathParametersSchema,
+          queryStringParameters: queryStringParametersSchema,
+          headers: headersSchema,
+          body: bodySchema,
+        },
+        required: [
+          'pathParameters',
+          'queryStringParameters',
+          'headers',
+          'body',
+        ],
+        additionalProperties: true,
+      });
+    });
+
+    it('should have the correct outputSchemas', () => {
+      expect(httpApiContract.outputSchemas).toEqual({ ['201']: outputSchema });
     });
   });
 
@@ -83,7 +129,7 @@ describe('apiGateway contracts', () => {
       queryStringParametersSchema,
       headersSchema,
       bodySchema,
-      outputSchema,
+      outputSchemas,
     });
 
     it('should have the correct inputSchema', () => {
@@ -105,8 +151,10 @@ describe('apiGateway contracts', () => {
       });
     });
 
-    it('should have the correct outputSchema', () => {
-      expect(restApiContract.outputSchema).toEqual(outputSchema);
+    it('should have the correct outputSchemas', () => {
+      expect(restApiContract.outputSchemas).toEqual({
+        [StatusCodes.OK]: outputSchema,
+      });
     });
   });
 
@@ -118,7 +166,9 @@ describe('apiGateway contracts', () => {
       integrationType: 'restApi',
     });
     it('should should have the correct outputSchema', () => {
-      expect(restApiContract.outputSchema).toEqual(undefined);
+      expect(restApiContract.outputSchemas).toEqual({
+        [StatusCodes.OK]: undefined,
+      });
     });
 
     it('should should have the correct inputSchema', () => {
