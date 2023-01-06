@@ -23,10 +23,13 @@ Let's create our first HttpApi contract. First we will need to define the subsch
   - the headers: `headersSchema`, with the same constraint (and as per [HTTP/2 specification](https://httpwg.org/specs/rfc7540.html#HttpHeaders), they should be lowercase)
   - the requestContext: `requestContextSchema`, which must respect the request context format of your lambda, depending on the integration type and the authorizer type.
   - the body `bodySchema` which is an unconstrained JSON schema
-- finally, the `outputSchema` in order to be able to validate the output of the lambda. It is also an unconstrained JSON schema.
+- finally, the `outputSchemas` in order to be able to validate the output of the lambda. It is a mapping between http status codes and unconstrained JSON schemas.
 
 ```ts
-import { ApiGatewayContract } from '@swarmion/serverless-contracts';
+import {
+  ApiGatewayContract,
+  HttpStatusCodes,
+} from '@swarmion/serverless-contracts';
 
 const pathParametersSchema = {
   type: 'object',
@@ -75,7 +78,7 @@ const bodySchema = {
   required: ['foo'],
 } as const;
 
-const outputSchema = {
+const successCaseOutputSchema = {
   type: 'object',
   properties: {
     id: { type: 'string' },
@@ -95,7 +98,9 @@ const myContract = new ApiGatewayContract({
   headersSchema,
   requestContextSchema,
   bodySchema,
-  outputSchema,
+  outputSchemas: {
+    [HttpStatusCodes.OK]: successCaseOutputSchema,
+  },
 });
 ```
 
@@ -114,6 +119,7 @@ const myContract = new ApiGatewayContract({
   integrationType: 'httpApi',
   pathParametersSchema,
   bodySchema,
+  outputSchemas,
 });
 ```
 
@@ -226,7 +232,7 @@ If you use your lambda as an ApiGateway integration, you would typically need to
 All this can be directly done directly by using the `getHandler` function that offers all those features.
 
 ```ts
-import { getHandler } from '@swarmion/serverless-contracts';
+import { getHandler, HttpStatusCodes } from '@swarmion/serverless-contracts';
 
 const handler = getHandler(myContract)(async event => {
   event.pathParameters.userId; // will have type 'string'
@@ -237,7 +243,10 @@ const handler = getHandler(myContract)(async event => {
 
   await Promise.resolve(); // you should replace this by your business logic
 
-  return { id: 'coucou', name: 'coucou' }; // also type-safe!
+  return {
+    statusCode: HttpStatusCodes.OK,
+    body: { id: 'coucou', name: 'coucou' },
+  }; // also type-safe!
 });
 ```
 
@@ -285,7 +294,7 @@ myContract.inputSchema;
 and
 
 ```ts
-myContract.outputSchema;
+myContract.outputSchemas;
 ```
 
 in order to validate the input and/or the output of your lambda.
