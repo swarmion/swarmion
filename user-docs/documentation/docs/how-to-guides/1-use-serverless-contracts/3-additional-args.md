@@ -29,7 +29,7 @@ Let's imagine that we want to pass it a sideEffect called `getUser` with type `(
 
 ```ts
 // handler.ts
-import { getHandler } from '@swarmion/serverless-contracts';
+import { getHandler, StatusCodes } from '@swarmion/serverless-contracts';
 import { getUser } from 'path/to/getUser';
 
 const sideEffects = {
@@ -47,7 +47,7 @@ const main = getHandler(myContract)(
 
     const { name, id } = user; // type-safe!
 
-    return { name, id };
+    return { statusCode: StatusCodes.OK, body: { name, id } };
   },
 );
 ```
@@ -72,7 +72,10 @@ const mockEvent = {
   // ...
 };
 
-const mockGetUser = vitest.fn(() => ({ name: 'Toto', id: 'toto' }));
+const mockGetUser = vitest.fn(() => ({
+  statusCode: StatusCodes.OK,
+  body: { name, id },
+}));
 
 const result = await main(
   mockEvent,
@@ -81,7 +84,10 @@ const result = await main(
   { getUser: mockGetUser }, // type-safe!
 );
 
-expect(result).toEqual({ name: 'Toto', id: 'toto' });
+expect(result).toEqual({
+  statusCode: StatusCodes.OK,
+  body: { name: 'Toto', id: 'toto' },
+});
 expect(mockGetUser).toHaveBeenCalledOnce();
 expect(mockGetUser).toHaveBeenCalledWith('toto');
 ```
