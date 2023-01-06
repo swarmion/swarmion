@@ -10,6 +10,7 @@ import {
 } from 'contracts';
 import {
   BodyType,
+  CustomRequestContextType,
   HeadersType,
   InternalSwarmionApiGatewayHandler,
   OutputType,
@@ -32,6 +33,7 @@ export function getHandler<
   PathParameters = PathParametersType<Contract>,
   QueryStringParameters = QueryStringParametersType<Contract>,
   Headers = HeadersType<Contract>,
+  CustomRequestContext = CustomRequestContextType<Contract>,
   Body = BodyType<Contract>,
   Output = OutputType<Contract>,
 >(
@@ -43,6 +45,7 @@ export function getHandler<
     PathParameters,
     QueryStringParameters,
     Headers,
+    CustomRequestContext,
     Body,
     Output,
     AdditionalArgs

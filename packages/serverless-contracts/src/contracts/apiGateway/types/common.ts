@@ -20,6 +20,12 @@ export type HeadersType<Contract extends GenericApiGatewayContract> =
     ? FromSchema<Contract['headersSchema']>
     : undefined;
 
+export type CustomRequestContextType<
+  Contract extends GenericApiGatewayContract,
+> = Contract['requestContextSchema'] extends JSONSchema
+  ? FromSchema<Contract['requestContextSchema']>
+  : undefined;
+
 export type BodyType<Contract extends GenericApiGatewayContract> =
   Contract['bodySchema'] extends JSONSchema
     ? FromSchema<Contract['bodySchema']>

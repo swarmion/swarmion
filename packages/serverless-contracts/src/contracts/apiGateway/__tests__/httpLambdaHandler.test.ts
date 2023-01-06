@@ -41,7 +41,7 @@ describe('apiGateway lambda handler', () => {
           requestContext,
         }) => {
           await Promise.resolve();
-          const myCustomClaim = requestContext.authorizer.claims.foo ?? '';
+          const myCustomClaim = requestContext.authorizer.claims.foo;
 
           const name =
             body.foo +
@@ -103,7 +103,7 @@ describe('apiGateway lambda handler', () => {
           requestContext,
         }) => {
           await Promise.resolve();
-          const myCustomClaim = requestContext.authorizer.claims.foo ?? '';
+          const myCustomClaim = requestContext.authorizer.claims.foo;
 
           const name =
             body.foo +
@@ -161,7 +161,7 @@ describe('apiGateway lambda handler', () => {
           requestContext,
         }) => {
           await Promise.resolve();
-          const myCustomClaim = requestContext.authorizer.claims.foo ?? '';
+          const myCustomClaim = requestContext.authorizer.claims.foo;
 
           const name =
             body.foo +
@@ -266,7 +266,7 @@ describe('apiGateway lambda handler', () => {
           requestContext,
         }) => {
           await Promise.resolve();
-          const myCustomClaim = requestContext.authorizer.claims.foo ?? '';
+          const myCustomClaim = requestContext.authorizer.claims.foo;
 
           const name =
             body.foo +

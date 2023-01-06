@@ -10,6 +10,7 @@ export const proxyEventToHandlerEvent = <
   PathParameters,
   QueryStringParameters,
   Headers,
+  CustomRequestContext,
   Body,
 >({
   requestContext,
@@ -23,6 +24,7 @@ export const proxyEventToHandlerEvent = <
   PathParameters,
   QueryStringParameters,
   Headers,
+  CustomRequestContext,
   Body
 > => {
   return {
@@ -39,6 +41,7 @@ export const proxyEventToHandlerEvent = <
     PathParameters,
     QueryStringParameters,
     Headers,
+    CustomRequestContext,
     Body
   >;
 };
