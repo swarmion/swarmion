@@ -21,6 +21,7 @@ Let's create our first HttpApi contract. First we will need to define the subsch
   - the path parameters: `pathParametersSchema`, which must correspond to a `Record<string, string>`
   - the query string parameters: `queryStringParametersSchema`, which must respect the same constraint
   - the headers: `headersSchema`, with the same constraint (and as per [HTTP/2 specification](https://httpwg.org/specs/rfc7540.html#HttpHeaders), they should be lowercase)
+  - the requestContext: `requestContextSchema`, which must respect the request context format of your lambda, depending on the integration type and the authorizer type.
   - the body `bodySchema` which is an unconstrained JSON schema
 - finally, the `outputSchema` in order to be able to validate the output of the lambda. It is also an unconstrained JSON schema.
 
@@ -47,6 +48,27 @@ const headersSchema = {
   required: ['my-header'],
 } as const;
 
+const requestContextSchema = {
+  type: 'object',
+  properties: {
+    authorizer: {
+      type: 'object',
+      properties: {
+        claims: {
+          type: 'object',
+          properties: {
+            sub: { type: 'string' },
+            email: { type: 'string' },
+          },
+          required: ['sub', 'email'],
+        },
+      },
+      required: ['claims'],
+    },
+    required: ['authorizer'],
+  },
+} as const;
+
 const bodySchema = {
   type: 'object',
   properties: { foo: { type: 'string' } },
@@ -67,9 +89,11 @@ const myContract = new ApiGatewayContract({
   path: '/users/{userId}',
   method: 'GET',
   integrationType: 'httpApi',
+  authorizerType: 'cognito',
   pathParametersSchema,
   queryStringParametersSchema,
   headersSchema,
+  requestContextSchema,
   bodySchema,
   outputSchema,
 });
@@ -187,7 +211,7 @@ import { getHandler } from '@swarmion/serverless-contracts';
 
 const handler = getHandler(myContract)(async event => {
   event.pathParameters.userId; // will have type 'string'
-  event.requestContext.authorizer.claims.sub; // will exist depending on `authorizerType`
+  event.requestContext.authorizer.claims.sub; // will have type 'string'
 
   event.toto; // will fail typing
   event.pathParameters.toto; // will also fail
@@ -245,7 +269,7 @@ import { applyHttpMiddlewares } from '@swarmion/serverless-helpers';
 
 const handler = getLambdaHandler(myContract)(async event => {
   event.pathParameters.userId; // will have type 'string'
-  event.requestContext.authorizer.claims.sub; // will have type 'string' if authorizerType is "cognito", otherwise will fail
+  event.requestContext.authorizer.claims.sub; // will have type 'string'
 
   event.toto; // will fail typing
   event.pathParameters.toto; // will also fail
