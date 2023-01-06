@@ -1,9 +1,9 @@
 import {
-  ApiGatewayContract,
   ApiGatewayHandler,
   EventBridgeContract,
   EventBridgeHandler,
   EventBridgePayloadType,
+  GenericApiGatewayContract,
   getApiGatewayHandler,
   getEventBridgeHandler,
   SwarmionEventBridgeHandler,
@@ -26,7 +26,7 @@ import { ServerlessContract } from 'types';
  * must match the type of getApiGatewayHandler
  */
 export function getHandler<
-  Contract extends ApiGatewayContract,
+  Contract extends GenericApiGatewayContract,
   IntegrationType extends ApiGatewayIntegrationType = Contract['integrationType'],
   AuthorizerType extends ApiGatewayAuthorizerType = Contract['authorizerType'],
   PathParameters = PathParametersType<Contract>,

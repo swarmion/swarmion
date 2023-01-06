@@ -138,11 +138,7 @@ const getUserContract = new ApiGatewayContract({
   method: 'GET',
   integrationType: 'httpApi',
   pathParametersSchema,
-  queryStringParametersSchema: undefined,
-  bodySchema: undefined,
-  headersSchema: undefined,
   outputSchema: userEntitySchema,
-  authorizerType: undefined,
 });
 
 export default getUserContract;

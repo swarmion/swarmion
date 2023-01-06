@@ -1,10 +1,12 @@
 import { AxiosInstance, AxiosResponse } from 'axios';
 
-import { ApiGatewayContract } from '../apiGatewayContract';
+import { GenericApiGatewayContract } from '../apiGatewayContract';
 import { OutputType, RequestArguments } from '../types';
 import { getRequestParameters } from './requestParameters';
 
-export const getAxiosRequest = async <Contract extends ApiGatewayContract>(
+export const getAxiosRequest = async <
+  Contract extends GenericApiGatewayContract,
+>(
   contract: Contract,
   axiosClient: AxiosInstance,
   requestArguments: RequestArguments<Contract>,

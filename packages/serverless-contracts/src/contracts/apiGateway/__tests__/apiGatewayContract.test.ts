@@ -42,7 +42,6 @@ describe('apiGateway contracts', () => {
       path: '/users/{userId}',
       method: 'GET',
       integrationType: 'httpApi',
-      authorizerType: undefined,
       pathParametersSchema,
       queryStringParametersSchema,
       headersSchema,
@@ -80,7 +79,6 @@ describe('apiGateway contracts', () => {
       path: '/users/{userId}',
       method: 'GET',
       integrationType: 'restApi',
-      authorizerType: undefined,
       pathParametersSchema,
       queryStringParametersSchema,
       headersSchema,
@@ -118,12 +116,6 @@ describe('apiGateway contracts', () => {
       path: 'coucou',
       method: 'POST',
       integrationType: 'restApi',
-      authorizerType: undefined,
-      pathParametersSchema: undefined,
-      queryStringParametersSchema: undefined,
-      headersSchema: undefined,
-      bodySchema: undefined,
-      outputSchema: undefined,
     });
     it('should should have the correct outputSchema', () => {
       expect(restApiContract.outputSchema).toEqual(undefined);

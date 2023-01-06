@@ -67,7 +67,6 @@ const myContract = new ApiGatewayContract({
   path: '/users/{userId}',
   method: 'GET',
   integrationType: 'httpApi',
-  authorizerType: undefined,
   pathParametersSchema,
   queryStringParametersSchema,
   headersSchema,
@@ -80,7 +79,6 @@ const myContract = new ApiGatewayContract({
 In order to properly use Typescript's type inference:
 
 - All the schemas **MUST** be created using the `as const` directive. For more information, see [json-schema-to-ts](https://github.com/ThomasAribart/json-schema-to-ts#fromschema)
-- If you do not wish to use one of the subschemas, you need to explicitly set it as `undefined` in the contract. For example, in order to define a contract without headers, we need to create it with:
 
 ```ts
 import { ApiGatewayContract } from '@swarmion/serverless-contracts';
@@ -90,10 +88,8 @@ const myContract = new ApiGatewayContract({
   path: '/users/{userId}',
   method: 'GET',
   integrationType: 'httpApi',
-  authorizerType: undefined,
   pathParametersSchema,
   queryStringParametersSchema,
-  headersSchema: undefined,
   bodySchema,
   outputSchema,
 });
@@ -148,7 +144,7 @@ export default {
 
 The static typing also enforces authenticated contracts by requiring authorizers.
 
-For an unauthenticated contract: (i.e. that has `authorizerType: undefined`):
+For an unauthenticated contract: (i.e. that has no `authorizerType`):
 
 ```ts
 // config.ts

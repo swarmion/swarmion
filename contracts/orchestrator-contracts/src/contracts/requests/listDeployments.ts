@@ -23,10 +23,6 @@ export const listDeploymentsContract = new ApiGatewayContract({
   path: '/deployments',
   method: 'GET',
   integrationType: 'httpApi',
-  pathParametersSchema: undefined,
   queryStringParametersSchema,
-  bodySchema: undefined,
-  headersSchema: undefined,
   outputSchema,
-  authorizerType: undefined,
 });

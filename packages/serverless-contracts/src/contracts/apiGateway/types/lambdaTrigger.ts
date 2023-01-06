@@ -3,7 +3,7 @@ import { O } from 'ts-toolbelt';
 import { LambdaEvents } from 'types/lambdaEvents';
 import { CleanEmptyObject } from 'types/utilities';
 
-import { ApiGatewayContract } from '../apiGatewayContract';
+import { GenericApiGatewayContract } from '../apiGatewayContract';
 import {
   ApiGatewayAuthorizerType,
   ApiGatewayIntegrationType,
@@ -22,7 +22,7 @@ type ApiGatewayTriggerKey<
  * The type of an httpApi lambda trigger
  */
 export type ApiGatewayLambdaCompleteTriggerType<
-  Contract extends ApiGatewayContract,
+  Contract extends GenericApiGatewayContract,
 > = {
   [key in ApiGatewayTriggerKey<Contract['integrationType']>]: {
     path: string;
@@ -76,7 +76,7 @@ type ApiGatewayLambdaAdditionalConfigType<
  * the trick here is that when the contract is authenticated, the additional config
  * is required, whereas otherwise it is optional
  */
-export type ApiGatewayTriggerArgs<Contract extends ApiGatewayContract> =
+export type ApiGatewayTriggerArgs<Contract extends GenericApiGatewayContract> =
   Contract['authorizerType'] extends undefined
     ?
         | [

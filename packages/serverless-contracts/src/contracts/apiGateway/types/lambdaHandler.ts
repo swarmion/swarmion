@@ -14,7 +14,7 @@ import type {
   Context,
 } from 'aws-lambda';
 
-import { ApiGatewayContract } from '../apiGatewayContract';
+import { GenericApiGatewayContract } from '../apiGatewayContract';
 import {
   BodyType,
   HeadersType,
@@ -103,7 +103,7 @@ export type InternalSwarmionApiGatewayHandler<
  * The handler function can define additional arguments.
  */
 export type SwarmionApiGatewayHandler<
-  Contract extends ApiGatewayContract,
+  Contract extends GenericApiGatewayContract,
   AdditionalArgs extends unknown[] = never[],
   IntegrationType extends ApiGatewayIntegrationType = Contract['integrationType'],
   AuthorizerType extends ApiGatewayAuthorizerType = Contract['authorizerType'],

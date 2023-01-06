@@ -213,12 +213,7 @@ describe('apiGateway lambda handler', () => {
       path: '/hello',
       method: 'POST',
       integrationType: 'restApi',
-      authorizerType: undefined,
-      pathParametersSchema: undefined,
-      queryStringParametersSchema: undefined,
-      headersSchema: undefined,
       bodySchema,
-      outputSchema: undefined,
     });
 
     it('should return a correctly typed handler', async () => {

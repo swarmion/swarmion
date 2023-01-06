@@ -421,12 +421,6 @@ describe('apiGateway lambda handler', () => {
         path: '/hello',
         method: 'POST',
         integrationType: 'restApi',
-        authorizerType: undefined,
-        pathParametersSchema: undefined,
-        queryStringParametersSchema: undefined,
-        headersSchema: undefined,
-        bodySchema: undefined,
-        outputSchema: undefined,
       });
 
       const handler: SwarmionApiGatewayHandler<

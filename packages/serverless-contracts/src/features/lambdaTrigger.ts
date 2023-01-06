@@ -1,6 +1,6 @@
 import {
-  ApiGatewayContract,
   EventBridgeContract,
+  GenericApiGatewayContract,
   getApiGatewayTrigger,
   getEventBridgeTrigger,
 } from 'contracts';
@@ -14,7 +14,7 @@ import {
 } from 'contracts/eventBridge/types';
 import { ServerlessContract } from 'types';
 
-export function getTrigger<Contract extends ApiGatewayContract>(
+export function getTrigger<Contract extends GenericApiGatewayContract>(
   contract: Contract,
   ...[additionalConfig]: ApiGatewayTriggerArgs<Contract>
 ): ApiGatewayLambdaCompleteTriggerType<Contract>;

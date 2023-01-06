@@ -25,18 +25,13 @@ export class ApiGatewayContract<
   Path extends string = string,
   Method extends HttpMethod = HttpMethod,
   IntegrationType extends ApiGatewayIntegrationType = ApiGatewayIntegrationType,
-  AuthorizerType extends ApiGatewayAuthorizerType = ApiGatewayAuthorizerType,
-  PathParametersSchema extends ConstrainedJSONSchema | undefined =
-    | ConstrainedJSONSchema
-    | undefined,
+  AuthorizerType extends ApiGatewayAuthorizerType = undefined,
+  PathParametersSchema extends ConstrainedJSONSchema | undefined = undefined,
   QueryStringParametersSchema extends ConstrainedJSONSchema | undefined =
-    | ConstrainedJSONSchema
     | undefined,
-  HeadersSchema extends ConstrainedJSONSchema | undefined =
-    | ConstrainedJSONSchema
-    | undefined,
-  BodySchema extends JSONSchema | undefined = JSONSchema | undefined,
-  OutputSchema extends JSONSchema | undefined = JSONSchema | undefined,
+  HeadersSchema extends ConstrainedJSONSchema | undefined = undefined,
+  BodySchema extends JSONSchema | undefined = undefined,
+  OutputSchema extends JSONSchema | undefined = undefined,
 > {
   public contractType = 'apiGateway' as const;
   public id: string;
@@ -74,66 +69,58 @@ export class ApiGatewayContract<
      */
     integrationType: IntegrationType;
     /**
+     * Indicates which type of authorizer is used for this contract.
+     */
+    authorizerType?: AuthorizerType;
+    /**
      * A JSONSchema used to validate the path parameters and infer their types.
      *
      * Please note that the `as const` directive is necessary to properly infer the type from the schema.
      * See https://github.com/ThomasAribart/json-schema-to-ts#fromschema.
-     *
-     * Also please note that for Typescript reasons, you need to explicitly pass `undefined` if you don't want to use the schema.
      */
-    pathParametersSchema: PathParametersSchema;
+    pathParametersSchema?: PathParametersSchema;
     /**
      * A JSONSchema used to validate the query parameters and infer their types.
      *
      * Please note that the `as const` directive is necessary to properly infer the type from the schema.
      * See https://github.com/ThomasAribart/json-schema-to-ts#fromschema.
-     *
-     * Also please note that for Typescript reasons, you need to explicitly pass `undefined` if you don't want to use the schema.
      */
-    queryStringParametersSchema: QueryStringParametersSchema;
+    queryStringParametersSchema?: QueryStringParametersSchema;
     /**
      * A JSONSchema used to validate the headers and infer their types.
      *
      * Please note that the `as const` directive is necessary to properly infer the type from the schema.
      * See https://github.com/ThomasAribart/json-schema-to-ts#fromschema.
-     *
-     * Also please note that for Typescript reasons, you need to explicitly pass `undefined` if you don't want to use the schema.
      */
-    headersSchema: HeadersSchema;
+    headersSchema?: HeadersSchema;
     /**
      * A JSONSchema used to validate the body and infer its type.
      *
      * Please note that the `as const` directive is necessary to properly infer the type from the schema.
      * See https://github.com/ThomasAribart/json-schema-to-ts#fromschema.
-     *
-     * Also please note that for Typescript reasons, you need to explicitly pass `undefined` if you don't want to use the schema.
      */
-    bodySchema: BodySchema;
+    bodySchema?: BodySchema;
     /**
      * A JSONSchema used to validate the output and infer its type.
      *
      * Please note that the `as const` directive is necessary to properly infer the type from the schema.
      * See https://github.com/ThomasAribart/json-schema-to-ts#fromschema.
-     *
-     * Also please note that for Typescript reasons, you need to explicitly pass `undefined` if you don't want to use the schema.
      */
-    outputSchema: OutputSchema;
-    /**
-     * Indicates which type of authorizer is used for this contract.
-     */
-    authorizerType: AuthorizerType;
+    outputSchema?: OutputSchema;
   }) {
     this.id = props.id;
     this.path = props.path;
     this.method = props.method;
     this.integrationType = props.integrationType;
-    this.pathParametersSchema = props.pathParametersSchema;
-    this.queryStringParametersSchema = props.queryStringParametersSchema;
-    this.headersSchema = props.headersSchema;
-    this.bodySchema = props.bodySchema;
-    this.outputSchema = props.outputSchema;
+    this.authorizerType = (props.authorizerType ?? undefined) as AuthorizerType;
+    this.pathParametersSchema = (props.pathParametersSchema ??
+      undefined) as PathParametersSchema;
+    this.queryStringParametersSchema = (props.queryStringParametersSchema ??
+      undefined) as QueryStringParametersSchema;
+    this.headersSchema = (props.headersSchema ?? undefined) as HeadersSchema;
+    this.bodySchema = (props.bodySchema ?? undefined) as BodySchema;
+    this.outputSchema = (props.outputSchema ?? undefined) as OutputSchema;
     this.inputSchema = this.getInputSchema();
-    this.authorizerType = props.authorizerType;
   }
 
   private getInputSchema(): JSONSchema {
@@ -155,3 +142,20 @@ export class ApiGatewayContract<
     } as unknown as JSONSchema;
   }
 }
+
+/**
+ * The type of an ApiGateway contract using all default types.
+ *
+ * It is used internally to type contract features input
+ */
+export type GenericApiGatewayContract = ApiGatewayContract<
+  string,
+  HttpMethod,
+  ApiGatewayIntegrationType,
+  ApiGatewayAuthorizerType,
+  ConstrainedJSONSchema | undefined,
+  ConstrainedJSONSchema | undefined,
+  ConstrainedJSONSchema | undefined,
+  JSONSchema | undefined,
+  JSONSchema | undefined
+>;

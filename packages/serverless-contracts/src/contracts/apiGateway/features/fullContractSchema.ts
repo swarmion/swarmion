@@ -1,7 +1,7 @@
 import isUndefined from 'lodash/isUndefined';
 import omitBy from 'lodash/omitBy';
 
-import { ApiGatewayContract } from '../apiGatewayContract';
+import { GenericApiGatewayContract } from '../apiGatewayContract';
 import { FullContractSchemaType } from '../types';
 
 /**
@@ -11,7 +11,9 @@ import { FullContractSchemaType } from '../types';
  *
  *  @param contract your ApiGatewayContract
  */
-export const getFullContractSchema = <Contract extends ApiGatewayContract>(
+export const getFullContractSchema = <
+  Contract extends GenericApiGatewayContract,
+>(
   contract: Contract,
 ): FullContractSchemaType<
   Contract['path'],

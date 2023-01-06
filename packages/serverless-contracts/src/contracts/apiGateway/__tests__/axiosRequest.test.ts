@@ -48,7 +48,6 @@ describe('apiGateway axios request', () => {
       path: '/users/{userId}',
       method: 'GET',
       integrationType: 'httpApi',
-      authorizerType: undefined,
       pathParametersSchema,
       queryStringParametersSchema,
       headersSchema,
@@ -94,12 +93,6 @@ describe('apiGateway axios request', () => {
       path: '/coucou',
       method: 'POST',
       integrationType: 'httpApi',
-      authorizerType: undefined,
-      pathParametersSchema: undefined,
-      queryStringParametersSchema: undefined,
-      headersSchema: undefined,
-      bodySchema: undefined,
-      outputSchema: undefined,
     });
 
     it('should have the correct axios request ', async () => {

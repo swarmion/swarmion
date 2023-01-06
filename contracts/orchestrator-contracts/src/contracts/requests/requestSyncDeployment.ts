@@ -25,10 +25,6 @@ export const requestSyncDeploymentContract = new ApiGatewayContract({
   path: '/request-sync-deployment',
   method: 'POST',
   integrationType: 'httpApi',
-  pathParametersSchema: undefined,
-  queryStringParametersSchema: undefined,
   bodySchema,
-  headersSchema: undefined,
   outputSchema,
-  authorizerType: undefined,
 });

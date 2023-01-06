@@ -1,6 +1,6 @@
 import { HttpMethod } from 'types/http';
 
-import { ApiGatewayContract } from '../apiGatewayContract';
+import { GenericApiGatewayContract } from '../apiGatewayContract';
 import {
   BodyType,
   HeadersType,
@@ -20,7 +20,7 @@ export interface RequestParameters<BodyType> {
   queryStringParameters?: Record<string, string>;
 }
 
-export type RequestArguments<Contract extends ApiGatewayContract> =
+export type RequestArguments<Contract extends GenericApiGatewayContract> =
   DefinedProperties<{
     pathParameters: PathParametersType<Contract>;
     queryStringParameters: QueryStringParametersType<Contract>;
