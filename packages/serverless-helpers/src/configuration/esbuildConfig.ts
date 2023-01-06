@@ -9,6 +9,12 @@ type EsbuildOptions = Omit<BuildOptions, 'watch'>;
  * And https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_lambda_nodejs.BundlingOptions.html
  */
 export interface SwarmionEsbuildConfig extends EsbuildOptions {
+  /**
+   * Documentation: https://esbuild.github.io/api/#target
+   *
+   * Note that for Swarmion, we do not need the `string[]` possibility, so we can remove it
+   */
+  target?: string;
   concurrency?: number;
   packager: PackagerId;
   exclude: '*' | string[];
