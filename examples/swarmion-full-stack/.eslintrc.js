@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 module.exports = {
   extends: [
     'eslint:recommended',
@@ -181,6 +182,21 @@ module.exports = {
           {
             allowNumber: true,
             allowBoolean: true,
+          },
+        ],
+      },
+    },
+    {
+      files: ['**/src/**'],
+      excludedFiles: ['**/__tests__/**', '**/*.test.ts?(x)', '**/testUtils/**'],
+
+      rules: {
+        'import/no-extraneous-dependencies': [
+          'error',
+          {
+            devDependencies: false,
+            optionalDependencies: false,
+            peerDependencies: true,
           },
         ],
       },

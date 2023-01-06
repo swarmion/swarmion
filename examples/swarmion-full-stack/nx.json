@@ -37,11 +37,11 @@
       "dependsOn": ["^package", "^deploy", "^build"]
     },
     "test": {
-      "inputs": ["default", "^production"],
+      "inputs": ["default", "^production", "{workspaceRoot}/.eslintrc.js"],
       "dependsOn": ["^package"]
     },
     "test-linter": {
-      "inputs": ["default", "^production"],
+      "inputs": ["default", "^production", "{workspaceRoot}/.eslintrc.js"],
       "dependsOn": ["^package"]
     },
     "test-unit": {
