@@ -1,0 +1,42 @@
+{
+  "name": "@swarmion-with-next/serverless-configuration",
+  "private": true,
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "clean": "rimraf dist",
+    "lint-fix": "pnpm linter-base-config --fix",
+    "lint-fix-all": "pnpm lint-fix .",
+    "linter-base-config": "eslint --ext=js,ts",
+    "package": "pnpm clean && pnpm package-transpile && pnpm package-types && pnpm package-types-aliases",
+    "package-transpile": "tsup src/index.ts",
+    "package-types": "tsc -p tsconfig.build.json",
+    "package-types-aliases": "tsc-alias -p tsconfig.build.json",
+    "test": "pnpm test-linter && pnpm test-type && pnpm test-circular",
+    "test-circular": "pnpm depcruise --validate .dependency-cruiser.js src",
+    "test-linter": "pnpm linter-base-config .",
+    "test-type": "tsc --noEmit --emitDeclarationOnly false",
+    "watch": "pnpm clean && concurrently 'pnpm:package-* --watch'"
+  },
+  "devDependencies": {
+    "@serverless/typescript": "^3.25.0",
+    "@types/node": "^18.11.18",
+    "concurrently": "^7.6.0",
+    "dependency-cruiser": "^12.3.0",
+    "eslint": "^8.31.0",
+    "prettier": "^2.8.1",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.9.1",
+    "tsc-alias": "^1.8.2",
+    "tsup": "^6.5.0",
+    "typescript": "^4.9.4",
+    "vitest": "^0.26.3"
+  }
+}

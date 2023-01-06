@@ -1,0 +1,45 @@
+{
+  "name": "@swarmion-with-next/backend-core",
+  "private": true,
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "scripts": {
+    "deploy": "serverless deploy",
+    "deploy-production": "serverless deploy --stage production",
+    "deploy-staging": "serverless deploy --stage staging",
+    "deployedCommit": "serverless deployedCommit",
+    "lint-fix": "pnpm linter-base-config --fix",
+    "lint-fix-all": "pnpm lint-fix .",
+    "linter-base-config": "eslint --ext=js,ts .",
+    "remove": "serverless remove",
+    "remove-production": "serverless remove --stage production",
+    "remove-staging": "serverless remove --stage staging",
+    "sls-get-region": "serverless print --path provider.region",
+    "sls-info": "serverless info --verbose",
+    "test": "pnpm test-linter && pnpm test-type && pnpm test-unit && pnpm test-circular",
+    "test-circular": "pnpm depcruise --validate .dependency-cruiser.js .",
+    "test-linter": "pnpm linter-base-config .",
+    "test-type": "tsc --noEmit  --emitDeclarationOnly false",
+    "test-unit": "vitest run --coverage --passWithNoTests"
+  },
+  "dependencies": {
+    "@swarmion-with-next/serverless-configuration": "1.0.0",
+    "@swarmion/serverless-helpers": "^0.17.0"
+  },
+  "devDependencies": {
+    "@serverless/typescript": "^3.25.0",
+    "@swarmion-with-next/core-contracts": "1.0.0",
+    "@types/node": "^18.11.18",
+    "@vitest/coverage-c8": "^0.26.3",
+    "dependency-cruiser": "^12.3.0",
+    "esbuild": "^0.16.14",
+    "eslint": "^8.31.0",
+    "serverless": "^3.26.0",
+    "serverless-esbuild": "^1.36.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4",
+    "vite": "^4.0.4",
+    "vite-tsconfig-paths": "^4.0.3",
+    "vitest": "^0.26.3"
+  }
+}
