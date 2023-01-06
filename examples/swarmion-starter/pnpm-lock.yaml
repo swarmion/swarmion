@@ -7,7 +7,7 @@ importers:
       '@commitlint/cli': ^17.3.0
       '@commitlint/config-conventional': ^17.3.0
       '@nrwl/workspace': ^15.3.0
-      '@swarmion/nx-plugin': ^0.17.0
+      '@swarmion/nx-plugin': ^0.18.0-alpha.0
       '@typescript-eslint/eslint-plugin': ^5.46.0
       '@typescript-eslint/parser': ^5.46.0
       aws-sdk: ^2.1272.0
@@ -30,7 +30,7 @@ importers:
       '@commitlint/cli': 17.3.0
       '@commitlint/config-conventional': 17.3.0
       '@nrwl/workspace': 15.3.0_lqwc2zjgrlxsq4ydjmen4lphum
-      '@swarmion/nx-plugin': 0.17.0
+      '@swarmion/nx-plugin': 0.18.0-alpha.0
       '@typescript-eslint/eslint-plugin': 5.46.0_5mle7isnkfgjmrghnnczirv6iy
       '@typescript-eslint/parser': 5.46.0_ha6vam6werchizxrnqvarmz2zu
       aws-sdk: 2.1272.0
@@ -55,7 +55,7 @@ importers:
       '@serverless/typescript': ^3.25.0
       '@swarmion-starter/core-contracts': 1.0.0
       '@swarmion-starter/serverless-configuration': 1.0.0
-      '@swarmion/serverless-helpers': ^0.17.0
+      '@swarmion/serverless-helpers': ^0.18.0-alpha.0
       '@types/node': ^18.11.13
       '@vitest/coverage-c8': ^0.25.7
       dependency-cruiser: ^12.1.0
@@ -70,7 +70,7 @@ importers:
       vitest: ^0.25.7
     dependencies:
       '@swarmion-starter/serverless-configuration': link:../../packages/serverless-configuration
-      '@swarmion/serverless-helpers': 0.17.0
+      '@swarmion/serverless-helpers': 0.18.0-alpha.0
     devDependencies:
       '@serverless/typescript': 3.25.0
       '@swarmion-starter/core-contracts': link:../../contracts/core-contracts
@@ -95,7 +95,7 @@ importers:
       '@babel/preset-env': ^7.20.2
       '@babel/preset-typescript': ^7.18.6
       '@babel/runtime': ^7.20.6
-      '@swarmion/serverless-contracts': ^0.17.0
+      '@swarmion/serverless-contracts': ^0.18.0-alpha.0
       '@types/node': ^18.11.13
       babel-plugin-module-resolver: ^4.1.0
       concurrently: ^7.6.0
@@ -109,7 +109,7 @@ importers:
       vitest: ^0.25.7
     dependencies:
       '@babel/runtime': 7.20.6
-      '@swarmion/serverless-contracts': 0.17.0_axios@1.2.2
+      '@swarmion/serverless-contracts': 0.18.0-alpha.0_axios@1.2.2
     devDependencies:
       '@babel/cli': 7.19.3_@babel+core@7.20.5
       '@babel/core': 7.20.5
@@ -235,15 +235,15 @@ packages:
       tslib: 2.4.1
     dev: false
 
-  /@aws-sdk/client-eventbridge/3.241.0:
-    resolution: {integrity: sha512-1SXxizyaqdnUwXsvdjur1RgOt8zXBCKwz+Qs6YtCMwGlS6vPhZZkXTpP/408HcD2yvoAoonGN6r+QJ+r6uiHDw==}
+  /@aws-sdk/client-eventbridge/3.245.0:
+    resolution: {integrity: sha512-B2rCHB6EBSb2FnKc+24UnG7t4NLyq8/bVLVy8/v7Ho6mNRXh3Ysd8HgOd8YOkq9xiCKAUnqrBuepe9XIUbkUQw==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-crypto/sha256-browser': 2.0.0
       '@aws-crypto/sha256-js': 2.0.0
-      '@aws-sdk/client-sts': 3.241.0
+      '@aws-sdk/client-sts': 3.245.0
       '@aws-sdk/config-resolver': 3.234.0
-      '@aws-sdk/credential-provider-node': 3.241.0
+      '@aws-sdk/credential-provider-node': 3.245.0
       '@aws-sdk/fetch-http-handler': 3.226.0
       '@aws-sdk/hash-node': 3.226.0
       '@aws-sdk/invalid-dependency': 3.226.0
@@ -269,7 +269,7 @@ packages:
       '@aws-sdk/util-body-length-node': 3.208.0
       '@aws-sdk/util-defaults-mode-browser': 3.234.0
       '@aws-sdk/util-defaults-mode-node': 3.234.0
-      '@aws-sdk/util-endpoints': 3.241.0
+      '@aws-sdk/util-endpoints': 3.245.0
       '@aws-sdk/util-retry': 3.229.0
       '@aws-sdk/util-user-agent-browser': 3.226.0
       '@aws-sdk/util-user-agent-node': 3.226.0
@@ -281,8 +281,8 @@ packages:
       - aws-crt
     dev: false
 
-  /@aws-sdk/client-sso-oidc/3.241.0:
-    resolution: {integrity: sha512-/Ml2QBGpGfUEeBrPzBZhSTBkHuXFD2EAZEIHGCBH4tKaURDI6/FoGI8P1Rl4BzoFt+II/Cr91Eox6YT9EwChsQ==}
+  /@aws-sdk/client-sso-oidc/3.245.0:
+    resolution: {integrity: sha512-0pGPA00kEsu2Yq1Ul+OwftHxws5YVllm4iZrPtGnqmXr7wmf6B9lOtrMQF44y7Tfw53po6+bKz08OKTEWkkjUA==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-crypto/sha256-browser': 2.0.0
@@ -311,7 +311,7 @@ packages:
       '@aws-sdk/util-body-length-node': 3.208.0
       '@aws-sdk/util-defaults-mode-browser': 3.234.0
       '@aws-sdk/util-defaults-mode-node': 3.234.0
-      '@aws-sdk/util-endpoints': 3.241.0
+      '@aws-sdk/util-endpoints': 3.245.0
       '@aws-sdk/util-retry': 3.229.0
       '@aws-sdk/util-user-agent-browser': 3.226.0
       '@aws-sdk/util-user-agent-node': 3.226.0
@@ -322,8 +322,8 @@ packages:
       - aws-crt
     dev: false
 
-  /@aws-sdk/client-sso/3.241.0:
-    resolution: {integrity: sha512-Jm4HR+RYAqKMEYZvvWaq0NYUKKonyInOeubObXH4BLXZpmUBSdYCSjjLdNJY3jkQoxbDVPVMIurVNh5zT5SMRw==}
+  /@aws-sdk/client-sso/3.245.0:
+    resolution: {integrity: sha512-dxzRwRo55ZNQ4hQigC+cishxLSWlBrbr3iszG0FLviavLDOlnVG5UUxWpOIGvwr8pYiSfM4jnfMxiwYwiCLg1g==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-crypto/sha256-browser': 2.0.0
@@ -352,7 +352,7 @@ packages:
       '@aws-sdk/util-body-length-node': 3.208.0
       '@aws-sdk/util-defaults-mode-browser': 3.234.0
       '@aws-sdk/util-defaults-mode-node': 3.234.0
-      '@aws-sdk/util-endpoints': 3.241.0
+      '@aws-sdk/util-endpoints': 3.245.0
       '@aws-sdk/util-retry': 3.229.0
       '@aws-sdk/util-user-agent-browser': 3.226.0
       '@aws-sdk/util-user-agent-node': 3.226.0
@@ -363,14 +363,14 @@ packages:
       - aws-crt
     dev: false
 
-  /@aws-sdk/client-sts/3.241.0:
-    resolution: {integrity: sha512-vmlG8cJzRf8skCtTJbA2wBvD2c3NQ5gZryzJvTKDS06KzBzcEpnjlLseuTekcnOiRNekbFUX5hRu5Zj3N2ReLg==}
+  /@aws-sdk/client-sts/3.245.0:
+    resolution: {integrity: sha512-E+7v2sy34TLni/Dmz6bTU20NWvbHYH9sVUHKQ9kHhmFopUWrs4Nt77f85PbuiKJz/irjUh9ppT5q1odJNRKRVQ==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-crypto/sha256-browser': 2.0.0
       '@aws-crypto/sha256-js': 2.0.0
       '@aws-sdk/config-resolver': 3.234.0
-      '@aws-sdk/credential-provider-node': 3.241.0
+      '@aws-sdk/credential-provider-node': 3.245.0
       '@aws-sdk/fetch-http-handler': 3.226.0
       '@aws-sdk/hash-node': 3.226.0
       '@aws-sdk/invalid-dependency': 3.226.0
@@ -396,7 +396,7 @@ packages:
       '@aws-sdk/util-body-length-node': 3.208.0
       '@aws-sdk/util-defaults-mode-browser': 3.234.0
       '@aws-sdk/util-defaults-mode-node': 3.234.0
-      '@aws-sdk/util-endpoints': 3.241.0
+      '@aws-sdk/util-endpoints': 3.245.0
       '@aws-sdk/util-retry': 3.229.0
       '@aws-sdk/util-user-agent-browser': 3.226.0
       '@aws-sdk/util-user-agent-node': 3.226.0
@@ -439,14 +439,14 @@ packages:
       tslib: 2.4.1
     dev: false
 
-  /@aws-sdk/credential-provider-ini/3.241.0:
-    resolution: {integrity: sha512-CI+mu6h74Kzmscw35TvNkc/wYHsHPGAwP7humSHoWw53H9mVw21Ggft/dT1iFQQZWQ8BNXkzuXlNo1IlqwMgOA==}
+  /@aws-sdk/credential-provider-ini/3.245.0:
+    resolution: {integrity: sha512-1SjfVc5Wg0lLRUvwMrfjGgFkl+zfxn74gnkPr6by1QyMAoTzmeUkalPLAIqd+uHtFom9e3K633BQtX7zVPZ5XQ==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-sdk/credential-provider-env': 3.226.0
       '@aws-sdk/credential-provider-imds': 3.226.0
       '@aws-sdk/credential-provider-process': 3.226.0
-      '@aws-sdk/credential-provider-sso': 3.241.0
+      '@aws-sdk/credential-provider-sso': 3.245.0
       '@aws-sdk/credential-provider-web-identity': 3.226.0
       '@aws-sdk/property-provider': 3.226.0
       '@aws-sdk/shared-ini-file-loader': 3.226.0
@@ -456,15 +456,15 @@ packages:
       - aws-crt
     dev: false
 
-  /@aws-sdk/credential-provider-node/3.241.0:
-    resolution: {integrity: sha512-08zPQcD5o9brQmzEipWHeHgU85aQcEF8MWLfpeyjO6e1/l7ysQ35NsS+PYtv77nLpGCx/X+ZuW/KXWoRrbw77w==}
+  /@aws-sdk/credential-provider-node/3.245.0:
+    resolution: {integrity: sha512-Dwv8zmRLTDLeEkGrK/sLNFZSC+ahXZxr07CuID054QKACIdUEvkqYlnalRiTeXngiHGQ54u8wU7f0D32R2oL0g==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-sdk/credential-provider-env': 3.226.0
       '@aws-sdk/credential-provider-imds': 3.226.0
-      '@aws-sdk/credential-provider-ini': 3.241.0
+      '@aws-sdk/credential-provider-ini': 3.245.0
       '@aws-sdk/credential-provider-process': 3.226.0
-      '@aws-sdk/credential-provider-sso': 3.241.0
+      '@aws-sdk/credential-provider-sso': 3.245.0
       '@aws-sdk/credential-provider-web-identity': 3.226.0
       '@aws-sdk/property-provider': 3.226.0
       '@aws-sdk/shared-ini-file-loader': 3.226.0
@@ -484,14 +484,14 @@ packages:
       tslib: 2.4.1
     dev: false
 
-  /@aws-sdk/credential-provider-sso/3.241.0:
-    resolution: {integrity: sha512-6Bjd6eEIrVomRTrPrM4dlxusQm+KMJ9hLYKECCpFkwDKIK+pTgZNLRtQdalHyzwneHJPdimrm8cOv1kUQ8hPoA==}
+  /@aws-sdk/credential-provider-sso/3.245.0:
+    resolution: {integrity: sha512-txWrJc0WNBhXMi7q+twjx7cs/qzgTfbQ+vbag5idRmdoUeiR8rfLvihCab2NaGg50xhh+TaoUCXrgJp3E/XjYQ==}
     engines: {node: '>=14.0.0'}
     dependencies:
-      '@aws-sdk/client-sso': 3.241.0
+      '@aws-sdk/client-sso': 3.245.0
       '@aws-sdk/property-provider': 3.226.0
       '@aws-sdk/shared-ini-file-loader': 3.226.0
-      '@aws-sdk/token-providers': 3.241.0
+      '@aws-sdk/token-providers': 3.245.0
       '@aws-sdk/types': 3.226.0
       tslib: 2.4.1
     transitivePeerDependencies:
@@ -754,11 +754,11 @@ packages:
       tslib: 2.4.1
     dev: false
 
-  /@aws-sdk/token-providers/3.241.0:
-    resolution: {integrity: sha512-79okvuOS7V559OIL/RalIPG98wzmWxeFOChFnbEjn2pKOyGQ6FJRwLPYZaVRtNdAtnkBNgRpmFq9dX843QxhtQ==}
+  /@aws-sdk/token-providers/3.245.0:
+    resolution: {integrity: sha512-m/spXR/vEXGb+zMqRUMQYVMwFZSTdK5RkddYqamYkNhIoLm60EYeRu57JsMMs5djKi8dBRSKiXwVHx0l2rXMjg==}
     engines: {node: '>=14.0.0'}
     dependencies:
-      '@aws-sdk/client-sso-oidc': 3.241.0
+      '@aws-sdk/client-sso-oidc': 3.245.0
       '@aws-sdk/property-provider': 3.226.0
       '@aws-sdk/shared-ini-file-loader': 3.226.0
       '@aws-sdk/types': 3.226.0
@@ -847,8 +847,8 @@ packages:
       tslib: 2.4.1
     dev: false
 
-  /@aws-sdk/util-endpoints/3.241.0:
-    resolution: {integrity: sha512-jVf8bKrN22Ey0xLmj75sL7EUvm5HFpuOMkXsZkuXycKhCwLBcEUWlvtJYtRjOU1zScPQv9GMJd2QXQglp34iOQ==}
+  /@aws-sdk/util-endpoints/3.245.0:
+    resolution: {integrity: sha512-UNOFquB1tKx+8RT8n82Zb5tIwDyZHVPBg/m0LB0RsLETjr6krien5ASpqWezsXKIR1hftN9uaxN4bvf2dZrWHg==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-sdk/types': 3.226.0
@@ -3017,18 +3017,18 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /@swarmion/nx-plugin/0.17.0:
-    resolution: {integrity: sha512-MACEazUQ7KneB+FyAdJomLnWWAgszRGn0VCHKqelv7OOrEoVQsCMJcYXSB73y2hG79ypu0TlP06nD32iYGqO/g==}
+  /@swarmion/nx-plugin/0.18.0-alpha.0:
+    resolution: {integrity: sha512-XpHsUelsM2VsTlXC9o5ly8RHABOmgpFkYzY1isSWzDAwp+G+2of2R/WKWt9IqdCps0Ncy1U4XWnZbhe99PXV9Q==}
     dev: true
 
-  /@swarmion/serverless-contracts/0.17.0_axios@1.2.2:
-    resolution: {integrity: sha512-jRJjvoD/EfKmSUEJDJYydmeWuuFiZ+/nAplmHQvSl1fvmTLFntFh0q96MEmnnM6Gdla01mI1q54Ebb8j0mrS5g==}
+  /@swarmion/serverless-contracts/0.18.0-alpha.0_axios@1.2.2:
+    resolution: {integrity: sha512-r1BhIIUD0zJVLo8znQgmMVDNiSLeGfQHB+nyUV+XHXxOIwniMKfQL9zacnbyDLBOqMkkQe+LgB4FHa7zhQWjRg==}
     peerDependencies:
-      axios: ^1.2.0
+      axios: ^1.2.2
     dependencies:
-      '@aws-sdk/client-eventbridge': 3.241.0
+      '@aws-sdk/client-eventbridge': 3.245.0
       '@babel/runtime': 7.20.6
-      '@swarmion/serverless-helpers': 0.17.0
+      '@swarmion/serverless-helpers': 0.18.0-alpha.0
       ajv: 8.12.0
       axios: 1.2.2
       http-errors: 2.0.0
@@ -3038,8 +3038,8 @@ packages:
       - aws-crt
     dev: false
 
-  /@swarmion/serverless-helpers/0.17.0:
-    resolution: {integrity: sha512-zJRTIfqwC+5KUhpAQRY7ElVBW91t2I0JQNlH+uB4tyi5RBO+rYZRD53EmrGxQTtIoxG8Dg7cZ/okJFN8nNmKCA==}
+  /@swarmion/serverless-helpers/0.18.0-alpha.0:
+    resolution: {integrity: sha512-BKHIEux0zXMcDShmsKRFFcbmnwVtIDliDq6VnbWK/b6afvM76/TwKe2T0wTGmT2IFWPfnqrZcs3mF0sPTwhf/A==}
     dependencies:
       '@babel/runtime': 7.20.7
       '@middy/core': 2.5.7
@@ -8638,7 +8638,7 @@ packages:
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.3
       '@types/node': 14.18.34
-      acorn: 8.8.1
+      acorn: 8.8.0
       acorn-walk: 8.2.0
       arg: 4.1.3
       create-require: 1.1.1
