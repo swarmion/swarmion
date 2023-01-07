@@ -4,7 +4,7 @@ on:
     paths:
       - 'packages/create-swarmion-app/**'
       - 'examples/**'
-      - 'scripts/check-examples.sh'
+      - 'scripts/check-example.sh'
 
 # cancel previous runs on the same PR
 concurrency:
@@ -22,10 +22,29 @@ defaults:
     shell: bash
 
 jobs:
+  list-examples:
+    name: 🪣 List examples
+    runs-on: ubuntu-latest
+    outputs:
+      examples: ${{ steps.list-example-folders.outputs.examples }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - id: list-example-folders
+        run: echo "examples=$(ls examples | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
+        shell: bash
   check-examples:
     name: 🔍 Check examples
     runs-on: ubuntu-latest
+    needs: list-examples
+    if: join(fromJson(needs.list-examples.outputs.examples)) != ''
     timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        example: ${{ fromJson(needs.list-examples.outputs.examples) }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -35,5 +54,6 @@ jobs:
       - uses: nrwl/nx-set-shas@v3
       - name: Install & cache node dependencies
         uses: ./.github/actions/install-node-deps
-      - name: '🔍 Check examples'
-        run: REF=${{ github.event.pull_request.head.sha }} sh ./scripts/check-examples.sh
+      - name: '🔍 Check example'
+        run: REF=${{ github.event.pull_request.head.sha }} EXAMPLE=${{matrix.example}} sh ./scripts/check-example.sh
+        shell: bash
