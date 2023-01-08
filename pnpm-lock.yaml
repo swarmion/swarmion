@@ -498,7 +498,7 @@ importers:
   packages/serverless-helpers:
     specifiers:
       '@middy/core': ^2.5.7
-      '@middy/http-error-handler': ^2.5.7
+      '@middy/http-error-handler': ^4.0.0
       '@middy/http-json-body-parser': ^2.5.7
       '@middy/validator': ^2.5.7
       '@serverless/typescript': ^3.25.0
@@ -520,7 +520,7 @@ importers:
       vitest: ^0.25.7
     dependencies:
       '@middy/core': 2.5.7
-      '@middy/http-error-handler': 2.5.7
+      '@middy/http-error-handler': 4.0.10
       '@middy/http-json-body-parser': 2.5.7
       '@middy/validator': 2.5.7
       '@serverless/typescript': 3.25.0
@@ -5071,11 +5071,11 @@ packages:
       '@middy/util': 3.6.2
     dev: true
 
-  /@middy/http-error-handler/2.5.7:
-    resolution: {integrity: sha512-1/7L3OHGlQ2IuxL4e4Ylt81sfq5OX2G7q+uZoV5tP4d4KKVN8ftS1ExiMrZGH1r1fyVR3Voh9b2rHD6t/TZZyQ==}
-    engines: {node: '>=12'}
+  /@middy/http-error-handler/4.0.10:
+    resolution: {integrity: sha512-wb6YL3bJwULNGId86qbNz/rXgJdZ+ylhS9YZTjHMChejY7Jcy/dVwRo2XdLfF0tE6t7ASUuTp6GIbqDAj6aygg==}
+    engines: {node: '>=16'}
     dependencies:
-      '@middy/util': 2.5.7
+      '@middy/util': 4.0.10
     dev: false
 
   /@middy/http-json-body-parser/2.5.7:
@@ -5094,6 +5094,11 @@ packages:
     resolution: {integrity: sha512-zjyjF5BdSNnDlZbTvfQwwuUIs3H5PpN/R3wOAipXhaGD/SjpIUBcJJPLUQHySeHoZym1FC3MJYczJDbYQWKWdg==}
     engines: {node: '>=14'}
     dev: true
+
+  /@middy/util/4.0.10:
+    resolution: {integrity: sha512-lF90ZJXvEwM97C3I3l2xIQ7o2cRUQAjffce68hDRfXO2FyUNgTkRWmw0oy90Y8RfE9kyew/vGsJXgibJZmYSmw==}
+    engines: {node: '>=16'}
+    dev: false
 
   /@middy/validator/2.5.7:
     resolution: {integrity: sha512-zCWNCu7mDbnkGLEsFCbsRGo7FGhN62I5sbJjgcMHtVNksjtJUoImM/KQPT4tH+o81JAg8UZRZVMNWDgZGn1lTw==}
