@@ -17,7 +17,7 @@ interface RenderOptions extends RtlRenderOptions {
 const defaultMessages = flattenMessages(frFRMessages);
 
 /**
- * Render the component passed and wrap it in a redux provider, making it possible to test redux functionalities
+ * Render the component passed and wrap it with its providers
  */
 const render = (
   ui: React.ReactElement,

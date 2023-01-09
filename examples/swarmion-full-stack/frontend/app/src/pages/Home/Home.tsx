@@ -1,30 +1,22 @@
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import { nanoid } from '@reduxjs/toolkit';
 import { getAxiosRequest } from '@swarmion/serverless-contracts';
 import { useQuery } from '@tanstack/react-query';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { useDispatch, useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 
 import { getUserContract } from '@swarmion-full-stack/users-contracts';
 
 import { Title } from 'components';
 import client from 'services/networking/client';
-import { getUser, setUser } from 'store/user';
 
 import { StyledButton, StyledButtonWithTheme } from './Home.style';
 
 const Home = (): JSX.Element => {
-  const dispatch = useDispatch();
-  const userFromRedux = useSelector(getUser);
+  const [userId, setUserId] = useState(uuidv4());
 
-  const [userId, setUserId] = useState(nanoid());
-
-  const {
-    data: userResponse,
-    isError,
-  } = useQuery({
+  const { data: userResponse, isError } = useQuery({
     queryFn: () =>
       getAxiosRequest(getUserContract, client, {
         pathParameters: { userId },
@@ -33,13 +25,6 @@ const Home = (): JSX.Element => {
     queryKey: ['getUser', userId],
     staleTime: 5 * 60 * 1000,
   });
-
-  useEffect(() => {
-    if (userResponse === undefined) {
-      return;
-    }
-    dispatch(setUser(userResponse.data));
-  }, [dispatch, userResponse]);
 
   if (isError) {
     return (
@@ -69,20 +54,18 @@ const Home = (): JSX.Element => {
     >
       <Title />
       <Box marginTop={6}>
-        <StyledButton variant="contained" onClick={() => setUserId(nanoid())}>
+        <StyledButton variant="contained" onClick={() => setUserId(uuidv4())}>
           <FormattedMessage id="home.button" />
         </StyledButton>
         <StyledButtonWithTheme
           variant="contained"
-          onClick={() => setUserId(nanoid())}
+          onClick={() => setUserId(uuidv4())}
         >
           <FormattedMessage id="home.button" />
         </StyledButtonWithTheme>
       </Box>
       <Typography variant="h5">User from api call</Typography>
       <Box marginTop={6}>{JSON.stringify(userResponse?.data)}</Box>
-      <Typography variant="h5">User from redux</Typography>
-      <Box marginTop={6}>{JSON.stringify(userFromRedux)}</Box>
     </Box>
   );
 };

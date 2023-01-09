@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 
-export const LOCATION_HTML_ELEMENT_TEST_ID = 'redux-store';
+export const LOCATION_HTML_ELEMENT_TEST_ID = 'location-test';
 
 type WrapperForLocationTestingProps = {
   children: ReactNode;
