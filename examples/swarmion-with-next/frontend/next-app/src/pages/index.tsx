@@ -1,16 +1,24 @@
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import { useAsync } from '@react-hookz/web';
+import { useQuery } from '@tanstack/react-query';
 import { FormattedMessage } from 'react-intl';
 
 import { StyledButton, StyledButtonWithTheme, Title } from 'components';
 import client from 'services/networking/client';
 
 const Home = (): JSX.Element => {
-  // TODO : use react-query
-  const [{ result, error }, { execute }] = useAsync(() => client.get('hello'));
+  const {
+    data: response,
+    isError,
+    refetch,
+  } = useQuery({
+    queryFn: () => client.get('hello'),
+    retry: 1,
+    queryKey: ['hello'],
+    staleTime: 5 * 60 * 1000,
+  });
 
-  if (error) {
+  if (isError) {
     return (
       <Box
         display="flex"
@@ -21,7 +29,7 @@ const Home = (): JSX.Element => {
         height="100vh"
         maxWidth="100%"
       >
-        Error: {error.message}
+        Error: Unable to call /hello
       </Box>
     );
   }
@@ -38,18 +46,18 @@ const Home = (): JSX.Element => {
     >
       <Title />
       <Box marginTop={6}>
-        <StyledButton variant="contained" onClick={() => void execute()}>
+        <StyledButton variant="contained" onClick={() => void refetch()}>
           <FormattedMessage id="home.button" />
         </StyledButton>
         <StyledButtonWithTheme
           variant="contained"
-          onClick={() => void execute()}
+          onClick={() => void refetch()}
         >
           <FormattedMessage id="home.button" />
         </StyledButtonWithTheme>
       </Box>
       <Typography variant="h5">message</Typography>
-      <Box marginTop={6}>{JSON.stringify(result?.data)}</Box>
+      <Box marginTop={6}>{JSON.stringify(response?.data)}</Box>
     </Box>
   );
 };
