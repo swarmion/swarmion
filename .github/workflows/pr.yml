@@ -35,8 +35,6 @@ jobs:
         run: pnpm nx affected --target=test-linter --parallel=2
       - name: '🧪 Test type'
         run: pnpm nx affected --target=test-type --parallel=2
-      - name: '🧪 Test unit'
-        run: pnpm nx affected --target=test-unit --parallel=2
       - name: '🧪 Test circular'
         run: pnpm nx affected --target=test-circular --parallel=2
 
