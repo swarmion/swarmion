@@ -1,0 +1,49 @@
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'user-docs/**'
+
+# cancel previous runs on the same PR
+concurrency:
+  group: ${{ github.ref }}/docs-preview
+  cancel-in-progress: true
+
+name: 📚 PR Docs Preview
+
+env:
+  CI: true
+  NODE_VERSION: 16
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  deploy-docs-preview-to-netlify:
+    name: 🚀 Deploy docs preview to Netlify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Install & cache node dependencies
+        uses: ./.github/actions/install-node-deps
+      - name: Build docs
+        run: |
+          cd user-docs/documentation
+          pnpm build
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v2.0
+        with:
+          publish-dir: './user-docs/documentation/build'
+          production-branch: main
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: '#${{ github.event.number }}: ${{ github.event.pull_request.title }}'
+          enable-pull-request-comment: true
+          overwrites-pull-request-comment: true
+          alias: docs-preview-${{ github.event.number }}
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 1
