@@ -216,13 +216,13 @@ importers:
       '@mui/lab': 5.0.0-alpha.114
       '@mui/material': ^5.10.17
       '@mui/system': ^5.10.17
-      '@react-hookz/web': ^20.0.0
       '@redux-devtools/extension': ^3.2.2
       '@reduxjs/toolkit': ^1.9.1
       '@stylelint/postcss-css-in-js': ^0.38.0
       '@swarmion-full-stack/frontend-shared': 1.0.0
       '@swarmion-full-stack/users-contracts': 1.0.0
       '@swarmion/serverless-contracts': ^0.18.1
+      '@tanstack/react-query': ^4.22.0
       '@testing-library/dom': ^8.19.0
       '@testing-library/jest-dom': ^5.16.4
       '@testing-library/react': ^12.1.5
@@ -274,12 +274,12 @@ importers:
       '@mui/lab': 5.0.0-alpha.114_qy47pbxyl76eaclbkcd3b52noq
       '@mui/material': 5.10.17_4wd34aebdv526jtgrkn4ukifdm
       '@mui/system': 5.10.17_4o7fodc3it7lqfcqf2uhe6rcni
-      '@react-hookz/web': 20.0.1_sfoxds7t5ydpegc3knd667wn6m
       '@redux-devtools/extension': 3.2.3_redux@4.2.0
       '@reduxjs/toolkit': 1.9.1_3m5k4ry2nwm36zz5ojtujpfkvq
       '@swarmion-full-stack/frontend-shared': link:../shared
       '@swarmion-full-stack/users-contracts': link:../../contracts/users-contracts
       '@swarmion/serverless-contracts': 0.18.1_axios@1.2.2
+      '@tanstack/react-query': 4.22.0_sfoxds7t5ydpegc3knd667wn6m
       '@types/testing-library__jest-dom': 5.14.5
       axios: 1.2.2
       react: 17.0.2
@@ -2820,25 +2820,6 @@ packages:
   /@popperjs/core/2.11.6:
     resolution: {integrity: sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==}
 
-  /@react-hookz/deep-equal/1.0.3:
-    resolution: {integrity: sha512-lGZR5l3YRjzeIOHtJhiq96vQKrsq+9lsCyv+0fROMQeSNWtLLzX3R+psHNi6nsoP3XEhspiZ92nsiPmdNo8ztQ==}
-    dev: false
-
-  /@react-hookz/web/20.0.1_sfoxds7t5ydpegc3knd667wn6m:
-    resolution: {integrity: sha512-Khb2ytw9qknGAklFSTXEOTvS2cEAZ0uLgMvh2i4agWPneCvP5Et1FKffwxD0THU8R96+Ut9NDrGrQhg9lxJteQ==}
-    peerDependencies:
-      js-cookie: ^3.0.1
-      react: ^16.8 || ^17 || ^18
-      react-dom: ^16.8 || ^17 || ^18
-    peerDependenciesMeta:
-      js-cookie:
-        optional: true
-    dependencies:
-      '@react-hookz/deep-equal': 1.0.3
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
-    dev: false
-
   /@redux-devtools/extension/3.2.3_redux@4.2.0:
     resolution: {integrity: sha512-y90IIqdQF6kIkP4KfBCfiFrnu9KMrEPUmcnb5A3v12tjfwRJUXecX8vCEbFqqJLjOomvVmis0Aal7QdFjk6CRQ==}
     peerDependencies:
@@ -3191,6 +3172,28 @@ packages:
     dependencies:
       defer-to-connect: 2.0.1
     dev: true
+
+  /@tanstack/query-core/4.22.0:
+    resolution: {integrity: sha512-OeLyBKBQoT265f5G9biReijeP8mBxNFwY7ZUu1dKL+YzqpG5q5z7J/N1eT8aWyKuhyDTiUHuKm5l+oIVzbtrjw==}
+    dev: false
+
+  /@tanstack/react-query/4.22.0_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-P9o+HjG42uB/xHR6dMsJaPhtZydSe4v0xdG5G/cEj1oHZAXelMlm67/rYJNQGKgBamKElKogj+HYGF+NY2yHYg==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      '@tanstack/query-core': 4.22.0
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      use-sync-external-store: 1.2.0_react@17.0.2
+    dev: false
 
   /@testing-library/dom/8.19.0:
     resolution: {integrity: sha512-6YWYPPpxG3e/xOo6HIWwB/58HukkwIVTOaZ0VwdMVjhRUX/01E4FtQbck9GazOOj7MXHc5RBzMrU86iBJHbI+A==}
