@@ -239,7 +239,7 @@ importers:
       eslint-plugin-react-hooks: ^4.6.0
       eslint-plugin-risxss: ^2.1.0
       husky: ^8.0.2
-      jsdom: ^20.0.3
+      jsdom: ^21.0.0
       postcss: ^8.4.20
       postcss-syntax: ^0.36.2
       prettier: ^2.8.1
@@ -291,7 +291,7 @@ importers:
       '@types/react-dom': 18.0.6
       '@types/uuid': 9.0.0
       '@vitejs/plugin-react': 3.0.1_vite@4.0.4
-      '@vitest/coverage-c8': 0.27.0_jsdom@20.0.3
+      '@vitest/coverage-c8': 0.27.0_jsdom@21.0.0
       dependency-cruiser: 12.1.0
       dotenv-flow: 3.2.0
       eslint: 8.29.0
@@ -300,7 +300,7 @@ importers:
       eslint-plugin-react-hooks: 4.6.0_eslint@8.29.0
       eslint-plugin-risxss: 2.1.0
       husky: 8.0.2
-      jsdom: 20.0.3
+      jsdom: 21.0.0
       postcss: 8.4.20
       postcss-syntax: 0.36.2_postcss@8.4.20
       prettier: 2.8.1
@@ -315,7 +315,7 @@ importers:
       vite: 4.0.4_@types+node@18.11.13
       vite-plugin-svgr: 2.4.0_vite@4.0.4
       vite-tsconfig-paths: 4.0.3_gl4qsmwzp7wy5uclz4tx77gbli
-      vitest: 0.27.0_jsdom@20.0.3
+      vitest: 0.27.0_jsdom@21.0.0
 
   frontend/cloudfront:
     specifiers:
@@ -373,7 +373,7 @@ importers:
       eslint-plugin-react: ^7.31.11
       eslint-plugin-react-hooks: ^4.6.0
       eslint-plugin-risxss: ^2.1.0
-      jsdom: ^20.0.3
+      jsdom: ^21.0.0
       json-schema-to-ts: ^2.6.2
       prettier: ^2.8.1
       react: ^17.0.2
@@ -407,7 +407,7 @@ importers:
       '@types/react': 17.0.50
       '@types/testing-library__jest-dom': 5.14.5
       '@vitejs/plugin-react': 3.0.1_vite@4.0.4
-      '@vitest/coverage-c8': 0.27.0_jsdom@20.0.3
+      '@vitest/coverage-c8': 0.27.0_jsdom@21.0.0
       concurrently: 7.6.0
       css-mediaquery: 0.1.2
       dependency-cruiser: 12.1.0
@@ -416,7 +416,7 @@ importers:
       eslint-plugin-react: 7.31.11_eslint@8.29.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.29.0
       eslint-plugin-risxss: 2.1.0
-      jsdom: 20.0.3
+      jsdom: 21.0.0
       json-schema-to-ts: 2.6.2
       prettier: 2.8.1
       react-intl: 6.2.5_j5wiu4n3r332he5vjh7engy24e
@@ -427,7 +427,7 @@ importers:
       tsup: 6.5.0_z6wznmtyb6ovnulj6iujpct7um
       typescript: 4.9.4
       vite: 4.0.4_@types+node@18.11.13
-      vitest: 0.27.0_jsdom@20.0.3
+      vitest: 0.27.0_jsdom@21.0.0
 
   packages/serverless-configuration:
     specifiers:
@@ -3797,11 +3797,11 @@ packages:
       - terser
     dev: true
 
-  /@vitest/coverage-c8/0.27.0_jsdom@20.0.3:
+  /@vitest/coverage-c8/0.27.0_jsdom@21.0.0:
     resolution: {integrity: sha512-jO/TAz/qUP1ssfIj6Gg1FxTRkOD5tJBiP3mwKayaqGunMsknCmxWVuFrgF1XH+FGZWLnFzR2InTjYxlyGNSgzQ==}
     dependencies:
       c8: 7.12.0
-      vitest: 0.27.0_jsdom@20.0.3
+      vitest: 0.27.0_jsdom@21.0.0
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -7546,8 +7546,8 @@ packages:
       argparse: 2.0.1
     dev: true
 
-  /jsdom/20.0.3:
-    resolution: {integrity: sha512-SYhBvTh89tTfCD/CRdSOm13mOBa42iTaTyfyEWBdKcGdPxPtLFBXuHR8XHb33YNYaP+lLbmSvBTsnoesCNJEsQ==}
+  /jsdom/21.0.0:
+    resolution: {integrity: sha512-AIw+3ZakSUtDYvhwPwWHiZsUi3zHugpMEKlNPaurviseYoBqo0zBd3zqoUi3LPCNtPFlEP8FiW9MqCZdjb2IYA==}
     engines: {node: '>=14'}
     peerDependencies:
       canvas: ^2.5.0
@@ -10618,7 +10618,7 @@ packages:
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.3
       '@types/node': 14.18.34
-      acorn: 8.8.0
+      acorn: 8.8.1
       acorn-walk: 8.2.0
       arg: 4.1.3
       create-require: 1.1.1
@@ -11115,7 +11115,7 @@ packages:
       - terser
     dev: true
 
-  /vitest/0.27.0_jsdom@20.0.3:
+  /vitest/0.27.0_jsdom@21.0.0:
     resolution: {integrity: sha512-BnOa7T6CnXVC6UgcAsvFOZ2Dtvqkt+/Nl6CRgh4qVT70vElf65XwEL6zMRyTF+h2QXJziEkxYdrLo5WCxckMLQ==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -11145,7 +11145,7 @@ packages:
       cac: 6.7.14
       chai: 4.3.7
       debug: 4.3.4
-      jsdom: 20.0.3
+      jsdom: 21.0.0
       local-pkg: 0.4.2
       picocolors: 1.0.0
       source-map: 0.6.1
