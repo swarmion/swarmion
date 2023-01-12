@@ -6,7 +6,7 @@ importers:
     specifiers:
       '@commitlint/cli': ^17.4.0
       '@commitlint/config-conventional': ^17.4.0
-      '@swarmion/nx-plugin': ^0.18.1
+      '@swarmion/nx-plugin': ^0.19.0
       '@typescript-eslint/eslint-plugin': ^5.48.0
       '@typescript-eslint/parser': ^5.48.0
       aws-sdk: ^2.1289.0
@@ -28,7 +28,7 @@ importers:
     devDependencies:
       '@commitlint/cli': 17.4.0_@types+node@18.11.18
       '@commitlint/config-conventional': 17.4.0
-      '@swarmion/nx-plugin': 0.18.1_3vkhgs7gktowqcevx5amd3njwe
+      '@swarmion/nx-plugin': 0.19.0_3vkhgs7gktowqcevx5amd3njwe
       '@typescript-eslint/eslint-plugin': 5.48.0_k73wpmdolxikpyqun3p36akaaq
       '@typescript-eslint/parser': 5.48.0_iukboom6ndih5an6iafl45j2fe
       aws-sdk: 2.1289.0
@@ -53,7 +53,7 @@ importers:
       '@serverless/typescript': ^3.25.0
       '@swarmion-with-next/core-contracts': 1.0.0
       '@swarmion-with-next/serverless-configuration': 1.0.0
-      '@swarmion/serverless-helpers': ^0.18.1
+      '@swarmion/serverless-helpers': ^0.19.0
       '@types/node': ^18.11.18
       '@vitest/coverage-c8': ^0.27.0
       dependency-cruiser: ^12.3.0
@@ -68,7 +68,7 @@ importers:
       vitest: ^0.27.0
     dependencies:
       '@swarmion-with-next/serverless-configuration': link:../../packages/serverless-configuration
-      '@swarmion/serverless-helpers': 0.18.1
+      '@swarmion/serverless-helpers': 0.19.0
     devDependencies:
       '@serverless/typescript': 3.25.0
       '@swarmion-with-next/core-contracts': link:../../contracts/core-contracts
@@ -87,7 +87,7 @@ importers:
 
   contracts/core-contracts:
     specifiers:
-      '@swarmion/serverless-contracts': ^0.18.1
+      '@swarmion/serverless-contracts': ^0.19.0
       '@types/node': ^18.11.18
       concurrently: ^7.6.0
       dependency-cruiser: ^12.3.0
@@ -100,7 +100,7 @@ importers:
       typescript: ^4.9.4
       vitest: ^0.27.0
     dependencies:
-      '@swarmion/serverless-contracts': 0.18.1_axios@1.2.2
+      '@swarmion/serverless-contracts': 0.19.0_axios@1.2.2
     devDependencies:
       '@types/node': 18.11.18
       concurrently: 7.6.0
@@ -2991,8 +2991,8 @@ packages:
       - debug
     dev: true
 
-  /@nrwl/devkit/15.4.4_nx@15.4.4+typescript@4.9.4:
-    resolution: {integrity: sha512-/kDPYyiwRfvtJReE7DrzK/hMtbuhUpO4HQm+TeJvMuxMwCeqSJQP930GUipRqGUfH5aVkbSBkEaa50F7dLE+kg==}
+  /@nrwl/devkit/15.4.5_nx@15.4.4+typescript@4.9.4:
+    resolution: {integrity: sha512-oag+wJgusKz+rwvgcVy9i8bNtTo7ikbjVVtSOmyVBE0ZrgN1CMFjugBj4FEjKGtd73djjpvW9Mm36uJRujrc2w==}
     peerDependencies:
       nx: '>= 14 <= 16'
     dependencies:
@@ -3006,15 +3006,15 @@ packages:
       - typescript
     dev: true
 
-  /@nrwl/linter/15.4.4_3vkhgs7gktowqcevx5amd3njwe:
-    resolution: {integrity: sha512-v6jW0FD5MOvfEwaunqWQqQivbI9r6YWRoQ2k56DTMY69ARP8SJGVlFgVbWjLr0lth3I2g+z7Hy+23GTpUZzBBw==}
+  /@nrwl/linter/15.4.5_3vkhgs7gktowqcevx5amd3njwe:
+    resolution: {integrity: sha512-rWlsRD1gDj4x6exQJzNX9MyAkVnUotAXMiYGKPl+b4X1Usn1/lmqyCE7UxmaYaZvUx4hQnEI0xSr++AdVxd5RA==}
     peerDependencies:
       eslint: ^8.0.0
     peerDependenciesMeta:
       eslint:
         optional: true
     dependencies:
-      '@nrwl/devkit': 15.4.4_nx@15.4.4+typescript@4.9.4
+      '@nrwl/devkit': 15.4.5_nx@15.4.4+typescript@4.9.4
       '@phenomnomnominal/tsquery': 4.1.1_typescript@4.9.4
       eslint: 8.31.0
       tmp: 0.2.1
@@ -3215,28 +3215,28 @@ packages:
       - supports-color
     dev: true
 
-  /@swarmion/nx-plugin/0.18.1_3vkhgs7gktowqcevx5amd3njwe:
-    resolution: {integrity: sha512-RuvTDFLZYJelLyfigAIGmt3RdNAkq7fepxZylFG/W5BKV8Qej7d6Gv32blHelpRb2uAXgwqGIKvmP78BehgnRg==}
+  /@swarmion/nx-plugin/0.19.0_3vkhgs7gktowqcevx5amd3njwe:
+    resolution: {integrity: sha512-2x244a6xORzmWcrkjTOajmMQmb0wwwypUUlGr96XmZz+jzbeHhU5g8bPTtES2EEuLF5P7vzX8Z7DcLJLIe2Bow==}
     peerDependencies:
       nx: ^15.3.0
       typescript: ^4.9.4
     dependencies:
-      '@nrwl/devkit': 15.4.4_nx@15.4.4+typescript@4.9.4
-      '@nrwl/linter': 15.4.4_3vkhgs7gktowqcevx5amd3njwe
+      '@nrwl/devkit': 15.4.5_nx@15.4.4+typescript@4.9.4
+      '@nrwl/linter': 15.4.5_3vkhgs7gktowqcevx5amd3njwe
       nx: 15.4.4
       typescript: 4.9.4
     transitivePeerDependencies:
       - eslint
     dev: true
 
-  /@swarmion/serverless-contracts/0.18.1_axios@1.2.2:
-    resolution: {integrity: sha512-/cVVC16kcVk/hxKFHPdVt0S3drNfKP6C4WWs05LusFnhkXTsV6K5bb2Ov1gA72DQ6HlwKEmDLYn5+EnVmMdkqg==}
+  /@swarmion/serverless-contracts/0.19.0_axios@1.2.2:
+    resolution: {integrity: sha512-pQ6aGooBoQuVLnnEg2aXblGOQyKSiT5sfQheVdvRyE8k3Qw5nN0B6iZbgzX3aCoeztKZ7yferyH2vBmek3Kpyw==}
     peerDependencies:
       axios: ^1.2.2
     dependencies:
       '@aws-sdk/client-eventbridge': 3.245.0
       '@serverless/typescript': 3.25.0
-      '@swarmion/serverless-helpers': 0.18.1
+      '@swarmion/serverless-helpers': 0.19.0
       ajv: 8.12.0
       axios: 1.2.2
       http-errors: 2.0.0
@@ -3249,8 +3249,8 @@ packages:
       - aws-crt
     dev: false
 
-  /@swarmion/serverless-helpers/0.18.1:
-    resolution: {integrity: sha512-pZ0jM8xBPEufhw8N1lLdxkWnSgHN46V5SyTTJRHCE8cgR1HJnYEllJWtJ91djrEcW7hT5HLyku+a59swWud7IA==}
+  /@swarmion/serverless-helpers/0.19.0:
+    resolution: {integrity: sha512-CPrlKwKbjP8v8uxDsO6q365QEq4QD7OvrNlSKx+U5YgigLiZCGV7COh4nT9YQ9ZMYiTj1oSv5f/ihaTVUsVJUg==}
     dependencies:
       '@middy/core': 2.5.7
       '@middy/http-error-handler': 2.5.7
@@ -3747,7 +3747,7 @@ packages:
       eslint: 8.31.0
       eslint-scope: 5.1.1
       eslint-utils: 3.0.0_eslint@8.31.0
-      semver: 7.3.8
+      semver: 7.3.7
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -3893,7 +3893,7 @@ packages:
       ajv: '*'
     dependencies:
       ajv: 8.6.3
-      punycode: 2.1.1
+      punycode: 2.2.0
       schemes: 1.4.0
       smtp-address-parser: 1.0.10
       uri-js: 4.4.1
@@ -6035,7 +6035,7 @@ packages:
       debug: 4.3.4
       enhanced-resolve: 5.10.0
       eslint: 8.31.0
-      eslint-plugin-import: 2.26.0_eslint@8.31.0
+      eslint-plugin-import: 2.26.0_cxu27kyieece4tnvunezm4whiq
       get-tsconfig: 4.2.0
       globby: 13.1.2
       is-core-module: 2.10.0
@@ -6073,6 +6073,36 @@ packages:
       - supports-color
     dev: true
 
+  /eslint-module-utils/2.7.4_zg4jn2jp3ute3go2jsvatsfmsa:
+    resolution: {integrity: sha512-j4GT+rqzCoRKHwURX7pddtIPGySnX9Si/cgMI5ztrcqOPtk5dDEeZ34CQVPphnqkJytlc97Vuk05Um2mJ3gEQA==}
+    engines: {node: '>=4'}
+    peerDependencies:
+      '@typescript-eslint/parser': '*'
+      eslint: '*'
+      eslint-import-resolver-node: '*'
+      eslint-import-resolver-typescript: '*'
+      eslint-import-resolver-webpack: '*'
+    peerDependenciesMeta:
+      '@typescript-eslint/parser':
+        optional: true
+      eslint:
+        optional: true
+      eslint-import-resolver-node:
+        optional: true
+      eslint-import-resolver-typescript:
+        optional: true
+      eslint-import-resolver-webpack:
+        optional: true
+    dependencies:
+      '@typescript-eslint/parser': 5.48.0_iukboom6ndih5an6iafl45j2fe
+      debug: 3.2.7
+      eslint: 8.31.0
+      eslint-import-resolver-node: 0.3.6
+      eslint-import-resolver-typescript: 3.5.2_ol7jqilc3wemtdbq3nzhywgxq4
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /eslint-plugin-import/2.26.0_cxu27kyieece4tnvunezm4whiq:
     resolution: {integrity: sha512-hYfi3FXaM8WPLf4S1cikh/r4IxnO6zrhZbEGz2b660EJRbuxgpDS5gkCuYgGWg2xxh2rBuIr4Pvhve/7c31koA==}
     engines: {node: '>=4'}
@@ -6090,7 +6120,7 @@ packages:
       doctrine: 2.1.0
       eslint: 8.31.0
       eslint-import-resolver-node: 0.3.6
-      eslint-module-utils: 2.7.4_rahvyjeqqlq6ogimp3cp7kgkfq
+      eslint-module-utils: 2.7.4_zg4jn2jp3ute3go2jsvatsfmsa
       has: 1.0.3
       is-core-module: 2.10.0
       is-glob: 4.0.3
@@ -6885,7 +6915,7 @@ packages:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 3.1.2
+      minimatch: 3.0.5
       once: 1.4.0
       path-is-absolute: 1.0.1
     dev: true
@@ -6941,7 +6971,7 @@ packages:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 5.1.2
+      minimatch: 5.1.0
       once: 1.4.0
     dev: true
 
@@ -9780,6 +9810,11 @@ packages:
   /punycode/2.1.1:
     resolution: {integrity: sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==}
     engines: {node: '>=6'}
+
+  /punycode/2.2.0:
+    resolution: {integrity: sha512-LN6QV1IJ9ZhxWTNdktaPClrNfp8xdSAYS0Zk2ddX7XsXZAxckMHPCBcHRo0cTcEIgYPRiGEkmji3Idkh2yFtYw==}
+    engines: {node: '>=6'}
+    dev: false
 
   /q/1.5.1:
     resolution: {integrity: sha512-kV/CThkXo6xyFEZUugw/+pIOywXcDbFYgSct5cT3gqlbkBE1SJdwy6UQoZvodiWF/ckQLZyDE/Bu1M6gVu5lVw==}
