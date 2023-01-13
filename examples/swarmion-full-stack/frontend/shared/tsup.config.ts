@@ -1,3 +1,4 @@
+import svgrPlugin from 'esbuild-plugin-svgr';
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
@@ -6,4 +7,5 @@ export default defineConfig({
   silent: true,
   format: ['cjs', 'esm'],
   outDir: 'dist',
+  esbuildPlugins: [svgrPlugin()],
 });

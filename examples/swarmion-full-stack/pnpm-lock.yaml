@@ -284,6 +284,7 @@ importers:
       concurrently: ^7.6.0
       css-mediaquery: ^0.1.2
       dependency-cruiser: ^12.1.0
+      esbuild-plugin-svgr: ^1.0.1
       eslint: ^8.29.0
       eslint-plugin-jsx-a11y: ^6.5.1
       eslint-plugin-react: ^7.31.11
@@ -327,6 +328,7 @@ importers:
       concurrently: 7.6.0
       css-mediaquery: 0.1.2
       dependency-cruiser: 12.1.0
+      esbuild-plugin-svgr: 1.0.1
       eslint: 8.29.0
       eslint-plugin-jsx-a11y: 6.6.1_eslint@8.29.0
       eslint-plugin-react: 7.31.11_eslint@8.29.0
@@ -5419,6 +5421,14 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /esbuild-plugin-svgr/1.0.1:
+    resolution: {integrity: sha512-TSUgwDq1chtikM1rMRAngpoKGGC1rTSXj35zweFdG4lnvPpBaqnvMrOJRuVVPelfeadZEhfHHnys7vm+tY+krw==}
+    dependencies:
+      '@svgr/core': 6.5.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
 
   /esbuild-sunos-64/0.15.18:
     resolution: {integrity: sha512-On22LLFlBeLNj/YF3FT+cXcyKPEI263nflYlAhz5crxtp3yRG1Ugfr7ITyxmCmjm4vbN/dGrb/B7w7U8yJR9yw==}
