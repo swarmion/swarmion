@@ -113,11 +113,30 @@ const myContract = new ApiGatewayContract({
   method: 'GET',
   integrationType: 'httpApi',
   pathParametersSchema,
-  queryStringParametersSchema,
   bodySchema,
-  outputSchema,
 });
 ```
+
+:::caution
+If you are using `@swarmion/serverless-contracts@0.17.0` or an older version, you will have to define every property even if they are undefined:
+
+```ts
+const myContract = new ApiGatewayContract({
+  id: 'my-unique-id',
+  path: '/users/{userId}',
+  method: 'GET',
+  integrationType: 'httpApi',
+  authorizerType: undefined,
+  pathParametersSchema: undefined,
+  queryStringParametersSchema: undefined,
+  headersSchema: undefined,
+  bodySchema: undefined,
+  outputSchema: undefined,
+});
+```
+
+The ability to omit undefined properties was added in [0.18.0](https://github.com/swarmion/swarmion/releases/tag/v0.18.0).
+:::
 
 ## Provider-side usage
 
