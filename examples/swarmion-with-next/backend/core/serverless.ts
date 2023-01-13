@@ -1,5 +1,4 @@
 import { AWS } from '@serverless/typescript';
-import { mergeStageParams } from '@swarmion/serverless-helpers';
 
 import { httpApiResourceContract } from '@swarmion-with-next/core-contracts';
 import {
@@ -17,33 +16,10 @@ const serverlessConfiguration: AWS = {
   frameworkVersion,
   configValidationMode: 'error',
   plugins: ['serverless-esbuild'],
-  provider: {
-    ...sharedProviderConfig,
-    httpApi: {
-      payload: '2.0',
-      cors: {
-        // @ts-expect-error we use a configuration per environment so we put it as a serverless variable
-        allowedOrigins: '${param:apiGatewayCorsAllowedOrigins}',
-        allowedHeaders: ['Content-Type', 'Authorization', 'Origin'],
-        allowedMethods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-        allowCredentials: true,
-      },
-      metrics: true,
-    },
-  },
+  provider: sharedProviderConfig,
   functions,
   package: { individually: true },
-  params: mergeStageParams(sharedParams, {
-    dev: {
-      apiGatewayCorsAllowedOrigins: ['http://localhost:3000'],
-    },
-    staging: {
-      apiGatewayCorsAllowedOrigins: ['https://staging.my-domain.com'],
-    },
-    production: {
-      apiGatewayCorsAllowedOrigins: ['https://www.my-domain.com'],
-    },
-  }),
+  params: sharedParams,
   custom: {
     esbuild: sharedEsbuildConfig,
   },

@@ -209,7 +209,7 @@ importers:
 
   packages/serverless-configuration:
     specifiers:
-      '@serverless/typescript': ^3.25.0
+      '@swarmion/serverless-helpers': ^0.19.1
       '@types/node': ^18.11.18
       concurrently: ^7.6.0
       dependency-cruiser: ^12.3.0
@@ -221,8 +221,9 @@ importers:
       tsup: ^6.5.0
       typescript: ^4.9.4
       vitest: ^0.27.0
+    dependencies:
+      '@swarmion/serverless-helpers': 0.19.1
     devDependencies:
-      '@serverless/typescript': 3.25.0
       '@types/node': 18.11.18
       concurrently: 7.6.0
       dependency-cruiser: 12.3.0

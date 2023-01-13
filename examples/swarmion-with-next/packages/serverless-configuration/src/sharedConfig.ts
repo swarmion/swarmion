@@ -1,10 +1,15 @@
+import {
+  ServerlessProviderConfig,
+  swarmionEsbuildConfig,
+} from '@swarmion/serverless-helpers';
+
 export const projectName = 'swarmion-with-next';
 export const region = 'eu-west-1';
 export const frameworkVersion = '>=3.0.0';
 
 export const defaultEnvironment = 'dev';
 
-export const sharedProviderConfig = {
+export const sharedProviderConfig: ServerlessProviderConfig = {
   name: 'aws',
   runtime: 'nodejs16.x',
   architecture: 'arm64',
@@ -16,7 +21,18 @@ export const sharedProviderConfig = {
     NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
   },
   deploymentMethod: 'direct',
-} as const;
+  httpApi: {
+    payload: '2.0',
+    cors: {
+      // @ts-expect-error we use a configuration per environment so we put it as a serverless variable
+      allowedOrigins: '${param:apiGatewayCorsAllowedOrigins}',
+      allowedHeaders: ['Content-Type', 'Authorization', 'Origin'],
+      allowedMethods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+      allowCredentials: true,
+    },
+    metrics: true,
+  },
+};
 
 /**
  * A set of shared parameters, scoped by stage. You can extend them to add other shared parameters between services.
@@ -26,27 +42,18 @@ export const sharedProviderConfig = {
  * An empty string for a profile means that the default profile will be used
  */
 export const sharedParams = {
-  dev: { profile: 'swarmion-with-next-developer' },
-  staging: { profile: '' },
-  production: { profile: '' },
+  dev: {
+    profile: 'swarmion-with-next-developer',
+    apiGatewayCorsAllowedOrigins: ['http://localhost:3000'],
+  },
+  staging: {
+    profile: '',
+    apiGatewayCorsAllowedOrigins: ['https://staging.my-domain.com'],
+  },
+  production: {
+    profile: '',
+    apiGatewayCorsAllowedOrigins: ['https://www.my-domain.com'],
+  },
 };
 
-export const sharedEsbuildConfig = {
-  packager: 'pnpm',
-  bundle: true,
-  minify: true,
-  keepNames: true,
-  sourcemap: true,
-  exclude: ['aws-sdk'],
-  target: 'node16',
-  platform: 'node',
-  /**
-   * Sets the resolution order for esbuild.
-   *
-   * In order to enable tree-shaking of packages, we need specify `module` first (ESM)
-   * Because it defaults to "main" first (CJS, not tree shakeable)
-   * https://esbuild.github.io/api/#main-fields
-   */
-  mainFields: ['module', 'main'],
-  concurrency: 5,
-};
+export const sharedEsbuildConfig = swarmionEsbuildConfig;
