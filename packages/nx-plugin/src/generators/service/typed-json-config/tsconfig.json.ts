@@ -13,12 +13,6 @@ export const packageTsConfig = (options: NormalizedSchema): TsConfig => ({
     {
       path: joinPathFragments(
         options.offsetFromRoot,
-        'contracts/core-contracts/tsconfig.build.json',
-      ),
-    },
-    {
-      path: joinPathFragments(
-        options.offsetFromRoot,
         'packages/serverless-configuration/tsconfig.build.json',
       ),
     },

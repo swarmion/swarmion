@@ -1,6 +1,5 @@
 import { AWS } from '@serverless/typescript';
 
-import { httpApiResourceContract } from '@<%= workspaceName %>/core-contracts';
 import {
   frameworkVersion,
   projectName,
@@ -16,12 +15,7 @@ const serverlessConfiguration: AWS = {
   frameworkVersion,
   configValidationMode: 'error',
   plugins: ['serverless-esbuild', 'serverless-iam-roles-per-function', 'serverless-custom-iam-roles-per-function'],
-  provider: {
-    ...sharedProviderConfig,
-    httpApi: {
-      id: httpApiResourceContract.importValue,
-    },
-  },
+  provider: sharedProviderConfig,
   params: sharedParams,
   functions,
   package: { individually: true },
