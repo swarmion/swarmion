@@ -17,6 +17,7 @@ import type {
 import { GenericApiGatewayContract } from '../apiGatewayContract';
 import {
   BodyType,
+  CustomRequestContextType,
   HeadersType,
   OutputType,
   PathParametersType,
@@ -41,13 +42,15 @@ type AuthorizerContext<AuthorizerType extends ApiGatewayAuthorizerType> =
 export type RequestContext<
   IntegrationType extends ApiGatewayIntegrationType,
   AuthorizerType extends ApiGatewayAuthorizerType,
-> = IntegrationType extends 'restApi'
+  CustomRequestContext,
+> = (IntegrationType extends 'restApi'
   ? APIGatewayEventRequestContextWithAuthorizer<
       AuthorizerContext<AuthorizerType>
     >
   : APIGatewayEventRequestContextV2WithAuthorizer<
       AuthorizerContext<AuthorizerType>
-    >;
+    >) &
+  (CustomRequestContext extends undefined ? unknown : CustomRequestContext);
 
 export type HandlerEventType<
   IntegrationType extends ApiGatewayIntegrationType,
@@ -55,9 +58,14 @@ export type HandlerEventType<
   PathParameters,
   QueryStringParameters,
   Headers,
+  CustomRequestContext,
   Body,
 > = DefinedProperties<{
-  requestContext: RequestContext<IntegrationType, AuthorizerType>;
+  requestContext: RequestContext<
+    IntegrationType,
+    AuthorizerType,
+    CustomRequestContext
+  >;
   pathParameters: PathParameters;
   queryStringParameters: QueryStringParameters;
   headers: Headers;
@@ -80,6 +88,7 @@ export type InternalSwarmionApiGatewayHandler<
   PathParameters,
   QueryStringParameters,
   Headers,
+  CustomRequestContext,
   Body,
   Output,
   AdditionalArgs extends unknown[] = never[],
@@ -89,6 +98,7 @@ export type InternalSwarmionApiGatewayHandler<
     PathParameters,
     QueryStringParameters,
     Headers,
+    CustomRequestContext,
     Body
   >,
 > = (
@@ -110,6 +120,7 @@ export type SwarmionApiGatewayHandler<
   PathParameters = PathParametersType<Contract>,
   QueryStringParameters = QueryStringParametersType<Contract>,
   Headers = HeadersType<Contract>,
+  CustomRequestContext = CustomRequestContextType<Contract>,
   Body = BodyType<Contract>,
   Output = OutputType<Contract>,
 > = InternalSwarmionApiGatewayHandler<
@@ -118,6 +129,7 @@ export type SwarmionApiGatewayHandler<
   PathParameters,
   QueryStringParameters,
   Headers,
+  CustomRequestContext,
   Body,
   Output,
   AdditionalArgs

@@ -5,6 +5,7 @@ import { GenericApiGatewayContract } from '../apiGatewayContract';
 import {
   ApiGatewayHandler,
   BodyType,
+  CustomRequestContextType,
   HeadersType,
   InternalSwarmionApiGatewayHandler,
   OutputType,
@@ -28,6 +29,7 @@ export const getApiGatewayHandler =
     PathParameters = PathParametersType<Contract>,
     QueryStringParameters = QueryStringParametersType<Contract>,
     Headers = HeadersType<Contract>,
+    CustomRequestContext = CustomRequestContextType<Contract>,
     Body = BodyType<Contract>,
     Output = OutputType<Contract>,
   >(
@@ -40,6 +42,7 @@ export const getApiGatewayHandler =
       PathParameters,
       QueryStringParameters,
       Headers,
+      CustomRequestContext,
       Body,
       Output,
       AdditionalArgs
@@ -60,6 +63,7 @@ export const getApiGatewayHandler =
         PathParameters,
         QueryStringParameters,
         Headers,
+        CustomRequestContext,
         Body
       >(event);
 
@@ -121,6 +125,7 @@ export const getLambdaHandler =
     PathParameters = PathParametersType<Contract>,
     QueryStringParameters = QueryStringParametersType<Contract>,
     Headers = HeadersType<Contract>,
+    CustomRequestContext = CustomRequestContextType<Contract>,
     Body = BodyType<Contract>,
     Output = OutputType<Contract>,
   >(
@@ -134,6 +139,7 @@ export const getLambdaHandler =
       PathParameters,
       QueryStringParameters,
       Headers,
+      CustomRequestContext,
       Body,
       Output
     >,
@@ -143,6 +149,7 @@ export const getLambdaHandler =
     PathParameters,
     QueryStringParameters,
     Headers,
+    CustomRequestContext,
     Body,
     Output
   > =>

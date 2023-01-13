@@ -22,14 +22,15 @@ import { SwarmionApiGatewayHandler } from '../types';
 
 describe('apiGateway lambda handler', () => {
   describe('httpApi, with authorizer, when all parameters are set', () => {
-    it('should return a 200 response', async () => {
-      const httpApiContract = httpApiGatewayContractMock;
+    const httpApiContract = httpApiGatewayContractMock;
 
-      const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
-        {
-          ...getAPIGatewayV2EventRequestContextMock(),
-          authorizer: { claims: { foo: 'claimBar' } },
-        };
+    const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
+      {
+        ...getAPIGatewayV2EventRequestContextMock(),
+        accountId: '123456789012' as const,
+        authorizer: { claims: { foo: 'claimBar' } },
+      };
+    it('should return a 200 response', async () => {
       const fakeContext = getHandlerContextMock();
 
       const httpHandler = getHandler(httpApiContract)(
@@ -41,7 +42,7 @@ describe('apiGateway lambda handler', () => {
           requestContext,
         }) => {
           await Promise.resolve();
-          const myCustomClaim = requestContext.authorizer.claims.foo ?? '';
+          const myCustomClaim = requestContext.authorizer.claims.foo;
 
           const name =
             body.foo +
@@ -85,13 +86,6 @@ describe('apiGateway lambda handler', () => {
     });
 
     it('should return a error response when throwing httpError in handler', async () => {
-      const httpApiContract = httpApiGatewayContractMock;
-
-      const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
-        {
-          ...getAPIGatewayV2EventRequestContextMock(),
-          authorizer: { claims: { foo: 'claimBar' } },
-        };
       const fakeContext = getHandlerContextMock();
 
       const httpHandler = getHandler(httpApiContract)(
@@ -103,7 +97,7 @@ describe('apiGateway lambda handler', () => {
           requestContext,
         }) => {
           await Promise.resolve();
-          const myCustomClaim = requestContext.authorizer.claims.foo ?? '';
+          const myCustomClaim = requestContext.authorizer.claims.foo;
 
           const name =
             body.foo +
@@ -143,13 +137,6 @@ describe('apiGateway lambda handler', () => {
     });
 
     it('should return a error response when input is invalid', async () => {
-      const httpApiContract = httpApiGatewayContractMock;
-
-      const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
-        {
-          ...getAPIGatewayV2EventRequestContextMock(),
-          authorizer: { claims: { foo: 'claimBar' } },
-        };
       const fakeContext = getHandlerContextMock();
 
       const httpHandler = getHandler(httpApiContract)(
@@ -161,7 +148,7 @@ describe('apiGateway lambda handler', () => {
           requestContext,
         }) => {
           await Promise.resolve();
-          const myCustomClaim = requestContext.authorizer.claims.foo ?? '';
+          const myCustomClaim = requestContext.authorizer.claims.foo;
 
           const name =
             body.foo +
@@ -201,13 +188,6 @@ describe('apiGateway lambda handler', () => {
     });
 
     it('should return a error response when output is invalid', async () => {
-      const httpApiContract = httpApiGatewayContractMock;
-
-      const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
-        {
-          ...getAPIGatewayV2EventRequestContextMock(),
-          authorizer: { claims: { foo: 'claimBar' } },
-        };
       const fakeContext = getHandlerContextMock();
 
       const httpHandler = getHandler(httpApiContract)(() => {
@@ -241,20 +221,17 @@ describe('apiGateway lambda handler', () => {
     });
 
     it('should work well with middified handler (cors)', async () => {
-      const httpApiContract = httpApiGatewayContractMock;
+      const fakeRequestContextCors = {
+        ...fakeRequestContext,
+        http: {
+          method: 'OPTIONS',
+          path: '',
+          protocol: '',
+          sourceIp: '',
+          userAgent: '',
+        },
+      };
 
-      const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
-        {
-          ...getAPIGatewayV2EventRequestContextMock(),
-          http: {
-            method: 'OPTIONS',
-            path: '',
-            protocol: '',
-            sourceIp: '',
-            userAgent: '',
-          },
-          authorizer: { claims: { foo: 'claimBar' } },
-        };
       const fakeContext = getHandlerContextMock();
 
       const handler = getHandler(httpApiContract)(
@@ -266,7 +243,7 @@ describe('apiGateway lambda handler', () => {
           requestContext,
         }) => {
           await Promise.resolve();
-          const myCustomClaim = requestContext.authorizer.claims.foo ?? '';
+          const myCustomClaim = requestContext.authorizer.claims.foo;
 
           const name =
             body.foo +
@@ -290,7 +267,7 @@ describe('apiGateway lambda handler', () => {
             anotherHeader: 'anotherHeader',
           },
           queryStringParameters: { testId: 'myTestId' },
-          requestContext: fakeRequestContext,
+          requestContext: fakeRequestContextCors,
           version: '2.0',
           routeKey: '',
           rawPath: '',
@@ -312,14 +289,6 @@ describe('apiGateway lambda handler', () => {
     });
 
     it('should accept optional additional arguments', async () => {
-      const httpApiContract = httpApiGatewayContractMock;
-
-      const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
-        {
-          ...getAPIGatewayV2EventRequestContextMock(),
-          authorizer: { claims: { foo: 'claimBar' } },
-        };
-
       const httpHandler = getHandler(httpApiContract)(
         (
           _event,
@@ -362,14 +331,6 @@ describe('apiGateway lambda handler', () => {
     });
 
     it('should allow overriding of additional arguments', async () => {
-      const httpApiContract = httpApiGatewayContractMock;
-
-      const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
-        {
-          ...getAPIGatewayV2EventRequestContextMock(),
-          authorizer: { claims: { foo: 'claimBar' } },
-        };
-
       const httpHandler = getHandler(httpApiContract)(
         async (
           _event,

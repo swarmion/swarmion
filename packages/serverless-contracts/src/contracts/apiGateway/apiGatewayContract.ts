@@ -30,6 +30,7 @@ export class ApiGatewayContract<
   QueryStringParametersSchema extends ConstrainedJSONSchema | undefined =
     | undefined,
   HeadersSchema extends ConstrainedJSONSchema | undefined = undefined,
+  RequestContextSchema extends JSONSchema | undefined = undefined,
   BodySchema extends JSONSchema | undefined = undefined,
   OutputSchema extends JSONSchema | undefined = undefined,
 > {
@@ -42,6 +43,7 @@ export class ApiGatewayContract<
   public pathParametersSchema: PathParametersSchema;
   public queryStringParametersSchema: QueryStringParametersSchema;
   public headersSchema: HeadersSchema;
+  public requestContextSchema: RequestContextSchema;
   public bodySchema: BodySchema;
   public outputSchema: OutputSchema;
   public inputSchema: JSONSchema;
@@ -94,6 +96,13 @@ export class ApiGatewayContract<
      */
     headersSchema?: HeadersSchema;
     /**
+     * A JSONSchema used to validate the requestContext and infer its type.
+     *
+     * Please note that the `as const` directive is necessary to properly infer the type from the schema.
+     * See https://github.com/ThomasAribart/json-schema-to-ts#fromschema.
+     */
+    requestContextSchema?: RequestContextSchema;
+    /**
      * A JSONSchema used to validate the body and infer its type.
      *
      * Please note that the `as const` directive is necessary to properly infer the type from the schema.
@@ -118,6 +127,8 @@ export class ApiGatewayContract<
     this.queryStringParametersSchema = (props.queryStringParametersSchema ??
       undefined) as QueryStringParametersSchema;
     this.headersSchema = (props.headersSchema ?? undefined) as HeadersSchema;
+    this.requestContextSchema = (props.requestContextSchema ??
+      undefined) as RequestContextSchema;
     this.bodySchema = (props.bodySchema ?? undefined) as BodySchema;
     this.outputSchema = (props.outputSchema ?? undefined) as OutputSchema;
     this.inputSchema = this.getInputSchema();
@@ -129,6 +140,7 @@ export class ApiGatewayContract<
         pathParameters: this.pathParametersSchema,
         queryStringParameters: this.queryStringParametersSchema,
         headers: this.headersSchema,
+        requestContext: this.requestContextSchema,
         body: this.bodySchema,
       } as const,
       isUndefined,
@@ -156,6 +168,7 @@ export type GenericApiGatewayContract = ApiGatewayContract<
   ConstrainedJSONSchema | undefined,
   ConstrainedJSONSchema | undefined,
   ConstrainedJSONSchema | undefined,
+  JSONSchema | undefined,
   JSONSchema | undefined,
   JSONSchema | undefined
 >;

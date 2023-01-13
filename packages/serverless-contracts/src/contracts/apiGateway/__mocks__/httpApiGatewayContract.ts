@@ -35,6 +35,27 @@ export const outputSchema = {
   required: ['id', 'name'],
 } as const;
 
+export const requestContextSchema = {
+  type: 'object',
+  properties: {
+    accountId: { const: '123456789012' },
+    authorizer: {
+      type: 'object',
+      properties: {
+        claims: {
+          type: 'object',
+          properties: {
+            foo: { type: 'string' },
+          },
+          required: ['foo'],
+        },
+      },
+      required: ['claims'],
+    },
+  },
+  required: ['accountId', 'authorizer'],
+} as const;
+
 export const httpApiGatewayContractMock = new ApiGatewayContract({
   id: 'testContract',
   path: '/users/{userId}',
@@ -46,4 +67,5 @@ export const httpApiGatewayContractMock = new ApiGatewayContract({
   headersSchema,
   bodySchema,
   outputSchema,
+  requestContextSchema,
 });

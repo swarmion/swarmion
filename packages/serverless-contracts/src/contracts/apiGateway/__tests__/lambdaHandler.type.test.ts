@@ -10,10 +10,12 @@ import {
   outputSchema,
   pathParametersSchema,
   queryStringParametersSchema,
+  requestContextSchema,
 } from '../__mocks__/httpApiGatewayContract';
 import { ApiGatewayContract } from '../apiGatewayContract';
 import {
   BodyType,
+  CustomRequestContextType,
   HandlerEventType,
   HeadersType,
   PathParametersType,
@@ -31,6 +33,7 @@ export const httpApiGatewayContract = new ApiGatewayContract({
   headersSchema,
   bodySchema,
   outputSchema,
+  requestContextSchema,
 });
 
 type ContractType = typeof httpApiGatewayContract;
@@ -41,10 +44,21 @@ type MyEventType = HandlerEventType<
   PathParametersType<ContractType>,
   QueryStringParametersType<ContractType>,
   HeadersType<ContractType>,
+  CustomRequestContextType<ContractType>,
   BodyType<ContractType>
 >;
 type ExpectedEventType = {
-  requestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayEventRequestContextJWTAuthorizer>;
+  requestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayEventRequestContextJWTAuthorizer> & {
+    [x: string]: unknown;
+    accountId: '123456789012';
+    authorizer: {
+      [x: string]: unknown;
+      claims: {
+        [x: string]: unknown;
+        foo: string;
+      };
+    };
+  };
   pathParameters: {
     userId: string;
     pageNumber: string;
@@ -73,6 +87,7 @@ type IncompleteEventType = HandlerEventType<
   ContractType['authorizerType'],
   PathParametersType<ContractType>,
   QueryStringParametersType<ContractType>,
+  undefined,
   undefined,
   undefined
 >;

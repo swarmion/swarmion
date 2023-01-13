@@ -4,7 +4,6 @@ import type {
   APIGatewayEventRequestContextLambdaAuthorizer,
   APIGatewayEventRequestContextV2WithAuthorizer,
   APIGatewayEventRequestContextWithAuthorizer,
-  APIGatewayProxyCognitoAuthorizer,
 } from 'aws-lambda';
 
 import {
@@ -31,11 +30,11 @@ describe('apiGateway lambda handler', () => {
     it('should return a correctly typed handler with cognito authorizer', async () => {
       const httpApiContract = httpApiGatewayContractMock;
 
-      const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
-        {
-          ...getAPIGatewayV2EventRequestContextMock(),
-          authorizer: { claims: { foo: 'claimBar' } },
-        };
+      const fakeRequestContext = {
+        ...getAPIGatewayV2EventRequestContextMock(),
+        accountId: '123456789012' as const,
+        authorizer: { claims: { foo: 'claimBar' } },
+      };
 
       const handler: SwarmionApiGatewayHandler<typeof httpApiContract> = ({
         body,
@@ -44,7 +43,9 @@ describe('apiGateway lambda handler', () => {
         headers,
         requestContext,
       }) => {
-        const myCustomClaim = requestContext.authorizer.claims.foo ?? '';
+        console.log(requestContext);
+
+        const myCustomClaim = requestContext.authorizer.claims.foo;
 
         const name =
           body.foo +
