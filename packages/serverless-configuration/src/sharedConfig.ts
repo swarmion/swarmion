@@ -1,4 +1,7 @@
-import { swarmionEsbuildConfig } from '@swarmion/serverless-helpers';
+import {
+  ServerlessProviderConfig,
+  swarmionEsbuildConfig,
+} from '@swarmion/serverless-helpers';
 
 export const projectName = 'swarmion';
 export const region = 'eu-west-1';
@@ -6,7 +9,7 @@ export const frameworkVersion = '>=3.0.0';
 
 export const defaultEnvironment = 'dev';
 
-export const sharedProviderConfig = {
+export const sharedProviderConfig: ServerlessProviderConfig = {
   name: 'aws',
   runtime: 'nodejs16.x',
   architecture: 'arm64',
@@ -18,7 +21,18 @@ export const sharedProviderConfig = {
     NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
   },
   deploymentMethod: 'direct',
-} as const;
+  httpApi: {
+    payload: '2.0',
+    cors: {
+      // @ts-expect-error we use a configuration per environment so we put it as a serverless variable
+      allowedOrigins: '${param:apiGatewayCorsAllowedOrigins}',
+      allowedHeaders: ['Content-Type', 'Authorization', 'Origin'],
+      allowedMethods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+      allowCredentials: true,
+    },
+    metrics: true,
+  },
+};
 
 /**
  * common profiles settings. This must be put in the `custom` section of the `serverless.ts`
@@ -27,9 +41,12 @@ export const sharedProviderConfig = {
  * An empty string for a profile means that the default profile will be used
  */
 export const sharedParams = {
-  dev: { profile: 'swarmion-developer' },
-  staging: { profile: '' },
-  production: { profile: '' },
+  dev: {
+    profile: 'swarmion-developer',
+    apiGatewayCorsAllowedOrigins: ['localhost:3000'],
+  },
+  staging: { profile: '', apiGatewayCorsAllowedOrigins: [] },
+  production: { profile: '', apiGatewayCorsAllowedOrigins: [] },
 };
 
 export const sharedEsbuildConfig = swarmionEsbuildConfig;

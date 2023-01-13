@@ -15,8 +15,8 @@ import {
 } from '@swarmion/serverless-configuration';
 import { ServerlessContracts } from '@swarmion/serverless-plugin';
 
-import { functions } from 'functions';
-import { OrchestratorStack } from 'resources';
+import { functions } from './functions';
+import { OrchestratorStack } from './resources';
 
 const serverlessConfiguration: AWS &
   ServerlessContracts &
@@ -33,9 +33,7 @@ const serverlessConfiguration: AWS &
     'serverless-analyze-bundle-plugin',
   ],
   params: sharedParams,
-  provider: {
-    ...sharedProviderConfig,
-  },
+  provider: sharedProviderConfig,
   functions,
   package: { individually: true },
   custom: {
