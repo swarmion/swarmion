@@ -1,6 +1,8 @@
 import type {
   APIGatewayEventRequestContextV2WithAuthorizer,
   APIGatewayEventRequestContextWithAuthorizer,
+  APIGatewayProxyCallback,
+  APIGatewayProxyCallbackV2,
   Callback,
   Context,
 } from 'aws-lambda';
@@ -76,6 +78,10 @@ export type SwarmionApiGatewayEvent<
   CustomRequestContext,
   Body
 >;
+
+export type HandlerCallback<IntegrationType> = IntegrationType extends 'restApi'
+  ? APIGatewayProxyCallback
+  : APIGatewayProxyCallbackV2;
 
 /**
  * The **internal** type of a Swarmion handler, with type-inferred event
