@@ -133,12 +133,7 @@ export const getLambdaHandler =
     CustomRequestContext = CustomRequestContextType<Contract>,
     Body = BodyType<Contract>,
     Output = OutputType<Contract>,
-  >(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    _contract: Contract,
-  ) =>
-  (
-    handler: InternalSwarmionApiGatewayHandler<
+    Handler = InternalSwarmionApiGatewayHandler<
       IntegrationType,
       AuthorizerType,
       PathParameters,
@@ -148,14 +143,9 @@ export const getLambdaHandler =
       Body,
       Output
     >,
-  ): InternalSwarmionApiGatewayHandler<
-    IntegrationType,
-    AuthorizerType,
-    PathParameters,
-    QueryStringParameters,
-    Headers,
-    CustomRequestContext,
-    Body,
-    Output
-  > =>
+  >(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _contract: Contract,
+  ) =>
+  (handler: Handler): Handler =>
     handler;
