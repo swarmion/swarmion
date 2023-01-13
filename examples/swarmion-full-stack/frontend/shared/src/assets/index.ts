@@ -1,0 +1,1 @@
+export { NotFoundIcon } from './svg';

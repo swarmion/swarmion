@@ -2,6 +2,10 @@ import { render, screen } from '@testing-library/react';
 
 import NotFound from '../NotFound';
 
+vi.mock('assets', () => ({
+  NotFoundIcon: 'svg',
+}));
+
 describe('NotFound component', () => {
   it("should display the heading 'Page not found'", () => {
     render(<NotFound />);
