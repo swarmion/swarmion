@@ -17,20 +17,7 @@ const serverlessConfiguration: AWS = {
   frameworkVersion,
   configValidationMode: 'error',
   plugins: ['serverless-esbuild'],
-  provider: {
-    ...sharedProviderConfig,
-    httpApi: {
-      payload: '2.0',
-      cors: {
-        // @ts-expect-error we use a configuration per environment so we put it as a serverless variable
-        allowedOrigins: '${param:apiGatewayCorsAllowedOrigins}',
-        allowedHeaders: ['Content-Type', 'Authorization', 'Origin'],
-        allowedMethods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-        allowCredentials: true,
-      },
-      metrics: true,
-    },
-  },
+  provider: sharedProviderConfig,
   functions,
   package: { individually: true },
   params: mergeStageParams(sharedParams, {
