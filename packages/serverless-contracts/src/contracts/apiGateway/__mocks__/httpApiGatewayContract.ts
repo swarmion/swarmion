@@ -38,6 +38,7 @@ export const outputSchema = {
 export const requestContextSchema = {
   type: 'object',
   properties: {
+    accountId: { const: '123456789012' },
     authorizer: {
       type: 'object',
       properties: {
@@ -52,7 +53,7 @@ export const requestContextSchema = {
       required: ['claims'],
     },
   },
-  required: ['authorizer'],
+  required: ['accountId', 'authorizer'],
 } as const;
 
 export const httpApiGatewayContractMock = new ApiGatewayContract({

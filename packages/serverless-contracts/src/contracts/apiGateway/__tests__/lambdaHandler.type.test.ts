@@ -50,6 +50,7 @@ type MyEventType = HandlerEventType<
 type ExpectedEventType = {
   requestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayEventRequestContextJWTAuthorizer> & {
     [x: string]: unknown;
+    accountId: '123456789012';
     authorizer: {
       [x: string]: unknown;
       claims: {
