@@ -7,5 +7,7 @@ export {
   getLambdaHandler,
   getApiGatewayHandler,
   getRequestParameters,
+  getMockHandlerInput,
+  setMockHandlerInputSeed,
 } from './features';
 export type { SwarmionApiGatewayHandler, ApiGatewayHandler } from './types';
