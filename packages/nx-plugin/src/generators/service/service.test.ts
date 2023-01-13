@@ -11,7 +11,7 @@ import generator from './index';
 
 describe('service generator', () => {
   let appTree: Tree;
-  const options: Schema = { name: 'test', directory: 'backend' };
+  const options: Schema = { name: 'test-service', directory: 'services' };
 
   beforeEach(() => {
     appTree = createTreeWithEmptyWorkspace();
@@ -25,7 +25,7 @@ describe('service generator', () => {
 
   it('should run successfully', async () => {
     await generator(appTree, options);
-    const config = readProjectConfiguration(appTree, 'backend-test');
+    const config = readProjectConfiguration(appTree, 'test-service');
     expect(config).toBeDefined();
   });
 
@@ -37,7 +37,7 @@ describe('service generator', () => {
     ).toStrictEqual({
       references: [
         {
-          path: './backend/test/tsconfig.json',
+          path: './services/test-service/tsconfig.json',
         },
       ],
     });
