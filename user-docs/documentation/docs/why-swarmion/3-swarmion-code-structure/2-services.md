@@ -15,7 +15,7 @@ A typical Swarmion service has the following structure:
 ```
 ├── my-service/
 |   ├── ...
-|   ├── package.json            # dependencies of this core service
+|   ├── package.json            # dependencies of this service
 |   ├── serverless.ts           # serverless service file
 |   └── tsconfig.json           # typescript config
 ```
