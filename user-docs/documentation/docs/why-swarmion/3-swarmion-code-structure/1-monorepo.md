@@ -41,7 +41,7 @@ The services names in this folder are purely for the sake of the example and sho
 :::
 
 ```
-├── backend/
+├── services/
 |   ├── core/                       # core service
 |   ├── users/                      # users service
 |   └── ...                         # other deployed services
