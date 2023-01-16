@@ -5,9 +5,9 @@
       "runner": "nx/tasks-runners/default",
       "options": {
         "cacheableOperations": [
+          "bootstrap",
           "build",
           "package",
-          "test",
           "test-circular",
           "test-linter",
           "test-stylelint",
@@ -30,15 +30,19 @@
     "package": {
       "inputs": ["production", "^production"],
       "dependsOn": ["^package"],
-      "outputs": ["{projectRoot}/dist"]
+      "outputs": ["{projectRoot}/dist", "{projectRoot}/tsconfig.tsbuildinfo"]
     },
     "deploy": {
       "inputs": ["production", "^production"],
-      "dependsOn": ["^package", "^deploy", "^build"]
+      "dependsOn": ["^package", "^deploy", "^build", "bootstrap"]
     },
-    "test": {
-      "inputs": ["default", "^production", "{workspaceRoot}/.eslintrc.js"],
-      "dependsOn": ["^package"]
+    "deploy-staging": {
+      "inputs": ["production", "^production"],
+      "dependsOn": ["^package", "^build", "bootstrap-staging"]
+    },
+    "deploy-production": {
+      "inputs": ["production", "^production"],
+      "dependsOn": ["^package", "^build", "bootstrap-production"]
     },
     "test-linter": {
       "inputs": ["default", "^production", "{workspaceRoot}/.eslintrc.js"],
@@ -46,7 +50,8 @@
     },
     "test-unit": {
       "inputs": ["default", "^production"],
-      "dependsOn": ["^package"]
+      "dependsOn": ["^package"],
+      "outputs": ["{projectRoot}/coverage"]
     },
     "test-type": {
       "inputs": ["default", "^production"],

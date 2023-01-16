@@ -33,7 +33,7 @@
     "package-transpile": "tsup src/index.ts",
     "package-types": "tsc -p tsconfig.build.json",
     "package-types-aliases": "tsc-alias -p tsconfig.build.json",
-    "test": "pnpm test-linter && pnpm test-type && pnpm test-circular",
+    "test": "nx run test-linter && nx run test-type && nx run test-circular",
     "test-circular": "pnpm depcruise --validate .dependency-cruiser.js .",
     "test-linter": "pnpm linter-base-config .",
     "test-type": "tsc --noEmit --emitDeclarationOnly false",
