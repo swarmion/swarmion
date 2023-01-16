@@ -5,13 +5,13 @@
       "runner": "@nrwl/nx-cloud",
       "options": {
         "cacheableOperations": [
+          "bootstrap",
           "build",
           "package",
-          "test",
-          "test-type",
+          "test-circular",
           "test-linter",
           "test-stylelint",
-          "test-circular",
+          "test-type",
           "test-unit"
         ],
         "cacheDirectory": "nx-cache",
@@ -35,20 +35,15 @@
     },
     "deploy": {
       "inputs": ["production", "^production"],
-      "dependsOn": ["^package", "^deploy", "^build"]
+      "dependsOn": ["^package", "^deploy", "^build", "bootstrap"]
     },
     "deploy-staging": {
       "inputs": ["production", "^production"],
-      "dependsOn": ["^package", "^build"]
+      "dependsOn": ["^package", "^build", "bootstrap-staging"]
     },
     "deploy-production": {
       "inputs": ["production", "^production"],
-      "dependsOn": ["^package", "^build"]
-    },
-    "test": {
-      "inputs": ["default", "^production", "{workspaceRoot}/.eslintrc.js"],
-      "dependsOn": ["^package"],
-      "outputs": ["{projectRoot}/coverage"]
+      "dependsOn": ["^package", "^build", "bootstrap-production"]
     },
     "test-linter": {
       "inputs": ["default", "^production", "{workspaceRoot}/.eslintrc.js"],
