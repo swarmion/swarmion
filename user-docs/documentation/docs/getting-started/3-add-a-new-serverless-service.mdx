@@ -46,7 +46,7 @@ import swarmionAppUsersGraphDark from '../../static/screenshots/swarmion-app-use
 </div>
 
 :::info
-The `implicit` dependency between `backend-users` and `backend-core` denotes a deployment dependency. Since the `backend-users` service is using a ressource of `backend-core` (the API Gateway), we must ensure that the `backend-core` service is deployed before the `backend-users` service.
+The `implicit` dependency between `users` and `core` denotes a deployment dependency. Since the `users` service is using a ressource of `core` (the API Gateway), we must ensure that the `core` service is deployed before the `users` service.
 
 This dependency is specified in the `backend/users/project.json` file. You can find out more on how it works in the [dedicated nx documentation](https://nx.dev/configuration/projectjson#files-&-implicit-dependencies).
 :::
@@ -65,11 +65,7 @@ import backendUsersArchitecture from '../../static/schemas/backend-users-archite
     'margin-bottom': 'var(--ifm-leading)',
   }}
 >
-  <img
-    src={backendUsersArchitecture}
-    alt="backend-users architecture"
-    width="500px"
-  />
+  <img src={backendUsersArchitecture} alt="users architecture" width="500px" />
 </div>
 
 The service defines a lambda called `my-project-name-users-dev-health`. The API Gateway from the `core` is reused and now will expose a new endpoint `GET /users/health` which is an integration with the Lambda. Calling the endpoint will execute the Lambda and return the result.
@@ -113,7 +109,7 @@ Now that the project has two services, it would be really cumbersome to deploy t
 pnpm run deploy
 ```
 
-This command will leverage the dependency graph of the project and deploy all the services in the right order. This means that `backend-core` will be deployed, then `backend-users`.
+This command will leverage the dependency graph of the project and deploy all the services in the right order. This means that `core` will be deployed, then `users`.
 
 ## Wrap up
 

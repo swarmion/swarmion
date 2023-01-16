@@ -36,11 +36,12 @@ pnpm create swarmion-app
 npx create-swarmion-app
 ```
 
-You will be prompted with the question "What is your project named?", simply enter your project name and hit _enter_.
+You will be prompted with the question "What is your project named?", simply enter your project name and hit _enter_. You will then be asked to choose a template. For now, let's use the simplest one, `Swarmion Starter`.
+
 The following will happen:
 
 - A new folder with your project name in the current directory
-- It will be populated with the Swarmion template
+- It will be populated with the `Swarmion Starter` template
 - `pnpm install` will be run inside the project to install all the dependencies
 - The libraries of the project will be packaged
 - A git repository will be initialized
@@ -85,7 +86,7 @@ code my-project-name
 In the _Explorer_ tab, you should see the following workspaces:
 
 - `my-project-name root`: the root folder of your project. It contains all the other workspaces, but you will never open any code file inside this one. It will allow you to access all root level configuration files.
-- `backend core [service]`: the folder containing the backend core service.
+- `core [service]`: the folder containing the core service (shared resources).
 - `serverless configuration [library]`: the folder containing the serverless configuration library.
 - `contracts core [library]`: the folder containing the contracts library for the core service.
 
@@ -118,7 +119,7 @@ import basicSwarmionAppGraphDark from '../../static/screenshots/basic-swarmion-a
   />
 </div>
 
-Here you can see that the `backend-core` service has the `core-contract` and `serverless-configuration` libraries as dependencies.
+Here you can see that the `core` service has the `core-contract` and `serverless-configuration` libraries as dependencies.
 
 ## Scripts
 
