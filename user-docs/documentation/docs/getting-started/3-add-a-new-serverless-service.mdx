@@ -55,7 +55,7 @@ This dependency is specified in the `backend/users/project.json` file. You can f
 
 By deploying the service, the following architecture will be deployed:
 
-import backendUsersArchitecture from '../../static/schemas/backend-users-architecture.png';
+import backendUsersArchitecture from '../../static/schemas/users-architecture.png';
 
 <div
   style={{
@@ -68,7 +68,7 @@ import backendUsersArchitecture from '../../static/schemas/backend-users-archite
   <img src={backendUsersArchitecture} alt="users architecture" width="500px" />
 </div>
 
-The service defines a lambda called `my-project-name-users-dev-health`. The API Gateway from the `core` is reused and now will expose a new endpoint `GET /users/health` which is an integration with the Lambda. Calling the endpoint will execute the Lambda and return the result.
+The service defines a lambda called `my-project-name-users-dev-health`. A new API Gateway is deployed for the `users` service, decoupling it from `core`. It exposes a new endpoint `GET /users/health` which is an integration with the Lambda. Calling the endpoint will execute the Lambda and return the result.
 
 You can find the definition of the lambda in the `backend/users/functions/health/config.ts` file.
 
