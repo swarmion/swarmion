@@ -7,12 +7,7 @@ import {
 import { Linter } from '@nrwl/linter';
 import { relative } from 'path';
 
-import {
-  GeneratorType,
-  GeneratorTypeToDirectory,
-  NormalizedSchema,
-  Schema,
-} from '../types';
+import { GeneratorType, NormalizedSchema, Schema } from '../types';
 
 export const normalizeOptions = (
   tree: Tree,
@@ -34,13 +29,12 @@ export const normalizeOptions = (
   });
   const { npmScope } = getWorkspaceLayout(tree);
   const offsetFromRoot = relative(packageRoot, tree.root);
-  const importPath = formatImportPath(generatorType, projectName);
 
   return {
     ...options,
     fileName,
     generatorType,
-    importPath,
+    importPath: projectName,
     linter,
     name: projectName,
     packageRoot,
@@ -56,16 +50,4 @@ const getCaseAwareFileName = (options: {
   const normalized = names(options.fileName);
 
   return options.pascalCaseFiles ? normalized.className : normalized.fileName;
-};
-
-const formatImportPath = (
-  generatorType: GeneratorType,
-  projectName: string,
-) => {
-  switch (generatorType) {
-    case GeneratorType.LIBRARY:
-      return projectName;
-    case GeneratorType.SERVICE:
-      return `${GeneratorTypeToDirectory[generatorType]}-${projectName}`;
-  }
 };

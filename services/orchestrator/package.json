@@ -1,8 +1,8 @@
 {
-  "name": "@swarmion-full-stack/backend-core",
+  "name": "@swarmion/orchestrator",
   "private": true,
-  "version": "1.0.0",
-  "license": "UNLICENSED",
+  "version": "0.19.1",
+  "license": "MIT",
   "scripts": {
     "deploy": "serverless deploy",
     "deploy-production": "serverless deploy --stage production",
@@ -14,7 +14,6 @@
     "remove": "serverless remove",
     "remove-production": "serverless remove --stage production",
     "remove-staging": "serverless remove --stage staging",
-    "sls-get-region": "serverless print --path provider.region",
     "sls-info": "serverless info --verbose",
     "test": "nx run test-linter && nx run test-type && nx run test-unit && nx run test-circular",
     "test-circular": "pnpm depcruise --validate .dependency-cruiser.js .",
@@ -23,20 +22,35 @@
     "test-unit": "vitest run --coverage --passWithNoTests"
   },
   "dependencies": {
-    "@swarmion-full-stack/serverless-configuration": "1.0.0",
-    "@swarmion/serverless-helpers": "^0.19.1"
+    "@aws-sdk/client-eventbridge": "^3.226.0",
+    "@swarmion/orchestrator-contracts": "^0.19.1",
+    "@swarmion/serverless-cdk-plugin": "^0.19.1",
+    "@swarmion/serverless-configuration": "^0.19.1",
+    "@swarmion/serverless-contracts": "^0.19.1",
+    "@swarmion/serverless-helpers": "^0.19.1",
+    "@swarmion/serverless-plugin": "^0.19.1",
+    "aws-cdk-lib": "^2.54.0",
+    "aws-sdk": "^2.1272.0",
+    "dynamodb-toolbox": "^0.6.2",
+    "ulid": "^2.3.0"
   },
   "devDependencies": {
     "@serverless/typescript": "^3.25.0",
-    "@swarmion-full-stack/core-contracts": "1.0.0",
+    "@swarmion/eslint-plugin": "^0.19.1",
     "@types/node": "^18.11.13",
     "@vitest/coverage-c8": "^0.27.0",
+    "constructs": "^10.1.187",
     "dependency-cruiser": "^12.1.0",
     "esbuild": "^0.16.0",
+    "esbuild-visualizer": "^0.4.0",
     "eslint": "^8.29.0",
     "serverless": "^3.25.1",
+    "serverless-analyze-bundle-plugin": "^1.2.1",
+    "serverless-custom-iam-roles-per-function": "^1.0.1",
     "serverless-esbuild": "^1.33.2",
+    "serverless-iam-roles-per-function": "^3.2.0",
     "ts-node": "^10.9.1",
+    "ts-toolbelt": "9.6.0",
     "typescript": "^4.9.4",
     "vite-tsconfig-paths": "^4.0.3",
     "vitest": "^0.27.0"

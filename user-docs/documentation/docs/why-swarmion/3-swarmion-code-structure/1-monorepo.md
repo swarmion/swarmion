@@ -41,9 +41,8 @@ The services names in this folder are purely for the sake of the example and sho
 :::
 
 ```
-├── backend/
+├── services/
 |   ├── core/                       # core service
-|   ├── forum/                      # forum service
 |   ├── users/                      # users service
 |   └── ...                         # other deployed services
 |
@@ -57,7 +56,6 @@ The services names in this folder are purely for the sake of the example and sho
 |
 ├── contracts/                      # JSONSchema-based binding contracts.
 |   ├── core-contracts/
-|   ├── forum-contracts/
 |   ├── users-contracts/
 |   └── ...                         # other contracts, used between deployed services
 |

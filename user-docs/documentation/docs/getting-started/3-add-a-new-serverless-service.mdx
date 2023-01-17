@@ -22,7 +22,7 @@ pnpm nx generate @swarmion/nx-plugin:service
 To have more info on the `@swarmion/nx-plugin`, you can check its [documentation page](../how-to-guides/use-swarmion-generators).
 :::
 
-The `backend/users` folder containing the `users` service has been added. The project dependency graph now looks like the following:
+The `services/users` folder containing the `users` service has been added. The project dependency graph now looks like the following:
 
 import ThemedImage from '@theme/ThemedImage';
 import swarmionAppUsersGraphLight from '../../static/screenshots/swarmion-app-users-graph-light.png';
@@ -45,17 +45,11 @@ import swarmionAppUsersGraphDark from '../../static/screenshots/swarmion-app-use
   />
 </div>
 
-:::info
-The `implicit` dependency between `backend-users` and `backend-core` denotes a deployment dependency. Since the `backend-users` service is using a ressource of `backend-core` (the API Gateway), we must ensure that the `backend-core` service is deployed before the `backend-users` service.
-
-This dependency is specified in the `backend/users/project.json` file. You can find out more on how it works in the [dedicated nx documentation](https://nx.dev/configuration/projectjson#files-&-implicit-dependencies).
-:::
-
 ## Deploy the service
 
 By deploying the service, the following architecture will be deployed:
 
-import backendUsersArchitecture from '../../static/schemas/backend-users-architecture.png';
+import backendUsersArchitecture from '../../static/schemas/users-architecture.png';
 
 <div
   style={{
@@ -65,21 +59,17 @@ import backendUsersArchitecture from '../../static/schemas/backend-users-archite
     'margin-bottom': 'var(--ifm-leading)',
   }}
 >
-  <img
-    src={backendUsersArchitecture}
-    alt="backend-users architecture"
-    width="500px"
-  />
+  <img src={backendUsersArchitecture} alt="users architecture" width="500px" />
 </div>
 
-The service defines a lambda called `my-project-name-users-dev-health`. The API Gateway from the `core` is reused and now will expose a new endpoint `GET /users/health` which is an integration with the Lambda. Calling the endpoint will execute the Lambda and return the result.
+The service defines a lambda called `my-project-name-users-dev-health`. A new API Gateway is deployed for the `users` service, decoupling it from `core`. It exposes a new endpoint `GET /users/health` which is an integration with the Lambda. Calling the endpoint will execute the Lambda and return the result.
 
-You can find the definition of the lambda in the `backend/users/functions/health/config.ts` file.
+You can find the definition of the lambda in the `services/users/functions/health/config.ts` file.
 
 You can deploy the service by running the following command at the root of the repository:
 
 ```bash
-cd backend/users
+cd services/users
 pnpm serverless deploy
 # It should prompt something like the following:
 Deploying my-project-name-users to stage dev (us-east-1)
@@ -113,7 +103,7 @@ Now that the project has two services, it would be really cumbersome to deploy t
 pnpm run deploy
 ```
 
-This command will leverage the dependency graph of the project and deploy all the services in the right order. This means that `backend-core` will be deployed, then `backend-users`.
+This command will leverage the dependency graph of the project and deploy all the services in the right order. In our example, there is no dependency between our services, which means that `core` and `users` will be deployed in parallel.
 
 ## Wrap up
 

@@ -21,32 +21,32 @@ npm install --save-dev @swarmion/nx-plugin
 
 ## Generate new Services
 
-At the root of your project, run `pnpm nx generate @swarmion/nx-plugin:service myService`. This will create a simple service in the repository's structure respecting our guidelines.
+At the root of your project, run:
+
+```bash
+pnpm nx generate @swarmion/nx-plugin:service my-service
+```
+
+This will create a simple service in the repository's structure respecting our guidelines.
+
+By default, new services will be placed in the `services` directory. You can customize this with the `--directory` option. For example:
+
+```bash
+pnpm nx generate @swarmion/nx-plugin:service service --directory=path/to/services
+```
 
 ## Generate new Libraries
 
-At the root of the project, run `pnpm nx generate @swarmion/nx-plugin:library myLibrary`. This will create a simple internal library in the repository's structure respecting our guidelines.
-
-## Custom folder structure
-
-You can add to your command the `--directory` option to specify the path where you want to generate your new package.
-
-To build the following repo architecture,
-
-```
-├── backend/
-|   ├── services/
-|   |   ├── core/                       # core service
-|   |   ├── forum/                      # forum service
-|   |   ├── users/                      # users service
-|   |   └── ...                         # other deployed services
-|
-```
-
-simply execute
+At the root of the project, run:
 
 ```bash
-pnpm nx generate @swarmion/nx-plugin:service core --directory=backend/services
-pnpm nx generate @swarmion/nx-plugin:service forum --directory=backend/services
-pnpm nx generate @swarmion/nx-plugin:service users --directory=backend/services
+pnpm nx generate @swarmion/nx-plugin:library my-library
+```
+
+This will create a simple internal library in the repository's structure respecting our guidelines.
+
+By default, new libraries will be placed in the `packages` directory. You can customize this with the `--directory` option. For example:
+
+```bash
+pnpm nx generate @swarmion/nx-plugin:library my-library --directory=path/to/packages
 ```

@@ -1,6 +1,6 @@
 import { AWS } from '@serverless/typescript';
+import { mergeStageParams } from '@swarmion/serverless-helpers';
 
-import { httpApiResourceContract } from '@<%= workspaceName %>/core-contracts';
 import {
   frameworkVersion,
   projectName,
@@ -16,13 +16,12 @@ const serverlessConfiguration: AWS = {
   frameworkVersion,
   configValidationMode: 'error',
   plugins: ['serverless-esbuild', 'serverless-iam-roles-per-function', 'serverless-custom-iam-roles-per-function'],
-  provider: {
-    ...sharedProviderConfig,
-    httpApi: {
-      id: httpApiResourceContract.importValue,
-    },
-  },
-  params: sharedParams,
+  provider: sharedProviderConfig,
+  params: mergeStageParams(sharedParams, {
+    dev: {}, // place here service-specific dev params
+    staging: {}, // place here service-specific staging params
+    production: {}, // place here service-specific production params
+  }),
   functions,
   package: { individually: true },
   custom: {

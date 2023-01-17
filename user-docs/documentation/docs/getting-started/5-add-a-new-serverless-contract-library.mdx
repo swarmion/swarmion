@@ -34,7 +34,7 @@ import swarmionAppFrontendGraphDark from '../../static/screenshots/swarmion-app-
 </div>
 
 :::info
-The `generate-frontend-service` command is a planned development by the Swarmion core team.
+The `generate-frontend-service` command is a planned development by the Swarmion core team. In the meantime, you can use the `Swarmion Full Stack` template that has a built-in frontend.
 :::
 
 ## Generate and link the contract library
@@ -49,10 +49,10 @@ pnpm generate-library users-contracts --directory contracts
 The `--directory` option let you chose the path containing your generated library. Default value is `packages`
 :::
 
-Then, we will add this contract library as a dependency for the users-backend and the frontend:
+Then, we will add this contract library as a dependency for the users service and the frontend:
 
 ```bash
-cd backend/users
+cd services/users
 pnpm add @my-project-name/users-contracts
 
 cd ../../frontend
@@ -84,7 +84,7 @@ import swarmionAppUsersContractsGraphDark from '../../static/screenshots/swarmio
 At last, you should reference the contracts library tsconfig.build.json file in both contract consumers
 in order to have live type updates without the need to package the contracts library.
 
-```json title="backend/users/tsconfig.json"
+```json title="services/users/tsconfig.json"
 {
   "compilerOptions": {
     // ...
@@ -189,7 +189,7 @@ export { default as getUserContract } from './contracts/getUser';
 Now that we have defined our first contract, we can use it in our services.
 First, we will be able to define the trigger of our function with the `getTrigger` feature:
 
-```typescript title="backend/users/src/functions/getUser/config.ts"
+```typescript title="services/users/src/functions/getUser/config.ts"
 import { getTrigger } from '@swarmion/serverless-contracts';
 import { getHandlerPath, LambdaFunction } from '@swarmion/serverless-helpers';
 
@@ -208,7 +208,7 @@ This will create an http-api endpoint that will trigger the `getUser` function w
 
 Then, you can use the `getHandler` feature to define a type safe handler of your function:
 
-```typescript title="backend/users/src/functions/getUser/handler.ts"
+```typescript title="services/users/src/functions/getUser/handler.ts"
 import { getHandler } from '@swarmion/serverless-contracts';
 import { getUserContract } from '@my-project-name/users-contracts';
 

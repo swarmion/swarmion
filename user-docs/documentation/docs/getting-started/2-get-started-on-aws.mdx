@@ -25,8 +25,8 @@ we recommend following the guidelines in the [configure your CI/CD section](../h
 - Fill in the Access Key Id and the Secret Access Key from your user
 - For the region, use the AWS region chosen for your project. See [the list of AWS regions](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/)
 - Leave the default output format prompt empty, as the default is `json`
-- Change the dev profile name in `packages/serverless-configuration/src/sharedConfig.ts`:
-  ```typescript
+- Change the dev profile name in `sharedConfig.ts`:
+  ```typescript title="packages/serverless-configuration/src/sharedConfig.ts"
   export const sharedParams = {
     dev: { profile: 'swarmion-dev' },
     staging: { profile: '' }, // leave empty for staging
@@ -40,12 +40,12 @@ At the root of the project, run `pnpm run deploy`. This will compile and deploy 
 You can follow the creation of the stacks on [the Cloudformation console](https://console.aws.amazon.com/cloudformation/home).
 
 :::note
-At this time, there is only one stack in the project, the `backend-core` stack. We will deploy another stack in the next step of the tutorial.
+At this time, there is only one stack in the project, the `core` stack. We will deploy another stack in the next step of the tutorial.
 :::
 
 The following architecture is deployed:
 
-import backendCoreArchitecture from '../../static/schemas/backend-core-architecture.png';
+import backendCoreArchitecture from '../../static/schemas/core-architecture.png';
 
 <div
   style={{
@@ -55,11 +55,7 @@ import backendCoreArchitecture from '../../static/schemas/backend-core-architect
     'margin-bottom': 'var(--ifm-leading)',
   }}
 >
-  <img
-    src={backendCoreArchitecture}
-    alt="backend-core architecture"
-    width="500px"
-  />
+  <img src={backendCoreArchitecture} alt="core architecture" width="500px" />
 </div>
 
 An HTTP API Gateway and a Lamda called `my-project-name-core-dev-health`.
@@ -89,9 +85,9 @@ Here we use the neat [httpie](https://httpie.org) command line tool to call the 
 
 Let's change the result of the `health` lambda and deploy it.
 
-Go to `backend/core/functions/health/handler.ts` and replace the existing code with the following:
+Go to `services/core/functions/health/handler.ts` and replace the existing code with the following:
 
-```typescript
+```typescript title="services/core/functions/health/handler.ts"
 export const main = async (): Promise<string> => {
   return Promise.resolve('Hello Swarmion 🐝');
 };
@@ -100,7 +96,7 @@ export const main = async (): Promise<string> => {
 Then deploy the stack by running the following commands in a terminal located at the root of the project:
 
 ```bash
-cd backend/core
+cd services/core
 pnpm run deploy
 ```
 

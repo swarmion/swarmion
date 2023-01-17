@@ -26,6 +26,10 @@ module.exports = ({ pathNot, path } = { pathNot: [], path: [] }) => ({
       ],
     },
 
+    exclude: {
+      path: 'cdk.out',
+    },
+
     moduleSystems: ['amd', 'cjs', 'es6', 'tsd'],
 
     tsPreCompilationDeps: true,

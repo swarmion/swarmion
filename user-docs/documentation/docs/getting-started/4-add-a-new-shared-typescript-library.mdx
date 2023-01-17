@@ -71,16 +71,16 @@ For the rest of the tutorial, we will consider that the `pnpm watch` command is 
 
 ### Add the library to the service dependencies
 
-To use the `utils` library in the `backend-users` service, you need to first add it a normal npm dependency:
+To use the `utils` library in the `users` service, you need to first add it a normal npm dependency:
 
 ```bash
-cd backend/users
+cd services/users
 pnpm add @my-project-name/utils
 ```
 
-This will add the following line in the `dependencies` of the `backend/users/package.json` file:
+This will add the following line in the `dependencies` of the `services/users/package.json` file:
 
-```json
+```json title="services/users/package.json"
 "dependencies": {
   ...
   "@my-project-name/utils": "workspace:^",
@@ -112,9 +112,9 @@ import swarmionAppUtilsUsersGraphDark from '../../static/screenshots/swarmion-ap
 
 ### Reference the library as a TypeScript project
 
-To make **Go to Definition** (the `Ctrl+Click` command) work accross inside `backend-users` when clicking on code defined the `utils` library, you need to reference the `utils` library as a TypeScript project. To do so, add the following in the `backend/users/tsconfig.json` file:
+To make **Go to Definition** (the `Ctrl+Click` command) work accross inside `users` when clicking on code defined the `utils` library, you need to reference the `utils` library as a TypeScript project. To do so, add the following in the `services/users/tsconfig.json` file:
 
-```json
+```json title="services/users/tsconfig.json"
 "references": [
   ...,
   {
@@ -125,10 +125,9 @@ To make **Go to Definition** (the `Ctrl+Click` command) work accross inside `bac
 
 ### Import code from the library
 
-The `utils` library exports a single function `utils` defined in `packages/utils/src.utils.ts`. Let's use it in the `backend-users` service:
+The `utils` library exports a single function `utils` defined in `packages/utils/src.utils.ts`. Let's use it in the `users` service:
 
-```typescript
-// backend/users/functions/health/handler.ts
+```typescript title="services/users/functions/health/handler.ts"
 import { utils } from '@my-project-name/utils';
 
 export const main = async (): Promise<string> => {

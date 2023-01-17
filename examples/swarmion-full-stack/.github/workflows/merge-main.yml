@@ -59,7 +59,7 @@ jobs:
       - name: 'Get serverless stack region'
         id: get-stack-region
         run: |
-          echo "AWS_REGION=$(pnpm --silent -C backend/core run sls-get-region)" >> $GITHUB_OUTPUT
+          echo "AWS_REGION=$(pnpm --silent -C services/core run sls-get-region)" >> $GITHUB_OUTPUT
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@master
         with:
