@@ -17,7 +17,20 @@
       "**/bundles": true,
       "**/dist": true,
       "**/tsconfig.tsbuildinfo": true,
+      "**/cdk.out": true,
+      "nx-cache/**": true,
       "pnpm-lock.yaml": true
+    },
+    "files.watcherExclude": {
+      "**/.git/objects/**": true,
+      "**/.git/subtree-cache/**": true,
+      "**/node_modules/**/*": true,
+      "**/coverage/**": true,
+      "**/.serverless/**": true,
+      "**/build/**/*": true,
+      "**/bundles/**": true,
+      "nx-cache/**/*": true,
+      "**/cdk.out/**/*": true
     },
     "[dotenv][ignore][properties][shellscript]": {
       "editor.defaultFormatter": "foxundermoon.shell-format"
