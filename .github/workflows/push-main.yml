@@ -104,6 +104,7 @@ jobs:
   deploy:
     name: Deploy production
     needs: validate-tests
+    if: ${{ always() && needs.validate-tests.result == 'success' }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
