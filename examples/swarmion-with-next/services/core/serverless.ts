@@ -1,4 +1,5 @@
 import { AWS } from '@serverless/typescript';
+import { mergeStageParams } from '@swarmion/serverless-helpers';
 
 import { httpApiResourceContract } from '@swarmion-with-next/core-contracts';
 import {
@@ -19,7 +20,11 @@ const serverlessConfiguration: AWS = {
   provider: sharedProviderConfig,
   functions,
   package: { individually: true },
-  params: sharedParams,
+  params: mergeStageParams(sharedParams, {
+    dev: {}, // place here service-specific dev params
+    staging: {}, // place here service-specific staging params
+    production: {}, // place here service-specific production params
+  }),
   custom: {
     esbuild: sharedEsbuildConfig,
   },
