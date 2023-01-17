@@ -21,15 +21,9 @@ const serverlessConfiguration: AWS = {
   functions,
   package: { individually: true },
   params: mergeStageParams(sharedParams, {
-    dev: {
-      apiGatewayCorsAllowedOrigins: ['http://localhost:3000'],
-    },
-    staging: {
-      apiGatewayCorsAllowedOrigins: ['https://staging.my-domain.com'],
-    },
-    production: {
-      apiGatewayCorsAllowedOrigins: ['https://www.my-domain.com'],
-    },
+    dev: {}, // place here service-specific dev params
+    staging: {}, // place here service-specific staging params
+    production: {}, // place here service-specific production params
   }),
   custom: {
     esbuild: sharedEsbuildConfig,

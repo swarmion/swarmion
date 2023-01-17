@@ -42,9 +42,18 @@ export const sharedProviderConfig: ServerlessProviderConfig = {
  * An empty string for a profile means that the default profile will be used
  */
 export const sharedParams = {
-  dev: { profile: 'swarmion-starter-developer' },
-  staging: { profile: '' },
-  production: { profile: '' },
+  dev: {
+    profile: 'swarmion-with-next-developer',
+    apiGatewayCorsAllowedOrigins: ['http://localhost:3000'],
+  },
+  staging: {
+    profile: '',
+    apiGatewayCorsAllowedOrigins: ['https://staging.my-domain.com'],
+  },
+  production: {
+    profile: '',
+    apiGatewayCorsAllowedOrigins: ['https://www.my-domain.com'],
+  },
 };
 
 export const sharedEsbuildConfig = swarmionEsbuildConfig;
