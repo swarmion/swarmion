@@ -7,7 +7,7 @@ importers:
       '@commitlint/cli': ^17.3.0
       '@commitlint/config-conventional': ^17.3.0
       '@nrwl/workspace': ^15.5.1
-      '@swarmion/nx-plugin': ^0.19.1
+      '@swarmion/nx-plugin': ^0.20.0
       '@typescript-eslint/eslint-plugin': ^5.46.0
       '@typescript-eslint/parser': ^5.46.0
       aws-sdk: ^2.1272.0
@@ -30,7 +30,7 @@ importers:
       '@commitlint/cli': 17.3.0
       '@commitlint/config-conventional': 17.3.0
       '@nrwl/workspace': 15.5.1_lqwc2zjgrlxsq4ydjmen4lphum
-      '@swarmion/nx-plugin': 0.19.1_axkv7fcxfigw4afbpwtuasxm6e
+      '@swarmion/nx-plugin': 0.20.0_axkv7fcxfigw4afbpwtuasxm6e
       '@typescript-eslint/eslint-plugin': 5.46.0_5mle7isnkfgjmrghnnczirv6iy
       '@typescript-eslint/parser': 5.46.0_ha6vam6werchizxrnqvarmz2zu
       aws-sdk: 2.1272.0
@@ -50,46 +50,9 @@ importers:
       syncpack: 8.4.11
       typescript: 4.9.4
 
-  services/core:
-    specifiers:
-      '@serverless/typescript': ^3.25.0
-      '@swarmion-starter/core-contracts': 1.0.0
-      '@swarmion-starter/serverless-configuration': 1.0.0
-      '@swarmion/serverless-helpers': ^0.19.1
-      '@types/node': ^18.11.13
-      '@vitest/coverage-c8': ^0.27.0
-      dependency-cruiser: ^12.1.0
-      esbuild: ^0.16.0
-      eslint: ^8.29.0
-      serverless: ^3.25.1
-      serverless-esbuild: ^1.33.2
-      ts-node: ^10.9.1
-      typescript: ^4.9.4
-      vite: ^4.0.4
-      vite-tsconfig-paths: ^4.0.3
-      vitest: ^0.27.0
-    dependencies:
-      '@swarmion-starter/serverless-configuration': link:../../packages/serverless-configuration
-      '@swarmion/serverless-helpers': 0.19.1
-    devDependencies:
-      '@serverless/typescript': 3.25.0
-      '@swarmion-starter/core-contracts': link:../../contracts/core-contracts
-      '@types/node': 18.11.13
-      '@vitest/coverage-c8': 0.27.0
-      dependency-cruiser: 12.1.0
-      esbuild: 0.16.4
-      eslint: 8.29.0
-      serverless: 3.25.1
-      serverless-esbuild: 1.33.2_esbuild@0.16.4
-      ts-node: 10.9.1_73migmg77y47omm5253gettkxi
-      typescript: 4.9.4
-      vite: 4.0.4_@types+node@18.11.13
-      vite-tsconfig-paths: 4.0.3_gl4qsmwzp7wy5uclz4tx77gbli
-      vitest: 0.27.0
-
   contracts/core-contracts:
     specifiers:
-      '@swarmion/serverless-contracts': ^0.19.1
+      '@swarmion/serverless-contracts': ^0.20.0
       '@types/node': ^18.11.13
       concurrently: ^7.6.0
       dependency-cruiser: ^12.1.0
@@ -102,7 +65,7 @@ importers:
       typescript: ^4.9.4
       vitest: ^0.27.0
     dependencies:
-      '@swarmion/serverless-contracts': 0.19.1_axios@1.2.2
+      '@swarmion/serverless-contracts': 0.20.0_axios@1.2.2
     devDependencies:
       '@types/node': 18.11.13
       concurrently: 7.6.0
@@ -118,7 +81,7 @@ importers:
 
   packages/serverless-configuration:
     specifiers:
-      '@swarmion/serverless-helpers': ^0.19.1
+      '@swarmion/serverless-helpers': ^0.20.0
       '@types/node': ^18.11.13
       concurrently: ^7.6.0
       dependency-cruiser: ^12.1.0
@@ -131,7 +94,7 @@ importers:
       typescript: ^4.9.4
       vitest: ^0.27.0
     dependencies:
-      '@swarmion/serverless-helpers': 0.19.1
+      '@swarmion/serverless-helpers': 0.20.0
     devDependencies:
       '@types/node': 18.11.13
       concurrently: 7.6.0
@@ -143,6 +106,43 @@ importers:
       tsc-alias: 1.8.2
       tsup: 6.5.0_z6wznmtyb6ovnulj6iujpct7um
       typescript: 4.9.4
+      vitest: 0.27.0
+
+  services/core:
+    specifiers:
+      '@serverless/typescript': ^3.25.0
+      '@swarmion-starter/core-contracts': 1.0.0
+      '@swarmion-starter/serverless-configuration': 1.0.0
+      '@swarmion/serverless-helpers': ^0.20.0
+      '@types/node': ^18.11.13
+      '@vitest/coverage-c8': ^0.27.0
+      dependency-cruiser: ^12.1.0
+      esbuild: ^0.16.0
+      eslint: ^8.29.0
+      serverless: ^3.25.1
+      serverless-esbuild: ^1.33.2
+      ts-node: ^10.9.1
+      typescript: ^4.9.4
+      vite: ^4.0.4
+      vite-tsconfig-paths: ^4.0.3
+      vitest: ^0.27.0
+    dependencies:
+      '@swarmion-starter/serverless-configuration': link:../../packages/serverless-configuration
+      '@swarmion/serverless-helpers': 0.20.0
+    devDependencies:
+      '@serverless/typescript': 3.25.0
+      '@swarmion-starter/core-contracts': link:../../contracts/core-contracts
+      '@types/node': 18.11.13
+      '@vitest/coverage-c8': 0.27.0
+      dependency-cruiser: 12.1.0
+      esbuild: 0.16.4
+      eslint: 8.29.0
+      serverless: 3.25.1
+      serverless-esbuild: 1.33.2_esbuild@0.16.4
+      ts-node: 10.9.1_73migmg77y47omm5253gettkxi
+      typescript: 4.9.4
+      vite: 4.0.4_@types+node@18.11.13
+      vite-tsconfig-paths: 4.0.3_gl4qsmwzp7wy5uclz4tx77gbli
       vitest: 0.27.0
 
 packages:
@@ -1665,21 +1665,6 @@ packages:
       - debug
     dev: true
 
-  /@nrwl/devkit/15.5.0_nx@15.5.1+typescript@4.9.4:
-    resolution: {integrity: sha512-qJcOG1FpLhL1HpNm7kSZZ9JxGRjuwgciz2l348RZHUyFSA3fM/OeoygHS3E+Nl7OZQgjzFM3w7FtqvLJ4y5a3g==}
-    peerDependencies:
-      nx: '>= 14 <= 16'
-    dependencies:
-      '@phenomnomnominal/tsquery': 4.1.1_typescript@4.9.4
-      ejs: 3.1.8
-      ignore: 5.2.4
-      nx: 15.5.1
-      semver: 7.3.4
-      tslib: 2.4.1
-    transitivePeerDependencies:
-      - typescript
-    dev: true
-
   /@nrwl/devkit/15.5.1_nx@15.5.1+typescript@4.9.4:
     resolution: {integrity: sha512-SETS7nOr5ady18+rNBCz4bGW64uSYcGmVbMTrYtbl/IZHIAAaTxqd7MoOcOVWfIPWbf2SfhXb6xBiSfo6cbzOQ==}
     peerDependencies:
@@ -1692,24 +1677,6 @@ packages:
       semver: 7.3.4
       tslib: 2.4.1
     transitivePeerDependencies:
-      - typescript
-    dev: true
-
-  /@nrwl/linter/15.5.0_axkv7fcxfigw4afbpwtuasxm6e:
-    resolution: {integrity: sha512-30X6zr/LqGkVWeuvao9/c4JFWt+h1bb8PfksVynclLRT/Va9h9ukN02B8zl6DlqBczugW6L8TPnDJX9XEKpTNg==}
-    peerDependencies:
-      eslint: ^8.0.0
-    peerDependenciesMeta:
-      eslint:
-        optional: true
-    dependencies:
-      '@nrwl/devkit': 15.5.0_nx@15.5.1+typescript@4.9.4
-      '@phenomnomnominal/tsquery': 4.1.1_typescript@4.9.4
-      eslint: 8.29.0
-      tmp: 0.2.1
-      tslib: 2.4.1
-    transitivePeerDependencies:
-      - nx
       - typescript
     dev: true
 
@@ -1927,28 +1894,28 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /@swarmion/nx-plugin/0.19.1_axkv7fcxfigw4afbpwtuasxm6e:
-    resolution: {integrity: sha512-UsKN/GJxlIQG4infY2K+af1hBcKrIJaAWrAAX8O3yxtF6EWrWQWOl4rg7yKRB4tqDve8slI02zvqn5eZjDPXlA==}
+  /@swarmion/nx-plugin/0.20.0_axkv7fcxfigw4afbpwtuasxm6e:
+    resolution: {integrity: sha512-pOZ2CGHOt/e3SgiGzI/Twy1ZocX/hZVneF1K3S2jsa9Dw1JhvhtvT1LkYAY19BXozKNt1Jl7TqI8X/j5LALSZA==}
     peerDependencies:
-      nx: ^15.3.0
+      nx: ^15.5.1
       typescript: ^4.9.4
     dependencies:
-      '@nrwl/devkit': 15.5.0_nx@15.5.1+typescript@4.9.4
-      '@nrwl/linter': 15.5.0_axkv7fcxfigw4afbpwtuasxm6e
+      '@nrwl/devkit': 15.5.1_nx@15.5.1+typescript@4.9.4
+      '@nrwl/linter': 15.5.1_axkv7fcxfigw4afbpwtuasxm6e
       nx: 15.5.1
       typescript: 4.9.4
     transitivePeerDependencies:
       - eslint
     dev: true
 
-  /@swarmion/serverless-contracts/0.19.1_axios@1.2.2:
-    resolution: {integrity: sha512-dvOkzss7AUduLk23R6Wi5D2pLPl8m20aYhEqr/csvy5ZkOICKyynLo6ay06UkRtg28vTkBHKlUNHz6i/6LlENA==}
+  /@swarmion/serverless-contracts/0.20.0_axios@1.2.2:
+    resolution: {integrity: sha512-rTZaaUu3BR0sT2xdzlf18nGEAW8Ixv82xO8NKszLjvf/MyZPBYga4wjkH/WTcRu8GC/9A6JJKy3h7ydvOvglJQ==}
     peerDependencies:
       axios: ^1.2.2
     dependencies:
       '@aws-sdk/client-eventbridge': 3.245.0
       '@serverless/typescript': 3.25.0
-      '@swarmion/serverless-helpers': 0.19.1
+      '@swarmion/serverless-helpers': 0.20.0
       ajv: 8.12.0
       axios: 1.2.2
       http-errors: 2.0.0
@@ -1961,8 +1928,8 @@ packages:
       - aws-crt
     dev: false
 
-  /@swarmion/serverless-helpers/0.19.1:
-    resolution: {integrity: sha512-bv9FQNTp6DqRLp/xyxyed9Ve/m86MDtUNX3TrcP5TAlKCX7Kk6kkS+L48Oc2Nl6Hgxy8U9AMW3iPWSIQNuVOJw==}
+  /@swarmion/serverless-helpers/0.20.0:
+    resolution: {integrity: sha512-JfuTM2ozjOnCMHSiJ/jkHbxq0PEq+Zw6kDXjnw4bXV9PP0Su7esNP9rmMFFvjFbDCOzN9e5Wd7BGAdCS/9H4jw==}
     dependencies:
       '@middy/core': 2.5.7
       '@middy/http-error-handler': 2.5.7
