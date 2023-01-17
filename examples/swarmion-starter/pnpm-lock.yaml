@@ -7,7 +7,7 @@ importers:
       '@commitlint/cli': ^17.3.0
       '@commitlint/config-conventional': ^17.3.0
       '@nrwl/workspace': ^15.5.1
-      '@swarmion/nx-plugin': ^0.20.0
+      '@swarmion/nx-plugin': ^0.20.1
       '@typescript-eslint/eslint-plugin': ^5.46.0
       '@typescript-eslint/parser': ^5.46.0
       aws-sdk: ^2.1272.0
@@ -30,7 +30,7 @@ importers:
       '@commitlint/cli': 17.3.0
       '@commitlint/config-conventional': 17.3.0
       '@nrwl/workspace': 15.5.1_lqwc2zjgrlxsq4ydjmen4lphum
-      '@swarmion/nx-plugin': 0.20.0_axkv7fcxfigw4afbpwtuasxm6e
+      '@swarmion/nx-plugin': 0.20.1_axkv7fcxfigw4afbpwtuasxm6e
       '@typescript-eslint/eslint-plugin': 5.46.0_5mle7isnkfgjmrghnnczirv6iy
       '@typescript-eslint/parser': 5.46.0_ha6vam6werchizxrnqvarmz2zu
       aws-sdk: 2.1272.0
@@ -52,7 +52,7 @@ importers:
 
   contracts/core-contracts:
     specifiers:
-      '@swarmion/serverless-contracts': ^0.20.0
+      '@swarmion/serverless-contracts': ^0.20.1
       '@types/node': ^18.11.13
       concurrently: ^7.6.0
       dependency-cruiser: ^12.1.0
@@ -65,7 +65,7 @@ importers:
       typescript: ^4.9.4
       vitest: ^0.27.0
     dependencies:
-      '@swarmion/serverless-contracts': 0.20.0_axios@1.2.2
+      '@swarmion/serverless-contracts': 0.20.1_axios@1.2.2
     devDependencies:
       '@types/node': 18.11.13
       concurrently: 7.6.0
@@ -81,7 +81,7 @@ importers:
 
   packages/serverless-configuration:
     specifiers:
-      '@swarmion/serverless-helpers': ^0.20.0
+      '@swarmion/serverless-helpers': ^0.20.1
       '@types/node': ^18.11.13
       concurrently: ^7.6.0
       dependency-cruiser: ^12.1.0
@@ -94,7 +94,7 @@ importers:
       typescript: ^4.9.4
       vitest: ^0.27.0
     dependencies:
-      '@swarmion/serverless-helpers': 0.20.0
+      '@swarmion/serverless-helpers': 0.20.1
     devDependencies:
       '@types/node': 18.11.13
       concurrently: 7.6.0
@@ -113,7 +113,7 @@ importers:
       '@serverless/typescript': ^3.25.0
       '@swarmion-starter/core-contracts': 1.0.0
       '@swarmion-starter/serverless-configuration': 1.0.0
-      '@swarmion/serverless-helpers': ^0.20.0
+      '@swarmion/serverless-helpers': ^0.20.1
       '@types/node': ^18.11.13
       '@vitest/coverage-c8': ^0.27.0
       dependency-cruiser: ^12.1.0
@@ -128,7 +128,7 @@ importers:
       vitest: ^0.27.0
     dependencies:
       '@swarmion-starter/serverless-configuration': link:../../packages/serverless-configuration
-      '@swarmion/serverless-helpers': 0.20.0
+      '@swarmion/serverless-helpers': 0.20.1
     devDependencies:
       '@serverless/typescript': 3.25.0
       '@swarmion-starter/core-contracts': link:../../contracts/core-contracts
@@ -1894,8 +1894,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /@swarmion/nx-plugin/0.20.0_axkv7fcxfigw4afbpwtuasxm6e:
-    resolution: {integrity: sha512-pOZ2CGHOt/e3SgiGzI/Twy1ZocX/hZVneF1K3S2jsa9Dw1JhvhtvT1LkYAY19BXozKNt1Jl7TqI8X/j5LALSZA==}
+  /@swarmion/nx-plugin/0.20.1_axkv7fcxfigw4afbpwtuasxm6e:
+    resolution: {integrity: sha512-Y9QbHwkNxofU5cSCpz8jWm813F1XziICAslPouDpImWr4ATFBcwo1eaZWTnaVzB31qnubjIkv02BMfF0Hy+e4A==}
     peerDependencies:
       nx: ^15.5.1
       typescript: ^4.9.4
@@ -1908,14 +1908,14 @@ packages:
       - eslint
     dev: true
 
-  /@swarmion/serverless-contracts/0.20.0_axios@1.2.2:
-    resolution: {integrity: sha512-rTZaaUu3BR0sT2xdzlf18nGEAW8Ixv82xO8NKszLjvf/MyZPBYga4wjkH/WTcRu8GC/9A6JJKy3h7ydvOvglJQ==}
+  /@swarmion/serverless-contracts/0.20.1_axios@1.2.2:
+    resolution: {integrity: sha512-lkcuqeGjMJgVSXrWUWsNpfzOrrLQt3YodqYy1YstNyGRB+f3bftZR7j1axhUHcQ/U/00BIhBPtnajrJwFrgljg==}
     peerDependencies:
       axios: ^1.2.2
     dependencies:
       '@aws-sdk/client-eventbridge': 3.245.0
       '@serverless/typescript': 3.25.0
-      '@swarmion/serverless-helpers': 0.20.0
+      '@swarmion/serverless-helpers': 0.20.1
       ajv: 8.12.0
       axios: 1.2.2
       http-errors: 2.0.0
@@ -1928,8 +1928,8 @@ packages:
       - aws-crt
     dev: false
 
-  /@swarmion/serverless-helpers/0.20.0:
-    resolution: {integrity: sha512-JfuTM2ozjOnCMHSiJ/jkHbxq0PEq+Zw6kDXjnw4bXV9PP0Su7esNP9rmMFFvjFbDCOzN9e5Wd7BGAdCS/9H4jw==}
+  /@swarmion/serverless-helpers/0.20.1:
+    resolution: {integrity: sha512-9SRUNYJgsRSSpm+7TukOQ63BXYEiTvLF4Kgy8pq02C7KyUdeavFp9BdqKfxjQyvcIeibqpErPexTaj+XFA0CWg==}
     dependencies:
       '@middy/core': 2.5.7
       '@middy/http-error-handler': 2.5.7
