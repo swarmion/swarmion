@@ -29,10 +29,10 @@ pnpm nx generate @swarmion/nx-plugin:service my-service
 
 This will create a simple service in the repository's structure respecting our guidelines.
 
-By default, new packages will be placed in the `packages` directory. You can customize this with the `--directory` option. For example:
+By default, new services will be placed in the `services` directory. You can customize this with the `--directory` option. For example:
 
 ```bash
-pnpm nx generate @swarmion/nx-plugin:service myService --directory=path/to/packages
+pnpm nx generate @swarmion/nx-plugin:service service --directory=path/to/services
 ```
 
 ## Generate new Libraries
@@ -45,8 +45,8 @@ pnpm nx generate @swarmion/nx-plugin:library my-library
 
 This will create a simple internal library in the repository's structure respecting our guidelines.
 
-By default, new services will be placed in the `services` directory. You can customize this with the `--directory` option. For example:
+By default, new libraries will be placed in the `packages` directory. You can customize this with the `--directory` option. For example:
 
 ```bash
-pnpm nx generate @swarmion/nx-plugin:service my-service --directory=path/to/services
+pnpm nx generate @swarmion/nx-plugin:library my-library --directory=path/to/packages
 ```
