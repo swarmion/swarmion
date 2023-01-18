@@ -26,6 +26,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
   },
   dependencies: {
     [`@${options.workspaceName}/serverless-configuration`]: 'workspace:^',
+    '@swarmion/serverless-contracts': 'latest',
     '@swarmion/serverless-helpers': 'latest',
   },
   devDependencies: {

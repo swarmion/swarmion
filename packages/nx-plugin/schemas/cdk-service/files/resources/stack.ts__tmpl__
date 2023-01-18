@@ -24,8 +24,6 @@ export class <%= capitalize(pascalName) %>Stack extends Stack {
       },
     });
 
-    const healthResource = <%= pascalName %>Api.root.addResource('health');
-
-    new Health(this, 'Health', { apiResource: healthResource });
+    new Health(this, 'Health', { restApi: <%= pascalName %>Api });
   }
 }
