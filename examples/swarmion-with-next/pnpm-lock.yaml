@@ -50,6 +50,7 @@ importers:
 
   contracts/core-contracts:
     specifiers:
+      '@swarmion-with-next/serverless-configuration': workspace:1.0.0
       '@swarmion/serverless-contracts': ^0.20.3
       '@types/node': ^18.11.18
       concurrently: ^7.6.0
@@ -63,6 +64,7 @@ importers:
       typescript: ^4.9.4
       vitest: ^0.27.0
     dependencies:
+      '@swarmion-with-next/serverless-configuration': link:../../packages/serverless-configuration
       '@swarmion/serverless-contracts': 0.20.3_35qk72belje3miap435fwq3rsu
     devDependencies:
       '@types/node': 18.11.18
