@@ -31,6 +31,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
   devDependencies: {
     '@types/node': 'latest',
     '@vitest/coverage-c8': 'latest',
+    'aws-cdk': 'latest',
     'aws-cdk-lib': 'latest',
     constructs: 'latest',
     'dependency-cruiser': 'latest',
