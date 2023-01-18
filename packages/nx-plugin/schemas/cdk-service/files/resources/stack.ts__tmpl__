@@ -1,0 +1,31 @@
+import { Stack, StackProps } from 'aws-cdk-lib';
+import { RestApi } from 'aws-cdk-lib/aws-apigateway';
+import { Construct } from 'constructs';
+
+import { functions } from 'functions';
+
+const { Health } = functions;
+
+interface <%= capitalize(pascalName) %>Props {
+  stage: string;
+}
+
+export class <%= capitalize(pascalName) %>Stack extends Stack {
+  constructor(scope: Construct, id: string, props: StackProps & <%= capitalize(pascalName) %>Props) {
+    super(scope, id, props);
+
+    const { stage } = props;
+
+    const <%= pascalName %>Api = new RestApi(this, '<%= capitalize(pascalName) %>Api', {
+      // the stage of the API is the same as the stage of the stack
+      description: `<%= capitalize(pascalName) %> API - ${stage}`,
+      deployOptions: {
+        stageName: stage,
+      },
+    });
+
+    const healthResource = <%= pascalName %>Api.root.addResource('health');
+
+    new Health(this, 'Health', { apiResource: healthResource });
+  }
+}

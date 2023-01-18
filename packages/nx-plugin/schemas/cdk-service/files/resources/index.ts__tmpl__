@@ -1,0 +1,24 @@
+
+import { App } from 'aws-cdk-lib';
+import dotenv from 'dotenv';
+
+import {
+  defaultEnvironment,
+  region,
+  sharedParams,
+} from '@<%= workspaceName %>/serverless-configuration';
+
+import { <%= capitalize(pascalName) %>Stack } from './stack';
+
+dotenv.config();
+
+const app = new App();
+
+const stage =
+  (app.node.tryGetContext('stage') as keyof typeof sharedParams | undefined) ??
+  defaultEnvironment;
+
+new <%= capitalize(pascalName) %>Stack(app, `<%= name %>-${stage}`, {
+  env: { region },
+  stage,
+});

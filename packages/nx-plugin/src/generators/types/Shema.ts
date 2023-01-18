@@ -9,6 +9,7 @@ export interface Schema {
 
 export interface NormalizedSchema extends Schema {
   fileName: string;
+  pascalName: string;
   generatorType: GeneratorType;
   importPath: string;
   linter: Linter;
@@ -16,4 +17,5 @@ export interface NormalizedSchema extends Schema {
   offsetFromRoot: string;
   packageRoot: string;
   workspaceName: string;
+  capitalize: (value: string) => string;
 }

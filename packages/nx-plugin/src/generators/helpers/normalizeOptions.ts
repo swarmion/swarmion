@@ -27,12 +27,15 @@ export const normalizeOptions = (
     fileName: projectName,
     pascalCaseFiles: false,
   });
+  const pascalName = getCaseAwareFileName({ fileName, pascalCaseFiles: true });
+
   const { npmScope } = getWorkspaceLayout(tree);
   const offsetFromRoot = relative(packageRoot, tree.root);
 
   return {
     ...options,
     fileName,
+    pascalName,
     generatorType,
     importPath: projectName,
     linter,
@@ -40,6 +43,7 @@ export const normalizeOptions = (
     packageRoot,
     offsetFromRoot,
     workspaceName: npmScope,
+    capitalize: capitalizeFirstLetter,
   };
 };
 
@@ -51,3 +55,6 @@ const getCaseAwareFileName = (options: {
 
   return options.pascalCaseFiles ? normalized.className : normalized.fileName;
 };
+
+const capitalizeFirstLetter = (value: string) =>
+  value.charAt(0).toUpperCase() + value.slice(1);

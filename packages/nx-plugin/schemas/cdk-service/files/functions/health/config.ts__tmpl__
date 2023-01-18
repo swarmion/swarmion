@@ -5,7 +5,7 @@ import { Architecture, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { Construct } from 'constructs';
 
-import { sharedEsbuildConfig } from '@<%= workspaceName %>/serverless-configuration';
+import { sharedCdkEsbuildConfig } from '@<%= workspaceName %>/serverless-configuration';
 
 export class Health extends Construct {
   public healthFunction: NodejsFunction;
@@ -19,7 +19,12 @@ export class Health extends Construct {
       runtime: Runtime.NODEJS_16_X,
       architecture: Architecture.ARM_64,
       awsSdkConnectionReuse: true,
-      bundling: sharedEsbuildConfig,
+      bundling: sharedCdkEsbuildConfig,
     });
+
+    props.apiResource.addMethod(
+      'GET',
+      new LambdaIntegration(this.healthFunction),
+    );
   }
 }
