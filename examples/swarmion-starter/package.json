@@ -13,6 +13,7 @@
     "deploy": "nx run-many --target=deploy --all --parallel=4",
     "deploy-affected": "nx affected --target=deploy",
     "generate-library": "nx generate @swarmion/nx-plugin:library",
+    "generate-cdk-service": "nx generate @swarmion/nx-plugin:cdk-service",
     "generate-service": "nx generate @swarmion/nx-plugin:service",
     "graph": "nx dep-graph",
     "lint-fix": "eslint --ext=js,ts --fix",
