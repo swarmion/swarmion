@@ -1,5 +1,6 @@
 import {
   ServerlessProviderConfig,
+  swarmionCdkEsbuildConfig,
   swarmionEsbuildConfig,
 } from '@swarmion/serverless-helpers';
 
@@ -57,3 +58,4 @@ export const sharedParams = {
 };
 
 export const sharedEsbuildConfig = swarmionEsbuildConfig;
+export const sharedCdkEsbuildConfig = swarmionCdkEsbuildConfig;
