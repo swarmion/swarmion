@@ -7,6 +7,7 @@ const getTsConfigPath = (options: NormalizedSchema) => {
     case GeneratorType.LIBRARY:
       return `./${options.packageRoot}/tsconfig.build.json`;
     case GeneratorType.SERVICE:
+    case GeneratorType.CDK_SERVICE:
       return `./${options.packageRoot}/tsconfig.json`;
   }
 };
