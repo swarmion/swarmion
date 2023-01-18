@@ -1,6 +1,8 @@
 import type { BundlingOptions } from 'aws-cdk-lib/aws-lambda-nodejs';
 import type { BuildOptions } from 'esbuild';
 
+export type { BundlingOptions };
+
 type EsbuildOptions = Omit<BuildOptions, 'watch'>;
 
 /**
