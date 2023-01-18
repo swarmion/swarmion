@@ -1,3 +1,4 @@
+import type { BundlingOptions } from 'aws-cdk-lib/aws-lambda-nodejs';
 import type { BuildOptions } from 'esbuild';
 
 type EsbuildOptions = Omit<BuildOptions, 'watch'>;
@@ -36,4 +37,17 @@ export const swarmionEsbuildConfig: SwarmionEsbuildConfig = {
   platform: 'node',
   mainFields: ['module', 'main'],
   concurrency: 5,
+};
+
+/**
+ * the recommended CDK esbuild configuration for Swarmion.
+ *
+ * - `target` is inferred from the construct runtime
+ * - `exclude` is already default depending on the runtime
+ */
+export const swarmionCdkEsbuildConfig: BundlingOptions = {
+  minify: true,
+  keepNames: true,
+  sourceMap: true,
+  mainFields: ['module', 'main'],
 };

@@ -438,6 +438,7 @@ importers:
       '@types/aws-lambda': ^8.10.109
       '@types/node': ^18.11.13
       '@vitest/coverage-c8': ^0.27.0
+      aws-cdk-lib: ^2.60.0
       concurrently: ^7.6.0
       dependency-cruiser: ^12.1.0
       esbuild: ^0.16.0
@@ -457,6 +458,7 @@ importers:
       '@middy/http-json-body-parser': 2.5.7
       '@middy/validator': 2.5.7
       '@serverless/typescript': 3.25.0
+      aws-cdk-lib: 2.60.0_constructs@10.1.187
       json-schema-to-ts: 2.6.2
     devDependencies:
       '@types/aws-lambda': 8.10.109
@@ -786,21 +788,29 @@ packages:
 
   /@aws-cdk/asset-awscli-v1/2.2.30:
     resolution: {integrity: sha512-mFRF5n1jxjKpX8ZZSCRhJc6Hj8BkeZFUPwK0j6jRcouQQZHsZyydbf4UuzMYQ4SZU6cCLM7DKmWO0Kx156ZSnw==}
+    dev: false
+
+  /@aws-cdk/asset-awscli-v1/2.2.49:
+    resolution: {integrity: sha512-Qd5bdLlC/sphWQQPNn7etKXWCh+fij7DWxtkIwvhhZ+LM6UEApGLS8sBLBQcRO2ZQdEuNb+zeClUy+3DNojfeg==}
 
   /@aws-cdk/asset-kubectl-v20/2.1.1:
     resolution: {integrity: sha512-U1ntiX8XiMRRRH5J1IdC+1t5CE89015cwyt5U63Cpk0GnMlN5+h9WsWMlKlPXZR4rdq/m806JRlBMRpBUB2Dhw==}
 
   /@aws-cdk/asset-node-proxy-agent-v5/2.0.36:
     resolution: {integrity: sha512-acG7qHXrLXGVsOnkHNrNfzGaMtONZ+2nsjhUXhCRf9zQZMzs7lzkv9dTUaHJywAABR9DaRRUFMpUytJDqvN8Ew==}
+    dev: false
 
-  /@aws-cdk/aws-apigatewayv2-alpha/2.21.1-alpha.0_6m5cgy4jtpdvi37bcsvqzw2qxq:
+  /@aws-cdk/asset-node-proxy-agent-v5/2.0.38:
+    resolution: {integrity: sha512-BBwAjORhuUkTGO3CxGS5Evcp5n20h9v06Sftn2R1DuSm8zIoUlPsNlI1HUk8XqYuoEI4aD7IKRQBLglv09ciJQ==}
+
+  /@aws-cdk/aws-apigatewayv2-alpha/2.21.1-alpha.0_q2t62b2caqesyxtsqn63itt6ce:
     resolution: {integrity: sha512-FnPL9tLTEHI3B5N4MO6k17/GBYftT4vD5DIgX7qp3w0P4dbKpp2tc97uFNg84dg0bYN+EN8Vn81uX611ETDsNA==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       aws-cdk-lib: ^2.21.1
       constructs: ^10.0.0
     dependencies:
-      aws-cdk-lib: 2.54.0_constructs@10.1.187
+      aws-cdk-lib: 2.60.0_constructs@10.1.187
       constructs: 10.1.187
     dev: true
 
@@ -2805,6 +2815,7 @@ packages:
 
   /@balena/dockerignore/1.0.2:
     resolution: {integrity: sha512-wMue2Sy4GAVTk6Ic4tJVcnfdau+gx2EnG7S+uAEe+TWJFqE4YoWN4/H8MSLj4eYJKxGg26lZwboEniNiNwZQ6Q==}
+    dev: false
 
   /@bcoe/v8-coverage/0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
@@ -7356,6 +7367,28 @@ packages:
       punycode: 2.1.1
       semver: 7.3.8
       yaml: 1.10.2
+    dev: false
+    bundledDependencies:
+      - '@balena/dockerignore'
+      - case
+      - fs-extra
+      - ignore
+      - jsonschema
+      - minimatch
+      - punycode
+      - semver
+      - yaml
+
+  /aws-cdk-lib/2.60.0_constructs@10.1.187:
+    resolution: {integrity: sha512-AttvwGmS1TDiOgkskrRw4lQoDwoyzjb+M0iMzHEa75xDz7hkykudNVEvWOfcbid+rzkgfLQyElwtf/oz6m+O9A==}
+    engines: {node: '>= 14.15.0'}
+    peerDependencies:
+      constructs: ^10.0.0
+    dependencies:
+      '@aws-cdk/asset-awscli-v1': 2.2.49
+      '@aws-cdk/asset-kubectl-v20': 2.1.1
+      '@aws-cdk/asset-node-proxy-agent-v5': 2.0.38
+      constructs: 10.1.187
     bundledDependencies:
       - '@balena/dockerignore'
       - case
@@ -8000,6 +8033,7 @@ packages:
   /case/1.6.3:
     resolution: {integrity: sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==}
     engines: {node: '>= 0.8.0'}
+    dev: false
 
   /ccount/1.1.0:
     resolution: {integrity: sha512-vlNK021QdI7PNeiUh/lKkC/mNHHfV0m/Ad5JoI0TYtlBnJAslM/JIkm/tGC88bkLIwO6OQ5uV6ztS6kVAtCDlg==}
@@ -12794,6 +12828,7 @@ packages:
 
   /jsonschema/1.4.1:
     resolution: {integrity: sha512-S6cATIPVv1z0IlxdN+zUk5EPjkGCdnhN4wVSBlvoUO1tOLJootbo9CquNJmbIh4yikWHiUedhRYrNPn1arpEmQ==}
+    dev: false
 
   /jszip/3.10.1:
     resolution: {integrity: sha512-xXDvecyTpGLrqFrvkrUSoxxfJI5AH7U8zxxtVclpsUtMCq4JQ290LY8AW5c7Ggnr/Y/oK+bQMbqK2qmtk3pN4g==}
@@ -16269,8 +16304,8 @@ packages:
     peerDependencies:
       serverless: ^2.36.0 || ^3
     dependencies:
-      '@aws-cdk/aws-apigatewayv2-alpha': 2.21.1-alpha.0_6m5cgy4jtpdvi37bcsvqzw2qxq
-      aws-cdk-lib: 2.54.0_constructs@10.1.187
+      '@aws-cdk/aws-apigatewayv2-alpha': 2.21.1-alpha.0_q2t62b2caqesyxtsqn63itt6ce
+      aws-cdk-lib: 2.60.0_constructs@10.1.187
       aws-sdk: 2.1272.0
       chalk: 4.1.2
       change-case: 4.1.2
