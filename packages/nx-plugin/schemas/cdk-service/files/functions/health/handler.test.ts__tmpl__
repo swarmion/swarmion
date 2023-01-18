@@ -6,6 +6,9 @@ describe('health handler', () => {
   it('should return "ok"', async () => {
     expect(
       await main({}, getAPIGatewayEventHandlerContextMock(), () => null),
-    ).toEqual({ statusCode: 200, body: 'ok' });
+    ).toMatchObject({
+      statusCode: 200,
+      body: JSON.stringify({ message: 'ok' }),
+    });
   });
 });
