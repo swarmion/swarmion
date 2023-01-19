@@ -12,6 +12,11 @@ EXAMPLE_NAME=$EXAMPLE-$RANDOM_ID
 NO_PNPM_POSTINSTALL=true pnpm node packages/create-swarmion-app/dist/index.js -t $EXAMPLE -s $REF $TEMP_DIR/$EXAMPLE_NAME
 cd $TEMP_DIR/$EXAMPLE_NAME
 
+# test everything
+pnpm package
+pnpm build
+pnpm test
+
 # link generator and generate library
 pnpm link $BASE_DIR/packages/nx-plugin
 pnpm generate-library test-library
@@ -24,7 +29,7 @@ pnpm generate-service test-service
 pnpm link $BASE_DIR/packages/nx-plugin
 pnpm generate-cdk-service test-cdk-service
 
-# test everything
+# re-test everything
 pnpm package
 pnpm build
 pnpm test
