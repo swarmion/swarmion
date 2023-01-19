@@ -64,7 +64,7 @@ importers:
       tsc-alias: ^1.8.2
       tsup: ^6.5.0
       typescript: ^4.9.4
-      vitest: ^0.27.0
+      vitest: ^0.27.2
     dependencies:
       '@swarmion-starter/serverless-configuration': link:../../packages/serverless-configuration
       '@swarmion/serverless-contracts': 0.20.3_35qk72belje3miap435fwq3rsu
@@ -79,7 +79,7 @@ importers:
       tsc-alias: 1.8.2
       tsup: 6.5.0_z6wznmtyb6ovnulj6iujpct7um
       typescript: 4.9.4
-      vitest: 0.27.0
+      vitest: 0.27.2
 
   packages/serverless-configuration:
     specifiers:
@@ -94,7 +94,7 @@ importers:
       tsc-alias: ^1.8.2
       tsup: ^6.5.0
       typescript: ^4.9.4
-      vitest: ^0.27.0
+      vitest: ^0.27.2
     dependencies:
       '@swarmion/serverless-helpers': 0.20.3_constructs@10.1.223
     devDependencies:
@@ -108,7 +108,7 @@ importers:
       tsc-alias: 1.8.2
       tsup: 6.5.0_z6wznmtyb6ovnulj6iujpct7um
       typescript: 4.9.4
-      vitest: 0.27.0
+      vitest: 0.27.2
 
   services/core:
     specifiers:
@@ -117,7 +117,7 @@ importers:
       '@swarmion-starter/serverless-configuration': 1.0.0
       '@swarmion/serverless-helpers': ^0.20.3
       '@types/node': ^18.11.13
-      '@vitest/coverage-c8': ^0.27.0
+      '@vitest/coverage-c8': ^0.27.2
       dependency-cruiser: ^12.1.0
       esbuild: ^0.16.0
       eslint: ^8.29.0
@@ -127,7 +127,7 @@ importers:
       typescript: ^4.9.4
       vite: ^4.0.4
       vite-tsconfig-paths: ^4.0.3
-      vitest: ^0.27.0
+      vitest: ^0.27.2
     dependencies:
       '@swarmion-starter/serverless-configuration': link:../../packages/serverless-configuration
       '@swarmion/serverless-helpers': 0.20.3_constructs@10.1.223
@@ -135,7 +135,7 @@ importers:
       '@serverless/typescript': 3.25.0
       '@swarmion-starter/core-contracts': link:../../contracts/core-contracts
       '@types/node': 18.11.13
-      '@vitest/coverage-c8': 0.27.0
+      '@vitest/coverage-c8': 0.27.2
       dependency-cruiser: 12.1.0
       esbuild: 0.16.4
       eslint: 8.29.0
@@ -145,7 +145,7 @@ importers:
       typescript: 4.9.4
       vite: 4.0.4_@types+node@18.11.13
       vite-tsconfig-paths: 4.0.3_gl4qsmwzp7wy5uclz4tx77gbli
-      vitest: 0.27.0
+      vitest: 0.27.2
 
 packages:
 
@@ -2058,7 +2058,7 @@ packages:
   /@types/keyv/3.1.4:
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
     dependencies:
-      '@types/node': 18.11.13
+      '@types/node': 18.11.18
     dev: true
 
   /@types/lodash/4.14.191:
@@ -2228,11 +2228,11 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vitest/coverage-c8/0.27.0:
-    resolution: {integrity: sha512-jO/TAz/qUP1ssfIj6Gg1FxTRkOD5tJBiP3mwKayaqGunMsknCmxWVuFrgF1XH+FGZWLnFzR2InTjYxlyGNSgzQ==}
+  /@vitest/coverage-c8/0.27.2:
+    resolution: {integrity: sha512-1MFwlwfwIfPFLfu6aN+dZ5jo2aOah5nAwoq/SrqUkt9rXzUmohLOgI1GTT0PpXbJKqaZicIlWuBjiC+BjVgRwQ==}
     dependencies:
       c8: 7.12.0
-      vitest: 0.27.0
+      vitest: 0.27.2
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -5978,13 +5978,6 @@ packages:
       brace-expansion: 2.0.1
     dev: true
 
-  /minimatch/5.1.1:
-    resolution: {integrity: sha512-362NP+zlprccbEt/SkxKfRMHnNY85V74mVnpUpNyr3F35covl09Kec7/sEFLt3RA4oXmewtoaanoIf67SE5Y5g==}
-    engines: {node: '>=10'}
-    dependencies:
-      brace-expansion: 2.0.1
-    dev: true
-
   /minimatch/5.1.2:
     resolution: {integrity: sha512-bNH9mmM9qsJ2X4r2Nat1B//1dJVcn3+iBLa3IgqJ7EbGaDNepL9QSHOxN4ng33s52VMMhhIfgCYDk3C4ZmlDAg==}
     engines: {node: '>=10'}
@@ -6823,7 +6816,7 @@ packages:
   /readdir-glob/1.1.2:
     resolution: {integrity: sha512-6RLVvwJtVwEDfPdn6X6Ille4/lxGl0ATOY4FN/B9nxQcgOazvvI0nodiD19ScKq0PvA/29VpaOQML36o5IzZWA==}
     dependencies:
-      minimatch: 5.1.1
+      minimatch: 5.1.2
     dev: true
 
   /readdirp/3.6.0:
@@ -7216,6 +7209,10 @@ packages:
       object-inspect: 1.12.2
     dev: true
 
+  /siginfo/2.0.0:
+    resolution: {integrity: sha512-ybx0WO1/8bSBLEWXZvEd7gMW3Sn3JFlW3TvX1nREbDLRNQNaeNN8WK0meBwPdAaOI7TtRRRJn/Es1zhrrCHu7g==}
+    dev: true
+
   /signal-exit/3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
     dev: true
@@ -7364,6 +7361,10 @@ packages:
     resolution: {integrity: sha512-2PNlcs3j5JflQKcg4wpdqpZ+AjhQJ2OZEo34NXDtlB0tIPG84xaaXhpA8XFacFiwjKA4m49UOYG83y3hbMn/gQ==}
     dependencies:
       es5-ext: 0.10.62
+    dev: true
+
+  /stackback/0.0.2:
+    resolution: {integrity: sha512-1XMJE5fQo1jGH6Y/7ebnwPOBEkIEnT4QF32d5R1+VXdXveM0IBMJt8zfaxX1P3QhVwrYe+576+jkANtSS2mBbw==}
     dev: true
 
   /statuses/2.0.1:
@@ -8152,8 +8153,8 @@ packages:
       builtins: 1.0.3
     dev: true
 
-  /vite-node/0.27.0_@types+node@18.11.18:
-    resolution: {integrity: sha512-O1o9joT0qCGx5Om6W0VNLr7M00ttrnFlfZX2d+oxt2T9oZ9DvYSv8kDRhNJDVhAgNgUm3Tc0h/+jppNf3mVKbA==}
+  /vite-node/0.27.2_@types+node@18.11.18:
+    resolution: {integrity: sha512-IDwuVhslF10qCnWOGJui7/2KksAOBHi+UbVo6Pqt4f5lgn+kS2sVvYDsETRG5PSuslisGB5CFGvb9I6FQgymBQ==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     dependencies:
@@ -8257,8 +8258,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.27.0:
-    resolution: {integrity: sha512-BnOa7T6CnXVC6UgcAsvFOZ2Dtvqkt+/Nl6CRgh4qVT70vElf65XwEL6zMRyTF+h2QXJziEkxYdrLo5WCxckMLQ==}
+  /vitest/0.27.2:
+    resolution: {integrity: sha512-y7tdsL2uaQy+KF18AlmNHZe29ukyFytlxrpSTwwmgLE2XHR/aPucJP9FLjWoqjgqFlXzRAjHlFJLU+HDyI/OsA==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
@@ -8295,7 +8296,8 @@ packages:
       tinypool: 0.3.0
       tinyspy: 1.0.2
       vite: 4.0.4_@types+node@18.11.18
-      vite-node: 0.27.0_@types+node@18.11.18
+      vite-node: 0.27.2_@types+node@18.11.18
+      why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
       - sass
@@ -8377,6 +8379,15 @@ packages:
     hasBin: true
     dependencies:
       isexe: 2.0.0
+    dev: true
+
+  /why-is-node-running/2.2.2:
+    resolution: {integrity: sha512-6tSwToZxTOcotxHeA+qGCq1mVzKR3CwcJGmVcY+QE8SHy6TnpFnh8PAvPNHYr7EcuVeG0QSMxtYCuO1ta/G/oA==}
+    engines: {node: '>=8'}
+    hasBin: true
+    dependencies:
+      siginfo: 2.0.0
+      stackback: 0.0.2
     dev: true
 
   /word-wrap/1.2.3:
