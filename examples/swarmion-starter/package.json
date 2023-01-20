@@ -4,14 +4,15 @@
   "version": "1.0.0",
   "license": "MIT",
   "workspaces": [
-    "services/*",
     "contracts/*",
-    "packages/*"
+    "packages/*",
+    "services/*"
   ],
   "scripts": {
     "build": "nx run-many --target=build --all --parallel=4",
     "deploy": "nx run-many --target=deploy --all --parallel=4",
     "deploy-affected": "nx affected --target=deploy",
+    "generate-cdk-service": "nx generate @swarmion/nx-plugin:cdk-service",
     "generate-library": "nx generate @swarmion/nx-plugin:library",
     "generate-service": "nx generate @swarmion/nx-plugin:service",
     "graph": "nx dep-graph",

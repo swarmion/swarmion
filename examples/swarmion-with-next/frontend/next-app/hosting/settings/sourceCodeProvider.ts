@@ -1,4 +1,7 @@
-import { GitHubSourceCodeProvider, GitHubSourceCodeProviderProps } from '@aws-cdk/aws-amplify-alpha';
+import {
+  GitHubSourceCodeProvider,
+  GitHubSourceCodeProviderProps,
+} from '@aws-cdk/aws-amplify-alpha';
 import { SecretValue } from 'aws-cdk-lib';
 import * as dotenv from 'dotenv';
 

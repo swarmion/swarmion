@@ -12,7 +12,6 @@ const plugins = [react(), tsconfigPaths(), svgrPlugin()];
 
 if (process.env.ANALYZE === 'true') {
   plugins.push(
-    // @ts-expect-error TODO fix this
     visualizer({
       open: true,
       filename: `bundles/${new Date().toISOString()}.html`,

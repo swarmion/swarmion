@@ -27,6 +27,7 @@
     "watch": "pnpm clean && concurrently 'pnpm:package-* --watch'"
   },
   "dependencies": {
+    "@swarmion-starter/serverless-configuration": "workspace:1.0.0",
     "@swarmion/serverless-contracts": "^0.20.3"
   },
   "devDependencies": {
@@ -40,6 +41,6 @@
     "tsc-alias": "^1.8.2",
     "tsup": "^6.5.0",
     "typescript": "^4.9.4",
-    "vitest": "^0.27.0"
+    "vitest": "^0.27.2"
   }
 }

@@ -6,6 +6,16 @@ module.exports = {
     'plugin:import/recommended',
     'plugin:prettier/recommended',
   ],
+  ignorePatterns: [
+    'examples/',
+    '**/node_modules/',
+    '**/nx-cache/',
+    '**/dist/',
+    '**/cdk.out/',
+    '**/coverage/',
+    '**/build/',
+    '**/public/',
+  ],
   rules: {
     'prettier/prettier': 'error',
     'import/extensions': 0,

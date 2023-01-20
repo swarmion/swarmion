@@ -1,5 +1,6 @@
 import {
   ServerlessProviderConfig,
+  swarmionCdkEsbuildConfig,
   swarmionEsbuildConfig,
 } from '@swarmion/serverless-helpers';
 
@@ -43,7 +44,7 @@ export const sharedProviderConfig: ServerlessProviderConfig = {
  */
 export const sharedParams = {
   dev: {
-    profile: 'swarmion-with-next-developer',
+    profile: 'swarmion-starter-developer',
     apiGatewayCorsAllowedOrigins: ['http://localhost:3000'],
   },
   staging: {
@@ -57,3 +58,4 @@ export const sharedParams = {
 };
 
 export const sharedEsbuildConfig = swarmionEsbuildConfig;
+export const sharedCdkEsbuildConfig = swarmionCdkEsbuildConfig;

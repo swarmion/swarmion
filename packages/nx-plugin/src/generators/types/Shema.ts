@@ -8,7 +8,8 @@ export interface Schema {
 }
 
 export interface NormalizedSchema extends Schema {
-  fileName: string;
+  projectClassName: string;
+  projectPropertyName: string;
   generatorType: GeneratorType;
   importPath: string;
   linter: Linter;

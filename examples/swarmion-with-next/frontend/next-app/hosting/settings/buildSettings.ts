@@ -1,4 +1,4 @@
-import { environmentVariables } from "./environmentVariables";
+import { environmentVariables } from './environmentVariables';
 
 export const buildSettings = {
   version: '1.0',
@@ -19,12 +19,14 @@ export const buildSettings = {
             ],
           },
           build: {
-            commands: [          
-            // Allow Next.js to access environment variables
-            // See https://docs.aws.amazon.com/amplify/latest/userguide/ssr-environment-variables.html
-            `env | grep -E '${Object.keys(environmentVariables).join('|')}' >> .env.production`,
-            // Build Next.js app
-            'pnpm build --no-lint',
+            commands: [
+              // Allow Next.js to access environment variables
+              // See https://docs.aws.amazon.com/amplify/latest/userguide/ssr-environment-variables.html
+              `env | grep -E '${Object.keys(environmentVariables).join(
+                '|',
+              )}' >> .env.production`,
+              // Build Next.js app
+              'pnpm build --no-lint',
             ],
           },
         },

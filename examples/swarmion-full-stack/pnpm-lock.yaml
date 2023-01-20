@@ -60,9 +60,10 @@ importers:
 
   contracts/core-contracts:
     specifiers:
+      '@swarmion-full-stack/serverless-configuration': workspace:1.0.0
       '@swarmion/serverless-contracts': ^0.20.3
-      '@types/node': ^18.11.13
-      '@vitest/coverage-c8': ^0.27.0
+      '@types/node': ^18.11.18
+      '@vitest/coverage-c8': ^0.27.2
       concurrently: ^7.6.0
       dependency-cruiser: ^12.1.0
       eslint: ^8.29.0
@@ -72,28 +73,29 @@ importers:
       tsc-alias: ^1.8.2
       tsup: ^6.5.0
       typescript: ^4.9.4
-      vitest: ^0.27.0
+      vitest: ^0.27.2
     dependencies:
+      '@swarmion-full-stack/serverless-configuration': link:../../packages/serverless-configuration
       '@swarmion/serverless-contracts': 0.20.3_35qk72belje3miap435fwq3rsu
     devDependencies:
-      '@types/node': 18.11.13
-      '@vitest/coverage-c8': 0.27.0
+      '@types/node': 18.11.18
+      '@vitest/coverage-c8': 0.27.2
       concurrently: 7.6.0
       dependency-cruiser: 12.1.0
       eslint: 8.29.0
       prettier: 2.8.1
       rimraf: 4.1.1
-      ts-node: 10.9.1_73migmg77y47omm5253gettkxi
+      ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
       tsc-alias: 1.8.2
       tsup: 6.5.0_z6wznmtyb6ovnulj6iujpct7um
       typescript: 4.9.4
-      vitest: 0.27.0
+      vitest: 0.27.2
 
   contracts/users-contracts:
     specifiers:
       '@swarmion/serverless-contracts': ^0.20.3
-      '@types/node': ^18.11.13
-      '@vitest/coverage-c8': ^0.27.0
+      '@types/node': ^18.11.18
+      '@vitest/coverage-c8': ^0.27.2
       concurrently: ^7.6.0
       dependency-cruiser: ^12.1.0
       eslint: ^8.29.0
@@ -104,23 +106,23 @@ importers:
       tsc-alias: ^1.8.2
       tsup: ^6.5.0
       typescript: ^4.9.4
-      vitest: ^0.27.0
+      vitest: ^0.27.2
     dependencies:
       '@swarmion/serverless-contracts': 0.20.3_35qk72belje3miap435fwq3rsu
       json-schema-to-ts: 2.6.2
     devDependencies:
-      '@types/node': 18.11.13
-      '@vitest/coverage-c8': 0.27.0
+      '@types/node': 18.11.18
+      '@vitest/coverage-c8': 0.27.2
       concurrently: 7.6.0
       dependency-cruiser: 12.1.0
       eslint: 8.29.0
       prettier: 2.8.1
       rimraf: 4.1.1
-      ts-node: 10.9.1_73migmg77y47omm5253gettkxi
+      ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
       tsc-alias: 1.8.2
       tsup: 6.5.0_z6wznmtyb6ovnulj6iujpct7um
       typescript: 4.9.4
-      vitest: 0.27.0
+      vitest: 0.27.2
 
   frontend/app:
     specifiers:
@@ -141,13 +143,13 @@ importers:
       '@testing-library/react-hooks': ^8.0.0
       '@testing-library/user-event': ^14.0.0
       '@types/dotenv-flow': ^3.2.0
-      '@types/node': ^18.11.13
+      '@types/node': ^18.11.18
       '@types/react': ^17.0.47
       '@types/react-dom': ^18.0.0
       '@types/testing-library__jest-dom': ^5.14.5
       '@types/uuid': ^9.0.0
       '@vitejs/plugin-react': ^3.0.1
-      '@vitest/coverage-c8': ^0.27.0
+      '@vitest/coverage-c8': ^0.27.2
       axios: ^1.2.2
       dependency-cruiser: ^12.1.0
       dotenv-flow: ^3.2.0
@@ -177,7 +179,7 @@ importers:
       vite: ^4.0.4
       vite-plugin-svgr: ^2.4.0
       vite-tsconfig-paths: ^4.0.3
-      vitest: ^0.27.0
+      vitest: ^0.27.2
     dependencies:
       '@emotion/react': 11.10.5_62pdxbwobty7nccn5qpa3r324q
       '@emotion/styled': 11.10.5_nqlpcy6cgzkcmf62r4spsrdxke
@@ -204,12 +206,12 @@ importers:
       '@testing-library/react-hooks': 8.0.1_hiunvzosbwliizyirxfy6hjyim
       '@testing-library/user-event': 14.4.3_aaq3sbffpfe3jnxzm2zngsddei
       '@types/dotenv-flow': 3.2.0
-      '@types/node': 18.11.13
+      '@types/node': 18.11.18
       '@types/react': 17.0.50
       '@types/react-dom': 18.0.6
       '@types/uuid': 9.0.0
       '@vitejs/plugin-react': 3.0.1_vite@4.0.4
-      '@vitest/coverage-c8': 0.27.0_jsdom@21.0.0
+      '@vitest/coverage-c8': 0.27.2_jsdom@21.0.0
       dependency-cruiser: 12.1.0
       dotenv-flow: 3.2.0
       eslint: 8.29.0
@@ -228,12 +230,12 @@ importers:
       stylelint-config-property-sort-order-smacss: 9.0.0_stylelint@14.16.0
       stylelint-config-standard: 29.0.0_stylelint@14.16.0
       stylelint-order: 6.0.1_stylelint@14.16.0
-      ts-node: 10.9.1_73migmg77y47omm5253gettkxi
+      ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
       typescript: 4.9.4
-      vite: 4.0.4_@types+node@18.11.13
+      vite: 4.0.4_@types+node@18.11.18
       vite-plugin-svgr: 2.4.0_vite@4.0.4
       vite-tsconfig-paths: 4.0.3_gl4qsmwzp7wy5uclz4tx77gbli
-      vitest: 0.27.0_jsdom@21.0.0
+      vitest: 0.27.2_jsdom@21.0.0
 
   frontend/cloudfront:
     specifiers:
@@ -241,30 +243,30 @@ importers:
       '@swarmion-full-stack/serverless-configuration': 1.0.0
       '@swarmion-full-stack/users-contracts': 1.0.0
       '@swarmion/serverless-helpers': ^0.20.3
-      '@types/node': ^18.11.13
-      '@vitest/coverage-c8': ^0.27.0
+      '@types/node': ^18.11.18
+      '@vitest/coverage-c8': ^0.27.2
       dependency-cruiser: ^12.1.0
       eslint: ^8.29.0
       serverless: ^3.25.1
       serverless-lift: ^1.21.0
       ts-node: ^10.8.1
       typescript: ^4.9.4
-      vitest: ^0.27.0
+      vitest: ^0.27.2
     dependencies:
       '@swarmion-full-stack/serverless-configuration': link:../../packages/serverless-configuration
       '@swarmion-full-stack/users-contracts': link:../../contracts/users-contracts
     devDependencies:
       '@serverless/typescript': 3.25.0
       '@swarmion/serverless-helpers': 0.20.3_constructs@10.1.223
-      '@types/node': 18.11.13
-      '@vitest/coverage-c8': 0.27.0
+      '@types/node': 18.11.18
+      '@vitest/coverage-c8': 0.27.2
       dependency-cruiser: 12.1.0
       eslint: 8.29.0
       serverless: 3.25.1
       serverless-lift: 1.21.0_serverless@3.25.1
-      ts-node: 10.9.1_73migmg77y47omm5253gettkxi
+      ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
       typescript: 4.9.4
-      vitest: 0.27.0
+      vitest: 0.27.2
 
   frontend/shared:
     specifiers:
@@ -280,11 +282,11 @@ importers:
       '@testing-library/react-hooks': ^8.0.0
       '@testing-library/user-event': ^14.0.0
       '@types/css-mediaquery': ^0.1.1
-      '@types/node': ^18.11.13
+      '@types/node': ^18.11.18
       '@types/react': ^17.0.47
       '@types/testing-library__jest-dom': ^5.14.5
       '@vitejs/plugin-react': ^3.0.1
-      '@vitest/coverage-c8': ^0.27.0
+      '@vitest/coverage-c8': ^0.27.2
       concurrently: ^7.6.0
       css-mediaquery: ^0.1.2
       dependency-cruiser: ^12.1.0
@@ -306,7 +308,7 @@ importers:
       tsup: ^6.5.0
       typescript: ^4.9.4
       vite: ^4.0.4
-      vitest: ^0.27.0
+      vitest: ^0.27.2
     dependencies:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
@@ -323,11 +325,11 @@ importers:
       '@testing-library/react-hooks': 8.0.1_hiunvzosbwliizyirxfy6hjyim
       '@testing-library/user-event': 14.4.3_aaq3sbffpfe3jnxzm2zngsddei
       '@types/css-mediaquery': 0.1.1
-      '@types/node': 18.11.13
+      '@types/node': 18.11.18
       '@types/react': 17.0.50
       '@types/testing-library__jest-dom': 5.14.5
       '@vitejs/plugin-react': 3.0.1_vite@4.0.4
-      '@vitest/coverage-c8': 0.27.0_jsdom@21.0.0
+      '@vitest/coverage-c8': 0.27.2_jsdom@21.0.0
       concurrently: 7.6.0
       css-mediaquery: 0.1.2
       dependency-cruiser: 12.1.0
@@ -342,18 +344,18 @@ importers:
       react-intl: 6.2.5_j5wiu4n3r332he5vjh7engy24e
       react-router-dom: 6.4.5_sfoxds7t5ydpegc3knd667wn6m
       rimraf: 4.1.1
-      ts-node: 10.9.1_73migmg77y47omm5253gettkxi
+      ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
       tsc-alias: 1.8.2
       tsup: 6.5.0_z6wznmtyb6ovnulj6iujpct7um
       typescript: 4.9.4
-      vite: 4.0.4_@types+node@18.11.13
-      vitest: 0.27.0_jsdom@21.0.0
+      vite: 4.0.4_@types+node@18.11.18
+      vitest: 0.27.2_jsdom@21.0.0
 
   packages/serverless-configuration:
     specifiers:
       '@swarmion/serverless-helpers': ^0.20.3
-      '@types/node': ^18.11.13
-      '@vitest/coverage-c8': ^0.27.0
+      '@types/node': ^18.11.18
+      '@vitest/coverage-c8': ^0.27.2
       concurrently: ^7.6.0
       dependency-cruiser: ^12.1.0
       eslint: ^8.29.0
@@ -363,22 +365,22 @@ importers:
       tsc-alias: ^1.8.2
       tsup: ^6.5.0
       typescript: ^4.9.4
-      vitest: ^0.27.0
+      vitest: ^0.27.2
     dependencies:
       '@swarmion/serverless-helpers': 0.20.3_constructs@10.1.223
     devDependencies:
-      '@types/node': 18.11.13
-      '@vitest/coverage-c8': 0.27.0
+      '@types/node': 18.11.18
+      '@vitest/coverage-c8': 0.27.2
       concurrently: 7.6.0
       dependency-cruiser: 12.1.0
       eslint: 8.29.0
       prettier: 2.8.1
       rimraf: 4.1.1
-      ts-node: 10.9.1_73migmg77y47omm5253gettkxi
+      ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
       tsc-alias: 1.8.2
       tsup: 6.5.0_z6wznmtyb6ovnulj6iujpct7um
       typescript: 4.9.4
-      vitest: 0.27.0
+      vitest: 0.27.2
 
   services/core:
     specifiers:
@@ -386,8 +388,8 @@ importers:
       '@swarmion-full-stack/core-contracts': 1.0.0
       '@swarmion-full-stack/serverless-configuration': 1.0.0
       '@swarmion/serverless-helpers': ^0.20.3
-      '@types/node': ^18.11.13
-      '@vitest/coverage-c8': ^0.27.0
+      '@types/node': ^18.11.18
+      '@vitest/coverage-c8': ^0.27.2
       dependency-cruiser: ^12.1.0
       esbuild: ^0.16.0
       eslint: ^8.29.0
@@ -396,7 +398,7 @@ importers:
       ts-node: ^10.9.1
       typescript: ^4.9.4
       vite-tsconfig-paths: ^4.0.3
-      vitest: ^0.27.0
+      vitest: ^0.27.2
     dependencies:
       '@swarmion-full-stack/serverless-configuration': link:../../packages/serverless-configuration
       '@swarmion/serverless-helpers': 0.20.3_constructs@10.1.223
@@ -404,7 +406,7 @@ importers:
       '@serverless/typescript': 3.25.0
       '@swarmion-full-stack/core-contracts': link:../../contracts/core-contracts
       '@types/node': 18.11.18
-      '@vitest/coverage-c8': 0.27.0
+      '@vitest/coverage-c8': 0.27.2
       dependency-cruiser: 12.1.0
       esbuild: 0.16.16
       eslint: 8.29.0
@@ -413,7 +415,7 @@ importers:
       ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
       typescript: 4.9.4
       vite-tsconfig-paths: 4.0.3_gl4qsmwzp7wy5uclz4tx77gbli
-      vitest: 0.27.0
+      vitest: 0.27.2
 
   services/users:
     specifiers:
@@ -423,8 +425,8 @@ importers:
       '@swarmion/serverless-contracts': ^0.20.3
       '@swarmion/serverless-helpers': ^0.20.3
       '@types/http-errors': ^2.0.1
-      '@types/node': ^18.11.13
-      '@vitest/coverage-c8': ^0.27.0
+      '@types/node': ^18.11.18
+      '@vitest/coverage-c8': ^0.27.2
       aws-sdk: ^2.1272.0
       dependency-cruiser: ^12.1.0
       esbuild: ^0.16.0
@@ -436,7 +438,7 @@ importers:
       ts-node: ^10.9.1
       typescript: ^4.9.4
       vite-tsconfig-paths: ^4.0.3
-      vitest: ^0.27.0
+      vitest: ^0.27.2
     dependencies:
       '@swarmion-full-stack/serverless-configuration': link:../../packages/serverless-configuration
       '@swarmion-full-stack/users-contracts': link:../../contracts/users-contracts
@@ -449,7 +451,7 @@ importers:
       '@serverless/typescript': 3.25.0
       '@types/http-errors': 2.0.1
       '@types/node': 18.11.18
-      '@vitest/coverage-c8': 0.27.0
+      '@vitest/coverage-c8': 0.27.2
       dependency-cruiser: 12.1.0
       esbuild: 0.16.16
       eslint: 8.29.0
@@ -458,7 +460,7 @@ importers:
       ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
       typescript: 4.9.4
       vite-tsconfig-paths: 4.0.3_gl4qsmwzp7wy5uclz4tx77gbli
-      vitest: 0.27.0
+      vitest: 0.27.2
 
 packages:
 
@@ -3374,10 +3376,6 @@ packages:
     resolution: {integrity: sha512-hcU9AIQVHmPnmjRK+XUUYlILlr9pQrsqSrwov/JK1pnf3GTQowVBhx54FbvM0AU/VXGH4i3+vgXS5EguR7fysA==}
     dev: true
 
-  /@types/node/18.11.13:
-    resolution: {integrity: sha512-IASpMGVcWpUsx5xBOrxMj7Bl8lqfuTY7FKAnPmu5cHkfQVWF8GulWS1jbRqA934qZL35xh5xN/+Xe/i26Bod4w==}
-    dev: true
-
   /@types/node/18.11.18:
     resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
 
@@ -3600,16 +3598,16 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.19.6_@babel+core@7.20.12
       magic-string: 0.27.0
       react-refresh: 0.14.0
-      vite: 4.0.4_@types+node@18.11.13
+      vite: 4.0.4_@types+node@18.11.18
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@vitest/coverage-c8/0.27.0:
-    resolution: {integrity: sha512-jO/TAz/qUP1ssfIj6Gg1FxTRkOD5tJBiP3mwKayaqGunMsknCmxWVuFrgF1XH+FGZWLnFzR2InTjYxlyGNSgzQ==}
+  /@vitest/coverage-c8/0.27.2:
+    resolution: {integrity: sha512-1MFwlwfwIfPFLfu6aN+dZ5jo2aOah5nAwoq/SrqUkt9rXzUmohLOgI1GTT0PpXbJKqaZicIlWuBjiC+BjVgRwQ==}
     dependencies:
       c8: 7.12.0
-      vitest: 0.27.0
+      vitest: 0.27.2
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -3624,11 +3622,11 @@ packages:
       - terser
     dev: true
 
-  /@vitest/coverage-c8/0.27.0_jsdom@21.0.0:
-    resolution: {integrity: sha512-jO/TAz/qUP1ssfIj6Gg1FxTRkOD5tJBiP3mwKayaqGunMsknCmxWVuFrgF1XH+FGZWLnFzR2InTjYxlyGNSgzQ==}
+  /@vitest/coverage-c8/0.27.2_jsdom@21.0.0:
+    resolution: {integrity: sha512-1MFwlwfwIfPFLfu6aN+dZ5jo2aOah5nAwoq/SrqUkt9rXzUmohLOgI1GTT0PpXbJKqaZicIlWuBjiC+BjVgRwQ==}
     dependencies:
       c8: 7.12.0
-      vitest: 0.27.0_jsdom@21.0.0
+      vitest: 0.27.2_jsdom@21.0.0
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -6599,7 +6597,7 @@ packages:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 5.1.1
+      minimatch: 5.1.4
       once: 1.4.0
     dev: true
 
@@ -8023,13 +8021,6 @@ packages:
       brace-expansion: 2.0.1
     dev: true
 
-  /minimatch/5.1.1:
-    resolution: {integrity: sha512-362NP+zlprccbEt/SkxKfRMHnNY85V74mVnpUpNyr3F35covl09Kec7/sEFLt3RA4oXmewtoaanoIf67SE5Y5g==}
-    engines: {node: '>=10'}
-    dependencies:
-      brace-expansion: 2.0.1
-    dev: true
-
   /minimatch/5.1.4:
     resolution: {integrity: sha512-U0iNYXt9wALljzfnGkhFSy5sAC6/SCR3JrHrlsdJz4kF8MvhTRQNiC59iUi1iqsitV7abrNAJWElVL9pdnoUgw==}
     engines: {node: '>=10'}
@@ -8742,7 +8733,7 @@ packages:
         optional: true
     dependencies:
       lilconfig: 2.0.6
-      ts-node: 10.9.1_73migmg77y47omm5253gettkxi
+      ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
       yaml: 1.10.2
     dev: true
 
@@ -9308,14 +9299,6 @@ packages:
       yargs: 17.6.2
     dev: true
 
-  /rollup/3.7.3:
-    resolution: {integrity: sha512-7e68MQbAWCX6mI4/0lG1WHd+NdNAlVamg0Zkd+8LZ/oXojligdGnCNyHlzXqXCZObyjs5FRc3AH0b17iJESGIQ==}
-    engines: {node: '>=14.18.0', npm: '>=8.0.0'}
-    hasBin: true
-    optionalDependencies:
-      fsevents: 2.3.2
-    dev: true
-
   /rollup/3.9.1:
     resolution: {integrity: sha512-GswCYHXftN8ZKGVgQhTFUJB/NBXxrRGgO2NCy6E8s1rwEJ4Q9/VttNqcYfEvx4dTo4j58YqdC3OVztPzlKSX8w==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
@@ -9623,6 +9606,10 @@ packages:
       object-inspect: 1.12.2
     dev: true
 
+  /siginfo/2.0.0:
+    resolution: {integrity: sha512-ybx0WO1/8bSBLEWXZvEd7gMW3Sn3JFlW3TvX1nREbDLRNQNaeNN8WK0meBwPdAaOI7TtRRRJn/Es1zhrrCHu7g==}
+    dev: true
+
   /signal-exit/3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
     dev: true
@@ -9792,6 +9779,10 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       escape-string-regexp: 2.0.0
+
+  /stackback/0.0.2:
+    resolution: {integrity: sha512-1XMJE5fQo1jGH6Y/7ebnwPOBEkIEnT4QF32d5R1+VXdXveM0IBMJt8zfaxX1P3QhVwrYe+576+jkANtSS2mBbw==}
+    dev: true
 
   /statuses/2.0.1:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
@@ -10415,37 +10406,6 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
-  /ts-node/10.9.1_73migmg77y47omm5253gettkxi:
-    resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
-    hasBin: true
-    peerDependencies:
-      '@swc/core': '>=1.2.50'
-      '@swc/wasm': '>=1.2.50'
-      '@types/node': '*'
-      typescript: '>=2.7'
-    peerDependenciesMeta:
-      '@swc/core':
-        optional: true
-      '@swc/wasm':
-        optional: true
-    dependencies:
-      '@cspotcode/source-map-support': 0.8.1
-      '@tsconfig/node10': 1.0.9
-      '@tsconfig/node12': 1.0.11
-      '@tsconfig/node14': 1.0.3
-      '@tsconfig/node16': 1.0.3
-      '@types/node': 18.11.13
-      acorn: 8.8.0
-      acorn-walk: 8.2.0
-      arg: 4.1.3
-      create-require: 1.1.1
-      diff: 4.0.2
-      make-error: 1.3.6
-      typescript: 4.9.4
-      v8-compile-cache-lib: 3.0.1
-      yn: 3.1.1
-    dev: true
-
   /ts-node/10.9.1_awa2wsr5thmg3i7jqycphctjfq:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
@@ -10466,7 +10426,7 @@ packages:
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.3
       '@types/node': 18.11.18
-      acorn: 8.8.1
+      acorn: 8.8.0
       acorn-walk: 8.2.0
       arg: 4.1.3
       create-require: 1.1.1
@@ -10595,7 +10555,7 @@ packages:
       joycon: 3.1.1
       postcss-load-config: 3.1.4_ts-node@10.9.1
       resolve-from: 5.0.0
-      rollup: 3.7.3
+      rollup: 3.9.1
       source-map: 0.8.0-beta.0
       sucrase: 3.29.0
       tree-kill: 1.2.2
@@ -10827,8 +10787,8 @@ packages:
       builtins: 1.0.3
     dev: true
 
-  /vite-node/0.27.0_@types+node@18.11.18:
-    resolution: {integrity: sha512-O1o9joT0qCGx5Om6W0VNLr7M00ttrnFlfZX2d+oxt2T9oZ9DvYSv8kDRhNJDVhAgNgUm3Tc0h/+jppNf3mVKbA==}
+  /vite-node/0.27.2_@types+node@18.11.18:
+    resolution: {integrity: sha512-IDwuVhslF10qCnWOGJui7/2KksAOBHi+UbVo6Pqt4f5lgn+kS2sVvYDsETRG5PSuslisGB5CFGvb9I6FQgymBQ==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     dependencies:
@@ -10857,7 +10817,7 @@ packages:
     dependencies:
       '@rollup/pluginutils': 5.0.2
       '@svgr/core': 6.5.1
-      vite: 4.0.4_@types+node@18.11.13
+      vite: 4.0.4_@types+node@18.11.18
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -10871,44 +10831,10 @@ packages:
       debug: 4.3.4
       globrex: 0.1.2
       tsconfck: 2.0.2_typescript@4.9.4
-      vite: 4.0.4_@types+node@18.11.13
+      vite: 4.0.4_@types+node@18.11.18
     transitivePeerDependencies:
       - supports-color
       - typescript
-    dev: true
-
-  /vite/4.0.4_@types+node@18.11.13:
-    resolution: {integrity: sha512-xevPU7M8FU0i/80DMR+YhgrzR5KS2ORy1B4xcX/cXLsvnUWvfHuqMmVU6N0YiJ4JWGRJJsLCgjEzKjG9/GKoSw==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': '>= 14'
-      less: '*'
-      sass: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-    dependencies:
-      '@types/node': 18.11.13
-      esbuild: 0.16.16
-      postcss: 8.4.21
-      resolve: 1.22.1
-      rollup: 3.9.1
-    optionalDependencies:
-      fsevents: 2.3.2
     dev: true
 
   /vite/4.0.4_@types+node@18.11.18:
@@ -10945,8 +10871,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.27.0:
-    resolution: {integrity: sha512-BnOa7T6CnXVC6UgcAsvFOZ2Dtvqkt+/Nl6CRgh4qVT70vElf65XwEL6zMRyTF+h2QXJziEkxYdrLo5WCxckMLQ==}
+  /vitest/0.27.2:
+    resolution: {integrity: sha512-y7tdsL2uaQy+KF18AlmNHZe29ukyFytlxrpSTwwmgLE2XHR/aPucJP9FLjWoqjgqFlXzRAjHlFJLU+HDyI/OsA==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
@@ -10983,7 +10909,8 @@ packages:
       tinypool: 0.3.0
       tinyspy: 1.0.2
       vite: 4.0.4_@types+node@18.11.18
-      vite-node: 0.27.0_@types+node@18.11.18
+      vite-node: 0.27.2_@types+node@18.11.18
+      why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
       - sass
@@ -10993,8 +10920,8 @@ packages:
       - terser
     dev: true
 
-  /vitest/0.27.0_jsdom@21.0.0:
-    resolution: {integrity: sha512-BnOa7T6CnXVC6UgcAsvFOZ2Dtvqkt+/Nl6CRgh4qVT70vElf65XwEL6zMRyTF+h2QXJziEkxYdrLo5WCxckMLQ==}
+  /vitest/0.27.2_jsdom@21.0.0:
+    resolution: {integrity: sha512-y7tdsL2uaQy+KF18AlmNHZe29ukyFytlxrpSTwwmgLE2XHR/aPucJP9FLjWoqjgqFlXzRAjHlFJLU+HDyI/OsA==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
@@ -11032,7 +10959,8 @@ packages:
       tinypool: 0.3.0
       tinyspy: 1.0.2
       vite: 4.0.4_@types+node@18.11.18
-      vite-node: 0.27.0_@types+node@18.11.18
+      vite-node: 0.27.2_@types+node@18.11.18
+      why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
       - sass
@@ -11145,6 +11073,15 @@ packages:
     hasBin: true
     dependencies:
       isexe: 2.0.0
+    dev: true
+
+  /why-is-node-running/2.2.2:
+    resolution: {integrity: sha512-6tSwToZxTOcotxHeA+qGCq1mVzKR3CwcJGmVcY+QE8SHy6TnpFnh8PAvPNHYr7EcuVeG0QSMxtYCuO1ta/G/oA==}
+    engines: {node: '>=8'}
+    hasBin: true
+    dependencies:
+      siginfo: 2.0.0
+      stackback: 0.0.2
     dev: true
 
   /word-wrap/1.2.3:
