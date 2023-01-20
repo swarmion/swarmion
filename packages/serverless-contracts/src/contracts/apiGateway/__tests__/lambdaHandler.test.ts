@@ -23,7 +23,7 @@ import {
 } from '../__mocks__/httpApiGatewayContract';
 import { ApiGatewayContract } from '../apiGatewayContract';
 import { getLambdaHandler } from '../features';
-import { SwarmionApiGatewayHandler } from '../types';
+import { SwarmionApiGatewayEvent, SwarmionApiGatewayHandler } from '../types';
 
 describe('apiGateway lambda handler', () => {
   describe('httpApi, with authorizer, when all parameters are set', () => {
@@ -189,19 +189,18 @@ describe('apiGateway lambda handler', () => {
       };
       expect(getLambdaHandler(httpApiContract)(handler)).toEqual(handler);
 
-      const { id, name } = await handler(
-        {
-          pathParameters: { userId: 'toto', pageNumber: '15' },
-          body: { foo: 'bar' },
-          headers: {
-            myHeader: 'MyCustomHeader',
-            anotherHeader: 'anotherHeader',
-          },
-          queryStringParameters: { testId: 'myTestId' },
-          requestContext: fakeRequestContext,
+      const event: SwarmionApiGatewayEvent<typeof httpApiContract> = {
+        pathParameters: { userId: 'toto', pageNumber: '15' },
+        body: { foo: 'bar' },
+        headers: {
+          myHeader: 'MyCustomHeader',
+          anotherHeader: 'anotherHeader',
         },
-        fakeContext,
-      );
+        queryStringParameters: { testId: 'myTestId' },
+        requestContext: fakeRequestContext,
+      };
+
+      const { id, name } = await handler(event, fakeContext);
 
       expect(id).toBe('hello');
       expect(name).toBe('bar15myTestIdMyCustomHeaderclaimBar');
