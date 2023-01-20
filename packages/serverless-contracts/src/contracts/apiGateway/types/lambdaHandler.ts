@@ -55,6 +55,29 @@ export type HandlerEventType<
 }>;
 
 /**
+ * The type of the event passed as first argument to a Swarmion handler,
+ * The handler function can define additional arguments.
+ */
+export type SwarmionApiGatewayEvent<
+  Contract extends GenericApiGatewayContract,
+  IntegrationType extends ApiGatewayIntegrationType = Contract['integrationType'],
+  AuthorizerType extends ApiGatewayAuthorizerType = Contract['authorizerType'],
+  PathParameters = PathParametersType<Contract>,
+  QueryStringParameters = QueryStringParametersType<Contract>,
+  Headers = HeadersType<Contract>,
+  CustomRequestContext = CustomRequestContextType<Contract>,
+  Body = BodyType<Contract>,
+> = HandlerEventType<
+  IntegrationType,
+  AuthorizerType,
+  PathParameters,
+  QueryStringParameters,
+  Headers,
+  CustomRequestContext,
+  Body
+>;
+
+/**
  * The **internal** type of a Swarmion handler, with type-inferred event
  * The handler function can define additional arguments.
  *

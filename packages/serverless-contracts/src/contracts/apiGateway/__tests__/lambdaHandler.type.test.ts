@@ -20,6 +20,7 @@ import {
   HeadersType,
   PathParametersType,
   QueryStringParametersType,
+  SwarmionApiGatewayEvent,
 } from '../types';
 
 export const httpApiGatewayContract = new ApiGatewayContract({
@@ -47,6 +48,7 @@ type MyEventType = HandlerEventType<
   CustomRequestContextType<ContractType>,
   BodyType<ContractType>
 >;
+type MyHelperEventType = SwarmionApiGatewayEvent<typeof httpApiGatewayContract>;
 type ExpectedEventType = {
   requestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayEventRequestContextJWTAuthorizer> & {
     [x: string]: unknown;
@@ -80,6 +82,11 @@ type Check = A.Equals<MyEventType, ExpectedEventType>;
 
 const check: Check = 1;
 check;
+
+type CheckHelper = A.Equals<MyHelperEventType, ExpectedEventType>;
+
+const checkHelper: CheckHelper = 1;
+checkHelper;
 
 // test with some keys missing
 type IncompleteEventType = HandlerEventType<
