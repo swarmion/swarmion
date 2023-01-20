@@ -14,28 +14,26 @@ export const normalizeOptions = (
   options: Schema,
   generatorType: GeneratorType,
 ): NormalizedSchema => {
-  const name = names(options.name).fileName;
+  const projectName = names(options.name).fileName.replace(
+    new RegExp('/', 'g'),
+    '-',
+  );
   const packageRoot = joinPathFragments(
     names(options.directory).fileName,
-    name,
+    projectName,
   );
 
   const linter = Linter.EsLint;
 
-  const projectName = name.replace(new RegExp('/', 'g'), '-');
-  const fileName = getCaseAwareFileName({
-    fileName: projectName,
-    pascalCaseFiles: false,
-  });
-  const pascalName = getCaseAwareFileName({ fileName, pascalCaseFiles: true });
+  const { className, propertyName } = names(projectName);
 
   const { npmScope } = getWorkspaceLayout(tree);
   const offsetFromRoot = relative(packageRoot, tree.root);
 
   return {
     ...options,
-    fileName,
-    pascalName,
+    projectClassName: className,
+    projectPropertyName: propertyName,
     generatorType,
     importPath: projectName,
     linter,
@@ -43,18 +41,5 @@ export const normalizeOptions = (
     packageRoot,
     offsetFromRoot,
     workspaceName: npmScope,
-    capitalize: capitalizeFirstLetter,
   };
 };
-
-const getCaseAwareFileName = (options: {
-  pascalCaseFiles: boolean;
-  fileName: string;
-}) => {
-  const normalized = names(options.fileName);
-
-  return options.pascalCaseFiles ? normalized.className : normalized.fileName;
-};
-
-const capitalizeFirstLetter = (value: string) =>
-  value.charAt(0).toUpperCase() + value.slice(1);

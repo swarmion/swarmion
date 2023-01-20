@@ -9,7 +9,7 @@ import {
   sharedParams,
 } from '@<%= workspaceName %>/serverless-configuration';
 
-import { <%= capitalize(pascalName) %>Stack } from './stack';
+import { <%= projectClassName %>Stack } from './stack';
 
 dotenv.config();
 
@@ -19,7 +19,7 @@ const stage =
   (app.node.tryGetContext('stage') as keyof typeof sharedParams | undefined) ??
   defaultEnvironment;
 
-new <%= capitalize(pascalName) %>Stack(app, `${projectName}-<%= name %>-${stage}`, {
+new <%= projectClassName %>Stack(app, `${projectName}-<%= name %>-${stage}`, {
   env: { region },
   stage,
 });

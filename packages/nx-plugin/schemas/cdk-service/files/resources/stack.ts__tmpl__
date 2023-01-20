@@ -6,24 +6,24 @@ import { functions } from 'functions';
 
 const { Health } = functions;
 
-interface <%= capitalize(pascalName) %>Props {
+interface <%= projectClassName %>Props {
   stage: string;
 }
 
-export class <%= capitalize(pascalName) %>Stack extends Stack {
-  constructor(scope: Construct, id: string, props: StackProps & <%= capitalize(pascalName) %>Props) {
+export class <%= projectClassName %>Stack extends Stack {
+  constructor(scope: Construct, id: string, props: StackProps & <%= projectClassName %>Props) {
     super(scope, id, props);
 
     const { stage } = props;
 
-    const <%= pascalName %>Api = new RestApi(this, '<%= capitalize(pascalName) %>Api', {
+    const <%= projectPropertyName %>Api = new RestApi(this, '<%= projectClassName %>Api', {
       // the stage of the API is the same as the stage of the stack
-      description: `<%= capitalize(pascalName) %> API - ${stage}`,
+      description: `<%= projectClassName %> API - ${stage}`,
       deployOptions: {
         stageName: stage,
       },
     });
 
-    new Health(this, 'Health', { restApi: <%= pascalName %>Api });
+    new Health(this, 'Health', { restApi: <%= projectPropertyName %>Api });
   }
 }
