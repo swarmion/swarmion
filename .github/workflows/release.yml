@@ -16,6 +16,6 @@ jobs:
       - name: Install & cache node dependencies
         uses: ./.github/actions/install-node-deps
 
-      - run: pnpm changelogithub
+      - run: pnpm changelogithub --draft
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
