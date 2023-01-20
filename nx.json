@@ -24,6 +24,10 @@
     "production": ["!{projectRoot}/**/*.test.tsx?"]
   },
   "targetDefaults": {
+    "bench": {
+      "inputs": ["default", "^production"],
+      "dependsOn": ["^package"]
+    },
     "build": {
       "inputs": ["production", "^production"],
       "dependsOn": ["^build", "^package"]

@@ -23,6 +23,7 @@
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
+    "bench": "pnpm tsx src/__benches__/index.mts",
     "clean": "rimraf dist",
     "lint-fix": "pnpm linter-base-config --fix",
     "lint-fix-all": "pnpm lint-fix .",
@@ -51,6 +52,7 @@
     "ts-toolbelt": "^9.6.0"
   },
   "devDependencies": {
+    "@codspeed/tinybench-plugin": "^1.0.1",
     "@middy/core": "^3.6.2",
     "@middy/error-logger": "^3.6.2",
     "@middy/http-cors": "^3.6.2",
@@ -69,9 +71,11 @@
     "prettier": "^2.8.1",
     "rimraf": "^4.0.0",
     "serverless": "^3.25.1",
+    "tinybench": "^2.3.1",
     "ts-node": "^10.9.1",
     "tsc-alias": "^1.8.2",
     "tsup": "^6.5.0",
+    "tsx": "^3.12.2",
     "typescript": "^4.9.4",
     "vite-tsconfig-paths": "^4.0.3",
     "vitest": "^0.27.0"
