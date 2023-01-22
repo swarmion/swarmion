@@ -18,7 +18,7 @@ const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatew
   };
 const fakeContext = getHandlerContextMock();
 
-export const bigHttpApiHandler = async (): Promise<void> => {
+const bigHttpApiHandler = async (): Promise<void> => {
   // simulate creation of the handler during the cold start
   const httpHandler = getHandler(bigHttpApiContract)(
     async ({
@@ -64,3 +64,5 @@ export const bigHttpApiHandler = async (): Promise<void> => {
     );
   }
 };
+
+export default bigHttpApiHandler;

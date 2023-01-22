@@ -1,2 +1,2 @@
-export * from './bigLambdaHandler.bench';
-export * from './lambdaHandler.bench';
+export { default as basicHttpApiHandler } from './basicHttpApiHandler.bench';
+export { default as bigHttpApiHandler } from './bigHttpApiHandler.bench';

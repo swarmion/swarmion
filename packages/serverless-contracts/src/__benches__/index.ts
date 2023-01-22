@@ -1,7 +1,12 @@
 import { withCodSpeed } from '@codspeed/tinybench-plugin';
 import { Bench } from 'tinybench';
 
-import { basicHttpApiHandler, bigHttpApiHandler } from './contracts';
+import {
+  basicEventBridgeHandler,
+  basicHttpApiHandler,
+  bigEventBridgeHandler,
+  bigHttpApiHandler,
+} from './contracts';
 
 const bench = withCodSpeed(new Bench());
 
@@ -13,6 +18,14 @@ bench
   .add(
     'ApiGatewayContract > handler with 500 properties instantiated and invoked 50 times',
     bigHttpApiHandler,
+  )
+  .add(
+    'EventBridgeContract > handler instantiated and invoked 50 times',
+    basicEventBridgeHandler,
+  )
+  .add(
+    'EventBridgeContract > handler with 200 properties instantiated and invoked 50 times',
+    bigEventBridgeHandler,
   );
 
 await bench.run();
