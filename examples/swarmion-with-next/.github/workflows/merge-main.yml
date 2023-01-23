@@ -33,7 +33,6 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
-        shell: bash
       - name: 💾 Cache Nx cache
         id: package-cache
         uses: actions/cache@v3
