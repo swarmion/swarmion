@@ -124,4 +124,3 @@ jobs:
       - name: Deploy production
         # nx run-many is used here, because it will not throw an error if our target action isn't found in the project, which is exactly what we want!
         run: pnpm nx run-many --target=deploy-production --parallel=2
-        shell: bash

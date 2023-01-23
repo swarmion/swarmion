@@ -35,7 +35,6 @@ jobs:
           fetch-depth: 0
       - id: list-example-folders
         run: echo "examples=$(ls examples | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
-        shell: bash
   check-examples:
     name: 🔍 Check examples
     runs-on: ubuntu-latest
@@ -57,4 +56,3 @@ jobs:
         uses: ./.github/actions/install-node-deps
       - name: '🔍 Check example'
         run: REF=${{ github.event.pull_request.head.sha }} EXAMPLE=${{matrix.example}} sh ./scripts/check-example.sh
-        shell: bash
