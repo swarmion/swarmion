@@ -27,13 +27,7 @@ jobs:
       - name: Install & cache node dependencies
         uses: ./.github/actions/install-node-deps
       - name: '🧪 Test linter'
-        run: pnpm nx affected --target=test-linter --parallel=2
-      - name: '🧪 Test type'
-        run: pnpm nx affected --target=test-type --parallel=2
-      - name: '🧪 Test unit'
-        run: pnpm nx affected --target=test-unit --parallel=2
-      - name: '🧪 Test circular'
-        run: pnpm nx affected --target=test-circular --parallel=2
+        run: pnpm nx affected --targets=test-linter,test-type,test-circular --parallel=2
 
   build:
     name: 🏗 Build Project
