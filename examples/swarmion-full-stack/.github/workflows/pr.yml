@@ -26,13 +26,14 @@ jobs:
           fetch-depth: 0
       - uses: nrwl/nx-set-shas@v3
       - uses: pnpm/action-setup@v2.2.3
-      - name: Use Node.js ${{ env.NODE_VERSION }}
+      - name: Setup Node.js
+        id: setup-node
         uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
       - name: 💾 Cache Nx cache
         id: package-cache
         uses: actions/cache@v3
@@ -40,18 +41,11 @@ jobs:
           path: |
             nx-cache
           # Cache will be updated at every run: https://github.com/actions/cache/blob/main/workarounds.md#update-a-cache
-          key: ${{ runner.os }}-nx-cache-${{ env.NODE_VERSION }}-${{github.event.number}}-${{ github.run_id }}
+          key: ${{ runner.os }}-nx-cache-${{ steps.setup-node.outputs.node-version }}-${{ github.run_id }}
           restore-keys: |
-            ${{ runner.os }}-nx-cache-${{ env.NODE_VERSION }}-${{github.event.number}}-
-            ${{ runner.os }}-nx-cache-${{ env.NODE_VERSION }}-
+            ${{ runner.os }}-nx-cache-${{ steps.setup-node.outputs.node-version }}-
             ${{ runner.os }}-nx-cache-
       - name: '🏗 Package'
         run: pnpm nx affected --target=package --parallel=2
-      - name: '🧪 Test linter'
-        run: pnpm nx affected --target=test-linter --parallel=2
-      - name: '🧪 Test type'
-        run: pnpm nx affected --target=test-type --parallel=2
-      - name: '🧪 Test unit'
-        run: pnpm nx affected --target=test-unit --parallel=2
-      - name: '🧪 Test circular'
-        run: pnpm nx affected --target=test-circular --parallel=2
+      - name: '🧪 Run tests'
+        run: pnpm nx affected --targets=test-linter,test-type,test-unit,test-circular --parallel=2
