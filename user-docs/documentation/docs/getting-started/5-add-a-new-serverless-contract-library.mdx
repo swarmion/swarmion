@@ -212,7 +212,7 @@ Then, you can use the `getHandler` feature to define a type safe handler of your
 import { getHandler } from '@swarmion/serverless-contracts';
 import { getUserContract } from '@my-project-name/users-contracts';
 
-export const handler = getHandler(getUserContract, async event => {
+export const handler = getHandler(getUserContract)(async event => {
   const { userId } = event.pathParameters; // userId will be typed as string
 
   console.log(userId);
