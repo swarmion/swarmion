@@ -217,6 +217,8 @@ export const handler = getHandler(getUserContract)(async event => {
 
   console.log(userId);
 
+  await Promise.resolve(); // you should replace this by your business logic
+
   return {
     userId,
     userName: 'John Doe',

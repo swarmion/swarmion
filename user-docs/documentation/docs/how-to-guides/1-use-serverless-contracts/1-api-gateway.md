@@ -235,6 +235,8 @@ const handler = getHandler(myContract)(async event => {
   event.toto; // will fail typing
   event.pathParameters.toto; // will also fail
 
+  await Promise.resolve(); // you should replace this by your business logic
+
   return { id: 'coucou', name: 'coucou' }; // also type-safe!
 });
 ```
@@ -292,6 +294,8 @@ const handler = getLambdaHandler(myContract)(async event => {
 
   event.toto; // will fail typing
   event.pathParameters.toto; // will also fail
+
+  await Promise.resolve(); // you should replace this by your business logic
 
   return { id: 'coucou', name: 'coucou' }; // also type-safe!
 });
