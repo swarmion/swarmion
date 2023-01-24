@@ -6,17 +6,35 @@ sidebar_position: 4
 
 ## Choose your CI/CD provider
 
-_This documentation is still a work in progress. If you wish to contribute, please [open an issue on Swarmion](https://github.com/swarmion/swarmion/issues)._
+By default, Swarmion uses Github Actions to deploy. However, we have already used GitlabCI and CircleCI to deploy Swarmion projects. This guide will focus on Github Actions.
 
-By default, Swarmion uses Github Actions to deploy. However, we have already used GitlabCI and CircleCI to deploy Swarmion projects.
+## Setup the CD authentication
 
-## Authorize your CD to access your AWS environments
+In order to be able to deploy resources on AWS, your CI needs **authentication** and **permissions**. There are two main ways to provide authentication:
 
-In order to restrict the abilities of the ci user on the testing and production environment, you need to create one or many policies to give that user.
+- create an IAM user on the target AWS account, retrieve its credentials
+- create an IAM role that can be assumed by a trusted party
 
-If you use Github Actions, we can recommend to follow [these guidelines to setup OIDC](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services), to authorize your pipeline.
+We strongly recommend the second option, as it will remove the risk of losing long-lived credentials. The Swarmion CI/CD from all starters, uses this method by default.
 
-This will remove the need to store long lived credentials, and thus the need to specify a policy (we can grant admin access). If you do so, you can skip the following sections.
+### With OpenID Connect (OIDC)
+
+If you use Github Actions, we can recommend to follow [these guidelines](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services) to setup OIDC for your pipeline.
+
+If you are using the Swarmion generated CI, once you have created the role, retrieve its ARN and place it in a Github Actions secret named `AWS_ROLE_ARN_PRODUCTION`.
+
+### With an IAM user
+
+You can follow the same procedure as in the [install docs](../getting-started/get-started-on-aws), except:
+
+- DO NOT give that user an "Administrator Access"
+- Create a policy with the least privileges as explained in [the next section](#restrict-cd-permissions)
+- Instead, attach it the policy or policies that you have created in the previous step
+- Save the Access Key Id and Secret Access Key in order to pass them as credentials in your CI
+
+## Restrict CD permissions
+
+Handling permissions for your CI/CD should depend on the authentication choice. When using an IAM user, you should definitely create a custom policy with the least privileges attached to this user. However, if you use OIDC, the risk is far more mitigated, so it is safer to give it admin permissions.
 
 ### Create a deploy policy
 
@@ -209,11 +227,3 @@ Then create the policy:
 - Click on "Next: tags", then "Next: review";
 - Check that your policy is correct;
 - Click on "Create policy".
-
-### Create an IAM user
-
-You can follow the same procedure than in the [install docs](../getting-started/get-started-on-aws), except:
-
-- DO NOT give that user an "Administrator Access"
-- Instead, attach it the policy or policies that you have created in the previous step;
-- Save the Access Key Id and Secret Access Key in order to pass them as credentials in your CI.
