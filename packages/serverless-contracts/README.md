@@ -7,19 +7,19 @@ This package is part of the [Swarmion](https://www.swarmion.dev) project. See it
 # Installation
 
 ```bash
-pnpm add --save-dev @swarmion/serverless-contracts
+pnpm add @swarmion/serverless-contracts
 ```
 
 or if using yarn
 
 ```bash
-yarn add --dev @swarmion/serverless-contracts
+yarn add @swarmion/serverless-contracts
 ```
 
 or if using npm
 
 ```bash
-npm install --save-dev @swarmion/serverless-contracts
+npm install @swarmion/serverless-contracts
 ```
 
 Check out [the docs](https://www.swarmion.dev/docs/how-to-guides/use-serverless-contracts/) for more info.

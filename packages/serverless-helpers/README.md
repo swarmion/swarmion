@@ -7,17 +7,17 @@ This package is part of the [Swarmion](https://www.swarmion.dev) project. See it
 # Installation
 
 ```bash
-pnpm add --save-dev @swarmion/serverless-helpers
+pnpm add @swarmion/serverless-helpers
 ```
 
 or if using yarn
 
 ```bash
-yarn add --dev @swarmion/serverless-helpers
+yarn add @swarmion/serverless-helpers
 ```
 
 or if using npm
 
 ```bash
-npm install --save-dev @swarmion/serverless-helpers
+npm install @swarmion/serverless-helpers
 ```
