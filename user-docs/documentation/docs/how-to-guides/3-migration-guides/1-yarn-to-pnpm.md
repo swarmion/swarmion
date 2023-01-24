@@ -23,7 +23,7 @@ Migrating from yarn to pnpm is quite straightforward:
   - `yarn` -> `pnpm install`
   - `yarn test` -> `pnpm test`
   - `yarn package` -> `pnpm package`
-  - `yarn deploy` -> `pnpm run deploy`
+  - `yarn deploy` -> `pnpm run deploy` (**run** is required here, as `pnpm deploy` is a reserved command)
 - replace all occurrences of the string `yarn.lock` in your source files with `pnpm-lock.yaml` (search, prettier, etc.)
 - in your CI/CD, when using `actions/setup-node@v3`, set `cache` to `'pnpm'`
 - if you're using yarn PnP, remove `.yarnrc.yml` and the `.yarn` folder
