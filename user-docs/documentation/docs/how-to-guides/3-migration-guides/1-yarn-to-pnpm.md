@@ -18,13 +18,26 @@ In order to choose between these two alternatives, we have checked the following
 
 Migrating from yarn to pnpm is quite straightforward:
 
+- install pnpm `npm install -g pnpm`
 - rename all your `yarn` commands to `pnpm`:
   - `yarn` -> `pnpm install`
   - `yarn test` -> `pnpm test`
   - `yarn package` -> `pnpm package`
   - `yarn deploy` -> `pnpm run deploy`
-- remove `yarn.lock`
+- replace all occurrences of `yarn.lock` with `pnpm-lock.yaml` (search, prettier, etc.)
+- in your CI/CD, when using `actions/setup-node@v3`, set `cache` to `'pnpm'`
 - if you're using yarn PnP, remove `.yarnrc.yml` and the `.yarn` folder
 - in the root `package.json` set the `packageManager` key to `pnpm@<version>` (replace `<version>` with the latest available version)
-- exclude `pnpm-lock.yaml` from search, from prettier, etc.
+- create a `pnpm-workspace.yaml` file with:
+
+  ```yaml
+  packages:
+    - 'services/*'
+    - 'contracts/*'
+    - 'packages/*'
+  ```
+
+  and everything that is in the `workspaces` key of the root `package.json`
+
+- run `pnpm import` to generate a `pnpm-lock.yaml` from your `yarn.lock`, then remove `yarn.lock`
 - run `pnpm install`
