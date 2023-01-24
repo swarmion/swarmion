@@ -6,8 +6,8 @@ sidebar_position: 2
 
 ## Why?
 
-We decided to migrate from Babel to tsup because it is better and faster.
+Coming soon...
 
 ## How?
 
-Toto
+Coming soon...
