@@ -4,6 +4,7 @@ on:
       - main
 
 name: 🚀 Deploy main
+concurrency: deploy_main
 
 permissions:
   id-token: write # this is required for AWS https://github.com/aws-actions/configure-aws-credentials#usage
