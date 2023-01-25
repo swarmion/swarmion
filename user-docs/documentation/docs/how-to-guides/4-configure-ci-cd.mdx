@@ -2,13 +2,16 @@
 sidebar_position: 4
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Configure your CI/CD
 
 ## Choose your CI/CD provider
 
 By default, Swarmion uses Github Actions to deploy. However, we have already used GitlabCI and CircleCI to deploy Swarmion projects. This guide will focus on Github Actions.
 
-## Setup the CD authentication
+## Choose you authentication method
 
 In order to be able to deploy resources on AWS, your CI needs **authentication** and **permissions**. There are two main ways to provide authentication:
 
@@ -17,26 +20,48 @@ In order to be able to deploy resources on AWS, your CI needs **authentication**
 
 We strongly recommend the second option, as it will remove the risk of losing long-lived credentials. The Swarmion CI/CD from all starters, uses this method by default.
 
-### With OpenID Connect (OIDC)
+## Configure your authentication
+
+<Tabs>
+  <TabItem value="oidc" label="With OIDC" default>
+
+### Setup authentication
 
 If you use Github Actions, we can recommend to follow [these guidelines](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services) to setup OIDC for your pipeline.
 
 If you are using the Swarmion generated CI, once you have created the role, retrieve its ARN and place it in a Github Actions secret named `AWS_ROLE_ARN_PRODUCTION`.
 
-### With an IAM user
-
-You can follow the same procedure as in the [install docs](../getting-started/get-started-on-aws), except:
-
-- DO NOT give that user an "Administrator Access"
-- Create a policy with the least privileges as explained in [the next section](#restrict-cd-permissions)
-- Instead, attach it the policy or policies that you have created in the previous step
-- Save the Access Key Id and Secret Access Key in order to pass them as credentials in your CI
-
-## Restrict CD permissions
+### Restrict CD permissions
 
 Handling permissions for your CI/CD should depend on the authentication choice. When using an IAM user, you should definitely create a custom policy with the least privileges attached to this user. However, if you use OIDC, the risk is far more mitigated, so it is safer to give it admin permissions.
 
-### Create a deploy policy
+  </TabItem>
+  <TabItem value="iam" label="With an IAM user">
+
+### Setup authentication
+
+<p>
+  You can follow the same procedure as in the [install
+  docs](../getting-started/get-started-on-aws), except:
+
+  <ul>
+    <li>DO NOT give that user an "Administrator Access"</li>
+    <li>
+      Create a policy with the least privileges as explained in [the next
+      section](#restrict-cd-permissions)
+    </li>
+    <li>
+      Instead, attach it the policy or policies that you have created in the
+      previous step
+    </li>
+    <li>
+      Save the Access Key Id and Secret Access Key in order to pass them as
+      credentials in your CI
+    </li>
+  </ul>
+</p>
+
+### Restrict CD permissions
 
 You can find a sample policy. Please review it before creating it!
 
@@ -220,10 +245,21 @@ You can find a sample policy. Please review it before creating it!
 
 Then create the policy:
 
-- Go to [the IAM console](https://console.aws.amazon.com/iamv2/home?#/policies);
-- Click on "create policy";
-- Select the JSON tab;
-- Paste the JSON file from the sample policy (or your custom policy);
-- Click on "Next: tags", then "Next: review";
-- Check that your policy is correct;
-- Click on "Create policy".
+<p>
+  <ul>
+    <li>
+      Go to [the IAM
+      console](https://console.aws.amazon.com/iamv2/home?#/policies)
+    </li>
+    <li>Click on "create policy"</li>
+    <li>Select the JSON tab</li>
+    <li>Paste the JSON file from the sample policy (or your custom policy)</li>
+    <li>Click on "Next: tags", then "Next: review"</li>
+    <li>Check that your policy is correct</li>
+    <li>Click on "Create policy"</li>
+  </ul>
+</p>
+
+  </TabItem>
+
+</Tabs>
