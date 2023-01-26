@@ -19,10 +19,12 @@
   "files": [
     "dist"
   ],
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
+    "bench": "pnpm tsx src/__benches__/index.ts",
     "clean": "rimraf dist",
     "lint-fix": "pnpm linter-base-config --fix",
     "lint-fix-all": "pnpm lint-fix .",
@@ -32,7 +34,7 @@
     "package-types": "tsc -p tsconfig.build.json",
     "package-types-aliases": "tsc-alias -p tsconfig.build.json",
     "test": "nx run test-linter && nx run test-type && nx run test-unit && nx run test-circular",
-    "test-circular": "pnpm depcruise --validate .dependency-cruiser.js .",
+    "test-circular": "pnpm depcruise --config -- .",
     "test-linter": "pnpm linter-base-config .",
     "test-type": "tsc --noEmit --emitDeclarationOnly false",
     "test-unit": "vitest run --coverage --passWithNoTests",
@@ -51,6 +53,7 @@
     "ts-toolbelt": "^9.6.0"
   },
   "devDependencies": {
+    "@codspeed/tinybench-plugin": "^1.0.1",
     "@middy/core": "^3.6.2",
     "@middy/error-logger": "^3.6.2",
     "@middy/http-cors": "^3.6.2",
@@ -69,9 +72,11 @@
     "prettier": "^2.8.1",
     "rimraf": "^4.0.0",
     "serverless": "^3.25.1",
+    "tinybench": "^2.3.1",
     "ts-node": "^10.9.1",
     "tsc-alias": "^1.8.2",
     "tsup": "^6.5.0",
+    "tsx": "^3.12.2",
     "typescript": "^4.9.4",
     "vite-tsconfig-paths": "^4.0.3",
     "vitest": "^0.27.0"

@@ -6,5 +6,12 @@
     "outDir": "./dist/types"
   },
   "include": ["./**/*.ts"],
-  "exclude": ["./vite*", "./**/*.test.ts", "./dist", "./tsup.config.ts"]
+  "exclude": [
+    "./vite*",
+    "./dist",
+    "./tsup.config.ts",
+    "./**/__benches__/**/*",
+    "./**/__mocks__/**/*",
+    "./**/__tests__/**/*"
+  ]
 }
