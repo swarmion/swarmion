@@ -343,6 +343,8 @@ importers:
       '@aws-sdk/client-eventbridge': 3.226.0
       '@serverless/typescript': 3.25.0
       '@swarmion/serverless-helpers': link:../serverless-helpers
+      '@types/aws-lambda': 8.10.109
+      '@types/http-errors': 2.0.1
       ajv: 8.11.2
       axios: 1.2.2
       http-errors: 2.0.0
@@ -355,8 +357,6 @@ importers:
       '@middy/core': 3.6.2
       '@middy/error-logger': 3.6.2
       '@middy/http-cors': 3.6.2
-      '@types/aws-lambda': 8.10.109
-      '@types/http-errors': 2.0.1
       '@types/lodash': 4.14.191
       '@types/node': 18.11.13
       '@typescript-eslint/eslint-plugin': 5.46.0_5mle7isnkfgjmrghnnczirv6iy
@@ -6261,7 +6261,6 @@ packages:
 
   /@types/aws-lambda/8.10.109:
     resolution: {integrity: sha512-/ME92FneNyXQzrAfcnQQlW1XkCZGPDlpi2ao1MJwecN+6SbeonKeggU8eybv1DfKli90FAVT1MlIZVXfwVuCyg==}
-    dev: true
 
   /@types/babel__core/7.1.20:
     resolution: {integrity: sha512-PVb6Bg2QuscZ30FvOU7z4guG6c926D9YRvOxEaelzndpMsvP+YM74Q/dAFASpg2l6+XLalxSGxcq/lrgYWZtyQ==}
@@ -6400,7 +6399,7 @@ packages:
 
   /@types/http-errors/2.0.1:
     resolution: {integrity: sha512-/K3ds8TRAfBvi5vfjuz8y6+GiAYBZ0x4tXv1Av6CWBWn0IlADc+ZX9pMq7oU0fNQPnBwIZl3rmeLp6SBApbxSQ==}
-    dev: true
+    dev: false
 
   /@types/http-proxy/1.17.8:
     resolution: {integrity: sha512-5kPLG5BKpWYkw/LVOGWpiq3nEVqxiN32rTgI53Sk12/xHFQ2rG3ehI9IO+O3W2QoKeyB92dJkoka8SUm6BX1pA==}
