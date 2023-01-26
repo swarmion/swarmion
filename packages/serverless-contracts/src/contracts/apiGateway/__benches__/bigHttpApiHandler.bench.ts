@@ -18,9 +18,51 @@ const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatew
   };
 const fakeContext = getHandlerContextMock();
 
-const bigHttpApiHandler = async (): Promise<void> => {
-  // simulate creation of the handler during the cold start
-  const httpHandler = getHandler(bigHttpApiContract)(
+const httpHandler = getHandler(bigHttpApiContract)(
+  async ({
+    body,
+    pathParameters,
+    queryStringParameters,
+    headers,
+    requestContext,
+  }) => {
+    const myCustomClaim = requestContext.authorizer.claims.foo;
+
+    const name =
+      body.foo +
+      pathParameters.pageNumber +
+      queryStringParameters.testId +
+      headers.myHeader +
+      myCustomClaim;
+
+    return Promise.resolve({ id: 'hello', name });
+  },
+);
+
+const bigHttpApiHandlerInvocationBench = async (): Promise<void> => {
+  await httpHandler(
+    {
+      pathParameters: { userId: 'toto', pageNumber: '15' },
+      body: JSON.stringify({ foo: 'bar' }),
+      headers: {
+        myHeader: 'MyCustomHeader',
+        anotherHeader: 'anotherHeader',
+      },
+      queryStringParameters: { testId: 'myTestId' },
+      requestContext: fakeRequestContext,
+      version: '',
+      routeKey: '',
+      rawPath: '',
+      rawQueryString: '',
+      isBase64Encoded: false,
+    },
+    fakeContext,
+    () => null,
+  );
+};
+
+const bigHttpApiHandlerInstantiationBench = (): void => {
+  getHandler(bigHttpApiContract)(
     async ({
       body,
       pathParameters,
@@ -40,29 +82,9 @@ const bigHttpApiHandler = async (): Promise<void> => {
       return Promise.resolve({ id: 'hello', name });
     },
   );
-
-  // simulate the handler being called 50 times
-  for (let i = 0; i < 50; i++) {
-    await httpHandler(
-      {
-        pathParameters: { userId: 'toto', pageNumber: '15' },
-        body: JSON.stringify({ foo: 'bar' }),
-        headers: {
-          myHeader: 'MyCustomHeader',
-          anotherHeader: 'anotherHeader',
-        },
-        queryStringParameters: { testId: 'myTestId' },
-        requestContext: fakeRequestContext,
-        version: '',
-        routeKey: '',
-        rawPath: '',
-        rawQueryString: '',
-        isBase64Encoded: false,
-      },
-      fakeContext,
-      () => null,
-    );
-  }
 };
 
-export default bigHttpApiHandler;
+export default {
+  instantiation: bigHttpApiHandlerInstantiationBench,
+  invocation: bigHttpApiHandlerInvocationBench,
+};

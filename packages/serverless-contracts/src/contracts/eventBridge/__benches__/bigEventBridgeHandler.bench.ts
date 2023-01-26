@@ -35,25 +35,32 @@ const baseEvent = {
 
 const fakeContext = getHandlerContextMock();
 
-const bigEventBridgeHandler = async (): Promise<void> => {
-  // simulate creation of the handler during the cold start
-  const handler = getHandler(eventBridgeContract)(async event => {
+const bigEventBridgeHandlerInstantiation = (): void => {
+  getHandler(eventBridgeContract)(async event => {
     await Promise.resolve();
 
     return event.detail.userId;
   });
-
-  // simulate the handler being called 50 times
-  for (let i = 0; i < 50; i++) {
-    await handler(
-      {
-        ...baseEvent,
-        detail: { userId: 'toto' },
-      },
-      fakeContext,
-      () => null,
-    );
-  }
 };
 
-export default bigEventBridgeHandler;
+const handler = getHandler(eventBridgeContract)(async event => {
+  await Promise.resolve();
+
+  return event.detail.userId;
+});
+
+const bigEventBridgeHandlerInvocation = async (): Promise<void> => {
+  await handler(
+    {
+      ...baseEvent,
+      detail: { userId: 'toto' },
+    },
+    fakeContext,
+    () => null,
+  );
+};
+
+export default {
+  instantiation: bigEventBridgeHandlerInstantiation,
+  invocation: bigEventBridgeHandlerInvocation,
+};
