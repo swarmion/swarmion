@@ -2,11 +2,13 @@ import { withCodSpeed } from '@codspeed/tinybench-plugin';
 import { Bench } from 'tinybench';
 
 import {
-  basicEventBridgeHandler,
   basicHttpApiHandler,
-  bigEventBridgeHandler,
   bigHttpApiHandler,
-} from './contracts';
+} from 'contracts/apiGateway/__benches__';
+import {
+  basicEventBridgeHandler,
+  bigEventBridgeHandler,
+} from 'contracts/eventBridge/__benches__';
 
 const bench = withCodSpeed(new Bench());
 

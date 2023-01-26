@@ -8,7 +8,7 @@ import { getAPIGatewayV2EventRequestContextMock } from '@swarmion/serverless-hel
 import { getHandlerContextMock } from '__mocks__/requestContext';
 import { getHandler } from 'features';
 
-import { httpApiGatewayContractMock } from './__mocks__/httpApiGatewayContract';
+import { httpApiGatewayContractMock } from '../__mocks__/httpApiGatewayContract.bench';
 
 const httpApiContract = httpApiGatewayContractMock;
 

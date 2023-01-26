@@ -8,7 +8,7 @@ import { getAPIGatewayV2EventRequestContextMock } from '@swarmion/serverless-hel
 import { getHandlerContextMock } from '__mocks__/requestContext';
 import { getHandler } from 'features';
 
-import { bigHttpApiContract } from './__mocks__/bigHttpApiGatewayContract';
+import { bigHttpApiContract } from '../__mocks__/bigHttpApiGatewayContract.bench';
 
 const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
   {
