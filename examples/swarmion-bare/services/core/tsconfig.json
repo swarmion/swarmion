@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.options.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "emitDeclarationOnly": false,
+    "noEmit": true
+  },
+  "references": [
+    { "path": "../../contracts/core-contracts/tsconfig.build.json" },
+    { "path": "../../packages/serverless-configuration/tsconfig.build.json" }
+  ],
+  "include": ["./**/*.ts"]
+}
