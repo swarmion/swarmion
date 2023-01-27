@@ -8,4 +8,8 @@ export {
   getApiGatewayHandler,
   getRequestParameters,
 } from './features';
-export type { SwarmionApiGatewayHandler, ApiGatewayHandler } from './types';
+export type {
+  SwarmionApiGatewayHandler,
+  ApiGatewayHandler,
+  SwarmionApiGatewayOutput,
+} from './types';
