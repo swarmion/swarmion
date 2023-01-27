@@ -26,7 +26,8 @@ const getProjectTemplate = async (
     choices: [
       {
         title: 'Swarmion Starter',
-        description: 'Simple example with a single backend',
+        description:
+          'Simple example with a single Serverless Framework backend',
         value: 'swarmion-starter',
       },
       {
