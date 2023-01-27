@@ -84,6 +84,13 @@ export type HandlerCallback<IntegrationType> = IntegrationType extends 'restApi'
   : APIGatewayProxyCallbackV2;
 
 /**
+ * The type of output of a Swarmion handler,
+ */
+export type SwarmionApiGatewayOutput<
+  Contract extends GenericApiGatewayContract,
+> = OutputType<Contract>;
+
+/**
  * The **internal** type of a Swarmion handler, with type-inferred event
  * The handler function can define additional arguments.
  *
