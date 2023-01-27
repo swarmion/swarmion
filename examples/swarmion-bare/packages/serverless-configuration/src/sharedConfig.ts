@@ -4,7 +4,7 @@ import {
   swarmionEsbuildConfig,
 } from '@swarmion/serverless-helpers';
 
-export const projectName = 'swarmion-starter';
+export const projectName = 'swarmion-bare';
 export const region = 'eu-west-1';
 export const frameworkVersion = '>=3.0.0';
 
@@ -44,7 +44,7 @@ export const sharedProviderConfig: ServerlessProviderConfig = {
  */
 export const sharedParams = {
   dev: {
-    profile: 'swarmion-starter-developer',
+    profile: 'swarmion-bare-developer',
     apiGatewayCorsAllowedOrigins: ['http://localhost:3000'],
   },
   staging: {

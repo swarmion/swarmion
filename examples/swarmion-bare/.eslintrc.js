@@ -43,7 +43,7 @@ module.exports = {
     'import/order': [
       'error',
       {
-        pathGroups: [{ pattern: '@swarmion-starter/**', group: 'unknown' }],
+        pathGroups: [{ pattern: '@swarmion-bare/**', group: 'unknown' }],
         groups: [
           ['external', 'builtin'],
           'unknown',
@@ -88,7 +88,7 @@ module.exports = {
       {
         patterns: [
           {
-            group: ['@swarmion-starter/*/*'],
+            group: ['@swarmion-bare/*/*'],
             message:
               'import of internal modules must be done at the root level.',
           },
