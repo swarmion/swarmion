@@ -1,13 +1,9 @@
-import { getAPIGatewayEventHandlerContextMock } from '@swarmion/serverless-helpers';
+import {
+  getAPIGatewayEventHandlerContextMock,
+  getAPIGatewayV2EventRequestContextMock,
+} from '@swarmion/serverless-helpers';
 
 import { main } from './handler';
-
-const eventMock = {
-  body: JSON.stringify({
-    serviceId: 'serviceId',
-    applicationId: 'applicationId',
-  }),
-} as Parameters<typeof main>[0];
 
 const generateUlid = () => 'ulid';
 
@@ -17,7 +13,19 @@ describe('requestSyncDeployment handler', () => {
     const mockPutRequestedContractEvent = vitest.fn(() => Promise.resolve());
 
     const response = await main(
-      eventMock,
+      {
+        body: JSON.stringify({
+          serviceId: 'serviceId',
+          applicationId: 'applicationId',
+        }),
+        version: '',
+        routeKey: '',
+        rawPath: '',
+        rawQueryString: '',
+        headers: {},
+        requestContext: getAPIGatewayV2EventRequestContextMock(),
+        isBase64Encoded: false,
+      },
       getAPIGatewayEventHandlerContextMock(),
       () => null,
       {
