@@ -17,23 +17,29 @@ export const getEventBridgeHandler =
   ) =>
   <AdditionalArgs extends unknown[] = []>(
     handler: SwarmionEventBridgeHandler<EventType, Payload, AdditionalArgs>,
-  ): EventBridgeHandler<EventType, Payload, AdditionalArgs> =>
-  async (event, context, callback, ...additionalArgs: AdditionalArgs) => {
+  ): EventBridgeHandler<EventType, Payload, AdditionalArgs> => {
     const ajv = new Ajv();
-
     const payloadValidator = ajv.compile(contract.payloadSchema);
-    if (!payloadValidator(event.detail)) {
-      console.error('Error: Invalid payload');
-      console.error(payloadValidator.errors);
-      throw new Error('Invalid payload');
-    }
 
-    const handlerResponse = await handler(
+    return async (
       event,
       context,
       callback,
-      ...additionalArgs,
-    );
+      ...additionalArgs: AdditionalArgs
+    ) => {
+      if (!payloadValidator(event.detail)) {
+        console.error('Error: Invalid payload');
+        console.error(payloadValidator.errors);
+        throw new Error('Invalid payload');
+      }
 
-    return handlerResponse;
+      const handlerResponse = await handler(
+        event,
+        context,
+        callback,
+        ...additionalArgs,
+      );
+
+      return handlerResponse;
+    };
   };
