@@ -11,4 +11,8 @@ export {
   // getMockHandlerInput,
   // setMockHandlerInputSeed,
 } from './features';
-export type { SwarmionApiGatewayHandler, ApiGatewayHandler } from './types';
+export type {
+  SwarmionApiGatewayHandler,
+  ApiGatewayHandler,
+  SwarmionApiGatewayOutput,
+} from './types';
