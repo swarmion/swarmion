@@ -52,63 +52,68 @@ export const getApiGatewayHandler =
     AuthorizerType,
     Output,
     AdditionalArgs
-  > =>
-  async (event, context, callback, ...additionalArgs) => {
-    try {
-      const ajv = new Ajv();
+  > => {
+    const ajv = new Ajv();
+    const inputValidator = ajv.compile(contract.inputSchema);
 
-      const parsedEvent = proxyEventToHandlerEvent<
-        IntegrationType,
-        AuthorizerType,
-        PathParameters,
-        QueryStringParameters,
-        Headers,
-        CustomRequestContext,
-        Body
-      >(event);
+    const outputValidator =
+      contract.outputSchema !== undefined
+        ? ajv.compile(contract.outputSchema)
+        : undefined;
 
-      const inputValidator = ajv.compile(contract.inputSchema);
-      if (!inputValidator(parsedEvent)) {
-        console.error('Error: Invalid input');
-        console.error(inputValidator.errors);
-        throw createHttpError(400, 'Invalid input');
-      }
+    return async (event, context, callback, ...additionalArgs) => {
+      try {
+        const parsedEvent = proxyEventToHandlerEvent<
+          IntegrationType,
+          AuthorizerType,
+          PathParameters,
+          QueryStringParameters,
+          Headers,
+          CustomRequestContext,
+          Body
+        >(event);
 
-      const handlerResponse = await handler(
-        parsedEvent,
-        context,
-        callback,
-        ...additionalArgs,
-      );
-
-      if (contract.outputSchema !== undefined) {
-        const outputValidator = ajv.compile(contract.outputSchema);
-        if (!outputValidator(handlerResponse)) {
-          console.error('Error: Invalid output');
-          console.error(outputValidator.errors);
-          throw createHttpError(400, 'Invalid output');
+        if (!inputValidator(parsedEvent)) {
+          console.error('Error: Invalid input');
+          console.error(inputValidator.errors);
+          throw createHttpError(400, 'Invalid input');
         }
-      }
 
-      return handlerResponseToProxyResult<IntegrationType, Output>(
-        handlerResponse,
-      );
-    } catch (error) {
-      console.error(error);
+        const handlerResponse = await handler(
+          parsedEvent,
+          context,
+          callback,
+          ...additionalArgs,
+        );
 
-      if (isHttpError(error) && error.expose) {
+        if (outputValidator !== undefined) {
+          if (!outputValidator(handlerResponse)) {
+            console.error('Error: Invalid output');
+            console.error(outputValidator.errors);
+            throw createHttpError(400, 'Invalid output');
+          }
+        }
+
+        return handlerResponseToProxyResult<IntegrationType, Output>(
+          handlerResponse,
+        );
+      } catch (error) {
+        console.error(error);
+
+        if (isHttpError(error) && error.expose) {
+          return {
+            headers: error.headers,
+            statusCode: error.statusCode,
+            body: error.message,
+          };
+        }
+
         return {
-          headers: error.headers,
-          statusCode: error.statusCode,
-          body: error.message,
+          statusCode: 500,
+          body: 'Internal server error',
         };
       }
-
-      return {
-        statusCode: 500,
-        body: 'Internal server error',
-      };
-    }
+    };
   };
 
 /**
