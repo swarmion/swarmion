@@ -10,6 +10,7 @@ export interface Schema {
 export interface NormalizedSchema extends Schema {
   projectClassName: string;
   projectPropertyName: string;
+  hashedProjectName: string;
   generatorType: GeneratorType;
   importPath: string;
   linter: Linter;
