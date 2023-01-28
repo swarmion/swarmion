@@ -203,7 +203,7 @@ importers:
 
   services/core:
     specifiers:
-      '@serverless/typescript': ^3.25.0
+      '@serverless/typescript': ^3.27.0
       '@swarmion-with-next/core-contracts': 1.0.0
       '@swarmion-with-next/serverless-configuration': 1.0.0
       '@swarmion/serverless-helpers': ^0.21.3
@@ -212,7 +212,7 @@ importers:
       dependency-cruiser: ^12.3.0
       esbuild: ^0.16.14
       eslint: ^8.31.0
-      serverless: ^3.26.0
+      serverless: ^3.27.0
       serverless-esbuild: ^1.36.0
       ts-node: ^10.9.1
       typescript: ^4.9.4
@@ -223,14 +223,14 @@ importers:
       '@swarmion-with-next/serverless-configuration': link:../../packages/serverless-configuration
       '@swarmion/serverless-helpers': 0.21.3_constructs@10.1.232
     devDependencies:
-      '@serverless/typescript': 3.25.0
+      '@serverless/typescript': 3.27.0
       '@swarmion-with-next/core-contracts': link:../../contracts/core-contracts
       '@types/node': 18.11.18
       '@vitest/coverage-c8': 0.28.2
       dependency-cruiser: 12.3.0
       esbuild: 0.16.14
       eslint: 8.31.0
-      serverless: 3.26.0
+      serverless: 3.27.0
       serverless-esbuild: 1.36.0_esbuild@0.16.14
       ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
       typescript: 4.9.4
@@ -3140,8 +3140,8 @@ packages:
     resolution: {integrity: sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==}
     dev: true
 
-  /@serverless/dashboard-plugin/6.2.2_supports-color@8.1.1:
-    resolution: {integrity: sha512-h3zOprpuWZCdAP7qoOKT2nboB+AaxMkGoSzOD0jIBpt9s0cXqLE2VFjR2vKn8Cvam47Qa3XYnT2/XN6tR6rZgQ==}
+  /@serverless/dashboard-plugin/6.2.3_supports-color@8.1.1:
+    resolution: {integrity: sha512-iTZhpZbiVl6G2AyfgoqxemqqpG4pUceWys3GsyZtjimnfnGd2UFBOMVUMTavLhYia7lQc4kQVuXQ+afLlkg+pQ==}
     engines: {node: '>=12.0'}
     dependencies:
       '@serverless/event-mocks': 1.1.1
@@ -3155,12 +3155,12 @@ packages:
       jszip: 3.10.1
       lodash: 4.17.21
       memoizee: 0.4.15
-      ncjsm: 4.3.1
+      ncjsm: 4.3.2
       node-dir: 0.1.17
-      node-fetch: 2.6.7
+      node-fetch: 2.6.8
       open: 7.4.2
       semver: 7.3.8
-      simple-git: 3.14.1_supports-color@8.1.1
+      simple-git: 3.16.0_supports-color@8.1.1
       type: 2.7.2
       uuid: 8.3.2
       yamljs: 0.3.0
@@ -3205,13 +3205,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@serverless/typescript/3.25.0:
-    resolution: {integrity: sha512-KwP14cP9+1IfM/TQveOaDu8OtituZ2gD55P9B7vDt/ZRzDasTHdOXuZUlDaXGNcwA40HTudXxH9AbLeDLYe4wg==}
-    dev: true
-
   /@serverless/typescript/3.27.0:
     resolution: {integrity: sha512-5T7v032HAt/RYHb9xf5HLg03s/WZopRarlnVt+nVekJVci5nil4C5B6U0eBVfyE9Klproy/9DIcj4RJesBOiEA==}
-    dev: false
 
   /@serverless/utils/6.8.2:
     resolution: {integrity: sha512-FW8zdG8OPoF6qgyutiMhz4m/5SxbQjoQdbaGcW3wU6xe3QzQh41Hif7I3Xuu4J62CvxiWuz19sxNDJz2mTcskw==}
@@ -3240,7 +3235,7 @@ packages:
       make-dir: 3.1.0
       memoizee: 0.4.15
       ncjsm: 4.3.1
-      node-fetch: 2.6.7
+      node-fetch: 2.6.8
       open: 8.4.0
       p-event: 4.2.0
       supports-color: 8.1.1
@@ -4386,6 +4381,22 @@ packages:
 
   /aws-sdk/2.1289.0:
     resolution: {integrity: sha512-wT7SZ385NEm6X4VC1Bhf1loBZi2BDVqEET4G9I7E2tyuEdfeubPvZpCV/BgdId3qwqB4LjbMLBje18Op3zpgBA==}
+    engines: {node: '>= 10.0.0'}
+    dependencies:
+      buffer: 4.9.2
+      events: 1.1.1
+      ieee754: 1.1.13
+      jmespath: 0.16.0
+      querystring: 0.2.0
+      sax: 1.2.1
+      url: 0.10.3
+      util: 0.12.4
+      uuid: 8.0.0
+      xml2js: 0.4.19
+    dev: true
+
+  /aws-sdk/2.1304.0:
+    resolution: {integrity: sha512-9mf2uafa2M9yFC5IlMe85TIc7OUo1HSProCQWzpRmAAYhcSwmfbRyt02Wtr5YSVvJJPmcSgcyI92snsQR1c3nw==}
     engines: {node: '>= 10.0.0'}
     dependencies:
       buffer: 4.9.2
@@ -9145,6 +9156,19 @@ packages:
       type: 2.7.2
     dev: true
 
+  /ncjsm/4.3.2:
+    resolution: {integrity: sha512-6d1VWA7FY31CpI4Ki97Fpm36jfURkVbpktizp8aoVViTZRQgr/0ddmlKerALSSlzfwQRBeSq1qwwVcBJK4Sk7Q==}
+    dependencies:
+      builtin-modules: 3.3.0
+      deferred: 0.7.11
+      es5-ext: 0.10.62
+      es6-set: 0.1.6
+      ext: 1.7.0
+      find-requires: 1.0.0
+      fs2: 0.3.9
+      type: 2.7.2
+    dev: true
+
   /nearley/2.20.1:
     resolution: {integrity: sha512-+Mc8UaAebFzgV+KpI5n7DasuuQCHA89dmwm7JXw3TV43ukfNQ9DnBH3Mdb2g/I4Fdxc26pwimBWvjIw0UAILSQ==}
     hasBin: true
@@ -9222,8 +9246,8 @@ packages:
       minimatch: 3.1.2
     dev: true
 
-  /node-fetch/2.6.7:
-    resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}
+  /node-fetch/2.6.8:
+    resolution: {integrity: sha512-RZ6dBYuj8dRSfxpUSu+NsdF1dpPpluJxwOp+6IoDp/sH2QNDSvurYsAa+F1WxY2RjA1iP93xhcsUoYbF2XBqVg==}
     engines: {node: 4.x || >=6.0.0}
     peerDependencies:
       encoding: ^0.1.0
@@ -9299,7 +9323,7 @@ packages:
       ext: 1.7.0
       fs2: 0.3.9
       memoizee: 0.4.15
-      node-fetch: 2.6.7
+      node-fetch: 2.6.8
       semver: 7.3.8
       type: 2.7.2
       validate-npm-package-name: 3.0.0
@@ -10487,19 +10511,19 @@ packages:
       semver: 7.3.8
     dev: true
 
-  /serverless/3.26.0:
-    resolution: {integrity: sha512-drVr4akkQwm2Pj7ZN9boh5PoI2nKvlXmy+Cb8Hh1Zv8ybsf47ZUQE6t7dakGA4irYf4SQCbVc72nKqISfarMCQ==}
+  /serverless/3.27.0:
+    resolution: {integrity: sha512-+8EDo7x8IJxTj4KqQG71qpX7oq+EZy0NGm/04q3M5jK7L8rLowEtnzq82s93yeNSgmJSMopd3pTzuH9CCWkNMw==}
     engines: {node: '>=12.0'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      '@serverless/dashboard-plugin': 6.2.2_supports-color@8.1.1
+      '@serverless/dashboard-plugin': 6.2.3_supports-color@8.1.1
       '@serverless/platform-client': 4.3.2_supports-color@8.1.1
       '@serverless/utils': 6.8.2
       ajv: 8.12.0
       ajv-formats: 2.1.1_ajv@8.12.0
       archiver: 5.3.1
-      aws-sdk: 2.1289.0
+      aws-sdk: 2.1304.0
       bluebird: 3.7.2
       cachedir: 2.3.0
       chalk: 4.1.2
@@ -10528,7 +10552,7 @@ packages:
       lodash: 4.17.21
       memoizee: 0.4.15
       micromatch: 4.0.5
-      node-fetch: 2.6.7
+      node-fetch: 2.6.8
       npm-registry-utilities: 1.0.0
       object-hash: 3.0.0
       open: 8.4.0
@@ -10605,8 +10629,8 @@ packages:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
     dev: true
 
-  /simple-git/3.14.1_supports-color@8.1.1:
-    resolution: {integrity: sha512-1ThF4PamK9wBORVGMK9HK5si4zoGS2GpRO7tkAFObA4FZv6dKaCVHLQT+8zlgiBm6K2h+wEU9yOaFCu/SR3OyA==}
+  /simple-git/3.16.0_supports-color@8.1.1:
+    resolution: {integrity: sha512-zuWYsOLEhbJRWVxpjdiXl6eyAyGo/KzVW+KFhhw9MqEEJttcq+32jTWSGyxTdf9e/YCohxRE+9xpWFj9FdiJNw==}
     dependencies:
       '@kwsites/file-exists': 1.1.1_supports-color@8.1.1
       '@kwsites/promise-deferred': 1.1.1
