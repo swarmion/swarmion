@@ -215,7 +215,7 @@ importers:
   packages/serverless-cdk-plugin:
     specifiers:
       '@serverless/test': ^11.1.0
-      '@serverless/typescript': ^3.25.0
+      '@serverless/typescript': ^3.27.0
       '@types/jest': ^29.2.4
       '@types/lodash': ^4.14.191
       '@types/node': ^18.11.13
@@ -240,7 +240,7 @@ importers:
       tsup: ^6.5.0
       typescript: ^4.9.4
     dependencies:
-      '@serverless/typescript': 3.25.0
+      '@serverless/typescript': 3.27.0
       '@types/serverless': 3.12.9
       aws-cdk-lib: 2.54.0_constructs@10.1.187
       constructs: 10.1.187
@@ -269,7 +269,7 @@ importers:
 
   packages/serverless-configuration:
     specifiers:
-      '@serverless/typescript': ^3.25.0
+      '@serverless/typescript': ^3.27.0
       '@swarmion/serverless-helpers': workspace:^0.21.3
       '@types/node': ^18.11.13
       concurrently: ^7.6.0
@@ -286,7 +286,7 @@ importers:
     dependencies:
       '@swarmion/serverless-helpers': link:../serverless-helpers
     devDependencies:
-      '@serverless/typescript': 3.25.0
+      '@serverless/typescript': 3.27.0
       '@types/node': 18.11.13
       concurrently: 7.6.0
       dependency-cruiser: 12.1.0
@@ -307,7 +307,7 @@ importers:
       '@middy/core': ^3.6.2
       '@middy/error-logger': ^3.6.2
       '@middy/http-cors': ^3.6.2
-      '@serverless/typescript': ^3.25.0
+      '@serverless/typescript': ^3.27.0
       '@swarmion/serverless-helpers': ^0.21.3
       '@types/aws-lambda': ^8.10.109
       '@types/http-errors': ^2.0.1
@@ -329,7 +329,7 @@ importers:
       openapi-types: 12.1.0
       prettier: ^2.8.1
       rimraf: ^4.0.0
-      serverless: ^3.25.1
+      serverless: ^3.27.0
       tinybench: ^2.3.1
       ts-node: ^10.9.1
       ts-toolbelt: ^9.6.0
@@ -341,12 +341,10 @@ importers:
       vitest: ^0.28.0
     dependencies:
       '@aws-sdk/client-eventbridge': 3.226.0
-      '@serverless/typescript': 3.25.0
       '@swarmion/serverless-helpers': link:../serverless-helpers
       '@types/aws-lambda': 8.10.109
       '@types/http-errors': 2.0.1
       ajv: 8.11.2
-      axios: 1.2.2
       http-errors: 2.0.0
       json-schema-to-ts: 2.6.2
       lodash: 4.17.21
@@ -357,6 +355,7 @@ importers:
       '@middy/core': 3.6.2
       '@middy/error-logger': 3.6.2
       '@middy/http-cors': 3.6.2
+      '@serverless/typescript': 3.27.0
       '@types/lodash': 4.14.191
       '@types/node': 18.11.13
       '@typescript-eslint/eslint-plugin': 5.46.0_5mle7isnkfgjmrghnnczirv6iy
@@ -364,12 +363,13 @@ importers:
       '@vitest/coverage-c8': 0.28.2
       aws-sdk: 2.1272.0
       aws-sdk-client-mock: 2.0.1
+      axios: 1.2.2
       concurrently: 7.6.0
       dependency-cruiser: 12.1.0
       eslint: 8.29.0
       prettier: 2.8.1
       rimraf: 4.1.1
-      serverless: 3.25.1
+      serverless: 3.27.0
       tinybench: 2.3.1
       ts-node: 10.9.1_73migmg77y47omm5253gettkxi
       tsc-alias: 1.8.2
@@ -381,7 +381,7 @@ importers:
 
   packages/serverless-contracts-plugin:
     specifiers:
-      '@serverless/typescript': ^3.25.0
+      '@serverless/typescript': ^3.27.0
       '@swarmion/serverless-contracts': ^0.21.3
       '@types/lodash': ^4.14.191
       '@types/node': ^18.11.13
@@ -398,7 +398,7 @@ importers:
       openapi-types: 12.1.0
       prettier: ^2.8.1
       rimraf: ^4.0.0
-      serverless: ^3.25.1
+      serverless: ^3.27.0
       simple-git: ^3.15.0
       ts-node: ^10.9.1
       tsc-alias: ^1.8.2
@@ -414,10 +414,10 @@ importers:
       json-schema-to-ts: 2.6.2
       lodash: 4.17.21
       openapi-types: 12.1.0
-      serverless: 3.25.1
+      serverless: 3.27.0
       simple-git: 3.15.1
     devDependencies:
-      '@serverless/typescript': 3.25.0
+      '@serverless/typescript': 3.27.0
       '@types/lodash': 4.14.191
       '@types/node': 18.11.13
       '@types/serverless': 3.12.9
@@ -440,7 +440,7 @@ importers:
       '@middy/http-error-handler': ^2.5.7
       '@middy/http-json-body-parser': ^2.5.7
       '@middy/validator': ^2.5.7
-      '@serverless/typescript': ^3.25.0
+      '@serverless/typescript': ^3.27.0
       '@types/aws-lambda': ^8.10.109
       '@types/node': ^18.11.13
       '@vitest/coverage-c8': ^0.28.0
@@ -463,10 +463,10 @@ importers:
       '@middy/http-error-handler': 2.5.7
       '@middy/http-json-body-parser': 2.5.7
       '@middy/validator': 2.5.7
-      '@serverless/typescript': 3.25.0
       aws-cdk-lib: 2.60.0_constructs@10.1.187
       json-schema-to-ts: 2.6.2
     devDependencies:
+      '@serverless/typescript': 3.27.0
       '@types/aws-lambda': 8.10.109
       '@types/node': 18.11.13
       '@vitest/coverage-c8': 0.28.2
@@ -486,7 +486,7 @@ importers:
   services/orchestrator:
     specifiers:
       '@aws-sdk/client-eventbridge': ^3.226.0
-      '@serverless/typescript': ^3.25.0
+      '@serverless/typescript': ^3.27.0
       '@swarmion/eslint-plugin': ^0.21.3
       '@swarmion/orchestrator-contracts': ^0.21.3
       '@swarmion/serverless-cdk-plugin': ^0.21.3
@@ -504,7 +504,7 @@ importers:
       esbuild: ^0.16.0
       esbuild-visualizer: ^0.4.0
       eslint: ^8.29.0
-      serverless: ^3.25.1
+      serverless: ^3.27.0
       serverless-analyze-bundle-plugin: ^1.2.1
       serverless-custom-iam-roles-per-function: ^1.0.1
       serverless-esbuild: ^1.33.2
@@ -528,7 +528,7 @@ importers:
       dynamodb-toolbox: 0.6.2
       ulid: 2.3.0
     devDependencies:
-      '@serverless/typescript': 3.25.0
+      '@serverless/typescript': 3.27.0
       '@swarmion/eslint-plugin': link:../../packages/eslint-plugin
       '@types/node': 18.11.18
       '@vitest/coverage-c8': 0.28.2
@@ -537,8 +537,8 @@ importers:
       esbuild: 0.16.16
       esbuild-visualizer: 0.4.0
       eslint: 8.29.0
-      serverless: 3.25.1
-      serverless-analyze-bundle-plugin: 1.2.1_qna72cvvosqzr33tf7bhc3ttey
+      serverless: 3.27.0
+      serverless-analyze-bundle-plugin: 1.2.1_fdvrtupl4mguxt44wvswen745i
       serverless-custom-iam-roles-per-function: 1.0.1
       serverless-esbuild: 1.33.2_esbuild@0.16.16
       serverless-iam-roles-per-function: 3.2.0
@@ -550,13 +550,13 @@ importers:
 
   user-docs/cloudfront:
     specifiers:
-      '@serverless/typescript': ^3.25.0
+      '@serverless/typescript': ^3.27.0
       '@swarmion/serverless-configuration': ^0.21.3
       '@swarmion/serverless-helpers': ^0.21.3
       '@types/node': ^18.11.13
       dependency-cruiser: ^12.1.0
       eslint: ^8.29.0
-      serverless: ^3.25.1
+      serverless: ^3.27.0
       serverless-lift: ^1.21.0
       ts-node: ^10.9.1
       typescript: ^4.9.4
@@ -564,13 +564,13 @@ importers:
     dependencies:
       '@swarmion/serverless-configuration': link:../../packages/serverless-configuration
     devDependencies:
-      '@serverless/typescript': 3.25.0
+      '@serverless/typescript': 3.27.0
       '@swarmion/serverless-helpers': link:../../packages/serverless-helpers
       '@types/node': 18.11.13
       dependency-cruiser: 12.1.0
       eslint: 8.29.0
-      serverless: 3.25.1
-      serverless-lift: 1.21.0_serverless@3.25.1
+      serverless: 3.27.0
+      serverless-lift: 1.21.0_serverless@3.27.0
       ts-node: 10.9.1_73migmg77y47omm5253gettkxi
       typescript: 4.9.4
       vitest: 0.28.2
@@ -2881,7 +2881,7 @@ packages:
     engines: {node: '>=v14'}
     dependencies:
       '@commitlint/types': 17.0.0
-      ajv: 8.11.2
+      ajv: 8.12.0
     dev: true
 
   /@commitlint/ensure/17.3.0:
@@ -4807,7 +4807,7 @@ packages:
     resolution: {integrity: sha512-fUI/ppXzxJafN9ceSl+FDgsYvu3iTsO6UW0WTD63pS32CfM+PiCryLQHzuc4RkyVW8WQH3aCR/GbaKCqbu52bw==}
     engines: {node: ^14.15.0 || >=16.0.0}
     dependencies:
-      node-fetch: 2.6.7
+      node-fetch: 2.6.8
       npmlog: 6.0.2
     transitivePeerDependencies:
       - encoding
@@ -5743,7 +5743,7 @@ packages:
       '@octokit/request-error': 3.0.2
       '@octokit/types': 8.0.0
       is-plain-object: 5.0.0
-      node-fetch: 2.6.7
+      node-fetch: 2.6.8
       universal-user-agent: 6.0.0
     transitivePeerDependencies:
       - encoding
@@ -5828,6 +5828,38 @@ packages:
       - encoding
       - supports-color
       - utf-8-validate
+    dev: false
+
+  /@serverless/dashboard-plugin/6.2.3_supports-color@8.1.1:
+    resolution: {integrity: sha512-iTZhpZbiVl6G2AyfgoqxemqqpG4pUceWys3GsyZtjimnfnGd2UFBOMVUMTavLhYia7lQc4kQVuXQ+afLlkg+pQ==}
+    engines: {node: '>=12.0'}
+    dependencies:
+      '@serverless/event-mocks': 1.1.1
+      '@serverless/platform-client': 4.3.2_supports-color@8.1.1
+      '@serverless/utils': 6.8.2
+      child-process-ext: 2.1.1
+      chokidar: 3.5.3
+      flat: 5.0.2
+      fs-extra: 9.1.0
+      js-yaml: 4.1.0
+      jszip: 3.10.1
+      lodash: 4.17.21
+      memoizee: 0.4.15
+      ncjsm: 4.3.2
+      node-dir: 0.1.17
+      node-fetch: 2.6.8
+      open: 7.4.2
+      semver: 7.3.8
+      simple-git: 3.16.0_supports-color@8.1.1
+      type: 2.7.2
+      uuid: 8.3.2
+      yamljs: 0.3.0
+    transitivePeerDependencies:
+      - bufferutil
+      - debug
+      - encoding
+      - supports-color
+      - utf-8-validate
 
   /@serverless/event-mocks/1.1.1:
     resolution: {integrity: sha512-YAV5V/y+XIOfd+HEVeXfPWZb8C6QLruFk9tBivoX2roQLWVq145s4uxf8D0QioCueuRzkukHUS4JIj+KVoS34A==}
@@ -5893,8 +5925,8 @@ packages:
       - encoding
     dev: true
 
-  /@serverless/typescript/3.25.0:
-    resolution: {integrity: sha512-KwP14cP9+1IfM/TQveOaDu8OtituZ2gD55P9B7vDt/ZRzDasTHdOXuZUlDaXGNcwA40HTudXxH9AbLeDLYe4wg==}
+  /@serverless/typescript/3.27.0:
+    resolution: {integrity: sha512-5T7v032HAt/RYHb9xf5HLg03s/WZopRarlnVt+nVekJVci5nil4C5B6U0eBVfyE9Klproy/9DIcj4RJesBOiEA==}
 
   /@serverless/utils/6.8.1:
     resolution: {integrity: sha512-vMftT3N/aqGdYyUc6T5xotyZTXZMaxchlzFvEXqTIVzJ1nVcNNIlbndCUA5+KCIipX+p60Uoj8d0pW5mtllS2Q==}
@@ -5942,7 +5974,7 @@ packages:
     dependencies:
       archive-type: 4.0.0
       chalk: 4.1.2
-      ci-info: 3.7.0
+      ci-info: 3.7.1
       cli-progress-footer: 2.3.2
       content-disposition: 0.5.4
       d: 1.0.1
@@ -5963,7 +5995,7 @@ packages:
       make-dir: 3.1.0
       memoizee: 0.4.15
       ncjsm: 4.3.1
-      node-fetch: 2.6.7
+      node-fetch: 2.6.8
       open: 8.4.0
       p-event: 4.2.0
       supports-color: 8.1.1
@@ -7114,6 +7146,17 @@ packages:
         optional: true
     dependencies:
       ajv: 8.11.2
+    dev: false
+
+  /ajv-formats/2.1.1_ajv@8.12.0:
+    resolution: {integrity: sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==}
+    peerDependencies:
+      ajv: ^8.0.0
+    peerDependenciesMeta:
+      ajv:
+        optional: true
+    dependencies:
+      ajv: 8.12.0
 
   /ajv-formats/2.1.1_ajv@8.6.3:
     resolution: {integrity: sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==}
@@ -7141,12 +7184,12 @@ packages:
     dependencies:
       ajv: 6.12.6
 
-  /ajv-keywords/5.1.0_ajv@8.11.2:
+  /ajv-keywords/5.1.0_ajv@8.12.0:
     resolution: {integrity: sha512-YCS/JNFAUyr5vAuhk1DWm1CBxRHW9LbJ2ozWeemrIqpbsqKjHVxYPyi5GC0rjZIT5JxJ3virVTS8wk4i/Z+krw==}
     peerDependencies:
       ajv: ^8.8.2
     dependencies:
-      ajv: 8.11.2
+      ajv: 8.12.0
       fast-deep-equal: 3.1.3
 
   /ajv/6.12.6:
@@ -7159,6 +7202,14 @@ packages:
 
   /ajv/8.11.2:
     resolution: {integrity: sha512-E4bfmKAhGiSTvMfL1Myyycaub+cUEU2/IvpylXkUu7CHBkBj1f/ikdzbD7YQ6FKUbixDxeYvB/xY4fvyroDlQg==}
+    dependencies:
+      fast-deep-equal: 3.1.3
+      json-schema-traverse: 1.0.0
+      require-from-string: 2.0.2
+      uri-js: 4.4.1
+
+  /ajv/8.12.0:
+    resolution: {integrity: sha512-sRu1kpcO9yLtYxBKvqfTeh9KzZEwO3STyX1HT+4CaDzC6HpTGYhIhPIzj9XuKU7KYDwnaeh5hcOwjy1QuJzBPA==}
     dependencies:
       fast-deep-equal: 3.1.3
       json-schema-traverse: 1.0.0
@@ -7522,9 +7573,25 @@ packages:
       util: 0.12.5
       uuid: 8.0.0
       xml2js: 0.4.19
+    dev: false
 
   /aws-sdk/2.1272.0:
     resolution: {integrity: sha512-vJmRzqqInIB7nl2eVWlphEJlVJZwgITKB0DL773FNww3w+nBxKuTtkoOhHYqbHuFtl5gFkL33DPA2MB6PpQLbw==}
+    engines: {node: '>= 10.0.0'}
+    dependencies:
+      buffer: 4.9.2
+      events: 1.1.1
+      ieee754: 1.1.13
+      jmespath: 0.16.0
+      querystring: 0.2.0
+      sax: 1.2.1
+      url: 0.10.3
+      util: 0.12.5
+      uuid: 8.0.0
+      xml2js: 0.4.19
+
+  /aws-sdk/2.1304.0:
+    resolution: {integrity: sha512-9mf2uafa2M9yFC5IlMe85TIc7OUo1HSProCQWzpRmAAYhcSwmfbRyt02Wtr5YSVvJJPmcSgcyI92snsQR1c3nw==}
     engines: {node: '>= 10.0.0'}
     dependencies:
       buffer: 4.9.2
@@ -8330,6 +8397,10 @@ packages:
 
   /ci-info/3.7.0:
     resolution: {integrity: sha512-2CpRNYmImPx+RXKLq6jko/L07phmS9I02TyqkcNU20GCF/GgaWvc58hPtjxDX8lPpkdwc9sNh72V9k00S7ezog==}
+    engines: {node: '>=8'}
+
+  /ci-info/3.7.1:
+    resolution: {integrity: sha512-4jYS4MOAaCIStSRwiuxc4B8MYhIe676yO1sYGzARnjXkWpmzZMMYxY6zu8WYWDhSuth5zhrQ1rhNSibyyvv4/w==}
     engines: {node: '>=8'}
 
   /cidr-split/0.1.2:
@@ -10765,6 +10836,11 @@ packages:
   /filesize/10.0.5:
     resolution: {integrity: sha512-qrzyt8gLh86nsyYiC3ibI5KyIYRCWg2yqIklYrWF4a0qNfekik4OQfn7AoPJG2hRrPMSlH6fET4VEITweZAzjA==}
     engines: {node: '>= 14.0.0'}
+    dev: false
+
+  /filesize/10.0.6:
+    resolution: {integrity: sha512-rzpOZ4C9vMFDqOa6dNpog92CoLYjD79dnjLk2TYDDtImRIyLTOzqojCb05Opd1WuiWjs+fshhCgTd8cl7y5t+g==}
+    engines: {node: '>= 10.4.0'}
 
   /filesize/8.0.7:
     resolution: {integrity: sha512-pjmC+bkIF8XI7fWaH8KxHcZL3DPybs1roSKP4rKDvy20tAWwIObE4+JIseG2byfGKhud5ZnM4YSGKBz7Sh0ndQ==}
@@ -12440,7 +12516,7 @@ packages:
       '@types/node': 18.11.13
       babel-jest: 29.3.1_@babel+core@7.20.5
       chalk: 4.1.2
-      ci-info: 3.7.0
+      ci-info: 3.7.1
       deepmerge: 4.2.2
       glob: 7.2.3
       graceful-fs: 4.2.10
@@ -12480,7 +12556,7 @@ packages:
       '@types/node': 18.11.18
       babel-jest: 29.3.1_@babel+core@7.20.5
       chalk: 4.1.2
-      ci-info: 3.7.0
+      ci-info: 3.7.1
       deepmerge: 4.2.2
       glob: 7.2.3
       graceful-fs: 4.2.10
@@ -12760,7 +12836,7 @@ packages:
       '@jest/types': 29.3.1
       '@types/node': 18.11.18
       chalk: 4.1.2
-      ci-info: 3.7.0
+      ci-info: 3.7.1
       graceful-fs: 4.2.10
       picomatch: 2.3.1
     dev: true
@@ -13945,6 +14021,18 @@ packages:
       fs2: 0.3.9
       type: 2.7.2
 
+  /ncjsm/4.3.2:
+    resolution: {integrity: sha512-6d1VWA7FY31CpI4Ki97Fpm36jfURkVbpktizp8aoVViTZRQgr/0ddmlKerALSSlzfwQRBeSq1qwwVcBJK4Sk7Q==}
+    dependencies:
+      builtin-modules: 3.3.0
+      deferred: 0.7.11
+      es5-ext: 0.10.62
+      es6-set: 0.1.6
+      ext: 1.7.0
+      find-requires: 1.0.0
+      fs2: 0.3.9
+      type: 2.7.2
+
   /nearley/2.20.1:
     resolution: {integrity: sha512-+Mc8UaAebFzgV+KpI5n7DasuuQCHA89dmwm7JXw3TV43ukfNQ9DnBH3Mdb2g/I4Fdxc26pwimBWvjIw0UAILSQ==}
     hasBin: true
@@ -14014,6 +14102,17 @@ packages:
 
   /node-fetch/2.6.7:
     resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}
+    engines: {node: 4.x || >=6.0.0}
+    peerDependencies:
+      encoding: ^0.1.0
+    peerDependenciesMeta:
+      encoding:
+        optional: true
+    dependencies:
+      whatwg-url: 5.0.0
+
+  /node-fetch/2.6.8:
+    resolution: {integrity: sha512-RZ6dBYuj8dRSfxpUSu+NsdF1dpPpluJxwOp+6IoDp/sH2QNDSvurYsAa+F1WxY2RjA1iP93xhcsUoYbF2XBqVg==}
     engines: {node: 4.x || >=6.0.0}
     peerDependencies:
       encoding: ^0.1.0
@@ -16558,9 +16657,9 @@ packages:
     engines: {node: '>= 12.13.0'}
     dependencies:
       '@types/json-schema': 7.0.11
-      ajv: 8.11.2
-      ajv-formats: 2.1.1_ajv@8.11.2
-      ajv-keywords: 5.1.0_ajv@8.11.2
+      ajv: 8.12.0
+      ajv-formats: 2.1.1_ajv@8.12.0
+      ajv-keywords: 5.1.0_ajv@8.12.0
 
   /schemes/1.4.0:
     resolution: {integrity: sha512-ImFy9FbCsQlVgnE3TCWmLPCFnVzx0lHL/l+umHplDqAKd0dzFpnS6lFZIpagBlYhKwzVmlV36ec0Y1XTu8JBAQ==}
@@ -16707,7 +16806,7 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /serverless-analyze-bundle-plugin/1.2.1_qna72cvvosqzr33tf7bhc3ttey:
+  /serverless-analyze-bundle-plugin/1.2.1_fdvrtupl4mguxt44wvswen745i:
     resolution: {integrity: sha512-TIvkpD0BQgaKi1mcPY+hzcI1e6km/cZioZWM03bjsm1emazgI70+qKrAs3Byi4enuElKOIPBqRc3h9Zsr2f6sg==}
     peerDependencies:
       esbuild-visualizer: ^0.3.1
@@ -16717,7 +16816,7 @@ packages:
       check-node-version: 4.2.1
       esbuild-visualizer: 0.4.0
       node-stream-zip: 1.15.0
-      serverless: 3.25.1
+      serverless: 3.27.0
     dev: true
 
   /serverless-custom-iam-roles-per-function/1.0.1:
@@ -16753,7 +16852,7 @@ packages:
       lodash: 4.17.21
     dev: true
 
-  /serverless-lift/1.21.0_serverless@3.25.1:
+  /serverless-lift/1.21.0_serverless@3.27.0:
     resolution: {integrity: sha512-GAnscek5SN121z0K9vhttGQnLlh+M/BYpF2ME1f4astnQeGxxnIwOC3/0ntC0P/jSUSucPF2vUaUdKNs+FEG0A==}
     engines: {node: '>=14.15.0 <19'}
     peerDependencies:
@@ -16772,7 +16871,7 @@ packages:
       mime-types: 2.1.35
       ora: 5.4.1
       pascal-case: 3.1.2
-      serverless: 3.25.1
+      serverless: 3.27.0
       stripe: 8.222.0
       toml: 3.0.0
       traverse: 0.6.7
@@ -16820,6 +16919,72 @@ packages:
       memoizee: 0.4.15
       micromatch: 4.0.5
       node-fetch: 2.6.7
+      npm-registry-utilities: 1.0.0
+      object-hash: 3.0.0
+      open: 8.4.0
+      path2: 0.1.0
+      process-utils: 4.0.0
+      promise-queue: 2.2.5
+      require-from-string: 2.0.2
+      semver: 7.3.8
+      signal-exit: 3.0.7
+      strip-ansi: 6.0.1
+      supports-color: 8.1.1
+      tar: 6.1.13
+      timers-ext: 0.1.7
+      type: 2.7.2
+      untildify: 4.0.0
+      uuid: 9.0.0
+      yaml-ast-parser: 0.0.43
+    transitivePeerDependencies:
+      - bufferutil
+      - debug
+      - encoding
+      - utf-8-validate
+    dev: false
+
+  /serverless/3.27.0:
+    resolution: {integrity: sha512-+8EDo7x8IJxTj4KqQG71qpX7oq+EZy0NGm/04q3M5jK7L8rLowEtnzq82s93yeNSgmJSMopd3pTzuH9CCWkNMw==}
+    engines: {node: '>=12.0'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      '@serverless/dashboard-plugin': 6.2.3_supports-color@8.1.1
+      '@serverless/platform-client': 4.3.2_supports-color@8.1.1
+      '@serverless/utils': 6.8.2
+      ajv: 8.12.0
+      ajv-formats: 2.1.1_ajv@8.12.0
+      archiver: 5.3.1
+      aws-sdk: 2.1304.0
+      bluebird: 3.7.2
+      cachedir: 2.3.0
+      chalk: 4.1.2
+      child-process-ext: 2.1.1
+      ci-info: 3.7.1
+      cli-progress-footer: 2.3.2
+      d: 1.0.1
+      dayjs: 1.11.7
+      decompress: 4.2.1
+      dotenv: 16.0.3
+      dotenv-expand: 9.0.0
+      essentials: 1.2.0
+      ext: 1.7.0
+      fastest-levenshtein: 1.0.16
+      filesize: 10.0.6
+      fs-extra: 10.1.0
+      get-stdin: 8.0.0
+      globby: 11.1.0
+      got: 11.8.6
+      graceful-fs: 4.2.10
+      https-proxy-agent: 5.0.1_supports-color@8.1.1
+      is-docker: 2.2.1
+      js-yaml: 4.1.0
+      json-cycle: 1.3.0
+      json-refs: 3.0.15_supports-color@8.1.1
+      lodash: 4.17.21
+      memoizee: 0.4.15
+      micromatch: 4.0.5
+      node-fetch: 2.6.8
       npm-registry-utilities: 1.0.0
       object-hash: 3.0.0
       open: 8.4.0
@@ -16923,6 +17088,16 @@ packages:
 
   /simple-git/3.15.1_supports-color@8.1.1:
     resolution: {integrity: sha512-73MVa5984t/JP4JcQt0oZlKGr42ROYWC3BcUZfuHtT3IHKPspIvL0cZBnvPXF7LL3S/qVeVHVdYYmJ3LOTw4Rg==}
+    dependencies:
+      '@kwsites/file-exists': 1.1.1_supports-color@8.1.1
+      '@kwsites/promise-deferred': 1.1.1
+      debug: 4.3.4_supports-color@8.1.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /simple-git/3.16.0_supports-color@8.1.1:
+    resolution: {integrity: sha512-zuWYsOLEhbJRWVxpjdiXl6eyAyGo/KzVW+KFhhw9MqEEJttcq+32jTWSGyxTdf9e/YCohxRE+9xpWFj9FdiJNw==}
     dependencies:
       '@kwsites/file-exists': 1.1.1_supports-color@8.1.1
       '@kwsites/promise-deferred': 1.1.1

@@ -1,8 +1,8 @@
 {
-  "name": "@swarmion/serverless-configuration",
+  "name": "@swarmion-bare/serverless-configuration",
   "private": true,
-  "version": "0.21.3",
-  "license": "MIT",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
   "sideEffects": false,
   "files": [
     "dist"
@@ -20,21 +20,19 @@
     "package-types": "tsc -p tsconfig.build.json",
     "package-types-aliases": "tsc-alias -p tsconfig.build.json",
     "test": "nx run test-linter && nx run test-type && nx run test-circular",
-    "test-circular": "pnpm depcruise --validate .dependency-cruiser.js .",
+    "test-circular": "pnpm depcruise --validate .dependency-cruiser.js src",
     "test-linter": "pnpm linter-base-config .",
     "test-type": "tsc --noEmit --emitDeclarationOnly false",
     "watch": "pnpm clean && concurrently 'pnpm:package-* --watch'"
   },
   "dependencies": {
-    "@swarmion/serverless-helpers": "workspace:^0.21.3"
+    "@swarmion/serverless-helpers": "^0.21.3"
   },
   "devDependencies": {
-    "@serverless/typescript": "^3.27.0",
     "@types/node": "^18.11.13",
     "concurrently": "^7.6.0",
     "dependency-cruiser": "^12.1.0",
     "eslint": "^8.29.0",
-    "json-schema-to-ts": "^2.6.2",
     "prettier": "^2.8.1",
     "rimraf": "^4.0.0",
     "ts-node": "^10.9.1",
