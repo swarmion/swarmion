@@ -42,11 +42,11 @@
     "@middy/http-error-handler": "^2.5.7",
     "@middy/http-json-body-parser": "^2.5.7",
     "@middy/validator": "^2.5.7",
-    "@serverless/typescript": "^3.27.0",
     "aws-cdk-lib": "^2.60.0",
     "json-schema-to-ts": "^2.6.2"
   },
   "devDependencies": {
+    "@serverless/typescript": "^3.27.0",
     "@types/aws-lambda": "^8.10.109",
     "@types/node": "^18.11.13",
     "@vitest/coverage-c8": "^0.28.0",
@@ -62,5 +62,8 @@
     "typescript": "^4.9.4",
     "vite-tsconfig-paths": "^4.0.3",
     "vitest": "^0.28.0"
+  },
+  "peerDependencies": {
+    "@serverless/typescript": ">=3"
   }
 }
