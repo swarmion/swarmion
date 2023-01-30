@@ -38,11 +38,11 @@
     },
     "deploy-staging": {
       "inputs": ["production", "^production"],
-      "dependsOn": ["^package", "^build", "bootstrap-staging"]
+      "dependsOn": ["^package", "^build", "^deploy-staging", "bootstrap-staging"]
     },
     "deploy-production": {
       "inputs": ["production", "^production"],
-      "dependsOn": ["^package", "^build", "bootstrap-production"]
+      "dependsOn": ["^package", "^build", "^deploy-production", "bootstrap-production"]
     },
     "test-linter": {
       "inputs": ["default", "^production", "{workspaceRoot}/.eslintrc.js"],
