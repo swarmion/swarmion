@@ -6,9 +6,9 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
   version: '1.0.0',
   license: 'UNLICENSED',
   scripts: {
-    bootstrap: `cdk bootstrap --profile ${options.workspaceName}-developer`,
-    'bootstrap-production': 'cdk bootstrap --context stage=production',
-    'bootstrap-staging': 'cdk bootstrap --context stage=staging',
+    bootstrap: `cdk bootstrap --profile ${options.workspaceName}-developer --qualifier ${options.hashedProjectName}`,
+    'bootstrap-production': `cdk bootstrap --context stage=production --qualifier ${options.hashedProjectName}`,
+    'bootstrap-staging': `cdk bootstrap --context stage=staging --qualifier ${options.hashedProjectName}`,
     deploy: `cdk deploy --profile ${options.workspaceName}-developer`,
     'deploy-production': 'cdk deploy --context stage=production',
     'deploy-staging': 'cdk deploy --context stage=staging',

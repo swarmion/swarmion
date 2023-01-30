@@ -5,6 +5,7 @@ import {
   Tree,
 } from '@nrwl/devkit';
 import { Linter } from '@nrwl/linter';
+import { createHash } from 'crypto';
 import { relative } from 'path';
 
 import { GeneratorType, NormalizedSchema, Schema } from '../types';
@@ -30,10 +31,17 @@ export const normalizeOptions = (
   const { npmScope } = getWorkspaceLayout(tree);
   const offsetFromRoot = relative(packageRoot, tree.root);
 
+  // hashed project name is a 10 char string
+  const hashedProjectName = createHash('sha512')
+    .update(projectName)
+    .digest('base64')
+    .slice(0, 10);
+
   return {
     ...options,
     projectClassName: className,
     projectPropertyName: propertyName,
+    hashedProjectName,
     generatorType,
     importPath: projectName,
     linter,
