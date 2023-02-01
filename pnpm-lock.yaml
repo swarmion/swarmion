@@ -505,7 +505,7 @@ importers:
       esbuild-visualizer: ^0.4.0
       eslint: ^8.29.0
       serverless: ^3.27.0
-      serverless-analyze-bundle-plugin: ^1.2.1
+      serverless-analyze-bundle-plugin: ^2.0.0
       serverless-custom-iam-roles-per-function: ^1.0.1
       serverless-esbuild: ^1.33.2
       serverless-iam-roles-per-function: ^3.2.0
@@ -538,7 +538,7 @@ importers:
       esbuild-visualizer: 0.4.0
       eslint: 8.29.0
       serverless: 3.27.0
-      serverless-analyze-bundle-plugin: 1.2.1_fdvrtupl4mguxt44wvswen745i
+      serverless-analyze-bundle-plugin: 2.0.1_serverless@3.27.0
       serverless-custom-iam-roles-per-function: 1.0.1
       serverless-esbuild: 1.33.2_esbuild@0.16.16
       serverless-iam-roles-per-function: 3.2.0
@@ -8216,14 +8216,6 @@ packages:
       escape-string-regexp: 1.0.5
       supports-color: 5.5.0
 
-  /chalk/3.0.0:
-    resolution: {integrity: sha512-4D3B6Wf41KOYRFdszmDqMCGq5VV/uMAB273JILmO+3jAlh8X4qDtdtgCR3fxtbLEMzSx22QdhnDcJvu2u1fVwg==}
-    engines: {node: '>=8'}
-    dependencies:
-      ansi-styles: 4.3.0
-      supports-color: 7.2.0
-    dev: true
-
   /chalk/4.1.0:
     resolution: {integrity: sha512-qwx12AxXe2Q5xQ43Ac//I6v5aXTipYrSESdOgzrN+9XjgEpyjpKuvSGaN4qE93f7TQTlerQQ8S+EQ0EyDoVL1A==}
     engines: {node: '>=10'}
@@ -8309,19 +8301,6 @@ packages:
 
   /check-error/1.0.2:
     resolution: {integrity: sha512-BrgHpW9NURQgzoNyjfq0Wu6VFO6D7IZEmJNdtgNqpzGG8RuNFHt2jQxWlAs4HMe119chBnv+34syEZtc6IhLtA==}
-    dev: true
-
-  /check-node-version/4.2.1:
-    resolution: {integrity: sha512-YYmFYHV/X7kSJhuN/QYHUu998n/TRuDe8UenM3+m5NrkiH670lb9ILqHIvBencvJc4SDh+XcbXMR4b+TtubJiw==}
-    engines: {node: '>=8.3.0'}
-    hasBin: true
-    dependencies:
-      chalk: 3.0.0
-      map-values: 1.0.1
-      minimist: 1.2.7
-      object-filter: 1.0.2
-      run-parallel: 1.2.0
-      semver: 6.3.0
     dev: true
 
   /cheerio-select/2.1.0:
@@ -13517,10 +13496,6 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /map-values/1.0.1:
-    resolution: {integrity: sha512-BbShUnr5OartXJe1GeccAWtfro11hhgNJg6G9/UtWKjVGvV5U4C09cg5nk8JUevhXODaXY+hQ3xxMUKSs62ONQ==}
-    dev: true
-
   /markdown-escapes/1.0.4:
     resolution: {integrity: sha512-8z4efJYk43E0upd0NbVXwgSTQs6cT3T06etieCMEg7dRbzCbxUCK/GHlX8mhHRDcp+OLlHkPKsvqQTCvsRl2cg==}
 
@@ -14345,10 +14320,6 @@ packages:
   /object-assign/4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
     engines: {node: '>=0.10.0'}
-
-  /object-filter/1.0.2:
-    resolution: {integrity: sha512-NahvP2vZcy1ZiiYah30CEPw0FpDcSkSePJBMpzl5EQgCmISijiGuJm3SPYp7U+Lf2TljyaIw3E5EgkEx/TNEVA==}
-    dev: true
 
   /object-hash/3.0.0:
     resolution: {integrity: sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==}
@@ -16466,16 +16437,14 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /serverless-analyze-bundle-plugin/1.2.1_fdvrtupl4mguxt44wvswen745i:
-    resolution: {integrity: sha512-TIvkpD0BQgaKi1mcPY+hzcI1e6km/cZioZWM03bjsm1emazgI70+qKrAs3Byi4enuElKOIPBqRc3h9Zsr2f6sg==}
+  /serverless-analyze-bundle-plugin/2.0.1_serverless@3.27.0:
+    resolution: {integrity: sha512-jKy3hYm1xu+0dBVRRJJlzy/mk/NIXPQr0SUPuiKUngvf5NrkoahSTQX6D3W+IsK+cEkB34XJxiFWeDpYwpmKcQ==}
     peerDependencies:
-      esbuild-visualizer: ^0.3.1
-      serverless: ^2.60 || ^3
+      serverless: ^3
     dependencies:
-      '@babel/runtime': 7.20.6
-      check-node-version: 4.2.1
       esbuild-visualizer: 0.4.0
       node-stream-zip: 1.15.0
+      open: 8.4.0
       serverless: 3.27.0
     dev: true
 
