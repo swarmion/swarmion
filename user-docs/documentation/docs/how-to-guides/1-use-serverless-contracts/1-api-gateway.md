@@ -306,6 +306,99 @@ export const main = applyHttpMiddlewares(handler, {
 });
 ```
 
+### Generate mock event with the contract
+
+With the `getMockHandlerInput` feature, you can quickly generate input events to test your lambda functions.
+Using [json-schema-faker](https://github.com/json-schema-faker/json-schema-faker), it will generate random data based on the contract schemas and allow you overriding certain key with your own values.
+
+```ts
+import { getMockHandlerInput } from '@swarmion/serverless-contracts';
+
+const [mockEvent] = getMockHandlerInput(myContract, {
+  pathParameters: { userId: '15' },
+  queryStringParameters: { testId: 'plop' },
+});
+```
+
+The result value for mockEvent will be something like
+
+```ts
+const mockEvent = {
+  pathParameters: {
+    userId: '15',
+    pageNumber: '42', // Randomly generated
+  },
+  queryStringParameters: { testId: 'plop' },
+  body: {
+    foo: 'Banana split', // Randomly generated
+  },
+};
+```
+
+Then, you can use it directly in your test files:
+
+```ts
+import {
+  getHandler,
+  getMockHandlerInput,
+} from '@swarmion/serverless-contracts';
+
+const handler = getHandler(myContract)(async event => {
+  // my handler...
+});
+
+const result = await handler(
+  ...getMockHandlerInput(myContract, {
+    pathParameters: { userId: '15' },
+    queryStringParameters: { testId: 'plop' },
+  }),
+);
+
+// Asserts on result
+```
+
+:::tip
+You can use the [faker](https://fakerjs.dev/) keyword in your json schema properties definition to generate more precise random data in your inputs
+
+```ts
+export const bodySchema = {
+  type: 'object',
+  properties: {
+    firstName: {
+      type: 'string',
+      faker: 'name.firstName', // Will generate a random first name (e.g. 'John')
+    },
+    lastName: {
+      type: 'string',
+      faker: 'name.lastName', // Will generate a random last name (e.g. 'Doe')
+    },
+  },
+  required: ['firstName', 'lastName'],
+};
+```
+
+:::
+
+By default, we fixed the random generation seed used by `getMockHandlerInput`, so that test results are consistent.
+This is different from the default behavior of `json-schema-faker` which uses a random seed.
+
+If you need to change the seed, you can use the `setMockHandlerInputSeed` feature:
+
+```ts
+import {
+  getMockHandlerInput,
+  setMockHandlerInputSeed,
+} from '@swarmion/serverless-contracts';
+
+setMockHandlerInputSeed('42'); // Will always generate the same random values
+
+const [mockEvent1] = getMockHandlerInput(myContract);
+
+const [mockEvent2] = getMockHandlerInput(myContract);
+
+expect(mockEvent1).toEqual(mockEvent2); // Will always be true
+```
+
 ## Consumer-side usage
 
 Simply call the `getAxiosRequest` function with the schema.
