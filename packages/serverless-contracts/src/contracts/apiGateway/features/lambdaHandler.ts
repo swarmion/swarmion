@@ -53,7 +53,7 @@ export const getApiGatewayHandler =
     Output,
     AdditionalArgs
   > => {
-    const ajv = new Ajv();
+    const ajv = new Ajv({ keywords: ['faker'] });
     const inputValidator = ajv.compile(contract.inputSchema);
 
     const outputValidator =
