@@ -1,3 +1,4 @@
+import type { RNG } from 'random';
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 
@@ -12,4 +13,6 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 
-export const rng = random.rng;
+const rng: RNG = random.rng;
+
+export { rng };
