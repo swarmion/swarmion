@@ -1,4 +1,5 @@
 import { FromSchema, JSONSchema } from 'json-schema-to-ts';
+import { O } from 'ts-toolbelt';
 
 import { ConstrainedJSONSchema } from 'types/constrainedJSONSchema';
 
@@ -31,7 +32,15 @@ export type BodyType<Contract extends GenericApiGatewayContract> =
     ? FromSchema<Contract['bodySchema']>
     : undefined;
 
-export type OutputType<Contract extends GenericApiGatewayContract> =
-  Contract['outputSchema'] extends JSONSchema
-    ? FromSchema<Contract['outputSchema']>
-    : void;
+export type OutputsType<Contract extends GenericApiGatewayContract> = {
+  [StatusCode in keyof Contract['outputSchemas']]: {
+    statusCode: StatusCode;
+    body: Contract['outputSchemas'][StatusCode] extends JSONSchema
+      ? FromSchema<Contract['outputSchemas'][StatusCode]>
+      : void;
+  };
+};
+
+export type OutputType<Contract extends GenericApiGatewayContract> = O.UnionOf<
+  OutputsType<Contract>
+>;

@@ -1,3 +1,5 @@
+import { HttpStatusCodes } from 'types/http';
+
 import { ApiGatewayEvent, ApiGatewayResult, HandlerEventType } from '../types';
 import {
   ApiGatewayAuthorizerType,
@@ -50,12 +52,13 @@ export const handlerResponseToProxyResult = <
   IntegrationType extends ApiGatewayIntegrationType,
   Output,
 >(
-  handlerResponse: Output,
-): ApiGatewayResult<IntegrationType, Output> => ({
-  statusCode: 200,
-  body: handlerResponse !== undefined ? JSON.stringify(handlerResponse) : '',
-  headers:
-    handlerResponse !== undefined
-      ? { 'Content-Type': 'application/json' }
-      : undefined,
-});
+  statusCode: HttpStatusCodes,
+  body: unknown,
+): ApiGatewayResult<IntegrationType, Output> => {
+  return {
+    statusCode,
+    body: body !== undefined ? JSON.stringify(body) : '',
+    headers:
+      body !== undefined ? { 'Content-Type': 'application/json' } : undefined,
+  };
+};

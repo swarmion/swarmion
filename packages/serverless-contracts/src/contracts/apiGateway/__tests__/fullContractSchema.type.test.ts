@@ -1,5 +1,7 @@
 import { JSONSchema } from 'json-schema-to-ts';
 
+import { HttpStatusCodes } from 'types/http';
+
 import {
   bodySchema,
   headersSchema,
@@ -17,7 +19,7 @@ type Check = FullContractSchemaType<
   typeof queryStringParametersSchema,
   typeof headersSchema,
   typeof bodySchema,
-  typeof outputSchema
+  { [HttpStatusCodes.OK]: typeof outputSchema }
 > extends JSONSchema
   ? 'pass'
   : 'fail';
