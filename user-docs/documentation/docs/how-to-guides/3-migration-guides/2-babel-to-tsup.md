@@ -10,7 +10,9 @@ Coming soon...
 
 ## How?
 
-In order to migrate from Babel to Tsup:
+Before migrating from Babel to Tsup, we strongly recommend adding eslint `no-extraneous-dependencies` rule.
+
+This will ensure you don't forget to specify your dependencies in your `package.json`. If you forget any, tsup will bundle them resulting in bigger bundle size.
 
 - Enable `import/no-extraneous-dependencies` in your eslint config:
   ```js
