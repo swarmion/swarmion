@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import {
   defaultEnvironment,
   projectName,
+  region,
   sharedParams,
 } from '@<%= workspaceName %>/serverless-configuration';
 
@@ -19,4 +20,5 @@ const stage =
 
 new <%= projectClassName %>Stack(app, `${projectName}-<%= name %>-${stage}`, {
   stage,
+  env: { region },
 });
