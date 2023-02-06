@@ -42,6 +42,7 @@ Then, in each built package:
 
   export default defineConfig({
     clean: true,
+    silent: true,
     format: ['cjs', 'esm'],
     outDir: 'dist',
   });
