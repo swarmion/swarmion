@@ -45,6 +45,9 @@ Then, in each built package:
     clean: true,
     silent: true,
     format: ['cjs', 'esm'],
+    outExtension: ctx => {
+      return { js: `.${ctx.format}.js` };
+    },
     outDir: 'dist',
   });
   ```
@@ -52,7 +55,7 @@ Then, in each built package:
 - Replace the `"main"` and `"module"` fields in `package.json` with:
   ```json
   "main": "dist/index.cjs.js",
-  "module": "dist/index.js",
+  "module": "dist/index.esm.js",
   ```
 - Replace the `"package"` command with:
   ```json
