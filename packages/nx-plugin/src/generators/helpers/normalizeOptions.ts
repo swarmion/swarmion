@@ -35,7 +35,8 @@ export const normalizeOptions = (
   const hashedProjectName = createHash('sha512')
     .update(projectName)
     .digest('base64')
-    .slice(0, 10);
+    .slice(0, 10)
+    .toLowerCase();
 
   return {
     ...options,
