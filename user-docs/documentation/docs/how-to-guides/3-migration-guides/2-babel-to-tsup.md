@@ -41,6 +41,7 @@ Then, in each built package:
   import { defineConfig } from 'tsup';
 
   export default defineConfig({
+    entry: ['src/index.ts'],
     clean: true,
     silent: true,
     format: ['cjs', 'esm'],
@@ -56,7 +57,7 @@ Then, in each built package:
 - Replace the `"package"` command with:
   ```json
   "package": "pnpm clean && pnpm package-transpile && pnpm package-types && pnpm package-types-aliases",
-  "package-transpile": "tsup src/index.ts",
+  "package-transpile": "tsup",
   ```
 - Remove the `"package-cjs"`, `"package-esm"` and `"transpile"` commands
 - Remove all `@babel` packages and `babel-plugin-module-resolver`
