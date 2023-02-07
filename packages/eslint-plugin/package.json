@@ -30,7 +30,7 @@
     "lint-fix-all": "pnpm lint-fix .",
     "linter-base-config": "eslint --ext=js,ts",
     "package": "pnpm clean && pnpm package-transpile && pnpm package-types && pnpm package-types-aliases",
-    "package-transpile": "tsup src/index.ts",
+    "package-transpile": "tsup",
     "package-types": "tsc -p tsconfig.build.json",
     "package-types-aliases": "tsc-alias -p tsconfig.build.json",
     "test": "nx run test-linter && nx run test-type && nx run test-circular",
