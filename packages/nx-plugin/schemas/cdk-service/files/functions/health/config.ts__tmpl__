@@ -16,8 +16,6 @@ export class Health extends Construct {
   constructor(scope: Construct, id: string, { restApi }: HealthProps) {
     super(scope, id);
 
-    const healthResource = restApi.root.addResource(healthContract.path);
-
     this.healthFunction = new NodejsFunction(this, 'Lambda', {
       entry: getCdkHandlerPath(__dirname),
       handler: 'main',
@@ -27,9 +25,11 @@ export class Health extends Construct {
       bundling: sharedCdkEsbuildConfig,
     });
 
-    healthResource.addMethod(
-      healthContract.method,
-      new LambdaIntegration(this.healthFunction),
-    );
+    restApi.root
+      .resourceForPath(healthContract.path)
+      .addMethod(
+        healthContract.method,
+        new LambdaIntegration(this.healthFunction),
+      );
   }
 }
