@@ -14,6 +14,8 @@ In order to choose between these two alternatives, we have checked the following
 - performance : pnpm uses hardlinks for `node_modules` by default, so you won't end up with 100GB of `node_modules` across the projects on your machine. This also makes performance way better for installation, update, etc.
 - stability: the way pnpm handles workspaces (monorepo) and `node_modules` in each package is much better than yarn: you have a node_modules folder in all your packages, rather than everything in the root. The impact is that if you have a dependency that does something crazy (like Serverless that dynamically requires modules), it will work
 
+For more context, check out [the migration PR](https://github.com/swarmion/swarmion/pull/281).
+
 ## How?
 
 Migrating from yarn to pnpm is quite straightforward:

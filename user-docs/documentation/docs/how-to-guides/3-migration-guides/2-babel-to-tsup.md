@@ -6,7 +6,11 @@ sidebar_position: 2
 
 ## Why?
 
-Coming soon...
+Swarmion used [Babel](https://babeljs.io/) to transpile internal library code. Babel made it possible to transform our Typescript code to plain Javascript (both CommonJS and ESModules).
+
+However, we decided to migrate to [Tsup](https://tsup.egoist.dev/). It uses [Esbuild](https://esbuild.github.io/) and is much more efficient to transpile libraries.
+
+For more context, check out [the migration PR](https://github.com/swarmion/swarmion/pull/347).
 
 ## How?
 
