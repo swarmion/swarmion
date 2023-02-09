@@ -4,17 +4,17 @@
   "version": "0.0.1",
   "generators": {
     "library": {
-      "factory": "./dist/index.cjs.js#libraryGenerator",
+      "factory": "./dist/index.cjs#libraryGenerator",
       "schema": "./schemas/library/schema.json",
       "description": "library generator"
     },
     "service": {
-      "factory": "./dist/index.cjs.js#serviceGenerator",
+      "factory": "./dist/index.cjs#serviceGenerator",
       "schema": "./schemas/service/schema.json",
       "description": "service generator"
     },
     "cdk-service": {
-      "factory": "./dist/index.cjs.js#cdkServiceGenerator",
+      "factory": "./dist/index.cjs#cdkServiceGenerator",
       "schema": "./schemas/cdk-service/schema.json",
       "description": "CDK service generator"
     }
