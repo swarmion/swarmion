@@ -26,6 +26,7 @@ module.exports = {
     'workspaces',
     'sideEffects',
     'files',
+    'type',
     'main',
     'module',
     'types',
