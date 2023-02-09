@@ -1,0 +1,49 @@
+---
+sidebar_position: 3
+---
+
+# ESM-first packages
+
+## Why?
+
+The Javascript ecosystem is a bit of a mess...
+
+To put it simply, there are two main Javascript families:
+
+- CommonJS (CJS): the historic language of NodeJS
+- ES Modules (ESM): initially built for frontend
+
+These two families have many differences, but the consensus is to move everything towards ES Modules. The next versions of NodeJS should natively support ES Modules, removing the need for us to emit code to this version other than for backward-compatibility.
+
+Therefore this migration uses ES Modules by default for all our Javascript code and restricts the usage of CJS.
+
+For more context, check out [the migration PR](https://github.com/swarmion/swarmion/pull/519).
+
+## How?
+
+This guide will suppose that you already have made the migration from Babel to Tsup. If it is not done, check out [the migration guide](./babel-to-tsup).
+
+Then:
+
+- in each library `package.json`, replace
+  ```json
+   "main": "dist/index.cjs.js",
+   "module": "dist/index.esm.js",
+  ```
+  with:
+  ```json
+   "type": "module",
+   "main": "dist/index.cjs",
+   "module": "dist/index.js",
+  ```
+- replace `pnpm depcruise --validate .dependency-cruiser.js .`, and `"pnpm depcruise --validate .dependency-cruiser.js src` by `pnpm depcruise --config -- .`
+- in each `tsup.config.ts`, remove the `outExtensions` key
+- add `type` to `.syncpackrc.js`
+- rename configuration files:
+  - `.lintstagedrc.js` to `.lintstagedrc.cjs`
+  - `.eslintrc.js` to `.eslintrc.cjs`
+  - `.dependency-cruiser.js` to `.dependency-cruiser.cjs`
+  - 💡 you can use this one-liner to rename them all at once:
+    ```bash
+    find . -regextype posix-awk -regex "(.*\/(packages|contracts)\/.*\/)\.(lintstagedrc|dependency-cruiser|eslintrc)\.js"  -exec bash -c 'mv $0 ${0/js/cjs}' {} \;
+    ```
