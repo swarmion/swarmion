@@ -14,7 +14,7 @@
     "stylelint-base-config": "stylelint",
     "stylelint-fix": "pnpm stylelint-base-config --fix",
     "test": "nx run test-linter && nx run test-type && nx run test-unit && nx run test-circular",
-    "test-circular": "pnpm depcruise --validate .dependency-cruiser.js src",
+    "test-circular": "pnpm depcruise --config -- .",
     "test-linter": "pnpm linter-base-config src",
     "test-stylelint": "pnpm stylelint-base-config **/*.{ts,tsx}",
     "test-type": "tsc",
