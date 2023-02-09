@@ -34,7 +34,7 @@ export const normalizeOptions = (
   // hashed project name is a 10 char string
   const hashedProjectName = createHash('sha512')
     .update(projectName)
-    .digest('base64')
+    .digest('base64url')
     .slice(0, 10)
     .toLowerCase();
 
