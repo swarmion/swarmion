@@ -14,7 +14,7 @@
     "lint-fix-all": "pnpm lint-fix .",
     "linter-base-config": "eslint --ext=js,ts",
     "test": "nx run test-linter && nx run test-type && nx run test-unit && nx run test-circular",
-    "test-circular": "pnpm depcruise --validate .dependency-cruiser.js .",
+    "test-circular": "pnpm depcruise --config -- .",
     "test-linter": "pnpm linter-base-config .",
     "test-type": "tsc",
     "test-unit": "vitest run --coverage --passWithNoTests"
