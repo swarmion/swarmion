@@ -4,6 +4,7 @@ import NotFound from '../NotFound';
 
 vi.mock('assets', () => ({
   NotFoundIcon: 'svg',
+  notFoundJpgUrl: 'jpg',
   notFoundPngUrl: 'png',
 }));
 
