@@ -1,5 +1,7 @@
 import { JSONSchema } from 'json-schema-to-ts';
 
+import type { EventPattern, NativePattern } from './types/patterns';
+
 /**
  * EventBridgeContract:
  *
@@ -20,6 +22,26 @@ export class EventBridgeContract<
   public sources: Sources;
   public eventType: EventType;
   public payloadSchema: PayloadSchema;
+  /**
+   * a native event pattern:
+   * ```ts
+   * {
+   *    source: string[];
+   *    'detail-type': string[];
+   * }
+   * ```
+   */
+  public nativePattern: NativePattern;
+  /**
+   * an event pattern accepted by the CDK:
+   * ```ts
+   * {
+   *    source: string[];
+   *    detailType: string[];
+   * }
+   * ```
+   */
+  public pattern: EventPattern;
 
   /**
    * Builds a new EventBridgeContract contract
@@ -63,5 +85,15 @@ export class EventBridgeContract<
     this.sources = sources;
     this.eventType = eventType;
     this.payloadSchema = payloadSchema;
+    this.nativePattern = {
+      // @ts-expect-error it does not matter that sources are readonly
+      source: sources,
+      'detail-type': [eventType],
+    };
+    this.pattern = {
+      // @ts-expect-error it does not matter that sources are readonly
+      source: sources,
+      detailType: [eventType],
+    };
   }
 }

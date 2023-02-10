@@ -13,5 +13,13 @@ describe('eventBridgeContract tests', () => {
     expect(eventBridgeContract.sources).toEqual(['toto.tata']);
     expect(eventBridgeContract.eventType).toBe('MY_DETAIL_TYPE');
     expect(eventBridgeContract.payloadSchema).toEqual({ type: 'object' });
+    expect(eventBridgeContract.nativePattern).toEqual({
+      source: ['toto.tata'],
+      'detail-type': ['MY_DETAIL_TYPE'],
+    });
+    expect(eventBridgeContract.pattern).toEqual({
+      source: ['toto.tata'],
+      detailType: ['MY_DETAIL_TYPE'],
+    });
   });
 });
