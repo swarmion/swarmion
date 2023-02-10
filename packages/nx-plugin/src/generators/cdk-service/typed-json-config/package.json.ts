@@ -22,7 +22,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     'test-circular': 'pnpm depcruise --validate .dependency-cruiser.js .',
     'test-linter': 'pnpm linter-base-config .',
     'test-type': 'tsc',
-    'test-unit': 'vitest run --coverage',
+    'test-unit': 'vitest run --coverage --passWithNoTests',
   },
   dependencies: {
     [`@${options.workspaceName}/serverless-configuration`]: 'workspace:^',
