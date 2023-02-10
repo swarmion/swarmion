@@ -8,6 +8,7 @@ import {
   getEventBridgeHandler,
   SwarmionEventBridgeHandler,
 } from 'contracts';
+import { GetApiGatewayHandlerOptions } from 'contracts/apiGateway/features';
 import {
   BodyType,
   CustomRequestContextType,
@@ -21,7 +22,15 @@ import {
   ApiGatewayAuthorizerType,
   ApiGatewayIntegrationType,
 } from 'contracts/apiGateway/types/constants';
+import { GetEventBridgeHandlerOptions } from 'contracts/eventBridge/features';
 import { ServerlessContract } from 'types';
+
+type GetHandlerOptions<Contract extends ServerlessContract> =
+  Contract extends GenericApiGatewayContract
+    ? Partial<GetApiGatewayHandlerOptions>
+    : Contract extends EventBridgeContract
+    ? Partial<GetEventBridgeHandlerOptions>
+    : never;
 
 /**
  * must match the type of getApiGatewayHandler
@@ -38,6 +47,7 @@ export function getHandler<
   Output = OutputType<Contract>,
 >(
   contract: Contract,
+  options?: Partial<GetApiGatewayHandlerOptions>,
 ): <AdditionalArgs extends unknown[] = never[]>(
   handler: InternalSwarmionApiGatewayHandler<
     IntegrationType,
@@ -61,6 +71,7 @@ export function getHandler<
   Payload = EventBridgePayloadType<Contract>,
 >(
   contract: Contract,
+  options?: Partial<GetEventBridgeHandlerOptions>,
 ): <AdditionalArgs extends unknown[]>(
   handler: SwarmionEventBridgeHandler<EventType, Payload, AdditionalArgs>,
 ) => EventBridgeHandler<EventType, Payload, AdditionalArgs>;
@@ -68,12 +79,19 @@ export function getHandler<
 // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
 export function getHandler<Contract extends ServerlessContract>(
   contract: Contract,
+  options?: GetHandlerOptions<Contract>,
 ): unknown {
   switch (contract.contractType) {
     case 'eventBridge':
-      return getEventBridgeHandler(contract);
+      return getEventBridgeHandler(
+        contract,
+        options as Partial<GetEventBridgeHandlerOptions> | undefined,
+      );
     case 'apiGateway':
-      return getApiGatewayHandler(contract);
+      return getApiGatewayHandler(
+        contract,
+        options as Partial<GetApiGatewayHandlerOptions> | undefined,
+      );
     case 'cloudFormation':
       throw new Error('CloudFormation contract has no handler');
     default:

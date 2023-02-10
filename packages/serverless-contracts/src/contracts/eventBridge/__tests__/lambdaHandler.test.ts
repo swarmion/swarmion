@@ -65,6 +65,27 @@ describe('EventBridgeContract handler test', () => {
     ).rejects.toThrowError();
   });
 
+  it('should not throw it the payload is invalid but validation is disabled in optinos', async () => {
+    const handler = getHandler(eventBridgeContract, { validatePayload: false })(
+      async event => {
+        await Promise.resolve();
+
+        return event.detail;
+      },
+    );
+
+    const result = await handler(
+      {
+        ...baseEvent,
+        // @ts-expect-error this is a test
+        detail: { tata: 'toto' },
+      },
+      fakeContext,
+      () => null,
+    );
+    expect(result).toEqual({ tata: 'toto' });
+  });
+
   it('should accept additional arguments', async () => {
     const mockSideEffect = vitest.fn(() => 'tata');
     interface SideEffects {

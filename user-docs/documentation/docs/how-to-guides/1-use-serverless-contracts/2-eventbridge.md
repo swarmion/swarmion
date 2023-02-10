@@ -90,6 +90,19 @@ export const main = getHandler(myEventBridgeContract)(async event => {
 
 :::caution
 This handler also provides a payload validation that will throw an error if there is a mismatch with the `payloadSchema`. This ensure that invalid events will not be mistakenly taken into account. However, be sure to set up an invalid events failure flow, for example with a [Lambda `onFailure` destination](https://www.serverless.com/blog/lambda-destinations/).
+
+If you still wish to disable this behavior, you can use the optional second argument in the `getHandler` feature:
+
+```ts
+import { getHandler } from '@swarmion/serverless-contracts';
+
+const handler = getHandler(myContract, {
+  validatePayload: false,
+})(async event => {
+  // ...
+});
+```
+
 :::
 
 ## Provider-side usage
