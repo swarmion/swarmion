@@ -7,7 +7,7 @@ importers:
       '@commitlint/cli': ^17.3.0
       '@commitlint/config-conventional': ^17.3.0
       '@nrwl/workspace': ^15.5.1
-      '@swarmion/nx-plugin': ^0.24.0
+      '@swarmion/nx-plugin': ^0.24.1
       '@typescript-eslint/eslint-plugin': ^5.46.0
       '@typescript-eslint/parser': ^5.46.0
       aws-sdk: ^2.1272.0
@@ -30,7 +30,7 @@ importers:
       '@commitlint/cli': 17.3.0
       '@commitlint/config-conventional': 17.3.0
       '@nrwl/workspace': 15.5.1_lqwc2zjgrlxsq4ydjmen4lphum
-      '@swarmion/nx-plugin': 0.24.0_axkv7fcxfigw4afbpwtuasxm6e
+      '@swarmion/nx-plugin': 0.24.1_axkv7fcxfigw4afbpwtuasxm6e
       '@typescript-eslint/eslint-plugin': 5.46.0_5mle7isnkfgjmrghnnczirv6iy
       '@typescript-eslint/parser': 5.46.0_ha6vam6werchizxrnqvarmz2zu
       aws-sdk: 2.1272.0
@@ -52,7 +52,7 @@ importers:
 
   packages/serverless-configuration:
     specifiers:
-      '@swarmion/serverless-helpers': ^0.24.0
+      '@swarmion/serverless-helpers': ^0.24.1
       '@types/node': ^18.11.13
       concurrently: ^7.6.0
       dependency-cruiser: ^12.1.0
@@ -65,7 +65,7 @@ importers:
       typescript: ^4.9.4
       vitest: ^0.28.0
     dependencies:
-      '@swarmion/serverless-helpers': 0.24.0_2ikbo2pckturon3lmkptqbjnhm
+      '@swarmion/serverless-helpers': 0.24.1_lb3okbtmfkid5hyrjehf6e4o44
     devDependencies:
       '@types/node': 18.11.18
       concurrently: 7.6.0
@@ -81,16 +81,16 @@ importers:
 
 packages:
 
-  /@aws-cdk/asset-awscli-v1/2.2.62:
-    resolution: {integrity: sha512-oU6HChRTFDXDy3yg+fGGF2EZuxwM2flF791RehcFoStw2Rbf6F/BRSudfCpziafv1MPhBUF1wSrPScCycaIFAA==}
+  /@aws-cdk/asset-awscli-v1/2.2.63:
+    resolution: {integrity: sha512-LP+RSwH6JCx2T/AJyaveRg8VRvrM612TxGnec8SVuf9pQ6ah82LcW+4abuMhizeXDcx2ZufwNf9g/G2rp47bjA==}
     dev: false
 
   /@aws-cdk/asset-kubectl-v20/2.1.1:
     resolution: {integrity: sha512-U1ntiX8XiMRRRH5J1IdC+1t5CE89015cwyt5U63Cpk0GnMlN5+h9WsWMlKlPXZR4rdq/m806JRlBMRpBUB2Dhw==}
     dev: false
 
-  /@aws-cdk/asset-node-proxy-agent-v5/2.0.51:
-    resolution: {integrity: sha512-HNevmp8hAnOM3SuIJxUvNyKk7v2j2VZ1LEE+IPcTXCei7Mr0P6jb/ocl423jM95qi0bMzrjdmAHNiBx2boZl3w==}
+  /@aws-cdk/asset-node-proxy-agent-v5/2.0.52:
+    resolution: {integrity: sha512-sQhGP8QhAeP3ZsXxoOQrRFW/0VMH3HvI8NjZe/9ORtKwh8Gyjv2BJWIxlXLvRcc2o26FEl1oHIKRbaK/z/4iMw==}
     dev: false
 
   /@babel/code-frame/7.18.6:
@@ -790,8 +790,8 @@ packages:
     resolution: {integrity: sha512-5T7v032HAt/RYHb9xf5HLg03s/WZopRarlnVt+nVekJVci5nil4C5B6U0eBVfyE9Klproy/9DIcj4RJesBOiEA==}
     dev: false
 
-  /@swarmion/nx-plugin/0.24.0_axkv7fcxfigw4afbpwtuasxm6e:
-    resolution: {integrity: sha512-72H3ADqOKj4ikMosBJ/DoEAl96QeKxrDfPQDsrEEbufRm13EuAzvFKwOsrih5c+ndaFVCnlmV8k7l1ULrnhuyQ==}
+  /@swarmion/nx-plugin/0.24.1_axkv7fcxfigw4afbpwtuasxm6e:
+    resolution: {integrity: sha512-fVMk2Ld04Wo6lx4i1xkD+sxSw79RiA1GvRTtfzk/nfR7niVkQLACcvuE4pAmHg1Ei/V9TM6TsEP8utjhgIXYJw==}
     peerDependencies:
       nx: ^15.5.1
       typescript: ^4.9.4
@@ -804,8 +804,8 @@ packages:
       - eslint
     dev: true
 
-  /@swarmion/serverless-helpers/0.24.0_2ikbo2pckturon3lmkptqbjnhm:
-    resolution: {integrity: sha512-PjIWNee5BazJPeRaRh14BC3N3RZPbE2+5C0vhFsxlL2XbcHHJwPibNVP3l7AGn+6wCYK0u5kONzjE3i+h6qv5A==}
+  /@swarmion/serverless-helpers/0.24.1_lb3okbtmfkid5hyrjehf6e4o44:
+    resolution: {integrity: sha512-a0kU8oSvzZLzcSRFuJFKekAdh/Ld5o//IApStmBljIjGaM0HSu/ZXrfQKfIRRfYTISRM2M5zDcjdfYHZlW5dlQ==}
     peerDependencies:
       '@serverless/typescript': '>=3'
     dependencies:
@@ -814,7 +814,7 @@ packages:
       '@middy/http-json-body-parser': 2.5.7
       '@middy/validator': 2.5.7
       '@serverless/typescript': 3.27.0
-      aws-cdk-lib: 2.64.0_constructs@10.1.245
+      aws-cdk-lib: 2.64.0_constructs@10.1.246
       json-schema-to-ts: 2.6.2
     transitivePeerDependencies:
       - constructs
@@ -1309,16 +1309,16 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /aws-cdk-lib/2.64.0_constructs@10.1.245:
+  /aws-cdk-lib/2.64.0_constructs@10.1.246:
     resolution: {integrity: sha512-IrgL7thb6TeOyHgyR/qKWTdA9FBb9lv7Z9QPDzCNJlkKI+0ANjYHy3RYV8Gd+1+kc6l8DG9Z1elij40YCr/Ptg==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
     dependencies:
-      '@aws-cdk/asset-awscli-v1': 2.2.62
+      '@aws-cdk/asset-awscli-v1': 2.2.63
       '@aws-cdk/asset-kubectl-v20': 2.1.1
-      '@aws-cdk/asset-node-proxy-agent-v5': 2.0.51
-      constructs: 10.1.245
+      '@aws-cdk/asset-node-proxy-agent-v5': 2.0.52
+      constructs: 10.1.246
     dev: false
     bundledDependencies:
       - '@balena/dockerignore'
@@ -1653,8 +1653,8 @@ packages:
       yargs: 17.6.2
     dev: true
 
-  /constructs/10.1.245:
-    resolution: {integrity: sha512-3TOxsgv5atw87/tAnW4aa7aAp1lA8kqjJ/i78t7jCHJEDzWEOGpT2JjLulyNq+GtyIGBKvHd2a64gogULFJY6Q==}
+  /constructs/10.1.246:
+    resolution: {integrity: sha512-2U2hnAuA4tCGGjHk/TulZfSlPobTyokEh+Azuch9nivv2yGI7/5nXDHC14i2MU/K7HFnnkQOHRSrwKSmOZkT/w==}
     engines: {node: '>= 14.17.0'}
     dev: false
 
