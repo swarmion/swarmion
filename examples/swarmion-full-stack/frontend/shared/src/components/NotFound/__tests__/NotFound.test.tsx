@@ -6,6 +6,7 @@ vi.mock('assets', () => ({
   NotFoundIcon: 'svg',
   notFoundJpgUrl: 'jpg',
   notFoundPngUrl: 'png',
+  notFoundWebpUrl: 'webp',
 }));
 
 describe('NotFound component', () => {
