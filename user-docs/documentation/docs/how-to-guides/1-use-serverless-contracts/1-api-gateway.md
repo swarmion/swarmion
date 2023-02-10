@@ -241,6 +241,22 @@ const handler = getHandler(myContract)(async event => {
 });
 ```
 
+:::info
+By default, the `getHandler` feature will validate both the input and the output of your lambda. If you wish to disable one of those, you can use the optional second argument in the `getHandler` feature:
+
+```ts
+import { getHandler } from '@swarmion/serverless-contracts';
+
+const handler = getHandler(myContract, {
+  validateInput: false,
+  validateOutput: false,
+})(async event => {
+  // ...
+});
+```
+
+:::
+
 ### Use Middy middlewares
 
 `ApiGatewayContract` is compatible with middy. For example, if you wish to use Middy for Cors and logging:

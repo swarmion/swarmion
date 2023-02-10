@@ -1,4 +1,4 @@
-import Ajv from 'ajv';
+import Ajv, { ValidateFunction } from 'ajv';
 import createHttpError, { isHttpError } from 'http-errors';
 
 import { GenericApiGatewayContract } from '../apiGatewayContract';
@@ -21,6 +21,16 @@ import {
   proxyEventToHandlerEvent,
 } from '../utils';
 
+export interface GetApiGatewayHandlerOptions {
+  validateInput?: boolean;
+  validateOutput?: boolean;
+}
+
+const defaultOptions: GetApiGatewayHandlerOptions = {
+  validateInput: true,
+  validateOutput: true,
+};
+
 export const getApiGatewayHandler =
   <
     Contract extends GenericApiGatewayContract,
@@ -34,6 +44,7 @@ export const getApiGatewayHandler =
     Output = OutputType<Contract>,
   >(
     contract: Contract,
+    options?: Partial<GetApiGatewayHandlerOptions>,
   ) =>
   <AdditionalArgs extends unknown[] = never[]>(
     handler: InternalSwarmionApiGatewayHandler<
@@ -53,13 +64,25 @@ export const getApiGatewayHandler =
     Output,
     AdditionalArgs
   > => {
-    const ajv = new Ajv({ keywords: ['faker'] });
-    const inputValidator = ajv.compile(contract.inputSchema);
+    const { validateInput, validateOutput } = {
+      ...defaultOptions,
+      ...options,
+    };
 
-    const outputValidator =
-      contract.outputSchema !== undefined
-        ? ajv.compile(contract.outputSchema)
-        : undefined;
+    let ajv: Ajv | undefined = undefined;
+    let inputValidator: ValidateFunction | undefined = undefined;
+    let outputValidator: ValidateFunction | undefined = undefined;
+    if (validateInput === true || validateOutput === true) {
+      ajv = new Ajv({ keywords: ['faker'] });
+
+      inputValidator =
+        validateInput === true ? ajv.compile(contract.inputSchema) : undefined;
+
+      outputValidator =
+        validateOutput === true && contract.outputSchema !== undefined
+          ? ajv.compile(contract.outputSchema)
+          : undefined;
+    }
 
     return async (event, context, callback, ...additionalArgs) => {
       try {
@@ -73,10 +96,12 @@ export const getApiGatewayHandler =
           Body
         >(event);
 
-        if (!inputValidator(parsedEvent)) {
-          console.error('Error: Invalid input');
-          console.error(inputValidator.errors);
-          throw createHttpError(400, 'Invalid input');
+        if (inputValidator !== undefined) {
+          if (!inputValidator(parsedEvent)) {
+            console.error('Error: Invalid input');
+            console.error(inputValidator.errors);
+            throw createHttpError(400, 'Invalid input');
+          }
         }
 
         const handlerResponse = await handler(

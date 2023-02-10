@@ -7,6 +7,14 @@ import {
   SwarmionEventBridgeHandler,
 } from '../types/lambdaHandler';
 
+export interface GetEventBridgeHandlerOptions {
+  validatePayload: boolean;
+}
+
+const defaultOptions: GetEventBridgeHandlerOptions = {
+  validatePayload: true,
+};
+
 export const getEventBridgeHandler =
   <
     Contract extends EventBridgeContract,
@@ -14,10 +22,13 @@ export const getEventBridgeHandler =
     Payload = EventBridgePayloadType<Contract>,
   >(
     contract: Contract,
+    options?: Partial<GetEventBridgeHandlerOptions>,
   ) =>
   <AdditionalArgs extends unknown[] = []>(
     handler: SwarmionEventBridgeHandler<EventType, Payload, AdditionalArgs>,
   ): EventBridgeHandler<EventType, Payload, AdditionalArgs> => {
+    const { validatePayload } = { ...defaultOptions, ...options };
+
     const ajv = new Ajv();
     const payloadValidator = ajv.compile(contract.payloadSchema);
 
@@ -27,10 +38,12 @@ export const getEventBridgeHandler =
       callback,
       ...additionalArgs: AdditionalArgs
     ) => {
-      if (!payloadValidator(event.detail)) {
-        console.error('Error: Invalid payload');
-        console.error(payloadValidator.errors);
-        throw new Error('Invalid payload');
+      if (validatePayload) {
+        if (!payloadValidator(event.detail)) {
+          console.error('Error: Invalid payload');
+          console.error(payloadValidator.errors);
+          throw new Error('Invalid payload');
+        }
       }
 
       const handlerResponse = await handler(

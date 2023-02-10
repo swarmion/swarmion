@@ -423,4 +423,112 @@ describe('apiGateway lambda handler', () => {
       });
     });
   });
+
+  describe('options parameter', () => {
+    it('should disable input validation', async () => {
+      const httpApiContract = httpApiGatewayContractMock;
+
+      const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
+        {
+          ...getAPIGatewayV2EventRequestContextMock(),
+          accountId: '123456789012' as const,
+          authorizer: { claims: { foo: 'claimBar' } },
+        };
+
+      const fakeContext = getHandlerContextMock();
+
+      const httpHandler = getHandler(httpApiContract, { validateInput: false })(
+        async ({
+          body,
+          pathParameters,
+          queryStringParameters,
+          headers,
+          requestContext,
+        }) => {
+          await Promise.resolve();
+          const myCustomClaim = requestContext.authorizer.claims.foo;
+
+          const name =
+            body.foo +
+            pathParameters.pageNumber +
+            queryStringParameters.testId +
+            headers.myHeader +
+            myCustomClaim;
+
+          return Promise.resolve({ id: 'hello', name });
+        },
+      );
+
+      const result = await httpHandler(
+        {
+          pathParameters: { userId: 'toto', pageNumber: '15' },
+          body: JSON.stringify({ bar: 'foo' }),
+          headers: {
+            myHeader: 'MyCustomHeader',
+            anotherHeader: 'anotherHeader',
+          },
+          queryStringParameters: { testId: 'myTestId' },
+          requestContext: fakeRequestContext,
+          version: '',
+          routeKey: '',
+          rawPath: '',
+          rawQueryString: '',
+          isBase64Encoded: false,
+        },
+        fakeContext,
+        () => null,
+      );
+
+      expect(result).toMatchObject({
+        body: JSON.stringify({
+          id: 'hello',
+          name: 'undefined15myTestIdMyCustomHeaderclaimBar',
+        }),
+        statusCode: 200,
+      });
+    });
+
+    it('should disable output validation', async () => {
+      const httpApiContract = httpApiGatewayContractMock;
+
+      const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
+        {
+          ...getAPIGatewayV2EventRequestContextMock(),
+          accountId: '123456789012' as const,
+          authorizer: { claims: { foo: 'claimBar' } },
+        };
+      const fakeContext = getHandlerContextMock();
+
+      const httpHandler = getHandler(httpApiContract, {
+        validateOutput: false,
+      })(() => {
+        return Promise.resolve({ id: 'hello', name: 5 as unknown as string });
+      });
+
+      const result = await httpHandler(
+        {
+          pathParameters: { userId: 'toto', pageNumber: '15' },
+          body: JSON.stringify({ foo: 'bar' }),
+          headers: {
+            myHeader: 'MyCustomHeader',
+            anotherHeader: 'anotherHeader',
+          },
+          queryStringParameters: { testId: 'myTestId' },
+          requestContext: fakeRequestContext,
+          version: '',
+          routeKey: '',
+          rawPath: '',
+          rawQueryString: '',
+          isBase64Encoded: false,
+        },
+        fakeContext,
+        () => null,
+      );
+
+      expect(result).toMatchObject({
+        body: JSON.stringify({ id: 'hello', name: 5 }),
+        statusCode: 200,
+      });
+    });
+  });
 });
