@@ -2,9 +2,7 @@ import { Stack, StackProps } from 'aws-cdk-lib';
 import { RestApi } from 'aws-cdk-lib/aws-apigateway';
 import { Construct } from 'constructs';
 
-import { functions } from 'functions';
-
-const { Health } = functions;
+import { Health } from 'functions';
 
 interface <%= projectClassName %>Props {
   stage: string;
