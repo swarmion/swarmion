@@ -1,6 +1,11 @@
 import { Typography } from '@mui/material';
 
-import { NotFoundIcon, notFoundJpgUrl, notFoundPngUrl } from 'assets';
+import {
+  NotFoundIcon,
+  notFoundJpgUrl,
+  notFoundPngUrl,
+  notFoundWebpUrl,
+} from 'assets';
 
 const NotFound = (): JSX.Element => (
   <>
@@ -8,6 +13,7 @@ const NotFound = (): JSX.Element => (
     <Typography variant="h1">Page not found</Typography>
     <img src={notFoundJpgUrl} alt="page not found jpg" width="180px" />
     <img src={notFoundPngUrl} alt="page not found png" width="180px" />
+    <img src={notFoundWebpUrl} alt="page not found webp" width="180px" />
   </>
 );
 
