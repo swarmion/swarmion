@@ -9,6 +9,12 @@ TEMP_DIR=$(mktemp -d)
 RANDOM_ID=$(cat /proc/sys/kernel/random/uuid | sed 's/[-]//g' | head -c 6)
 EXAMPLE_NAME=$EXAMPLE-$RANDOM_ID
 
+# check if the $REF argument is valid
+if [[ "$REF" == "" ]]; then
+    echo "Missing required argument \$REF"
+    exit 1
+fi
+
 NO_PNPM_POSTINSTALL=true pnpm node packages/create-swarmion-app/dist/index.js -t $EXAMPLE -s $REF $TEMP_DIR/$EXAMPLE_NAME
 cd $TEMP_DIR/$EXAMPLE_NAME
 
