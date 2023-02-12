@@ -1,6 +1,8 @@
 on:
   pull_request:
     types: [opened, synchronize, reopened]
+  merge_group:
+    types: [checks_requested]
 
 # cancel previous runs on the same PR
 concurrency:
