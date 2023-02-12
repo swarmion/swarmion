@@ -6,6 +6,13 @@ on:
       - 'packages/nx-plugin/**'
       - 'examples/**'
       - 'scripts/check-example.sh'
+  merge_group:
+    types: [checks_requested]
+    paths:
+      - 'packages/create-swarmion-app/**'
+      - 'packages/nx-plugin/**'
+      - 'examples/**'
+      - 'scripts/check-example.sh'
 
 # cancel previous runs on the same PR
 concurrency:
