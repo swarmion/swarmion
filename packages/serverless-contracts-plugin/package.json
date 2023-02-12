@@ -40,6 +40,7 @@
     "watch": "pnpm clean && concurrently 'pnpm:package-* --watch'"
   },
   "dependencies": {
+    "@swarmion/serverless-contracts": "0.24.2",
     "aws-sdk": "^2.1272.0",
     "axios": "^1.2.2",
     "json-schema-diff": "^0.18.0",
@@ -68,7 +69,6 @@
     "vitest": "^0.28.0"
   },
   "peerDependencies": {
-    "@swarmion/serverless-contracts": "workspace:*",
     "serverless": "^2.60 || 3"
   }
 }
