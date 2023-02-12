@@ -38,7 +38,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.sha }}
           fetch-depth: 0
       - id: list-example-folders
         run: echo "examples=$(ls examples | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
@@ -55,11 +55,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.sha }}
           # We need to fetch all branches and commits so that Nx affected has a base to compare against.
           fetch-depth: 0
       - uses: nrwl/nx-set-shas@v3
       - name: Install & cache node dependencies
         uses: ./.github/actions/install-node-deps
       - name: '🔍 Check example'
-        run: REF=${{ github.event.pull_request.head.sha }} EXAMPLE=${{matrix.example}} sh ./scripts/check-example.sh
+        run: REF=${{ github.sha }} EXAMPLE=${{matrix.example}} sh ./scripts/check-example.sh
