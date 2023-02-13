@@ -17,7 +17,14 @@ module.exports = {
     'risxss/catch-potential-xss-react': 'error',
     'react/jsx-curly-brace-presence': 'error',
   },
-  settings: { react: { version: 'detect' } },
+  settings: {
+    react: { version: 'detect' },
+    'import/resolver': {
+      typescript: {
+        project: '.',
+      },
+    },
+  },
   parserOptions: {
     project: ['./tsconfig.json'],
     tsconfigRootDir: __dirname,

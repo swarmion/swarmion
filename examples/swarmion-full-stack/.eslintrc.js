@@ -135,7 +135,6 @@ module.exports = {
       parserOptions: {
         project: 'tsconfig.json',
       },
-      settings: { 'import/resolver': { typescript: {} } },
       rules: {
         '@typescript-eslint/prefer-optional-chain': 'error',
         'no-shadow': 'off',
