@@ -21,7 +21,7 @@ module.exports = {
     react: { version: 'detect' },
     'import/resolver': {
       typescript: {
-        project: '.',
+        project: __dirname,
       },
     },
   },
