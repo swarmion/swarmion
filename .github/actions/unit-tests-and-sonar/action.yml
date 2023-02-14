@@ -22,7 +22,8 @@ runs:
       shell: bash
     - name: Get project path from project name
       id: get-project-path
-      run: echo "path=$(jq -r '.projects[${{ toJson(inputs.project) }}]' workspace.json)" >> $GITHUB_OUTPUT
+      # one-liner to get the path to the project from the project name. This can be removed when exposed by Nx
+      run: echo "path=$(find . -type f -name "project.json" ! -path "./examples/*" ! -path "./node_modules/*" -exec grep -l '"name"[:] "${{ inputs.project }}"' {} \; | sed 's/\/project\.json//' | sed 's/\.\///')" >> $GITHUB_OUTPUT
       shell: bash
     - name: Check if SonarCloud Scan should run
       id: check_sonarcloud_scan_should_run
