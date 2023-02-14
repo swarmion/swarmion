@@ -15,7 +15,7 @@ if [[ "$REF" == "" ]]; then
     exit 1
 fi
 
-NO_PNPM_POSTINSTALL=true pnpm node packages/create-swarmion-app/dist/index.js -t $EXAMPLE -s $REF $TEMP_DIR/$EXAMPLE_NAME
+HUSKY=0 pnpm node packages/create-swarmion-app/dist/index.js -t $EXAMPLE -s $REF $TEMP_DIR/$EXAMPLE_NAME
 cd $TEMP_DIR/$EXAMPLE_NAME
 
 # test everything
