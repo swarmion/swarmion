@@ -23,7 +23,6 @@ name: 🔍 PR Check examples
 
 env:
   CI: true
-  NODE_VERSION: 16
   TARGET_SHA: ${{ github.event.pull_request.head.sha || github.event.merge_group.head_sha }}
 
 defaults:

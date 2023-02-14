@@ -13,7 +13,7 @@ name: 📚 PR Docs Preview
 
 env:
   CI: true
-  NODE_VERSION: 16
+  TARGET_SHA: ${{ github.event.pull_request.head.sha || github.event.merge_group.head_sha }}
 
 defaults:
   run:
@@ -26,7 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ env.TARGET_SHA }}
       - name: Install & cache node dependencies
         uses: ./.github/actions/install-node-deps
       - name: Build docs
