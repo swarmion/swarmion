@@ -7,7 +7,7 @@ importers:
       '@commitlint/cli': ^17.3.0
       '@commitlint/config-conventional': ^17.3.0
       '@nrwl/workspace': ^15.5.1
-      '@swarmion/nx-plugin': ^0.24.3
+      '@swarmion/nx-plugin': ^0.24.4
       '@typescript-eslint/eslint-plugin': ^5.51.0
       '@typescript-eslint/parser': ^5.51.0
       aws-sdk: ^2.1272.0
@@ -30,7 +30,7 @@ importers:
       '@commitlint/cli': 17.3.0
       '@commitlint/config-conventional': 17.3.0
       '@nrwl/workspace': 15.5.1_lqwc2zjgrlxsq4ydjmen4lphum
-      '@swarmion/nx-plugin': 0.24.3_axkv7fcxfigw4afbpwtuasxm6e
+      '@swarmion/nx-plugin': 0.24.4_axkv7fcxfigw4afbpwtuasxm6e
       '@typescript-eslint/eslint-plugin': 5.51.0_ipcqifyug7tjpnjq535ht4o2ee
       '@typescript-eslint/parser': 5.51.0_ha6vam6werchizxrnqvarmz2zu
       aws-sdk: 2.1304.0
@@ -53,7 +53,7 @@ importers:
   contracts/core-contracts:
     specifiers:
       '@swarmion-starter/serverless-configuration': workspace:1.0.0
-      '@swarmion/serverless-contracts': ^0.24.3
+      '@swarmion/serverless-contracts': ^0.24.4
       '@types/node': ^18.11.13
       concurrently: ^7.6.0
       dependency-cruiser: ^12.1.0
@@ -67,7 +67,7 @@ importers:
       vitest: ^0.28.0
     dependencies:
       '@swarmion-starter/serverless-configuration': link:../../packages/serverless-configuration
-      '@swarmion/serverless-contracts': 0.24.3_r57t7xugu52i3rcekqbdc34pyy
+      '@swarmion/serverless-contracts': 0.24.4_uwxi4psbykh5bbrkea767uvwgy
     devDependencies:
       '@types/node': 18.11.18
       concurrently: 7.6.0
@@ -83,7 +83,7 @@ importers:
 
   packages/serverless-configuration:
     specifiers:
-      '@swarmion/serverless-helpers': ^0.24.3
+      '@swarmion/serverless-helpers': ^0.24.4
       '@types/node': ^18.11.13
       concurrently: ^7.6.0
       dependency-cruiser: ^12.1.0
@@ -96,7 +96,7 @@ importers:
       typescript: ^4.9.4
       vitest: ^0.28.0
     dependencies:
-      '@swarmion/serverless-helpers': 0.24.3_tlexyymeinqy657zi3pz2ocjze
+      '@swarmion/serverless-helpers': 0.24.4_nrzqwic2pyyy7ajw22pxoqsqw4
     devDependencies:
       '@types/node': 18.11.18
       concurrently: 7.6.0
@@ -115,7 +115,7 @@ importers:
       '@serverless/typescript': ^3.27.0
       '@swarmion-starter/core-contracts': 1.0.0
       '@swarmion-starter/serverless-configuration': 1.0.0
-      '@swarmion/serverless-helpers': ^0.24.3
+      '@swarmion/serverless-helpers': ^0.24.4
       '@types/node': ^18.11.13
       '@vitest/coverage-c8': ^0.28.0
       dependency-cruiser: ^12.1.0
@@ -130,7 +130,7 @@ importers:
       vitest: ^0.28.0
     dependencies:
       '@swarmion-starter/serverless-configuration': link:../../packages/serverless-configuration
-      '@swarmion/serverless-helpers': 0.24.3_tlexyymeinqy657zi3pz2ocjze
+      '@swarmion/serverless-helpers': 0.24.4_nrzqwic2pyyy7ajw22pxoqsqw4
     devDependencies:
       '@serverless/typescript': 3.27.0
       '@swarmion-starter/core-contracts': link:../../contracts/core-contracts
@@ -156,16 +156,16 @@ packages:
       es5-ext: 0.10.62
     dev: true
 
-  /@aws-cdk/asset-awscli-v1/2.2.66:
-    resolution: {integrity: sha512-MdC2UpjDVi0ePQkXZg938/FZvK5pu0o2im9legoojmNZNKGssqpscz5gPISeZhrW124WI8IF+6hYPkHVYnod2w==}
+  /@aws-cdk/asset-awscli-v1/2.2.67:
+    resolution: {integrity: sha512-d3V26C26SGdG0wMeuXDdoPA4CZJQgHS53fqmIuSUNw83vMBullJSUGLxNvk2LzdWcuftSpMUqIUKLKxFzDEMIA==}
     dev: false
 
   /@aws-cdk/asset-kubectl-v20/2.1.1:
     resolution: {integrity: sha512-U1ntiX8XiMRRRH5J1IdC+1t5CE89015cwyt5U63Cpk0GnMlN5+h9WsWMlKlPXZR4rdq/m806JRlBMRpBUB2Dhw==}
     dev: false
 
-  /@aws-cdk/asset-node-proxy-agent-v5/2.0.55:
-    resolution: {integrity: sha512-wqw3I/Bdy3SURLiGKtU47Fkz6OnSPsNs9O0FlkJyBFWVh4e5kMe1BfEmc3kZ/QukvKxI+Fnqk9Yz8tui0goqiQ==}
+  /@aws-cdk/asset-node-proxy-agent-v5/2.0.56:
+    resolution: {integrity: sha512-gmne4sTHeGfsnqyrpmMgp4VpNRRoaCrJIyEhcmokYL3qiE+qkeAJVVWXM7cL1rC05WjsG93IIg9Hw09g2VZRlA==}
     dev: false
 
   /@aws-crypto/ie11-detection/3.0.0:
@@ -1494,10 +1494,10 @@ packages:
       - typescript
     dev: true
 
-  /@nrwl/devkit/15.6.3_nx@15.5.1+typescript@4.9.4:
-    resolution: {integrity: sha512-/JDvdzNxUM+C1PCZPCrvmFx+OfywqZdOq1GS9QR8C0VctTLG4D/SGSFD88O1SAdcbH/f1mMiBGfEYZYd23fghQ==}
+  /@nrwl/devkit/15.7.0_nx@15.5.1+typescript@4.9.4:
+    resolution: {integrity: sha512-aPh3xnSpP4HH8sU2ICuuhtBgp2k4ydfkW/uTOlK/BvT94++AJ/Aj8ZSJFWAd2IteFsMNynPz5c0jLO+MSTqRnA==}
     peerDependencies:
-      nx: '>= 14 <= 16'
+      nx: '>= 14.1 <= 16'
     dependencies:
       '@phenomnomnominal/tsquery': 4.1.1_typescript@4.9.4
       ejs: 3.1.8
@@ -1527,15 +1527,15 @@ packages:
       - typescript
     dev: true
 
-  /@nrwl/linter/15.6.3_axkv7fcxfigw4afbpwtuasxm6e:
-    resolution: {integrity: sha512-efGOduHbUa/L6MuJLb2SoDwi4hEKpz6lM1X/Yg36dYDjLuJdpLC23K4WwEOQeZL6jkcUerfY65W8NMPinAHWKg==}
+  /@nrwl/linter/15.7.0_axkv7fcxfigw4afbpwtuasxm6e:
+    resolution: {integrity: sha512-sS8mL1UktChvgAheLriEJErh5h2aQOuTc8y9AnFRBbI0ih3CC1GjhLqxW+1jZyM8aK5zNXbi6GzZUlRPCdhloQ==}
     peerDependencies:
       eslint: ^8.0.0
     peerDependenciesMeta:
       eslint:
         optional: true
     dependencies:
-      '@nrwl/devkit': 15.6.3_nx@15.5.1+typescript@4.9.4
+      '@nrwl/devkit': 15.7.0_nx@15.5.1+typescript@4.9.4
       '@phenomnomnominal/tsquery': 4.1.1_typescript@4.9.4
       eslint: 8.29.0
       tmp: 0.2.1
@@ -1741,33 +1741,33 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /@swarmion/nx-plugin/0.24.3_axkv7fcxfigw4afbpwtuasxm6e:
-    resolution: {integrity: sha512-wUHNTBoPPKGxJKqQhvNltTYFKOe6Uf4kFA055P4thJuDlCEahSmao6hk1HUlkHpoOmBhz9ePDdZsNAnMrbaenw==}
+  /@swarmion/nx-plugin/0.24.4_axkv7fcxfigw4afbpwtuasxm6e:
+    resolution: {integrity: sha512-D4CNLBoJSrPVJKxPSkNLjrlwzXW0n1VN+Y6jNs9ZtghZdnG9PXyKmKUpmaVJ5LPlafOdPd1ADze6PxZD671kcg==}
     peerDependencies:
       nx: ^15.5.1
       typescript: ^4.9.4
     dependencies:
-      '@nrwl/devkit': 15.6.3_nx@15.5.1+typescript@4.9.4
-      '@nrwl/linter': 15.6.3_axkv7fcxfigw4afbpwtuasxm6e
+      '@nrwl/devkit': 15.7.0_nx@15.5.1+typescript@4.9.4
+      '@nrwl/linter': 15.7.0_axkv7fcxfigw4afbpwtuasxm6e
       nx: 15.5.1
       typescript: 4.9.4
     transitivePeerDependencies:
       - eslint
     dev: true
 
-  /@swarmion/serverless-contracts/0.24.3_r57t7xugu52i3rcekqbdc34pyy:
-    resolution: {integrity: sha512-BlIAl5gb1WXPrljmj8UXK93JSxNTdgCRr+W3hGUFolG6/y52LAPWjCQR+FR7dBG3b0cNNt1eM6h61tUEH5mo0g==}
+  /@swarmion/serverless-contracts/0.24.4_uwxi4psbykh5bbrkea767uvwgy:
+    resolution: {integrity: sha512-XeSFNQK6dTSUIGZ3zVElpwxCO1lrFdZdofheefuCiQ/6yUXg0vPK07KEqXvwn8hXjcs5qLIHUww4dyzDyXmDPw==}
     peerDependencies:
       '@serverless/typescript': '>=3'
       axios: ^1.2.2
     dependencies:
       '@aws-sdk/client-eventbridge': 3.267.0
       '@serverless/typescript': 3.27.0
-      '@swarmion/serverless-helpers': 0.24.3_tlexyymeinqy657zi3pz2ocjze
+      '@swarmion/serverless-helpers': 0.24.4_nrzqwic2pyyy7ajw22pxoqsqw4
       '@types/aws-lambda': 8.10.110
       '@types/http-errors': 2.0.1
       ajv: 8.12.0
-      axios: 1.3.2
+      axios: 1.3.3
       http-errors: 2.0.0
       json-schema-faker: 0.5.0-rcv.46
       json-schema-to-ts: 2.6.2
@@ -1781,8 +1781,8 @@ packages:
       - constructs
     dev: false
 
-  /@swarmion/serverless-helpers/0.24.3_tlexyymeinqy657zi3pz2ocjze:
-    resolution: {integrity: sha512-UzLxjZWHyt4HnP3QHPMJFAnG8+YTGl3gmiyfNkoqjN2UoYsK/EHtT5qQBhRtOMFXab0RY/u9R4yU6wpGmgwrTQ==}
+  /@swarmion/serverless-helpers/0.24.4_nrzqwic2pyyy7ajw22pxoqsqw4:
+    resolution: {integrity: sha512-BgOYbAIeput/7y3S0k4nmXAGuklSRMxZyudIDjkFrm2nrUedfGLDXHLOTdEFuXvvtiF9J9G9TnOaQO09wDsj+Q==}
     peerDependencies:
       '@serverless/typescript': '>=3'
     dependencies:
@@ -1791,7 +1791,7 @@ packages:
       '@middy/http-json-body-parser': 2.5.7
       '@middy/validator': 2.5.7
       '@serverless/typescript': 3.27.0
-      aws-cdk-lib: 2.64.0_constructs@10.1.249
+      aws-cdk-lib: 2.64.0_constructs@10.1.250
       json-schema-to-ts: 2.6.2
     transitivePeerDependencies:
       - constructs
@@ -2427,16 +2427,16 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /aws-cdk-lib/2.64.0_constructs@10.1.249:
+  /aws-cdk-lib/2.64.0_constructs@10.1.250:
     resolution: {integrity: sha512-IrgL7thb6TeOyHgyR/qKWTdA9FBb9lv7Z9QPDzCNJlkKI+0ANjYHy3RYV8Gd+1+kc6l8DG9Z1elij40YCr/Ptg==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
     dependencies:
-      '@aws-cdk/asset-awscli-v1': 2.2.66
+      '@aws-cdk/asset-awscli-v1': 2.2.67
       '@aws-cdk/asset-kubectl-v20': 2.1.1
-      '@aws-cdk/asset-node-proxy-agent-v5': 2.0.55
-      constructs: 10.1.249
+      '@aws-cdk/asset-node-proxy-agent-v5': 2.0.56
+      constructs: 10.1.250
     dev: false
     bundledDependencies:
       - '@balena/dockerignore'
@@ -2481,6 +2481,17 @@ packages:
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
+    dev: true
+
+  /axios/1.3.3:
+    resolution: {integrity: sha512-eYq77dYIFS77AQlhzEL937yUBSepBfPIe8FcgEDN35vMNZKMrs81pgnyrQpwfy4NF4b4XWX1Zgx7yX+25w8QJA==}
+    dependencies:
+      follow-redirects: 1.15.2
+      form-data: 4.0.0
+      proxy-from-env: 1.1.0
+    transitivePeerDependencies:
+      - debug
+    dev: false
 
   /balanced-match/1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
@@ -2970,8 +2981,8 @@ packages:
       yargs: 17.6.2
     dev: true
 
-  /constructs/10.1.249:
-    resolution: {integrity: sha512-xttf/MWHfvMyOjg88CYymlC7RZCP7kF6knA1xtJgDfhvel11uYUhomEGxuQiqy6BOvKyKxJUBaGl8jfp8s1MLA==}
+  /constructs/10.1.250:
+    resolution: {integrity: sha512-eF71tcgvo6jMO/NlPFWuUpJ0VrpA9kvRvusIFLPjfV6h75epVQPwyhPoVlS0hHFQsujQJNXMLltaeRZSGhILcw==}
     engines: {node: '>= 14.17.0'}
     dev: false
 
