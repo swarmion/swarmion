@@ -7,7 +7,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       typescript: {
-        project: '.',
+        project: __dirname,
       },
     },
   },
