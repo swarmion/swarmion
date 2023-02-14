@@ -6,10 +6,6 @@ importers:
     specifiers:
       '@commitlint/cli': ^17.3.0
       '@commitlint/config-conventional': ^17.3.0
-      '@nrwl/devkit': ^15.7.0
-      '@nrwl/linter': ^15.7.0
-      '@nrwl/tao': ^15.7.0
-      '@nrwl/workspace': ^15.7.0
       '@swarmion/nx-plugin': ^0.24.4
       '@typescript-eslint/eslint-plugin': ^5.51.0
       '@typescript-eslint/parser': ^5.51.0
@@ -33,10 +29,6 @@ importers:
     devDependencies:
       '@commitlint/cli': 17.3.0
       '@commitlint/config-conventional': 17.3.0
-      '@nrwl/devkit': 15.7.0_nx@15.7.0+typescript@4.9.4
-      '@nrwl/linter': 15.7.0_c2aszg5vqpg4yc5pigdeyirpdm
-      '@nrwl/tao': 15.7.0
-      '@nrwl/workspace': 15.7.0_lqwc2zjgrlxsq4ydjmen4lphum
       '@swarmion/nx-plugin': 0.24.4_c2aszg5vqpg4yc5pigdeyirpdm
       '@typescript-eslint/eslint-plugin': 5.51.0_ipcqifyug7tjpnjq535ht4o2ee
       '@typescript-eslint/parser': 5.51.0_ha6vam6werchizxrnqvarmz2zu
@@ -2477,10 +2469,10 @@ packages:
       - debug
     dev: true
 
-  /@nrwl/devkit/15.7.0_nx@15.7.0+typescript@4.9.4:
-    resolution: {integrity: sha512-aPh3xnSpP4HH8sU2ICuuhtBgp2k4ydfkW/uTOlK/BvT94++AJ/Aj8ZSJFWAd2IteFsMNynPz5c0jLO+MSTqRnA==}
+  /@nrwl/devkit/15.5.1_nx@15.7.0+typescript@4.9.4:
+    resolution: {integrity: sha512-SETS7nOr5ady18+rNBCz4bGW64uSYcGmVbMTrYtbl/IZHIAAaTxqd7MoOcOVWfIPWbf2SfhXb6xBiSfo6cbzOQ==}
     peerDependencies:
-      nx: '>= 14.1 <= 16'
+      nx: '>= 14 <= 16'
     dependencies:
       '@phenomnomnominal/tsquery': 4.1.1_typescript@4.9.4
       ejs: 3.1.8
@@ -2492,15 +2484,15 @@ packages:
       - typescript
     dev: true
 
-  /@nrwl/linter/15.7.0_c2aszg5vqpg4yc5pigdeyirpdm:
-    resolution: {integrity: sha512-sS8mL1UktChvgAheLriEJErh5h2aQOuTc8y9AnFRBbI0ih3CC1GjhLqxW+1jZyM8aK5zNXbi6GzZUlRPCdhloQ==}
+  /@nrwl/linter/15.5.1_c2aszg5vqpg4yc5pigdeyirpdm:
+    resolution: {integrity: sha512-r+AHmPVBVtPOjyPL3YDJUQ1xlUuORC6HS3gJb7gh9zM2qFGRMqDemycUCNjSncDwOAs/SZJmAKBhHeUTRDQXEw==}
     peerDependencies:
       eslint: ^8.0.0
     peerDependenciesMeta:
       eslint:
         optional: true
     dependencies:
-      '@nrwl/devkit': 15.7.0_nx@15.7.0+typescript@4.9.4
+      '@nrwl/devkit': 15.5.1_nx@15.7.0+typescript@4.9.4
       '@phenomnomnominal/tsquery': 4.1.1_typescript@4.9.4
       eslint: 8.29.0
       tmp: 0.2.1
@@ -2600,47 +2592,6 @@ packages:
       - '@swc-node/register'
       - '@swc/core'
       - debug
-    dev: true
-
-  /@nrwl/workspace/15.7.0_lqwc2zjgrlxsq4ydjmen4lphum:
-    resolution: {integrity: sha512-cYmDV326jCqJgO+sNlNJ/CdWHWSeKKk/r9ulxwOWbPgb+15N4MGldb5K7/+ocaZ3dQ5zzDJuPPhTCg2e0w+WSQ==}
-    peerDependencies:
-      prettier: ^2.6.2
-    peerDependenciesMeta:
-      prettier:
-        optional: true
-    dependencies:
-      '@nrwl/devkit': 15.7.0_nx@15.7.0+typescript@4.9.4
-      '@nrwl/linter': 15.7.0_c2aszg5vqpg4yc5pigdeyirpdm
-      '@parcel/watcher': 2.0.4
-      chalk: 4.1.2
-      chokidar: 3.5.3
-      cli-cursor: 3.1.0
-      cli-spinners: 2.6.1
-      dotenv: 10.0.0
-      figures: 3.2.0
-      flat: 5.0.2
-      fs-extra: 11.1.0
-      glob: 7.1.4
-      ignore: 5.2.4
-      jsonc-parser: 3.2.0
-      minimatch: 3.0.5
-      npm-run-path: 4.0.1
-      nx: 15.7.0
-      open: 8.4.0
-      prettier: 2.8.1
-      rxjs: 6.6.7
-      semver: 7.3.4
-      tmp: 0.2.1
-      tslib: 2.5.0
-      yargs: 17.6.2
-      yargs-parser: 21.1.1
-    transitivePeerDependencies:
-      - '@swc-node/register'
-      - '@swc/core'
-      - debug
-      - eslint
-      - typescript
     dev: true
 
   /@parcel/watcher/2.0.4:
@@ -2956,8 +2907,8 @@ packages:
       nx: ^15.5.1
       typescript: ^4.9.4
     dependencies:
-      '@nrwl/devkit': 15.7.0_nx@15.7.0+typescript@4.9.4
-      '@nrwl/linter': 15.7.0_c2aszg5vqpg4yc5pigdeyirpdm
+      '@nrwl/devkit': 15.5.1_nx@15.7.0+typescript@4.9.4
+      '@nrwl/linter': 15.5.1_c2aszg5vqpg4yc5pigdeyirpdm
       nx: 15.7.0
       typescript: 4.9.4
     transitivePeerDependencies:
