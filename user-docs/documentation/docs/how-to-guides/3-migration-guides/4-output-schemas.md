@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# From outputSchema to outputSchemas
+# From `outputSchema` to `outputSchemas`
 
 ## Why?
 
@@ -10,19 +10,22 @@ Before version 0.25.0, in the `ApiGatewayContract`, the `outputSchema` key was u
 However, some users reported that they needed multiple output schemas for a single integration to handle different status codes, for error responses for example.
 Thus, we decided to add a `outputSchemas` to allow that and remove the `outputSchema` key, which introduced a breaking change.
 
-For more context, check out [the migration PR](https://github.com/swarmion/swarmion/pull/404).
+For more context, check out:
+
+- [the release notes](https://github.com/swarmion/swarmion/releases/tag/v0.25.0)
+- [the migration PR](https://github.com/swarmion/swarmion/pull/404)
 
 ## How?
 
 Migrating from `outputSchema` to `outputSchemas` is quite straightforward:
 
-1. Upgrade serverless-contracts to version 0.25.0 or higher
+1. Upgrade `@swarmion/serverless-contracts` to version `0.25.0` or higher
 2. In your contract packages, in the files defining your contracts
 
-   - Add the `HttpStatusCode` type to the imports:
+   - Add the `HttpStatusCodes` type to the imports:
 
    ```diff
-   + import { HttpStatusCode } from '@swarmion/serverless-contracts';
+   + import { HttpStatusCodes } from '@swarmion/serverless-contracts';
    ```
 
    - Update the `ApiGatewayContract` to use `outputSchemas` instead of `outputSchema`:
@@ -30,7 +33,7 @@ Migrating from `outputSchema` to `outputSchemas` is quite straightforward:
    ```diff
    - outputSchema,
    + outputSchemas: {
-   +   [HttpStatusCode.OK]: outputSchema,
+   +   [HttpStatusCodes.OK]: outputSchema,
    + },
    ```
 
@@ -40,7 +43,7 @@ Migrating from `outputSchema` to `outputSchemas` is quite straightforward:
 const handler = getHandler(contract)(async (event) => {
     /// your implementation
 - return body;
-+ return { body, statusCode: HttpStatusCode.OK };
++ return { body, statusCode: HttpStatusCodes.OK };
 });
 ```
 
