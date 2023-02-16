@@ -68,7 +68,7 @@ describe('apiGateway lambda handler mock input', () => {
     queryStringParametersSchema,
     headersSchema,
     bodySchema,
-    outputSchema,
+    outputSchemas: { 200: outputSchema },
     requestContextSchema,
   });
 
