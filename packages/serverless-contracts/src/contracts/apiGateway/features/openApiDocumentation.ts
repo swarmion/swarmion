@@ -1,7 +1,6 @@
 import { OpenAPIV3 } from 'openapi-types';
 
 import { ContractOpenApiDocumentation } from 'types/contractOpenApiDocumentation';
-import { HttpStatusCodes } from 'types/http';
 
 import { GenericApiGatewayContract } from '../apiGatewayContract';
 
@@ -10,32 +9,38 @@ export const getOpenApiDocumentation = <
 >(
   contract: Contract,
 ): ContractOpenApiDocumentation => {
-  const contractDocumentation: OpenAPIV3.OperationObject = {
-    responses: {
-      '200': {
-        description: 'Success',
-      },
-    },
+  const initialDocumentation: OpenAPIV3.OperationObject = {
+    responses: {},
   };
 
-  if (
-    contract.outputSchemas[HttpStatusCodes.OK] !== undefined &&
-    contractDocumentation.responses[200] !== undefined
-  ) {
-    contractDocumentation.responses[200] = {
-      ...contractDocumentation.responses[200],
-      content: {
-        'application/json': {
-          // This cast is done because there is differences between JsonSchema and OpenAPIV3.SchemaObject specs
-          // It may be fixed later
-          // @ref https://swagger.io/specification/
-          schema: contract.outputSchemas[
-            HttpStatusCodes.OK
-          ] as OpenAPIV3.SchemaObject,
+  // add responses to the object
+  const contractDocumentation = Object.keys(contract.outputSchemas).reduce(
+    (config, responseCode) => {
+      // @ts-expect-error Typescript does not infer the key type with Object.keys
+      const schema = contract.outputSchemas[
+        responseCode
+      ] as OpenAPIV3.SchemaObject;
+
+      return {
+        ...config,
+        responses: {
+          ...config.responses,
+          [responseCode]: {
+            description: `Response: ${responseCode}`,
+            content: {
+              'application/json': {
+                // This cast is done because there is differences between JsonSchema and OpenAPIV3.SchemaObject specs
+                // It may be fixed later
+                // @ref https://swagger.io/specification/
+                schema,
+              },
+            },
+          },
         },
-      },
-    };
-  }
+      };
+    },
+    initialDocumentation,
+  );
 
   if (contract.pathParametersSchema?.properties !== undefined) {
     contractDocumentation.parameters = [
