@@ -1,3 +1,5 @@
+import { JSONSchema } from 'json-schema-to-ts';
+
 import { HttpStatusCodes } from 'types/http';
 
 import { ApiGatewayContract } from '../apiGatewayContract';
@@ -39,8 +41,15 @@ describe('apiGateway openApi documentation', () => {
     required: ['id', 'name'],
   } as const;
 
+  const unauthorizedSchema = {
+    type: 'object',
+    properties: { message: { type: 'string' } },
+    required: ['message'],
+  } as const satisfies JSONSchema;
+
   const outputSchemas = {
     [HttpStatusCodes.OK]: outputSchema,
+    [HttpStatusCodes.UNAUTHORIZED]: unauthorizedSchema,
   };
 
   describe('hhtpApi, when all parameters are set', () => {
@@ -104,7 +113,7 @@ describe('apiGateway openApi documentation', () => {
           },
           responses: {
             '200': {
-              description: 'Success',
+              description: 'Response: 200',
               content: {
                 'application/json': {
                   schema: {
@@ -118,6 +127,22 @@ describe('apiGateway openApi documentation', () => {
                       },
                     },
                     required: ['id', 'name'],
+                  },
+                },
+              },
+            },
+            '401': {
+              description: 'Response: 401',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    properties: {
+                      message: {
+                        type: 'string',
+                      },
+                    },
+                    required: ['message'],
                   },
                 },
               },
@@ -141,11 +166,7 @@ describe('apiGateway openApi documentation', () => {
         path: 'coucou',
         method: 'post',
         documentation: {
-          responses: {
-            '200': {
-              description: 'Success',
-            },
-          },
+          responses: {}, // no response is configured
         },
       });
     });
