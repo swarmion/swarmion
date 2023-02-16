@@ -471,7 +471,10 @@ describe('apiGateway lambda handler', () => {
             headers.myHeader +
             myCustomClaim;
 
-          return Promise.resolve({ id: 'hello', name });
+          return Promise.resolve({
+            statusCode: HttpStatusCodes.OK,
+            body: { id: 'hello', name },
+          });
         },
       );
 
@@ -518,7 +521,10 @@ describe('apiGateway lambda handler', () => {
       const httpHandler = getHandler(httpApiContract, {
         validateOutput: false,
       })(() => {
-        return Promise.resolve({ id: 'hello', name: 5 as unknown as string });
+        return Promise.resolve({
+          statusCode: HttpStatusCodes.OK,
+          body: { id: 'hello', name: 5 as unknown as string },
+        });
       });
 
       const result = await httpHandler(
