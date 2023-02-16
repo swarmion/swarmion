@@ -1,4 +1,4 @@
-import { getHandler } from '@swarmion/serverless-contracts';
+import { getHandler, HttpStatusCodes } from '@swarmion/serverless-contracts';
 
 import { getUserContract } from '@swarmion-full-stack/users-contracts';
 
@@ -7,5 +7,8 @@ export const main = getHandler(getUserContract)(async event => {
 
   await Promise.resolve({ userId });
 
-  return { userId, userName: 'hello_world' };
+  return {
+    statusCode: HttpStatusCodes.OK,
+    body: { userId, userName: 'hello_world' },
+  };
 });

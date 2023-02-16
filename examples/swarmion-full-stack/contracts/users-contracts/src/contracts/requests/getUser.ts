@@ -1,4 +1,7 @@
-import { ApiGatewayContract } from '@swarmion/serverless-contracts';
+import {
+  ApiGatewayContract,
+  HttpStatusCodes,
+} from '@swarmion/serverless-contracts';
 
 import { userEntitySchema } from 'contracts/entities';
 
@@ -20,6 +23,6 @@ export const getUserContract = new ApiGatewayContract({
   queryStringParametersSchema: undefined,
   bodySchema: undefined,
   headersSchema: undefined,
-  outputSchema: userEntitySchema,
+  outputSchemas: { [HttpStatusCodes.OK]: userEntitySchema },
   authorizerType: undefined,
 });
