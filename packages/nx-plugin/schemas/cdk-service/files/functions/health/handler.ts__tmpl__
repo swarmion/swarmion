@@ -1,9 +1,9 @@
-import { getHandler } from '@swarmion/serverless-contracts';
+import { getHandler, HttpStatusCodes } from '@swarmion/serverless-contracts';
 
 import { healthContract } from 'contracts/healthContract';
 
 export const main = getHandler(healthContract)(async () => {
-  const response = await Promise.resolve({ message: 'ok' });
+  const body = await Promise.resolve({ message: 'ok' });
 
-  return response;
+  return { statusCode: HttpStatusCodes.OK, body };
 });
