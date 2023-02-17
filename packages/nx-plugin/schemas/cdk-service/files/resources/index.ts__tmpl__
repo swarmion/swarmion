@@ -1,5 +1,4 @@
 import { App } from 'aws-cdk-lib';
-import dotenv from 'dotenv';
 
 import {
   defaultEnvironment,
@@ -9,8 +8,6 @@ import {
 } from '@<%= workspaceName %>/serverless-configuration';
 
 import { <%= projectClassName %>Stack } from './stack';
-
-dotenv.config();
 
 const app = new App();
 

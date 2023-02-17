@@ -36,7 +36,6 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     'aws-cdk-lib': 'latest',
     constructs: 'latest',
     'dependency-cruiser': 'latest',
-    dotenv: 'latest',
     esbuild: 'latest',
     eslint: 'latest',
     'ts-node': 'latest',
