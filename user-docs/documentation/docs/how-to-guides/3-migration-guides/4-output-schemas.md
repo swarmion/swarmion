@@ -56,5 +56,4 @@ const handler = getHandler(contract)(async (event) => {
    const response = await getFetchRequest(contract, fetch, options);
    - return response;
    + return response.body;
-   });
    ```
