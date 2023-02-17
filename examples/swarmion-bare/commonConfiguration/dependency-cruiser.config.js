@@ -12,6 +12,28 @@ module.exports = ({ pathNot, path } = { pathNot: [], path: [] }) => ({
         circular: true,
       },
     },
+    {
+      name: 'no-provisioning-in-application',
+      severity: 'error',
+      comment:
+        'Please do not import provisioning code in your application code.',
+      from: {
+        path: '^functions',
+        pathNot: '^functions.+config',
+      },
+      to: { path: '^resources|^functions.+config' },
+    },
+    {
+      name: 'no-application-in-provisioning',
+      severity: 'error',
+      comment:
+        'Please do not import application code in your provisioning code.',
+      from: { path: '^resources|^functions.+config' },
+      to: {
+        // you can remove contracts if you only use shared contracts
+        pathNot: '^resources|^functions.+config|^contracts',
+      },
+    },
   ],
   options: {
     doNotFollow: {
