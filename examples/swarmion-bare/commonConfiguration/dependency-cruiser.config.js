@@ -27,7 +27,7 @@ module.exports = ({ pathNot, path } = { pathNot: [], path: [] }) => ({
     },
 
     exclude: {
-      path: 'cdk.out',
+      path: ['cdk.out', 'node_modules', 'dist/index'],
     },
 
     moduleSystems: ['amd', 'cjs', 'es6', 'tsd'],
