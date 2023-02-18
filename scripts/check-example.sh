@@ -30,7 +30,7 @@ swarmion_setup() {
 }
 
 # check if the $REF argument is valid
-if [[ "$REF" == "" ]]; then
+if [ ! $REF ]; then
     echo "Missing required argument \$REF"
     exit 1
 fi
