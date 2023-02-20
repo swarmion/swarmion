@@ -20,12 +20,13 @@
   },
   "namedInputs": {
     "default": ["{projectRoot}/**/*"],
-    "production": ["!{projectRoot}/**/*.test.tsx?"]
+    "production": ["!{projectRoot}/**/*.test.tsx?", "!{projectRoot}/.next/**/*"]
   },
   "targetDefaults": {
     "build": {
       "inputs": ["production", "^production"],
-      "dependsOn": ["^build", "^package"]
+      "dependsOn": ["^build", "^package"],
+      "outputs": ["{projectRoot}/.next"]
     },
     "package": {
       "inputs": ["production", "^production"],
@@ -38,11 +39,21 @@
     },
     "deploy-staging": {
       "inputs": ["production", "^production"],
-      "dependsOn": ["^package", "^build", "^deploy-staging", "bootstrap-staging"]
+      "dependsOn": [
+        "^package",
+        "^build",
+        "^deploy-staging",
+        "bootstrap-staging"
+      ]
     },
     "deploy-production": {
       "inputs": ["production", "^production"],
-      "dependsOn": ["^package", "^build", "^deploy-production", "bootstrap-production"]
+      "dependsOn": [
+        "^package",
+        "^build",
+        "^deploy-production",
+        "bootstrap-production"
+      ]
     },
     "test-linter": {
       "inputs": ["default", "^production", "{workspaceRoot}/.eslintrc.js"],
