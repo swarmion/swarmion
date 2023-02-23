@@ -42,7 +42,23 @@ Then:
   ```
 - replace `pnpm depcruise --validate .dependency-cruiser.js .`, and `"pnpm depcruise --validate .dependency-cruiser.js src` by `pnpm depcruise --config -- .`
 - in each `tsup.config.ts`, remove the `outExtensions` key
-- add `type` to `.syncpackrc.js`
+- add `type` to `.syncpackrc.js` right before `main` in the `sortFirst` array
+
+  ```js title=".syncpackrc.js"
+  module.exports = {
+    ...
+    sortFirst: [
+      ...
+      // highlight-next-line
+      'type',
+      'main',
+      'module',
+      'types',
+      ...
+    ],
+  };
+  ```
+
 - rename configuration files:
   - `.lintstagedrc.js` to `.lintstagedrc.cjs`
   - `.eslintrc.js` to `.eslintrc.cjs`
