@@ -9,7 +9,7 @@ import {
   sharedProviderConfig,
 } from '@<%= workspaceName %>/serverless-configuration';
 
-import { functions } from './functions';
+import { functions } from './functions/config';
 
 const serverlessConfiguration: AWS = {
   service: `${projectName}-<%= name %>`, // Keep it short to have role name below 64
