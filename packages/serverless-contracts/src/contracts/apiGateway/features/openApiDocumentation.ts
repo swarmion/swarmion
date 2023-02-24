@@ -1,8 +1,11 @@
+import isUndefined from 'lodash/isUndefined';
+import omitBy from 'lodash/omitBy';
 import { OpenAPIV3 } from 'openapi-types';
 
 import { ContractOpenApiDocumentation } from 'types/contractOpenApiDocumentation';
 
 import { GenericApiGatewayContract } from '../apiGatewayContract';
+import { convertJsonSchemaToValidOAS3 } from '../utils';
 
 export const getContractDocumentation = <
   Contract extends GenericApiGatewayContract,
@@ -13,13 +16,18 @@ export const getContractDocumentation = <
     responses: {},
   };
 
+  const definedOutputSchema = omitBy(contract.outputSchemas, isUndefined);
+
   // add responses to the object
-  const contractDocumentation = Object.keys(contract.outputSchemas).reduce(
+  const contractDocumentation = Object.keys(definedOutputSchema).reduce(
     (config, responseCode) => {
-      // @ts-expect-error Typescript does not infer the key type with Object.keys
-      const schema = contract.outputSchemas[
-        responseCode
-      ] as OpenAPIV3.SchemaObject;
+      const schema = definedOutputSchema[responseCode];
+
+      if (schema === undefined) {
+        return config;
+      }
+
+      const openApiSchema = convertJsonSchemaToValidOAS3(schema);
 
       return {
         ...config,
@@ -29,7 +37,7 @@ export const getContractDocumentation = <
             description: `Response: ${responseCode}`,
             content: {
               'application/json': {
-                schema,
+                schema: openApiSchema,
               },
             },
           },
@@ -45,10 +53,7 @@ export const getContractDocumentation = <
         ([variableName, variableDefinition]) => ({
           name: variableName,
           in: 'path',
-          // This cast is done because there is differences between JsonSchema and OpenAPIV3.SchemaObject specs
-          // It may be fixed later
-          // @ref https://swagger.io/specification/
-          schema: variableDefinition as OpenAPIV3.SchemaObject,
+          schema: convertJsonSchemaToValidOAS3(variableDefinition),
           required:
             contract.pathParametersSchema?.required?.includes(variableName) ??
             false,
@@ -64,10 +69,7 @@ export const getContractDocumentation = <
         ([variableName, variableDefinition]) => ({
           name: variableName,
           in: 'query',
-          // This cast is done because there is differences between JsonSchema and OpenAPIV3.SchemaObject specs
-          // It may be fixed later
-          // @ref https://swagger.io/specification/
-          schema: variableDefinition as OpenAPIV3.SchemaObject,
+          schema: convertJsonSchemaToValidOAS3(variableDefinition),
           required:
             contract.queryStringParametersSchema?.required?.includes(
               variableName,
@@ -82,10 +84,7 @@ export const getContractDocumentation = <
     contractDocumentation.requestBody = {
       content: {
         'application/json': {
-          // This cast is done because there is differences between JsonSchema and OpenAPIV3.SchemaObject specs
-          // It may be fixed later
-          // @ref https://swagger.io/specification/
-          schema: contract.bodySchema as OpenAPIV3.SchemaObject,
+          schema: convertJsonSchemaToValidOAS3(contract.bodySchema),
         },
       },
     };

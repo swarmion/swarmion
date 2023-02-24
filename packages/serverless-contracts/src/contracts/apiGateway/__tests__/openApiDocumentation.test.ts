@@ -3,9 +3,9 @@ import { JSONSchema } from 'json-schema-to-ts';
 import { HttpStatusCodes } from 'types/http';
 
 import { ApiGatewayContract } from '../apiGatewayContract';
-import { getOpenApiDocumentation } from '../features';
+import { getContractDocumentation } from '../features';
 
-describe('apiGateway openApi documentation', () => {
+describe('apiGateway openApi contract documentation', () => {
   const pathParametersSchema = {
     type: 'object',
     properties: { userId: { type: 'string' }, pageNumber: { type: 'string' } },
@@ -66,7 +66,7 @@ describe('apiGateway openApi documentation', () => {
     });
 
     it('should generate open api documentation', () => {
-      expect(getOpenApiDocumentation(httpApiContract)).toEqual({
+      expect(getContractDocumentation(httpApiContract)).toEqual({
         path: '/users/{userId}',
         method: 'get',
         documentation: {
@@ -162,7 +162,7 @@ describe('apiGateway openApi documentation', () => {
     });
 
     it('should generate open api documentation', () => {
-      expect(getOpenApiDocumentation(restApiContract)).toEqual({
+      expect(getContractDocumentation(restApiContract)).toEqual({
         path: 'coucou',
         method: 'post',
         documentation: {
