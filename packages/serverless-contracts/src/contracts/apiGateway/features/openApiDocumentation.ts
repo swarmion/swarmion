@@ -4,7 +4,7 @@ import { ContractOpenApiDocumentation } from 'types/contractOpenApiDocumentation
 
 import { GenericApiGatewayContract } from '../apiGatewayContract';
 
-export const getOpenApiDocumentation = <
+export const getContractDocumentation = <
   Contract extends GenericApiGatewayContract,
 >(
   contract: Contract,
@@ -29,9 +29,6 @@ export const getOpenApiDocumentation = <
             description: `Response: ${responseCode}`,
             content: {
               'application/json': {
-                // This cast is done because there is differences between JsonSchema and OpenAPIV3.SchemaObject specs
-                // It may be fixed later
-                // @ref https://swagger.io/specification/
                 schema,
               },
             },
