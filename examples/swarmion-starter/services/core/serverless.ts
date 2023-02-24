@@ -10,7 +10,7 @@ import {
   sharedProviderConfig,
 } from '@swarmion-starter/serverless-configuration';
 
-import { functions } from './functions';
+import { functions } from './functions/config';
 
 const serverlessConfiguration: AWS = {
   service: `${projectName}-core`, // Keep it short to have role name below 64
