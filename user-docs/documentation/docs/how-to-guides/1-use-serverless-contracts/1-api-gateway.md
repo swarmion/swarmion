@@ -424,6 +424,127 @@ const [mockEvent2] = getMockHandlerInput(myContract);
 expect(mockEvent1).toEqual(mockEvent2); // Will always be true
 ```
 
+### Generate OpenAPI documentation from the contracts
+
+With the `getOpenApiDocument` feature, you can generate an OpenAPI documentation of your api from the contracts it provides to define its endpoints.
+
+```ts
+import { getOpenApiDocument } from '@swarmion/serverless-contracts';
+
+const openApiDocumentation = getOpenApiDocumentation({
+  title: 'Test API',
+  description: 'API description',
+  contracts: [getUserContract, postUserContract, deleteUserContract],
+});
+```
+
+The resulting value will be an OpenAPI documentation of your endpoint in json format.
+This is how it could look like once transformed into yaml (depending on the contracts you provide):
+
+```yaml
+openapi: 3.0.1
+info:
+  title: Test API
+  description: API description
+  version: '2023-02-24T17:09:48.113Z'
+paths:
+  /users/{userId}:
+    get:
+      responses:
+        '200':
+          description: 'Response: 200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                required:
+                  - id
+                  - name
+        '404':
+          description: 'Response: 404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+      parameters:
+        - name: userId
+          in: path
+          schema:
+            type: string
+          required: true
+    delete:
+      responses:
+        '202':
+          description: 'Response: 202'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: 'Response: 404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+      parameters:
+        - name: userId
+          in: path
+          schema:
+            type: string
+          required: true
+  /users:
+    post:
+      responses:
+        '201':
+          description: 'Response: 201'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+              required:
+                - id
+                - name
+```
+
+:::tip
+If you use the [serverless-contracts-plugin](./5-serverless-plugin.md) for the Serverlesss framework, this feature is used by the `pnpm serverless generateOpenApiDocumentation` command with the contract that your service provides.
+:::
+
 ## Consumer-side usage
 
 Simply call the `getAxiosRequest` function with the schema.
