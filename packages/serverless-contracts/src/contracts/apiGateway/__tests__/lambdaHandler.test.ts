@@ -44,8 +44,6 @@ describe('apiGateway lambda handler', () => {
         headers,
         requestContext,
       }) => {
-        console.log(requestContext);
-
         const myCustomClaim = requestContext.authorizer.claims.foo;
 
         const name =
