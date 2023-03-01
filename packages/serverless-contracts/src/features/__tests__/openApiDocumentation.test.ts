@@ -86,15 +86,6 @@ describe('openApi service documentation', () => {
     });
 
     it('should generate open api documentation', () => {
-      console.log(
-        JSON.stringify(
-          getOpenApiDocumentation({
-            title: 'Test API',
-            description: 'Test API description',
-            contracts: [httpApiContract, httpApiContract2],
-          }),
-        ),
-      );
       expect(
         getOpenApiDocumentation({
           title: 'Test API',
