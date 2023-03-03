@@ -9,6 +9,11 @@ on:
   # performance analysis in order to generate initial data.
   workflow_dispatch:
 
+# cancel previous runs on the same PR
+concurrency:
+  group: ${{ github.ref }}/codspeed
+  cancel-in-progress: true
+
 jobs:
   benchmarks:
     runs-on: ubuntu-latest
