@@ -18,7 +18,8 @@
     "test-integration": "vitest run --config vitest.integration.config.ts --passWithNoTests",
     "test-linter": "pnpm linter-base-config .",
     "test-type": "tsc",
-    "test-unit": "vitest run --coverage --passWithNoTests"
+    "test-unit": "vitest run --coverage --passWithNoTests",
+    "test-integration": "vitest run --config vitest.integration.config.ts --passWithNoTests"
   },
   "dependencies": {
     "@aws-sdk/client-eventbridge": "^3.226.0",
