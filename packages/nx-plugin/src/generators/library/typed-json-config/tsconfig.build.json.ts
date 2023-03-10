@@ -8,6 +8,7 @@ export const packageBuildTsConfig = (options: NormalizedSchema): TsConfig => ({
     baseUrl: 'src',
     rootDir: 'src',
     outDir: './dist/types',
+    tsBuildInfoFile: 'tsconfig.build.tsbuildinfo',
   },
   include: ['./**/*.ts'],
   exclude: ['./vite*', './**/*.test.ts', './dist', './tsup.config.ts'],
