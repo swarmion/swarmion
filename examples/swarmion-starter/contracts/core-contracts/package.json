@@ -13,7 +13,7 @@
   "types": "dist/types/index.d.ts",
   "contracts": true,
   "scripts": {
-    "clean": "rimraf dist",
+    "clean": "rimraf dist *.tsbuildinfo",
     "lint-fix": "pnpm linter-base-config --fix",
     "lint-fix-all": "pnpm lint-fix .",
     "linter-base-config": "eslint --ext=js,ts",
