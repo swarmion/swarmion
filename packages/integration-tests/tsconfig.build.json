@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.options.json",
+  "compilerOptions": {
+    "baseUrl": "src",
+    "rootDir": "src",
+    "outDir": "./dist/types"
+  },
+  "include": ["./**/*.ts"],
+  "exclude": [
+    "./vite*",
+    "./**/*.test.ts",
+    "./dist",
+    "./tsup.config.ts",
+    "**/__tests__/**/*",
+    "**/__tests__/**/*"
+  ]
+}
