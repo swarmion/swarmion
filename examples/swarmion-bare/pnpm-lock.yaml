@@ -6,7 +6,7 @@ importers:
     specifiers:
       '@commitlint/cli': ^17.3.0
       '@commitlint/config-conventional': ^17.3.0
-      '@swarmion/nx-plugin': ^0.25.2
+      '@swarmion/nx-plugin': 0.26.0-alpha.0
       '@typescript-eslint/eslint-plugin': ^5.51.0
       '@typescript-eslint/parser': ^5.51.0
       aws-sdk: ^2.1272.0
@@ -28,7 +28,7 @@ importers:
     devDependencies:
       '@commitlint/cli': 17.3.0
       '@commitlint/config-conventional': 17.3.0
-      '@swarmion/nx-plugin': 0.25.2_qunblzz55phvwdfsfpkrrkc5fa
+      '@swarmion/nx-plugin': 0.26.0-alpha.0_qunblzz55phvwdfsfpkrrkc5fa
       '@typescript-eslint/eslint-plugin': 5.51.0_ipcqifyug7tjpnjq535ht4o2ee
       '@typescript-eslint/parser': 5.51.0_ha6vam6werchizxrnqvarmz2zu
       aws-sdk: 2.1272.0
@@ -50,7 +50,7 @@ importers:
 
   packages/serverless-configuration:
     specifiers:
-      '@swarmion/serverless-helpers': ^0.25.2
+      '@swarmion/serverless-helpers': 0.26.0-alpha.0
       '@types/node': ^18.11.13
       concurrently: ^7.6.0
       dependency-cruiser: ^12.1.0
@@ -63,7 +63,7 @@ importers:
       typescript: ^4.9.4
       vitest: ^0.29.2
     dependencies:
-      '@swarmion/serverless-helpers': 0.25.2_qxuujrk53gmglheiqtn3azjwfe
+      '@swarmion/serverless-helpers': 0.26.0-alpha.0_26serovvq7pv3kwcy6xtvz22uu
     devDependencies:
       '@types/node': 18.11.18
       concurrently: 7.6.0
@@ -87,16 +87,16 @@ packages:
       '@jridgewell/trace-mapping': 0.3.17
     dev: true
 
-  /@aws-cdk/asset-awscli-v1/2.2.97:
-    resolution: {integrity: sha512-bWFkQphw1U7Q8XngShvGy0S1yqDui6q72zjnLciqKQ5ucZq17/TEujLTpSv+v2K5qJU8oa8VaMDiRyYbdPD6MA==}
+  /@aws-cdk/asset-awscli-v1/2.2.100:
+    resolution: {integrity: sha512-DL/2mMudltcj8zx8BV6k3AglPYzhvBDrRzAyNt4xrKE8NoA85bUlb3P6UZxU0+qjTUwbx5/+7jgFuJ9wOuQlgw==}
     dev: false
 
   /@aws-cdk/asset-kubectl-v20/2.1.1:
     resolution: {integrity: sha512-U1ntiX8XiMRRRH5J1IdC+1t5CE89015cwyt5U63Cpk0GnMlN5+h9WsWMlKlPXZR4rdq/m806JRlBMRpBUB2Dhw==}
     dev: false
 
-  /@aws-cdk/asset-node-proxy-agent-v5/2.0.77:
-    resolution: {integrity: sha512-KKrnyIujGN38yOb0MIm0EnB3n7z83NRl9VgKvN0flOyB8C+3Ey+XKxLYfjoXJ/BulB0161eBJXXwGdP8xQrQJw==}
+  /@aws-cdk/asset-node-proxy-agent-v5/2.0.80:
+    resolution: {integrity: sha512-SC6H0UBO+xv2F3TUEF/ODRgXX3BtnD8ga3pr0iey6134jvs9SioJFQ/nJ+cHnNH7L6e5T4nE73Jj8TciCbamQg==}
     dev: false
 
   /@babel/code-frame/7.18.6:
@@ -2286,8 +2286,8 @@ packages:
     resolution: {integrity: sha512-5T7v032HAt/RYHb9xf5HLg03s/WZopRarlnVt+nVekJVci5nil4C5B6U0eBVfyE9Klproy/9DIcj4RJesBOiEA==}
     dev: false
 
-  /@swarmion/nx-plugin/0.25.2_qunblzz55phvwdfsfpkrrkc5fa:
-    resolution: {integrity: sha512-c++s7ZYW3kYLmCMpUNju32LRrzcTwmbGCYcukCq7tGi6OpinV27yXu1XFSA1AmHzPTs5eLsMOCVmjjN8QmDs0g==}
+  /@swarmion/nx-plugin/0.26.0-alpha.0_qunblzz55phvwdfsfpkrrkc5fa:
+    resolution: {integrity: sha512-K97BOdDh8EJ2UuuisVZQyhoNETRrsQuewWNm0BM4YI0HPw34KwvgfwIHeQgo89oZa3CUV2UItILgwGKoE8srAQ==}
     peerDependencies:
       nx: ^15.7.0
       typescript: ^4.9.4
@@ -2305,8 +2305,8 @@ packages:
       - supports-color
     dev: true
 
-  /@swarmion/serverless-helpers/0.25.2_qxuujrk53gmglheiqtn3azjwfe:
-    resolution: {integrity: sha512-Nabxcft8Xmpgdr3PeoTRsxYSX8xSCsYMDpz5y8vo784sIxGlZwhB47QGv8FsWybsFW7eu9+uol+uSygeDpd3IA==}
+  /@swarmion/serverless-helpers/0.26.0-alpha.0_26serovvq7pv3kwcy6xtvz22uu:
+    resolution: {integrity: sha512-zzB7nulux9SWLDRODDONPoUI8zUI9DbZ3nQLY4Lh9/kfPcXA3+zIk8xQS2qPKJjqkByTyRYhqMBeqN6MThOgvQ==}
     peerDependencies:
       '@serverless/typescript': '>=3'
     dependencies:
@@ -2315,7 +2315,7 @@ packages:
       '@middy/http-json-body-parser': 2.5.7
       '@middy/validator': 2.5.7
       '@serverless/typescript': 3.27.0
-      aws-cdk-lib: 2.67.0_constructs@10.1.270
+      aws-cdk-lib: 2.68.0_constructs@10.1.273
       json-schema-to-ts: 2.7.2
     transitivePeerDependencies:
       - constructs
@@ -2819,16 +2819,16 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /aws-cdk-lib/2.67.0_constructs@10.1.270:
-    resolution: {integrity: sha512-oVD0cZPKTtkGXvFkYLA+vNiq+QzyuQkOe/rDY/BSxi/cEElbu74StKwCFCFGq8ljTAHQjyYeE5dzlB2q8Wq20w==}
+  /aws-cdk-lib/2.68.0_constructs@10.1.273:
+    resolution: {integrity: sha512-roN3xwzv/GleGG3CaJrf+thdzr9WBzJU4LotumEOs+0cGfeXSta8Pm/cGAeY4kplr5r10QWUovH0fv/bi6Vrbw==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
     dependencies:
-      '@aws-cdk/asset-awscli-v1': 2.2.97
+      '@aws-cdk/asset-awscli-v1': 2.2.100
       '@aws-cdk/asset-kubectl-v20': 2.1.1
-      '@aws-cdk/asset-node-proxy-agent-v5': 2.0.77
-      constructs: 10.1.270
+      '@aws-cdk/asset-node-proxy-agent-v5': 2.0.80
+      constructs: 10.1.273
     dev: false
     bundledDependencies:
       - '@balena/dockerignore'
@@ -2986,8 +2986,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001462
-      electron-to-chromium: 1.4.322
+      caniuse-lite: 1.0.30001464
+      electron-to-chromium: 1.4.327
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: true
@@ -3057,8 +3057,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /caniuse-lite/1.0.30001462:
-    resolution: {integrity: sha512-PDd20WuOBPiasZ7KbFnmQRyuLE7cFXW2PVd7dmALzbkUXEP46upAuCDm9eY9vho8fgNMGmbAX92QBZHzcnWIqw==}
+  /caniuse-lite/1.0.30001464:
+    resolution: {integrity: sha512-oww27MtUmusatpRpCGSOneQk2/l5czXANDSFvsc7VuOQ86s3ANhZetpwXNf1zY/zdfP63Xvjz325DAdAoES13g==}
     dev: true
 
   /chai/4.3.7:
@@ -3248,8 +3248,8 @@ packages:
       yargs: 17.6.2
     dev: true
 
-  /constructs/10.1.270:
-    resolution: {integrity: sha512-EuPb/VI9q0pOy/deaddOIO0RKdJXpBv+qTo7AbYK2dcEq6Kd7PJ8TnDQ5XwotWgB7YaXuTPddIgFDyyIstHcsA==}
+  /constructs/10.1.273:
+    resolution: {integrity: sha512-JRaydmKm58aQm7crUcai3qGXtqhsh9e/dXyjQoZV6RiiEamf1V9A3yLLJIjit66Kl0Sub9quXgPmtqRfPYYlIg==}
     engines: {node: '>= 14.17.0'}
     dev: false
 
@@ -3552,8 +3552,8 @@ packages:
       jake: 10.8.5
     dev: true
 
-  /electron-to-chromium/1.4.322:
-    resolution: {integrity: sha512-KovjizNC9XB7dno/2GjxX8VS0SlfPpCjtyoKft+bCO+UfD8bFy16hY4Sh9s0h9BDxbRH2U0zX5VBjpM1LTcNlg==}
+  /electron-to-chromium/1.4.327:
+    resolution: {integrity: sha512-DIk2H4g/3ZhjgiABJjVdQvUdMlSABOsjeCm6gmUzIdKxAuFrGiJ8QXMm3i09grZdDBMC/d8MELMrdwYRC0+YHg==}
     dev: true
 
   /emoji-regex/8.0.0:
