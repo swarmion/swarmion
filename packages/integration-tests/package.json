@@ -1,15 +1,15 @@
 {
   "name": "@swarmion/integration-tests",
-  "version": "0.25.2",
+  "version": "0.26.0-alpha.0",
   "author": "corentindoue",
   "license": "MIT",
   "homepage": "https://www.swarmion.dev",
   "bugs": "https://github.com/swarmion/swarmion/issues",
   "repository": "swarmion/swarmion.git",
   "keywords": [
-    "Test",
     "Integration",
     "Serverless",
+    "Test",
     "Typescript"
   ],
   "publishConfig": {
@@ -38,6 +38,14 @@
     "test-unit": "vitest run --coverage --passWithNoTests",
     "watch": "pnpm clean dist && concurrently 'pnpm:package-* --watch'"
   },
+  "dependencies": {
+    "@aws-sdk/client-ssm": "^3.288.0",
+    "@babel/traverse": "^7.21.2",
+    "@babel/types": "^7.21.2",
+    "@types/babel__traverse": "^7.18.3",
+    "date-fns": "^2.29.3",
+    "recast": "^0.22.0"
+  },
   "devDependencies": {
     "@types/node": "^18.15.0",
     "@vitest/coverage-c8": "^0.29.2",
@@ -56,14 +64,6 @@
     "vite": "^4.1.4",
     "vite-tsconfig-paths": "^4.0.5",
     "vitest": "^0.29.2"
-  },
-  "dependencies": {
-    "@aws-sdk/client-ssm": "^3.288.0",
-    "@babel/traverse": "^7.21.2",
-    "@babel/types": "^7.21.2",
-    "@types/babel__traverse": "^7.18.3",
-    "date-fns": "^2.29.3",
-    "recast": "^0.22.0"
   },
   "peerDependencies": {
     "aws-cdk-lib": "^2.68.0",
