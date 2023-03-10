@@ -18,8 +18,7 @@
     "test-integration": "vitest run --config vitest.integration.config.ts --passWithNoTests",
     "test-linter": "pnpm linter-base-config .",
     "test-type": "tsc",
-    "test-unit": "vitest run --coverage --passWithNoTests",
-    "test-integration": "vitest run --config vitest.integration.config.ts --passWithNoTests"
+    "test-unit": "vitest run --coverage --passWithNoTests"
   },
   "dependencies": {
     "@aws-sdk/client-eventbridge": "^3.226.0",
@@ -46,6 +45,7 @@
     "esbuild": "^0.16.0",
     "esbuild-visualizer": "^0.4.0",
     "eslint": "^8.29.0",
+    "node-fetch": "^3.3.0",
     "serverless": "^3.27.0",
     "serverless-analyze-bundle-plugin": "^2.0.0",
     "serverless-custom-iam-roles-per-function": "^1.0.1",
