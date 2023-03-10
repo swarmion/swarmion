@@ -1,0 +1,1 @@
+export { syncTestEnvVarType } from './syncTestEnvVarType';
