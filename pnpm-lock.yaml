@@ -527,6 +527,12 @@ importers:
       ts-toolbelt:
         specifier: ^9.6.0
         version: 9.6.0
+      zod:
+        specifier: ^3.21.0
+        version: 3.21.4
+      zod-to-json-schema:
+        specifier: ^3.20.4
+        version: 3.20.4(zod@3.21.4)
     devDependencies:
       '@codspeed/tinybench-plugin':
         specifier: ^1.0.1
@@ -19973,9 +19979,21 @@ packages:
       compress-commons: 4.1.1
       readable-stream: 3.6.0
 
+  /zod-to-json-schema@3.20.4(zod@3.21.4):
+    resolution: {integrity: sha512-Un9+kInJ2Zt63n6Z7mLqBifzzPcOyX+b+Exuzf7L1+xqck9Q2EPByyTRduV3kmSPaXaRer1JCsucubpgL1fipg==}
+    peerDependencies:
+      zod: ^3.20.0
+    dependencies:
+      zod: 3.21.4
+    dev: false
+
   /zod@3.20.6:
     resolution: {integrity: sha512-oyu0m54SGCtzh6EClBVqDDlAYRz4jrVtKwQ7ZnsEmMI9HnzuZFj8QFwAY1M5uniIYACdGvv0PBWPF2kO0aNofA==}
     dev: true
+
+  /zod@3.21.4:
+    resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
+    dev: false
 
   /zwitch@1.0.5:
     resolution: {integrity: sha512-V50KMwwzqJV0NpZIZFwfOD5/lyny3WlSzRiXgA0G7VUnRlqttta1L6UQIHzd6EuBY/cHGfwTIck7w1yH6Q5zUw==}
