@@ -44,7 +44,7 @@ export const sharedProviderConfig: ServerlessProviderConfig = {
 export const sharedParams = {
   dev: {
     profile: 'swarmion-developer',
-    apiGatewayCorsAllowedOrigins: ['localhost:3000'],
+    apiGatewayCorsAllowedOrigins: ['http://localhost:3000'],
   },
   staging: { profile: '', apiGatewayCorsAllowedOrigins: [] },
   production: { profile: '', apiGatewayCorsAllowedOrigins: [] },
