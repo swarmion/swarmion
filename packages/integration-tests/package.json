@@ -1,0 +1,72 @@
+{
+  "name": "@swarmion/integration-tests",
+  "version": "0.25.2",
+  "author": "corentindoue",
+  "license": "MIT",
+  "homepage": "https://www.swarmion.dev",
+  "bugs": "https://github.com/swarmion/swarmion/issues",
+  "repository": "swarmion/swarmion.git",
+  "keywords": [
+    "Integration",
+    "Serverless",
+    "Test",
+    "Typescript"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "clean": "rimraf dist",
+    "lint-fix": "pnpm linter-base-config --fix",
+    "lint-fix-all": "pnpm lint-fix .",
+    "linter-base-config": "eslint --ext=js,ts",
+    "package": "pnpm clean && pnpm package-transpile && pnpm package-types && pnpm package-types-aliases",
+    "package-transpile": "tsup",
+    "package-types": "tsc -p tsconfig.build.json",
+    "package-types-aliases": "tsc-alias -p tsconfig.build.json",
+    "test": "nx run test-linter && nx run test-type && nx run test-unit && nx run test-circular",
+    "test-circular": "pnpm depcruise --config -- .",
+    "test-linter": "pnpm linter-base-config .",
+    "test-type": "tsc --noEmit --emitDeclarationOnly false",
+    "test-unit": "vitest run --coverage --passWithNoTests",
+    "watch": "pnpm clean dist && concurrently 'pnpm:package-* --watch'"
+  },
+  "dependencies": {
+    "@aws-sdk/client-ssm": "^3.288.0",
+    "@babel/traverse": "^7.21.2",
+    "@babel/types": "^7.21.2",
+    "@types/babel__traverse": "^7.18.3",
+    "date-fns": "^2.29.3",
+    "recast": "^0.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.0",
+    "@vitest/coverage-c8": "^0.29.2",
+    "aws-cdk-lib": "^2.68.0",
+    "concurrently": "^7.6.0",
+    "constructs": "^10.1.187",
+    "dependency-cruiser": "^12.10.0",
+    "eslint": "^8.35.0",
+    "json-schema-to-ts": "^2.7.2",
+    "prettier": "^2.8.4",
+    "rimraf": "^4.4.0",
+    "ts-node": "^10.9.1",
+    "tsc-alias": "^1.8.3",
+    "tsup": "^6.6.3",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.4",
+    "vite-tsconfig-paths": "^4.0.5",
+    "vitest": "^0.29.2"
+  },
+  "peerDependencies": {
+    "aws-cdk-lib": "^2.68.0",
+    "constructs": "^10.1.187"
+  }
+}
