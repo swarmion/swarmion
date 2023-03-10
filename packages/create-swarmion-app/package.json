@@ -27,7 +27,7 @@
   ],
   "scripts": {
     "build": "ncc build ./src/index.ts -o ./dist/ --minify --no-cache --no-source-map-register",
-    "clean": "rimraf dist",
+    "clean": "rimraf dist *.tsbuildinfo",
     "dev": "ncc build ./src/index.ts -w -o dist/",
     "lint-fix": "pnpm linter-base-config --fix",
     "lint-fix-all": "pnpm lint-fix .",
