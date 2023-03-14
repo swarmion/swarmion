@@ -1,7 +1,7 @@
 const sortOrderSmacss = require('stylelint-config-property-sort-order-smacss/generate');
 
 module.exports = {
-  extends: ['stylelint-config-standard', 'stylelint-config-prettier'],
+  extends: ['stylelint-config-standard'],
   plugins: ['stylelint-order'],
   rules: {
     'declaration-no-important': true,
@@ -10,11 +10,9 @@ module.exports = {
   overrides: [
     {
       files: ['**/*.ts', '**/*.tsx'],
-      customSyntax: '@stylelint/postcss-css-in-js',
+      customSyntax: 'postcss-styled-syntax',
       rules: {
         // allow mui usage in css-in-js
-        'property-no-unknown': [true, { ignoreProperties: ['name'] }],
-        'value-keyword-case': ['lower', { ignoreProperties: ['name'] }],
         'selector-class-pattern': [/Mui\w+/],
       },
     },
