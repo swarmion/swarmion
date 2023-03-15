@@ -1,5 +1,5 @@
 import type { Node } from '@babel/traverse';
-import traverse from '@babel/traverse';
+import _traverse from '@babel/traverse';
 import type { TSTypeElement } from '@babel/types';
 import {
   assertFile,
@@ -16,8 +16,13 @@ import {
 } from '@babel/types';
 import fs from 'fs';
 import { parse, print } from 'recast';
+import parser from 'recast/parsers/typescript';
+
+// @ts-expect-error - issue with esm and traverse: https://github.com/babel/babel/issues/13855
+const traverse = _traverse.default as typeof _traverse;
 
 const TYPE_NAME = 'TestEnvVarsType';
+
 const membersContainsVarDeclaration = (
   members: TSTypeElement[],
   envVar: string,
@@ -33,6 +38,7 @@ const membersContainsVarDeclaration = (
     return false;
   });
 };
+
 // This is extremely fast: first call take max 10ms, subsequent calls take max 2ms
 // So it can be called on every CDK synth without any performance impact
 export const syncTestEnvVarType = ({
@@ -47,11 +53,7 @@ export const syncTestEnvVarType = ({
       fs.writeFileSync(filePath, '');
     }
     const testFile = fs.readFileSync(filePath).toString();
-    const ast = parse(testFile, {
-      // parser is not typed
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      parser: require('recast/parsers/typescript'),
-    }) as Node;
+    const ast = parse(testFile, { parser }) as Node;
     let typeFound = false;
     traverse(ast, {
       TSTypeAliasDeclaration: path => {
