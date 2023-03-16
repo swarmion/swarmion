@@ -48,7 +48,6 @@ Then, in each built package:
 
   export default defineConfig({
     entry: ['src/index.ts'],
-    clean: true,
     silent: true,
     format: ['cjs', 'esm'],
     outExtension: ctx => {
