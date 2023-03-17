@@ -22,8 +22,8 @@ jobs:
         env:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
-          # 'prerelease' if tag inclues 'alpha', otherwise 'latest'
-          type: ${{ contains(github.ref, 'alpha') && 'prerelease' || 'latest' }}
+          # 'prerelease' if tag inclues 'alpha', otherwise 'stable'
+          type: ${{ contains(github.ref, 'alpha') && 'prerelease' || 'stable' }}
 
       - run: pnpm changelogithub --draft --from ${{ steps.get-latest-release.outputs.release }}
         env:
