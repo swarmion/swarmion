@@ -13,16 +13,14 @@
     "Typescript"
   ],
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "directory": "dist"
   },
   "sideEffects": false,
-  "files": [
-    "dist"
-  ],
   "type": "module",
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
-  "types": "dist/types/index.d.ts",
+  "main": "index.cjs",
+  "module": "index.js",
+  "types": "types/index.d.ts",
   "scripts": {
     "bench": "pnpm tsx src/__benches__/index.ts",
     "clean": "rimraf dist *.tsbuildinfo",
