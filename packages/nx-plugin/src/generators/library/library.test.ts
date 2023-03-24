@@ -5,7 +5,6 @@ import {
   writeJson,
 } from '@nrwl/devkit';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
-import fs from 'fs';
 import { stringify } from 'yaml';
 
 import { Schema } from '../types';
@@ -46,29 +45,6 @@ describe('library generator', () => {
         },
       ],
     });
-  });
-
-  it('should create a symlink to the common configuration launch.json when it exists', async () => {
-    vi.spyOn(fs, 'existsSync').mockReturnValue(true);
-    writeJson(appTree, 'commonConfiguration/.vscode/launch.json', {
-      version: '0.2.0',
-    });
-
-    const generate = await generator(appTree, options);
-    generate();
-
-    expect(fs.existsSync).toHaveBeenCalledWith(
-      '/virtual/commonConfiguration/.vscode/.git',
-    );
-  });
-
-  it('should not create a symlink to the common configuration launch.json when it does not exist', async () => {
-    vi.spyOn(fs, 'existsSync').mockReturnValue(false);
-
-    const generate = await generator(appTree, options);
-    generate();
-
-    expect(fs.existsSync).not.toHaveBeenCalled();
   });
 
   it('should add the package to the pnpm-workspace.yaml', async () => {

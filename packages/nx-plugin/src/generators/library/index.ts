@@ -1,12 +1,7 @@
 import { formatFiles, Tree, writeJson } from '@nrwl/devkit';
 import { join } from 'path';
 
-import {
-  normalizeOptions,
-  packageGenerator,
-  symlinkVsCodeConfiguration,
-  updatePackages,
-} from '../helpers';
+import { normalizeOptions, packageGenerator, updatePackages } from '../helpers';
 import { GeneratorType, Schema } from '../types';
 import {
   packageBuildTsConfig,
@@ -39,7 +34,6 @@ export default async (tree: Tree, schema: Schema): Promise<() => void> => {
   await formatFiles(tree);
 
   return () => {
-    symlinkVsCodeConfiguration(options);
     updatePackages(tree, options);
   };
 };
