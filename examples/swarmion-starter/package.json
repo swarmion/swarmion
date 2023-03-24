@@ -3,11 +3,6 @@
   "private": true,
   "version": "1.0.0",
   "license": "MIT",
-  "workspaces": [
-    "contracts/*",
-    "packages/*",
-    "services/*"
-  ],
   "scripts": {
     "build": "nx run-many --target=build --all --parallel=4",
     "deploy": "nx run-many --target=deploy --all --parallel=4",
