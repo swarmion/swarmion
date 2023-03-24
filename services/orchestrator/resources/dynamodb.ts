@@ -1,6 +1,8 @@
 import { AttributeType, BillingMode, Table } from 'aws-cdk-lib/aws-dynamodb';
 import { Construct } from 'constructs';
 
+import { TestEnvVar } from '@swarmion/integration-tests';
+
 import { PARTITION_KEY, SORT_KEY } from 'sharedConstants';
 
 export class OrchestratorDynamodb extends Construct {
@@ -14,5 +16,7 @@ export class OrchestratorDynamodb extends Construct {
       sortKey: { name: SORT_KEY, type: AttributeType.STRING },
       billingMode: BillingMode.PAY_PER_REQUEST,
     });
+
+    new TestEnvVar(this, 'TABLE_NAME', { value: this.dynamodb.tableName });
   }
 }
