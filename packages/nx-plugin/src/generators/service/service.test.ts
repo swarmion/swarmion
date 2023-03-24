@@ -5,6 +5,7 @@ import {
   writeJson,
 } from '@nrwl/devkit';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { stringify } from 'yaml';
 
 import { Schema } from '../types';
 import generator from './index';
@@ -21,6 +22,7 @@ describe('service generator', () => {
       { folders: [] },
     );
     writeJson(appTree, 'tsconfig.json', { references: [] });
+    appTree.write('pnpm-workspace.yaml', stringify({ packages: [] }));
   });
 
   it('should run successfully', async () => {

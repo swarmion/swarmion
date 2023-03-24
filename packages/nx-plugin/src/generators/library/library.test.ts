@@ -6,6 +6,7 @@ import {
 } from '@nrwl/devkit';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import fs from 'fs';
+import { stringify } from 'yaml';
 
 import { Schema } from '../types';
 import generator from './index';
@@ -24,6 +25,7 @@ describe('library generator', () => {
       { folders: [] },
     );
     writeJson(appTree, 'tsconfig.json', { references: [] });
+    appTree.write('pnpm-workspace.yaml', stringify({ packages: [] }));
   });
 
   it('should run successfully', async () => {
@@ -67,5 +69,14 @@ describe('library generator', () => {
     generate();
 
     expect(fs.existsSync).not.toHaveBeenCalled();
+  });
+
+  it('should add the package to the pnpm-workspace.yaml', async () => {
+    await generator(appTree, options);
+
+    expect(appTree.read('pnpm-workspace.yaml', 'utf8'))
+      .toStrictEqual(`'packages':
+  - 'packages/*'
+`);
   });
 });
