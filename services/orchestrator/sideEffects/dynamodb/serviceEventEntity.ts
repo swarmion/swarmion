@@ -3,24 +3,29 @@ import { Entity, Table } from 'dynamodb-toolbox';
 
 import { PARTITION_KEY, SORT_KEY } from 'sharedConstants';
 
+export const getServiceEventPK = ({
+  serviceId,
+  applicationId,
+}: {
+  serviceId: string;
+  applicationId: string;
+}): string => `${applicationId}#SERVICE#${serviceId}`;
+
+export const getServiceEventSK = ({ eventId }: { eventId: string }): string =>
+  `EVENT#${eventId}`;
+
 const ServiceEventEntity = new Entity({
   name: 'ServiceEvent',
   attributes: {
     [PARTITION_KEY]: {
       partitionKey: true,
       hidden: true,
-      default: ({
-        serviceId,
-        applicationId,
-      }: {
-        serviceId: string;
-        applicationId: string;
-      }) => `${applicationId}#SERVICE#${serviceId}`,
+      default: getServiceEventPK,
     },
     [SORT_KEY]: {
       sortKey: true,
       hidden: true,
-      default: ({ eventId }: { eventId: string }) => `EVENT#${eventId}`,
+      default: getServiceEventSK,
     },
     serviceId: { type: 'string', required: true },
     applicationId: { type: 'string', required: true },
