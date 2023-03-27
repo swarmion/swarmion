@@ -8,7 +8,7 @@ const TEMPLATES = [
   'swarmion-bare',
 ] as const;
 
-export type Template = typeof TEMPLATES[number];
+export type Template = (typeof TEMPLATES)[number];
 
 const choices: (Omit<Choice, 'value'> & { value: Template })[] = [
   {
