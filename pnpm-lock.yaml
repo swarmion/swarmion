@@ -380,7 +380,7 @@ importers:
       eslint: ^8.29.0
       http-errors: ^2.0.0
       json-schema-faker: 0.5.0-rcv.46
-      json-schema-to-ts: ^2.6.2
+      json-schema-to-ts: 2.6.2
       lodash: ^4.17.21
       openapi-types: 12.1.0
       prettier: ^2.8.1
@@ -404,7 +404,7 @@ importers:
       ajv: 8.12.0
       http-errors: 2.0.0
       json-schema-faker: 0.5.0-rcv.46
-      json-schema-to-ts: 2.7.2
+      json-schema-to-ts: 2.6.2
       lodash: 4.17.21
       openapi-types: 12.1.0
       seedrandom: 3.0.5
@@ -3532,6 +3532,9 @@ packages:
       '@babel/helper-string-parser': 7.19.4
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
+
+  /@balena/dockerignore/1.0.2:
+    resolution: {integrity: sha512-wMue2Sy4GAVTk6Ic4tJVcnfdau+gx2EnG7S+uAEe+TWJFqE4YoWN4/H8MSLj4eYJKxGg26lZwboEniNiNwZQ6Q==}
 
   /@bcoe/v8-coverage/0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
@@ -8172,7 +8175,16 @@ packages:
       '@aws-cdk/asset-awscli-v1': 2.2.100
       '@aws-cdk/asset-kubectl-v20': 2.1.1
       '@aws-cdk/asset-node-proxy-agent-v5': 2.0.80
+      '@balena/dockerignore': 1.0.2
+      case: 1.6.3
       constructs: 10.1.187
+      fs-extra: 9.1.0
+      ignore: 5.2.4
+      jsonschema: 1.4.1
+      minimatch: 3.1.2
+      punycode: 2.3.0
+      semver: 7.3.8
+      yaml: 1.10.2
     bundledDependencies:
       - '@balena/dockerignore'
       - case
@@ -8825,6 +8837,10 @@ packages:
       tslib: 2.5.0
       upper-case-first: 2.0.2
     dev: true
+
+  /case/1.6.3:
+    resolution: {integrity: sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==}
+    engines: {node: '>= 0.8.0'}
 
   /ccount/1.1.0:
     resolution: {integrity: sha512-vlNK021QdI7PNeiUh/lKkC/mNHHfV0m/Ad5JoI0TYtlBnJAslM/JIkm/tGC88bkLIwO6OQ5uV6ztS6kVAtCDlg==}
@@ -13475,6 +13491,16 @@ packages:
     resolution: {integrity: sha512-MDl8fA8ONckmQOm2+eXKJaFJNvxk7eGin+XFofNjS3q3PRKSoEvgMVb0ehOpCAYkUiLoMiqdU7obV7AmzAmyLw==}
     dev: false
 
+  /json-schema-to-ts/2.6.2:
+    resolution: {integrity: sha512-RrcvhZUcTAtfMVSvHIq3h/tELToha68V/1kGeQ2ggBv/4Bv31Zjbqis+b+Hiwibj6GO5WLA9PE4X93C8VTJ1TA==}
+    engines: {node: '>=16'}
+    dependencies:
+      '@babel/runtime': 7.20.13
+      '@types/json-schema': 7.0.11
+      ts-algebra: 1.2.0
+      ts-toolbelt: 9.6.0
+    dev: false
+
   /json-schema-to-ts/2.7.2:
     resolution: {integrity: sha512-R1JfqKqbBR4qE8UyBR56Ms30LL62/nlhoz+1UkfI/VE7p54Awu919FZ6ZUPG8zIa3XB65usPJgr1ONVncUGSaQ==}
     engines: {node: '>=16'}
@@ -13531,6 +13557,9 @@ packages:
     resolution: {integrity: sha512-890w2Pjtj0iswAxalRlt2kHthi6HKrXEfZcn+ZNZptv7F3rUGIeDuZo+C+h4vXBHLEsVjJrHeCm35nYeZLzSBQ==}
     engines: {node: '>=10.0.0'}
     dev: false
+
+  /jsonschema/1.4.1:
+    resolution: {integrity: sha512-S6cATIPVv1z0IlxdN+zUk5EPjkGCdnhN4wVSBlvoUO1tOLJootbo9CquNJmbIh4yikWHiUedhRYrNPn1arpEmQ==}
 
   /jszip/3.10.1:
     resolution: {integrity: sha512-xXDvecyTpGLrqFrvkrUSoxxfJI5AH7U8zxxtVclpsUtMCq4JQ290LY8AW5c7Ggnr/Y/oK+bQMbqK2qmtk3pN4g==}
