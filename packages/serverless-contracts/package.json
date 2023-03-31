@@ -45,7 +45,6 @@
     "@swarmion/serverless-helpers": "^0.26.0",
     "@types/aws-lambda": "^8.10.109",
     "@types/http-errors": "^2.0.1",
-    "ajv": "^8.11.2",
     "http-errors": "^2.0.0",
     "json-schema-faker": "0.5.0-rcv.46",
     "json-schema-to-ts": "2.6.2",
@@ -65,6 +64,7 @@
     "@types/seedrandom": "^3.0.4",
     "@types/swagger-jsdoc": "^6.0.1",
     "@vitest/coverage-c8": "^0.29.2",
+    "ajv": "^8.11.2",
     "aws-sdk": "^2.1272.0",
     "aws-sdk-client-mock": "^2.0.1",
     "axios": "^1.2.2",
@@ -85,6 +85,7 @@
   },
   "peerDependencies": {
     "@serverless/typescript": ">=3",
+    "ajv": ">=8",
     "axios": ">=1"
   },
   "peerDependenciesMeta": {
@@ -92,6 +93,9 @@
       "optional": true
     },
     "axios": {
+      "optional": true
+    },
+    "ajv": {
       "optional": true
     }
   }

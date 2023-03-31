@@ -1,8 +1,11 @@
+import Ajv from 'ajv';
 import { JSONSchema } from 'json-schema-to-ts';
 
 import { getHandlerContextMock } from '__mocks__/requestContext';
 import { EventBridgeContract } from 'contracts';
 import { getHandler } from 'features';
+
+const ajv = new Ajv({ keywords: ['faker'] });
 
 // object with 200 properties to test the performance
 const bigObject: Record<string, JSONSchema> = {};
@@ -36,14 +39,14 @@ const baseEvent = {
 const fakeContext = getHandlerContextMock();
 
 const bigEventBridgeHandlerInstantiation = (): void => {
-  getHandler(eventBridgeContract)(async event => {
+  getHandler(eventBridgeContract, { ajv })(async event => {
     await Promise.resolve();
 
     return event.detail.userId;
   });
 };
 
-const handler = getHandler(eventBridgeContract)(async event => {
+const handler = getHandler(eventBridgeContract, { ajv })(async event => {
   await Promise.resolve();
 
   return event.detail.userId;

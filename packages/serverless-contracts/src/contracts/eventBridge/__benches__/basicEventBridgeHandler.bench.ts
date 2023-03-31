@@ -1,6 +1,10 @@
+import Ajv from 'ajv';
+
 import { getHandlerContextMock } from '__mocks__/requestContext';
 import { EventBridgeContract } from 'contracts';
 import { getHandler } from 'features';
+
+const ajv = new Ajv({ keywords: ['faker'] });
 
 const eventBridgeContract = new EventBridgeContract({
   id: 'myAwesomeEventBridgeContract',
@@ -28,14 +32,14 @@ const baseEvent = {
 const fakeContext = getHandlerContextMock();
 
 const basicEventBridgeHandlerInstantiation = (): void => {
-  getHandler(eventBridgeContract)(async event => {
+  getHandler(eventBridgeContract, { ajv })(async event => {
     await Promise.resolve();
 
     return event.detail.userId;
   });
 };
 
-const handler = getHandler(eventBridgeContract)(async event => {
+const handler = getHandler(eventBridgeContract, { ajv })(async event => {
   await Promise.resolve();
 
   return event.detail.userId;

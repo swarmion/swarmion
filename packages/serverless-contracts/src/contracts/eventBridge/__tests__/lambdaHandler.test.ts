@@ -1,7 +1,11 @@
+import Ajv from 'ajv';
+
 import { getHandlerContextMock } from '__mocks__/requestContext';
 import { getHandler } from 'features/lambdaHandler';
 
 import { EventBridgeContract } from '../eventBridgeContract';
+
+const ajv = new Ajv({ keywords: ['faker'] });
 
 describe('EventBridgeContract handler test', () => {
   const eventBridgeContract = new EventBridgeContract({
@@ -28,7 +32,7 @@ describe('EventBridgeContract handler test', () => {
   const fakeContext = getHandlerContextMock();
 
   it('should validate the payload', async () => {
-    const handler = getHandler(eventBridgeContract)(async event => {
+    const handler = getHandler(eventBridgeContract, { ajv })(async event => {
       await Promise.resolve();
 
       return event.detail.userId;
@@ -46,7 +50,7 @@ describe('EventBridgeContract handler test', () => {
   });
 
   it('should throw it the payload is invalid', async () => {
-    const handler = getHandler(eventBridgeContract)(async event => {
+    const handler = getHandler(eventBridgeContract, { ajv })(async event => {
       await Promise.resolve();
 
       return event.detail.userId;
@@ -66,13 +70,13 @@ describe('EventBridgeContract handler test', () => {
   });
 
   it('should not throw it the payload is invalid but validation is disabled in optinos', async () => {
-    const handler = getHandler(eventBridgeContract, { validatePayload: false })(
-      async event => {
-        await Promise.resolve();
+    const handler = getHandler(eventBridgeContract, {
+      validatePayload: false,
+    })(async event => {
+      await Promise.resolve();
 
-        return event.detail;
-      },
-    );
+      return event.detail;
+    });
 
     const result = await handler(
       {
@@ -94,7 +98,7 @@ describe('EventBridgeContract handler test', () => {
 
     const sideEffects = { mySideEffect: mockSideEffect };
 
-    const handler = getHandler(eventBridgeContract)(
+    const handler = getHandler(eventBridgeContract, { ajv })(
       async (
         event,
         _context,
@@ -128,7 +132,7 @@ describe('EventBridgeContract handler test', () => {
       mySideEffect: () => string;
     }
 
-    const handler = getHandler(eventBridgeContract)(
+    const handler = getHandler(eventBridgeContract, { ajv })(
       async (
         event,
         _context,

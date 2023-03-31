@@ -47,7 +47,7 @@ export function getHandler<
   Output = OutputType<Contract>,
 >(
   contract: Contract,
-  options?: Partial<GetApiGatewayHandlerOptions>,
+  options: GetApiGatewayHandlerOptions,
 ): <AdditionalArgs extends unknown[] = never[]>(
   handler: InternalSwarmionApiGatewayHandler<
     IntegrationType,
@@ -71,7 +71,7 @@ export function getHandler<
   Payload = EventBridgePayloadType<Contract>,
 >(
   contract: Contract,
-  options?: Partial<GetEventBridgeHandlerOptions>,
+  options: GetEventBridgeHandlerOptions,
 ): <AdditionalArgs extends unknown[]>(
   handler: SwarmionEventBridgeHandler<EventType, Payload, AdditionalArgs>,
 ) => EventBridgeHandler<EventType, Payload, AdditionalArgs>;
@@ -79,18 +79,18 @@ export function getHandler<
 // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
 export function getHandler<Contract extends ServerlessContract>(
   contract: Contract,
-  options?: GetHandlerOptions<Contract>,
+  options: GetHandlerOptions<Contract>,
 ): unknown {
   switch (contract.contractType) {
     case 'eventBridge':
       return getEventBridgeHandler(
         contract,
-        options as Partial<GetEventBridgeHandlerOptions> | undefined,
+        options as GetEventBridgeHandlerOptions,
       );
     case 'apiGateway':
       return getApiGatewayHandler(
         contract,
-        options as Partial<GetApiGatewayHandlerOptions> | undefined,
+        options as GetApiGatewayHandlerOptions,
       );
     case 'cloudFormation':
       throw new Error('CloudFormation contract has no handler');

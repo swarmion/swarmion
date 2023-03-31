@@ -1,3 +1,4 @@
+import Ajv from 'ajv';
 import {
   APIGatewayEventRequestContextV2WithAuthorizer,
   APIGatewayProxyCognitoAuthorizer,
@@ -11,6 +12,8 @@ import { HttpStatusCodes } from 'types';
 
 import { bigHttpApiContract } from '../__mocks__/bigHttpApiGatewayContract.bench';
 
+const ajv = new Ajv({ keywords: ['faker'] });
+
 const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
   {
     ...getAPIGatewayV2EventRequestContextMock(),
@@ -19,7 +22,7 @@ const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatew
   };
 const fakeContext = getHandlerContextMock();
 
-const httpHandler = getHandler(bigHttpApiContract)(
+const httpHandler = getHandler(bigHttpApiContract, { ajv })(
   async ({
     body,
     pathParameters,
@@ -66,7 +69,7 @@ const bigHttpApiHandlerInvocationBench = async (): Promise<void> => {
 };
 
 const bigHttpApiHandlerInstantiationBench = (): void => {
-  getHandler(bigHttpApiContract)(
+  getHandler(bigHttpApiContract, { ajv })(
     async ({
       body,
       pathParameters,
