@@ -1,10 +1,14 @@
 import { listDeploymentsContract } from '@swarmion/orchestrator-contracts';
 import { getHandler, HttpStatusCodes } from '@swarmion/serverless-contracts';
 
-export const main = getHandler(listDeploymentsContract)(async event => {
-  const { applicationId } = event.queryStringParameters;
-  console.log({ applicationId });
-  await Promise.resolve();
+import { ajv } from 'libs/ajv';
 
-  return { statusCode: HttpStatusCodes.OK, body: { id: 'coucou' } };
-});
+export const main = getHandler(listDeploymentsContract, { ajv })(
+  async event => {
+    const { applicationId } = event.queryStringParameters;
+    console.log({ applicationId });
+    await Promise.resolve();
+
+    return { statusCode: HttpStatusCodes.OK, body: { id: 'coucou' } };
+  },
+);

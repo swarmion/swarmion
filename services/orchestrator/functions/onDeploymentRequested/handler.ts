@@ -1,10 +1,14 @@
 import { onDeploymentRequestedContract } from '@swarmion/orchestrator-contracts';
 import { getHandler } from '@swarmion/serverless-contracts';
 
-export const main = getHandler(onDeploymentRequestedContract)(async event => {
-  const { applicationId, eventId, serviceId } = event.detail;
+import { ajv } from 'libs/ajv';
 
-  await Promise.resolve();
+export const main = getHandler(onDeploymentRequestedContract, { ajv })(
+  async event => {
+    const { applicationId, eventId, serviceId } = event.detail;
 
-  console.log({ applicationId, eventId, serviceId });
-});
+    await Promise.resolve();
+
+    console.log({ applicationId, eventId, serviceId });
+  },
+);
