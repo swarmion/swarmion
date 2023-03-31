@@ -4,6 +4,7 @@ import { getHandler, HttpStatusCodes } from '@swarmion/serverless-contracts';
 import { GenerateUlidType } from 'interfaces/generateUlid';
 import { PutRequestedContractEvent } from 'interfaces/putRequestedContractEvent';
 import { StoreServiceEventType } from 'interfaces/storeServiceEvent';
+import { ajv } from 'libs/ajv';
 
 import { sideEffects } from './sideEffects';
 
@@ -13,7 +14,7 @@ type SideEffects = {
   generateUlid: GenerateUlidType;
 };
 
-export const main = getHandler(requestSyncDeploymentContract)(
+export const main = getHandler(requestSyncDeploymentContract, { ajv })(
   async (
     event,
     _context,
