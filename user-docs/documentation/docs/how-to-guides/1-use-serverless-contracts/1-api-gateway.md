@@ -281,12 +281,9 @@ import middy from '@middy/core';
 import errorLogger from '@middy/error-logger';
 import cors from '@middy/http-cors';
 import { getHandler } from '@swarmion/serverless-contracts';
-import { ajvInstance } from 'libs/ajv';
+import { ajv } from 'libs/ajv';
 
-const handler = getHandler(
-  myContract,
-  ajvInstance,
-)(async event => {
+const handler = getHandler(myContract, { ajv })(async event => {
   // my handler...
 });
 
@@ -377,12 +374,9 @@ import {
   getHandler,
   getMockHandlerInput,
 } from '@swarmion/serverless-contracts';
-import { ajvInstance } from 'libs/ajv';
+import { ajv } from 'libs/ajv';
 
-const handler = getHandler(
-  myContract,
-  ajvInstance,
-)(async event => {
+const handler = getHandler(myContract, { ajv })(async event => {
   // my handler...
 });
 
@@ -397,7 +391,7 @@ const result = await handler(
 ```
 
 :::tip
-You can use the [faker](https://fakerjs.dev/) keyword in your json schema properties definition to generate more precise random data in your inputs
+You can use the [faker](https://fakerjs.dev/) keyword in your json schema properties definition to generate more precise random data in your inputs.
 
 ```ts
 export const bodySchema = {
@@ -414,6 +408,14 @@ export const bodySchema = {
   },
   required: ['firstName', 'lastName'],
 };
+```
+
+However, by default, faker keyword is not recognized by ajv. In order to use it, you should configure your ajv instance to recognize the `faker` keyword:
+
+```ts
+import Ajv from 'ajv';
+
+export const ajvInstance = new Ajv({ keywords: ['faker'] });
 ```
 
 :::
