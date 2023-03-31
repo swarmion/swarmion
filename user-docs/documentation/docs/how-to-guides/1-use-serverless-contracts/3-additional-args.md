@@ -31,12 +31,16 @@ Let's imagine that we want to pass it a sideEffect called `getUser` with type `(
 // handler.ts
 import { getHandler, HttpStatusCodes } from '@swarmion/serverless-contracts';
 import { getUser } from 'path/to/getUser';
+import { ajvInstance } from 'libs/ajv';
 
 const sideEffects = {
   getUser, // (userId: string) => Promise<User>
 };
 
-const main = getHandler(myContract)(
+const main = getHandler(
+  myContract,
+  ajvInstance,
+)(
   (
     event,
     _context, // will always be passed by Lambda
