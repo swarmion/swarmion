@@ -216,8 +216,14 @@ Then, you can use the `getHandler` feature to define a type safe handler of your
 ```typescript title="services/users/src/functions/getUser/handler.ts"
 import { getHandler, HttpStatusCodes } from '@swarmion/serverless-contracts';
 import { getUserContract } from '@my-project-name/users-contracts';
+import Ajv from 'ajv';
 
-export const handler = getHandler(getUserContract)(async event => {
+const ajv = new Ajv();
+
+export const handler = getHandler(
+  getUserContract,
+  ajv,
+)(async event => {
   const { userId } = event.pathParameters; // userId will be typed as string
 
   console.log(userId);
@@ -238,7 +244,10 @@ export const handler = getHandler(getUserContract)(async event => {
 Finally, in your frontend service, you can use the `getFetchRequest` feature to create a type safe client for your contract:
 
 ```typescript title="frontend/src/services/getUser.ts"
-import { getFetchRequest, HttpStatusCodes } from '@swarmion/serverless-contracts';
+import {
+  getFetchRequest,
+  HttpStatusCodes,
+} from '@swarmion/serverless-contracts';
 import { getUserContract } from '@my-project-name/users-contracts';
 
 export const getUser = (userId: string) => {

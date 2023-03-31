@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# `AJV` dependency injection in getHandler feature
+# `AJV` dependency injection in `getHandler` feature
 
 ## Why?
 

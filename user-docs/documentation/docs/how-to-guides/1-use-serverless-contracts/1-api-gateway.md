@@ -233,8 +233,9 @@ All this can be directly done directly by using the `getHandler` function that o
 
 ```ts
 import { getHandler, HttpStatusCodes } from '@swarmion/serverless-contracts';
+import { ajv } from 'libs/ajv';
 
-const handler = getHandler(myContract)(async event => {
+const handler = getHandler(myContract, { ajv })(async event => {
   event.pathParameters.userId; // will have type 'string'
   event.requestContext.authorizer.claims.sub; // will have type 'string'
 
@@ -251,7 +252,12 @@ const handler = getHandler(myContract)(async event => {
 ```
 
 :::info
-By default, the `getHandler` feature will validate both the input and the output of your lambda. If you wish to disable one of those, you can use the optional second argument in the `getHandler` feature:
+Regarding the `ajv` option, we advise you to use a singleton instance of ajv that you define in a separate file. This way, you can use the same instance for all your contracts and middlewares.
+:::
+
+:::info
+By default, the `getHandler` feature will validate both the input and the output of your lambda. If you wish to disable one of those, you can use the optional second argument in the `getHandler` feature.
+If you do so, you can omit the `ajv` option.
 
 ```ts
 import { getHandler } from '@swarmion/serverless-contracts';
@@ -275,8 +281,12 @@ import middy from '@middy/core';
 import errorLogger from '@middy/error-logger';
 import cors from '@middy/http-cors';
 import { getHandler } from '@swarmion/serverless-contracts';
+import { ajvInstance } from 'libs/ajv';
 
-const handler = getHandler(myContract)(async event => {
+const handler = getHandler(
+  myContract,
+  ajvInstance,
+)(async event => {
   // my handler...
 });
 
@@ -367,8 +377,12 @@ import {
   getHandler,
   getMockHandlerInput,
 } from '@swarmion/serverless-contracts';
+import { ajvInstance } from 'libs/ajv';
 
-const handler = getHandler(myContract)(async event => {
+const handler = getHandler(
+  myContract,
+  ajvInstance,
+)(async event => {
   // my handler...
 });
 
