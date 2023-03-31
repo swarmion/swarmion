@@ -1,4 +1,4 @@
-import Ajv from 'ajv';
+import Ajv, { ValidateFunction } from 'ajv';
 
 import { EventBridgeContract } from '../eventBridgeContract';
 import { EventBridgePayloadType } from '../types/common';
@@ -7,11 +7,17 @@ import {
   SwarmionEventBridgeHandler,
 } from '../types/lambdaHandler';
 
-export interface GetEventBridgeHandlerOptions {
-  validatePayload: boolean;
-}
+export type GetEventBridgeHandlerOptions =
+  | {
+      ajv: Ajv;
+      validatePayload?: boolean;
+    }
+  | {
+      ajv?: Ajv;
+      validatePayload: false;
+    };
 
-const defaultOptions: GetEventBridgeHandlerOptions = {
+const defaultOptions = {
   validatePayload: true,
 };
 
@@ -22,15 +28,17 @@ export const getEventBridgeHandler =
     Payload = EventBridgePayloadType<Contract>,
   >(
     contract: Contract,
-    options?: Partial<GetEventBridgeHandlerOptions>,
+    options: GetEventBridgeHandlerOptions,
   ) =>
   <AdditionalArgs extends unknown[] = []>(
     handler: SwarmionEventBridgeHandler<EventType, Payload, AdditionalArgs>,
   ): EventBridgeHandler<EventType, Payload, AdditionalArgs> => {
-    const { validatePayload } = { ...defaultOptions, ...options };
+    const { validatePayload, ajv } = { ...defaultOptions, ...options };
 
-    const ajv = new Ajv();
-    const payloadValidator = ajv.compile(contract.payloadSchema);
+    let payloadValidator: ValidateFunction | undefined = undefined;
+    if (validatePayload) {
+      payloadValidator = ajv.compile(contract.payloadSchema);
+    }
 
     return async (
       event,
@@ -38,7 +46,7 @@ export const getEventBridgeHandler =
       callback,
       ...additionalArgs: AdditionalArgs
     ) => {
-      if (validatePayload) {
+      if (payloadValidator !== undefined) {
         if (!payloadValidator(event.detail)) {
           console.error('Error: Invalid payload');
           console.error(payloadValidator.errors);

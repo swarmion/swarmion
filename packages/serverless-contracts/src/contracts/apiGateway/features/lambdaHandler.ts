@@ -23,12 +23,19 @@ import {
   proxyEventToHandlerEvent,
 } from '../utils';
 
-export interface GetApiGatewayHandlerOptions {
-  validateInput?: boolean;
-  validateOutput?: boolean;
-}
+export type GetApiGatewayHandlerOptions =
+  | {
+      ajv: Ajv;
+      validateInput?: boolean;
+      validateOutput?: boolean;
+    }
+  | {
+      ajv?: Ajv;
+      validateInput: false;
+      validateOutput: false;
+    };
 
-const defaultOptions: GetApiGatewayHandlerOptions = {
+const defaultOptions = {
   validateInput: true,
   validateOutput: true,
 };
@@ -49,7 +56,7 @@ export const getApiGatewayHandler =
     } = OutputType<Contract>,
   >(
     contract: Contract,
-    options?: Partial<GetApiGatewayHandlerOptions>,
+    options: GetApiGatewayHandlerOptions,
   ) =>
   <AdditionalArgs extends unknown[] = never[]>(
     handler: InternalSwarmionApiGatewayHandler<
@@ -69,7 +76,7 @@ export const getApiGatewayHandler =
     Output,
     AdditionalArgs
   > => {
-    const { validateInput, validateOutput } = {
+    const { validateInput, validateOutput, ajv } = {
       ...defaultOptions,
       ...options,
     };
@@ -79,14 +86,12 @@ export const getApiGatewayHandler =
     let inputValidator: ValidateFunction | undefined = undefined;
     const outputValidators: Record<string, ValidateFunction | undefined> = {};
 
-    if (validateInput === true || validateOutput === true) {
-      const ajv = new Ajv({ keywords: ['faker'] });
-
-      if (validateInput === true) {
+    if (validateInput || validateOutput) {
+      if (validateInput) {
         inputValidator = ajv.compile(inputSchema);
       }
 
-      if (validateOutput === true) {
+      if (validateOutput) {
         Object.keys(outputSchemas).forEach(statusCode => {
           const outputSchema =
             outputSchemas[statusCode as unknown as keyof typeof outputSchemas];

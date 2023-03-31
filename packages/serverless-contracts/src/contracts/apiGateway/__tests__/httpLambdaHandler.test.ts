@@ -2,6 +2,7 @@
 import middy from '@middy/core';
 import errorLogger from '@middy/error-logger';
 import cors from '@middy/http-cors';
+import Ajv from 'ajv';
 import type {
   APIGatewayEventRequestContextV2WithAuthorizer,
   APIGatewayProxyCognitoAuthorizer,
@@ -21,6 +22,8 @@ import { HttpStatusCodes } from 'types/http';
 import { httpApiGatewayContractMock } from '../__mocks__/httpApiGatewayContract';
 import { SwarmionApiGatewayHandler } from '../types';
 
+const ajv = new Ajv({ keywords: ['faker'] });
+
 describe('apiGateway lambda handler', () => {
   describe('httpApi, with authorizer, when all parameters are set', () => {
     const httpApiContract = httpApiGatewayContractMock;
@@ -34,7 +37,7 @@ describe('apiGateway lambda handler', () => {
     it('should return a 200 response', async () => {
       const fakeContext = getHandlerContextMock();
 
-      const httpHandler = getHandler(httpApiContract)(
+      const httpHandler = getHandler(httpApiContract, { ajv })(
         async ({
           body,
           pathParameters,
@@ -92,7 +95,7 @@ describe('apiGateway lambda handler', () => {
     it('should return a error response when throwing httpError in handler', async () => {
       const fakeContext = getHandlerContextMock();
 
-      const httpHandler = getHandler(httpApiContract)(
+      const httpHandler = getHandler(httpApiContract, { ajv })(
         async ({
           body,
           pathParameters,
@@ -143,7 +146,7 @@ describe('apiGateway lambda handler', () => {
     it('should return a error response when input is invalid', async () => {
       const fakeContext = getHandlerContextMock();
 
-      const httpHandler = getHandler(httpApiContract)(
+      const httpHandler = getHandler(httpApiContract, { ajv })(
         async ({
           body,
           pathParameters,
@@ -194,7 +197,7 @@ describe('apiGateway lambda handler', () => {
     it('should return a error response when output is invalid', async () => {
       const fakeContext = getHandlerContextMock();
 
-      const httpHandler = getHandler(httpApiContract)(() => {
+      const httpHandler = getHandler(httpApiContract, { ajv })(() => {
         return Promise.resolve({
           statusCode: HttpStatusCodes.OK,
           body: { id: 'hello', name: 5 as unknown as string },
@@ -241,7 +244,7 @@ describe('apiGateway lambda handler', () => {
 
       const fakeContext = getHandlerContextMock();
 
-      const handler = getHandler(httpApiContract)(
+      const handler = getHandler(httpApiContract, { ajv })(
         async ({
           body,
           pathParameters,
@@ -299,7 +302,7 @@ describe('apiGateway lambda handler', () => {
     });
 
     it('should accept optional additional arguments', async () => {
-      const httpHandler = getHandler(httpApiContract)(
+      const httpHandler = getHandler(httpApiContract, { ajv })(
         (
           _event,
           _context,
@@ -344,7 +347,7 @@ describe('apiGateway lambda handler', () => {
     });
 
     it('should allow overriding of additional arguments', async () => {
-      const httpHandler = getHandler(httpApiContract)(
+      const httpHandler = getHandler(httpApiContract, { ajv })(
         async (
           _event,
           _context,
@@ -409,7 +412,7 @@ describe('apiGateway lambda handler', () => {
       };
       const fakeContext = getHandlerContextMock();
 
-      const httpHandler = getHandler(restApiContract)(handler);
+      const httpHandler = getHandler(restApiContract, { ajv })(handler);
 
       const result = await httpHandler(
         {
@@ -453,7 +456,10 @@ describe('apiGateway lambda handler', () => {
 
       const fakeContext = getHandlerContextMock();
 
-      const httpHandler = getHandler(httpApiContract, { validateInput: false })(
+      const httpHandler = getHandler(httpApiContract, {
+        ajv,
+        validateInput: false,
+      })(
         async ({
           body,
           pathParameters,
@@ -519,6 +525,7 @@ describe('apiGateway lambda handler', () => {
       const fakeContext = getHandlerContextMock();
 
       const httpHandler = getHandler(httpApiContract, {
+        ajv,
         validateOutput: false,
       })(() => {
         return Promise.resolve({
