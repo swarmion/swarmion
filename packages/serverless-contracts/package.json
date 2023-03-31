@@ -83,6 +83,18 @@
     "vite-tsconfig-paths": "^4.0.3",
     "vitest": "^0.29.2"
   },
+  "exports": {
+    "./features": {
+      "import": "./dist/features/index.js",
+      "require": "./dist/features/index.cjs",
+      "types": "./dist/types/features/index.d.ts"
+    },
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/types/index.d.ts"
+    }
+  },
   "peerDependencies": {
     "@serverless/typescript": ">=3",
     "axios": ">=1"
