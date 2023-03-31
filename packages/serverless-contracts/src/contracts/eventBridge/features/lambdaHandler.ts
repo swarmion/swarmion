@@ -49,7 +49,7 @@ export const getEventBridgeHandler =
       if (payloadValidator !== undefined) {
         if (!payloadValidator(event.detail)) {
           console.error('Error: Invalid payload');
-          console.error(payloadValidator.errors);
+          console.error(JSON.stringify(payloadValidator.errors, null, 2));
           throw new Error('Invalid payload');
         }
       }

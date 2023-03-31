@@ -117,7 +117,7 @@ export const getApiGatewayHandler =
         if (inputValidator !== undefined) {
           if (!inputValidator(parsedEvent)) {
             console.error('Error: Invalid input');
-            console.error(inputValidator.errors);
+            console.error(JSON.stringify(inputValidator.errors, null, 2));
             throw createHttpError(400, 'Invalid input');
           }
         }
@@ -135,7 +135,7 @@ export const getApiGatewayHandler =
         if (outputValidator !== undefined) {
           if (!outputValidator(handlerResponse.body)) {
             console.error('Error: Invalid output');
-            console.error(outputValidator.errors);
+            console.error(JSON.stringify(outputValidator.errors, null, 2));
             throw createHttpError(400, 'Invalid output');
           }
         }
