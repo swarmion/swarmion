@@ -34,9 +34,8 @@ export const normalizeOptions = (
   // hashed project name is a 10 char string
   const hashedProjectName = createHash('sha512')
     .update(projectName)
-    .digest('base64url')
-    .slice(0, 10)
-    .toLowerCase();
+    .digest('hex') // use hex to get a hash without special chars [a-z0-9]. Special chars break some CDK features
+    .slice(0, 10);
 
   return {
     ...options,
