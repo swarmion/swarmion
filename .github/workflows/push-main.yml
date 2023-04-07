@@ -10,7 +10,6 @@ permissions: write-all
 
 env:
   CI: true
-  TARGET_SHA: ${{ github.event.pull_request.head.sha || github.event.merge_group.head_sha }}
 
 jobs:
   build-lint:
@@ -20,7 +19,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{ env.TARGET_SHA }}
           # We need to fetch all branches and commits so that Nx affected has a base to compare against.
           fetch-depth: 0
       - uses: nrwl/nx-set-shas@v3
@@ -38,7 +36,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{ env.TARGET_SHA }}
           # We need to fetch all branches and commits so that Nx affected has a base to compare against.
           fetch-depth: 0
       - name: Install & cache node dependencies
@@ -60,7 +57,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{ env.TARGET_SHA }}
           # We need to fetch all branches and commits so that Nx affected has a base to compare against.
           fetch-depth: 0
       - name: Run unit tests and sonar
@@ -104,7 +100,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{ env.TARGET_SHA }}
           # We need to fetch all branches and commits so that Nx affected has a base to compare against.
           fetch-depth: 0
       - uses: nrwl/nx-set-shas@v3
