@@ -45,19 +45,14 @@ pnpm package
 pnpm build
 pnpm test
 
-# link generator and generate library
-swarmion_setup # local link
+# generate library
 pnpm generate-library test-library
 
-# link generator and generate service
-swarmion_setup # local link
+# generate service
 pnpm generate-service test-service
 
-# link generator and generate cdk service
-swarmion_setup # local link
+# generate cdk service
 pnpm generate-cdk-service test-cdk-service
-
-swarmion_setup # local link
 
 # re-test everything
 pnpm package
