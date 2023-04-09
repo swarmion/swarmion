@@ -1,18 +1,8 @@
 on:
   pull_request:
     types: [opened, synchronize, reopened]
-    paths:
-      - 'packages/create-swarmion-app/**'
-      - 'packages/nx-plugin/**'
-      - 'examples/**'
-      - 'scripts/check-example.sh'
   merge_group:
     types: [checks_requested]
-    paths:
-      - 'packages/create-swarmion-app/**'
-      - 'packages/nx-plugin/**'
-      - 'examples/**'
-      - 'scripts/check-example.sh'
 
 # cancel previous runs on the same PR
 concurrency:
@@ -30,9 +20,35 @@ defaults:
     shell: bash
 
 jobs:
+  # should check if the job should run, it should return true if one of the following conditions is met, false otherwise:
+  # - the triggering event is a merge_group
+  # - or if the following patterns are matched on changed files
+  #   'packages/create-swarmion-app/**'
+  #   'packages/nx-plugin/**'
+  #   'examples/**'
+  #   'scripts/check-example.sh'
+  check-if-job-should-run:
+    name: 🤔 Check if job should run
+    runs-on: ubuntu-latest
+    outputs:
+      should-run: ${{ steps.check-if-job-should-run.outputs.should-run }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ env.TARGET_SHA }}
+          fetch-depth: 0
+      - id: check-if-job-should-run
+        run: |
+          if [[ "${{ github.event_name }}" == "merge_group" ]]; then
+            echo "should-run=true" >> $GITHUB_OUTPUT
+          else
+            echo "should-run=$(git diff --quiet --merge-base ${{ github.event.pull_request.base.sha }} ${{ env.TARGET_SHA }} -- packages/create-swarmion-app packages/nx-plugin examples scripts/check-example.sh && echo 'false' || echo 'true')" >> $GITHUB_OUTPUT
+          fi
   list-examples:
     name: 🪣 List examples
     runs-on: ubuntu-latest
+    needs: check-if-job-should-run
+    if: needs.check-if-job-should-run.outputs.should-run == 'true'
     outputs:
       examples: ${{ steps.list-example-folders.outputs.examples }}
     steps:
@@ -63,3 +79,16 @@ jobs:
         uses: ./.github/actions/install-node-deps
       - name: '🔍 Check example'
         run: REF=${{ env.TARGET_SHA }} EXAMPLE=${{ matrix.example }} sh ./scripts/check-example.sh
+  validate-examples:
+    name: 📝 Validate examples
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    needs: [check-if-job-should-run, check-examples]
+    steps:
+      - name: Validate check examples
+        if: needs.check-if-job-should-run.outputs.should-run == 'true'
+        run: |
+          if [[ ${{ needs.check-examples.result }} = "failure" ]]; then
+            echo "Check examples failed"
+            exit 1
+          fi
