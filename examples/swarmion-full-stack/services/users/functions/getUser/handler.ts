@@ -1,8 +1,11 @@
 import { getHandler, HttpStatusCodes } from '@swarmion/serverless-contracts';
+import Ajv from 'ajv';
 
 import { getUserContract } from '@swarmion-full-stack/users-contracts';
 
-export const main = getHandler(getUserContract)(async event => {
+const ajv = new Ajv();
+
+export const main = getHandler(getUserContract, { ajv })(async event => {
   const { userId } = event.pathParameters;
 
   await Promise.resolve({ userId });
