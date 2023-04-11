@@ -253,6 +253,8 @@ const handler = getHandler(myContract, { ajv })(async event => {
 
 :::info
 Regarding the `ajv` option, we advise you to use a singleton instance of ajv that you define in a separate file. This way, you can use the same instance for all your contracts and middlewares.
+
+[See an example](../../how-to-guides/migration-guides/ajv-dependency-injection#share-a-singleton-ajv-instance-across-the-whole-project)
 :::
 
 :::info

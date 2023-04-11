@@ -31,4 +31,30 @@ Migrating from the default AJV instance to a custom one is quite straightforward
 });
 ```
 
-x
+## Share a singleton AJV instance across the whole project
+
+In order to reduce code duplication, we recommend creating a singleton AJV instance and share it across the whole project.
+
+Here is an example of how to do it:
+
+```ts title="libs/ajv.ts"
+import Ajv from 'ajv';
+
+export const ajv = new Ajv();
+
+// or if using json-schema-faker
+
+export const ajv = new Ajv({ keywords: ['faker'] });
+```
+
+```ts title="functions/myFunction/handler.ts"
+import { getHandler } from '@swarmion/serverless-contracts';
+
+import { myContract } from '@my-swarmion-app/contracts';
+
+import { ajv } from 'libs/ajv';
+
+export const handler = getHandler(myContract, { ajv })(async event => {
+  // ...
+});
+```
