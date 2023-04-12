@@ -14,6 +14,13 @@ TEMP_DIR=$(mktemp -d)
 RANDOM_ID=$(cat /proc/sys/kernel/random/uuid | sed 's/[-]//g' | head -c 6)
 EXAMPLE_NAME=$EXAMPLE-$RANDOM_ID
 
+link_swarmion_deps() {
+    # for earch '@swarmion/*' dependency and devDependency listed in the 'package.json', link it the local ones
+    for DEP in $(jq -r '.dependencies,.devDependencies' package.json | sed '/^null$/d' | jq -r 'keys[]' | grep @swarmion/ | sed 's/@swarmion\///'); do
+        pnpm link $BASE_DIR/packages/$DEP
+    done
+}
+
 swarmion_setup() {
     # the nx plugin needs to be linked at the root
     pnpm link $BASE_DIR/packages/nx-plugin
@@ -21,8 +28,7 @@ swarmion_setup() {
     # for each workspace workspaces
     for WORKSPACE in $(pnpm recursive exec pwd); do
         cd $WORKSPACE
-        # link serverless-contracts
-        pnpm link $BASE_DIR/packages/serverless-contracts
+        link_swarmion_deps
     done
 
     # back to test root
@@ -47,12 +53,28 @@ pnpm test
 
 # generate library
 pnpm generate-library test-library
+cd packages/test-library
+link_swarmion_deps
+cd $TEMP_DIR/$EXAMPLE_NAME
+# generate breaks the links, so we need to recreate them
+pnpm link $BASE_DIR/packages/nx-plugin
 
 # generate service
 pnpm generate-service test-service
+cd services/test-service
+link_swarmion_deps
+cd $TEMP_DIR/$EXAMPLE_NAME
+# generate breaks the links, so we need to recreate them
+pnpm link $BASE_DIR/packages/nx-plugin
 
 # generate cdk service
 pnpm generate-cdk-service test-cdk-service
+cd services/test-cdk-service
+link_swarmion_deps
+cd $TEMP_DIR/$EXAMPLE_NAME
+
+# generate breaks the links, so we need to recreate them
+swarmion_setup # local link
 
 # re-test everything
 pnpm package
