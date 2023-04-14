@@ -360,11 +360,40 @@ The `getLambdaHandler` is only a pass-through adding typing capabilities, withou
 This method is not recommended, use `getHandler` when possible.
 :::
 
-In order to safely use `getLambdaHandler` combine it with `applyHttpMiddlewares`
+In order to safely use `getLambdaHandler`, you need to define a custom middleware than you can use to wrap your handler.
+Here is an implementation example:
 
-```ts
+```ts title="src/libs/middlewares.ts"
+import middy from '@middy/core';
+import httpErrorHandler from '@middy/http-error-handler';
+import jsonBodyParser from '@middy/http-json-body-parser';
+import jsonValidator from '@middy/validator';
+import type { Handler } from 'aws-lambda';
+import { JSONSchema } from 'json-schema-to-ts';
+
+interface Options {
+  inputSchema?: JSONSchema;
+  outputSchema?: JSONSchema;
+}
+
+export const applyHttpMiddlewares = <Event, Result>(
+  handler: Handler<Event, Result>,
+  { inputSchema, outputSchema }: Options,
+): middy.MiddyfiedHandler<Event, Result> => {
+  const middyfiedHandler = middy(handler);
+
+  middyfiedHandler.use(jsonBodyParser());
+  middyfiedHandler.use(jsonValidator({ inputSchema, outputSchema }));
+
+  middyfiedHandler.use(httpErrorHandler());
+
+  return middyfiedHandler;
+};
+```
+
+```ts title="src/functions/myFeature/handler.ts"
 import { getLambdaHandler } from '@swarmion/serverless-contracts';
-import { applyHttpMiddlewares } from '@swarmion/serverless-helpers';
+import { applyHttpMiddlewares } from 'libs/middlewares';
 
 const handler = getLambdaHandler(myContract)(async event => {
   event.pathParameters.userId; // will have type 'string'
