@@ -1,4 +1,3 @@
-export { applyHttpMiddlewares } from './applyHttpMiddlewares';
 export { getEnvVariable } from './getEnvVariable';
 export { getHandlerPath } from './getHandlerPath';
 export { testFunctionNames } from './testFunctionNames';
