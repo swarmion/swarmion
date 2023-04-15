@@ -10,9 +10,9 @@ on:
   workflow_dispatch:
 
 # cancel previous runs on the same PR
-concurrency:
-  group: ${{ github.ref }}/codspeed
-  cancel-in-progress: true
+# concurrency:
+#   group: ${{ github.ref }}/codspeed
+#   cancel-in-progress: true
 
 jobs:
   benchmarks:
