@@ -46,7 +46,7 @@ bench
     bigEventBridgeHandlerBench.invocation,
   );
 
-await bench.run();
+void bench.run();
 console.table(
   bench.tasks.map(({ name, result }) => ({
     'Task Name': name,

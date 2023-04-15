@@ -22,7 +22,7 @@
   "module": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "bench": "node $CODSPEED_V8_FLAGS --loader tsx src/__benches__/index.ts",
+    "bench": "node $CODSPEED_V8_FLAGS --loader esbuild-register/loader -r esbuild-register src/__benches__/index.ts",
     "clean": "rimraf dist *.tsbuildinfo",
     "format-check": "prettier --check . --ignore-path ../../.prettierignore",
     "format-fix": "prettier --write . --ignore-path ../../.prettierignore",
@@ -70,6 +70,7 @@
     "axios": "^1.2.2",
     "concurrently": "^8.0.0",
     "dependency-cruiser": "^12.11.1",
+    "esbuild-register": "^3.4.2",
     "eslint": "^8.29.0",
     "prettier": "^2.8.1",
     "rimraf": "^5.0.0",

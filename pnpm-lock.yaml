@@ -576,6 +576,9 @@ importers:
       dependency-cruiser:
         specifier: ^12.11.1
         version: 12.11.1
+      esbuild-register:
+        specifier: ^3.4.2
+        version: 3.4.2(esbuild@0.16.17)
       eslint:
         specifier: ^8.29.0
         version: 8.35.0
@@ -10590,6 +10593,17 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /esbuild-register@3.4.2(esbuild@0.16.17):
+    resolution: {integrity: sha512-kG/XyTDyz6+YDuyfB9ZoSIOOmgyFCH+xPRtsCa8W85HLRV5Csp+o3jWVbOSHgSLfyLc5DmP+KFDNwty4mEjC+Q==}
+    peerDependencies:
+      esbuild: '>=0.12 <1'
+    dependencies:
+      debug: 4.3.4(supports-color@8.1.1)
+      esbuild: 0.16.17
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
 
   /esbuild-sunos-64@0.15.18:
     resolution: {integrity: sha512-On22LLFlBeLNj/YF3FT+cXcyKPEI263nflYlAhz5crxtp3yRG1Ugfr7ITyxmCmjm4vbN/dGrb/B7w7U8yJR9yw==}
