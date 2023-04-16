@@ -2,6 +2,7 @@
 
 import { GenericApiGatewayContract } from '../apiGatewayContract';
 import { OutputType, RequestArguments } from '../types';
+import { combineUrls } from '../utils';
 import { getRequestParameters } from './requestParameters';
 
 export const getFetchRequest = async <
@@ -18,7 +19,7 @@ export const getFetchRequest = async <
   const searchString = new URLSearchParams(queryStringParameters).toString();
 
   if (options.baseUrl !== undefined) {
-    url = new URL(path, options.baseUrl);
+    url = combineUrls(path, options.baseUrl);
 
     url.search = searchString;
   } else {
