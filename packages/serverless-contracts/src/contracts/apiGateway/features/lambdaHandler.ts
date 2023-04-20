@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import Ajv, { ValidateFunction } from 'ajv';
 import createHttpError, { isHttpError } from 'http-errors';
 
@@ -28,11 +29,13 @@ export type GetApiGatewayHandlerOptions =
       ajv: Ajv;
       validateInput?: boolean;
       validateOutput?: boolean;
+      returnValidationErrors?: boolean;
     }
   | {
       ajv?: Ajv;
       validateInput: false;
       validateOutput: false;
+      returnValidationErrors: false;
     };
 
 const defaultOptions = {
@@ -102,6 +105,7 @@ export const getApiGatewayHandler =
       }
     }
 
+    // eslint-disable-next-line complexity
     return async (event, context, callback, ...additionalArgs) => {
       try {
         const parsedEvent = proxyEventToHandlerEvent<
@@ -118,6 +122,15 @@ export const getApiGatewayHandler =
           if (!inputValidator(parsedEvent)) {
             console.error('Error: Invalid input');
             console.error(JSON.stringify(inputValidator.errors, null, 2));
+            // eslint-disable-next-line max-depth
+            if (options.returnValidationErrors === true)
+              throw createHttpError(
+                400,
+                JSON.stringify({
+                  message: 'Invalid input',
+                  errors: inputValidator.errors,
+                }),
+              );
             throw createHttpError(400, 'Invalid input');
           }
         }
