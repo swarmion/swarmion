@@ -194,6 +194,71 @@ describe('apiGateway lambda handler', () => {
       });
     });
 
+    it('should return a error response with ajv error details when input is invalid', async () => {
+      const fakeContext = getHandlerContextMock();
+
+      const httpHandler = getHandler(httpApiContract, {
+        ajv,
+        returnValidationErrors: true,
+      })(
+        async ({
+          body,
+          pathParameters,
+          queryStringParameters,
+          headers,
+          requestContext,
+        }) => {
+          await Promise.resolve();
+          const myCustomClaim = requestContext.authorizer.claims.foo;
+
+          const name =
+            body.foo +
+            pathParameters.pageNumber +
+            queryStringParameters.testId +
+            headers.myHeader +
+            myCustomClaim;
+
+          throw createHttpError(500, name);
+        },
+      );
+
+      const result = await httpHandler(
+        {
+          pathParameters: { userId: 'toto', pageNumber: '15' },
+          body: JSON.stringify({ bar: 'foo' }),
+          headers: {
+            myHeader: 'MyCustomHeader',
+            anotherHeader: 'anotherHeader',
+          },
+          queryStringParameters: { testId: 'myTestId' },
+          requestContext: fakeRequestContext,
+          version: '',
+          routeKey: '',
+          rawPath: '',
+          rawQueryString: '',
+          isBase64Encoded: false,
+        },
+        fakeContext,
+        () => null,
+      );
+
+      expect(result).toEqual({
+        body: JSON.stringify({
+          message: 'Invalid input',
+          errors: [
+            {
+              instancePath: '/body',
+              schemaPath: '#/properties/body/required',
+              keyword: 'required',
+              params: { missingProperty: 'foo' },
+              message: "must have required property 'foo'",
+            },
+          ],
+        }),
+        statusCode: 400,
+      });
+    });
+
     it('should return a error response when output is invalid', async () => {
       const fakeContext = getHandlerContextMock();
 

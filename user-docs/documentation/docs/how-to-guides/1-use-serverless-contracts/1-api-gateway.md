@@ -257,7 +257,8 @@ Regarding the `ajv` option, we advise you to use a singleton instance of ajv tha
 [See an example](../../how-to-guides/migration-guides/ajv-dependency-injection#share-a-singleton-ajv-instance-across-the-whole-project)
 :::
 
-:::info
+### Input and output validation
+
 By default, the `getHandler` feature will validate both the input and the output of your lambda. If you wish to disable one of those, you can use the optional second argument in the `getHandler` feature.
 If you do so, you can omit the `ajv` option.
 
@@ -272,7 +273,50 @@ const handler = getHandler(myContract, {
 });
 ```
 
-:::
+You can also choose to return the ajv validation errors in the response body:
+
+```ts
+import { getHandler } from '@swarmion/serverless-contracts';
+import { ajv } from 'libs/ajv';
+
+const handler = getHandler(myContract, {
+  ajv,
+  returnValidationErrors: true,
+})(async event => {
+  // ...
+});
+```
+
+An exemple with this flag would be:
+
+```json
+{
+  "statusCode": 400,
+  "body": {
+    "message": "Invalid input",
+    "errors": [
+      {
+        "keyword": "type",
+        "dataPath": ".id",
+        "schemaPath": "#/properties/id/type",
+        "params": {
+          "type": "string"
+        },
+        "message": "should be string"
+      }
+    ]
+  }
+}
+```
+
+and without:
+
+```json
+{
+  "statusCode": 400,
+  "body": "Invalid input"
+}
+```
 
 ### Use Middy middlewares
 
