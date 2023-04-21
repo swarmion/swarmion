@@ -25,13 +25,13 @@ runs:
       # one-liner to get the path to the project from the project name. This can be removed when exposed by Nx
       run: echo "path=$(find . -type f -name "project.json" ! -path "./examples/*" ! -path "./node_modules/*" -exec grep -l '"name"[:] "${{ inputs.project }}"' {} \; | sed 's/\/project\.json//' | sed 's/\.\///')" >> $GITHUB_OUTPUT
       shell: bash
-    - name: Check if SonarCloud Scan should run
-      id: check_sonarcloud_scan_should_run
+    - name: Check if SonarCloud config file exists
+      id: check_sonarcloud_config_file_exists
       uses: andstor/file-existence-action@v2
       with:
         files: '${{ steps.get-project-path.outputs.path }}/sonar-project.properties'
     - name: 🔎 SonarCloud Scan
-      if: steps.check_sonarcloud_scan_should_run.outputs.files_exists == 'true'
+      if:  steps.check_sonarcloud_config_file_exists.outputs.files_exists == 'true' && env.SONAR_TOKEN != ''
       uses: SonarSource/sonarcloud-github-action@master
       env:
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
