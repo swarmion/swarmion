@@ -853,6 +853,9 @@ importers:
       serverless-analyze-bundle-plugin:
         specifier: ^2.0.0
         version: 2.0.1(serverless@3.27.0)
+      serverless-better-credentials:
+        specifier: ^1.1.3
+        version: 1.1.3(@serverless/utils@6.8.2)(aws-sdk@2.1304.0)(serverless@3.27.0)
       serverless-custom-iam-roles-per-function:
         specifier: ^1.0.1
         version: 1.0.1
@@ -17425,6 +17428,20 @@ packages:
     dependencies:
       esbuild-visualizer: 0.4.0
       node-stream-zip: 1.15.0
+      open: 8.4.1
+      serverless: 3.27.0
+    dev: true
+
+  /serverless-better-credentials@1.1.3(@serverless/utils@6.8.2)(aws-sdk@2.1304.0)(serverless@3.27.0):
+    resolution: {integrity: sha512-specJ3DH70DkstDo0NibL7rETHdrMQ6RLbL1lz0ijjmx6fuV/8XAd6StxoNoXoCCbTT0lXU+OIlfDiyivuca6A==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      '@serverless/utils': ^6.0.2
+      aws-sdk: ^2.567.0
+      serverless: ^2 || ^3
+    dependencies:
+      '@serverless/utils': 6.8.2
+      aws-sdk: 2.1304.0
       open: 8.4.1
       serverless: 3.27.0
     dev: true

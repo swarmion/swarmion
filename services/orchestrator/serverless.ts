@@ -25,6 +25,7 @@ const serverlessConfiguration: AWS &
   frameworkVersion,
   configValidationMode: 'error',
   plugins: [
+    'serverless-better-credentials',
     'serverless-esbuild',
     '@swarmion/serverless-cdk-plugin',
     '@swarmion/serverless-plugin',
