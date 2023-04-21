@@ -22,7 +22,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     'package-types': 'tsc -p tsconfig.build.json',
     'package-types-aliases': 'tsc-alias -p tsconfig.build.json',
     test: 'nx run test-linter && nx run test-type && nx run test-unit && nx run test-circular',
-    'test-circular': 'pnpm depcruise --config -- .',
+    'test-circular': 'pnpm depcruise --config -- src',
     'test-linter': 'pnpm linter-base-config .',
     'test-type': 'tsc --noEmit --emitDeclarationOnly false',
     'test-unit': 'vitest run --coverage --passWithNoTests',

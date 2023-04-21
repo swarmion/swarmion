@@ -1,6 +1,3 @@
 const commonDependencyCruiserConfig = require('<%= offsetFromRoot %>/commonConfiguration/dependency-cruiser.config');
 
-const path = ['src'];
-const pathNot = ['dist'];
-
-module.exports = commonDependencyCruiserConfig({ path, pathNot });
+module.exports = commonDependencyCruiserConfig;
