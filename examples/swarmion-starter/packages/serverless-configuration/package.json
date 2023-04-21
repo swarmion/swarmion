@@ -21,7 +21,7 @@
     "package-types": "tsc -p tsconfig.build.json",
     "package-types-aliases": "tsc-alias -p tsconfig.build.json",
     "test": "nx run test-linter && nx run test-type && nx run test-circular",
-    "test-circular": "pnpm depcruise --config -- .",
+    "test-circular": "pnpm depcruise --config -- src",
     "test-linter": "pnpm linter-base-config .",
     "test-type": "tsc --noEmit --emitDeclarationOnly false",
     "watch": "pnpm clean && concurrently 'pnpm:package-* --watch'"
@@ -32,7 +32,7 @@
   "devDependencies": {
     "@types/node": "^18.11.13",
     "concurrently": "^7.6.0",
-    "dependency-cruiser": "^12.1.0",
+    "dependency-cruiser": "^12.11.1",
     "eslint": "^8.29.0",
     "prettier": "^2.8.1",
     "rimraf": "^4.0.0",
