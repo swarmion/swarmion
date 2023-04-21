@@ -23,7 +23,10 @@ swarmion_setup() {
         cd $WORKSPACE
         # for earch '@swarmion/*' dependency and devDependency listed in the 'package.json', link it the local ones
         for DEP in $(jq -r '.dependencies,.devDependencies' package.json | sed '/^null$/d' | jq -r 'keys[]' | grep @swarmion/ | sed 's/@swarmion\///'); do
-            pnpm link $BASE_DIR/packages/$DEP
+            SWARMION_PACKAGE_PATH=${BASE_DIR}/packages/${DEP}
+            # If the swarmion package has a publish directory, we link the publish directory directly
+            PUBLISH_DIR=$(jq -r '.publishConfig.directory' ${SWARMION_PACKAGE_PATH}/package.json | sed '/^null$/d')
+            pnpm link ${SWARMION_PACKAGE_PATH}/${PUBLISH_DIR}
         done
     done
 
