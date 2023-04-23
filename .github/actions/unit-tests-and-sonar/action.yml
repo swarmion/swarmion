@@ -31,8 +31,10 @@ runs:
       with:
         files: '${{ steps.get-project-path.outputs.path }}/sonar-project.properties'
     - name: 🔎 SonarCloud Scan
-      if:  steps.check_sonarcloud_config_file_exists.outputs.files_exists == 'true' && env.SONAR_TOKEN != ''
-      uses: SonarSource/sonarcloud-github-action@master
+      if: steps.check_sonarcloud_config_file_exists.outputs.files_exists == 'true' && env.SONAR_TOKEN != ''
+      # TODO: switch to master when they fix the issue with the action
+      # see https://community.sonarsource.com/t/sonarsource-sonarcloud-github-action-failing-with-node-js-12-error/89664
+      uses: SonarSource/sonarcloud-github-action@v1.8
       env:
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ inputs.SONAR_TOKEN }}
