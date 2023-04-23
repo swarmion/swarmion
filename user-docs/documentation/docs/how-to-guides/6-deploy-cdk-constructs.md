@@ -4,6 +4,14 @@ sidebar_position: 6
 
 # Deploy CDK constructs
 
+## Install the library
+
+We created a plugin that allows you to deploy CDK constructs with the Serverless framework. It is available on npm as `@swarmion/serverless-cdk-plugin`. To install it, run the following command:
+
+```bash
+pnpm add --save-dev @swarmion/serverless-cdk-plugin aws-cdk-lib constructs
+```
+
 ## Deploy a simple CDK construct
 
 Include any `Construct` you want to deploy in a `Stack`, and provide the stack in your `serverless.ts` configuration.
@@ -32,7 +40,7 @@ class MyStack extends Stack {
 }
 
 const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
-  service: "my-cdk-service",
+  service: 'my-cdk-service',
 
   plugins: [
     // ...
@@ -85,7 +93,7 @@ class MyStack extends Stack {
 const getCdkProperty = ServerlessCdkPlugin.getCdkPropertyHelper<MyStack>;
 
 const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
-  service: "my-cdk-service",
+  service: 'my-cdk-service',
 
   plugins: [
     // ...
@@ -125,7 +133,6 @@ import ServerlessCdkPlugin, {
   ServerlessCdkPluginConfig,
 } from '@swarmion/serverless-cdk-plugin';
 
-
 class MyStack extends ServerlessCdkPlugin.ServerlessStack {
   constructor(scope: Construct, id: string, serverlessProps: ServerlessProps) {
     super(scope, id);
@@ -144,7 +151,7 @@ class MyStack extends ServerlessCdkPlugin.ServerlessStack {
 }
 
 const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
-  service: "my-cdk-service",
+  service: 'my-cdk-service',
 
   plugins: [
     // ...
@@ -171,7 +178,6 @@ Some CDK constructs sanity check properties, and may reject names containing ser
 
 You can bypass this issue by wrapping the problematic string in [Fn cloudformation functions](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Fn.html).
 :::
-
 
 ```typescript
 import { Stack } from 'aws-cdk-lib';
@@ -217,7 +223,7 @@ class MyStack extends Stack {
 }
 
 const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
-  service: "my-cdk-service",
+  service: 'my-cdk-service',
 
   plugins: [
     // ...
@@ -234,10 +240,9 @@ const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
     },
   },
 };
-
 ```
 
-While the actual cloudformation stack name is defined by serverless, This can be useful if you need a bit more control over the logicalId of elements defined in your CDK Stack.  
+While the actual cloudformation stack name is defined by serverless, This can be useful if you need a bit more control over the logicalId of elements defined in your CDK Stack.
 When undefined, the stack name defaults to the name of the serverless service.
 
 ## CDK caveats
@@ -246,17 +251,17 @@ The plugin comes with some limitations and will not be able to use some CDK feat
 
 ### Bundled lambda functions
 
-Anything that requires the CDK bootstrap stack to be deploy is not available using this plugin.  
+Anything that requires the CDK bootstrap stack to be deploy is not available using this plugin.
 For example, `NodeJsLambdaFunction` cannot be used.
 
 If the plugin detects that the generated CDK plans to use the bootstrap stack to deploy, it will throw an error.
 
 ### RestApi methods
 
-If you use a restApi defined through serverless and use the CDK to add method and resources to it, the resulting cloudformation will have dependency issues.  
+If you use a restApi defined through serverless and use the CDK to add method and resources to it, the resulting cloudformation will have dependency issues.
 Since the serverless framework is not aware that you added resources, the `Deployment` resource will not depend on the extra method/resources, resulting in uncertainty in your deployment.
 
-You can set the dependency manually by using [serverless-plugin-bind-deployment-id](https://www.npmjs.com/package/serverless-plugin-bind-deployment-id).  
+You can set the dependency manually by using [serverless-plugin-bind-deployment-id](https://www.npmjs.com/package/serverless-plugin-bind-deployment-id).
 You will need to export the method and manually define the deployment id.
 
 ```typescript
