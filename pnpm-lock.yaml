@@ -719,9 +719,6 @@ importers:
       '@middy/validator':
         specifier: ^2.5.7
         version: 2.5.7
-      aws-cdk-lib:
-        specifier: ^2.60.0
-        version: 2.68.0(constructs@10.2.2)
       json-schema-to-ts:
         specifier: ^2.6.2
         version: 2.7.2
@@ -738,6 +735,9 @@ importers:
       '@vitest/coverage-c8':
         specifier: 0.30.0
         version: 0.30.0(vitest@0.30.0)
+      aws-cdk-lib:
+        specifier: ^2.60.0
+        version: 2.68.0(constructs@10.2.2)
       concurrently:
         specifier: ^7.6.0
         version: 7.6.0
@@ -8527,6 +8527,7 @@ packages:
       punycode: 2.3.0
       semver: 7.5.0
       yaml: 1.10.2
+    dev: true
     bundledDependencies:
       - '@balena/dockerignore'
       - case
@@ -9739,6 +9740,7 @@ packages:
   /constructs@10.2.2:
     resolution: {integrity: sha512-1mSuh0pwJUaGEYuxJH+oxtD5n6JlxX5yD3zmaiyZ7Olv0t1hlZCYZ/AAW0wNUbxpp04BakTTMOISo7Rvmdsw4g==}
     engines: {node: '>= 14.17.0'}
+    dev: true
 
   /content-disposition@0.5.2:
     resolution: {integrity: sha512-kRGRZw3bLlFISDBgwTSA1TMBFN6J6GWDeubmDE3AF+3+yXL8hTWv8r5rkLbqYXY4RjPk/EzHnClI3zQf1cFmHA==}

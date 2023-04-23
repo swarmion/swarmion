@@ -7,17 +7,17 @@ This package is part of the [Swarmion](https://www.swarmion.dev) project. See it
 # Installation
 
 ```bash
-pnpm add @swarmion/serverless-helpers
+pnpm add @swarmion/serverless-helpers aws-cdk-lib
 ```
 
 or if using yarn
 
 ```bash
-yarn add @swarmion/serverless-helpers
+yarn add @swarmion/serverless-helpers aws-cdk-lib
 ```
 
 or if using npm
 
 ```bash
-npm install @swarmion/serverless-helpers
+npm install @swarmion/serverless-helpers aws-cdk-lib
 ```
