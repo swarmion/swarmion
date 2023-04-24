@@ -20,8 +20,8 @@ defaults:
     shell: bash
 
 jobs:
-  build-lint:
-    name: 🚀 Build and Lint
+  build-format-lint:
+    name: 🚀 Build, format and Lint
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -33,6 +33,8 @@ jobs:
       - uses: nrwl/nx-set-shas@v3
       - name: Install & cache node dependencies
         uses: ./.github/actions/install-node-deps
+      - name: '💄 Check format'
+        run: pnpm format-check
       - name: '🧪 Test linter'
         run: pnpm nx affected --targets=test-linter,test-type,test-circular --parallel=2
 
@@ -81,12 +83,12 @@ jobs:
     name: ✅ Validate the PR
     runs-on: ubuntu-latest
     if: ${{ always() }}
-    needs: [build-lint, build, unit-tests-and-sonar]
+    needs: [build-format-lint, build, unit-tests-and-sonar]
     steps:
-      - name: Validate build-lint
+      - name: Validate build-format-lint
         run: |
-          if [[ ${{ needs.build-lint.result }} = "failure" ]]; then
-            echo "build-lint failed"
+          if [[ ${{ needs.build-format-lint.result }} = "failure" ]]; then
+            echo "build-format-lint failed"
             exit 1
           fi
       - name: Validate build
