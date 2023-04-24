@@ -3,7 +3,6 @@ module.exports = {
     'plugin:@next/next/recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:react/recommended',
-    'prettier',
   ],
   plugins: ['react-hooks', 'jsx-a11y', 'risxss', 'testing-library'],
   rules: {

@@ -32,6 +32,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 To deploy the NextJs application to an Amplify stack, in the frontend next app directory:
 
 1. Setup your repository configuration in [`sourceCodeProvider.ts`](./hosting/settings/sourceCodeProvider.ts)
+
    > By default, a GitHub configuration is proposed. You need to create a GitHub token with `repo` scope and should store it safely in AWS Secrets Manager. Then, you need to update your `.env` (copy `.env.example`) with the GitHub owner, repository name and the key used in Secrets Manager to store the token.
 
 2. Deploy the Amplify stack by running
