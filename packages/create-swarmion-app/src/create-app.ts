@@ -114,6 +114,7 @@ export const createApp = async ({
   console.log();
   console.log('Linting your project...');
   console.log();
+  execSync('pnpm format-fix', { stdio: 'ignore', cwd: root });
   execSync(`pnpm lint-fix-all`, { stdio: 'ignore', cwd: root });
 
   console.log();
