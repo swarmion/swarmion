@@ -53,6 +53,8 @@ jobs:
             ${{ runner.os }}-nx-cache-
       - name: '🏗 Package'
         run: pnpm nx affected --target=package --parallel=2
+      - name: '💄 Check format'
+        run: pnpm format-check
       - name: '🧪 Run tests'
         run: pnpm nx affected --targets=test-linter,test-type,test-unit,test-circular --parallel=2
       - name: Configure AWS Credentials
