@@ -1,10 +1,6 @@
 module.exports = {
   env: { browser: true },
-  extends: [
-    'plugin:jsx-a11y/recommended',
-    'plugin:react/recommended',
-    'prettier',
-  ],
+  extends: ['plugin:jsx-a11y/recommended', 'plugin:react/recommended'],
   plugins: ['react-hooks', 'jsx-a11y', 'risxss'],
   rules: {
     'react/prop-types': 'off',
