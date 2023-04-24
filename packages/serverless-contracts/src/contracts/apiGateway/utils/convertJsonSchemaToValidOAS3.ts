@@ -79,8 +79,9 @@ export const convertJsonSchemaToValidOAS3 = <S extends boolean | JSONSchema>(
 ): S extends JSONSchema | OpenAPIV3.SchemaObject
   ? OpenAPIV3.SchemaObject
   : OpenAPIV3.SchemaObject | boolean => {
-  if (typeof initialSchema === 'boolean')
+  if (typeof initialSchema === 'boolean') {
     return initialSchema as unknown as OpenAPIV3.SchemaObject;
+  }
 
   const schema = cloneDeep(initialSchema) as OpenAPIV3.SchemaObject;
 

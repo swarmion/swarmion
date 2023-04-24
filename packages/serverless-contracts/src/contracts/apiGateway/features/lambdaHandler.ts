@@ -123,7 +123,7 @@ export const getApiGatewayHandler =
             console.error('Error: Invalid input');
             console.error(JSON.stringify(inputValidator.errors, null, 2));
             // eslint-disable-next-line max-depth
-            if (options.returnValidationErrors === true)
+            if (options.returnValidationErrors === true) {
               throw createHttpError(
                 400,
                 JSON.stringify({
@@ -131,6 +131,7 @@ export const getApiGatewayHandler =
                   errors: inputValidator.errors,
                 }),
               );
+            }
             throw createHttpError(400, 'Invalid input');
           }
         }

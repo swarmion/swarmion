@@ -13,7 +13,9 @@ export const listRemoteContractSchemas = async (
   const provider = serverless.getProvider('aws');
   const latestDeployedTimestamp = await getLatestDeployedTimestamp(provider);
 
-  if (latestDeployedTimestamp === undefined) return;
+  if (latestDeployedTimestamp === undefined) {
+    return;
+  }
 
   const previousArtifactDirectoryName =
     buildPreviousDeploymentArtifactDirectoryName(
