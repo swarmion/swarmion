@@ -1,3 +1,5 @@
+import { joinPathFragments } from '@nrwl/devkit';
+
 import { NormalizedSchema, PackageJson } from '../../types';
 
 export const packageJson = (options: NormalizedSchema): PackageJson => ({
@@ -12,10 +14,18 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     destroy: 'serverless remove',
     'destroy-production': 'serverless remove --stage production',
     'destroy-staging': 'serverless remove --stage staging',
+    'format-check': `prettier --check . ${joinPathFragments(
+      options.offsetFromRoot,
+      '.prettierignore',
+    )}`,
+    'format-fix': `prettier --write . ${joinPathFragments(
+      options.offsetFromRoot,
+      '.prettierignore',
+    )}`,
     'lint-fix': 'pnpm linter-base-config --fix',
     'lint-fix-all': 'pnpm lint-fix .',
     'linter-base-config': 'eslint --ext=js,ts',
-    test: 'nx run test-linter && nx run test-type && nx run test-unit && nx run test-circular',
+    test: 'nx run format-check && nx run test-linter && nx run test-type && nx run test-unit && nx run test-circular',
     'test-circular': 'pnpm depcruise --validate .dependency-cruiser.js .',
     'test-linter': 'pnpm linter-base-config .',
     'test-type': 'tsc',

@@ -1,3 +1,5 @@
+import { joinPathFragments } from '@nrwl/devkit';
+
 import { NormalizedSchema, PackageJson } from '../../types';
 
 export const packageJson = (options: NormalizedSchema): PackageJson => ({
@@ -15,10 +17,18 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     destroy: `cdk destroy --profile ${options.workspaceName}-developer`,
     'destroy-production': 'cdk destroy --context stage=production',
     'destroy-staging': 'cdk destroy --context stage=staging',
+    'format-check': `prettier --check . ${joinPathFragments(
+      options.offsetFromRoot,
+      '.prettierignore',
+    )}`,
+    'format-fix': `prettier --write . ${joinPathFragments(
+      options.offsetFromRoot,
+      '.prettierignore',
+    )}`,
     'lint-fix': 'pnpm linter-base-config --fix',
     'lint-fix-all': 'pnpm lint-fix .',
     'linter-base-config': 'eslint --ext=js,ts',
-    test: 'nx run test-linter && nx run test-type && nx run test-unit && nx run test-circular',
+    test: 'nx run format-check && nx run test-linter && nx run test-type && nx run test-unit && nx run test-circular',
     'test-circular': 'pnpm depcruise --validate .dependency-cruiser.js .',
     'test-linter': 'pnpm linter-base-config .',
     'test-type': 'tsc',
@@ -39,6 +49,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     'dependency-cruiser': 'latest',
     esbuild: 'latest',
     eslint: 'latest',
+    prettier: 'latest',
     'ts-node': 'latest',
     typescript: 'latest',
     'vite-tsconfig-paths': 'latest',

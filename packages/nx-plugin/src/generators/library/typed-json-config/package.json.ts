@@ -1,3 +1,5 @@
+import { joinPathFragments } from '@nrwl/devkit';
+
 import { NormalizedSchema, PackageJson } from '../../types';
 
 export const packageJson = (options: NormalizedSchema): PackageJson => ({
@@ -13,6 +15,14 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
   types: 'dist/types/index.d.ts',
   scripts: {
     clean: 'rimraf dist *.tsbuildinfo',
+    'format-check': `prettier --check . ${joinPathFragments(
+      options.offsetFromRoot,
+      '.prettierignore',
+    )}`,
+    'format-fix': `prettier --write . ${joinPathFragments(
+      options.offsetFromRoot,
+      '.prettierignore',
+    )}`,
     'lint-fix': 'pnpm linter-base-config --fix',
     'lint-fix-all': 'pnpm lint-fix .',
     'linter-base-config': 'eslint --ext=js,ts',
@@ -21,7 +31,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     'package-transpile': 'tsup',
     'package-types': 'tsc -p tsconfig.build.json',
     'package-types-aliases': 'tsc-alias -p tsconfig.build.json',
-    test: 'nx run test-linter && nx run test-type && nx run test-unit && nx run test-circular',
+    test: 'nx run format-check && nx run test-linter && nx run test-type && nx run test-unit && nx run test-circular',
     'test-circular': 'pnpm depcruise --config -- src',
     'test-linter': 'pnpm linter-base-config .',
     'test-type': 'tsc --noEmit --emitDeclarationOnly false',
