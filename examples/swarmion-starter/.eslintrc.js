@@ -1,10 +1,6 @@
 /* eslint-disable max-lines */
 module.exports = {
-  extends: [
-    'eslint:recommended',
-    'plugin:import/recommended',
-    'plugin:prettier/recommended',
-  ],
+  extends: ['eslint:recommended', 'plugin:import/recommended'],
   ignorePatterns: [
     '**/node_modules/',
     '**/nx-cache/',
@@ -15,7 +11,6 @@ module.exports = {
     '**/public/',
   ],
   rules: {
-    'prettier/prettier': 'error',
     'import/extensions': 0,
     'import/no-unresolved': 0,
     'import/prefer-default-export': 0,
@@ -128,7 +123,6 @@ module.exports = {
       extends: [
         'plugin:@typescript-eslint/recommended',
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
-        'plugin:prettier/recommended',
       ],
       parser: '@typescript-eslint/parser',
       parserOptions: {

@@ -14,6 +14,8 @@
   "contracts": true,
   "scripts": {
     "clean": "rimraf dist *.tsbuildinfo",
+    "format-check": "prettier --check . --ignore-path ../../.prettierignore",
+    "format-fix": "prettier --write . --ignore-path ../../.prettierignore",
     "lint-fix": "pnpm linter-base-config --fix",
     "lint-fix-all": "pnpm lint-fix .",
     "linter-base-config": "eslint --ext=js,ts",
@@ -21,7 +23,7 @@
     "package-transpile": "tsup",
     "package-types": "tsc -p tsconfig.build.json",
     "package-types-aliases": "tsc-alias -p tsconfig.build.json",
-    "test": "nx run test-linter && nx run test-type && nx run test-circular",
+    "test": "nx run format-check && nx run test-linter && nx run test-type && nx run test-circular",
     "test-circular": "pnpm depcruise --config -- src",
     "test-linter": "pnpm linter-base-config .",
     "test-type": "tsc --noEmit --emitDeclarationOnly false",

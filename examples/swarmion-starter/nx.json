@@ -29,7 +29,10 @@
     "package": {
       "inputs": ["production", "^production"],
       "dependsOn": ["^package"],
-      "outputs": ["{projectRoot}/dist", "{projectRoot}/tsconfig.build.tsbuildinfo"]
+      "outputs": [
+        "{projectRoot}/dist",
+        "{projectRoot}/tsconfig.build.tsbuildinfo"
+      ]
     },
     "deploy": {
       "inputs": ["production", "^production"],
@@ -37,11 +40,21 @@
     },
     "deploy-staging": {
       "inputs": ["production", "^production"],
-      "dependsOn": ["^package", "^build", "^deploy-staging", "bootstrap-staging"]
+      "dependsOn": [
+        "^package",
+        "^build",
+        "^deploy-staging",
+        "bootstrap-staging"
+      ]
     },
     "deploy-production": {
       "inputs": ["production", "^production"],
-      "dependsOn": ["^package", "^build", "^deploy-production", "bootstrap-production"]
+      "dependsOn": [
+        "^package",
+        "^build",
+        "^deploy-production",
+        "bootstrap-production"
+      ]
     },
     "test-linter": {
       "inputs": ["default", "^production", "{workspaceRoot}/.eslintrc.js"],
