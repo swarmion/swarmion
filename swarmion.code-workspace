@@ -31,6 +31,14 @@
       "nx-cache/**/*": true,
       "**/cdk.out/**/*": true
     },
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/Thumbs.db": true
+    },
     "[dotenv][ignore][properties][shellscript]": {
       "editor.defaultFormatter": "foxundermoon.shell-format"
     },
@@ -53,8 +61,7 @@
       "tsbuildinfo",
       "tsup",
       "ulid"
-    ],
-    "files.exclude": {}
+    ]
   },
   "extensions": {
     "recommendations": [
