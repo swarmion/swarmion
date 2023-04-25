@@ -84,13 +84,6 @@ module.exports = {
     'no-restricted-imports': [
       'error',
       {
-        patterns: [
-          {
-            group: ['@swarmion/*/*'],
-            message:
-              'import of internal modules must be done at the root level.',
-          },
-        ],
         paths: [
           {
             name: 'lodash',
