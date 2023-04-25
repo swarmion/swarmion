@@ -1,8 +1,8 @@
 import { Callback, Context } from 'aws-lambda';
 
-import { httpApiGatewayContractMock } from '../__mocks__/httpApiGatewayContract';
-import { getMockHandlerInput } from '../features';
-import { ApiGatewayEvent } from '../types';
+import { httpApiGatewayContractMock } from '../../__mocks__/httpApiGatewayContract';
+import { ApiGatewayEvent } from '../../types';
+import { getMockHandlerInput } from '../mockHandlerInput';
 
 const [event, context, callback] = getMockHandlerInput(
   httpApiGatewayContractMock,

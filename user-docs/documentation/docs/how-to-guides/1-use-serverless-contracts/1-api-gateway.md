@@ -419,7 +419,7 @@ With the `getMockHandlerInput` feature, you can quickly generate input events to
 Using [json-schema-faker](https://github.com/json-schema-faker/json-schema-faker), it will generate random data based on the contract schemas and allow you overriding certain key with your own values.
 
 ```ts
-import { getMockHandlerInput } from '@swarmion/serverless-contracts';
+import { getMockHandlerInput } from '@swarmion/serverless-contracts/test-utils';
 
 const [mockEvent] = getMockHandlerInput(myContract, {
   pathParameters: { userId: '15' },
@@ -445,10 +445,9 @@ const mockEvent = {
 Then, you can use it directly in your test files:
 
 ```ts
-import {
-  getHandler,
-  getMockHandlerInput,
-} from '@swarmion/serverless-contracts';
+import { getHandler } from '@swarmion/serverless-contracts';
+import { getMockHandlerInput } from '@swarmion/serverless-contracts/test-utils';
+
 import { ajv } from 'libs/ajv';
 
 const handler = getHandler(myContract, { ajv })(async event => {
@@ -504,7 +503,7 @@ If you need to change the seed, you can use the `setMockHandlerInputSeed` featur
 import {
   getMockHandlerInput,
   setMockHandlerInputSeed,
-} from '@swarmion/serverless-contracts';
+} from '@swarmion/serverless-contracts/test-utils';
 
 setMockHandlerInputSeed('42'); // Will always generate the same random values
 

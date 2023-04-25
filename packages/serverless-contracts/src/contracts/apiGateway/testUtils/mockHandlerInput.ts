@@ -1,6 +1,11 @@
 import { Context } from 'aws-lambda';
 import { JSONSchemaFaker, Schema } from 'json-schema-faker';
-import merge from 'lodash/merge';
+/**
+ * TODO: investigate why using a named export of `merge` does not work when the lib is consumed
+ * this is not really a problem, since this code will only be used in tests
+ */
+// eslint-disable-next-line no-restricted-imports
+import _ from 'lodash';
 import seedrandom from 'seedrandom';
 
 import {
@@ -79,10 +84,10 @@ export const getMockHandlerInput = <
     queryStringParameters: defaultQueryStringParameters,
     headers: defaultHeaders,
     body: defaultBody,
-    requestContext: merge(defaultRequestContext, defaultCustomRequestContext),
+    requestContext: _.merge(defaultRequestContext, defaultCustomRequestContext),
   };
 
-  const event = merge(defaultEvent, partialEvent);
+  const event = _.merge(defaultEvent, partialEvent);
 
   const stringifiedEvent = {
     ...event,

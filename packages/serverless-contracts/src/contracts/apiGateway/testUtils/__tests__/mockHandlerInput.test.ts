@@ -1,5 +1,8 @@
-import { ApiGatewayContract } from '../apiGatewayContract';
-import { getMockHandlerInput, setMockHandlerInputSeed } from '../features';
+import { ApiGatewayContract } from '../../apiGatewayContract';
+import {
+  getMockHandlerInput,
+  setMockHandlerInputSeed,
+} from '../mockHandlerInput';
 
 describe('apiGateway lambda handler mock input', () => {
   const pathParametersSchema = {
