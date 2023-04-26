@@ -11,8 +11,8 @@ importers:
         specifier: ^17.3.0
         version: 17.3.0
       '@swarmion/nx-plugin':
-        specifier: ^0.28.0
-        version: 0.28.0(eslint@8.29.0)(nx@15.8.9)(typescript@5.0.2)
+        specifier: ^0.28.1
+        version: 0.28.1(eslint@8.29.0)(nx@15.8.9)(typescript@5.0.2)
       '@typescript-eslint/eslint-plugin':
         specifier: ^5.51.0
         version: 5.51.0(@typescript-eslint/parser@5.51.0)(eslint@8.29.0)(typescript@5.0.2)
@@ -65,8 +65,8 @@ importers:
   packages/serverless-configuration:
     dependencies:
       '@swarmion/serverless-helpers':
-        specifier: ^0.28.0
-        version: 0.28.0(@serverless/typescript@3.29.0)(aws-cdk-lib@2.76.0)
+        specifier: ^0.28.1
+        version: 0.28.1(@serverless/typescript@3.29.0)(aws-cdk-lib@2.76.0)
     devDependencies:
       '@types/node':
         specifier: ^18.11.13
@@ -112,16 +112,16 @@ packages:
       '@jridgewell/trace-mapping': 0.3.18
     dev: true
 
-  /@aws-cdk/asset-awscli-v1@2.2.149:
-    resolution: {integrity: sha512-vndvY78xsO3S8mGF5eqKdLCBJALuV2h90tWA80xNgXqI3X95Z0tUxgFtI9LrxcH3147dAcar1c1gWMMFdY5zoQ==}
+  /@aws-cdk/asset-awscli-v1@2.2.152:
+    resolution: {integrity: sha512-zjQptupJIshYDg+XfkFS6J/CKNsEMqYcr21U3BStrBGhjK3uXp6TeHY14g+lJItUxGROtHzlp4/FNphDpVaWjw==}
     dev: false
 
   /@aws-cdk/asset-kubectl-v20@2.1.1:
     resolution: {integrity: sha512-U1ntiX8XiMRRRH5J1IdC+1t5CE89015cwyt5U63Cpk0GnMlN5+h9WsWMlKlPXZR4rdq/m806JRlBMRpBUB2Dhw==}
     dev: false
 
-  /@aws-cdk/asset-node-proxy-agent-v5@2.0.126:
-    resolution: {integrity: sha512-NzMIFA6VdX0JDnTU3UPZhwYC/tQqSn5yEeDNfACxoiZ4Ey+z8pIkQ3DBldqdAw8+YMKxblmyaA6pBy2xzqLLOg==}
+  /@aws-cdk/asset-node-proxy-agent-v5@2.0.127:
+    resolution: {integrity: sha512-w9WPfSTJDDeI4RfXVQVOK3qH49TefMKqbapKY0g2GkXQe9Na8WAe6o0JTNLc97JAsiymc7ohBFqhkg8kJr87IA==}
     dev: false
 
   /@babel/code-frame@7.21.4:
@@ -2396,8 +2396,8 @@ packages:
     resolution: {integrity: sha512-q0D+nNZI1zwebAN9m/6rQij+FdampYCY1bs712UNZTJ2yd8tkASHZqRhcwf+gmtquUWsg1Ws7l73cv3fzSDtzg==}
     dev: false
 
-  /@swarmion/nx-plugin@0.28.0(eslint@8.29.0)(nx@15.8.9)(typescript@5.0.2):
-    resolution: {integrity: sha512-Wj0qJSpnSySS2XzyQpG4ymk5QVQHo5noUmFHbkwogyWVdpPgsv/ESxWhd8GfRi4RVrzo+fD8jkRLsfDZ95pdaw==}
+  /@swarmion/nx-plugin@0.28.1(eslint@8.29.0)(nx@15.8.9)(typescript@5.0.2):
+    resolution: {integrity: sha512-sYYIGSkrtCuDI133dgCtLOzoa1nbXEopid0qnMXKyQZNVcKtWDHmtMYFKlGSousSsM3tHdlNgUBt4SFLNZB3sg==}
     peerDependencies:
       nx: ^15.7.0
       typescript: '>=4'
@@ -2406,7 +2406,7 @@ packages:
       '@nrwl/linter': 15.9.2(eslint@8.29.0)(nx@15.8.9)(typescript@5.0.2)
       nx: 15.8.9
       typescript: 5.0.2
-      yaml: 2.2.1
+      yaml: 2.2.2
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -2416,14 +2416,14 @@ packages:
       - supports-color
     dev: true
 
-  /@swarmion/serverless-helpers@0.28.0(@serverless/typescript@3.29.0)(aws-cdk-lib@2.76.0):
-    resolution: {integrity: sha512-RcEj4t6JCYVrKzsq98LbBz1wKiR8xd+wrojpFmgftsh9yp1Wp3DveRJ+Bgdq+xOXxjMvKvg4agzVT4Mf9mIerg==}
+  /@swarmion/serverless-helpers@0.28.1(@serverless/typescript@3.29.0)(aws-cdk-lib@2.76.0):
+    resolution: {integrity: sha512-kLOpuVJcGyyDIMXh05CElO6ASlxJGkzgrPwnPMaL6grR4vGxLW+V1cjJx08t1LHPqlV0Z1sccClm2pcHmoTI/w==}
     peerDependencies:
       '@serverless/typescript': '>=3'
       aws-cdk-lib: ^2.60.0
     dependencies:
       '@serverless/typescript': 3.29.0
-      aws-cdk-lib: 2.76.0(constructs@10.2.5)
+      aws-cdk-lib: 2.76.0(constructs@10.2.7)
       json-schema-to-ts: 2.8.0
     dev: false
 
@@ -2875,16 +2875,16 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /aws-cdk-lib@2.76.0(constructs@10.2.5):
+  /aws-cdk-lib@2.76.0(constructs@10.2.7):
     resolution: {integrity: sha512-EYWdHh/qJA7v+jD6SeW+BOEChI7oe6IYPHHap+SoJMUrKBVSDKnIGJ8wTP5eV6F27aYaUQiA7rWTKcCWoda8ag==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
     dependencies:
-      '@aws-cdk/asset-awscli-v1': 2.2.149
+      '@aws-cdk/asset-awscli-v1': 2.2.152
       '@aws-cdk/asset-kubectl-v20': 2.1.1
-      '@aws-cdk/asset-node-proxy-agent-v5': 2.0.126
-      constructs: 10.2.5
+      '@aws-cdk/asset-node-proxy-agent-v5': 2.0.127
+      constructs: 10.2.7
     dev: false
     bundledDependencies:
       - '@balena/dockerignore'
@@ -3055,7 +3055,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001481
-      electron-to-chromium: 1.4.369
+      electron-to-chromium: 1.4.372
       node-releases: 2.0.10
       update-browserslist-db: 1.0.11(browserslist@4.21.5)
     dev: true
@@ -3326,8 +3326,8 @@ packages:
       yargs: 17.7.1
     dev: true
 
-  /constructs@10.2.5:
-    resolution: {integrity: sha512-LyCWeQwD+kHu2gpoGzpnajdaUrtT5VaoQwxz0nzQb/38CF46X4CUlMYgPIqG3dt3yqMa9/xRU4M6br+7wVabHw==}
+  /constructs@10.2.7:
+    resolution: {integrity: sha512-Cn8bZkZMK/jdeyoobnR/M48/+SSgCHe6nNTJXtbzu/dLaK+HiE6JSSjhtb9OO2jO/ZysZ1dPVUrzKs7HGZ7PUw==}
     engines: {node: '>= 14.17.0'}
     dev: false
 
@@ -3629,8 +3629,8 @@ packages:
       jake: 10.8.5
     dev: true
 
-  /electron-to-chromium@1.4.369:
-    resolution: {integrity: sha512-LfxbHXdA/S+qyoTEA4EbhxGjrxx7WK2h6yb5K2v0UCOufUKX+VZaHbl3svlzZfv9sGseym/g3Ne4DpsgRULmqg==}
+  /electron-to-chromium@1.4.372:
+    resolution: {integrity: sha512-MrlFq/j+TYHOjeWsWGYfzevc25HNeJdsF6qaLFrqBTRWZQtWkb1myq/Q2veLWezVaa5OcSZ99CFwTT4aF4Mung==}
     dev: true
 
   /emoji-regex@8.0.0:
@@ -7081,6 +7081,11 @@ packages:
 
   /yaml@2.2.1:
     resolution: {integrity: sha512-e0WHiYql7+9wr4cWMx3TVQrNwejKaEe7/rHNmQmqRjazfOP5W8PB6Jpebb5o6fIapbz9o9+2ipcaTM2ZwDI6lw==}
+    engines: {node: '>= 14'}
+    dev: true
+
+  /yaml@2.2.2:
+    resolution: {integrity: sha512-CBKFWExMn46Foo4cldiChEzn7S7SRV+wqiluAb6xmueD/fGyRHIhX8m14vVGgeFWjN540nKCNVj6P21eQjgTuA==}
     engines: {node: '>= 14'}
     dev: true
 
