@@ -3,7 +3,7 @@ import prompts, { Choice } from 'prompts';
 
 const TEMPLATES = [
   'swarmion-starter',
-  'swarmion-full-stack',
+  'sls',
   'swarmion-with-next',
   'swarmion-bare',
 ] as const;
@@ -17,10 +17,10 @@ const choices: (Omit<Choice, 'value'> & { value: Template })[] = [
     value: 'swarmion-starter',
   },
   {
-    title: 'Swarmion Fullstack',
+    title: 'Serverless framework full stack',
     description:
-      'More complete example with a backend, a frontend and a shared lib',
-    value: 'swarmion-full-stack',
+      'A complete example with a serverless framework backend, a frontend and a shared lib',
+    value: 'sls',
   },
   {
     title: 'Swarmion with Next.js',
