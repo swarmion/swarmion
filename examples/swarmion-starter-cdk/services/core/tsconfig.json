@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.options.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "emitDeclarationOnly": false,
+    "noEmit": true
+  },
+  "references": [
+    {
+      "path": "../../packages/serverless-configuration/tsconfig.build.json"
+    }
+  ],
+  "exclude": ["./cdk.out"],
+  "include": ["./**/*.ts"]
+}
