@@ -2,6 +2,11 @@
   "extends": "./tsconfig.options.json",
   "files": [],
   "references": [
-    { "path": "./packages/serverless-configuration/tsconfig.build.json" }
+    {
+      "path": "./packages/serverless-configuration/tsconfig.build.json"
+    },
+    {
+      "path": "./services/core/tsconfig.json"
+    }
   ]
 }

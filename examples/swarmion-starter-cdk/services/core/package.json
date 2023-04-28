@@ -1,0 +1,45 @@
+{
+  "name": "@swarmion-starter-cdk/core",
+  "private": true,
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "scripts": {
+    "bootstrap": "cdk bootstrap --profile swarmion-starter-cdk-developer --qualifier de91078a5b",
+    "bootstrap-production": "cdk bootstrap --context stage=production --qualifier de91078a5b",
+    "bootstrap-staging": "cdk bootstrap --context stage=staging --qualifier de91078a5b",
+    "deploy": "cdk deploy --profile swarmion-starter-cdk-developer",
+    "deploy-production": "cdk deploy --context stage=production",
+    "deploy-staging": "cdk deploy --context stage=staging",
+    "destroy": "cdk destroy --profile swarmion-starter-cdk-developer",
+    "destroy-production": "cdk destroy --context stage=production",
+    "destroy-staging": "cdk destroy --context stage=staging",
+    "lint-fix": "pnpm linter-base-config --fix",
+    "lint-fix-all": "pnpm lint-fix .",
+    "linter-base-config": "eslint --ext=js,ts",
+    "test": "nx run test-linter && nx run test-type && nx run test-unit && nx run test-circular",
+    "test-circular": "pnpm depcruise --validate .dependency-cruiser.js .",
+    "test-linter": "pnpm linter-base-config .",
+    "test-type": "tsc",
+    "test-unit": "vitest run --coverage --passWithNoTests"
+  },
+  "dependencies": {
+    "@swarmion-starter-cdk/serverless-configuration": "workspace:^",
+    "@swarmion/serverless-contracts": "^0.27.0",
+    "@swarmion/serverless-helpers": "^0.27.0",
+    "ajv": "^8.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.13",
+    "@vitest/coverage-c8": "^0.30.1",
+    "aws-cdk": "^2.76.0",
+    "aws-cdk-lib": "^2.76.0",
+    "constructs": "^10.2.2",
+    "dependency-cruiser": "^12.11.1",
+    "esbuild": "^0.17.17",
+    "eslint": "^8.38.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4",
+    "vite-tsconfig-paths": "^4.2.0",
+    "vitest": "^0.30.1"
+  }
+}
