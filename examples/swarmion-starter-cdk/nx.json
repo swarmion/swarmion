@@ -8,7 +8,7 @@
           "bootstrap",
           "build",
           "package",
-          "test-circular",
+          "test-dependencies",
           "test-linter",
           "test-type",
           "test-unit"
@@ -69,7 +69,7 @@
       "inputs": ["default", "^production"],
       "dependsOn": ["^package"]
     },
-    "test-circular": {
+    "test-dependencies": {
       "inputs": ["default", "^production"],
       "dependsOn": ["^package"]
     }
