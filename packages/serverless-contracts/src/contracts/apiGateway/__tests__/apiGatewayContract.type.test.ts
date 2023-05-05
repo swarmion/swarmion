@@ -3,6 +3,7 @@ import { A } from 'ts-toolbelt';
 import { ApiGatewayContract } from 'contracts';
 import { OutputType } from 'contracts/apiGateway/types/common';
 import { HttpStatusCodes } from 'types/http';
+import { typeAssert } from 'utils';
 
 import { GenericApiGatewayContract } from '../apiGatewayContract';
 
@@ -66,12 +67,9 @@ export const httpApiGatewayContract = new ApiGatewayContract({
   },
 });
 
-type ContractCheck =
-  typeof httpApiGatewayContract extends GenericApiGatewayContract
-    ? 'pass'
-    : 'fail';
-const contractCheck: ContractCheck = 'pass';
-contractCheck;
+typeAssert<
+  A.Extends<typeof httpApiGatewayContract, GenericApiGatewayContract>
+>();
 
 export const httpApiGatewayContract2 = new ApiGatewayContract({
   id: 'testContract',
@@ -91,17 +89,16 @@ export const httpApiGatewayContract2 = new ApiGatewayContract({
 
 type ContractOutputType = OutputType<typeof httpApiGatewayContract2>;
 
-type OutputCheck = A.Equals<
-  ContractOutputType,
-  | {
-      statusCode: HttpStatusCodes.OK;
-      body: { id: string; name: string };
-    }
-  | {
-      statusCode: HttpStatusCodes.BAD_REQUEST;
-      body: { message: string };
-    }
->;
-
-const outputCheck: OutputCheck = 1;
-outputCheck;
+typeAssert<
+  A.Equals<
+    ContractOutputType,
+    | {
+        statusCode: HttpStatusCodes.OK;
+        body: { id: string; name: string };
+      }
+    | {
+        statusCode: HttpStatusCodes.BAD_REQUEST;
+        body: { message: string };
+      }
+  >
+>();

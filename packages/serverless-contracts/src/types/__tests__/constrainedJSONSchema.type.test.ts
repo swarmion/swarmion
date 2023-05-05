@@ -1,6 +1,8 @@
 import { JSONSchema } from 'json-schema-to-ts';
 import { A } from 'ts-toolbelt';
 
+import { typeAssert } from 'utils';
+
 import { ConstrainedJSONSchema } from '../constrainedJSONSchema';
 
 type ExtendJsonSchemaCheck = A.Extends<ConstrainedJSONSchema, JSONSchema>;
@@ -15,10 +17,7 @@ const simpleSchema = {
   additionalProperties: false,
 } as const;
 
-type SimpleSchemaCheck = A.Extends<typeof simpleSchema, ConstrainedJSONSchema>;
-
-const simpleSchemaCheck: SimpleSchemaCheck = 1;
-simpleSchemaCheck;
+typeAssert<A.Extends<typeof simpleSchema, ConstrainedJSONSchema>>();
 
 const composedSchema = {
   type: 'object',
@@ -41,10 +40,4 @@ const composedSchema = {
   ],
 } as const;
 
-type ComposedSchemaCheck = A.Extends<
-  typeof composedSchema,
-  ConstrainedJSONSchema
->;
-
-const composedSchemaCheck: ComposedSchemaCheck = 1;
-composedSchemaCheck;
+typeAssert<A.Extends<typeof composedSchema, ConstrainedJSONSchema>>();

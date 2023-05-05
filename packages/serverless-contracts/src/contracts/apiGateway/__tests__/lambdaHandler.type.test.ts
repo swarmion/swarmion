@@ -5,6 +5,7 @@ import {
 import { A } from 'ts-toolbelt';
 
 import { HttpStatusCodes } from 'types/http';
+import { typeAssert } from 'utils';
 
 import {
   bodySchema,
@@ -82,15 +83,9 @@ type ExpectedEventType = {
   };
 };
 
-type Check = A.Equals<MyEventType, ExpectedEventType>;
+typeAssert<A.Equals<MyEventType, ExpectedEventType>>();
 
-const check: Check = 1;
-check;
-
-type CheckHelper = A.Equals<MyHelperEventType, ExpectedEventType>;
-
-const checkHelper: CheckHelper = 1;
-checkHelper;
+typeAssert<A.Equals<MyHelperEventType, ExpectedEventType>>();
 
 // test with some keys missing
 type IncompleteEventType = HandlerEventType<
@@ -113,10 +108,4 @@ type ExpectedIncompleteEventType = {
   };
 };
 
-type CheckIncomplete = A.Equals<
-  IncompleteEventType,
-  ExpectedIncompleteEventType
->;
-
-const checkIncomplete: CheckIncomplete = 1;
-checkIncomplete;
+typeAssert<A.Equals<IncompleteEventType, ExpectedIncompleteEventType>>();
