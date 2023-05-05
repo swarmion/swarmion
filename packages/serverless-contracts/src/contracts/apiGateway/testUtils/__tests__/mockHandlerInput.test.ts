@@ -27,8 +27,14 @@ describe('apiGateway lambda handler mock input', () => {
 
   const bodySchema = {
     type: 'object',
-    properties: { foo: { enum: ['azer', 'tyui'] }, bar: { type: 'number' } },
-    required: ['foo', 'bar'],
+    properties: {
+      foo: { enum: ['azer', 'tyui'] },
+      bar: { type: 'number' },
+      baz: { type: 'string' },
+      caboom: { type: 'array', items: [{ type: 'boolean' }] },
+    },
+    required: ['foo', 'bar', 'caboom'],
+    additionalProperties: false,
   } as const;
 
   const outputSchema = {
@@ -91,7 +97,12 @@ describe('apiGateway lambda handler mock input', () => {
 
   it('should generete event with some defined keys', () => {
     const [event] = getMockHandlerInput(httpApiContract, {
-      body: { foo: 'azer', bar: 123 },
+      body: {
+        foo: 'azer',
+        bar: 123,
+        baz: undefined,
+        caboom: [true, false, true],
+      },
       requestContext: {
         authorizer: {
           claims: {
@@ -105,6 +116,10 @@ describe('apiGateway lambda handler mock input', () => {
     expect(JSON.parse(event.body ?? '').foo).toEqual('azer');
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(JSON.parse(event.body ?? '').bar).toEqual(123);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    expect(JSON.parse(event.body ?? '').baz).toBeUndefined();
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    expect(JSON.parse(event.body ?? '').caboom).toEqual([true, false, true]);
     expect(event.pathParameters?.userId).toBeTypeOf('string');
     expect(event.queryStringParameters?.testId).toBeTypeOf('string');
     expect(event.headers.myHeader).toBeTypeOf('string');

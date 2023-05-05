@@ -423,7 +423,7 @@ import { getMockHandlerInput } from '@swarmion/serverless-contracts/test-utils';
 
 const [mockEvent] = getMockHandlerInput(myContract, {
   pathParameters: { userId: '15' },
-  queryStringParameters: { testId: 'plop' },
+  queryStringParameters: { testId: 'plop', optional: undefined },
 });
 ```
 
@@ -435,7 +435,10 @@ const mockEvent = {
     userId: '15',
     pageNumber: '42', // Randomly generated
   },
-  queryStringParameters: { testId: 'plop' },
+  queryStringParameters: {
+    testId: 'plop',
+    optional: undefined, // Explicitly set undefined keys are kept as is
+  },
   body: {
     foo: 'Banana split', // Randomly generated
   },
