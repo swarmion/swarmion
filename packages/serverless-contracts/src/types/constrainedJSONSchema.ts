@@ -18,4 +18,7 @@ export interface ConstrainedJSONSchema {
   };
   readonly required?: readonly string[];
   readonly [key: string]: unknown;
+  readonly oneOf?: readonly ConstrainedJSONSchema[];
+  readonly anyOf?: readonly ConstrainedJSONSchema[];
+  readonly allOf?: readonly ConstrainedJSONSchema[];
 }
