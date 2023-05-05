@@ -51,18 +51,17 @@
     "watch": "pnpm clean && concurrently 'pnpm:package-* --watch'"
   },
   "dependencies": {
-    "@nrwl/devkit": "^15.7.0",
-    "@nrwl/linter": "^15.7.0",
+    "@nx/devkit": "^16.1.0",
+    "@nx/linter": "^16.1.0",
     "yaml": "^2.2.1"
   },
   "devDependencies": {
-    "@nrwl/js": "^15.7.0",
+    "@nx/js": "16.1.0",
     "@types/node": "^18.11.13",
     "@vitest/coverage-c8": "0.30.0",
     "concurrently": "^7.6.0",
     "dependency-cruiser": "^12.11.1",
     "eslint": "^8.29.0",
-    "nx": "15.9.2",
     "prettier": "^2.8.1",
     "rimraf": "^4.0.0",
     "ts-node": "^10.9.1",
@@ -73,7 +72,6 @@
     "vitest": "0.30.0"
   },
   "peerDependencies": {
-    "nx": "^15.7.0",
     "typescript": ">=4"
   }
 }

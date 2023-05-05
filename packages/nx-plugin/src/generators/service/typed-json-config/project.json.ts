@@ -1,4 +1,4 @@
-import { ProjectConfiguration } from '@nrwl/devkit';
+import { ProjectConfiguration } from '@nx/devkit';
 
 export const packageProjectJson = (root: string): ProjectConfiguration => ({
   root,
