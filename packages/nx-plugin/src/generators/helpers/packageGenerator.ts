@@ -3,7 +3,7 @@ import {
   ProjectConfiguration,
   Tree,
   writeJson,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 import { join } from 'path';
 
 import { NormalizedSchema, PackageJson, TsConfig } from '../types';

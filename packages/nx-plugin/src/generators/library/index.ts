@@ -1,4 +1,4 @@
-import { formatFiles, Tree, writeJson } from '@nrwl/devkit';
+import { formatFiles, Tree, writeJson } from '@nx/devkit';
 import { join } from 'path';
 
 import { normalizeOptions, packageGenerator, updatePackages } from '../helpers';
