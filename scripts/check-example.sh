@@ -11,7 +11,7 @@ pnpm package
 
 BASE_DIR=$(pwd)
 TEMP_DIR=$(mktemp -d)
-RANDOM_ID=$(cat /proc/sys/kernel/random/uuid | sed 's/[-]//g' | head -c 6)
+RANDOM_ID=$(head -c 200 /dev/urandom | LANG=C tr -dc 'a-z' | fold -w 6 | head -n 1)
 EXAMPLE_NAME=$EXAMPLE-$RANDOM_ID
 
 swarmion_setup() {
