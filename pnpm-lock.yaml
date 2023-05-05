@@ -187,8 +187,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.2
       vite-tsconfig-paths:
-        specifier: ^4.0.3
-        version: 4.0.5(typescript@5.0.2)
+        specifier: ^4.2.0
+        version: 4.2.0(typescript@5.0.2)(vite@4.1.4)
       vitest:
         specifier: 0.30.0
         version: 0.30.0
@@ -306,8 +306,8 @@ importers:
         specifier: ^4.1.4
         version: 4.1.4(@types/node@18.15.0)
       vite-tsconfig-paths:
-        specifier: ^4.0.5
-        version: 4.0.5(typescript@5.0.2)
+        specifier: ^4.2.0
+        version: 4.2.0(typescript@5.0.2)(vite@4.1.4)
       vitest:
         specifier: 0.30.0
         version: 0.30.0
@@ -316,17 +316,17 @@ importers:
     dependencies:
       '@nx/devkit':
         specifier: ^16.1.0
-        version: 16.1.0(nx@15.9.2)
+        version: 16.1.0(nx@16.1.0)
       '@nx/linter':
         specifier: ^16.1.0
-        version: 16.1.0(eslint@8.35.0)(nx@15.9.2)(typescript@5.0.2)
+        version: 16.1.0(eslint@8.35.0)(nx@16.1.0)(typescript@5.0.2)
       yaml:
         specifier: ^2.2.1
         version: 2.2.1
     devDependencies:
       '@nx/js':
         specifier: 16.1.0
-        version: 16.1.0(nx@15.9.2)(typescript@5.0.2)
+        version: 16.1.0(nx@16.1.0)(typescript@5.0.2)
       '@types/node':
         specifier: ^18.11.13
         version: 18.15.0
@@ -361,8 +361,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.2
       vite-tsconfig-paths:
-        specifier: ^4.0.3
-        version: 4.0.5(typescript@5.0.2)
+        specifier: ^4.2.0
+        version: 4.2.0(typescript@5.0.2)(vite@4.1.4)
       vitest:
         specifier: 0.30.0
         version: 0.30.0
@@ -607,8 +607,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.2
       vite-tsconfig-paths:
-        specifier: ^4.0.3
-        version: 4.0.5(typescript@5.0.2)
+        specifier: ^4.2.0
+        version: 4.2.0(typescript@5.0.2)(vite@4.1.4)
       vitest:
         specifier: 0.30.0
         version: 0.30.0
@@ -687,8 +687,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.2
       vite-tsconfig-paths:
-        specifier: ^4.0.3
-        version: 4.0.5(typescript@5.0.2)
+        specifier: ^4.2.0
+        version: 4.2.0(typescript@5.0.2)(vite@4.1.4)
       vitest:
         specifier: 0.30.0
         version: 0.30.0
@@ -745,8 +745,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.2
       vite-tsconfig-paths:
-        specifier: ^4.0.3
-        version: 4.0.5(typescript@5.0.2)
+        specifier: ^4.2.0
+        version: 4.2.0(typescript@5.0.2)(vite@4.1.4)
       vitest:
         specifier: 0.30.0
         version: 0.30.0
@@ -851,8 +851,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.2
       vite-tsconfig-paths:
-        specifier: ^4.0.3
-        version: 4.0.5(typescript@5.0.2)
+        specifier: ^4.2.0
+        version: 4.2.0(typescript@5.0.2)(vite@4.1.4)
       vitest:
         specifier: 0.30.0
         version: 0.30.0
@@ -5977,6 +5977,7 @@ packages:
       - '@swc-node/register'
       - '@swc/core'
       - debug
+    dev: true
 
   /@nrwl/devkit@15.9.2(nx@15.9.2):
     resolution: {integrity: sha512-2DvTstVZb91m+d4wqUJMBHQ3elxyabdmFE6/3aXmtOGeDxTyXyDzf/1O6JvBBiL8K6XC3ZYchjtxUHgxl/NJ5A==}
@@ -5991,13 +5992,6 @@ packages:
       tslib: 2.5.0
     dev: true
 
-  /@nrwl/devkit@16.1.0(nx@15.9.2):
-    resolution: {integrity: sha512-CsZ/VlCorQEHuDX8ltOP3AzGrwIOsl8ff2CYipkxJR2f/RG/5jVrT340zAkA2Guom3aWd+16htcVeVyRIGOyiA==}
-    dependencies:
-      '@nx/devkit': 16.1.0(nx@15.9.2)
-    transitivePeerDependencies:
-      - nx
-
   /@nrwl/devkit@16.1.0(nx@16.1.0):
     resolution: {integrity: sha512-CsZ/VlCorQEHuDX8ltOP3AzGrwIOsl8ff2CYipkxJR2f/RG/5jVrT340zAkA2Guom3aWd+16htcVeVyRIGOyiA==}
     dependencies:
@@ -6005,10 +5999,10 @@ packages:
     transitivePeerDependencies:
       - nx
 
-  /@nrwl/js@16.1.0(nx@15.9.2)(typescript@5.0.2):
+  /@nrwl/js@16.1.0(nx@16.1.0)(typescript@5.0.2):
     resolution: {integrity: sha512-YwRj53JzpytAvlZ0wcyJaRDqy3z3ww1ACnG+JXnNqKQXcF/wJtTopMxB5Hr/HRw03ABoAU5ojWvxN0AHKHhk2A==}
     dependencies:
-      '@nx/js': 16.1.0(nx@15.9.2)(typescript@5.0.2)
+      '@nx/js': 16.1.0(nx@16.1.0)(typescript@5.0.2)
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -6018,10 +6012,10 @@ packages:
       - supports-color
       - typescript
 
-  /@nrwl/linter@16.1.0(eslint@8.35.0)(nx@15.9.2)(typescript@5.0.2):
+  /@nrwl/linter@16.1.0(eslint@8.35.0)(nx@16.1.0)(typescript@5.0.2):
     resolution: {integrity: sha512-9wriNH+qY1aUDXVtIQAxqVrIhf4g8REhDLb/kzUGKvYGVSs3Fp7k7FoG9lBJ6SzjHicoAhxshV3JALfddcY/Yw==}
     dependencies:
-      '@nx/linter': 16.1.0(eslint@8.35.0)(nx@15.9.2)(typescript@5.0.2)
+      '@nx/linter': 16.1.0(eslint@8.35.0)(nx@16.1.0)(typescript@5.0.2)
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -6047,6 +6041,7 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@nrwl/nx-darwin-x64@15.9.2:
@@ -6055,6 +6050,7 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@nrwl/nx-linux-arm-gnueabihf@15.9.2:
@@ -6063,6 +6059,7 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@nrwl/nx-linux-arm64-gnu@15.9.2:
@@ -6071,6 +6068,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@nrwl/nx-linux-arm64-musl@15.9.2:
@@ -6079,6 +6077,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@nrwl/nx-linux-x64-gnu@15.9.2:
@@ -6087,6 +6086,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@nrwl/nx-linux-x64-musl@15.9.2:
@@ -6095,6 +6095,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@nrwl/nx-win32-arm64-msvc@15.9.2:
@@ -6103,6 +6104,7 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@nrwl/nx-win32-x64-msvc@15.9.2:
@@ -6111,6 +6113,7 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@nrwl/tao@15.9.2:
@@ -6122,6 +6125,7 @@ packages:
       - '@swc-node/register'
       - '@swc/core'
       - debug
+    dev: true
 
   /@nrwl/tao@16.1.0:
     resolution: {integrity: sha512-ylnTaUm/+lTAG5ZGCmwu6SyaxgOuG6YcPehjWfHTLe0dW8Xl9IzJdlSielc1KRJ0zXG8P/QgyCvjSxSO2YEzhA==}
@@ -6142,19 +6146,6 @@ packages:
       - '@swc/core'
       - debug
 
-  /@nx/devkit@16.1.0(nx@15.9.2):
-    resolution: {integrity: sha512-Lam3tjcLHpTlRWSZeu4+4IILCOJ8V2lprHZuiUMwYXZbkI3JAM/09sa8ijCvapn9aBlpjOXmjEnJa6EfLW/89A==}
-    peerDependencies:
-      nx: '>= 15 <= 17'
-    dependencies:
-      '@nrwl/devkit': 16.1.0(nx@15.9.2)
-      ejs: 3.1.8
-      ignore: 5.2.4
-      nx: 15.9.2
-      semver: 7.3.4
-      tmp: 0.2.1
-      tslib: 2.5.0
-
   /@nx/devkit@16.1.0(nx@16.1.0):
     resolution: {integrity: sha512-Lam3tjcLHpTlRWSZeu4+4IILCOJ8V2lprHZuiUMwYXZbkI3JAM/09sa8ijCvapn9aBlpjOXmjEnJa6EfLW/89A==}
     peerDependencies:
@@ -6168,7 +6159,7 @@ packages:
       tmp: 0.2.1
       tslib: 2.5.0
 
-  /@nx/js@16.1.0(nx@15.9.2)(typescript@5.0.2):
+  /@nx/js@16.1.0(nx@16.1.0)(typescript@5.0.2):
     resolution: {integrity: sha512-QpaOMzv++i1Qmnrv5ZxPQc8T4I99+HVJRnt8YYbRFg0h1kzcRq3sQmaKsP30V1zJps8nbsnUkQ8O8prfxAnkhQ==}
     dependencies:
       '@babel/core': 7.21.4
@@ -6178,8 +6169,8 @@ packages:
       '@babel/preset-env': 7.20.2(@babel/core@7.21.4)
       '@babel/preset-typescript': 7.18.6(@babel/core@7.21.4)
       '@babel/runtime': 7.20.13
-      '@nrwl/js': 16.1.0(nx@15.9.2)(typescript@5.0.2)
-      '@nx/devkit': 16.1.0(nx@15.9.2)
+      '@nrwl/js': 16.1.0(nx@16.1.0)(typescript@5.0.2)
+      '@nx/devkit': 16.1.0(nx@16.1.0)
       '@nx/workspace': 16.1.0
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.0.2)
       babel-plugin-const-enum: 1.2.0(@babel/core@7.21.4)
@@ -6203,7 +6194,7 @@ packages:
       - supports-color
       - typescript
 
-  /@nx/linter@16.1.0(eslint@8.35.0)(nx@15.9.2)(typescript@5.0.2):
+  /@nx/linter@16.1.0(eslint@8.35.0)(nx@16.1.0)(typescript@5.0.2):
     resolution: {integrity: sha512-8/d0e+MIujLezo4XBGyp2zKZ+fmumijmTs7hkYIW8CSd1rNZRSaVNVGqMiMFQDivxFKscuhLhBW/0edsiNt5fA==}
     peerDependencies:
       eslint: ^8.0.0
@@ -6211,9 +6202,9 @@ packages:
       eslint:
         optional: true
     dependencies:
-      '@nrwl/linter': 16.1.0(eslint@8.35.0)(nx@15.9.2)(typescript@5.0.2)
-      '@nx/devkit': 16.1.0(nx@15.9.2)
-      '@nx/js': 16.1.0(nx@15.9.2)(typescript@5.0.2)
+      '@nrwl/linter': 16.1.0(eslint@8.35.0)(nx@16.1.0)(typescript@5.0.2)
+      '@nx/devkit': 16.1.0(nx@16.1.0)
+      '@nx/js': 16.1.0(nx@16.1.0)(typescript@5.0.2)
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.0.2)
       eslint: 8.35.0
       tmp: 0.2.1
@@ -15191,6 +15182,7 @@ packages:
       '@nrwl/nx-win32-x64-msvc': 15.9.2
     transitivePeerDependencies:
       - debug
+    dev: true
 
   /nx@16.1.0:
     resolution: {integrity: sha512-f5QAWMLZSKRZuSF8sT8E/Ox/6fq1S+nvOb+lL+jpm+LI1HO6VATpDZpzoPYrb/+wnam+8jxCFDwuSWQ9JfA6rw==}
@@ -18692,12 +18684,12 @@ packages:
       plimit-lit: 1.5.0
     dev: true
 
-  /tsconfck@2.0.2(typescript@5.0.2):
-    resolution: {integrity: sha512-H3DWlwKpow+GpVLm/2cpmok72pwRr1YFROV3YzAmvzfGFiC1zEM/mc9b7+1XnrxuXtEbhJ7xUSIqjPFbedp7aQ==}
-    engines: {node: ^14.13.1 || ^16 || >=18, pnpm: ^7.18.0}
+  /tsconfck@2.1.1(typescript@5.0.2):
+    resolution: {integrity: sha512-ZPCkJBKASZBmBUNqGHmRhdhM8pJYDdOXp4nRgj/O0JwUwsMq50lCDRQP/M5GBNAA0elPrq4gAeu4dkaVCuKWww==}
+    engines: {node: ^14.13.1 || ^16 || >=18}
     hasBin: true
     peerDependencies:
-      typescript: ^4.3.5
+      typescript: ^4.3.5 || ^5.0.0
     peerDependenciesMeta:
       typescript:
         optional: true
@@ -19333,12 +19325,18 @@ packages:
       - terser
     dev: true
 
-  /vite-tsconfig-paths@4.0.5(typescript@5.0.2):
-    resolution: {integrity: sha512-/L/eHwySFYjwxoYt1WRJniuK/jPv+WGwgRGBYx3leciR5wBeqntQpUE6Js6+TJemChc+ter7fDBKieyEWDx4yQ==}
+  /vite-tsconfig-paths@4.2.0(typescript@5.0.2)(vite@4.1.4):
+    resolution: {integrity: sha512-jGpus0eUy5qbbMVGiTxCL1iB9ZGN6Bd37VGLJU39kTDD6ZfULTTb1bcc5IeTWqWJKiWV5YihCaibeASPiGi8kw==}
+    peerDependencies:
+      vite: '*'
+    peerDependenciesMeta:
+      vite:
+        optional: true
     dependencies:
       debug: 4.3.4(supports-color@8.1.1)
       globrex: 0.1.2
-      tsconfck: 2.0.2(typescript@5.0.2)
+      tsconfck: 2.1.1(typescript@5.0.2)
+      vite: 4.1.4(@types/node@18.15.0)
     transitivePeerDependencies:
       - supports-color
       - typescript
