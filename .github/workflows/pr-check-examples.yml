@@ -82,7 +82,7 @@ jobs:
   validate-examples:
     name: 📝 Validate examples
     runs-on: ubuntu-latest
-    if: ${{ always() }}
+    if: ${{ always() && !cancelled() }}
     needs: [check-if-job-should-run, check-examples]
     steps:
       - name: Validate check examples
