@@ -21,7 +21,7 @@ export const updatePnpmWorkspaces = (
 
   const newPackages = Array.from(
     new Set(pnpmWorkspaces.packages).add(`${options.directory}/*`),
-  ).sort();
+  ).sort((a, b) => a.localeCompare(b));
 
   tree.write(
     pnpmWorkspacesFilePath,
