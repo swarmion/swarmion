@@ -188,8 +188,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.2
       vite-tsconfig-paths:
-        specifier: ^4.0.3
-        version: 4.0.3(typescript@5.0.2)(vite@4.3.2)
+        specifier: ^4.2.0
+        version: 4.2.0(typescript@5.0.2)
       vitest:
         specifier: 0.30.0
         version: 0.30.0
@@ -8338,14 +8338,6 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /rollup@3.21.0:
-    resolution: {integrity: sha512-ANPhVcyeHvYdQMUyCbczy33nbLzI7RzrBje4uvNiTDJGIMtlKoOStmympwr9OtS1LZxiDmE2wvxHyVhoLtf1KQ==}
-    engines: {node: '>=14.18.0', npm: '>=8.0.0'}
-    hasBin: true
-    optionalDependencies:
-      fsevents: 2.3.2
-    dev: true
-
   /run-async@2.4.1:
     resolution: {integrity: sha512-tvVnVv01b8c1RrA6Ep7JkStj85Guv/YrMcwqYQnwjsAS2cTmmPGBBjAjpCW7RrSodNSoE2/qg9O4bceNvUuDgQ==}
     engines: {node: '>=0.12.0'}
@@ -9276,12 +9268,12 @@ packages:
       plimit-lit: 1.5.0
     dev: true
 
-  /tsconfck@2.0.2(typescript@5.0.2):
-    resolution: {integrity: sha512-H3DWlwKpow+GpVLm/2cpmok72pwRr1YFROV3YzAmvzfGFiC1zEM/mc9b7+1XnrxuXtEbhJ7xUSIqjPFbedp7aQ==}
-    engines: {node: ^14.13.1 || ^16 || >=18, pnpm: ^7.18.0}
+  /tsconfck@2.1.1(typescript@5.0.2):
+    resolution: {integrity: sha512-ZPCkJBKASZBmBUNqGHmRhdhM8pJYDdOXp4nRgj/O0JwUwsMq50lCDRQP/M5GBNAA0elPrq4gAeu4dkaVCuKWww==}
+    engines: {node: ^14.13.1 || ^16 || >=18}
     hasBin: true
     peerDependencies:
-      typescript: ^4.3.5
+      typescript: ^4.3.5 || ^5.0.0
     peerDependenciesMeta:
       typescript:
         optional: true
@@ -9599,15 +9591,17 @@ packages:
       - terser
     dev: true
 
-  /vite-tsconfig-paths@4.0.3(typescript@5.0.2)(vite@4.3.2):
-    resolution: {integrity: sha512-gRO2Q/tOkV+9kMht5tz90+IaEKvW2zCnvwJV3tp2ruPNZOTM5rF+yXorJT4ggmAMYEaJ3nyXjx5P5jY5FwiZ+A==}
+  /vite-tsconfig-paths@4.2.0(typescript@5.0.2):
+    resolution: {integrity: sha512-jGpus0eUy5qbbMVGiTxCL1iB9ZGN6Bd37VGLJU39kTDD6ZfULTTb1bcc5IeTWqWJKiWV5YihCaibeASPiGi8kw==}
     peerDependencies:
-      vite: '>2.0.0-0'
+      vite: '*'
+    peerDependenciesMeta:
+      vite:
+        optional: true
     dependencies:
       debug: 4.3.4(supports-color@8.1.1)
       globrex: 0.1.2
-      tsconfck: 2.0.2(typescript@5.0.2)
-      vite: 4.3.2(@types/node@18.11.18)
+      tsconfck: 2.1.1(typescript@5.0.2)
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -9642,39 +9636,6 @@ packages:
       esbuild: 0.17.14
       postcss: 8.4.23
       rollup: 3.20.7
-    optionalDependencies:
-      fsevents: 2.3.2
-    dev: true
-
-  /vite@4.3.2(@types/node@18.11.18):
-    resolution: {integrity: sha512-9R53Mf+TBoXCYejcL+qFbZde+eZveQLDYd9XgULILLC1a5ZwPaqgmdVpL8/uvw2BM/1TzetWjglwm+3RO+xTyw==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': '>= 14'
-      less: '*'
-      sass: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-    dependencies:
-      '@types/node': 18.11.18
-      esbuild: 0.17.14
-      postcss: 8.4.23
-      rollup: 3.21.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
