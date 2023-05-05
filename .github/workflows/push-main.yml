@@ -71,7 +71,7 @@ jobs:
   validate-tests:
     name: ✅ Validate that tests have passed
     runs-on: ubuntu-latest
-    if: ${{ always() }}
+    if: ${{ always() && !cancelled() }}
     needs: [build-format-lint, build, unit-tests-and-sonar]
     steps:
       - name: Validate build-format-lint
