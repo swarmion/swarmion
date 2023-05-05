@@ -51,4 +51,4 @@ jobs:
       - name: '🏗 Package'
         run: pnpm nx affected --target=package --parallel=2
       - name: '🧪 Run tests'
-        run: pnpm nx affected --targets=test-linter,test-type,test-unit,test-circular --parallel=2
+        run: pnpm nx affected --targets=test-linter,test-type,test-unit,test-dependencies --parallel=2
