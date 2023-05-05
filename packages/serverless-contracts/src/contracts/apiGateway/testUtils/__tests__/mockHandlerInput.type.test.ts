@@ -1,4 +1,7 @@
 import { Callback, Context } from 'aws-lambda';
+import { A } from 'ts-toolbelt';
+
+import { typeAssert } from 'utils';
 
 import { httpApiGatewayContractMock } from '../../__mocks__/httpApiGatewayContract';
 import { ApiGatewayEvent } from '../../types';
@@ -8,19 +11,8 @@ const [event, context, callback] = getMockHandlerInput(
   httpApiGatewayContractMock,
 );
 
-type EventCheck = typeof event extends ApiGatewayEvent<'httpApi', 'cognito'>
-  ? 'pass'
-  : 'fail';
+typeAssert<A.Extends<typeof event, ApiGatewayEvent<'httpApi', 'cognito'>>>();
 
-const eventCheck: EventCheck = 'pass';
-eventCheck;
+typeAssert<A.Extends<typeof context, Context>>();
 
-type ContextCheck = typeof context extends Context ? 'pass' : 'fail';
-
-const contextCheck: ContextCheck = 'pass';
-contextCheck;
-
-type CallbackCheck = typeof callback extends Callback ? 'pass' : 'fail';
-
-const callbackCheck: CallbackCheck = 'pass';
-callbackCheck;
+typeAssert<A.Extends<typeof callback, Callback>>();
