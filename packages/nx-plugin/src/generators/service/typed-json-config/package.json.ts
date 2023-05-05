@@ -1,5 +1,12 @@
 import { joinPathFragments } from '@nx/devkit';
 
+import {
+  typescriptVersion,
+  vitestCoverageC8Version,
+  vitestVersion,
+  viteTsConfigPathsVersion,
+} from 'generators/helpers';
+
 import { NormalizedSchema, PackageJson } from '../../types';
 
 export const packageJson = (options: NormalizedSchema): PackageJson => ({
@@ -38,7 +45,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
   devDependencies: {
     '@serverless/typescript': 'latest',
     '@types/node': 'latest',
-    '@vitest/coverage-c8': 'latest',
+    '@vitest/coverage-c8': vitestCoverageC8Version,
     'dependency-cruiser': 'latest',
     esbuild: 'latest',
     eslint: 'latest',
@@ -47,8 +54,8 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     'serverless-esbuild': 'latest',
     'serverless-iam-roles-per-function': 'latest',
     'ts-node': 'latest',
-    typescript: 'latest',
-    'vite-tsconfig-paths': 'latest',
-    vitest: 'latest',
+    typescript: typescriptVersion,
+    'vite-tsconfig-paths': viteTsConfigPathsVersion,
+    vitest: vitestVersion,
   },
 });

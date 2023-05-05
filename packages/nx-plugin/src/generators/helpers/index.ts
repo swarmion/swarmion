@@ -5,3 +5,4 @@ export * from './updateCodeWorkspace';
 export * from './updatePackages';
 export * from './updatePnpmWorkspaces';
 export * from './updateRootTsConfig';
+export * from './versions';

@@ -1,5 +1,12 @@
 import { joinPathFragments } from '@nx/devkit';
 
+import {
+  typescriptVersion,
+  vitestCoverageC8Version,
+  vitestVersion,
+  viteTsConfigPathsVersion,
+} from 'generators/helpers';
+
 import { NormalizedSchema, PackageJson } from '../../types';
 
 export const packageJson = (options: NormalizedSchema): PackageJson => ({
@@ -40,7 +47,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
   },
   devDependencies: {
     '@types/node': 'latest',
-    '@vitest/coverage-c8': 'latest',
+    '@vitest/coverage-c8': vitestCoverageC8Version,
     concurrently: 'latest',
     'dependency-cruiser': 'latest',
     eslint: 'latest',
@@ -50,8 +57,8 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     'ts-node': 'latest',
     'tsc-alias': 'latest',
     tsup: 'latest',
-    typescript: 'latest',
-    'vite-tsconfig-paths': 'latest',
-    vitest: 'latest',
+    typescript: typescriptVersion,
+    'vite-tsconfig-paths': viteTsConfigPathsVersion,
+    vitest: vitestVersion,
   },
 });
