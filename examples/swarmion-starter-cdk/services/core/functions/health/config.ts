@@ -4,7 +4,10 @@ import { Architecture, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { Construct } from 'constructs';
 
-import { sharedCdkEsbuildConfig } from '@swarmion-starter-cdk/serverless-configuration';
+import {
+  getAppConfig,
+  sharedLambdaEsbuildConfig,
+} from '@swarmion-starter-cdk/cdk-configuration';
 
 import { healthContract } from 'contracts/healthContract';
 

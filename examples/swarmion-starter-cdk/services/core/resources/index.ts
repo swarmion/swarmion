@@ -1,11 +1,10 @@
 import { App } from 'aws-cdk-lib';
 
 import {
-  defaultEnvironment,
+  getAppStage,
   projectName,
   region,
-  sharedParams,
-} from '@swarmion-starter-cdk/serverless-configuration';
+} from '@swarmion-starter-cdk/cdk-configuration';
 
 import { CoreStack } from './stack';
 
