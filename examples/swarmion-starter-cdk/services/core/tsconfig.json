@@ -2,12 +2,15 @@
   "extends": "../../tsconfig.options.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "composite": false,
+    "declaration": false,
+    "declarationMap": false,
     "emitDeclarationOnly": false,
     "noEmit": true
   },
   "references": [
     {
-      "path": "../../packages/serverless-configuration/tsconfig.build.json"
+      "path": "../../packages/cdk-configuration/tsconfig.build.json"
     }
   ],
   "exclude": ["./cdk.out"],
