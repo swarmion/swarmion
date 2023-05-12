@@ -31,7 +31,7 @@ module.exports = ({ pathNot, path } = { pathNot: [], path: [] }) => ({
       from: { path: '^resources|^functions.+config' },
       to: {
         // you can remove contracts if you only use shared contracts
-        pathNot: '^resources|^functions.+config|^contracts',
+        pathNot: '^resources|^functions.+config|^shared|^contracts',
       },
     },
   ],
