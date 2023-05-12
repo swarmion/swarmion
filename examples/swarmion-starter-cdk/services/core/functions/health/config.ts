@@ -10,6 +10,7 @@ import {
 } from '@swarmion-starter-cdk/cdk-configuration';
 
 import { healthContract } from 'contracts/healthContract';
+import { CORS_ALLOWED_ORIGINS } from 'shared/constants';
 
 type HealthProps = { restApi: RestApi };
 
@@ -19,13 +20,22 @@ export class Health extends Construct {
   constructor(scope: Construct, id: string, { restApi }: HealthProps) {
     super(scope, id);
 
+    const {
+      restApiConfig: { allowedOrigins },
+    } = getAppConfig(this);
+
+    const environment: Record<string, string> = {
+      [CORS_ALLOWED_ORIGINS]: JSON.stringify(allowedOrigins),
+    };
+
     this.healthFunction = new NodejsFunction(this, 'Lambda', {
       entry: getCdkHandlerPath(__dirname),
       handler: 'main',
       runtime: Runtime.NODEJS_16_X,
       architecture: Architecture.ARM_64,
       awsSdkConnectionReuse: true,
-      bundling: sharedCdkEsbuildConfig,
+      bundling: sharedLambdaEsbuildConfig,
+      environment,
     });
 
     restApi.root
