@@ -3,12 +3,12 @@ import {
   getAPIGatewayEventRequestContextMock,
 } from '@swarmion/serverless-helpers';
 
-import { main } from './handler';
+import { handler } from './handler';
 
 describe('health handler', () => {
   it('should return "ok"', async () => {
     expect(
-      await main(
+      await handler(
         {
           body: null,
           headers: {},
