@@ -10,11 +10,8 @@ import { CoreStack } from './stack';
 
 const app = new App();
 
-const stage =
-  (app.node.tryGetContext('stage') as keyof typeof sharedParams | undefined) ??
-  defaultEnvironment;
+const stage = getAppStage(app);
 
 new CoreStack(app, `${projectName}-core-${stage}`, {
-  stage,
   env: { region },
 });
