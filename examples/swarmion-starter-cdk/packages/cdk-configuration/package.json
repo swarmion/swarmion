@@ -1,5 +1,5 @@
 {
-  "name": "@swarmion-starter-cdk/serverless-configuration",
+  "name": "@swarmion-starter-cdk/cdk-configuration",
   "private": true,
   "version": "1.0.0",
   "license": "UNLICENSED",
@@ -27,7 +27,9 @@
     "watch": "pnpm clean && concurrently 'pnpm:package-* --watch'"
   },
   "dependencies": {
-    "@swarmion/serverless-helpers": "^0.27.0"
+    "@swarmion/serverless-helpers": "^0.27.0",
+    "aws-cdk-lib": "^2.76.0",
+    "constructs": "^10.2.2"
   },
   "devDependencies": {
     "@types/node": "^18.11.13",

@@ -2,6 +2,11 @@ import { Stack, StackProps } from 'aws-cdk-lib';
 import { RestApi } from 'aws-cdk-lib/aws-apigateway';
 import { Construct } from 'constructs';
 
+import {
+  getAppConfig,
+  getAppStage,
+} from '@swarmion-starter-cdk/cdk-configuration';
+
 import { Health } from 'functions/config';
 
 interface CoreProps {
