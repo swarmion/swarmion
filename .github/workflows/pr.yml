@@ -20,8 +20,8 @@ defaults:
     shell: bash
 
 jobs:
-  build-format-lint:
-    name: 🚀 Build, format and Lint
+  build-format-lint-test:
+    name: 🚀 Build, format, lint and test
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -36,70 +36,18 @@ jobs:
       - name: '💄 Check format'
         run: pnpm format-check
       - name: '🧪 Test linter'
-        run: pnpm nx affected --targets=test-linter,test-type,test-circular --parallel=2
-
-  build:
-    name: 🏗 Build Project
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    outputs:
-      projects: ${{ steps.get-project-changes.outputs.projects }}
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ env.TARGET_SHA }}
-          # We need to fetch all branches and commits so that Nx affected has a base to compare against.
-          fetch-depth: 0
-      - name: Install & cache node dependencies
-        uses: ./.github/actions/install-node-deps
-      - name: Get project changes
-        id: get-project-changes
-        uses: ./.github/actions/get-project-changes
-
-  unit-tests-and-sonar:
-    name: 🏛 ${{ matrix.project }} - Unit Tests and Sonar
-    needs: build
-    runs-on: ubuntu-latest
-    if: join(fromJson(needs.build.outputs.projects)) != ''
-    timeout-minutes: 30
-    strategy:
-      fail-fast: false
-      matrix:
-        project: ${{ fromJson(needs.build.outputs.projects) }}
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ env.TARGET_SHA }}
-          # We need to fetch all branches and commits so that Nx affected has a base to compare against.
-          fetch-depth: 0
-      - name: Run unit tests and sonar
-        uses: ./.github/actions/unit-tests-and-sonar
-        with:
-          project: ${{ matrix.project }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          sonar_token: ${{ secrets.SONAR_TOKEN }}
-
-  validate-pr:
-    name: ✅ Validate the PR
-    runs-on: ubuntu-latest
-    if: ${{ always() && !cancelled() }}
-    needs: [build-format-lint, build, unit-tests-and-sonar]
-    steps:
-      - name: Validate build-format-lint
+        run: pnpm nx affected --targets=test-linter,test-type,test-circular
+      - name: '🧪 Run unit tests'
+        run: pnpm nx run-many --target=test-unit
+      - name: Install LCOV
         run: |
-          if [[ ${{ needs.build-format-lint.result }} = "failure" ]]; then
-            echo "build-format-lint failed"
-            exit 1
-          fi
-      - name: Validate build
-        run: |
-          if [[ ${{ needs.build.result }} = "failure" ]]; then
-            echo "build failed"
-            exit 1
-          fi
-      - name: Validate unit tests and sonar
-        run: |
-          if [[ ${{ needs.unit-tests-and-sonar.result }} = "failure" ]]; then
-            echo "App tests failed"
-            exit 1
-          fi
+          sudo apt-get update
+          sudo apt-get install lcov
+      - name: '🔃 Merge lcov files'
+        run: ./scripts/merge-lcov.sh
+      - name: 🔎 SonarCloud Scan
+        if: github.event_name == 'pull_request'
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
