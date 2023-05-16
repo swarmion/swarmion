@@ -117,8 +117,8 @@ importers:
         specifier: ^5.1.2
         version: 5.2.0
       commander:
-        specifier: ^10.0.0
-        version: 10.0.0
+        specifier: ^9.5.0
+        version: 9.5.0
       cross-spawn:
         specifier: ^7.0.3
         version: 7.0.3
@@ -9175,6 +9175,7 @@ packages:
   /commander@10.0.0:
     resolution: {integrity: sha512-zS5PnTI22FIRM6ylNW8G4Ap0IEOyk62fhLSD0+uHRT9McRCLGpkVNvao4bjimpK/GShynyQkFFxHhwMcETmduA==}
     engines: {node: '>=14'}
+    dev: true
 
   /commander@2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
@@ -9197,6 +9198,11 @@ packages:
 
   /commander@9.4.1:
     resolution: {integrity: sha512-5EEkTNyHNGFPD2H+c/dXXfQZYa/scCKasxWcXJaWnNJ99pnQN9Vnmqow+p+PlFPE63Q6mThaZws1T+HxfpgtPw==}
+    engines: {node: ^12.20.0 || >=14}
+    dev: true
+
+  /commander@9.5.0:
+    resolution: {integrity: sha512-KRs7WVDKg86PWiuAqhDrAQnTXZKraVcCc6vFdL14qrZ/DcWwuRo7VoiYXalXO7S5GKpqYiVEwCbgFDfxNHKJBQ==}
     engines: {node: ^12.20.0 || >=14}
 
   /common-ancestor-path@1.0.1:
@@ -13539,7 +13545,7 @@ packages:
     hasBin: true
     dependencies:
       ajv: 8.12.0
-      commander: 9.4.1
+      commander: 9.5.0
       convict: 6.2.3
       json-schema-ref-parser: 9.0.9
       json-schema-spec-types: 0.1.2
@@ -13863,7 +13869,7 @@ packages:
     dependencies:
       cli-truncate: 3.1.0
       colorette: 2.0.19
-      commander: 9.4.1
+      commander: 9.5.0
       debug: 4.3.4(supports-color@8.1.1)
       execa: 6.1.0
       lilconfig: 2.0.6
