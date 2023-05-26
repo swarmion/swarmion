@@ -1,21 +1,17 @@
 import { App } from 'aws-cdk-lib';
 
 import {
-  defaultEnvironment,
+  getAppStage,
   projectName,
   region,
-  sharedParams,
-} from '@<%= workspaceName %>/serverless-configuration';
+} from '@<%= workspaceName %>/cdk-configuration';
 
 import { <%= projectClassName %>Stack } from './stack';
 
 const app = new App();
 
-const stage =
-  (app.node.tryGetContext('stage') as keyof typeof sharedParams | undefined) ??
-  defaultEnvironment;
+const stage = getAppStage(app);
 
 new <%= projectClassName %>Stack(app, `${projectName}-<%= name %>-${stage}`, {
-  stage,
   env: { region },
 });
