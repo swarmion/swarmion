@@ -2,23 +2,30 @@ import { Stack, StackProps } from 'aws-cdk-lib';
 import { RestApi } from 'aws-cdk-lib/aws-apigateway';
 import { Construct } from 'constructs';
 
+import {
+  getAppConfig,
+  getAppStage,
+} from '@<%= workspaceName %>/cdk-configuration';
+
 import { Health } from 'functions/config';
 
-interface <%= projectClassName %>Props {
-  stage: string;
-}
-
 export class <%= projectClassName %>Stack extends Stack {
-  constructor(scope: Construct, id: string, props: StackProps & <%= projectClassName %>Props) {
+  constructor(scope: Construct, id: string, props: StackProps) {
     super(scope, id, props);
 
-    const { stage } = props;
+    const stage = getAppStage(this);
+    const {
+      restApiConfig: { allowedOrigins },
+    } = getAppConfig(this);
 
     const <%= projectPropertyName %>Api = new RestApi(this, '<%= projectClassName %>Api', {
       // the stage of the API is the same as the stage of the stack
       description: `<%= projectClassName %> API - ${stage}`,
       deployOptions: {
         stageName: stage,
+      },
+      defaultCorsPreflightOptions: {
+        allowOrigins: allowedOrigins,
       },
     });
 
