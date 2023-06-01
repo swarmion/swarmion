@@ -23,7 +23,10 @@
     "test-unit": "vitest run --coverage --passWithNoTests"
   },
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.226.0",
     "@aws-sdk/client-eventbridge": "^3.226.0",
+    "@aws-sdk/lib-dynamodb": "^3.226.0",
+    "@aws-sdk/util-dynamodb": "^3.226.0",
     "@swarmion/orchestrator-contracts": "^0.28.2",
     "@swarmion/serverless-cdk-plugin": "^0.28.2",
     "@swarmion/serverless-configuration": "^0.28.2",
@@ -32,8 +35,7 @@
     "@swarmion/serverless-plugin": "^0.28.2",
     "ajv": "^8.12.0",
     "aws-cdk-lib": "^2.54.0",
-    "aws-sdk": "^2.1272.0",
-    "dynamodb-toolbox": "^0.7.0",
+    "dynamodb-toolbox": "^0.8.0",
     "ulid": "^2.3.0"
   },
   "devDependencies": {

@@ -1,5 +1,6 @@
+import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { EventBridgeClient } from '@aws-sdk/client-eventbridge';
-import { DocumentClient } from 'aws-sdk/clients/dynamodb';
+import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
 import { ulid } from 'ulid';
 
 import { onDeploymentRequestedContract } from '@swarmion/orchestrator-contracts';
@@ -9,7 +10,7 @@ import { getEnvVariable } from '@swarmion/serverless-helpers';
 import { buildStoreServiceEvent } from 'sideEffects/dynamodb/storeServiceEvent';
 
 const eventBridgeClient = new EventBridgeClient({});
-const documentClient = new DocumentClient();
+const documentClient = DynamoDBDocumentClient.from(new DynamoDBClient({}));
 
 const eventBusName = getEnvVariable('EVENT_BUS_NAME');
 const orchestratorTableName = getEnvVariable('ORCHESTRATOR_TABLE_NAME');
