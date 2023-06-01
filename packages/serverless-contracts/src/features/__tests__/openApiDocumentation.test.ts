@@ -77,6 +77,16 @@ describe('openApi service documentation', () => {
     });
 
     const httpApiContract2 = new ApiGatewayContract({
+      id: 'testContract',
+      path: '/users/{userId}',
+      method: 'DELETE',
+      integrationType: 'httpApi',
+      pathParametersSchema,
+      headersSchema,
+      outputSchemas,
+    });
+
+    const httpApiContract3 = new ApiGatewayContract({
       id: 'testContract2',
       path: '/users',
       method: 'POST',
@@ -90,7 +100,7 @@ describe('openApi service documentation', () => {
         getOpenApiDocumentation({
           title: 'Test API',
           description: 'Test API description',
-          contracts: [httpApiContract, httpApiContract2],
+          contracts: [httpApiContract, httpApiContract2, httpApiContract3],
         }),
       ).toMatchObject({
         openapi: '3.0.1',
@@ -130,13 +140,38 @@ describe('openApi service documentation', () => {
                   },
                 },
               },
-              parameters: [
-                {
-                  name: 'testId',
-                  in: 'query',
-                  schema: { type: 'string' },
-                  required: true,
+            },
+            delete: {
+              responses: {
+                '200': {
+                  description: 'Response: 200',
+                  content: {
+                    'application/json': {
+                      schema: {
+                        type: 'object',
+                        properties: {
+                          id: { type: 'string' },
+                          name: { type: 'string' },
+                        },
+                        required: ['id', 'name'],
+                      },
+                    },
+                  },
                 },
+                '401': {
+                  description: 'Response: 401',
+                  content: {
+                    'application/json': {
+                      schema: {
+                        type: 'object',
+                        properties: { message: { type: 'string' } },
+                        required: ['message'],
+                      },
+                    },
+                  },
+                },
+              },
+              parameters: [
                 {
                   name: 'userId',
                   in: 'path',

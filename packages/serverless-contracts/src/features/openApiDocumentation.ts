@@ -27,6 +27,7 @@ export const getOpenApiDocumentation = ({
     contractDocumentations.reduce<OpenAPIV3.PathsObject>(
       (pathsObject, pathDocumentation) => {
         pathsObject[pathDocumentation.path] = {
+          ...pathsObject[pathDocumentation.path],
           [pathDocumentation.method]: pathDocumentation.documentation,
         };
 
