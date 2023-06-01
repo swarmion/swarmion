@@ -753,7 +753,16 @@ importers:
 
   services/orchestrator:
     dependencies:
+      '@aws-sdk/client-dynamodb':
+        specifier: ^3.226.0
+        version: 3.226.0
       '@aws-sdk/client-eventbridge':
+        specifier: ^3.226.0
+        version: 3.226.0
+      '@aws-sdk/lib-dynamodb':
+        specifier: ^3.226.0
+        version: 3.226.0(@aws-sdk/client-dynamodb@3.226.0)(@aws-sdk/smithy-client@3.279.0)(@aws-sdk/types@3.272.0)
+      '@aws-sdk/util-dynamodb':
         specifier: ^3.226.0
         version: 3.226.0
       '@swarmion/orchestrator-contracts':
@@ -780,12 +789,9 @@ importers:
       aws-cdk-lib:
         specifier: ^2.54.0
         version: 2.68.0(constructs@10.2.4)
-      aws-sdk:
-        specifier: ^2.1272.0
-        version: 2.1304.0
       dynamodb-toolbox:
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^0.8.0
+        version: 0.8.0
       ulid:
         specifier: ^2.3.0
         version: 2.3.0
@@ -1243,6 +1249,52 @@ packages:
     dependencies:
       '@aws-sdk/types': 3.272.0
       tslib: 2.5.0
+    dev: false
+
+  /@aws-sdk/client-dynamodb@3.226.0:
+    resolution: {integrity: sha512-H7s/QrMohrDB9b6kh0pm2FXyrkscb6lGMLz+QGFa6Xrk80/Zwd5s1WWWNP+ZYS1ka4vd0vyLlg3cptTuuTKEUQ==}
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      '@aws-crypto/sha256-browser': 2.0.0
+      '@aws-crypto/sha256-js': 2.0.0
+      '@aws-sdk/client-sts': 3.226.0
+      '@aws-sdk/config-resolver': 3.226.0
+      '@aws-sdk/credential-provider-node': 3.226.0
+      '@aws-sdk/fetch-http-handler': 3.226.0
+      '@aws-sdk/hash-node': 3.226.0
+      '@aws-sdk/invalid-dependency': 3.226.0
+      '@aws-sdk/middleware-content-length': 3.226.0
+      '@aws-sdk/middleware-endpoint': 3.226.0
+      '@aws-sdk/middleware-endpoint-discovery': 3.226.0
+      '@aws-sdk/middleware-host-header': 3.226.0
+      '@aws-sdk/middleware-logger': 3.226.0
+      '@aws-sdk/middleware-recursion-detection': 3.226.0
+      '@aws-sdk/middleware-retry': 3.226.0
+      '@aws-sdk/middleware-serde': 3.226.0
+      '@aws-sdk/middleware-signing': 3.226.0
+      '@aws-sdk/middleware-stack': 3.226.0
+      '@aws-sdk/middleware-user-agent': 3.226.0
+      '@aws-sdk/node-config-provider': 3.226.0
+      '@aws-sdk/node-http-handler': 3.226.0
+      '@aws-sdk/protocol-http': 3.226.0
+      '@aws-sdk/smithy-client': 3.226.0
+      '@aws-sdk/types': 3.226.0
+      '@aws-sdk/url-parser': 3.226.0
+      '@aws-sdk/util-base64': 3.208.0
+      '@aws-sdk/util-body-length-browser': 3.188.0
+      '@aws-sdk/util-body-length-node': 3.208.0
+      '@aws-sdk/util-defaults-mode-browser': 3.226.0
+      '@aws-sdk/util-defaults-mode-node': 3.226.0
+      '@aws-sdk/util-endpoints': 3.226.0
+      '@aws-sdk/util-user-agent-browser': 3.226.0
+      '@aws-sdk/util-user-agent-node': 3.226.0
+      '@aws-sdk/util-utf8-browser': 3.188.0
+      '@aws-sdk/util-utf8-node': 3.208.0
+      '@aws-sdk/util-waiter': 3.226.0
+      tslib: 2.5.0
+      uuid: 8.3.2
+    transitivePeerDependencies:
+      - aws-crt
     dev: false
 
   /@aws-sdk/client-eventbridge@3.226.0:
@@ -1780,6 +1832,14 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /@aws-sdk/endpoint-cache@3.208.0:
+    resolution: {integrity: sha512-MkrCvaZhTb1qZCjcDH73t5n43h0Kr0GS+30lpXZ9PAnHJZPqv+vhWFPK0ZsFe1XktbS0WOoDR4ED+lWm0Dw7Rg==}
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      mnemonist: 0.38.3
+      tslib: 2.5.0
+    dev: false
+
   /@aws-sdk/fetch-http-handler@3.226.0:
     resolution: {integrity: sha512-JewZPMNEBXfi1xVnRa7pVtK/zgZD8/lQ/YnD8pq79WuMa2cwyhDtr8oqCoqsPW+WJT5ScXoMtuHxN78l8eKWgg==}
     dependencies:
@@ -1840,6 +1900,21 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /@aws-sdk/lib-dynamodb@3.226.0(@aws-sdk/client-dynamodb@3.226.0)(@aws-sdk/smithy-client@3.279.0)(@aws-sdk/types@3.272.0):
+    resolution: {integrity: sha512-DHISoQMcUlyr3M8Biqyp3Wu+a64BSRZSUQR3UYQ5DCakrtfkIHgKKK0ecVNobUXcalEk9bUGTy81h9S7HonpAQ==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      '@aws-sdk/client-dynamodb': ^3.0.0
+      '@aws-sdk/smithy-client': ^3.0.0
+      '@aws-sdk/types': ^3.0.0
+    dependencies:
+      '@aws-sdk/client-dynamodb': 3.226.0
+      '@aws-sdk/smithy-client': 3.279.0
+      '@aws-sdk/types': 3.272.0
+      '@aws-sdk/util-dynamodb': 3.226.0
+      tslib: 2.5.0
+    dev: false
+
   /@aws-sdk/middleware-content-length@3.226.0:
     resolution: {integrity: sha512-ksUzlHJN2JMuyavjA46a4sctvnrnITqt2tbGGWWrAuXY1mel2j+VbgnmJUiwHKUO6bTFBBeft5Vd1TSOb4JmiA==}
     engines: {node: '>=14.0.0'}
@@ -1855,6 +1930,17 @@ packages:
     dependencies:
       '@aws-sdk/protocol-http': 3.282.0
       '@aws-sdk/types': 3.272.0
+      tslib: 2.5.0
+    dev: false
+
+  /@aws-sdk/middleware-endpoint-discovery@3.226.0:
+    resolution: {integrity: sha512-YqLEiJqOcCOnhasoeupm90M7VN3NHncrUdVFgKmbBaCcv8TualTRldsVqXhmjwGrMqLnYMBcpC1qkOUXg9xBhQ==}
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      '@aws-sdk/config-resolver': 3.226.0
+      '@aws-sdk/endpoint-cache': 3.208.0
+      '@aws-sdk/protocol-http': 3.226.0
+      '@aws-sdk/types': 3.226.0
       tslib: 2.5.0
     dev: false
 
@@ -2395,6 +2481,13 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /@aws-sdk/util-dynamodb@3.226.0:
+    resolution: {integrity: sha512-Gd4yYlOT73qbIWtkrK+mEqbDxby16Liv0aW/w3A4NV3ANI8VaazEAvcLrJb/PgjtShyxMR5T2+who9GWXFxkUQ==}
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      tslib: 2.5.0
+    dev: false
+
   /@aws-sdk/util-endpoints@3.226.0:
     resolution: {integrity: sha512-iqOkac/zLmyPBUJd7SLN0PeZMkOmlGgD5PHmmekTClOkce2eUjK9SNX1PzL73aXPoPTyhg9QGLH8uEZEQ8YUzg==}
     engines: {node: '>=14.0.0'}
@@ -2517,6 +2610,15 @@ packages:
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-sdk/util-buffer-from': 3.208.0
+      tslib: 2.5.0
+    dev: false
+
+  /@aws-sdk/util-waiter@3.226.0:
+    resolution: {integrity: sha512-qYQMRxnu5k8qQihJXoIWMkBOj0+XkHHj/drLdbRnwL6ni6NcG8++cs9M3DSjIcxmxgF/7SLpDjn1H3sC7cYo4g==}
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      '@aws-sdk/abort-controller': 3.226.0
+      '@aws-sdk/types': 3.226.0
       tslib: 2.5.0
     dev: false
 
@@ -10248,8 +10350,8 @@ packages:
       d: 1.0.1
       es5-ext: 0.10.62
 
-  /dynamodb-toolbox@0.7.0:
-    resolution: {integrity: sha512-LvWciwtBZm5UKAXuseYoTTjoR3+9FIqGcqPQl/LcQTP36nOoXQ6ldXxkhSJCKglO4v4JNWR7fooD+79SoD05vg==}
+  /dynamodb-toolbox@0.8.0:
+    resolution: {integrity: sha512-zvQ7rE2uFQy4RqqCHTi7OxlYcUf7IWnk/DIysw+/5hDHJ+kKoqFCnRtfnqSYofmecXEGlHZo/oqrHk0soPVTrg==}
     engines: {node: '>=14.0.0'}
     dependencies:
       deep-copy: 1.4.2
@@ -14628,6 +14730,12 @@ packages:
       ufo: 1.1.1
     dev: true
 
+  /mnemonist@0.38.3:
+    resolution: {integrity: sha512-2K9QYubXx/NAjv4VLq1d1Ly8pWNC5L3BrixtdkyTegXWJIqY+zLNDhhX/A+ZwWt70tB1S8H4BE8FLYEFyNoOBw==}
+    dependencies:
+      obliterator: 1.6.1
+    dev: false
+
   /modify-values@1.0.1:
     resolution: {integrity: sha512-xV2bxeN6F7oYjZWTe/YPAy6MN2M+sL4u/Rlm2AHCIVGfo2p1yGmBHQ6vHehl4bRTZBdHu3TSkWdYgkwpYzAGSw==}
     engines: {node: '>=0.10.0'}
@@ -15288,6 +15396,10 @@ packages:
       define-properties: 1.1.4
       es-abstract: 1.20.4
     dev: true
+
+  /obliterator@1.6.1:
+    resolution: {integrity: sha512-9WXswnqINnnhOG/5SLimUlzuU1hFJUc8zkwyD59Sd+dPOMf05PmnYG/d6Q7HZ+KmgkZJa1PxRso6QdM3sTNHig==}
+    dev: false
 
   /obuf@1.1.2:
     resolution: {integrity: sha512-PX1wu0AmAdPqOL1mWhqmlOd8kOIZQwGZw6rh7uby9fTc5lhaOWFLX3I6R1hrF9k3zUY40e6igsLGkDXK92LJNg==}

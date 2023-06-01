@@ -1,4 +1,5 @@
-import { DocumentClient } from 'aws-sdk/clients/dynamodb';
+import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
+import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
 import fetch from 'node-fetch';
 import { ulid } from 'ulid';
 import { afterAll, expect } from 'vitest';
@@ -10,7 +11,7 @@ import {
 } from 'sideEffects/dynamodb/serviceEventEntity';
 import { TEST_ENV_VARS } from 'testEnvVars';
 
-const documentClient = new DocumentClient();
+const documentClient = DynamoDBDocumentClient.from(new DynamoDBClient({}));
 const ServiceEventEntity = buildServiceEventEntity(
   documentClient,
   TEST_ENV_VARS.TABLE_NAME,

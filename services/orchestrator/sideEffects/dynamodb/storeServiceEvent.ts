@@ -1,11 +1,11 @@
-import { DocumentClient } from 'aws-sdk/clients/dynamodb';
+import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
 
 import { StoreServiceEventType } from 'interfaces/storeServiceEvent';
 
 import { buildServiceEventEntity } from './serviceEventEntity';
 
 export const buildStoreServiceEvent = (
-  documentClient: DocumentClient,
+  documentClient: DynamoDBDocumentClient,
   notificationsTableName: string,
 ): StoreServiceEventType => {
   const ServiceEventEntity = buildServiceEventEntity(

@@ -1,4 +1,4 @@
-import { DocumentClient } from 'aws-sdk/clients/dynamodb';
+import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
 import { Entity, Table } from 'dynamodb-toolbox';
 
 import { PARTITION_KEY, SORT_KEY } from 'sharedConstants';
@@ -34,7 +34,7 @@ const ServiceEventEntity = new Entity({
 } as const);
 
 export const buildServiceEventEntity = (
-  documentClient: DocumentClient,
+  documentClient: DynamoDBDocumentClient,
   alchemyTableName: string,
 ): typeof ServiceEventEntity => {
   try {
