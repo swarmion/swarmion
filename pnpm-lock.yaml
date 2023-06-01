@@ -84,8 +84,8 @@ importers:
         specifier: ^8.29.0
         version: 8.35.0
       json-schema-to-ts:
-        specifier: ^2.6.2
-        version: 2.7.2
+        specifier: ^2.9.1
+        version: 2.9.1
       prettier:
         specifier: ^2.8.1
         version: 2.8.4
@@ -376,8 +376,8 @@ importers:
         specifier: ^3.12.9
         version: 3.12.9
       json-schema-to-ts:
-        specifier: ^2.6.2
-        version: 2.7.2
+        specifier: ^2.9.1
+        version: 2.9.1
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
@@ -468,8 +468,8 @@ importers:
         specifier: ^8.29.0
         version: 8.35.0
       json-schema-to-ts:
-        specifier: ^2.6.2
-        version: 2.7.2
+        specifier: ^2.9.1
+        version: 2.9.1
       prettier:
         specifier: ^2.8.1
         version: 2.8.4
@@ -629,8 +629,8 @@ importers:
         specifier: ^0.18.0
         version: 0.18.0
       json-schema-to-ts:
-        specifier: ^2.6.2
-        version: 2.7.2
+        specifier: ^2.9.1
+        version: 2.9.1
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
@@ -696,8 +696,8 @@ importers:
   packages/serverless-helpers:
     dependencies:
       json-schema-to-ts:
-        specifier: ^2.6.2
-        version: 2.7.2
+        specifier: ^2.9.1
+        version: 2.9.1
     devDependencies:
       '@serverless/typescript':
         specifier: ^3.29.0
@@ -13588,6 +13588,15 @@ packages:
 
   /json-schema-to-ts@2.7.2:
     resolution: {integrity: sha512-R1JfqKqbBR4qE8UyBR56Ms30LL62/nlhoz+1UkfI/VE7p54Awu919FZ6ZUPG8zIa3XB65usPJgr1ONVncUGSaQ==}
+    engines: {node: '>=16'}
+    dependencies:
+      '@babel/runtime': 7.20.13
+      '@types/json-schema': 7.0.11
+      ts-algebra: 1.2.0
+    dev: true
+
+  /json-schema-to-ts@2.9.1:
+    resolution: {integrity: sha512-8MNpRGERlCUWYeJwsWkMrJ0MWzBz49dfqpG+n9viiIlP4othaahbiaNQZuBzmPxRLUhOv1QJMCzW5WE8nHFGIQ==}
     engines: {node: '>=16'}
     dependencies:
       '@babel/runtime': 7.20.13
