@@ -27,7 +27,7 @@ describe('syncTestEnvVarsTypes', () => {
 import { getTestEnvVars } from '@swarmion/integration-tests';
 
 export type TestEnvVarsType = {
-  TOTO: string
+  TOTO: string;
 };
 
 export const TEST_ENV_VARS = getTestEnvVars<TestEnvVarsType>();
@@ -46,7 +46,7 @@ export const TEST_ENV_VARS = getTestEnvVars<TestEnvVarsType>();
 
     const modifiedFile = fs.readFileSync(filePath).toString();
     expect(modifiedFile).toEqual(`export type TestEnvVarsType = {
-  TOTO: string
+  TOTO: string;
 };`);
   });
 
@@ -64,7 +64,7 @@ export const TEST_ENV_VARS = getTestEnvVars<TestEnvVarsType>();
     expect(modifiedFile).toEqual(`export const TUTU = 'tutu';
 
 export type TestEnvVarsType = {
-  TOTO: string
+  TOTO: string;
 };
 `);
   });
@@ -83,7 +83,7 @@ export type TestEnvVarsType = {
     expect(modifiedFile)
       .toEqual(`// eslint-disable-next-line @typescript-eslint/ban-types
 export type TestEnvVarsType = {
-  TOTO: string
+  TOTO: string;
 };
 `);
   });
@@ -101,7 +101,7 @@ export type TestEnvVarsType = {
     const modifiedFile = fs.readFileSync(filePath).toString();
     expect(modifiedFile).toEqual(`export type TestEnvVarsType = {
   TITI: string;
-  TOTO: string
+  TOTO: string;
 };
 `);
   });
