@@ -794,8 +794,8 @@ importers:
         specifier: ^2.54.0
         version: 2.68.0(constructs@10.2.4)
       dynamodb-toolbox:
-        specifier: ^0.8.0
-        version: 0.8.0
+        specifier: ^0.8.5
+        version: 0.8.5(@aws-sdk/client-dynamodb@3.226.0)(@aws-sdk/lib-dynamodb@3.226.0)
       ulid:
         specifier: ^2.3.0
         version: 2.3.0
@@ -10449,10 +10449,15 @@ packages:
       d: 1.0.1
       es5-ext: 0.10.62
 
-  /dynamodb-toolbox@0.8.0:
-    resolution: {integrity: sha512-zvQ7rE2uFQy4RqqCHTi7OxlYcUf7IWnk/DIysw+/5hDHJ+kKoqFCnRtfnqSYofmecXEGlHZo/oqrHk0soPVTrg==}
+  /dynamodb-toolbox@0.8.5(@aws-sdk/client-dynamodb@3.226.0)(@aws-sdk/lib-dynamodb@3.226.0):
+    resolution: {integrity: sha512-cCoZ19SX16tcd14I/V1Eh3VNthvk7xneSJkcsUsDiLMuP+97WGH9Q1SdfAn8rRjOXS71noguZL3hBz9QFI5mRw==}
     engines: {node: '>=14.0.0'}
+    peerDependencies:
+      '@aws-sdk/client-dynamodb': ^3.0.0
+      '@aws-sdk/lib-dynamodb': ^3.0.0
     dependencies:
+      '@aws-sdk/client-dynamodb': 3.226.0
+      '@aws-sdk/lib-dynamodb': 3.226.0(@aws-sdk/client-dynamodb@3.226.0)(@aws-sdk/smithy-client@3.279.0)(@aws-sdk/types@3.272.0)
       deep-copy: 1.4.2
       ts-toolbelt: 9.6.0
     dev: false
