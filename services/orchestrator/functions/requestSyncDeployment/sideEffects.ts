@@ -10,7 +10,10 @@ import { getEnvVariable } from '@swarmion/serverless-helpers';
 import { buildStoreServiceEvent } from 'sideEffects/dynamodb/storeServiceEvent';
 
 const eventBridgeClient = new EventBridgeClient({});
-const documentClient = DynamoDBDocumentClient.from(new DynamoDBClient({}));
+
+const documentClient = DynamoDBDocumentClient.from(new DynamoDBClient({}), {
+  marshallOptions: {},
+});
 
 const eventBusName = getEnvVariable('EVENT_BUS_NAME');
 const orchestratorTableName = getEnvVariable('ORCHESTRATOR_TABLE_NAME');
