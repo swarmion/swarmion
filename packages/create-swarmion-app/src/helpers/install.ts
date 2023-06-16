@@ -5,7 +5,7 @@ export const install = (root: string): Promise<void> => {
     const command = 'pnpm';
     process.chdir(root);
 
-    const args = ['install'];
+    const args = ['install', '--frozen-lockfile'];
 
     const child = spawn(command, args, {
       stdio: 'inherit',
