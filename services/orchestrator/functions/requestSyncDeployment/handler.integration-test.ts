@@ -11,7 +11,10 @@ import {
 } from 'sideEffects/dynamodb/serviceEventEntity';
 import { TEST_ENV_VARS } from 'testEnvVars';
 
-const documentClient = DynamoDBDocumentClient.from(new DynamoDBClient({}));
+const documentClient = DynamoDBDocumentClient.from(new DynamoDBClient({}), {
+  marshallOptions: {},
+});
+
 const ServiceEventEntity = buildServiceEventEntity(
   documentClient,
   TEST_ENV_VARS.TABLE_NAME,
