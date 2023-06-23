@@ -1,6 +1,7 @@
 import { joinPathFragments } from '@nx/devkit';
 
 import {
+  getWorkspaceDependencyVersion,
   typescriptVersion,
   vitestCoverageC8Version,
   vitestVersion,
@@ -53,8 +54,8 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     '@types/node': 'latest',
     '@vitest/coverage-c8': vitestCoverageC8Version,
     'aws-cdk': 'latest',
-    'aws-cdk-lib': '2.76.0',
-    constructs: '10.2.4',
+    'aws-cdk-lib': getWorkspaceDependencyVersion('aws-cdk-lib'),
+    constructs: getWorkspaceDependencyVersion('constructs'),
     'dependency-cruiser': 'latest',
     esbuild: 'latest',
     eslint: 'latest',
