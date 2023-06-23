@@ -12,7 +12,7 @@ export const defaultEnvironment = 'dev';
 
 export const sharedProviderConfig: ServerlessProviderConfig = {
   name: 'aws',
-  runtime: 'nodejs16.x',
+  runtime: 'nodejs18.x',
   architecture: 'arm64',
   region,
   profile: '${param:profile}', // Used to point to the right AWS account

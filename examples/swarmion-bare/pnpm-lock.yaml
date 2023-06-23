@@ -73,8 +73,8 @@ importers:
         version: 0.28.2(@serverless/typescript@3.30.1)(aws-cdk-lib@2.78.0)
     devDependencies:
       '@types/node':
-        specifier: ^18.11.13
-        version: 18.11.18
+        specifier: ^18.16.1
+        version: 18.16.1
       concurrently:
         specifier: ^8.0.0
         version: 8.0.0
@@ -92,7 +92,7 @@ importers:
         version: 5.0.0
       ts-node:
         specifier: ^10.9.1
-        version: 10.9.1(@types/node@18.11.18)(typescript@5.0.2)
+        version: 10.9.1(@types/node@18.16.1)(typescript@5.0.2)
       tsc-alias:
         specifier: ^1.8.2
         version: 1.8.2
@@ -2520,8 +2520,8 @@ packages:
     resolution: {integrity: sha512-hcU9AIQVHmPnmjRK+XUUYlILlr9pQrsqSrwov/JK1pnf3GTQowVBhx54FbvM0AU/VXGH4i3+vgXS5EguR7fysA==}
     dev: true
 
-  /@types/node@18.11.18:
-    resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
+  /@types/node@18.16.1:
+    resolution: {integrity: sha512-DZxSZWXxFfOlx7k7Rv4LAyiMroaxa3Ly/7OOzZO8cBNho0YzAi4qlbrx8W27JGqG57IgR/6J7r+nOJWw6kcvZA==}
     dev: true
 
   /@types/normalize-package-data@2.4.1:
@@ -5847,7 +5847,7 @@ packages:
         optional: true
     dependencies:
       lilconfig: 2.0.6
-      ts-node: 10.9.1(@types/node@18.11.18)(typescript@5.0.2)
+      ts-node: 10.9.1(@types/node@18.16.1)(typescript@5.0.2)
       yaml: 1.10.2
     dev: true
 
@@ -6699,7 +6699,7 @@ packages:
       yn: 3.1.1
     dev: true
 
-  /ts-node@10.9.1(@types/node@18.11.18)(typescript@5.0.2):
+  /ts-node@10.9.1(@types/node@18.16.1)(typescript@5.0.2):
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -6718,7 +6718,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.3
-      '@types/node': 18.11.18
+      '@types/node': 18.16.1
       acorn: 8.8.2
       acorn-walk: 8.2.0
       arg: 4.1.3
@@ -6987,7 +6987,7 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite-node@0.31.1(@types/node@18.11.18):
+  /vite-node@0.31.1(@types/node@18.16.1):
     resolution: {integrity: sha512-BajE/IsNQ6JyizPzu9zRgHrBwczkAs0erQf/JRpgTIESpKvNj9/Gd0vxX905klLkb0I0SJVCKbdrl5c6FnqYKA==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -6997,7 +6997,7 @@ packages:
       mlly: 1.2.0
       pathe: 1.1.0
       picocolors: 1.0.0
-      vite: 4.0.4(@types/node@18.11.18)
+      vite: 4.0.4(@types/node@18.16.1)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -7008,7 +7008,7 @@ packages:
       - terser
     dev: true
 
-  /vite@4.0.4(@types/node@18.11.18):
+  /vite@4.0.4(@types/node@18.16.1):
     resolution: {integrity: sha512-xevPU7M8FU0i/80DMR+YhgrzR5KS2ORy1B4xcX/cXLsvnUWvfHuqMmVU6N0YiJ4JWGRJJsLCgjEzKjG9/GKoSw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -7033,7 +7033,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 18.11.18
+      '@types/node': 18.16.1
       esbuild: 0.16.16
       postcss: 8.4.21
       resolve: 1.22.2
@@ -7075,7 +7075,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.5
       '@types/chai-subset': 1.3.3
-      '@types/node': 18.11.18
+      '@types/node': 18.16.1
       '@vitest/expect': 0.31.1
       '@vitest/runner': 0.31.1
       '@vitest/snapshot': 0.31.1
@@ -7095,8 +7095,8 @@ packages:
       strip-literal: 1.0.1
       tinybench: 2.5.0
       tinypool: 0.5.0
-      vite: 4.0.4(@types/node@18.11.18)
-      vite-node: 0.31.1(@types/node@18.11.18)
+      vite: 4.0.4(@types/node@18.16.1)
+      vite-node: 0.31.1(@types/node@18.16.1)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
