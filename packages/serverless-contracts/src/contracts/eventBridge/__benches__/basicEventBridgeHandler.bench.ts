@@ -1,4 +1,5 @@
 import Ajv from 'ajv';
+import { Bench } from 'tinybench';
 
 import { getHandlerContextMock } from '__mocks__/requestContext';
 import { EventBridgeContract } from 'contracts';
@@ -31,32 +32,29 @@ const baseEvent = {
 
 const fakeContext = getHandlerContextMock();
 
-const basicEventBridgeHandlerInstantiation = (): void => {
-  getHandler(eventBridgeContract, { ajv })(async event => {
-    await Promise.resolve();
-
-    return event.detail.userId;
-  });
-};
-
 const handler = getHandler(eventBridgeContract, { ajv })(async event => {
   await Promise.resolve();
 
   return event.detail.userId;
 });
 
-const basicEventBridgeHandlerInvocation = async (): Promise<void> => {
-  await handler(
-    {
-      ...baseEvent,
-      detail: { userId: 'toto' },
-    },
-    fakeContext,
-    () => null,
-  );
-};
+export const registerBasicEventBridgeHandlerBench = (bench: Bench): void => {
+  bench.add('EventBridgeContract > basic handler instantiation', () => {
+    getHandler(eventBridgeContract, { ajv })(async event => {
+      await Promise.resolve();
 
-export default {
-  instantiation: basicEventBridgeHandlerInstantiation,
-  invocation: basicEventBridgeHandlerInvocation,
+      return event.detail.userId;
+    });
+  });
+
+  bench.add('EventBridgeContract > basic handler invocation', async () => {
+    await handler(
+      {
+        ...baseEvent,
+        detail: { userId: 'toto' },
+      },
+      fakeContext,
+      () => null,
+    );
+  });
 };

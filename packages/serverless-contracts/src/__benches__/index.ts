@@ -2,49 +2,21 @@ import { withCodSpeed } from '@codspeed/tinybench-plugin';
 import { Bench } from 'tinybench';
 
 import {
-  basicHttpApiHandlerBench,
-  bigHttpApiHandlerBench,
+  registerBasicHttpApiHandlerBench,
+  registerBigHttpApiHandlerBench,
 } from 'contracts/apiGateway/__benches__';
 import {
-  basicEventBridgeHandlerBench,
-  bigEventBridgeHandlerBench,
+  registerBasicEventBridgeHandlerBench,
+  registerBigEventBridgeHandlerBench,
 } from 'contracts/eventBridge/__benches__';
 
 const bench = withCodSpeed(new Bench());
 
-bench
-  .add(
-    'ApiGatewayContract > basic handler instantiation',
-    basicHttpApiHandlerBench.instantiation,
-  )
-  .add(
-    'ApiGatewayContract > basic handler invocation',
-    basicHttpApiHandlerBench.invocation,
-  )
-  .add(
-    'ApiGatewayContract > handler with 500 properties instantiation',
-    bigHttpApiHandlerBench.instantiation,
-  )
-  .add(
-    'ApiGatewayContract > handler with 500 properties invocation',
-    bigHttpApiHandlerBench.invocation,
-  )
-  .add(
-    'EventBridgeContract > basic handler instantiation',
-    basicEventBridgeHandlerBench.instantiation,
-  )
-  .add(
-    'EventBridgeContract > basic handler invocation',
-    basicEventBridgeHandlerBench.invocation,
-  )
-  .add(
-    'EventBridgeContract > handler with 200 properties instantiation',
-    bigEventBridgeHandlerBench.instantiation,
-  )
-  .add(
-    'EventBridgeContract > handler with 200 properties invocation',
-    bigEventBridgeHandlerBench.invocation,
-  );
+registerBasicHttpApiHandlerBench(bench);
+registerBigHttpApiHandlerBench(bench);
+
+registerBasicEventBridgeHandlerBench(bench);
+registerBigEventBridgeHandlerBench(bench);
 
 await bench.run();
 console.table(

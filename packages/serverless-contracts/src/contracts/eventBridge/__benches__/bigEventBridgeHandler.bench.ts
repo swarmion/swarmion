@@ -1,5 +1,6 @@
 import Ajv from 'ajv';
 import { JSONSchema } from 'json-schema-to-ts';
+import { Bench } from 'tinybench';
 
 import { getHandlerContextMock } from '__mocks__/requestContext';
 import { EventBridgeContract } from 'contracts';
@@ -38,32 +39,34 @@ const baseEvent = {
 
 const fakeContext = getHandlerContextMock();
 
-const bigEventBridgeHandlerInstantiation = (): void => {
-  getHandler(eventBridgeContract, { ajv })(async event => {
-    await Promise.resolve();
-
-    return event.detail.userId;
-  });
-};
-
 const handler = getHandler(eventBridgeContract, { ajv })(async event => {
   await Promise.resolve();
 
   return event.detail.userId;
 });
 
-const bigEventBridgeHandlerInvocation = async (): Promise<void> => {
-  await handler(
-    {
-      ...baseEvent,
-      detail: { userId: 'toto' },
-    },
-    fakeContext,
-    () => null,
-  );
-};
+export const registerBigEventBridgeHandlerBench = (bench: Bench): void => {
+  bench.add(
+    'EventBridgeContract > handler with 200 properties instantiation',
+    () => {
+      getHandler(eventBridgeContract, { ajv })(async event => {
+        await Promise.resolve();
 
-export default {
-  instantiation: bigEventBridgeHandlerInstantiation,
-  invocation: bigEventBridgeHandlerInvocation,
+        return event.detail.userId;
+      });
+    },
+  );
+  bench.add(
+    'EventBridgeContract > handler with 200 properties invocation',
+    async () => {
+      await handler(
+        {
+          ...baseEvent,
+          detail: { userId: 'toto' },
+        },
+        fakeContext,
+        () => null,
+      );
+    },
+  );
 };

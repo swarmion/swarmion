@@ -3,6 +3,7 @@ import {
   APIGatewayEventRequestContextV2WithAuthorizer,
   APIGatewayProxyCognitoAuthorizer,
 } from 'aws-lambda';
+import { Bench } from 'tinybench';
 
 import { getAPIGatewayV2EventRequestContextMock } from '@swarmion/serverless-helpers';
 
@@ -48,55 +49,52 @@ const httpHandler = getHandler(httpApiContract, { ajv })(
   },
 );
 
-const basicHttpApiHandlerInvocationBench = async (): Promise<void> => {
-  await httpHandler(
-    {
-      pathParameters: { userId: 'toto', pageNumber: '15' },
-      body: JSON.stringify({ foo: 'bar' }),
-      headers: {
-        myHeader: 'MyCustomHeader',
-        anotherHeader: 'anotherHeader',
+export const registerBasicHttpApiHandlerBench = (bench: Bench): void => {
+  bench.add('ApiGatewayContract > basic handler instantiation', () => {
+    getHandler(httpApiContract, { ajv })(
+      async ({
+        body,
+        pathParameters,
+        queryStringParameters,
+        headers,
+        requestContext,
+      }) => {
+        const myCustomClaim = requestContext.authorizer.claims.foo;
+
+        const name =
+          body.foo +
+          pathParameters.pageNumber +
+          queryStringParameters.testId +
+          headers.myHeader +
+          myCustomClaim;
+
+        return Promise.resolve({
+          statusCode: HttpStatusCodes.OK,
+          body: { id: 'hello', name },
+        });
       },
-      queryStringParameters: { testId: 'myTestId' },
-      requestContext: fakeRequestContext,
-      version: '',
-      routeKey: '',
-      rawPath: '',
-      rawQueryString: '',
-      isBase64Encoded: false,
-    },
-    fakeContext,
-    () => null,
-  );
-};
+    );
+  });
 
-const basicHttpApiHandlerInstantiationBench = (): void => {
-  getHandler(httpApiContract, { ajv })(
-    async ({
-      body,
-      pathParameters,
-      queryStringParameters,
-      headers,
-      requestContext,
-    }) => {
-      const myCustomClaim = requestContext.authorizer.claims.foo;
-
-      const name =
-        body.foo +
-        pathParameters.pageNumber +
-        queryStringParameters.testId +
-        headers.myHeader +
-        myCustomClaim;
-
-      return Promise.resolve({
-        statusCode: HttpStatusCodes.OK,
-        body: { id: 'hello', name },
-      });
-    },
-  );
-};
-
-export default {
-  instantiation: basicHttpApiHandlerInstantiationBench,
-  invocation: basicHttpApiHandlerInvocationBench,
+  bench.add('ApiGatewayContract > basic handler invocation', async () => {
+    await httpHandler(
+      {
+        pathParameters: { userId: 'toto', pageNumber: '15' },
+        body: JSON.stringify({ foo: 'bar' }),
+        headers: {
+          myHeader: 'MyCustomHeader',
+          anotherHeader: 'anotherHeader',
+        },
+        queryStringParameters: { testId: 'myTestId' },
+        requestContext: fakeRequestContext,
+        version: '',
+        routeKey: '',
+        rawPath: '',
+        rawQueryString: '',
+        isBase64Encoded: false,
+      },
+      fakeContext,
+      () => null,
+    );
+  });
 };
