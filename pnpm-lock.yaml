@@ -533,8 +533,8 @@ importers:
         version: 9.6.0
     devDependencies:
       '@codspeed/tinybench-plugin':
-        specifier: ^1.0.1
-        version: 1.0.1(tinybench@2.4.0)
+        specifier: ^2.0.0
+        version: 2.0.0(tinybench@2.4.0)
       '@middy/core':
         specifier: ^3.6.2
         version: 3.6.2
@@ -3947,20 +3947,20 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@codspeed/core@1.0.1:
-    resolution: {integrity: sha512-fIjsZZYhQJWRaGC+rsUYdJQvYlEdihWo4RfxyQ29hCtlR5ga8RQqQfKmkcik4MSyx/QLzB34hKYWJj/zFb5YAw==}
+  /@codspeed/core@2.0.0:
+    resolution: {integrity: sha512-CuxrWhzGI4rVg8w9pr7K0Eyc8oMs4ITSQqk+Vk/oL1BBeNBOm1DA/P364q7B99llthyPv2/5zxaKjM09SXYooA==}
     dependencies:
       node-gyp-build: 4.6.0
     dev: true
 
-  /@codspeed/tinybench-plugin@1.0.1(tinybench@2.4.0):
-    resolution: {integrity: sha512-pcReBu4qcihOEtkC9UdUdI57Wyu1j5HMb9RVgflPAXNf7bnWyIshQDz8gPR8YjPEx3mSqLEER7mYZqlk6j/hHA==}
+  /@codspeed/tinybench-plugin@2.0.0(tinybench@2.4.0):
+    resolution: {integrity: sha512-s/Arl9jpm7/fwvu5htwYPSJYJiFl4+rHkv86PIVV6SRHPEFiIbywgf6G0XdHyMZt+hf2oS1fFNE2hxydFXc9Fw==}
     peerDependencies:
       tinybench: ^2.3.0
     dependencies:
-      '@codspeed/core': 1.0.1
+      '@codspeed/core': 2.0.0
       find-up: 6.3.0
-      stack-trace: 1.0.0-pre1
+      stack-trace: 1.0.0-pre2
       tinybench: 2.4.0
     dev: true
 
@@ -18247,9 +18247,9 @@ packages:
     resolution: {integrity: sha512-ji9qxRnOVfcuLDySj9qzhGSEFVobyt1kIOSkj1qZzYLzq7Tos/oUUWvotUPQLlrsidqsK6tBH89Bc9kL5zHA6w==}
     deprecated: 'Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility'
 
-  /stack-trace@1.0.0-pre1:
-    resolution: {integrity: sha512-biM7OwS3J2hcou7tfozHcsqhJZxX5pqMMqe/Zr6stw9uVn8Gh7ct3eFR9Gb66BBi/ToSeOgk4FsjKgZVrDIyew==}
-    engines: {node: '16'}
+  /stack-trace@1.0.0-pre2:
+    resolution: {integrity: sha512-2ztBJRek8IVofG9DBJqdy2N5kulaacX30Nz7xmkYF6ale9WBVmIy6mFBchvGX7Vx/MyjBhx+Rcxqrj+dbOnQ6A==}
+    engines: {node: '>=16'}
     dev: true
 
   /stack-utils@2.0.6:
