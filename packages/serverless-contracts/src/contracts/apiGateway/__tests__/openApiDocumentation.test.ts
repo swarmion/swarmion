@@ -52,7 +52,7 @@ describe('apiGateway openApi contract documentation', () => {
     [HttpStatusCodes.UNAUTHORIZED]: unauthorizedSchema,
   };
 
-  describe('hhtpApi, when all parameters are set', () => {
+  describe('httpApi, when all parameters are set', () => {
     const httpApiContract = new ApiGatewayContract({
       id: 'testContract',
       path: '/users/{userId}',
@@ -71,6 +71,14 @@ describe('apiGateway openApi contract documentation', () => {
         method: 'get',
         documentation: {
           parameters: [
+            {
+              in: 'header',
+              name: 'myHeader',
+              required: true,
+              schema: {
+                type: 'string',
+              },
+            },
             {
               in: 'query',
               name: 'testId',
