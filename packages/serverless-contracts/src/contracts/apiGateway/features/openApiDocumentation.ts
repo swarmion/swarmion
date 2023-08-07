@@ -80,6 +80,21 @@ export const getContractDocumentation = <
     ];
   }
 
+  if (contract.headersSchema?.properties !== undefined) {
+    contractDocumentation.parameters = [
+      ...Object.entries(contract.headersSchema.properties).map(
+        ([variableName, variableDefinition]) => ({
+          name: variableName,
+          in: 'header',
+          schema: convertJsonSchemaToValidOAS3(variableDefinition),
+          required:
+            contract.headersSchema?.required?.includes(variableName) ?? false,
+        }),
+      ),
+      ...(contractDocumentation.parameters ?? []),
+    ];
+  }
+
   if (contract.bodySchema !== undefined) {
     contractDocumentation.requestBody = {
       content: {

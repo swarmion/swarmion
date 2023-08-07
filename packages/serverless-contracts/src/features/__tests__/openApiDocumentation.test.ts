@@ -173,6 +173,14 @@ describe('openApi service documentation', () => {
               },
               parameters: [
                 {
+                  in: 'header',
+                  name: 'myHeader',
+                  required: true,
+                  schema: {
+                    type: 'string',
+                  },
+                },
+                {
                   name: 'userId',
                   in: 'path',
                   schema: { type: 'string' },
