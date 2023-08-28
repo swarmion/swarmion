@@ -19,4 +19,7 @@ export const packageTsConfig = (options: NormalizedSchema): TsConfig => ({
   ],
   exclude: ['./cdk.out'],
   include: ['./**/*.ts'],
+  'ts-node': {
+    transpileOnly: true,
+  },
 });
