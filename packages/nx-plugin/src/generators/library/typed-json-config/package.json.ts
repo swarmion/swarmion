@@ -22,11 +22,11 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
   types: 'dist/types/index.d.ts',
   scripts: {
     clean: 'rimraf dist *.tsbuildinfo',
-    'format-check': `prettier --check . ${joinPathFragments(
+    'format-check': `prettier --check . --ignore-path ${joinPathFragments(
       options.offsetFromRoot,
       '.prettierignore',
     )}`,
-    'format-fix': `prettier --write . ${joinPathFragments(
+    'format-fix': `prettier --write . --ignore-path ${joinPathFragments(
       options.offsetFromRoot,
       '.prettierignore',
     )}`,

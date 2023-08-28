@@ -21,11 +21,11 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     destroy: 'serverless remove',
     'destroy-production': 'serverless remove --stage production',
     'destroy-staging': 'serverless remove --stage staging',
-    'format-check': `prettier --check . ${joinPathFragments(
+    'format-check': `prettier --check . --ignore-path ${joinPathFragments(
       options.offsetFromRoot,
       '.prettierignore',
     )}`,
-    'format-fix': `prettier --write . ${joinPathFragments(
+    'format-fix': `prettier --write . --ignore-path ${joinPathFragments(
       options.offsetFromRoot,
       '.prettierignore',
     )}`,
