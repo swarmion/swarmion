@@ -8,6 +8,7 @@ export type TsConfig = {
   exclude?: string[];
   references?: { path: string }[];
   'ts-node'?: {
-    files: boolean;
+    files?: boolean;
+    transpileOnly?: boolean;
   };
 };
