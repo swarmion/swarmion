@@ -72,6 +72,12 @@ swarmion_setup # local link
 # re-test everything
 pnpm test
 pnpm package
+
+# clear the next cache to avoid Cannot find module 'node_modules/next/dist/shared/lib/constants.js'
+if [ "$EXAMPLE" = "swarmion-with-next" ]; then
+    rm -r frontend/next-app/.next/cache
+fi
+
 pnpm build
 
 # TODO in the future
