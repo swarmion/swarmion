@@ -46,9 +46,9 @@ cd $TEMP_DIR/$EXAMPLE_NAME
 swarmion_setup # local link
 
 # test everything
+pnpm test
 pnpm package
 pnpm build
-pnpm test
 
 # generate library
 pnpm generate-library test-library
@@ -66,14 +66,13 @@ else
     pnpm generate-service test-service
 fi
 
-
 # generate breaks the links, so we need to recreate them
 swarmion_setup # local link
 
 # re-test everything
+pnpm test
 pnpm package
 pnpm build
-pnpm test
 
 # TODO in the future
 # deploy
