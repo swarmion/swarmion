@@ -10,6 +10,7 @@ const nextConfig = {
   swcMinify: true,
   typescript: {
     ignoreBuildErrors: true,
+    tsconfigPath: 'tsconfig.build.json',
   },
 };
 
