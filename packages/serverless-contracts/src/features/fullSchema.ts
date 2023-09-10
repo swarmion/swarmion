@@ -1,5 +1,6 @@
 import { JSONSchema } from 'json-schema-to-ts';
 
+import { getFullContractSchema as getSQSFullContractSchema } from 'contracts/SQS/features';
 import { getFullContractSchema as getApiGatewayFullContractSchema } from 'contracts/apiGateway/features';
 import { getFullContractSchema as getCloudFormationFullContractSchema } from 'contracts/cloudFormation/features';
 import { getFullContractSchema as getEventBridgeFullContractSchema } from 'contracts/eventBridge/features';
@@ -19,6 +20,9 @@ export const getContractFullSchema = (
     }
     case 'eventBridge': {
       return getEventBridgeFullContractSchema(contract);
+    }
+    case 'SQS': {
+      return getSQSFullContractSchema(contract);
     }
   }
 };
