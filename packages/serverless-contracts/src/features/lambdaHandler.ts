@@ -93,6 +93,8 @@ export function getHandler<Contract extends ServerlessContract>(
         contract,
         options as GetApiGatewayHandlerOptions,
       );
+    case 'SQS':
+      throw new Error('SQS contract handler is not implemented yet');
     case 'cloudFormation':
       throw new Error('CloudFormation contract has no handler');
     default:
