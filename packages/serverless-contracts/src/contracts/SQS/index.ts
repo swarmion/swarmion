@@ -1,0 +1,1 @@
+export { SQSContract } from './sqsContract';
