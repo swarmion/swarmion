@@ -36,22 +36,17 @@
     },
     "deploy": {
       "inputs": ["production", "^production"],
-      "dependsOn": ["^package", "^deploy", "^build", "bootstrap"]
+      "dependsOn": ["^package", "^deploy", "build", "bootstrap"]
     },
     "deploy-staging": {
       "inputs": ["production", "^production"],
-      "dependsOn": [
-        "^package",
-        "^build",
-        "^deploy-staging",
-        "bootstrap-staging"
-      ]
+      "dependsOn": ["^package", "build", "^deploy-staging", "bootstrap-staging"]
     },
     "deploy-production": {
       "inputs": ["production", "^production"],
       "dependsOn": [
         "^package",
-        "^build",
+        "build",
         "^deploy-production",
         "bootstrap-production"
       ]

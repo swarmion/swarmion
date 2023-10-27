@@ -1,0 +1,47 @@
+{
+  "name": "@swarmion-starter/cdk-configuration",
+  "private": true,
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "clean": "rimraf dist *.tsbuildinfo",
+    "lint-fix": "pnpm linter-base-config --fix",
+    "lint-fix-all": "pnpm lint-fix .",
+    "linter-base-config": "eslint --ext=js,ts",
+    "package": "pnpm clean && pnpm package-transpile && pnpm package-types && pnpm package-types-aliases",
+    "package-transpile": "tsup",
+    "package-types": "tsc -p tsconfig.build.json",
+    "package-types-aliases": "tsc-alias -p tsconfig.build.json",
+    "test": "nx run test-linter && nx run test-type && nx run test-dependencies",
+    "test-dependencies": "pnpm depcruise --config -- .",
+    "test-linter": "pnpm linter-base-config .",
+    "test-type": "tsc --noEmit --emitDeclarationOnly false",
+    "watch": "pnpm clean && concurrently 'pnpm:package-* --watch'"
+  },
+  "dependencies": {
+    "@swarmion/serverless-helpers": "^0.29.0",
+    "aws-cdk-lib": "2.94.0",
+    "constructs": "10.2.70"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.1",
+    "concurrently": "^8.0.0",
+    "dependency-cruiser": "^13.0.0",
+    "eslint": "^8.29.0",
+    "prettier": "^2.8.1",
+    "rimraf": "^5.0.0",
+    "ts-node": "^10.9.1",
+    "tsc-alias": "^1.8.2",
+    "tsup": "^6.7.0",
+    "typescript": "^5.0.0",
+    "vitest": "0.31.1"
+  }
+}
