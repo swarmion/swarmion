@@ -7,7 +7,8 @@
   },
   "references": [
     { "path": "../../contracts/core-contracts/tsconfig.build.json" },
-    { "path": "../../packages/serverless-configuration/tsconfig.build.json" }
+    { "path": "../../packages/cdk-configuration/tsconfig.build.json" }
   ],
+  "exclude": ["./cdk.out"],
   "include": ["./**/*.ts"]
 }
