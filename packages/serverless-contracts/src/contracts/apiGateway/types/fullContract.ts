@@ -66,5 +66,4 @@ export interface FullContractSchemaType<
   properties: DefinedFullContractProperties;
   required: Array<keyof DefinedFullContractProperties>;
   additionalProperties: false;
-  [key: string]: unknown;
 }

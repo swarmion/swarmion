@@ -1,4 +1,4 @@
-import { JSONSchema } from 'json-schema-to-ts';
+import { ExtendedJSONSchema, JSONSchema } from 'json-schema-to-ts';
 import { A } from 'ts-toolbelt';
 
 import { HttpStatusCodes } from 'types/http';
@@ -25,6 +25,6 @@ typeAssert<
       typeof bodySchema,
       { [HttpStatusCodes.OK]: typeof outputSchema }
     >,
-    JSONSchema
+    ExtendedJSONSchema<Record<HttpStatusCodes, JSONSchema>>
   >
 >();
