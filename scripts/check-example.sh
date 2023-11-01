@@ -53,18 +53,11 @@ pnpm build
 # generate library
 pnpm generate-library test-library
 
-# temporary perform this check because swarmion-bare
-# is only compatible with CDK service since it has a cdk-configuration package
-if [ "$EXAMPLE" = "swarmion-bare" ]; then
-    # generate breaks the links, so we need to recreate them
-    pnpm link $BASE_DIR/packages/nx-plugin
-    # generate cdk service
-    pnpm generate-cdk-service test-cdk-service
-else
-    pnpm link $BASE_DIR/packages/nx-plugin
-    # generate service
-    pnpm generate-service test-service
-fi
+# generate breaks the links, so we need to recreate them
+swarmion_setup # local link
+
+# generate service
+pnpm generate-service test-service
 
 # generate breaks the links, so we need to recreate them
 swarmion_setup # local link
