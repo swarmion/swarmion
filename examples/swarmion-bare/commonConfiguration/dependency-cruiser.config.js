@@ -37,7 +37,7 @@ module.exports = {
   ],
   options: {
     exclude: {
-      path: ['cdk.out', 'node_modules', 'dist'],
+      path: ['cdk.out', 'node_modules', 'dist', 'coverage'],
     },
     tsPreCompilationDeps: true,
     tsConfig: {},
