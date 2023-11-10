@@ -13,7 +13,7 @@ export type Template = (typeof TEMPLATES)[number];
 const choices: (Omit<Choice, 'value'> & { value: Template })[] = [
   {
     title: 'Swarmion Starter',
-    description: 'Simple example with a single Serverless Framework backend',
+    description: 'Example with a CDK backend and frontend',
     value: 'swarmion-starter',
   },
   {
