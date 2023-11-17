@@ -19,7 +19,7 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "bench": "pnpm tsx src/__benches__/index.ts",
+    "bench": "pnpm vitest bench",
     "clean": "rimraf dist *.tsbuildinfo",
     "format-check": "prettier --check . --ignore-path ../../.prettierignore",
     "format-fix": "prettier --write . --ignore-path ../../.prettierignore",
@@ -51,7 +51,7 @@
     "ts-toolbelt": "^9.6.0"
   },
   "devDependencies": {
-    "@codspeed/tinybench-plugin": "^3.0.0",
+    "@codspeed/vitest-plugin": "3.1.0",
     "@middy/core": "^4.7.0",
     "@middy/error-logger": "^4.7.0",
     "@middy/http-cors": "^4.7.0",
@@ -71,7 +71,6 @@
     "prettier": "^3.1.1",
     "rimraf": "^5.0.5",
     "serverless": "^3.38.0",
-    "tinybench": "^2.3.1",
     "ts-node": "^10.9.2",
     "tsc-alias": "^1.8.8",
     "tsup": "^8.0.0",
@@ -82,14 +81,14 @@
   },
   "exports": {
     ".": {
+      "types": "./index.d.ts",
       "import": "./index.js",
-      "require": "./index.cjs",
-      "types": "./index.d.ts"
+      "require": "./index.cjs"
     },
     "./test-utils": {
+      "types": "./test-utils.d.ts",
       "import": "./test-utils.js",
-      "require": "./test-utils.cjs",
-      "types": "./test-utils.d.ts"
+      "require": "./test-utils.cjs"
     }
   },
   "peerDependencies": {

@@ -3,7 +3,7 @@ import {
   APIGatewayEventRequestContextV2WithAuthorizer,
   APIGatewayProxyCognitoAuthorizer,
 } from 'aws-lambda';
-import { Bench } from 'tinybench';
+import { bench, describe } from 'vitest';
 
 import { getAPIGatewayV2EventRequestContextMock } from '@swarmion/serverless-helpers';
 
@@ -11,7 +11,7 @@ import { getHandlerContextMock } from '__mocks__/requestContext';
 import { getHandler } from 'features';
 import { HttpStatusCodes } from 'types';
 
-import { httpApiGatewayContractMock } from '../__mocks__/httpApiGatewayContract.bench';
+import { httpApiGatewayContractMock } from '../__mocks__/httpApiGatewayContract';
 
 const ajv = new Ajv({ keywords: ['faker'] });
 
@@ -47,8 +47,8 @@ const httpHandler = getHandler(httpApiContract, { ajv })(async ({
   });
 });
 
-export const registerBasicHttpApiHandlerBench = (bench: Bench): void => {
-  bench.add('ApiGatewayContract > basic handler instantiation', () => {
+describe('ApiGatewayContract', () => {
+  bench('basic handler instantiation', () => {
     getHandler(httpApiContract, { ajv })(
       async ({
         body,
@@ -74,7 +74,7 @@ export const registerBasicHttpApiHandlerBench = (bench: Bench): void => {
     );
   });
 
-  bench.add('ApiGatewayContract > basic handler invocation', async () => {
+  bench('basic handler invocation', async () => {
     await httpHandler(
       {
         pathParameters: { userId: 'toto', pageNumber: '15' },
@@ -95,4 +95,4 @@ export const registerBasicHttpApiHandlerBench = (bench: Bench): void => {
       () => null,
     );
   });
-};
+});

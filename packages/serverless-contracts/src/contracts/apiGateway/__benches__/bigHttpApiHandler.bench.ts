@@ -3,7 +3,7 @@ import {
   APIGatewayEventRequestContextV2WithAuthorizer,
   APIGatewayProxyCognitoAuthorizer,
 } from 'aws-lambda';
-import { Bench } from 'tinybench';
+import { bench, describe } from 'vitest';
 
 import { getAPIGatewayV2EventRequestContextMock } from '@swarmion/serverless-helpers';
 
@@ -11,7 +11,7 @@ import { getHandlerContextMock } from '__mocks__/requestContext';
 import { getHandler } from 'features';
 import { HttpStatusCodes } from 'types';
 
-import { bigHttpApiContract } from '../__mocks__/bigHttpApiGatewayContract.bench';
+import { bigHttpApiContract } from '../__mocks__/bigHttpApiGatewayContract';
 
 const ajv = new Ajv({ keywords: ['faker'] });
 
@@ -45,58 +45,52 @@ const httpHandler = getHandler(bigHttpApiContract, { ajv })(async ({
   });
 });
 
-export const registerBigHttpApiHandlerBench = (bench: Bench): void => {
-  bench.add(
-    'ApiGatewayContract > handler with 500 properties instantiation',
-    () => {
-      getHandler(bigHttpApiContract, { ajv })(
-        async ({
-          body,
-          pathParameters,
-          queryStringParameters,
-          headers,
-          requestContext,
-        }) => {
-          const myCustomClaim = requestContext.authorizer.claims.foo;
+describe('ApiGatewayContract', () => {
+  bench('handler with 500 properties instantiation', () => {
+    getHandler(bigHttpApiContract, { ajv })(
+      async ({
+        body,
+        pathParameters,
+        queryStringParameters,
+        headers,
+        requestContext,
+      }) => {
+        const myCustomClaim = requestContext.authorizer.claims.foo;
 
-          const name =
-            body.foo +
-            pathParameters.pageNumber +
-            queryStringParameters.testId +
-            headers.myHeader +
-            myCustomClaim;
+        const name =
+          body.foo +
+          pathParameters.pageNumber +
+          queryStringParameters.testId +
+          headers.myHeader +
+          myCustomClaim;
 
-          return Promise.resolve({
-            statusCode: HttpStatusCodes.OK,
-            body: { id: 'hello', name },
-          });
+        return Promise.resolve({
+          statusCode: HttpStatusCodes.OK,
+          body: { id: 'hello', name },
+        });
+      },
+    );
+  });
+
+  bench('handler with 500 properties invocation', async () => {
+    await httpHandler(
+      {
+        pathParameters: { userId: 'toto', pageNumber: '15' },
+        body: JSON.stringify({ foo: 'bar' }),
+        headers: {
+          myHeader: 'MyCustomHeader',
+          anotherHeader: 'anotherHeader',
         },
-      );
-    },
-  );
-
-  bench.add(
-    'ApiGatewayContract > handler with 500 properties invocation',
-    async () => {
-      await httpHandler(
-        {
-          pathParameters: { userId: 'toto', pageNumber: '15' },
-          body: JSON.stringify({ foo: 'bar' }),
-          headers: {
-            myHeader: 'MyCustomHeader',
-            anotherHeader: 'anotherHeader',
-          },
-          queryStringParameters: { testId: 'myTestId' },
-          requestContext: fakeRequestContext,
-          version: '',
-          routeKey: '',
-          rawPath: '',
-          rawQueryString: '',
-          isBase64Encoded: false,
-        },
-        fakeContext,
-        () => null,
-      );
-    },
-  );
-};
+        queryStringParameters: { testId: 'myTestId' },
+        requestContext: fakeRequestContext,
+        version: '',
+        routeKey: '',
+        rawPath: '',
+        rawQueryString: '',
+        isBase64Encoded: false,
+      },
+      fakeContext,
+      () => null,
+    );
+  });
+});
