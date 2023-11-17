@@ -1,5 +1,5 @@
 import Ajv from 'ajv';
-import { Bench } from 'tinybench';
+import { bench, describe } from 'vitest';
 
 import { getHandlerContextMock } from '__mocks__/requestContext';
 import { EventBridgeContract } from 'contracts';
@@ -38,8 +38,8 @@ const handler = getHandler(eventBridgeContract, { ajv })(async event => {
   return event.detail.userId;
 });
 
-export const registerBasicEventBridgeHandlerBench = (bench: Bench): void => {
-  bench.add('EventBridgeContract > basic handler instantiation', () => {
+describe('EventBridgeContract', () => {
+  bench('basic handler instantiation', () => {
     getHandler(eventBridgeContract, { ajv })(async event => {
       await Promise.resolve();
 
@@ -47,7 +47,7 @@ export const registerBasicEventBridgeHandlerBench = (bench: Bench): void => {
     });
   });
 
-  bench.add('EventBridgeContract > basic handler invocation', async () => {
+  bench('basic handler invocation', async () => {
     await handler(
       {
         ...baseEvent,
@@ -57,4 +57,4 @@ export const registerBasicEventBridgeHandlerBench = (bench: Bench): void => {
       () => null,
     );
   });
-};
+});

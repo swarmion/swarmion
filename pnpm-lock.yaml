@@ -532,9 +532,9 @@ importers:
         specifier: ^9.6.0
         version: 9.6.0
     devDependencies:
-      '@codspeed/tinybench-plugin':
-        specifier: ^3.0.0
-        version: 3.0.0(tinybench@2.5.1)
+      '@codspeed/vitest-plugin':
+        specifier: 3.1.0
+        version: 3.1.0(vite@5.1.4)(vitest@1.3.1)
       '@middy/core':
         specifier: ^4.7.0
         version: 4.7.0
@@ -592,9 +592,6 @@ importers:
       serverless:
         specifier: ^3.38.0
         version: 3.38.0
-      tinybench:
-        specifier: ^2.3.1
-        version: 2.5.1
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@18.19.18)(typescript@5.3.3)
@@ -3341,8 +3338,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@codspeed/core@3.0.0:
-    resolution: {integrity: sha512-MebAj0lvWwJcH5xSh05y5mAKHK+77fQtsWvNo6iqsbYMiv5QZnQtdXj3D2ndg7zYLy0i5qQpaLfydJCmC8zrmQ==}
+  /@codspeed/core@3.1.0:
+    resolution: {integrity: sha512-oYd7X46QhnRkgRbZkqAoX9i3Fwm17FpunK4Ee5RdrvRYR0Xr93ewH8/O5g6uyTPDOOqDEv1v2KRYtWhVgN+2VQ==}
     dependencies:
       axios: 1.6.7
       find-up: 6.3.0
@@ -3352,14 +3349,15 @@ packages:
       - debug
     dev: true
 
-  /@codspeed/tinybench-plugin@3.0.0(tinybench@2.5.1):
-    resolution: {integrity: sha512-fF9/LDg/qkLL/OasEtvkZPa25tPDzwguA64ludKeoZ1U/pxjW5L0H0/iZNxdCKqdiMpEPkmIw0DEh6ltLFXk4g==}
+  /@codspeed/vitest-plugin@3.1.0(vite@5.1.4)(vitest@1.3.1):
+    resolution: {integrity: sha512-ms11tUytiQTgB+idxZRUuCUQfgz4LaKTDJCLYm5VTSpOCUU7D5+QWvJnA8X8B9glPfR5siIK8RxrnZP4yuysKQ==}
     peerDependencies:
-      tinybench: ^2.3.0
+      vite: ^4.2.0 || ^5.0.0
+      vitest: '>=1.2.2'
     dependencies:
-      '@codspeed/core': 3.0.0
-      stack-trace: 1.0.0-pre2
-      tinybench: 2.5.1
+      '@codspeed/core': 3.1.0
+      vite: 5.1.4(@types/node@18.19.18)
+      vitest: 1.3.1(@types/node@18.19.18)
     transitivePeerDependencies:
       - debug
     dev: true
@@ -18509,11 +18507,6 @@ packages:
   /stable@0.1.8:
     resolution: {integrity: sha512-ji9qxRnOVfcuLDySj9qzhGSEFVobyt1kIOSkj1qZzYLzq7Tos/oUUWvotUPQLlrsidqsK6tBH89Bc9kL5zHA6w==}
     deprecated: 'Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility'
-
-  /stack-trace@1.0.0-pre2:
-    resolution: {integrity: sha512-2ztBJRek8IVofG9DBJqdy2N5kulaacX30Nz7xmkYF6ale9WBVmIy6mFBchvGX7Vx/MyjBhx+Rcxqrj+dbOnQ6A==}
-    engines: {node: '>=16'}
-    dev: true
 
   /stack-utils@2.0.6:
     resolution: {integrity: sha512-XlkWvfIm6RmsWtNJx+uqtKLS8eqFbxUg0ZzLXqY0caEy9l7hruX8IpiDnjsLavoBgqCCR71TqWO8MaXYheJ3RQ==}
