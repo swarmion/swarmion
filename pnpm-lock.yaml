@@ -11773,7 +11773,7 @@ packages:
     dependencies:
       foreground-child: 3.1.1
       jackspeak: 2.2.0
-      minimatch: 9.0.3
+      minimatch: 9.0.0
       minipass: 5.0.0
       path-scurry: 1.7.0
 
@@ -13080,7 +13080,7 @@ packages:
       jest-validate: 29.3.1
       micromatch: 4.0.5
       parse-json: 5.2.0
-      pretty-format: 29.7.0
+      pretty-format: 29.4.3
       slash: 3.0.0
       strip-json-comments: 3.1.1
       ts-node: 10.9.1(@types/node@18.16.1)(typescript@5.0.2)
@@ -13324,7 +13324,7 @@ packages:
       jest-message-util: 29.3.1
       jest-util: 29.3.1
       natural-compare: 1.4.0
-      pretty-format: 29.7.0
+      pretty-format: 29.4.3
       semver: 7.5.4
     transitivePeerDependencies:
       - supports-color
@@ -13351,7 +13351,7 @@ packages:
       chalk: 4.1.2
       jest-get-type: 29.2.0
       leven: 3.1.0
-      pretty-format: 29.7.0
+      pretty-format: 29.4.3
     dev: true
 
   /jest-watcher@29.3.1:
@@ -14418,11 +14418,18 @@ packages:
       brace-expansion: 2.0.1
     dev: true
 
+  /minimatch@9.0.0:
+    resolution: {integrity: sha512-0jJj8AvgKqWN05mrwuqi8QYKx1WmYSUoKSxu5Qhs9prezTz10sxAHGNZe9J9cqIJzta8DWsleh2KaVaLl6Ru2w==}
+    engines: {node: '>=16 || 14 >=14.17'}
+    dependencies:
+      brace-expansion: 2.0.1
+
   /minimatch@9.0.3:
     resolution: {integrity: sha512-RHiac9mvaRw0x3AYRgDC1CxAP7HTcNrrECeA8YYJeWnpo+2Q5CegtZjaotWTWxDG3UeGA1coE05iH1mPjT/2mg==}
     engines: {node: '>=16 || 14 >=14.17'}
     dependencies:
       brace-expansion: 2.0.1
+    dev: true
 
   /minimist-options@4.1.0:
     resolution: {integrity: sha512-Q4r8ghd80yhO/0j1O3B2BjweX3fiHg9cdOwjJd2J76Q135c+NDxGCqdYKQ1SKBuFfgWbAUzBfvYjPUEeNgqN1A==}
