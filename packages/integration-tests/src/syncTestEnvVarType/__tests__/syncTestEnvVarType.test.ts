@@ -5,7 +5,6 @@ import { syncTestEnvVarType } from '../syncTestEnvVarType';
 
 vi.mock('@babel/traverse', async () => {
   const actualTraverse = await vi.importActual('@babel/traverse');
-  // @ts-expect-error - issue with esm and traverse: https://github.com/babel/babel/issues/13855
   const traverse = actualTraverse.default as typeof import('@babel/traverse');
 
   return { default: { default: traverse } };
