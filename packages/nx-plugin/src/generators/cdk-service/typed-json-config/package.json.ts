@@ -52,7 +52,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
   },
   devDependencies: {
     '@types/node': 'latest',
-    '@vitest/coverage-c8': vitestCoverageC8Version,
+    '@vitest/coverage-v8': vitestCoverageC8Version,
     'aws-cdk': getWorkspaceDependencyVersion('aws-cdk-lib'),
     'aws-cdk-lib': getWorkspaceDependencyVersion('aws-cdk-lib'),
     constructs: getWorkspaceDependencyVersion('constructs'),
