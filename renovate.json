@@ -25,6 +25,10 @@
     {
       "matchPackagePatterns": ["^@swarmion/", "^@sls/", "^@swarmion-"],
       "enabled": false
+    },
+    {
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
     }
   ]
 }
