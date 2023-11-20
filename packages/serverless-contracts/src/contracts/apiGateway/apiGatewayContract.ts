@@ -134,9 +134,7 @@ export class ApiGatewayContract<
     this.requestContextSchema = (props.requestContextSchema ??
       undefined) as RequestContextSchema;
     this.bodySchema = (props.bodySchema ?? undefined) as BodySchema;
-    this.outputSchemas = (
-      props.outputSchemas !== undefined ? props.outputSchemas : {}
-    ) as OutputSchemas;
+    this.outputSchemas = (props.outputSchemas ?? {}) as OutputSchemas;
     this.inputSchema = this.getInputSchema();
   }
 

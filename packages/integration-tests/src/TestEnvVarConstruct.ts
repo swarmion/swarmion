@@ -15,6 +15,7 @@ const getStringContext = (
   const context = scope.node.tryGetContext(contextName) as
     | string
     | undefined
+    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     | unknown;
   if (context !== undefined && typeof context !== 'string') {
     throw new Error(

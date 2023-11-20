@@ -48,6 +48,7 @@ export const listRemoteContractSchemas = async (
   }
 
   const contractSchemas = JSON.parse(
+    // eslint-disable-next-line @typescript-eslint/no-base-to-string
     remoteContractsBuffer.toString(),
   ) as RemoteServerlessContractSchemas;
 
