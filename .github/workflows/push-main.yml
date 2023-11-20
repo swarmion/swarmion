@@ -56,7 +56,7 @@ jobs:
       - name: Install & cache node dependencies
         uses: ./.github/actions/install-node-deps
       - name: Configure AWS credentials with assume role
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
           aws-region: eu-west-1
@@ -78,7 +78,7 @@ jobs:
       - name: Install & cache node dependencies
         uses: ./.github/actions/install-node-deps
       - name: Configure AWS credentials with assume role
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.AWS_STAGING_ROLE_ARN }}
           aws-region: eu-west-1
@@ -100,7 +100,7 @@ jobs:
       - name: Install & cache node dependencies
         uses: ./.github/actions/install-node-deps
       - name: Configure AWS credentials with assume role
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.AWS_STAGING_ROLE_ARN }}
           aws-region: eu-west-1
