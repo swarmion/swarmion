@@ -21,11 +21,7 @@ export const getServerlessConfigFile =
       'deep'
     >;
 
-    if (
-      uncheckedConfigFile.custom === undefined ||
-      uncheckedConfigFile.custom.cdkPlugin === undefined ||
-      uncheckedConfigFile.custom.cdkPlugin.stack === undefined
-    ) {
+    if (uncheckedConfigFile.custom?.cdkPlugin?.stack === undefined) {
       throw new Error('Missing custom.cdkPlugin.stack property');
     }
 

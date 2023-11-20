@@ -74,6 +74,7 @@ const convertObjectSchemaPropertiesToValidOAS3 = (
   }
 };
 
+// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 export const convertJsonSchemaToValidOAS3 = <S extends boolean | JSONSchema>(
   initialSchema: S,
 ): S extends JSONSchema | OpenAPIV3.SchemaObject
