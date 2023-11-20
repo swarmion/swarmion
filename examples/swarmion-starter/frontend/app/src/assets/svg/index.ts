@@ -1,3 +1,3 @@
-import { ReactComponent as NotFoundIcon } from './page-not-found.svg';
+import NotFoundIcon from './page-not-found.svg';
 
 export { NotFoundIcon };
