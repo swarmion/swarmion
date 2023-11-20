@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@codspeed/vitest-plugin@3.1.0':
+    hash: s4hp463ofomirwjx4hyaewkbxe
+    path: patches/@codspeed__vitest-plugin@3.1.0.patch
+
 importers:
 
   .:
@@ -534,7 +539,7 @@ importers:
     devDependencies:
       '@codspeed/vitest-plugin':
         specifier: 3.1.0
-        version: 3.1.0(vite@5.1.4)(vitest@1.3.1)
+        version: 3.1.0(patch_hash=s4hp463ofomirwjx4hyaewkbxe)(vite@5.1.4)(vitest@1.3.1)
       '@middy/core':
         specifier: ^4.7.0
         version: 4.7.0
@@ -3349,7 +3354,7 @@ packages:
       - debug
     dev: true
 
-  /@codspeed/vitest-plugin@3.1.0(vite@5.1.4)(vitest@1.3.1):
+  /@codspeed/vitest-plugin@3.1.0(patch_hash=s4hp463ofomirwjx4hyaewkbxe)(vite@5.1.4)(vitest@1.3.1):
     resolution: {integrity: sha512-ms11tUytiQTgB+idxZRUuCUQfgz4LaKTDJCLYm5VTSpOCUU7D5+QWvJnA8X8B9glPfR5siIK8RxrnZP4yuysKQ==}
     peerDependencies:
       vite: ^4.2.0 || ^5.0.0
@@ -3361,6 +3366,7 @@ packages:
     transitivePeerDependencies:
       - debug
     dev: true
+    patched: true
 
   /@colors/colors@1.5.0:
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}

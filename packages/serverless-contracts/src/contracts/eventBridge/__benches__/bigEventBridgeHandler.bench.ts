@@ -18,9 +18,13 @@ const fakeContext = getHandlerContextMock();
 let handler: typeof import('./bigEventBridgeHandler').handler;
 
 describe('big handler', () => {
-  bench('cold start', async () => {
-    handler = (await import(`./bigEventBridgeHandler`)).handler;
-  });
+  bench(
+    'cold start',
+    async () => {
+      handler = (await import(`./bigEventBridgeHandler`)).handler;
+    },
+    { warmupIterations: 0 },
+  );
 
   bench('invocation', async () => {
     await handler(
