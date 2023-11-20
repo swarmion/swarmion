@@ -31,7 +31,7 @@ We write a lot of schemas with swarmion, so we need a library that is easy to wr
 
 - ✅ Pros:
   - Based on a standardized format
-  - Complete and well maintained (<3 Thomus)
+  - Complete and well maintained (🤎 Thomus)
 - ❌ Cons:
   - Very verbose
   - Not very intuitive
@@ -116,7 +116,7 @@ We need a lib which is well supported by the typescript ecosystem
 - ✅ Pros:
   - 390 197 weekly downloads
   - 1k stars
-  - Thomus <3
+  - Thomus 🤎
   - ajv is also big in the ecosystem and well maintained
 - ❌ Cons:
   - A bit smaller than zod and typia
