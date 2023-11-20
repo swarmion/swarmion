@@ -45,7 +45,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
   devDependencies: {
     '@serverless/typescript': 'latest',
     '@types/node': 'latest',
-    '@vitest/coverage-c8': vitestCoverageC8Version,
+    '@vitest/coverage-v8': vitestCoverageC8Version,
     'dependency-cruiser': 'latest',
     esbuild: 'latest',
     eslint: 'latest',

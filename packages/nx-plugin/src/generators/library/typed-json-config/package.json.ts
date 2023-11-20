@@ -47,7 +47,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
   },
   devDependencies: {
     '@types/node': 'latest',
-    '@vitest/coverage-c8': vitestCoverageC8Version,
+    '@vitest/coverage-v8': vitestCoverageC8Version,
     concurrently: 'latest',
     'dependency-cruiser': 'latest',
     eslint: 'latest',
