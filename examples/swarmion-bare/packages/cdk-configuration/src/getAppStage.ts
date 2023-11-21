@@ -5,7 +5,7 @@ import { CdkDeploymentError } from 'customErrors';
 const defaultStage = 'dev' as const;
 
 const APP_STAGES = [defaultStage, 'staging', 'production'] as const;
-export type AppStage = typeof APP_STAGES[number];
+export type AppStage = (typeof APP_STAGES)[number];
 
 const isAppStage = (stage: string): stage is AppStage => {
   return APP_STAGES.includes(stage as AppStage);
