@@ -1,4 +1,4 @@
-import { getWorkspaceLayout, joinPathFragments, names, Tree } from '@nx/devkit';
+import { joinPathFragments, names, readJson, Tree } from '@nx/devkit';
 import { Linter } from '@nx/linter';
 import { createHash } from 'crypto';
 import { relative } from 'path';
@@ -23,7 +23,7 @@ export const normalizeOptions = (
 
   const { className, propertyName } = names(projectName);
 
-  const { npmScope } = getWorkspaceLayout(tree);
+  const workspaceName = getWorkspaceNameFromPackageJson(tree);
   const offsetFromRoot = relative(packageRoot, tree.root);
 
   // hashed project name is a 10 char string
@@ -43,6 +43,27 @@ export const normalizeOptions = (
     name: projectName,
     packageRoot,
     offsetFromRoot,
-    workspaceName: npmScope,
+    workspaceName,
   };
+};
+
+/**
+ * parse the root package.json to retrieve the workspaceName
+ */
+export const getWorkspaceNameFromPackageJson = (tree: Tree): string => {
+  const { name } = tree.exists('package.json')
+    ? readJson<{ name?: string }>(tree, 'package.json')
+    : { name: null };
+
+  if (name != null && name.startsWith('@')) {
+    const workspaceName = name.split('/')[0]?.substring(1);
+
+    if (workspaceName === undefined) {
+      throw new Error('expected workspace name in root package.json');
+    }
+
+    return workspaceName;
+  } else {
+    throw new Error('expected workspace name in root package.json');
+  }
 };
