@@ -1,11 +1,8 @@
-import {
-  getWorkspaceLayout,
-  readProjectConfiguration,
-  Tree,
-  writeJson,
-} from '@nx/devkit';
+import { readProjectConfiguration, Tree, writeJson } from '@nx/devkit';
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import { stringify } from 'yaml';
+
+import { getWorkspaceNameFromPackageJson } from 'generators/helpers';
 
 import { Schema } from '../types';
 import generator from './index';
@@ -18,11 +15,8 @@ describe('library generator', () => {
 
   beforeEach(() => {
     appTree = createTreeWithEmptyWorkspace();
-    writeJson(
-      appTree,
-      `${getWorkspaceLayout(appTree).npmScope}.code-workspace`,
-      { folders: [] },
-    );
+    const workspaceName = getWorkspaceNameFromPackageJson(appTree);
+    writeJson(appTree, `${workspaceName}.code-workspace`, { folders: [] });
     writeJson(appTree, 'tsconfig.json', { references: [] });
     appTree.write('pnpm-workspace.yaml', stringify({ packages: [] }));
   });
