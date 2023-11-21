@@ -1,7 +1,7 @@
 import { EventBridgeClient } from '@aws-sdk/client-eventbridge';
 
-import { EventBridgeContract } from '../eventBridgeContract';
 import { EventBridgePayloadType } from './common';
+import { EventBridgeContract } from '../eventBridgeContract';
 
 export type PutEventBuilderArgs<Contract extends EventBridgeContract> = {
   eventBusName: string;

@@ -1,13 +1,6 @@
 import * as Serverless from 'serverless';
 import * as Plugin from 'serverless/classes/Plugin';
 
-import { DeploymentStrategies } from '../types/deploymentTypes';
-import { ContractSchemasLocation } from '../types/locations';
-import {
-  RemoteServerlessContractSchemas,
-  ServerlessContractSchemas,
-  serviceOptionsSchema,
-} from '../types/serviceOptions';
 import { getTimestampFromArtifactDirectoryName } from './utils/artifactDirectory';
 import { LATEST_DEPLOYED_TIMESTAMP_TAG_NAME } from './utils/constants';
 import { generateOpenApiDocumentation } from './utils/generateOpenApiDocumentation';
@@ -16,6 +9,13 @@ import { listRemoteContractSchemas } from './utils/listRemoteContractSchemas';
 import { printContractSchemas } from './utils/printContractSchemas';
 import { uploadContractSchemas } from './utils/uploadContractSchemas';
 import { validateDeployment } from './utils/validateDeployment';
+import { DeploymentStrategies } from '../types/deploymentTypes';
+import { ContractSchemasLocation } from '../types/locations';
+import {
+  RemoteServerlessContractSchemas,
+  ServerlessContractSchemas,
+  serviceOptionsSchema,
+} from '../types/serviceOptions';
 
 interface OptionsExtended extends Serverless.Options {
   verbose?: boolean;

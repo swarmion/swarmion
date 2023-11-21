@@ -7,7 +7,6 @@ import type {
   Context,
 } from 'aws-lambda';
 
-import { GenericApiGatewayContract } from '../apiGatewayContract';
 import { AuthorizerContext } from './authorizerContext';
 import {
   BodyType,
@@ -22,6 +21,7 @@ import {
   ApiGatewayIntegrationType,
 } from './constants';
 import { DefinedProperties } from './utils';
+import { GenericApiGatewayContract } from '../apiGatewayContract';
 
 export type RequestContext<
   IntegrationType extends ApiGatewayIntegrationType,
