@@ -38,6 +38,7 @@ const convertArraySchemaPropertiesToValidOAS3 = (
       schema.items = schema.items.map(convertJsonSchemaToValidOAS3);
     } else {
       // @ts-expect-error problem with recursively typing, fully unit tested
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       schema.items = convertJsonSchemaToValidOAS3(schema.items);
     }
   }

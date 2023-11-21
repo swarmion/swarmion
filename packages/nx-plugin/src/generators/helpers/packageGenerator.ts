@@ -6,11 +6,11 @@ import {
 } from '@nx/devkit';
 import { join } from 'path';
 
-import { NormalizedSchema, PackageJson, TsConfig } from '../types';
 import { createFiles } from './createFiles';
 import { updateCodeWorkspace } from './updateCodeWorkspace';
 import { updatePnpmWorkspaces } from './updatePnpmWorkspaces';
 import { updateRootTsConfig } from './updateRootTsConfig';
+import { NormalizedSchema, PackageJson, TsConfig } from '../types';
 
 interface PackageGeneratorParams {
   tree: Tree;

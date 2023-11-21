@@ -4,8 +4,8 @@ import { stringify } from 'yaml';
 
 import { getWorkspaceNameFromPackageJson } from 'generators/helpers';
 
-import { Schema } from '../types';
 import generator from './index';
+import { Schema } from '../types';
 
 vi.mock('../helpers/updatePackages.ts');
 

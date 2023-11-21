@@ -1,14 +1,14 @@
 import { formatFiles, Tree, writeJson } from '@nx/devkit';
 import { join } from 'path';
 
-import { normalizeOptions, packageGenerator, updatePackages } from '../helpers';
-import { GeneratorType, Schema } from '../types';
 import {
   packageBuildTsConfig,
   packageJson,
   packageProjectJson,
   packageTsConfig,
 } from './typed-json-config';
+import { normalizeOptions, packageGenerator, updatePackages } from '../helpers';
+import { GeneratorType, Schema } from '../types';
 
 const SOURCE_FOLDER =
   process.env.NODE_ENV === 'test'

@@ -1,6 +1,5 @@
 import { HttpMethod } from 'types/http';
 
-import { GenericApiGatewayContract } from '../apiGatewayContract';
 import {
   BodyType,
   HeadersType,
@@ -8,6 +7,7 @@ import {
   QueryStringParametersType,
 } from './common';
 import { DefinedProperties } from './utils';
+import { GenericApiGatewayContract } from '../apiGatewayContract';
 
 /**
  * Computed request parameters. This enables the call to the contract to be type-safe

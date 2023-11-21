@@ -3,12 +3,12 @@ import { O } from 'ts-toolbelt';
 import { LambdaEvents } from 'types/lambdaEvents';
 import { CleanEmptyObject } from 'types/utilities';
 
-import { GenericApiGatewayContract } from '../apiGatewayContract';
 import {
   ApiGatewayAuthorizerType,
   ApiGatewayIntegrationType,
   ApiGatewayKey,
 } from './constants';
+import { GenericApiGatewayContract } from '../apiGatewayContract';
 
 /**
  * map between our integration types (httpApi vs restApi) and

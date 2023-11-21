@@ -1,9 +1,9 @@
 /// <reference lib="dom" />
 
+import { getRequestParameters } from './requestParameters';
 import { GenericApiGatewayContract } from '../apiGatewayContract';
 import { OutputType, RequestArguments } from '../types';
 import { combineUrls } from '../utils';
-import { getRequestParameters } from './requestParameters';
 
 export const getFetchRequest = async <
   Contract extends GenericApiGatewayContract,
