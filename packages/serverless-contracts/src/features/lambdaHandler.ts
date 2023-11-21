@@ -29,15 +29,16 @@ type GetHandlerOptions<Contract extends ServerlessContract> =
   Contract extends GenericApiGatewayContract
     ? Partial<GetApiGatewayHandlerOptions>
     : Contract extends EventBridgeContract
-    ? Partial<GetEventBridgeHandlerOptions>
-    : never;
+      ? Partial<GetEventBridgeHandlerOptions>
+      : never;
 
 /**
  * must match the type of getApiGatewayHandler
  */
 export function getHandler<
   Contract extends GenericApiGatewayContract,
-  IntegrationType extends ApiGatewayIntegrationType = Contract['integrationType'],
+  IntegrationType extends
+    ApiGatewayIntegrationType = Contract['integrationType'],
   AuthorizerType extends ApiGatewayAuthorizerType = Contract['authorizerType'],
   PathParameters = PathParametersType<Contract>,
   QueryStringParameters = QueryStringParametersType<Contract>,

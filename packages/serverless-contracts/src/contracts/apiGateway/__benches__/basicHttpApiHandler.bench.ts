@@ -25,29 +25,27 @@ const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatew
   };
 const fakeContext = getHandlerContextMock();
 
-const httpHandler = getHandler(httpApiContract, { ajv })(
-  async ({
-    body,
-    pathParameters,
-    queryStringParameters,
-    headers,
-    requestContext,
-  }) => {
-    const myCustomClaim = requestContext.authorizer.claims.foo;
+const httpHandler = getHandler(httpApiContract, { ajv })(async ({
+  body,
+  pathParameters,
+  queryStringParameters,
+  headers,
+  requestContext,
+}) => {
+  const myCustomClaim = requestContext.authorizer.claims.foo;
 
-    const name =
-      body.foo +
-      pathParameters.pageNumber +
-      queryStringParameters.testId +
-      headers.myHeader +
-      myCustomClaim;
+  const name =
+    body.foo +
+    pathParameters.pageNumber +
+    queryStringParameters.testId +
+    headers.myHeader +
+    myCustomClaim;
 
-    return Promise.resolve({
-      statusCode: HttpStatusCodes.OK,
-      body: { id: 'hello', name },
-    });
-  },
-);
+  return Promise.resolve({
+    statusCode: HttpStatusCodes.OK,
+    body: { id: 'hello', name },
+  });
+});
 
 export const registerBasicHttpApiHandlerBench = (bench: Bench): void => {
   bench.add('ApiGatewayContract > basic handler instantiation', () => {

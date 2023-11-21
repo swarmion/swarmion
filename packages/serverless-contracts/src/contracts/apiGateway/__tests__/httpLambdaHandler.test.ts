@@ -37,30 +37,28 @@ describe('apiGateway lambda handler', () => {
     it('should return a 200 response', async () => {
       const fakeContext = getHandlerContextMock();
 
-      const httpHandler = getHandler(httpApiContract, { ajv })(
-        async ({
-          body,
-          pathParameters,
-          queryStringParameters,
-          headers,
-          requestContext,
-        }) => {
-          await Promise.resolve();
-          const myCustomClaim = requestContext.authorizer.claims.foo;
+      const httpHandler = getHandler(httpApiContract, { ajv })(async ({
+        body,
+        pathParameters,
+        queryStringParameters,
+        headers,
+        requestContext,
+      }) => {
+        await Promise.resolve();
+        const myCustomClaim = requestContext.authorizer.claims.foo;
 
-          const name =
-            body.foo +
-            pathParameters.pageNumber +
-            queryStringParameters.testId +
-            headers.myHeader +
-            myCustomClaim;
+        const name =
+          body.foo +
+          pathParameters.pageNumber +
+          queryStringParameters.testId +
+          headers.myHeader +
+          myCustomClaim;
 
-          return Promise.resolve({
-            statusCode: HttpStatusCodes.OK,
-            body: { id: 'hello', name },
-          });
-        },
-      );
+        return Promise.resolve({
+          statusCode: HttpStatusCodes.OK,
+          body: { id: 'hello', name },
+        });
+      });
 
       const result = await httpHandler(
         {
@@ -95,27 +93,25 @@ describe('apiGateway lambda handler', () => {
     it('should return a error response when throwing httpError in handler', async () => {
       const fakeContext = getHandlerContextMock();
 
-      const httpHandler = getHandler(httpApiContract, { ajv })(
-        async ({
-          body,
-          pathParameters,
-          queryStringParameters,
-          headers,
-          requestContext,
-        }) => {
-          await Promise.resolve();
-          const myCustomClaim = requestContext.authorizer.claims.foo;
+      const httpHandler = getHandler(httpApiContract, { ajv })(async ({
+        body,
+        pathParameters,
+        queryStringParameters,
+        headers,
+        requestContext,
+      }) => {
+        await Promise.resolve();
+        const myCustomClaim = requestContext.authorizer.claims.foo;
 
-          const name =
-            body.foo +
-            pathParameters.pageNumber +
-            queryStringParameters.testId +
-            headers.myHeader +
-            myCustomClaim;
+        const name =
+          body.foo +
+          pathParameters.pageNumber +
+          queryStringParameters.testId +
+          headers.myHeader +
+          myCustomClaim;
 
-          throw createHttpError(500, name, { expose: true });
-        },
-      );
+        throw createHttpError(500, name, { expose: true });
+      });
 
       const result = await httpHandler(
         {
@@ -146,27 +142,25 @@ describe('apiGateway lambda handler', () => {
     it('should return a error response when input is invalid', async () => {
       const fakeContext = getHandlerContextMock();
 
-      const httpHandler = getHandler(httpApiContract, { ajv })(
-        async ({
-          body,
-          pathParameters,
-          queryStringParameters,
-          headers,
-          requestContext,
-        }) => {
-          await Promise.resolve();
-          const myCustomClaim = requestContext.authorizer.claims.foo;
+      const httpHandler = getHandler(httpApiContract, { ajv })(async ({
+        body,
+        pathParameters,
+        queryStringParameters,
+        headers,
+        requestContext,
+      }) => {
+        await Promise.resolve();
+        const myCustomClaim = requestContext.authorizer.claims.foo;
 
-          const name =
-            body.foo +
-            pathParameters.pageNumber +
-            queryStringParameters.testId +
-            headers.myHeader +
-            myCustomClaim;
+        const name =
+          body.foo +
+          pathParameters.pageNumber +
+          queryStringParameters.testId +
+          headers.myHeader +
+          myCustomClaim;
 
-          throw createHttpError(500, name);
-        },
-      );
+        throw createHttpError(500, name);
+      });
 
       const result = await httpHandler(
         {
@@ -200,27 +194,25 @@ describe('apiGateway lambda handler', () => {
       const httpHandler = getHandler(httpApiContract, {
         ajv,
         returnValidationErrors: true,
-      })(
-        async ({
-          body,
-          pathParameters,
-          queryStringParameters,
-          headers,
-          requestContext,
-        }) => {
-          await Promise.resolve();
-          const myCustomClaim = requestContext.authorizer.claims.foo;
+      })(async ({
+        body,
+        pathParameters,
+        queryStringParameters,
+        headers,
+        requestContext,
+      }) => {
+        await Promise.resolve();
+        const myCustomClaim = requestContext.authorizer.claims.foo;
 
-          const name =
-            body.foo +
-            pathParameters.pageNumber +
-            queryStringParameters.testId +
-            headers.myHeader +
-            myCustomClaim;
+        const name =
+          body.foo +
+          pathParameters.pageNumber +
+          queryStringParameters.testId +
+          headers.myHeader +
+          myCustomClaim;
 
-          throw createHttpError(500, name);
-        },
-      );
+        throw createHttpError(500, name);
+      });
 
       const result = await httpHandler(
         {
@@ -309,30 +301,28 @@ describe('apiGateway lambda handler', () => {
 
       const fakeContext = getHandlerContextMock();
 
-      const handler = getHandler(httpApiContract, { ajv })(
-        async ({
-          body,
-          pathParameters,
-          queryStringParameters,
-          headers,
-          requestContext,
-        }) => {
-          await Promise.resolve();
-          const myCustomClaim = requestContext.authorizer.claims.foo;
+      const handler = getHandler(httpApiContract, { ajv })(async ({
+        body,
+        pathParameters,
+        queryStringParameters,
+        headers,
+        requestContext,
+      }) => {
+        await Promise.resolve();
+        const myCustomClaim = requestContext.authorizer.claims.foo;
 
-          const name =
-            body.foo +
-            pathParameters.pageNumber +
-            queryStringParameters.testId +
-            headers.myHeader +
-            myCustomClaim;
+        const name =
+          body.foo +
+          pathParameters.pageNumber +
+          queryStringParameters.testId +
+          headers.myHeader +
+          myCustomClaim;
 
-          return Promise.resolve({
-            statusCode: HttpStatusCodes.OK,
-            body: { id: 'hello', name },
-          });
-        },
-      );
+        return Promise.resolve({
+          statusCode: HttpStatusCodes.OK,
+          body: { id: 'hello', name },
+        });
+      });
 
       const httpHandler = middy(handler).use(cors()).use(errorLogger());
 
@@ -367,21 +357,19 @@ describe('apiGateway lambda handler', () => {
     });
 
     it('should accept optional additional arguments', async () => {
-      const httpHandler = getHandler(httpApiContract, { ajv })(
-        (
-          _event,
-          _context,
-          _callback,
-          toto: { tata: string } = { tata: 'coucou' },
-        ) => {
-          const name = toto.tata;
+      const httpHandler = getHandler(httpApiContract, { ajv })((
+        _event,
+        _context,
+        _callback,
+        toto: { tata: string } = { tata: 'coucou' },
+      ) => {
+        const name = toto.tata;
 
-          return Promise.resolve({
-            statusCode: HttpStatusCodes.OK,
-            body: { name, id: 'miam' },
-          });
-        },
-      );
+        return Promise.resolve({
+          statusCode: HttpStatusCodes.OK,
+          body: { name, id: 'miam' },
+        });
+      });
       const fakeContext = getHandlerContextMock();
 
       const result = await httpHandler(
@@ -412,22 +400,20 @@ describe('apiGateway lambda handler', () => {
     });
 
     it('should allow overriding of additional arguments', async () => {
-      const httpHandler = getHandler(httpApiContract, { ajv })(
-        async (
-          _event,
-          _context,
-          _callback,
-          toto: { tata: string } = { tata: 'blob' },
-        ) => {
-          await Promise.resolve();
-          const name = toto.tata;
+      const httpHandler = getHandler(httpApiContract, { ajv })(async (
+        _event,
+        _context,
+        _callback,
+        toto: { tata: string } = { tata: 'blob' },
+      ) => {
+        await Promise.resolve();
+        const name = toto.tata;
 
-          return Promise.resolve({
-            statusCode: HttpStatusCodes.OK,
-            body: { name, id: 'toto' },
-          });
-        },
-      );
+        return Promise.resolve({
+          statusCode: HttpStatusCodes.OK,
+          body: { name, id: 'toto' },
+        });
+      });
       const fakeContext = getHandlerContextMock();
 
       const result = await httpHandler(
@@ -524,30 +510,28 @@ describe('apiGateway lambda handler', () => {
       const httpHandler = getHandler(httpApiContract, {
         ajv,
         validateInput: false,
-      })(
-        async ({
-          body,
-          pathParameters,
-          queryStringParameters,
-          headers,
-          requestContext,
-        }) => {
-          await Promise.resolve();
-          const myCustomClaim = requestContext.authorizer.claims.foo;
+      })(async ({
+        body,
+        pathParameters,
+        queryStringParameters,
+        headers,
+        requestContext,
+      }) => {
+        await Promise.resolve();
+        const myCustomClaim = requestContext.authorizer.claims.foo;
 
-          const name =
-            body.foo +
-            pathParameters.pageNumber +
-            queryStringParameters.testId +
-            headers.myHeader +
-            myCustomClaim;
+        const name =
+          body.foo +
+          pathParameters.pageNumber +
+          queryStringParameters.testId +
+          headers.myHeader +
+          myCustomClaim;
 
-          return Promise.resolve({
-            statusCode: HttpStatusCodes.OK,
-            body: { id: 'hello', name },
-          });
-        },
-      );
+        return Promise.resolve({
+          statusCode: HttpStatusCodes.OK,
+          body: { id: 'hello', name },
+        });
+      });
 
       const result = await httpHandler(
         {

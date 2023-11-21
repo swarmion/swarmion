@@ -12,8 +12,9 @@ export const getServerlessConfigFile =
   async (): Promise<ServerlessConfigFile> => {
     const configPath = await resolveServerlessConfigPath();
 
-    const serverlessConfigFile =
-      (await require(configPath)) as ServerlessConfigFile;
+    const serverlessConfigFile = (await require(
+      configPath,
+    )) as ServerlessConfigFile;
 
     // Serverless configuration validation does not catch missing property properly
     const uncheckedConfigFile = serverlessConfigFile as O.Partial<

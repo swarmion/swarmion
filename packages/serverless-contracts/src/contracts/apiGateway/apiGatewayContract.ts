@@ -28,8 +28,9 @@ export class ApiGatewayContract<
   IntegrationType extends ApiGatewayIntegrationType = ApiGatewayIntegrationType,
   AuthorizerType extends ApiGatewayAuthorizerType = undefined,
   PathParametersSchema extends ConstrainedJSONSchema | undefined = undefined,
-  QueryStringParametersSchema extends ConstrainedJSONSchema | undefined =
-    | undefined,
+  QueryStringParametersSchema extends
+    | ConstrainedJSONSchema
+    | undefined = undefined,
   HeadersSchema extends ConstrainedJSONSchema | undefined = undefined,
   RequestContextSchema extends JSONSchema | undefined = undefined,
   BodySchema extends JSONSchema | undefined = undefined,

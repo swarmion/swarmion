@@ -98,20 +98,18 @@ describe('EventBridgeContract handler test', () => {
 
     const sideEffects = { mySideEffect: mockSideEffect };
 
-    const handler = getHandler(eventBridgeContract, { ajv })(
-      async (
-        event,
-        _context,
-        _callback,
-        { mySideEffect }: SideEffects = sideEffects,
-      ) => {
-        await Promise.resolve();
+    const handler = getHandler(eventBridgeContract, { ajv })(async (
+      event,
+      _context,
+      _callback,
+      { mySideEffect }: SideEffects = sideEffects,
+    ) => {
+      await Promise.resolve();
 
-        const sideEffectRes = mySideEffect();
+      const sideEffectRes = mySideEffect();
 
-        return `${event.detail.userId}-${sideEffectRes}`;
-      },
-    );
+      return `${event.detail.userId}-${sideEffectRes}`;
+    });
 
     const result = await handler(
       {
@@ -132,20 +130,18 @@ describe('EventBridgeContract handler test', () => {
       mySideEffect: () => string;
     }
 
-    const handler = getHandler(eventBridgeContract, { ajv })(
-      async (
-        event,
-        _context,
-        _callback,
-        { mySideEffect }: SideEffects = { mySideEffect: mockUnusedSideEffect },
-      ) => {
-        await Promise.resolve();
+    const handler = getHandler(eventBridgeContract, { ajv })(async (
+      event,
+      _context,
+      _callback,
+      { mySideEffect }: SideEffects = { mySideEffect: mockUnusedSideEffect },
+    ) => {
+      await Promise.resolve();
 
-        const sideEffectRes = mySideEffect();
+      const sideEffectRes = mySideEffect();
 
-        return `${event.detail.userId}-${sideEffectRes}`;
-      },
-    );
+      return `${event.detail.userId}-${sideEffectRes}`;
+    });
 
     const result = await handler(
       {

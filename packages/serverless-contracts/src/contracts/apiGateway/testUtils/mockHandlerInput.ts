@@ -33,7 +33,8 @@ export const setMockHandlerInputSeed = (inputSeed: string): void => {
 
 export const getMockHandlerInput = <
   Contract extends GenericApiGatewayContract,
-  IntegrationType extends ApiGatewayIntegrationType = Contract['integrationType'],
+  IntegrationType extends
+    ApiGatewayIntegrationType = Contract['integrationType'],
   AuthorizerType extends ApiGatewayAuthorizerType = Contract['authorizerType'],
   AdditionalArgs extends unknown[] = never[],
   CustomEvent = HandlerEventType<
