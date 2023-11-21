@@ -91,8 +91,8 @@ importers:
         specifier: ^8.29.0
         version: 8.35.0
       json-schema-to-ts:
-        specifier: ^2.9.1
-        version: 2.9.1
+        specifier: ^2.9.2
+        version: 2.9.2
       prettier:
         specifier: ^3.0.0
         version: 3.1.0
@@ -152,26 +152,26 @@ importers:
         version: 5.0.0
     devDependencies:
       '@types/async-retry':
-        specifier: ^1.4.5
-        version: 1.4.5
+        specifier: ^1.4.8
+        version: 1.4.8
       '@types/cross-spawn':
-        specifier: ^6.0.2
-        version: 6.0.2
+        specifier: ^6.0.6
+        version: 6.0.6
       '@types/node':
         specifier: ^18.16.1
         version: 18.16.1
       '@types/prompts':
-        specifier: ^2.4.2
-        version: 2.4.2
+        specifier: ^2.4.9
+        version: 2.4.9
       '@types/rimraf':
         specifier: ^4.0.5
         version: 4.0.5
       '@types/tar':
-        specifier: ^6.1.3
-        version: 6.1.3
+        specifier: ^6.1.10
+        version: 6.1.10
       '@types/validate-npm-package-name':
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.0.2
+        version: 4.0.2
       '@vercel/ncc':
         specifier: ^0.38.0
         version: 0.38.1
@@ -261,11 +261,11 @@ importers:
         specifier: ^7.20.4
         version: 7.20.4
       date-fns:
-        specifier: ^2.29.3
-        version: 2.29.3
+        specifier: ^2.30.0
+        version: 2.30.0
       recast:
-        specifier: ^0.23.0
-        version: 0.23.0
+        specifier: ^0.23.4
+        version: 0.23.4
     devDependencies:
       '@types/node':
         specifier: ^18.16.1
@@ -289,8 +289,8 @@ importers:
         specifier: ^8.35.0
         version: 8.35.0
       json-schema-to-ts:
-        specifier: ^2.7.2
-        version: 2.7.2
+        specifier: ^2.9.2
+        version: 2.9.2
       prettier:
         specifier: ^3.0.0
         version: 3.1.0
@@ -383,8 +383,8 @@ importers:
         specifier: ^3.12.18
         version: 3.12.18
       json-schema-to-ts:
-        specifier: ^2.9.1
-        version: 2.9.1
+        specifier: ^2.9.2
+        version: 2.9.2
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
@@ -475,8 +475,8 @@ importers:
         specifier: ^8.29.0
         version: 8.35.0
       json-schema-to-ts:
-        specifier: ^2.9.1
-        version: 2.9.1
+        specifier: ^2.9.2
+        version: 2.9.2
       prettier:
         specifier: ^3.0.0
         version: 3.1.0
@@ -557,11 +557,11 @@ importers:
         specifier: ^18.16.1
         version: 18.16.1
       '@types/seedrandom':
-        specifier: ^3.0.4
-        version: 3.0.4
+        specifier: ^3.0.8
+        version: 3.0.8
       '@types/swagger-jsdoc':
-        specifier: ^6.0.1
-        version: 6.0.1
+        specifier: ^6.0.4
+        version: 6.0.4
       '@vitest/coverage-v8':
         specifier: ^1.0.0-beta.5
         version: 1.0.0-beta.5(vitest@1.0.0-beta.5)
@@ -636,8 +636,8 @@ importers:
         specifier: ^0.18.0
         version: 0.18.0
       json-schema-to-ts:
-        specifier: ^2.9.1
-        version: 2.9.1
+        specifier: ^2.9.2
+        version: 2.9.2
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
@@ -703,8 +703,8 @@ importers:
   packages/serverless-helpers:
     dependencies:
       json-schema-to-ts:
-        specifier: ^2.9.1
-        version: 2.9.1
+        specifier: ^2.9.2
+        version: 2.9.2
     devDependencies:
       '@serverless/typescript':
         specifier: ^3.30.1
@@ -797,8 +797,8 @@ importers:
         specifier: ^2.110.0
         version: 2.110.0(constructs@10.3.0)
       dynamodb-toolbox:
-        specifier: ^0.9.0
-        version: 0.9.1(@aws-sdk/client-dynamodb@3.454.0)(@aws-sdk/lib-dynamodb@3.454.0)
+        specifier: ^0.9.2
+        version: 0.9.2(@aws-sdk/client-dynamodb@3.454.0)(@aws-sdk/lib-dynamodb@3.454.0)
       ulid:
         specifier: ^2.3.0
         version: 2.3.0
@@ -834,8 +834,8 @@ importers:
         specifier: ^8.29.0
         version: 8.35.0
       node-fetch:
-        specifier: ^3.3.0
-        version: 3.3.0
+        specifier: ^3.3.2
+        version: 3.3.2
       serverless:
         specifier: ^3.37.0
         version: 3.37.0
@@ -1120,7 +1120,7 @@ packages:
     resolution: {integrity: sha512-GBD2Le9w2+lVFoc4vswGI/TjkNIZSVp7+9xPf+X3uidBfWnAeUWmquteSyt0+VCrhNMWj/FTABISQrD3Z/YA+w==}
     dependencies:
       '@jsdevtools/ono': 7.1.3
-      '@types/json-schema': 7.0.12
+      '@types/json-schema': 7.0.15
       call-me-maybe: 1.0.1
       js-yaml: 4.1.0
     dev: false
@@ -3948,6 +3948,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
+    dev: true
 
   /@babel/runtime@7.22.15:
     resolution: {integrity: sha512-T0O+aa+4w0u06iNmapipJXMV4HoUir03hpx3/YqXXhu9xim3w+dVphjFWl1OH8NbZHw5Lbm9k45drDkgq2VNNA==}
@@ -7751,10 +7752,10 @@ packages:
     dependencies:
       '@types/estree': 1.0.1
 
-  /@types/async-retry@1.4.5:
-    resolution: {integrity: sha512-YrdjSD+yQv7h6d5Ip+PMxh3H6ZxKyQk0Ts+PvaNRInxneG9PFVZjFg77ILAN+N6qYf7g4giSJ1l+ZjQ1zeegvA==}
+  /@types/async-retry@1.4.8:
+    resolution: {integrity: sha512-Qup/B5PWLe86yI5I3av6ePGaeQrIHNKCwbsQotD6aHQ6YkHsMUxVZkZsmx/Ry3VZQ6uysHwTjQ7666+k6UjVJA==}
     dependencies:
-      '@types/retry': 0.12.2
+      '@types/retry': 0.12.5
     dev: true
 
   /@types/aws-lambda@8.10.126:
@@ -7818,8 +7819,8 @@ packages:
     dependencies:
       '@types/node': 18.16.1
 
-  /@types/cross-spawn@6.0.2:
-    resolution: {integrity: sha512-KuwNhp3eza+Rhu8IFI5HUXRP0LIhqH5cAjubUvGXXthh4YYBuP2ntwEX+Cz8GJoZUHlKo247wPWOfA9LYEq4cw==}
+  /@types/cross-spawn@6.0.6:
+    resolution: {integrity: sha512-fXRhhUkG4H3TQk5dBhQ7m/JDdSNHKwR2BBia62lhwEIq9xGiQKLxd6LymNhn47SjXhsUEPmxi+PKw2OkW4LLjA==}
     dependencies:
       '@types/node': 18.16.1
     dev: true
@@ -7929,6 +7930,9 @@ packages:
   /@types/json-schema@7.0.12:
     resolution: {integrity: sha512-Hr5Jfhc9eYOQNPYO5WLDq/n4jqijdHNlDXjuAQkkt+mWdQR+XJToOHrsD4cPaMXpn6KO7y2+wM8AZEs8VpBLVA==}
 
+  /@types/json-schema@7.0.15:
+    resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
+
   /@types/json5@0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
@@ -7993,8 +7997,8 @@ packages:
     resolution: {integrity: sha512-A0D0aTXvjlqJ5ZILMz3rNfDBOx9hHxLZYv2by47Sm/pqW35zzjusrZTryatjN/Rf8Us2gZrJD+KeHbUSTux1Cw==}
     dev: false
 
-  /@types/prompts@2.4.2:
-    resolution: {integrity: sha512-TwNx7qsjvRIUv/BCx583tqF5IINEVjCNqg9ofKHRlSoUHE62WBHrem4B1HGXcIrG511v29d1kJ9a/t2Esz7MIg==}
+  /@types/prompts@2.4.9:
+    resolution: {integrity: sha512-qTxFi6Buiu8+50/+3DGIWLHM6QuWsEKugJnnP6iv2Mc4ncxE4A/OJkjuVOA+5X0X1S/nq5VJRa8Lu+nwcvbrKA==}
     dependencies:
       '@types/node': 18.16.1
       kleur: 3.0.3
@@ -8061,6 +8065,10 @@ packages:
   /@types/retry@0.12.2:
     resolution: {integrity: sha512-XISRgDJ2Tc5q4TRqvgJtzsRkFYNJzZrhTdtMoGVBttwzzQJkPnS3WWTFc7kuDRoPtPakl+T+OfdEUjYJj7Jbow==}
 
+  /@types/retry@0.12.5:
+    resolution: {integrity: sha512-3xSjTp3v03X/lSQLkczaN9UIEwJMoMCA1+Nb5HfbJEQWogdeQIyVtTvxPXDQjZ5zws8rFQfVfRdz03ARihPJgw==}
+    dev: true
+
   /@types/rimraf@4.0.5:
     resolution: {integrity: sha512-DTCZoIQotB2SUJnYgrEx43cQIUYOlNZz0AZPbKU4PSLYTUdML5Gox0++z4F9kQocxStrCmRNhi4x5x/UlwtKUA==}
     deprecated: This is a stub types definition. rimraf provides its own type definitions, so you do not need this installed.
@@ -8080,8 +8088,8 @@ packages:
   /@types/scheduler@0.16.6:
     resolution: {integrity: sha512-Vlktnchmkylvc9SnwwwozTv04L/e1NykF5vgoQ0XTmI8DD+wxfjQuHuvHS3p0r2jz2x2ghPs2h1FVeDirIteWA==}
 
-  /@types/seedrandom@3.0.4:
-    resolution: {integrity: sha512-/rWdxeiuZenlawrHU+XV6ZHMTKOqrC2hMfeDfLTIWJhDZP5aVqXRysduYHBbhD7CeJO6FJr/D2uBVXB7GT6v7w==}
+  /@types/seedrandom@3.0.8:
+    resolution: {integrity: sha512-TY1eezMU2zH2ozQoAFAQFOPpvP15g+ZgSfTZt31AUUH/Rxtnz3H+A/Sv1Snw2/amp//omibc+AEkTaA8KUeOLQ==}
     dev: true
 
   /@types/semver@7.5.5:
@@ -8121,15 +8129,15 @@ packages:
     resolution: {integrity: sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==}
     dev: true
 
-  /@types/swagger-jsdoc@6.0.1:
-    resolution: {integrity: sha512-+MUpcbyxD528dECUBCEVm6abNuORdbuGjbrUdHDeAQ+rkPuo2a+L4N02WJHF3bonSSE6SJ3dUJwF2V6+cHnf0w==}
+  /@types/swagger-jsdoc@6.0.4:
+    resolution: {integrity: sha512-W+Xw5epcOZrF/AooUM/PccNMSAFOKWZA5dasNyMujTwsBkU74njSJBpvCCJhHAJ95XRMzQrrW844Btu0uoetwQ==}
     dev: true
 
-  /@types/tar@6.1.3:
-    resolution: {integrity: sha512-YzDOr5kdAeqS8dcO6NTTHTMJ44MUCBDoLEIyPtwEn7PssKqUYL49R1iCVJPeiPzPlKi6DbH33eZkpeJ27e4vHg==}
+  /@types/tar@6.1.10:
+    resolution: {integrity: sha512-60ZO+W0tRKJ3ggdzJKp75xKVlNogKYMqGvr2bMH/+k3T0BagfYTnbmVDFMJB1BFttz6yRgP5MDGP27eh7brrqw==}
     dependencies:
       '@types/node': 18.16.1
-      minipass: 3.3.6
+      minipass: 4.2.8
     dev: true
 
   /@types/traverse@0.6.35:
@@ -8142,8 +8150,8 @@ packages:
   /@types/unist@3.0.2:
     resolution: {integrity: sha512-dqId9J8K/vGi5Zr7oo212BGii5m3q5Hxlkwy3WpYuKPklmBEvsbMYYyLxAQpSffdLl/gdW0XUpKWFvYmyoWCoQ==}
 
-  /@types/validate-npm-package-name@4.0.0:
-    resolution: {integrity: sha512-RpO62vB2lkjEkyLbwTheA2+uwYmtVMWTr/kWRI++UAgVdZqNqdAuIQl/SxBCGeMKfdjWaXPbyhZbiCc4PAj+KA==}
+  /@types/validate-npm-package-name@4.0.2:
+    resolution: {integrity: sha512-lrpDziQipxCEeK5kWxvljWYhUvOiB2A9izZd9B2AFarYAkqZshb4lPbRs7zKEic6eGtH8V/2qJW+dPp9OtF6bw==}
     dev: true
 
   /@types/ws@8.5.9:
@@ -8933,12 +8941,13 @@ packages:
     engines: {node: '>=0.8'}
     dev: false
 
-  /assert@2.0.0:
-    resolution: {integrity: sha512-se5Cd+js9dXJnu6Ag2JFc00t+HmHOen+8Q+L7O9zI0PqQXr20uk2J0XQqMxZEeo5U50o8Nvmmx7dZrl+Ufr35A==}
+  /assert@2.1.0:
+    resolution: {integrity: sha512-eLHpSK/Y4nhMJ07gDaAzoX/XAKS8PSaojml3M0DM4JpV1LAi5JOJ/p6H/XWrl8L+DzVEvVCW1z3vWAaB9oTsQw==}
     dependencies:
-      es6-object-assign: 1.1.0
+      call-bind: 1.0.5
       is-nan: 1.3.2
       object-is: 1.1.5
+      object.assign: 4.1.4
       util: 0.12.5
     dev: false
 
@@ -8946,8 +8955,8 @@ packages:
     resolution: {integrity: sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==}
     dev: true
 
-  /ast-types@0.15.2:
-    resolution: {integrity: sha512-c27loCv9QkZinsa5ProX751khO9DJl/AcB5c2KNtA6NRvHKS0PgLfcftz72KVq504vB0Gku5s2kUZzDBvQWvHg==}
+  /ast-types@0.16.1:
+    resolution: {integrity: sha512-6t10qk83GOG8p0vKmaCr8eiilZwO171AvbROMtvvNiwrTly62t+7XkA8RdIIVbpMhCASAsxgAzdRSwh6nw/5Dg==}
     engines: {node: '>=4'}
     dependencies:
       tslib: 2.6.2
@@ -10774,17 +10783,11 @@ packages:
     engines: {node: '>= 12'}
     dev: true
 
-  /date-fns@2.29.3:
-    resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
-    engines: {node: '>=0.11'}
-    dev: false
-
   /date-fns@2.30.0:
     resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
     engines: {node: '>=0.11'}
     dependencies:
       '@babel/runtime': 7.23.4
-    dev: true
 
   /dateformat@3.0.3:
     resolution: {integrity: sha512-jyCETtSl3VMZMWeRo7iY1FL19ges1t55hMo5yaam4Jrsm5EPL89UQkoQRyiI+Yf4k8r2ZpdngkV8hr1lIdjb3Q==}
@@ -10996,6 +10999,15 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       has-property-descriptors: 1.0.0
+      object-keys: 1.1.1
+    dev: true
+
+  /define-properties@1.2.1:
+    resolution: {integrity: sha512-8QmQKqEASLd5nx0U1B1okLElbUuuttJ/AnYmRXbbbGDWh6uS208EjD4Xqq/I9wK7u0v6O08XhTWnt5XtEbR6Dg==}
+    engines: {node: '>= 0.4'}
+    dependencies:
+      define-data-property: 1.1.1
+      has-property-descriptors: 1.0.1
       object-keys: 1.1.1
 
   /defu@6.1.3:
@@ -11266,8 +11278,8 @@ packages:
       d: 1.0.1
       es5-ext: 0.10.62
 
-  /dynamodb-toolbox@0.9.1(@aws-sdk/client-dynamodb@3.454.0)(@aws-sdk/lib-dynamodb@3.454.0):
-    resolution: {integrity: sha512-8JpL6JcLi8SjOx+fM3canpQesRlMp6imWfkTgYZWbfyRnK+gHXzIraK2HPutsAMwejoGeYN1AnI8I7hR7qIAfg==}
+  /dynamodb-toolbox@0.9.2(@aws-sdk/client-dynamodb@3.454.0)(@aws-sdk/lib-dynamodb@3.454.0):
+    resolution: {integrity: sha512-vBn6baXXritGmin90f6nF5ufZqNjbVhl20jUKdmAAgwmSMBa/CQ3U81Ypr37c+NFeaYOk63ZmoDiraAKXtB7wQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       '@aws-sdk/client-dynamodb': ^3.0.0
@@ -11457,10 +11469,6 @@ packages:
       d: 1.0.1
       es5-ext: 0.10.62
       es6-symbol: 3.1.3
-
-  /es6-object-assign@1.1.0:
-    resolution: {integrity: sha512-MEl9uirslVwqQU369iHNWZXsI8yaZYGg/D65aOgZkeyFJwHYSxilf7rQzXKI7DdDuBPrBXbfk3sl9hJhmd5AUw==}
-    dev: false
 
   /es6-set@0.1.6:
     resolution: {integrity: sha512-TE3LgGLDIBX332jq3ypv6bcOpkLO0AslAQo7p2VqX/1N46YNsvIWgvjojjSEnWEGWMhr1qUbYeTSir5J6mFHOw==}
@@ -13212,6 +13220,7 @@ packages:
     resolution: {integrity: sha512-62DVLZGoiEBDHQyqG4w9xCuZ7eJEwNmJRWw2VY84Oedb7WFcA27fiEVe8oUQx9hAUJ4ekurquucTGwsyO1XGdQ==}
     dependencies:
       get-intrinsic: 1.1.3
+    dev: true
 
   /has-property-descriptors@1.0.1:
     resolution: {integrity: sha512-VsX8eaIewvas0xnvinAe9bw4WfIeODpGYikiWYLH+dma0Jw6KHYqWiWfhQlgOVK8D6PvjubK5Uc4P0iIhIcNVg==}
@@ -13982,8 +13991,8 @@ packages:
     resolution: {integrity: sha512-E+zBKpQ2t6MEo1VsonYmluk9NxGrbzpeeLC2xIViuO2EjU2xsXsBPwTr3Ykv9l08UYEVEdWeRZNouaZqF6RN0w==}
     engines: {node: '>= 0.4'}
     dependencies:
-      call-bind: 1.0.2
-      define-properties: 1.1.4
+      call-bind: 1.0.5
+      define-properties: 1.2.1
     dev: false
 
   /is-natural-number@4.0.1:
@@ -14828,31 +14837,13 @@ packages:
     resolution: {integrity: sha512-MDl8fA8ONckmQOm2+eXKJaFJNvxk7eGin+XFofNjS3q3PRKSoEvgMVb0ehOpCAYkUiLoMiqdU7obV7AmzAmyLw==}
     dev: false
 
-  /json-schema-to-ts@2.7.2:
-    resolution: {integrity: sha512-R1JfqKqbBR4qE8UyBR56Ms30LL62/nlhoz+1UkfI/VE7p54Awu919FZ6ZUPG8zIa3XB65usPJgr1ONVncUGSaQ==}
-    engines: {node: '>=16'}
-    dependencies:
-      '@babel/runtime': 7.20.13
-      '@types/json-schema': 7.0.11
-      ts-algebra: 1.2.0
-    dev: true
-
-  /json-schema-to-ts@2.9.1:
-    resolution: {integrity: sha512-8MNpRGERlCUWYeJwsWkMrJ0MWzBz49dfqpG+n9viiIlP4othaahbiaNQZuBzmPxRLUhOv1QJMCzW5WE8nHFGIQ==}
-    engines: {node: '>=16'}
-    dependencies:
-      '@babel/runtime': 7.20.13
-      '@types/json-schema': 7.0.11
-      ts-algebra: 1.2.0
-
   /json-schema-to-ts@2.9.2:
     resolution: {integrity: sha512-h9WqLkTVpBbiaPb5OmeUpz/FBLS/kvIJw4oRCPiEisIu2WjMh+aai0QIY2LoOhRFx5r92taGLcerIrzxKBAP6g==}
     engines: {node: '>=16'}
     dependencies:
-      '@babel/runtime': 7.22.15
-      '@types/json-schema': 7.0.12
-      ts-algebra: 1.2.0
-    dev: false
+      '@babel/runtime': 7.23.4
+      '@types/json-schema': 7.0.15
+      ts-algebra: 1.2.2
 
   /json-schema-traverse@0.4.1:
     resolution: {integrity: sha512-xbbCH5dCYU5T8LcEhhuh7HJ88HXuW3qsI3Y0zOZFKfZEHcpWiHU/Jxzk629Brsab/mMiHQti9wMP+845RPe3Vg==}
@@ -16530,8 +16521,8 @@ packages:
     dependencies:
       whatwg-url: 5.0.0
 
-  /node-fetch@3.3.0:
-    resolution: {integrity: sha512-BKwRP/O0UvoMKp7GNdwPlObhYGB5DQqwhEDQlNKuoqwVYSxkSZCSbHjnFFmUEtwSKRPU4kNK8PbDYYitwaE3QA==}
+  /node-fetch@3.3.2:
+    resolution: {integrity: sha512-dRB78srN/l6gqWulah9SrxeYnxeddIG30+GOqK/9OlLVyLg3HPnr6SqOWTWOXKRwC2eGYCkZ59NNuSgvSrpgOA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       data-uri-to-buffer: 4.0.1
@@ -16951,8 +16942,8 @@ packages:
     resolution: {integrity: sha512-3cyDsyHgtmi7I7DfSSI2LDp6SK2lwvtbg0p0R1e0RvTqF5ceGx+K2dfSjm1bKDMVCFEDAQvy+o8c6a7VujOddw==}
     engines: {node: '>= 0.4'}
     dependencies:
-      call-bind: 1.0.2
-      define-properties: 1.1.4
+      call-bind: 1.0.5
+      define-properties: 1.2.1
     dev: false
 
   /object-keys@1.1.1:
@@ -16963,8 +16954,8 @@ packages:
     resolution: {integrity: sha512-1mxKf0e58bvyjSCtKYY4sRe9itRk3PJpquJOjeIkz885CczcI4IvJJDLPS72oowuSh+pBxUFROpX+TU++hxhZQ==}
     engines: {node: '>= 0.4'}
     dependencies:
-      call-bind: 1.0.2
-      define-properties: 1.1.4
+      call-bind: 1.0.5
+      define-properties: 1.2.1
       has-symbols: 1.0.3
       object-keys: 1.1.1
 
@@ -18526,15 +18517,15 @@ packages:
     resolution: {integrity: sha512-onYyVhBNr4CmAxFsKS7bz+uTLRakypIe4R+5A824vBSkQy/hB3fZepoVEf8OVAxzLvK+H/jm9TzpI3ETSm64Kg==}
     dev: false
 
-  /recast@0.23.0:
-    resolution: {integrity: sha512-+eh8cppi1n8wlRv5Y+e1eh/ft0h+yh3mGjviEngpFzEg9TSmVh7Ariax9Fjqi+STZCbIZLUwdO/2dQN0gxYYUg==}
+  /recast@0.23.4:
+    resolution: {integrity: sha512-qtEDqIZGVcSZCHniWwZWbRy79Dc6Wp3kT/UmDA2RJKBPg7+7k51aQBZirHmUGn5uvHf2rg8DkjizrN26k61ATw==}
     engines: {node: '>= 4'}
     dependencies:
-      assert: 2.0.0
-      ast-types: 0.15.2
+      assert: 2.1.0
+      ast-types: 0.16.1
       esprima: 4.0.1
       source-map: 0.6.1
-      tslib: 2.5.0
+      tslib: 2.6.2
     dev: false
 
   /rechoir@0.6.2:
@@ -18575,6 +18566,7 @@ packages:
 
   /regenerator-runtime@0.13.11:
     resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
+    dev: true
 
   /regenerator-runtime@0.14.0:
     resolution: {integrity: sha512-srw17NI0TUWHuGa5CFGGmhfNIeja30WMBfbslPNhf6JrqQlLN5gcrvig1oqPxiVaXb0oW0XRKtH6Nngs5lKCIA==}
@@ -20357,8 +20349,8 @@ packages:
   /trough@2.1.0:
     resolution: {integrity: sha512-AqTiAOLcj85xS7vQ8QkAV41hPDIJ71XJB4RCUrzo/1GM2CQwhkJGaf9Hgr7BOugMRpgGUrqRg/DrBDl4H40+8g==}
 
-  /ts-algebra@1.2.0:
-    resolution: {integrity: sha512-kMuJJd8B2N/swCvIvn1hIFcIOrLGbWl9m/J6O3kHx9VRaevh00nvgjPiEGaRee7DRaAczMYR2uwWvXU22VFltw==}
+  /ts-algebra@1.2.2:
+    resolution: {integrity: sha512-kloPhf1hq3JbCPOTYoOWDKxebWjNb2o/LKnNfkWhxVVisFFmMJPPdJeGoGmM+iRLyoXAR61e08Pb+vUXINg8aA==}
 
   /ts-api-utils@1.0.3(typescript@5.0.2):
     resolution: {integrity: sha512-wNMeqtMz5NtwpT/UZGY5alT+VoKdSsOOP/kqHFcUW1P/VRhH2wJ48+DN2WwUliNbQ976ETwDL0Ifd2VVvgonvg==}
@@ -20525,10 +20517,6 @@ packages:
 
   /tslib@1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
-
-  /tslib@2.5.0:
-    resolution: {integrity: sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==}
-    dev: false
 
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
