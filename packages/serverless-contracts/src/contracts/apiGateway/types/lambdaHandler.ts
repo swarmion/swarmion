@@ -62,7 +62,8 @@ export type HandlerEventType<
  */
 export type SwarmionApiGatewayEvent<
   Contract extends GenericApiGatewayContract,
-  IntegrationType extends ApiGatewayIntegrationType = Contract['integrationType'],
+  IntegrationType extends
+    ApiGatewayIntegrationType = Contract['integrationType'],
   AuthorizerType extends ApiGatewayAuthorizerType = Contract['authorizerType'],
   PathParameters = PathParametersType<Contract>,
   QueryStringParameters = QueryStringParametersType<Contract>,
@@ -129,7 +130,8 @@ export type InternalSwarmionApiGatewayHandler<
 export type SwarmionApiGatewayHandler<
   Contract extends GenericApiGatewayContract,
   AdditionalArgs extends unknown[] = never[],
-  IntegrationType extends ApiGatewayIntegrationType = Contract['integrationType'],
+  IntegrationType extends
+    ApiGatewayIntegrationType = Contract['integrationType'],
   AuthorizerType extends ApiGatewayAuthorizerType = Contract['authorizerType'],
   PathParameters = PathParametersType<Contract>,
   QueryStringParameters = QueryStringParametersType<Contract>,

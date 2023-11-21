@@ -40,20 +40,18 @@ const sideEffects = {
 const main = getHandler(
   myContract,
   ajvInstance,
-)(
-  (
-    event,
-    _context, // will always be passed by Lambda
-    _callback, // will always be passed by Lambda
-    { getUser }: typeof sideEffects = sideEffects,
-  ) => {
-    const user = await getUser('toto'); // type-safe!
+)((
+  event,
+  _context, // will always be passed by Lambda
+  _callback, // will always be passed by Lambda
+  { getUser }: typeof sideEffects = sideEffects,
+) => {
+  const user = await getUser('toto'); // type-safe!
 
-    const { name, id } = user; // type-safe!
+  const { name, id } = user; // type-safe!
 
-    return { statusCode: HttpStatusCodes.OK, body: { name, id } };
-  },
-);
+  return { statusCode: HttpStatusCodes.OK, body: { name, id } };
+});
 ```
 
 There's quite a lot going on here, let's dive into it:

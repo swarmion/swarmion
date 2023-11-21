@@ -46,8 +46,10 @@ const defaultOptions = {
 export const getApiGatewayHandler =
   <
     Contract extends GenericApiGatewayContract,
-    IntegrationType extends ApiGatewayIntegrationType = Contract['integrationType'],
-    AuthorizerType extends ApiGatewayAuthorizerType = Contract['authorizerType'],
+    IntegrationType extends
+      ApiGatewayIntegrationType = Contract['integrationType'],
+    AuthorizerType extends
+      ApiGatewayAuthorizerType = Contract['authorizerType'],
     PathParameters = PathParametersType<Contract>,
     QueryStringParameters = QueryStringParametersType<Contract>,
     Headers = HeadersType<Contract>,
@@ -186,8 +188,10 @@ export const getApiGatewayHandler =
 export const getLambdaHandler =
   <
     Contract extends GenericApiGatewayContract,
-    IntegrationType extends ApiGatewayIntegrationType = Contract['integrationType'],
-    AuthorizerType extends ApiGatewayAuthorizerType = Contract['authorizerType'],
+    IntegrationType extends
+      ApiGatewayIntegrationType = Contract['integrationType'],
+    AuthorizerType extends
+      ApiGatewayAuthorizerType = Contract['authorizerType'],
     PathParameters = PathParametersType<Contract>,
     QueryStringParameters = QueryStringParametersType<Contract>,
     Headers = HeadersType<Contract>,

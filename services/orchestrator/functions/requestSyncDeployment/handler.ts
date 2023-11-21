@@ -14,27 +14,25 @@ type SideEffects = {
   generateUlid: GenerateUlidType;
 };
 
-export const main = getHandler(requestSyncDeploymentContract, { ajv })(
-  async (
-    event,
-    _context,
-    _callback,
-    {
-      putRequestedContractEvent,
-      storeServiceEvent,
-      generateUlid,
-    }: SideEffects = sideEffects,
-  ) => {
-    const { serviceId, applicationId } = event.body;
-    const eventId = generateUlid();
+export const main = getHandler(requestSyncDeploymentContract, { ajv })(async (
+  event,
+  _context,
+  _callback,
+  {
+    putRequestedContractEvent,
+    storeServiceEvent,
+    generateUlid,
+  }: SideEffects = sideEffects,
+) => {
+  const { serviceId, applicationId } = event.body;
+  const eventId = generateUlid();
 
-    await storeServiceEvent({ serviceId, applicationId, eventId });
+  await storeServiceEvent({ serviceId, applicationId, eventId });
 
-    await putRequestedContractEvent({ serviceId, applicationId, eventId });
+  await putRequestedContractEvent({ serviceId, applicationId, eventId });
 
-    return {
-      statusCode: HttpStatusCodes.OK,
-      body: { status: 'ACCEPTED', message: 'processing' },
-    };
-  },
-);
+  return {
+    statusCode: HttpStatusCodes.OK,
+    body: { status: 'ACCEPTED', message: 'processing' },
+  };
+});
