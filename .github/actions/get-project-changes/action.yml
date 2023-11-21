@@ -8,7 +8,7 @@ runs:
   using: 'composite'
   steps:
     - name: Derive appropriate SHAs for base and head for `nx affected` commands
-      uses: nrwl/nx-set-shas@v3
+      uses: nrwl/nx-set-shas@v4
     - name: Get affected projects
       id: affected-projects
       run: |

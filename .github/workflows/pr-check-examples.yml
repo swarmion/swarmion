@@ -74,7 +74,7 @@ jobs:
           ref: ${{ env.TARGET_SHA }}
           # We need to fetch all branches and commits so that Nx affected has a base to compare against.
           fetch-depth: 0
-      - uses: nrwl/nx-set-shas@v3
+      - uses: nrwl/nx-set-shas@v4
       - name: Install & cache node dependencies
         uses: ./.github/actions/install-node-deps
       - name: '🔍 Check example'
