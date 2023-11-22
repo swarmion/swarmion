@@ -230,8 +230,8 @@ importers:
         specifier: ^6.0.0
         version: 6.1.4(vitest@1.0.0-beta.5)
       '@testing-library/react':
-        specifier: ^12.1.5
-        version: 12.1.5(react-dom@17.0.2)(react@17.0.2)
+        specifier: ^14.0.0
+        version: 14.1.2(react-dom@17.0.2)(react@17.0.2)
       '@testing-library/react-hooks':
         specifier: ^8.0.0
         version: 8.0.1(@types/react@17.0.52)(react-dom@17.0.2)(react@17.0.2)
@@ -412,8 +412,8 @@ importers:
         specifier: ^6.0.0
         version: 6.1.4(vitest@1.0.0-beta.5)
       '@testing-library/react':
-        specifier: ^12.1.5
-        version: 12.1.5(react-dom@17.0.2)(react@17.0.2)
+        specifier: ^14.0.0
+        version: 14.1.2(react-dom@17.0.2)(react@17.0.2)
       '@testing-library/react-hooks':
         specifier: ^8.0.0
         version: 8.0.1(@types/react@17.0.52)(react-dom@17.0.2)(react@17.0.2)
@@ -4957,20 +4957,6 @@ packages:
       react-dom: 17.0.2(react@17.0.2)
     dev: false
 
-  /@testing-library/dom@8.19.0:
-    resolution: {integrity: sha512-6YWYPPpxG3e/xOo6HIWwB/58HukkwIVTOaZ0VwdMVjhRUX/01E4FtQbck9GazOOj7MXHc5RBzMrU86iBJHbI+A==}
-    engines: {node: '>=12'}
-    dependencies:
-      '@babel/code-frame': 7.22.13
-      '@babel/runtime': 7.23.2
-      '@types/aria-query': 4.2.2
-      aria-query: 5.0.2
-      chalk: 4.1.2
-      dom-accessibility-api: 0.5.14
-      lz-string: 1.4.4
-      pretty-format: 27.5.1
-    dev: true
-
   /@testing-library/dom@9.0.0:
     resolution: {integrity: sha512-+/TLgKNFsYUshOY/zXsQOk+PlFQK+eyJ9T13IDVNJEi+M+Un7xlJK+FZKkbGSnf0+7E1G6PlDhkSYQ/GFiruBQ==}
     engines: {node: '>=14'}
@@ -5037,16 +5023,16 @@ packages:
       react-error-boundary: 3.1.4(react@17.0.2)
     dev: true
 
-  /@testing-library/react@12.1.5(react-dom@17.0.2)(react@17.0.2):
-    resolution: {integrity: sha512-OfTXCJUFgjd/digLUuPxa0+/3ZxsQmE7ub9kcbW/wi96Bh3o/p5vrETcBGfP17NWPGqeYYl5LTRpwyGoMC4ysg==}
-    engines: {node: '>=12'}
+  /@testing-library/react@14.1.2(react-dom@17.0.2)(react@17.0.2):
+    resolution: {integrity: sha512-z4p7DVBTPjKM5qDZ0t5ZjzkpSNb+fZy1u6bzO7kk8oeGagpPCAtgh4cx1syrfp7a+QWkM021jGqjJaxJJnXAZg==}
+    engines: {node: '>=14'}
     peerDependencies:
-      react: <18.0.0
-      react-dom: <18.0.0
+      react: ^18.0.0
+      react-dom: ^18.0.0
     dependencies:
-      '@babel/runtime': 7.21.0
-      '@testing-library/dom': 8.19.0
-      '@types/react-dom': 17.0.17
+      '@babel/runtime': 7.23.2
+      '@testing-library/dom': 9.0.0
+      '@types/react-dom': 18.0.6
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
     dev: true
@@ -5083,10 +5069,6 @@ packages:
 
   /@tsconfig/node16@1.0.3:
     resolution: {integrity: sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==}
-    dev: true
-
-  /@types/aria-query@4.2.2:
-    resolution: {integrity: sha512-HnYpAE1Y6kRyKM/XkEuiRQhTHvkzMBurTHnpFLYLBGPIylZNPs9jJcuOOYWxPLJCSEtmZT0Y8rHDokKN7rRTig==}
     dev: true
 
   /@types/aria-query@5.0.1:
@@ -5226,12 +5208,6 @@ packages:
 
   /@types/prop-types@15.7.9:
     resolution: {integrity: sha512-n1yyPsugYNSmHgxDFjicaI2+gCNjsBck8UX9kuofAKlc0h1bL+20oSF72KeNaW2DUlesbEVCFgyV2dPGTiY42g==}
-
-  /@types/react-dom@17.0.17:
-    resolution: {integrity: sha512-VjnqEmqGnasQKV0CWLevqMTXBYG9GbwuE6x3VetERLh0cq2LTptFE73MrQi2S7GkKXCf2GgwItB/melLnxfnsg==}
-    dependencies:
-      '@types/react': 17.0.52
-    dev: true
 
   /@types/react-dom@18.0.6:
     resolution: {integrity: sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==}

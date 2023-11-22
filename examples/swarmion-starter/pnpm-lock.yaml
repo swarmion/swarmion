@@ -167,8 +167,8 @@ importers:
         specifier: ^6.0.0
         version: 6.1.4(vitest@1.0.0-beta.5)
       '@testing-library/react':
-        specifier: ^12.1.5
-        version: 12.1.5(react-dom@17.0.2)(react@17.0.2)
+        specifier: ^14.0.0
+        version: 14.1.2(react-dom@17.0.2)(react@17.0.2)
       '@testing-library/react-hooks':
         specifier: ^8.0.0
         version: 8.0.1(@types/react@17.0.69)(react-dom@17.0.2)(react@17.0.2)
@@ -4568,20 +4568,6 @@ packages:
       react-dom: 17.0.2(react@17.0.2)
     dev: false
 
-  /@testing-library/dom@8.20.1:
-    resolution: {integrity: sha512-/DiOQ5xBxgdYRC8LNk7U+RWat0S3qRLeIw3ZIkMQ9kkVlRmwD/Eg8k8CqIpD6GW7u20JIUOfMKbxtiLutpjQ4g==}
-    engines: {node: '>=12'}
-    dependencies:
-      '@babel/code-frame': 7.22.13
-      '@babel/runtime': 7.23.2
-      '@types/aria-query': 5.0.3
-      aria-query: 5.1.3
-      chalk: 4.1.2
-      dom-accessibility-api: 0.5.16
-      lz-string: 1.5.0
-      pretty-format: 27.5.1
-    dev: true
-
   /@testing-library/dom@9.3.3:
     resolution: {integrity: sha512-fB0R+fa3AUqbLHWyxXa2kGVtf1Fe1ZZFr0Zp6AIbIAzXb2mKbEXl+PCQNUOaq5lbTab5tfctfXRNsWXxa2f7Aw==}
     engines: {node: '>=14'}
@@ -4648,16 +4634,16 @@ packages:
       react-error-boundary: 3.1.4(react@17.0.2)
     dev: true
 
-  /@testing-library/react@12.1.5(react-dom@17.0.2)(react@17.0.2):
-    resolution: {integrity: sha512-OfTXCJUFgjd/digLUuPxa0+/3ZxsQmE7ub9kcbW/wi96Bh3o/p5vrETcBGfP17NWPGqeYYl5LTRpwyGoMC4ysg==}
-    engines: {node: '>=12'}
+  /@testing-library/react@14.1.2(react-dom@17.0.2)(react@17.0.2):
+    resolution: {integrity: sha512-z4p7DVBTPjKM5qDZ0t5ZjzkpSNb+fZy1u6bzO7kk8oeGagpPCAtgh4cx1syrfp7a+QWkM021jGqjJaxJJnXAZg==}
+    engines: {node: '>=14'}
     peerDependencies:
-      react: <18.0.0
-      react-dom: <18.0.0
+      react: ^18.0.0
+      react-dom: ^18.0.0
     dependencies:
-      '@babel/runtime': 7.22.11
-      '@testing-library/dom': 8.20.1
-      '@types/react-dom': 17.0.22
+      '@babel/runtime': 7.23.2
+      '@testing-library/dom': 9.3.3
+      '@types/react-dom': 18.2.14
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
     dev: true
@@ -4808,12 +4794,6 @@ packages:
 
   /@types/prop-types@15.7.9:
     resolution: {integrity: sha512-n1yyPsugYNSmHgxDFjicaI2+gCNjsBck8UX9kuofAKlc0h1bL+20oSF72KeNaW2DUlesbEVCFgyV2dPGTiY42g==}
-
-  /@types/react-dom@17.0.22:
-    resolution: {integrity: sha512-wHt4gkdSMb4jPp1vc30MLJxoWGsZs88URfmt3FRXoOEYrrqK3I8IuZLE/uFBb4UT6MRfI0wXFu4DS7LS0kUC7Q==}
-    dependencies:
-      '@types/react': 17.0.69
-    dev: true
 
   /@types/react-dom@18.2.14:
     resolution: {integrity: sha512-V835xgdSVmyQmI1KLV2BEIUgqEuinxp9O4G6g3FqO/SqLac049E53aysv0oEFD2kHfejeKU+ZqL2bcFWj9gLAQ==}
