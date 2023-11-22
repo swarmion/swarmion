@@ -26,7 +26,7 @@
     "stylelint-fix": "pnpm stylelint-base-config --fix",
     "test": "nx run format-check && nx run test-linter && nx run test-type && nx run test-unit && nx run test-circular",
     "test-circular": "pnpm depcruise --config -- .",
-    "test-linter": "pnpm linter-base-config && pnpm stylelint-base-config **/*.{ts,tsx}",
+    "test-linter": "pnpm linter-base-config && pnpm stylelint-base-config '**/*.{ts,tsx}'",
     "test-type": "tsc",
     "test-unit": "vitest run --coverage --passWithNoTests"
   },

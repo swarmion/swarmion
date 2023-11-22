@@ -24,7 +24,7 @@
     "stylelint-fix": "pnpm stylelint-base-config --fix",
     "test": "nx run format-check && nx run test-linter && nx run test-type && nx run test-unit && nx run test-circular",
     "test-circular": "pnpm depcruise --config -- .",
-    "test-linter": "pnpm linter-base-config && pnpm stylelint-base-config **/*.{ts,tsx}",
+    "test-linter": "pnpm linter-base-config && pnpm stylelint-base-config '**/*.{ts,tsx}'",
     "test-type": "tsc --noEmit --emitDeclarationOnly false",
     "test-unit": "jest --maxWorkers=2 --collectCoverage --logHeapUsage --passWithNoTests"
   },
@@ -68,7 +68,7 @@
     "postcss": "^8.4.20",
     "postcss-styled-syntax": "^0.5.0",
     "postcss-syntax": "^0.36.2",
-    "stylelint": "^15.0.0",
+    "stylelint": "^15.11.0",
     "stylelint-config-property-sort-order-smacss": "^9.1.0",
     "stylelint-config-standard": "^34.0.0",
     "stylelint-order": "^6.0.3",
