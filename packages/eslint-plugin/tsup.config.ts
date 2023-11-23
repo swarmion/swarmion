@@ -3,6 +3,7 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
   entry: ['src/index.ts'],
   silent: true,
-  format: ['cjs', 'esm'],
+  // eslint doesn't support esm plugins yet
+  format: ['cjs'],
   outDir: 'dist',
 });
