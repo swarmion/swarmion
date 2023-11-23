@@ -119,6 +119,7 @@ module.exports = {
         'plugin:@typescript-eslint/recommended',
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
         'plugin:import/typescript',
+        'plugin:deprecation/recommended',
       ],
       parser: '@typescript-eslint/parser',
       parserOptions: {
