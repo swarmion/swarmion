@@ -1,5 +1,5 @@
 import { Rule } from 'eslint';
-import findUp from 'find-up';
+import { findUpSync, pathExistsSync } from 'find-up';
 import { readFileSync } from 'fs';
 import path from 'path';
 
@@ -12,9 +12,9 @@ const create = (context: Rule.RuleContext): Rule.RuleListener => {
       }
 
       const importedModulePackageJson = `node_modules/${importedModule}/package.json`;
-      const targetDirectory = findUp.sync(
+      const targetDirectory = findUpSync(
         directory => {
-          const packageJsonFound = findUp.sync.exists(
+          const packageJsonFound = pathExistsSync(
             path.join(directory, importedModulePackageJson),
           );
           if (!packageJsonFound) {
@@ -48,11 +48,11 @@ const create = (context: Rule.RuleContext): Rule.RuleListener => {
         'serverless.ts',
       );
 
-      const closestServerlessTsPath = findUp.sync.exists(
+      const closestServerlessTsPath = pathExistsSync(
         currentDirectoryServerlessConf,
       )
         ? currentDirectoryServerlessConf
-        : findUp.sync('serverless.ts');
+        : findUpSync('serverless.ts');
 
       if (closestServerlessTsPath === undefined) {
         return;
