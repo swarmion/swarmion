@@ -44,7 +44,7 @@ const create = (context: Rule.RuleContext): Rule.RuleListener => {
       }
 
       const currentDirectoryServerlessConf = path.join(
-        context.getCwd(),
+        context.cwd,
         'serverless.ts',
       );
 
