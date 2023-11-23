@@ -5,5 +5,7 @@ export default defineConfig({
   silent: true,
   // eslint doesn't support esm plugins yet
   format: ['cjs'],
+  // find-up is esm-only
+  noExternal: ['find-up'],
   outDir: 'dist',
 });
