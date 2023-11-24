@@ -25,7 +25,7 @@ const serverlessConfiguration: AWS & Lift = {
       domain: ['www.swarmion.dev', 'swarmion.dev'],
       redirectToMainDomain: true,
       certificate:
-        'arn:aws:acm:us-east-1:801673046086:certificate/fbf65a9c-2280-4895-af86-3bd180f9605c',
+        'arn:aws:acm:us-east-1:592210495815:certificate/2192e96e-8469-49b1-a0a4-8b80d7a4c660',
     },
   }),
   constructs: {
