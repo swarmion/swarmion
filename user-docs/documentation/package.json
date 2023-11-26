@@ -4,8 +4,17 @@
   "version": "0.30.0",
   "license": "MIT",
   "scripts": {
+    "bootstrap": "cdk bootstrap --profile swarmion-developer --qualifier hnb659fds",
+    "bootstrap-production": "cdk bootstrap --context stage=production",
+    "bootstrap-staging": "cdk bootstrap --context stage=staging",
     "build": "docusaurus build",
     "clear": "docusaurus clear",
+    "deploy": "cdk deploy --profile swarmion-developer --qualifier hnb659fds",
+    "deploy-production": "cdk deploy --context stage=production",
+    "deploy-staging": "cdk deploy --context stage=staging",
+    "destroy": "cdk destroy --profile swarmion-developer --qualifier hnb659fds",
+    "destroy-production": "cdk destroy --context stage=production",
+    "destroy-staging": "cdk destroy --context stage=staging",
     "docusaurus": "docusaurus",
     "format-check": "prettier --check . --ignore-path ../../.prettierignore",
     "format-fix": "prettier --write . --ignore-path ../../.prettierignore",
@@ -48,7 +57,11 @@
     "@docusaurus/types": "3.0.0",
     "@tsconfig/docusaurus": "^2.0.0",
     "@types/node": "^18.16.1",
+    "aws-cdk": "2.110.1",
+    "aws-cdk-lib": "2.110.1",
+    "constructs": "10.3.0",
     "eslint": "^8.54.0",
-    "typescript": "^5.3.2"
+    "ts-node": "^10.8.1",
+    "typescript": "5.0.4"
   }
 }
