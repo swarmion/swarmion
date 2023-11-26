@@ -38,9 +38,17 @@
         "{projectRoot}/tsconfig.build.tsbuildinfo"
       ]
     },
+    "bootstrap": {
+      "inputs": ["production", "^production"],
+      "dependsOn": ["build"]
+    },
     "deploy": {
       "inputs": ["production", "^production"],
       "dependsOn": ["^package", "^deploy", "^build", "bootstrap"]
+    },
+    "bootstrap-staging": {
+      "inputs": ["production", "^production"],
+      "dependsOn": ["build"]
     },
     "deploy-staging": {
       "inputs": ["production", "^production"],
@@ -50,6 +58,10 @@
         "^deploy-staging",
         "bootstrap-staging"
       ]
+    },
+    "bootstrap-production": {
+      "inputs": ["production", "^production"],
+      "dependsOn": ["build"]
     },
     "deploy-production": {
       "inputs": ["production", "^production"],
