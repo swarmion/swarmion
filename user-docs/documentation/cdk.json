@@ -1,5 +1,5 @@
 {
-  "app": "npx ts-node --project tsconfig-deploy.json --prefer-ts-exts hosting/bin.ts",
+  "app": "node --loader @swc-node/register/esm hosting/bin.ts",
   "requireApproval": "never",
   "toolkitStackName": "CDKToolkitSwarmionDoc",
   "context": {
