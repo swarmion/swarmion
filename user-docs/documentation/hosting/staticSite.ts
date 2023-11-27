@@ -14,9 +14,14 @@ import {
   BucketEncryption,
 } from 'aws-cdk-lib/aws-s3';
 import { BucketDeployment, Source } from 'aws-cdk-lib/aws-s3-deployment';
+import {
+  Certificate,
+  CertificateValidation,
+} from 'aws-cdk-lib/aws-certificatemanager';
 import { Construct } from 'constructs';
 
 import { defaultStage, getAppStage } from './utils/getAppStage';
+import { getDomainNames } from './utils/getDomainNames';
 
 export class StaticSite extends Construct {
   constructor(scope: Construct, id: string) {
@@ -48,9 +53,21 @@ export class StaticSite extends Construct {
       }),
     );
 
+    const certificate =
+      stage === defaultStage
+        ? undefined
+        : new Certificate(this, 'Certificate', {
+            domainName: '*.swarmion.dev',
+            validation: CertificateValidation.fromDns(),
+          });
+
+    const domainNames = getDomainNames(stage);
+
     const distribution = new Distribution(this, 'SiteDistribution', {
       defaultRootObject: 'index.html',
       minimumProtocolVersion: SecurityPolicyProtocol.TLS_V1_2_2021,
+      domainNames,
+      certificate,
       defaultBehavior: {
         origin: new S3Origin(siteBucket, {
           originAccessIdentity: cloudfrontOAI,

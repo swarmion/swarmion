@@ -4,7 +4,7 @@ import { FrontendStack } from './stack';
 import { getAppStage } from './utils/getAppStage';
 
 const projectName = 'swarmion-doc';
-const region = 'eu-west-3';
+const region = 'us-east-1';
 
 const app = new App();
 
