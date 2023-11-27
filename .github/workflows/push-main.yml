@@ -59,7 +59,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
-          aws-region: eu-west-1
+          aws-region: us-east-1
       - name: Deploy production
         # nx run-many is used here, because it will not throw an error if our target action isn't found in the project, which is exactly what we want!
         run: pnpm nx run-many --target=deploy-production --parallel=2
@@ -81,7 +81,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.AWS_STAGING_ROLE_ARN }}
-          aws-region: eu-west-1
+          aws-region: us-east-1
       - name: Deploy staging
         # nx run-many is used here, because it will not throw an error if our target action isn't found in the project, which is exactly what we want!
         run: pnpm nx run-many --target=deploy-staging --parallel=2
@@ -103,6 +103,6 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.AWS_STAGING_ROLE_ARN }}
-          aws-region: eu-west-1
+          aws-region: us-east-1
       - name: Run integration tests
         run: pnpm nx run-many --target=test-integration --parallel=2
