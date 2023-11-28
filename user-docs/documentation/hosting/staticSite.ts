@@ -53,15 +53,15 @@ export class StaticSite extends Construct {
       }),
     );
 
+    const domainNames = getDomainNames(stage);
+
     const certificate =
-      stage === defaultStage
+      domainNames.length === 0
         ? undefined
         : new Certificate(this, 'Certificate', {
             domainName: '*.swarmion.dev',
             validation: CertificateValidation.fromDns(),
           });
-
-    const domainNames = getDomainNames(stage);
 
     const distribution = new Distribution(this, 'SiteDistribution', {
       defaultRootObject: 'index.html',
