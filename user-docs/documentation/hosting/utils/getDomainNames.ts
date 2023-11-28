@@ -5,9 +5,8 @@ export const getDomainNames = (stage: AppStage): string[] => {
     case 'dev':
       return [];
     case 'staging':
-      // while waiting for prod to be unblocked
       return ['staging.swarmion.dev', 'docs.swarmion.dev'];
     case 'production':
-      return [];
+      return ['www.swarmion.dev'];
   }
 };
