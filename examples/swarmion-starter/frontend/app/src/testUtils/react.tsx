@@ -29,7 +29,7 @@ const render = (
     ...renderOptions
   }: RenderOptions = {},
 ): RenderResult => {
-  const Wrapper: React.ComponentType = ({ children }) => (
+  const Wrapper: RenderOptions['wrapper'] = ({ children }) => (
     <ThemeProvider theme={muiTheme}>
       <IntlProvider messages={messages} locale="fr" timeZone="Europe/Paris">
         <MemoryRouter initialEntries={initialEntries}>{children}</MemoryRouter>

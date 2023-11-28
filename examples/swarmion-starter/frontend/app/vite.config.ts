@@ -24,11 +24,6 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins,
-    resolve: {
-      alias: {
-        'react/jsx-runtime': 'react/jsx-runtime.js',
-      },
-    },
     test: {
       globals: true,
       environment: 'jsdom',
