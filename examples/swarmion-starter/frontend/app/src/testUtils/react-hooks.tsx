@@ -2,8 +2,7 @@ import {
   RenderHookResult,
   renderHook as rtlRenderHook,
   RenderHookOptions as RtlRenderHookOptions,
-} from '@testing-library/react-hooks';
-import { ComponentType } from 'react';
+} from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { MemoryRouter } from 'react-router-dom';
 
@@ -19,8 +18,8 @@ const defaultMessages = flattenMessages(frFRMessages);
 const renderHook = <P, R>(
   callback: (props: P) => R,
   { messages = defaultMessages, ...renderOptions }: RenderHookOptions<P> = {},
-): RenderHookResult<P, R> => {
-  const Wrapper: ComponentType = ({ children }) => (
+): RenderHookResult<R, P> => {
+  const Wrapper: RenderHookOptions<P>['wrapper'] = ({ children }) => (
     <IntlProvider messages={messages} locale="fr" timeZone="Europe/Paris">
       <MemoryRouter>{children}</MemoryRouter>
     </IntlProvider>
@@ -29,5 +28,5 @@ const renderHook = <P, R>(
   return rtlRenderHook(callback, { wrapper: Wrapper, ...renderOptions });
 };
 
-export * from '@testing-library/react-hooks';
+export * from '@testing-library/react';
 export { renderHook };

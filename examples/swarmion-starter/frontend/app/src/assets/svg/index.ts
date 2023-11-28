@@ -1,3 +1,3 @@
-import NotFoundIcon from './page-not-found.svg';
+import NotFoundIcon from './page-not-found.svg?react';
 
 export { NotFoundIcon };
