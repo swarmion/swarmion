@@ -24,7 +24,9 @@
   },
   "ts-node": {
     "compilerOptions": {
-      "module": "Node16"
+      // uncomment this when we remove sls from service
+      // "module": "NodeNext",
+      // "moduleResolution": "NodeNext"
     },
     "require": ["tsconfig-paths/register"]
   }

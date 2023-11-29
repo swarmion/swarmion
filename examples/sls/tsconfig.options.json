@@ -25,6 +25,9 @@
   "ts-node": {
     "compilerOptions": {
       "module": "Node16"
+      // uncomment this when sls supports esm
+      // "module": "NodeNext",
+      // "moduleResolution": "NodeNext"
     },
     "require": ["tsconfig-paths/register"]
   }
