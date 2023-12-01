@@ -18,9 +18,18 @@
   },
   "sideEffects": false,
   "type": "module",
-  "main": "index.cjs",
-  "module": "index.js",
-  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "require": "./index.cjs",
+      "types": "./index.d.ts"
+    },
+    "./test-utils": {
+      "import": "./test-utils.js",
+      "require": "./test-utils.cjs",
+      "types": "./test-utils.d.ts"
+    }
+  },
   "scripts": {
     "bench": "pnpm tsx src/__benches__/index.ts",
     "clean": "rimraf dist *.tsbuildinfo",
