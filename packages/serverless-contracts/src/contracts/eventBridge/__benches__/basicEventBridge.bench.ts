@@ -1,6 +1,10 @@
+import { build } from 'esbuild';
+import path from 'path';
 import { bench, describe } from 'vitest';
 
 import { getHandlerContextMock } from '__mocks__/requestContext';
+
+import { handler } from './basicEventBridge';
 
 const baseEvent = {
   'detail-type': 'MY_DETAIL_TYPE' as const,
@@ -15,13 +19,22 @@ const baseEvent = {
 
 const fakeContext = getHandlerContextMock();
 
-let handler: typeof import('./basicEventBridge').handler;
+const bundledHandler = await build({
+  entryPoints: [path.join(__dirname, 'basicEventBridge.ts')],
+  bundle: true,
+  sourcemap: 'inline',
+
+  write: false,
+});
+const bundledHandlerString = new TextDecoder().decode(
+  bundledHandler.outputFiles[0]?.contents,
+);
 
 describe('basic handler', () => {
   bench(
-    'cold start',
-    async () => {
-      handler = (await import(`./basicEventBridge`)).handler;
+    'bundled cold start',
+    () => {
+      eval(bundledHandlerString);
     },
     { warmupIterations: 0 },
   );
