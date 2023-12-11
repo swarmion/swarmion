@@ -1,21 +1,16 @@
-import Ajv from 'ajv';
 import {
   APIGatewayEventRequestContextV2WithAuthorizer,
   APIGatewayProxyCognitoAuthorizer,
 } from 'aws-lambda';
+import { build } from 'esbuild';
+import path from 'path';
 import { bench, describe } from 'vitest';
 
 import { getAPIGatewayV2EventRequestContextMock } from '@swarmion/serverless-helpers';
 
 import { getHandlerContextMock } from '__mocks__/requestContext';
-import { getHandler } from 'features';
-import { HttpStatusCodes } from 'types';
 
-import { httpApiGatewayContractMock } from '../__mocks__/httpApiGatewayContract';
-
-const ajv = new Ajv({ keywords: ['faker'] });
-
-const httpApiContract = httpApiGatewayContractMock;
+import { handler } from './basicHttpApiHandler';
 
 const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatewayProxyCognitoAuthorizer> =
   {
@@ -23,76 +18,42 @@ const fakeRequestContext: APIGatewayEventRequestContextV2WithAuthorizer<APIGatew
     accountId: '123456789012' as const,
     authorizer: { claims: { foo: 'claimBar' } },
   };
+const baseEvent = {
+  pathParameters: { userId: 'toto', pageNumber: '15' },
+  body: JSON.stringify({ foo: 'bar' }),
+  headers: {
+    myHeader: 'MyCustomHeader',
+    anotherHeader: 'anotherHeader',
+  },
+  queryStringParameters: { testId: 'myTestId' },
+  requestContext: fakeRequestContext,
+  version: '',
+  routeKey: '',
+  rawPath: '',
+  rawQueryString: '',
+  isBase64Encoded: false,
+};
 const fakeContext = getHandlerContextMock();
 
-const httpHandler = getHandler(httpApiContract, { ajv })(async ({
-  body,
-  pathParameters,
-  queryStringParameters,
-  headers,
-  requestContext,
-}) => {
-  const myCustomClaim = requestContext.authorizer.claims.foo;
-
-  const name =
-    body.foo +
-    pathParameters.pageNumber +
-    queryStringParameters.testId +
-    headers.myHeader +
-    myCustomClaim;
-
-  return Promise.resolve({
-    statusCode: HttpStatusCodes.OK,
-    body: { id: 'hello', name },
-  });
+const bundledHandler = await build({
+  entryPoints: [path.join(__dirname, 'basicHttpApiHandler.ts')],
+  bundle: true,
+  write: false,
 });
+const bundledHandlerString = new TextDecoder().decode(
+  bundledHandler.outputFiles[0]?.contents,
+);
 
-describe('ApiGatewayContract', () => {
-  bench('basic handler instantiation', () => {
-    getHandler(httpApiContract, { ajv })(
-      async ({
-        body,
-        pathParameters,
-        queryStringParameters,
-        headers,
-        requestContext,
-      }) => {
-        const myCustomClaim = requestContext.authorizer.claims.foo;
-
-        const name =
-          body.foo +
-          pathParameters.pageNumber +
-          queryStringParameters.testId +
-          headers.myHeader +
-          myCustomClaim;
-
-        return Promise.resolve({
-          statusCode: HttpStatusCodes.OK,
-          body: { id: 'hello', name },
-        });
-      },
-    );
-  });
+describe('ApiGateway::basic handler', () => {
+  bench(
+    'bundled cold start',
+    () => {
+      eval(bundledHandlerString);
+    },
+    { warmupIterations: 0 },
+  );
 
   bench('basic handler invocation', async () => {
-    await httpHandler(
-      {
-        pathParameters: { userId: 'toto', pageNumber: '15' },
-        body: JSON.stringify({ foo: 'bar' }),
-        headers: {
-          myHeader: 'MyCustomHeader',
-          anotherHeader: 'anotherHeader',
-        },
-        queryStringParameters: { testId: 'myTestId' },
-        requestContext: fakeRequestContext,
-        version: '',
-        routeKey: '',
-        rawPath: '',
-        rawQueryString: '',
-        isBase64Encoded: false,
-      },
-      fakeContext,
-      () => null,
-    );
+    await handler(baseEvent, fakeContext, () => null);
   });
 });

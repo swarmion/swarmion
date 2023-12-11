@@ -22,15 +22,13 @@ const fakeContext = getHandlerContextMock();
 const bundledHandler = await build({
   entryPoints: [path.join(__dirname, 'basicEventBridge.ts')],
   bundle: true,
-  sourcemap: 'inline',
-
   write: false,
 });
 const bundledHandlerString = new TextDecoder().decode(
   bundledHandler.outputFiles[0]?.contents,
 );
 
-describe('basic handler', () => {
+describe('EventBridge::basic handler', () => {
   bench(
     'bundled cold start',
     () => {
