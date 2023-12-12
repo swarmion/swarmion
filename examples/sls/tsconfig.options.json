@@ -24,11 +24,11 @@
   },
   "ts-node": {
     "compilerOptions": {
-      "module": "Node16"
-      // uncomment this when sls supports esm
-      // "module": "NodeNext",
-      // "moduleResolution": "NodeNext"
+      // serverless framework uses CJS 🫠
+      "module": "CommonJS",
+      "moduleResolution": "Node"
     },
+    "transpileOnly": true,
     "require": ["tsconfig-paths/register"]
   }
 }
