@@ -12,5 +12,14 @@
     { "path": "../../packages/serverless-configuration/tsconfig.build.json" },
     { "path": "../../contracts/orchestrator-contracts/tsconfig.build.json" }
   ],
-  "include": ["./**/*.ts"]
+  "include": ["./**/*.ts"],
+  // Remove once moved to cdk
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS",
+      "moduleResolution": "Node"
+    },
+    "transpileOnly": true,
+    "require": ["tsconfig-paths/register"]
+  }
 }
