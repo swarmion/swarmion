@@ -825,8 +825,8 @@ importers:
         specifier: 0.19.9
         version: 0.19.9
       esbuild-visualizer:
-        specifier: ^0.4.1
-        version: 0.4.1
+        specifier: ^0.5.0
+        version: 0.5.0
       eslint:
         specifier: ^8.55.0
         version: 8.55.0
@@ -10911,6 +10911,16 @@ packages:
       yargs: 17.7.2
     dev: true
 
+  /esbuild-visualizer@0.5.0:
+    resolution: {integrity: sha512-oWa+ozIXD4VyHGHzIwD3vXrLwSHXXkzwNnbju5cAR0RdRiwEAaP2LhbIahB/2vI0ZZoRqDzL4CwHpZL8ACDTLg==}
+    engines: {node: '>=18'}
+    hasBin: true
+    dependencies:
+      open: 8.4.2
+      picomatch: 2.3.1
+      yargs: 17.7.2
+    dev: true
+
   /esbuild@0.18.20:
     resolution: {integrity: sha512-ceqxoedUrcayh7Y7ZX6NdbbDzGROiyVBgC4PriJThBKSVPWnnFHZAkfI1lJT8QFkOwH4qOS2SJkS4wvpGl8BpA==}
     engines: {node: '>=12'}
@@ -20161,7 +20171,7 @@ packages:
         optional: true
     dependencies:
       '@types/node': 18.18.13
-      esbuild: 0.19.9
+      esbuild: 0.19.7
       postcss: 8.4.32
       rollup: 4.5.2
     optionalDependencies:
