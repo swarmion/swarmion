@@ -246,6 +246,7 @@ const handler = getHandler(myContract, { ajv })(async event => {
 
   return {
     statusCode: HttpStatusCodes.OK,
+    headers: { customHeader: 'customHeader' },
     body: { id: 'coucou', name: 'coucou' },
   }; // also type-safe!
 });

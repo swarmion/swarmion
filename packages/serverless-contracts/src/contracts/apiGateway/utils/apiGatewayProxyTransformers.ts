@@ -51,14 +51,24 @@ export const proxyEventToHandlerEvent = <
 export const handlerResponseToProxyResult = <
   IntegrationType extends ApiGatewayIntegrationType,
   Output,
->(
-  statusCode: HttpStatusCodes,
-  body: unknown,
-): ApiGatewayResult<IntegrationType, Output> => {
+>({
+  statusCode,
+  headers,
+  body,
+}: {
+  statusCode: string | number | symbol;
+  headers?: Record<string, string>;
+  body: unknown;
+}): ApiGatewayResult<IntegrationType, Output> => {
+  const contentTypeHeader =
+    body !== undefined ? { 'Content-Type': 'application/json' } : undefined;
+
   return {
-    statusCode,
+    statusCode: statusCode as HttpStatusCodes,
     body: body !== undefined ? JSON.stringify(body) : '',
-    headers:
-      body !== undefined ? { 'Content-Type': 'application/json' } : undefined,
+    headers: {
+      ...contentTypeHeader,
+      ...headers,
+    },
   };
 };

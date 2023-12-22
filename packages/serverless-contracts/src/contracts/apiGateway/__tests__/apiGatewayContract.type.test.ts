@@ -94,10 +94,12 @@ typeAssert<
     ContractOutputType,
     | {
         statusCode: HttpStatusCodes.OK;
+        headers?: Record<string, string>;
         body: { id: string; name: string };
       }
     | {
         statusCode: HttpStatusCodes.BAD_REQUEST;
+        headers?: Record<string, string>;
         body: { message: string };
       }
   >

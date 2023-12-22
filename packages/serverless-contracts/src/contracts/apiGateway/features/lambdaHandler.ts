@@ -157,8 +157,7 @@ export const getApiGatewayHandler =
         }
 
         return handlerResponseToProxyResult<IntegrationType, Output>(
-          handlerResponse.statusCode as HttpStatusCodes,
-          handlerResponse.body,
+          handlerResponse,
         );
       } catch (error) {
         console.error(error);

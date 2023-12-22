@@ -56,6 +56,9 @@ describe('apiGateway lambda handler', () => {
 
         return Promise.resolve({
           statusCode: HttpStatusCodes.OK,
+          headers: {
+            additionalHeader: 'additionalHeader',
+          },
           body: { id: 'hello', name },
         });
       });
@@ -86,7 +89,10 @@ describe('apiGateway lambda handler', () => {
           name: 'bar15myTestIdMyCustomHeaderclaimBar',
         }),
         statusCode: 200,
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          additionalHeader: 'additionalHeader',
+        },
       });
     });
 
@@ -320,6 +326,9 @@ describe('apiGateway lambda handler', () => {
 
         return Promise.resolve({
           statusCode: HttpStatusCodes.OK,
+          headers: {
+            additionalHeader: 'additionalHeader',
+          },
           body: { id: 'hello', name },
         });
       });
@@ -351,6 +360,7 @@ describe('apiGateway lambda handler', () => {
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
+          additionalHeader: 'additionalHeader',
         },
         statusCode: 200,
       });
@@ -367,6 +377,9 @@ describe('apiGateway lambda handler', () => {
 
         return Promise.resolve({
           statusCode: HttpStatusCodes.OK,
+          headers: {
+            additionalHeader: 'additionalHeader',
+          },
           body: { name, id: 'miam' },
         });
       });
@@ -395,7 +408,10 @@ describe('apiGateway lambda handler', () => {
       expect(result).toEqual({
         body: '{"name":"coucou","id":"miam"}',
         statusCode: 200,
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          additionalHeader: 'additionalHeader',
+        },
       });
     });
 
@@ -411,6 +427,9 @@ describe('apiGateway lambda handler', () => {
 
         return Promise.resolve({
           statusCode: HttpStatusCodes.OK,
+          headers: {
+            additionalHeader: 'additionalHeader',
+          },
           body: { name, id: 'toto' },
         });
       });
@@ -440,7 +459,10 @@ describe('apiGateway lambda handler', () => {
       expect(result).toEqual({
         body: '{"name":"blib","id":"toto"}',
         statusCode: 200,
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          additionalHeader: 'additionalHeader',
+        },
       });
     });
   });
