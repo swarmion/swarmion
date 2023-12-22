@@ -9,5 +9,9 @@ describe('listDeployments', () => {
     expect(response.status).toBe(200);
     const body = await response.json();
     expect(body).toEqual({ id: 'coucou' });
+    expect(response.headers).toBe({
+      'Content-Type': 'application/json',
+      customHeader: 'customHeader',
+    });
   });
 });

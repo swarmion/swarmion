@@ -9,6 +9,12 @@ export const main = getHandler(listDeploymentsContract, { ajv })(
     console.log({ applicationId });
     await Promise.resolve();
 
-    return { statusCode: HttpStatusCodes.OK, body: { id: 'coucou' } };
+    return {
+      statusCode: HttpStatusCodes.OK,
+      body: { id: 'coucou' },
+      headers: {
+        customHeader: 'customHeader',
+      },
+    };
   },
 );

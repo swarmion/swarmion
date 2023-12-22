@@ -35,6 +35,7 @@ export type BodyType<Contract extends GenericApiGatewayContract> =
 export type OutputsType<Contract extends GenericApiGatewayContract> = {
   [StatusCode in keyof Contract['outputSchemas']]: {
     statusCode: StatusCode;
+    headers?: Record<string, string>;
     body: Contract['outputSchemas'][StatusCode] extends JSONSchema
       ? FromSchema<Contract['outputSchemas'][StatusCode]>
       : void;
