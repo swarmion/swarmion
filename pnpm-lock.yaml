@@ -517,8 +517,8 @@ importers:
         specifier: 0.5.4
         version: 0.5.4
       json-schema-to-ts:
-        specifier: 2.9.2
-        version: 2.9.2
+        specifier: 2.12.0
+        version: 2.12.0
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
@@ -13997,6 +13997,15 @@ packages:
 
   /json-schema-spec-types@0.1.2:
     resolution: {integrity: sha512-MDl8fA8ONckmQOm2+eXKJaFJNvxk7eGin+XFofNjS3q3PRKSoEvgMVb0ehOpCAYkUiLoMiqdU7obV7AmzAmyLw==}
+    dev: false
+
+  /json-schema-to-ts@2.12.0:
+    resolution: {integrity: sha512-uTde38yBm5lzJSRPWRaasxZo72pb+JGE4iUksNdNfAkFaLhV4N9akeBxPPUpZy5onINt9Zo0oTLrAoEXyZESiQ==}
+    engines: {node: '>=16'}
+    dependencies:
+      '@babel/runtime': 7.23.6
+      '@types/json-schema': 7.0.15
+      ts-algebra: 1.2.2
     dev: false
 
   /json-schema-to-ts@2.9.2:
