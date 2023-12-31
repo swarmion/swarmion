@@ -27,8 +27,8 @@ importers:
         specifier: ^6.14.0
         version: 6.14.0(eslint@8.55.0)(typescript@5.3.3)
       dependency-cruiser:
-        specifier: ^15.5.0
-        version: 15.5.0
+        specifier: ^16.0.0
+        version: 16.0.0
       eslint:
         specifier: ^8.55.0
         version: 8.55.0
@@ -85,8 +85,8 @@ importers:
         specifier: ^8.2.2
         version: 8.2.2
       dependency-cruiser:
-        specifier: ^15.5.0
-        version: 15.5.0
+        specifier: ^16.0.0
+        version: 16.0.0
       eslint:
         specifier: ^8.55.0
         version: 8.55.0
@@ -2739,6 +2739,11 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
+  /acorn-walk@8.3.1:
+    resolution: {integrity: sha512-TgUZgYvqZprrl7YldZNoa9OciCAyZR+Ejm9eXzKCmjsF5IKp/wgQ7Z/ZpjpGTIUPwrHQIcYeI8qDh4PsEwxMbw==}
+    engines: {node: '>=0.4.0'}
+    dev: true
+
   /acorn@8.11.2:
     resolution: {integrity: sha512-nc0Axzp/0FILLEVsm4fNwLCwMttvhEI263QtVPQcbpfZZ3ts0hLsZGOpE6czNlid7CJ9MlyH8reXkpsf3YUY4w==}
     engines: {node: '>=0.4.0'}
@@ -3573,8 +3578,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /dependency-cruiser@15.5.0:
-    resolution: {integrity: sha512-f6pY7rh6IHl39pLHdA9CUg3LzbJRDPeZXGa1q0A4v7qTy3CDP8xOg0gsecFglurvsB6kuIYkUSW1PUtfyVkEOA==}
+  /dependency-cruiser@16.0.0:
+    resolution: {integrity: sha512-piS5nFmjz/SOOBjpTHGJAJ2sWFKs7y56wfpPSi47Y44TwVhmRntnXd3aIHb8iPB7tWLk+xf2EjmVUbkCh910bw==}
     engines: {node: ^18.17||>=20}
     hasBin: true
     dependencies:
@@ -3582,7 +3587,7 @@ packages:
       acorn-jsx: 5.3.2(acorn@8.11.2)
       acorn-jsx-walk: 2.0.0
       acorn-loose: 8.4.0
-      acorn-walk: 8.3.0
+      acorn-walk: 8.3.1
       ajv: 8.12.0
       chalk: 5.3.0
       commander: 11.1.0
@@ -3602,7 +3607,7 @@ packages:
       semver-try-require: 6.2.3
       teamcity-service-messages: 0.1.14
       tsconfig-paths-webpack-plugin: 4.1.0
-      watskeburt: 2.0.2
+      watskeburt: 2.0.4
       wrap-ansi: 9.0.0
     dev: true
 
@@ -7130,8 +7135,8 @@ packages:
       - terser
     dev: true
 
-  /watskeburt@2.0.2:
-    resolution: {integrity: sha512-+WhC6hh3ThX7fx78VI4X1mL8ifMTow4j95tLuiUqDP96jnV4Fa4xGIilpeeBAy5hZtbh0n+irgcySkq7iPwZ4w==}
+  /watskeburt@2.0.4:
+    resolution: {integrity: sha512-9xAL/S6WQocWEa/Ud5hoPWGp3nknBsXgtGansjEmyu3ZBjZwPKGRn/151qiE9Jvp1VHniDlnivQCesTfUnwekw==}
     engines: {node: ^18||>=20}
     hasBin: true
     dev: true
