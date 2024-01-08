@@ -1,7 +1,7 @@
 {
   "name": "@swarmion/serverless-contracts",
   "description": "Generate and use type-safe contracts between your Serverless services.",
-  "version": "0.30.0",
+  "version": "0.31.0",
   "author": "fargito",
   "license": "MIT",
   "homepage": "https://www.swarmion.dev",
@@ -18,18 +18,6 @@
   },
   "sideEffects": false,
   "type": "module",
-  "exports": {
-    ".": {
-      "import": "./index.js",
-      "require": "./index.cjs",
-      "types": "./index.d.ts"
-    },
-    "./test-utils": {
-      "import": "./test-utils.js",
-      "require": "./test-utils.cjs",
-      "types": "./test-utils.d.ts"
-    }
-  },
   "scripts": {
     "bench": "pnpm tsx src/__benches__/index.ts",
     "clean": "rimraf dist *.tsbuildinfo",
@@ -51,7 +39,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-eventbridge": "^3.470.0",
-    "@swarmion/serverless-helpers": "^0.30.0",
+    "@swarmion/serverless-helpers": "^0.31.0",
     "@types/aws-lambda": "^8.10.130",
     "@types/http-errors": "^2.0.4",
     "http-errors": "^2.0.0",
@@ -91,6 +79,18 @@
     "typescript": "^5.3.3",
     "vite-tsconfig-paths": "^4.2.2",
     "vitest": "1.1.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "require": "./index.cjs",
+      "types": "./index.d.ts"
+    },
+    "./test-utils": {
+      "import": "./test-utils.js",
+      "require": "./test-utils.cjs",
+      "types": "./test-utils.d.ts"
+    }
   },
   "peerDependencies": {
     "@serverless/typescript": ">=3",
