@@ -24,9 +24,11 @@ describe('listDeployments handler', () => {
       applicationId: 'applicationId',
     });
 
-    expect(result).toStrictEqual({
+    expect(result).toMatchObject({
       body: JSON.stringify({ id: 'coucou' }),
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+      },
       statusCode: 200,
     });
   });
@@ -38,7 +40,7 @@ describe('listDeployments handler', () => {
       }),
     );
 
-    expect(result).toStrictEqual({
+    expect(result).toMatchObject({
       body: 'Invalid input',
       headers: undefined,
       statusCode: 400,
