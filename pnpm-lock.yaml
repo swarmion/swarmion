@@ -533,8 +533,8 @@ importers:
         version: 9.6.0
     devDependencies:
       '@codspeed/tinybench-plugin':
-        specifier: ^2.3.1
-        version: 2.3.1(tinybench@2.5.1)
+        specifier: ^3.0.0
+        version: 3.0.0(tinybench@2.5.1)
       '@middy/core':
         specifier: ^5.1.0
         version: 5.1.0
@@ -3347,21 +3347,27 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@codspeed/core@2.3.1:
-    resolution: {integrity: sha512-7KRwBX4iXK33gEQwh8jPWBF9srGIjewm3oc+A/66caiG/aOyHmxJCapjAZxT2f2vIVYqR7CghzqlxY2ik0DNBg==}
+  /@codspeed/core@3.0.0:
+    resolution: {integrity: sha512-MebAj0lvWwJcH5xSh05y5mAKHK+77fQtsWvNo6iqsbYMiv5QZnQtdXj3D2ndg7zYLy0i5qQpaLfydJCmC8zrmQ==}
     dependencies:
+      axios: 1.6.2
       find-up: 6.3.0
+      form-data: 4.0.0
       node-gyp-build: 4.7.1
+    transitivePeerDependencies:
+      - debug
     dev: true
 
-  /@codspeed/tinybench-plugin@2.3.1(tinybench@2.5.1):
-    resolution: {integrity: sha512-wtUonOjEkgwuE4Y8qhkwZS0P61ScHsjoexK+Ky3hyjBa1ZheJXrmaLxGZbQgXtdpR3EhuJlztzFgp63AvRaw/A==}
+  /@codspeed/tinybench-plugin@3.0.0(tinybench@2.5.1):
+    resolution: {integrity: sha512-fF9/LDg/qkLL/OasEtvkZPa25tPDzwguA64ludKeoZ1U/pxjW5L0H0/iZNxdCKqdiMpEPkmIw0DEh6ltLFXk4g==}
     peerDependencies:
       tinybench: ^2.3.0
     dependencies:
-      '@codspeed/core': 2.3.1
+      '@codspeed/core': 3.0.0
       stack-trace: 1.0.0-pre2
       tinybench: 2.5.1
+    transitivePeerDependencies:
+      - debug
     dev: true
 
   /@colors/colors@1.5.0:
@@ -7937,7 +7943,7 @@ packages:
       std-env: 3.5.0
       test-exclude: 6.0.0
       v8-to-istanbul: 9.2.0
-      vitest: 1.2.1(@types/node@18.19.8)
+      vitest: 1.2.1(@types/node@18.18.2)
     transitivePeerDependencies:
       - supports-color
     dev: true
