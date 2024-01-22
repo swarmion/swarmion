@@ -75,7 +75,7 @@ importers:
   contracts/orchestrator-contracts:
     dependencies:
       '@swarmion/serverless-contracts':
-        specifier: ^0.31.0
+        specifier: ^0.31.1
         version: link:../../packages/serverless-contracts/dist
     devDependencies:
       '@types/node':
@@ -453,7 +453,7 @@ importers:
   packages/serverless-configuration:
     dependencies:
       '@swarmion/serverless-helpers':
-        specifier: workspace:^0.31.0
+        specifier: workspace:^0.31.1
         version: link:../serverless-helpers
     devDependencies:
       '@serverless/typescript':
@@ -502,7 +502,7 @@ importers:
         specifier: ^3.470.0
         version: 3.470.0
       '@swarmion/serverless-helpers':
-        specifier: ^0.31.0
+        specifier: ^0.31.1
         version: link:../serverless-helpers
       '@types/aws-lambda':
         specifier: ^8.10.130
@@ -621,7 +621,7 @@ importers:
   packages/serverless-contracts-plugin:
     dependencies:
       '@swarmion/serverless-contracts':
-        specifier: ^0.31.0
+        specifier: ^0.31.1
         version: link:../serverless-contracts/dist
       aws-sdk:
         specifier: ^2.1516.0
@@ -770,22 +770,22 @@ importers:
         specifier: ^3.470.0
         version: 3.470.0(@aws-sdk/client-dynamodb@3.470.0)
       '@swarmion/orchestrator-contracts':
-        specifier: ^0.31.0
+        specifier: ^0.31.1
         version: link:../../contracts/orchestrator-contracts
       '@swarmion/serverless-cdk-plugin':
-        specifier: ^0.31.0
+        specifier: ^0.31.1
         version: link:../../packages/serverless-cdk-plugin
       '@swarmion/serverless-configuration':
-        specifier: ^0.31.0
+        specifier: ^0.31.1
         version: link:../../packages/serverless-configuration
       '@swarmion/serverless-contracts':
-        specifier: ^0.31.0
+        specifier: ^0.31.1
         version: link:../../packages/serverless-contracts/dist
       '@swarmion/serverless-helpers':
-        specifier: ^0.31.0
+        specifier: ^0.31.1
         version: link:../../packages/serverless-helpers
       '@swarmion/serverless-plugin':
-        specifier: ^0.31.0
+        specifier: ^0.31.1
         version: link:../../packages/serverless-contracts-plugin
       ajv:
         specifier: ^8.12.0
@@ -804,10 +804,10 @@ importers:
         specifier: ^3.38.0
         version: 3.38.0
       '@swarmion/eslint-plugin':
-        specifier: ^0.31.0
+        specifier: ^0.31.1
         version: link:../../packages/eslint-plugin
       '@swarmion/integration-tests':
-        specifier: ^0.31.0
+        specifier: ^0.31.1
         version: link:../../packages/integration-tests
       '@types/node':
         specifier: ^18.18.2
@@ -7943,7 +7943,7 @@ packages:
       std-env: 3.5.0
       test-exclude: 6.0.0
       v8-to-istanbul: 9.2.0
-      vitest: 1.2.1(@types/node@18.18.2)
+      vitest: 1.2.1(@types/node@18.19.8)
     transitivePeerDependencies:
       - supports-color
     dev: true
