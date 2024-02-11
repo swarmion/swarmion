@@ -26,9 +26,9 @@ export type DefaultGetSQSHandlerOptions = {
 };
 
 /**
- * a simple helper type to build EventBridgeHandler
+ * a simple helper type to build SQSHandler
  */
-type SQSHandlerParameters = Parameters<AwsSQSHandler>;
+export type SQSHandlerParameters = Parameters<AwsSQSHandler>;
 
 /**
  * The type of an SQS handler. This is the actual version that will
@@ -52,7 +52,30 @@ export type SwarmionSQSRecord<MessageBody, MessageAttributes> = Omit<
 };
 
 /**
- * The type of the basic Swarmion handler, with type-inferred event
+ * The type of the basic Swarmion handler for SQS,
+ * It receives all the records parsed and with their inferred type.
+ * It must process all the records and handle errors if necessary.
+ * Use SwarmionSQSHandler to avoid handling the whole batch, and to automatically process errors.
+ * The handler function can define additional arguments
+ */
+export type SwarmionLambdaSQSHandler<
+  MessageBody,
+  MessageAttributes,
+  AdditionalArgs extends unknown[],
+> = (
+  event: { records: SwarmionSQSRecord<MessageBody, MessageAttributes>[] },
+  context: SQSHandlerParameters[1],
+  callback?: SQSHandlerParameters[2],
+  ...additionalArgs: AdditionalArgs
+) => Promise<unknown>;
+
+/**
+ * The type of the Swarmion handler for SQS.
+ * It receives only one record of the batch.
+ * The record is parsed and with its inferred type.
+ * It can throw an error if the record is invalid. The wrapper will catch it
+ * and inform the SQS that the record couldn't be processed following the batch failure reporting spec.
+ * https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#services-sqs-batchfailurereporting
  * The handler function can define additional arguments
  */
 export type SwarmionSQSHandler<
@@ -60,7 +83,7 @@ export type SwarmionSQSHandler<
   MessageAttributes,
   AdditionalArgs extends unknown[],
 > = (
-  event: { Records: SwarmionSQSRecord<MessageBody, MessageAttributes>[] },
+  event: SwarmionSQSRecord<MessageBody, MessageAttributes>,
   context: SQSHandlerParameters[1],
   callback?: SQSHandlerParameters[2],
   ...additionalArgs: AdditionalArgs
