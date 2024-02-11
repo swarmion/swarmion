@@ -11,6 +11,8 @@ import { StringOrNumberDictionaryJSONSchema } from 'types/constrainedJSONSchema'
  * - input and output dynamic validation with JSONSchemas on both end of the contract;
  * - type inference for both input and output;
  * - generation of a contract document that can be checked for breaking changes;
+ * - simplify implementation of partial batch processing according to best practices
+ * (see https://docs.aws.amazon.com/prescriptive-guidance/latest/lambda-event-filtering-partial-batch-responses-for-sqs/best-practices-partial-batch-responses.html).
  */
 export class SQSContract<
   MessageBodySchema extends JSONSchema = JSONSchema,

@@ -1,4 +1,5 @@
 import Ajv from 'ajv';
+import { expect } from 'vitest';
 
 import { getHandlerContextMock } from '__mocks__/requestContext';
 import { getHandler } from 'features/lambdaHandler';
@@ -6,19 +7,14 @@ import { getHandler } from 'features/lambdaHandler';
 import { baseRecord, minimalSqsContract, sqsContract } from './mock';
 
 const ajv = new Ajv({ keywords: ['faker'] });
+const simpleHandlerMock = vi.fn();
 
 describe('SQSContract handler test', () => {
   const fakeContext = getHandlerContextMock();
+  const fakeCallback = () => null;
 
-  it('should handle the records', async () => {
-    const handler = getHandler(sqsContract, { ajv })(async event => {
-      await Promise.resolve();
-
-      return event.Records.map(record => ({
-        bodyToto: record.body.toto,
-        messageAttributesTata: record.messageAttributes.tata,
-      }));
-    });
+  it('should call the handler with all the records', async () => {
+    const handler = getHandler(sqsContract, { ajv })(simpleHandlerMock);
 
     const result = await handler(
       {
@@ -34,26 +30,35 @@ describe('SQSContract handler test', () => {
         ],
       },
       fakeContext,
-      () => null,
+      fakeCallback,
     );
-    expect(result).toEqual([
+    expect(simpleHandlerMock).toHaveBeenCalledTimes(2);
+    expect(simpleHandlerMock).toHaveBeenCalledWith(
       {
-        bodyToto: 'totoValue1',
-        messageAttributesTata: undefined,
+        ...baseRecord,
+        body: { toto: 'totoValue1' },
       },
+      fakeContext,
+      fakeCallback,
+    );
+    expect(simpleHandlerMock).toHaveBeenCalledWith(
       {
-        bodyToto: 'totoValue2',
-        messageAttributesTata: 'tataValue',
+        ...baseRecord,
+        body: { toto: 'totoValue2' },
+        messageAttributes: {
+          tata: 'tataValue',
+        },
       },
-    ]);
+      fakeContext,
+      fakeCallback,
+    );
+    expect(result).toEqual({
+      batchItemFailures: [],
+    });
   });
 
   it('should throw if the body of the record is invalid', async () => {
-    const handler = getHandler(sqsContract, { ajv })(async event => {
-      await Promise.resolve();
-
-      return event.Records[0]!.body.toto;
-    });
+    const handler = getHandler(sqsContract, { ajv })(simpleHandlerMock);
 
     await expect(
       handler(
@@ -63,17 +68,13 @@ describe('SQSContract handler test', () => {
           ],
         },
         fakeContext,
-        () => null,
+        fakeCallback,
       ),
     ).rejects.toThrowError();
   });
 
   it('should throw if one of the message attribute of the record is invalid', async () => {
-    const handler = getHandler(sqsContract, { ajv })(async event => {
-      await Promise.resolve();
-
-      return event.Records[0]!.body.toto;
-    });
+    const handler = getHandler(sqsContract, { ajv })(simpleHandlerMock);
 
     await expect(
       handler(
@@ -89,19 +90,16 @@ describe('SQSContract handler test', () => {
           ],
         },
         fakeContext,
-        () => null,
+        fakeCallback,
       ),
     ).rejects.toThrowError();
   });
 
   it('should not throw it the payload is invalid but validation is disabled in options', async () => {
-    const handler = getHandler(sqsContract, { ajv, validateBody: false })(
-      async event => {
-        await Promise.resolve();
-
-        return event.Records[0]!.body;
-      },
-    );
+    const handler = getHandler(sqsContract, {
+      ajv,
+      validateBody: false,
+    })(simpleHandlerMock);
 
     const result = await handler(
       {
@@ -110,30 +108,37 @@ describe('SQSContract handler test', () => {
         ],
       },
       fakeContext,
-      () => null,
+      fakeCallback,
     );
-    expect(result).toEqual({ tata: 'totoValue1' });
+    expect(simpleHandlerMock).toHaveBeenCalledOnce();
+    expect(simpleHandlerMock).toHaveBeenCalledWith(
+      {
+        ...baseRecord,
+        body: { tata: 'totoValue1' },
+      },
+      fakeContext,
+      fakeCallback,
+    );
+    expect(result).toEqual({
+      batchItemFailures: [],
+    });
   });
 
   it('should accept additional arguments', async () => {
-    const mockSideEffect = vitest.fn(() => 'tata');
+    const mockSideEffect = vitest.fn();
     interface SideEffects {
-      mySideEffect: () => string;
+      mySideEffect: (value: string) => Promise<void>;
     }
 
     const sideEffects = { mySideEffect: mockSideEffect };
 
     const handler = getHandler(sqsContract, { ajv })(async (
-      event,
+      record,
       _context,
       _callback,
       { mySideEffect }: SideEffects = sideEffects,
     ) => {
-      await Promise.resolve();
-
-      const sideEffectRes = mySideEffect();
-
-      return `${event.Records[0]!.body.toto}-${sideEffectRes}`;
+      await mySideEffect(record.body.toto);
     });
 
     const result = await handler(
@@ -143,48 +148,101 @@ describe('SQSContract handler test', () => {
         ],
       },
       fakeContext,
-      () => null,
+      fakeCallback,
     );
-    expect(result).toBe('totoValue1-tata');
+    expect(result).toEqual({
+      batchItemFailures: [],
+    });
     expect(mockSideEffect).toHaveBeenCalledOnce();
+    expect(mockSideEffect).toHaveBeenCalledWith('totoValue1');
   });
 
   it('should not JSON parse the body if bodyParser is undefined', async () => {
     const handler = getHandler(minimalSqsContract, {
       ajv,
       bodyParser: undefined,
-    })(async event => {
-      await Promise.resolve();
-
-      return event.Records[0]!.body;
-    });
+    })(simpleHandlerMock);
 
     const result = await handler(
       {
         Records: [{ ...baseRecord, body: 'myBody' }],
       },
       fakeContext,
-      () => null,
+      fakeCallback,
     );
-    expect(result).toEqual('myBody');
+    expect(simpleHandlerMock).toHaveBeenCalledOnce();
+    expect(simpleHandlerMock).toHaveBeenCalledWith(
+      {
+        ...baseRecord,
+        body: 'myBody',
+      },
+      fakeContext,
+      fakeCallback,
+    );
+    expect(result).toEqual({
+      batchItemFailures: [],
+    });
   });
   it('should parse the body with the custom bodyParser if provided', async () => {
     const handler = getHandler(minimalSqsContract, {
       ajv,
       bodyParser: (body: string) => `${body}-parsed`,
-    })(async event => {
-      await Promise.resolve();
-
-      return event.Records[0]!.body;
-    });
+    })(simpleHandlerMock);
 
     const result = await handler(
       {
         Records: [{ ...baseRecord, body: 'myBody' }],
       },
       fakeContext,
-      () => null,
+      fakeCallback,
     );
-    expect(result).toEqual('myBody-parsed');
+    expect(simpleHandlerMock).toHaveBeenCalledOnce();
+    expect(simpleHandlerMock).toHaveBeenCalledWith(
+      {
+        ...baseRecord,
+        body: 'myBody-parsed',
+      },
+      fakeContext,
+      fakeCallback,
+    );
+    expect(result).toEqual({
+      batchItemFailures: [],
+    });
+  });
+  it('should return the messageId of failed records', async () => {
+    simpleHandlerMock
+      .mockResolvedValueOnce(undefined)
+      .mockRejectedValueOnce(new Error('my Error'))
+      .mockResolvedValueOnce(undefined);
+
+    const handler = getHandler(sqsContract, { ajv })(simpleHandlerMock);
+
+    const result = await handler(
+      {
+        Records: [
+          {
+            ...baseRecord,
+            messageId: '1',
+            body: JSON.stringify({ toto: 'totoValue1' }),
+          },
+          {
+            ...baseRecord,
+            messageId: '2',
+            body: JSON.stringify({ toto: 'totoValue2' }),
+          },
+          {
+            ...baseRecord,
+            messageId: '3',
+            body: JSON.stringify({ toto: 'totoValue3' }),
+          },
+        ],
+      },
+      fakeContext,
+      fakeCallback,
+    );
+    expect(simpleHandlerMock).toHaveBeenCalledTimes(3);
+    expect(result).toEqual({
+      batchItemFailures: [{ itemIdentifier: '2' }],
+    });
   });
 });
