@@ -2,7 +2,7 @@ import { ValidateFunction } from 'ajv';
 import { JSONSchema } from 'json-schema-to-ts';
 
 import { SQSContract } from '../sqsContract';
-import { GetSQSHandlerOptions } from '../types';
+import { GetSQSHandlerOptions, SendMessageBuilderOptions } from '../types';
 
 export const getSchema = <Contract extends SQSContract>(
   contract: Contract,
@@ -49,4 +49,29 @@ export const getRecordsValidator = <Contract extends SQSContract>(
   return recordsValidationSchema !== undefined
     ? options.ajv?.compile(recordsValidationSchema)
     : undefined;
+};
+
+export const getBodyValidator = <Contract extends SQSContract>(
+  contract: Contract,
+  options: SendMessageBuilderOptions<Contract>,
+): ValidateFunction | undefined => {
+  if (options.validateMessage === false) {
+    return;
+  }
+
+  return options.ajv.compile(contract.messageBodySchema);
+};
+
+export const getMessageAttributesValidator = <Contract extends SQSContract>(
+  contract: Contract,
+  options: SendMessageBuilderOptions<Contract>,
+): ValidateFunction | undefined => {
+  if (
+    options.validateMessage === false ||
+    Object.keys(contract.messageAttributesSchema).length === 0
+  ) {
+    return;
+  }
+
+  return options.ajv.compile(contract.messageAttributesSchema);
 };

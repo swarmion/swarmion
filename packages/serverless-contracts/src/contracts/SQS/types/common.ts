@@ -1,3 +1,4 @@
+import { SendMessageRequest } from '@aws-sdk/client-sqs';
 import { FromSchema, JSONSchema } from 'json-schema-to-ts';
 
 import { SQSContract } from '../sqsContract';
@@ -11,3 +12,12 @@ export type SqsMessageAttributesType<Contract extends SQSContract> =
   Contract['messageAttributesSchema'] extends JSONSchema
     ? FromSchema<Contract['messageAttributesSchema']>
     : void;
+
+export type SqsMessage<Contract extends SQSContract> = Omit<
+  SendMessageRequest,
+  'MessageBody' | 'QueueUrl'
+> & {
+  body: SqsMessageBodyType<Contract>;
+  // TODO improve messageAttributes type to be required when SqsMessageAttributesType is a valid json schema
+  messageAttributes?: SqsMessageAttributesType<Contract>;
+};

@@ -53,12 +53,10 @@ const getGetSQSHandler =
       const parsedRecords = Records.map(
         parseRecord<MessageBody, MessageAttributes>(internalOptions),
       );
-      if (recordsValidator !== undefined) {
-        if (!recordsValidator(parsedRecords)) {
-          console.error('Error: Invalid records');
-          console.error(JSON.stringify(recordsValidator.errors, null, 2));
-          throw new Error('Invalid records');
-        }
+      if (recordsValidator !== undefined && !recordsValidator(parsedRecords)) {
+        console.error('Error: Invalid records');
+        console.error(JSON.stringify(recordsValidator.errors, null, 2));
+        throw new Error('Invalid records');
       }
 
       if (handleRecords === false) {
