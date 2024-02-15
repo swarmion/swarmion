@@ -6,15 +6,16 @@ import { HttpStatusCodes } from 'types/http';
 import { ApiGatewayContract } from '../apiGatewayContract';
 import { getFetchRequest } from '../features/fetchRequest';
 
-const mockedFetch = vi.fn(() =>
-  Promise.resolve({
-    json: () => {
-      return Promise.resolve(undefined);
-    },
-  }),
-);
+const mockedFetch = vi.fn();
 
 describe('apiGateway fetch request', () => {
+  beforeEach(() => {
+    mockedFetch.mockResolvedValue({
+      json: () => {
+        return Promise.resolve(undefined);
+      },
+    });
+  });
   const pathParametersSchema = {
     type: 'object',
     properties: { userId: { type: 'string' }, pageNumber: { type: 'string' } },
