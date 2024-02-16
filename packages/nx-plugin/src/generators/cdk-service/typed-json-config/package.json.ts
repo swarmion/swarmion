@@ -44,8 +44,8 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
   },
   dependencies: {
     [`@${options.workspaceName}/cdk-configuration`]: 'workspace:^',
-    '@middy/core': 'latest',
-    '@middy/http-cors': 'latest',
+    '@middy/core': '^4.7.0',
+    '@middy/http-cors': '^4.7.0',
     '@swarmion/serverless-contracts': 'latest',
     '@swarmion/serverless-helpers': 'latest',
     ajv: 'latest',
