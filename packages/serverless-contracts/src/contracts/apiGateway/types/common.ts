@@ -1,23 +1,23 @@
 import { FromSchema, JSONSchema } from 'json-schema-to-ts';
 import { O } from 'ts-toolbelt';
 
-import { ConstrainedJSONSchema } from 'types/constrainedJSONSchema';
+import { StringDictionaryJSONSchema } from 'types/constrainedJSONSchema';
 
 import { GenericApiGatewayContract } from '../apiGatewayContract';
 
 export type PathParametersType<Contract extends GenericApiGatewayContract> =
-  Contract['pathParametersSchema'] extends ConstrainedJSONSchema
+  Contract['pathParametersSchema'] extends StringDictionaryJSONSchema
     ? FromSchema<Contract['pathParametersSchema']>
     : undefined;
 
 export type QueryStringParametersType<
   Contract extends GenericApiGatewayContract,
-> = Contract['queryStringParametersSchema'] extends ConstrainedJSONSchema
+> = Contract['queryStringParametersSchema'] extends StringDictionaryJSONSchema
   ? FromSchema<Contract['queryStringParametersSchema']>
   : undefined;
 
 export type HeadersType<Contract extends GenericApiGatewayContract> =
-  Contract['headersSchema'] extends ConstrainedJSONSchema
+  Contract['headersSchema'] extends StringDictionaryJSONSchema
     ? FromSchema<Contract['headersSchema']>
     : undefined;
 

@@ -1,4 +1,4 @@
-interface ConstrainedJSONSchemaProperty {
+interface StringDictionaryJSONSchemaProperty {
   readonly type?: 'string';
   readonly const?: string;
   readonly enum?: readonly string[];
@@ -10,15 +10,15 @@ interface ConstrainedJSONSchemaProperty {
  * to only contain string attributes. This is especially useful for path parameters, headers
  * and query parameters that will be stringified anyway.
  */
-export interface ConstrainedJSONSchema {
+export interface StringDictionaryJSONSchema {
   readonly type: 'object';
   readonly additionalProperties?: boolean;
   readonly properties?: {
-    readonly [key: string]: ConstrainedJSONSchemaProperty;
+    readonly [key: string]: StringDictionaryJSONSchemaProperty;
   };
   readonly required?: readonly string[];
   readonly [key: string]: unknown;
-  readonly oneOf?: readonly ConstrainedJSONSchema[];
-  readonly anyOf?: readonly ConstrainedJSONSchema[];
-  readonly allOf?: readonly ConstrainedJSONSchema[];
+  readonly oneOf?: readonly StringDictionaryJSONSchema[];
+  readonly anyOf?: readonly StringDictionaryJSONSchema[];
+  readonly allOf?: readonly StringDictionaryJSONSchema[];
 }

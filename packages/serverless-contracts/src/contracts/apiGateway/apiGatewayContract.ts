@@ -3,7 +3,7 @@ import { JSONSchema } from 'json-schema-to-ts';
 import isUndefined from 'lodash/isUndefined.js';
 import omitBy from 'lodash/omitBy.js';
 
-import { ConstrainedJSONSchema } from 'types/constrainedJSONSchema';
+import { StringDictionaryJSONSchema } from 'types/constrainedJSONSchema';
 import { HttpMethod, HttpStatusCodes } from 'types/http';
 
 import {
@@ -27,11 +27,13 @@ export class ApiGatewayContract<
   Method extends HttpMethod = HttpMethod,
   IntegrationType extends ApiGatewayIntegrationType = ApiGatewayIntegrationType,
   AuthorizerType extends ApiGatewayAuthorizerType = undefined,
-  PathParametersSchema extends ConstrainedJSONSchema | undefined = undefined,
-  QueryStringParametersSchema extends
-    | ConstrainedJSONSchema
+  PathParametersSchema extends
+    | StringDictionaryJSONSchema
     | undefined = undefined,
-  HeadersSchema extends ConstrainedJSONSchema | undefined = undefined,
+  QueryStringParametersSchema extends
+    | StringDictionaryJSONSchema
+    | undefined = undefined,
+  HeadersSchema extends StringDictionaryJSONSchema | undefined = undefined,
   RequestContextSchema extends JSONSchema | undefined = undefined,
   BodySchema extends JSONSchema | undefined = undefined,
   PropsOutputSchemas extends
@@ -170,9 +172,9 @@ export type GenericApiGatewayContract = ApiGatewayContract<
   HttpMethod,
   ApiGatewayIntegrationType,
   ApiGatewayAuthorizerType,
-  ConstrainedJSONSchema | undefined,
-  ConstrainedJSONSchema | undefined,
-  ConstrainedJSONSchema | undefined,
+  StringDictionaryJSONSchema | undefined,
+  StringDictionaryJSONSchema | undefined,
+  StringDictionaryJSONSchema | undefined,
   JSONSchema | undefined,
   JSONSchema | undefined,
   Partial<Record<HttpStatusCodes, JSONSchema>>
