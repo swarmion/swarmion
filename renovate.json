@@ -3,6 +3,7 @@
   "extends": ["config:base", ":rebaseStalePrs"],
   "ignorePaths": ["**/node_modules/**", "**/bower_components/**"],
   "labels": ["dependencies"],
+  "postUpdateOptions": ["pnpmDedupe"],
   "packageRules": [
     {
       "matchDatasources": ["npm"],
