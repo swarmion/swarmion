@@ -67,7 +67,7 @@ importers:
         version: 3.1.1
       syncpack:
         specifier: ^12.0.0
-        version: 12.0.1(typescript@5.3.3)
+        version: 12.3.0(typescript@5.3.3)
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -567,7 +567,7 @@ importers:
         version: 8.12.0
       aws-sdk:
         specifier: ^2.1516.0
-        version: 2.1566.0
+        version: 2.1567.0
       aws-sdk-client-mock:
         specifier: ^3.0.0
         version: 3.0.1
@@ -625,7 +625,7 @@ importers:
         version: link:../serverless-contracts/dist
       aws-sdk:
         specifier: ^2.1516.0
-        version: 2.1566.0
+        version: 2.1567.0
       axios:
         specifier: ^1.6.7
         version: 1.6.7
@@ -841,7 +841,7 @@ importers:
         version: 2.0.1(serverless@3.38.0)
       serverless-better-credentials:
         specifier: ^2.0.0
-        version: 2.0.0(@serverless/utils@6.15.0)(aws-sdk@2.1566.0)(serverless@3.38.0)
+        version: 2.0.0(@serverless/utils@6.15.0)(aws-sdk@2.1567.0)(serverless@3.38.0)
       serverless-custom-iam-roles-per-function:
         specifier: ^1.0.1
         version: 1.0.1
@@ -4344,8 +4344,8 @@ packages:
       - uglify-js
       - webpack-cli
 
-  /@effect/schema@0.56.0(effect@2.0.0-next.62)(fast-check@3.15.0):
-    resolution: {integrity: sha512-qVR6T9+Lbv2cAhtIAysYvHpRm8iJuMjhp++q0ZMl3ACyQM4v9mvzEg1hQxF0GpAAHS7MTagVDDXN6WCNPEK4oA==}
+  /@effect/schema@0.56.1(effect@2.0.0-next.62)(fast-check@3.15.0):
+    resolution: {integrity: sha512-cfEyHLXPdzSKzJU/yYrPjFd0iVHPydh+NT0sgTe4bzXbcvOsKZuvQ86cAAwXN7lxY0N5cPes9ACxUxTdkEaNlw==}
     peerDependencies:
       effect: 2.0.0-next.62
       fast-check: ^3.13.2
@@ -8439,8 +8439,8 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /aws-sdk@2.1566.0:
-    resolution: {integrity: sha512-4LmOUWrHUk/SIIWzn7j6DaGs92zjDH42v0dovPw7l5usb8ZAQ5yk1bDltM/xs1C/L36gkxixEFVjv7Ac1KNgNw==}
+  /aws-sdk@2.1567.0:
+    resolution: {integrity: sha512-5irUeMggUkQBARXtm3YN4E/lffEN51uIw+D7cD0+d8e2rhhJL/DTphP8cdx22xr+uOfOyRjx9SjSwHvack2B9Q==}
     engines: {node: '>= 10.0.0'}
     dependencies:
       buffer: 4.9.2
@@ -17981,7 +17981,7 @@ packages:
       serverless: 3.38.0
     dev: true
 
-  /serverless-better-credentials@2.0.0(@serverless/utils@6.15.0)(aws-sdk@2.1566.0)(serverless@3.38.0):
+  /serverless-better-credentials@2.0.0(@serverless/utils@6.15.0)(aws-sdk@2.1567.0)(serverless@3.38.0):
     resolution: {integrity: sha512-CscjdWPmK58M/X6l/nOgSvlP8U2fQUt1tmlFDp5+/aRMYrLrcZk9JtcYUmnJBTcwk92JYXPjsKei3jk3e///pg==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -17990,7 +17990,7 @@ packages:
       serverless: ^2 || ^3
     dependencies:
       '@serverless/utils': 6.15.0
-      aws-sdk: 2.1566.0
+      aws-sdk: 2.1567.0
       open: 8.4.2
       serverless: 3.38.0
     dev: true
@@ -18047,7 +18047,7 @@ packages:
       ajv: 8.12.0
       ajv-formats: 2.1.1(ajv@8.12.0)
       archiver: 5.3.2
-      aws-sdk: 2.1566.0
+      aws-sdk: 2.1567.0
       bluebird: 3.7.2
       cachedir: 2.4.0
       chalk: 4.1.2
@@ -18818,12 +18818,12 @@ packages:
       picocolors: 1.0.0
       stable: 0.1.8
 
-  /syncpack@12.0.1(typescript@5.3.3):
-    resolution: {integrity: sha512-APhPKAy4RihL7p0Lr1Yt5MumVzGBL1+acpwfillnkE7gNIvRCRT3AzukSwUsIqVqbI7SxHy321d2QvN/Qa6UQw==}
+  /syncpack@12.3.0(typescript@5.3.3):
+    resolution: {integrity: sha512-Gz2uGn96OmGfVVlKztvFac1EJYjP+WptQ2ohA6Uf48C6qLkhSayhkdujKQ6q7bGOTy8HSGI0iDfwfCJu6wvRig==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
-      '@effect/schema': 0.56.0(effect@2.0.0-next.62)(fast-check@3.15.0)
+      '@effect/schema': 0.56.1(effect@2.0.0-next.62)(fast-check@3.15.0)
       chalk: 4.1.2
       commander: 11.1.0
       cosmiconfig: 9.0.0(typescript@5.3.3)
