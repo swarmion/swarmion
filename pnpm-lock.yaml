@@ -272,7 +272,7 @@ importers:
         version: 1.3.1(vitest@1.3.1)
       aws-cdk-lib:
         specifier: ^2.114.1
-        version: 2.114.1(constructs@10.3.0)
+        version: 2.130.0(constructs@10.3.0)
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
@@ -412,7 +412,7 @@ importers:
         version: 0.6.36
       aws-cdk-lib:
         specifier: ^2.114.1
-        version: 2.114.1(constructs@10.3.0)
+        version: 2.130.0(constructs@10.3.0)
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
@@ -717,7 +717,7 @@ importers:
         version: 1.3.1(vitest@1.3.1)
       aws-cdk-lib:
         specifier: ^2.114.1
-        version: 2.114.1(constructs@10.3.0)
+        version: 2.130.0(constructs@10.3.0)
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
@@ -792,7 +792,7 @@ importers:
         version: 8.12.0
       aws-cdk-lib:
         specifier: ^2.114.1
-        version: 2.114.1(constructs@10.3.0)
+        version: 2.130.0(constructs@10.3.0)
       dynamodb-toolbox:
         specifier: ^0.9.2
         version: 0.9.2(@aws-sdk/client-dynamodb@3.470.0)(@aws-sdk/lib-dynamodb@3.470.0)
@@ -917,10 +917,10 @@ importers:
         version: 18.19.18
       aws-cdk:
         specifier: ^2.114.1
-        version: 2.114.1
+        version: 2.130.0
       aws-cdk-lib:
         specifier: ^2.114.1
-        version: 2.114.1(constructs@10.3.0)
+        version: 2.130.0(constructs@10.3.0)
       constructs:
         specifier: ^10.3.0
         version: 10.3.0
@@ -1136,8 +1136,8 @@ packages:
       js-yaml: 4.1.0
     dev: false
 
-  /@aws-cdk/asset-awscli-v1@2.2.201:
-    resolution: {integrity: sha512-INZqcwDinNaIdb5CtW3ez5s943nX5stGBQS6VOP2JDlOFP81hM3fds/9NDknipqfUkZM43dx+HgVvkXYXXARCQ==}
+  /@aws-cdk/asset-awscli-v1@2.2.202:
+    resolution: {integrity: sha512-JqlF0D4+EVugnG5dAsNZMqhu3HW7ehOXm5SDMxMbXNDMdsF0pxtQKNHRl52z1U9igsHmaFpUgSGjbhAJ+0JONg==}
 
   /@aws-cdk/asset-kubectl-v20@2.1.2:
     resolution: {integrity: sha512-3M2tELJOxQv0apCIiuKQ4pAbncz9GuLwnKFqxifWfe77wuMxyTRPmxssYHs42ePqzap1LT6GDcPygGs+hHstLg==}
@@ -8401,13 +8401,13 @@ packages:
     dependencies:
       possible-typed-array-names: 1.0.0
 
-  /aws-cdk-lib@2.114.1(constructs@10.3.0):
-    resolution: {integrity: sha512-pJy+Sa3+s6K9I0CXYGU8J5jumw9uQEbl8zPK8EMA+A6hP9qb1JN+a8ohyw6a1O1cb4D5S6gwH+hE7Fq7hGPY3A==}
+  /aws-cdk-lib@2.130.0(constructs@10.3.0):
+    resolution: {integrity: sha512-yK7ibePipdjlI4AFM94fwwtsCkmpWJ0JFZTMPahahC/3Pxe/BA/nnI/4Namvl5QPxW5QlU0xQYU7cywioq3RQg==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
     dependencies:
-      '@aws-cdk/asset-awscli-v1': 2.2.201
+      '@aws-cdk/asset-awscli-v1': 2.2.202
       '@aws-cdk/asset-kubectl-v20': 2.1.2
       '@aws-cdk/asset-node-proxy-agent-v6': 2.0.1
       constructs: 10.3.0
@@ -8422,9 +8422,10 @@ packages:
       - semver
       - table
       - yaml
+      - mime-types
 
-  /aws-cdk@2.114.1:
-    resolution: {integrity: sha512-iLOCPb3WAJOgVYQ4GvAnrjtScJfPwcczlB4995h3nUYQdHbus0jNffFv13zBShdWct3cuX+bqLuZ4JyEmJ9+rg==}
+  /aws-cdk@2.130.0:
+    resolution: {integrity: sha512-MsjGzQ2kZv0FEfXvpW7FTJRnefew0GrYt9M2SMN2Yn45+yjugGl2X8to416kABeFz1OFqW56hq8Y5BiLuFDVLQ==}
     engines: {node: '>= 14.15.0'}
     hasBin: true
     optionalDependencies:
