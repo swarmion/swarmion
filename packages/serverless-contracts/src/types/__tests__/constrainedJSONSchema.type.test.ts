@@ -21,7 +21,7 @@ typeAssert<A.Extends<typeof simpleSchema, StringDictionaryJSONSchema>>();
 
 const composedSchema = {
   type: 'object',
-  oneof: [
+  oneOf: [
     {
       type: 'object',
       properties: {
