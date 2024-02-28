@@ -70,10 +70,10 @@ importers:
     dependencies:
       '@swarmion/serverless-helpers':
         specifier: ^0.31.2
-        version: 0.31.2(@serverless/typescript@3.38.0)(aws-cdk-lib@2.114.1)
+        version: 0.31.2(@serverless/typescript@3.38.0)(aws-cdk-lib@2.130.0)
       aws-cdk-lib:
         specifier: ^2.114.1
-        version: 2.114.1(constructs@10.3.0)
+        version: 2.130.0(constructs@10.3.0)
       constructs:
         specifier: ^10.3.0
         version: 10.3.0
@@ -127,8 +127,8 @@ packages:
       '@jridgewell/trace-mapping': 0.3.23
     dev: true
 
-  /@aws-cdk/asset-awscli-v1@2.2.201:
-    resolution: {integrity: sha512-INZqcwDinNaIdb5CtW3ez5s943nX5stGBQS6VOP2JDlOFP81hM3fds/9NDknipqfUkZM43dx+HgVvkXYXXARCQ==}
+  /@aws-cdk/asset-awscli-v1@2.2.202:
+    resolution: {integrity: sha512-JqlF0D4+EVugnG5dAsNZMqhu3HW7ehOXm5SDMxMbXNDMdsF0pxtQKNHRl52z1U9igsHmaFpUgSGjbhAJ+0JONg==}
     dev: false
 
   /@aws-cdk/asset-kubectl-v20@2.1.2:
@@ -2472,14 +2472,14 @@ packages:
       - verdaccio
     dev: true
 
-  /@swarmion/serverless-helpers@0.31.2(@serverless/typescript@3.38.0)(aws-cdk-lib@2.114.1):
+  /@swarmion/serverless-helpers@0.31.2(@serverless/typescript@3.38.0)(aws-cdk-lib@2.130.0):
     resolution: {integrity: sha512-eqx4O9PvDdNh0GJwrY94xO5EzEbHy8Tu+inbLkt2iepmHp4DI8gKrQLTQOXQYTUD8VTVgL1nqSin4Uufy4On6A==}
     peerDependencies:
       '@serverless/typescript': '>=3'
       aws-cdk-lib: ^2.60.0
     dependencies:
       '@serverless/typescript': 3.38.0
-      aws-cdk-lib: 2.114.1(constructs@10.3.0)
+      aws-cdk-lib: 2.130.0(constructs@10.3.0)
       json-schema-to-ts: 3.0.0
     dev: false
 
@@ -2996,13 +2996,13 @@ packages:
       possible-typed-array-names: 1.0.0
     dev: true
 
-  /aws-cdk-lib@2.114.1(constructs@10.3.0):
-    resolution: {integrity: sha512-pJy+Sa3+s6K9I0CXYGU8J5jumw9uQEbl8zPK8EMA+A6hP9qb1JN+a8ohyw6a1O1cb4D5S6gwH+hE7Fq7hGPY3A==}
+  /aws-cdk-lib@2.130.0(constructs@10.3.0):
+    resolution: {integrity: sha512-yK7ibePipdjlI4AFM94fwwtsCkmpWJ0JFZTMPahahC/3Pxe/BA/nnI/4Namvl5QPxW5QlU0xQYU7cywioq3RQg==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
     dependencies:
-      '@aws-cdk/asset-awscli-v1': 2.2.201
+      '@aws-cdk/asset-awscli-v1': 2.2.202
       '@aws-cdk/asset-kubectl-v20': 2.1.2
       '@aws-cdk/asset-node-proxy-agent-v6': 2.0.1
       constructs: 10.3.0
@@ -3018,6 +3018,7 @@ packages:
       - semver
       - table
       - yaml
+      - mime-types
 
   /axios@1.6.7:
     resolution: {integrity: sha512-/hDJGff6/c7u0hDkvkGxR/oy6CbCs8ziCsC7SqmhjfozqiJGc8Z11wrv9z9lYfY4K8l+H9TpjcMDX0xOZmx+RA==}
