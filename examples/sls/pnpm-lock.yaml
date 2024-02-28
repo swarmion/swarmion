@@ -28,7 +28,7 @@ importers:
         version: 7.1.0(eslint@8.57.0)(typescript@5.3.3)
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.0.0
+        version: 16.2.1
       eslint:
         specifier: ^8.55.0
         version: 8.57.0
@@ -89,7 +89,7 @@ importers:
         version: 8.2.2
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.0.0
+        version: 16.2.1
       eslint:
         specifier: ^8.55.0
         version: 8.57.0
@@ -135,7 +135,7 @@ importers:
         version: 8.2.2
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.0.0
+        version: 16.2.1
       eslint:
         specifier: ^8.55.0
         version: 8.57.0
@@ -247,7 +247,7 @@ importers:
         version: 1.3.1(vitest@1.3.1)
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.0.0
+        version: 16.2.1
       dotenv-flow:
         specifier: ^4.0.0
         version: 4.1.0
@@ -344,7 +344,7 @@ importers:
         version: 1.3.1(vitest@1.3.1)
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.0.0
+        version: 16.2.1
       eslint:
         specifier: ^8.55.0
         version: 8.57.0
@@ -426,7 +426,7 @@ importers:
         version: 0.1.2
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.0.0
+        version: 16.2.1
       esbuild:
         specifier: 0.20.1
         version: 0.20.1
@@ -511,7 +511,7 @@ importers:
         version: 8.2.2
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.0.0
+        version: 16.2.1
       eslint:
         specifier: ^8.55.0
         version: 8.57.0
@@ -560,7 +560,7 @@ importers:
         version: 1.3.1(vitest@1.3.1)
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.0.0
+        version: 16.2.1
       esbuild:
         specifier: 0.20.1
         version: 0.20.1
@@ -624,7 +624,7 @@ importers:
         version: 1.3.1(vitest@1.3.1)
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.0.0
+        version: 16.2.1
       esbuild:
         specifier: 0.20.1
         version: 0.20.1
@@ -5729,14 +5729,6 @@ packages:
     resolution: {integrity: sha512-uuo6iJj4D4ygkdzd6jPtcxs8vZgDX9YFIkqczGImoypX2fQ4dVImmu3UzA4ynixCIMTrEOWW+95M2HuBaCEOVA==}
     dev: true
 
-  /acorn-jsx@5.3.2(acorn@8.11.2):
-    resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
-    peerDependencies:
-      acorn: ^6.0.0 || ^7.0.0 || ^8.0.0
-    dependencies:
-      acorn: 8.11.2
-    dev: true
-
   /acorn-jsx@5.3.2(acorn@8.11.3):
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
     peerDependencies:
@@ -5752,20 +5744,9 @@ packages:
       acorn: 8.11.3
     dev: true
 
-  /acorn-walk@8.3.1:
-    resolution: {integrity: sha512-TgUZgYvqZprrl7YldZNoa9OciCAyZR+Ejm9eXzKCmjsF5IKp/wgQ7Z/ZpjpGTIUPwrHQIcYeI8qDh4PsEwxMbw==}
-    engines: {node: '>=0.4.0'}
-    dev: true
-
   /acorn-walk@8.3.2:
     resolution: {integrity: sha512-cjkyv4OtNCIeqhHrfS81QWXoCBPExR/J62oyEqepVw8WaQeSqpW2uhuLPh1m9eWhDuOo/jUXVTlifvesOWp/4A==}
     engines: {node: '>=0.4.0'}
-    dev: true
-
-  /acorn@8.11.2:
-    resolution: {integrity: sha512-nc0Axzp/0FILLEVsm4fNwLCwMttvhEI263QtVPQcbpfZZ3ts0hLsZGOpE6czNlid7CJ9MlyH8reXkpsf3YUY4w==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
     dev: true
 
   /acorn@8.11.3:
@@ -6776,6 +6757,11 @@ packages:
     engines: {node: '>=16'}
     dev: true
 
+  /commander@12.0.0:
+    resolution: {integrity: sha512-MwVNWlYjDTtOjX5PiD7o5pK0UrFU/OYgcJfjjK4RaHZETNtjJqrZa9Y9ds88+A+f+d5lv+561eZ+yCKoS3gbAA==}
+    engines: {node: '>=18'}
+    dev: true
+
   /commander@2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
     dev: true
@@ -7286,28 +7272,28 @@ packages:
     engines: {node: '>= 0.8'}
     dev: false
 
-  /dependency-cruiser@16.0.0:
-    resolution: {integrity: sha512-piS5nFmjz/SOOBjpTHGJAJ2sWFKs7y56wfpPSi47Y44TwVhmRntnXd3aIHb8iPB7tWLk+xf2EjmVUbkCh910bw==}
+  /dependency-cruiser@16.2.1:
+    resolution: {integrity: sha512-Pb3u+MrxLW0wn8xB+0FIqJwZcuuxB52++nVjGyCjRhc7Rk4NUv7NMvpdc7XFW03oSH/JNmh9+pdkzMglcdbqVg==}
     engines: {node: ^18.17||>=20}
     hasBin: true
     dependencies:
-      acorn: 8.11.2
-      acorn-jsx: 5.3.2(acorn@8.11.2)
+      acorn: 8.11.3
+      acorn-jsx: 5.3.2(acorn@8.11.3)
       acorn-jsx-walk: 2.0.0
       acorn-loose: 8.4.0
-      acorn-walk: 8.3.1
+      acorn-walk: 8.3.2
       ajv: 8.12.0
       chalk: 5.3.0
-      commander: 11.1.0
+      commander: 12.0.0
       enhanced-resolve: 5.15.0
       figures: 6.0.1
-      ignore: 5.3.0
+      ignore: 5.3.1
       indent-string: 5.0.0
       interpret: 3.1.1
       is-installed-globally: 1.0.0
       json5: 2.2.3
       lodash: 4.17.21
-      picomatch: 3.0.1
+      picomatch: 4.0.1
       prompts: 2.4.2
       rechoir: 0.8.0
       safe-regex: 2.1.1
@@ -7315,7 +7301,7 @@ packages:
       semver-try-require: 6.2.3
       teamcity-service-messages: 0.1.14
       tsconfig-paths-webpack-plugin: 4.1.0
-      watskeburt: 2.0.4
+      watskeburt: 2.0.5
       wrap-ansi: 9.0.0
     dev: true
 
@@ -8920,11 +8906,6 @@ packages:
 
   /ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
-    dev: true
-
-  /ignore@5.3.0:
-    resolution: {integrity: sha512-g7dmpshy+gD7mh88OC9NwSGTKoc3kyLAZQRU1mt53Aw/vnvfXnbC+F/7F7QoYVKbV+KNvJx8wArewKy1vXMtlg==}
-    engines: {node: '>= 4'}
     dev: true
 
   /ignore@5.3.1:
@@ -10883,9 +10864,9 @@ packages:
     engines: {node: '>=8.6'}
     dev: true
 
-  /picomatch@3.0.1:
-    resolution: {integrity: sha512-I3EurrIQMlRc9IaAZnqRR044Phh2DXY+55o7uJ0V+hYZAcQYSuFWsc9q5PvyDHUSCe1Qxn/iBz+78s86zWnGag==}
-    engines: {node: '>=10'}
+  /picomatch@4.0.1:
+    resolution: {integrity: sha512-xUXwsxNjwTQ8K3GnT4pCJm+xq3RUPQbmkYJTP5aFIfNIvbcc/4MUxgBaaRSZJ6yGJZiGSyYlM6MzwTsRk8SYCg==}
+    engines: {node: '>=12'}
     dev: true
 
   /pidtree@0.6.0:
@@ -13300,8 +13281,8 @@ packages:
       xml-name-validator: 5.0.0
     dev: true
 
-  /watskeburt@2.0.4:
-    resolution: {integrity: sha512-9xAL/S6WQocWEa/Ud5hoPWGp3nknBsXgtGansjEmyu3ZBjZwPKGRn/151qiE9Jvp1VHniDlnivQCesTfUnwekw==}
+  /watskeburt@2.0.5:
+    resolution: {integrity: sha512-mCxVT4o/U+nNxmYJ+Oei3qre4F28IBWR9c7RGS8aeAR7a7UY1y4ikTWcv+kaaybf1QXUANmB7XBHawHBcmg+kw==}
     engines: {node: ^18||>=20}
     hasBin: true
     dev: true
