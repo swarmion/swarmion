@@ -84,11 +84,13 @@ module.exports = {
     'no-restricted-imports': [
       'error',
       {
-        paths: [
+        patterns: [
           {
-            name: 'lodash',
-            message: 'Please use lodash/{module} import instead',
+            group: ['$lodash^', 'lodash/*', '!lodash/*.js'],
+            message: 'Please use lodash/{module}.js import instead',
           },
+        ],
+        paths: [
           {
             name: 'aws-sdk',
             message: 'Please use aws-sdk/{module} import instead',

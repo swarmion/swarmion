@@ -1,5 +1,5 @@
-import isUndefined from 'lodash/isUndefined';
-import omitBy from 'lodash/omitBy';
+import isUndefined from 'lodash/isUndefined.js';
+import omitBy from 'lodash/omitBy.js';
 
 import { GenericApiGatewayContract } from '../apiGatewayContract';
 import { FullContractSchemaType } from '../types';

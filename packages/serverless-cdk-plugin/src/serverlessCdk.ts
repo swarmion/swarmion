@@ -1,5 +1,5 @@
 import { App, Stack } from 'aws-cdk-lib';
-import merge from 'lodash/merge';
+import merge from 'lodash/merge.js';
 import * as Serverless from 'serverless';
 import * as Plugin from 'serverless/classes/Plugin';
 import { O } from 'ts-toolbelt';

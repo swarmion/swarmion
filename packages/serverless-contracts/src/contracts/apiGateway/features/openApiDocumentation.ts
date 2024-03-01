@@ -1,5 +1,5 @@
-import isUndefined from 'lodash/isUndefined';
-import omitBy from 'lodash/omitBy';
+import isUndefined from 'lodash/isUndefined.js';
+import omitBy from 'lodash/omitBy.js';
 import { OpenAPIV3 } from 'openapi-types';
 
 import { ContractOpenApiDocumentation } from 'types/contractOpenApiDocumentation';

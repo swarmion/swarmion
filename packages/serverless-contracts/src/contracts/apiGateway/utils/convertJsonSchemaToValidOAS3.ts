@@ -1,8 +1,8 @@
 /*eslint-disable complexity*/
 
 import type { JSONSchema } from 'json-schema-to-ts';
-import cloneDeep from 'lodash/cloneDeep';
-import mapValues from 'lodash/mapValues';
+import cloneDeep from 'lodash/cloneDeep.js';
+import mapValues from 'lodash/mapValues.js';
 import { OpenAPIV3 } from 'openapi-types';
 
 const isArrayOfString = (array: unknown): array is string[] =>

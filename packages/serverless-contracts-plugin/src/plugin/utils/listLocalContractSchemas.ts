@@ -1,7 +1,7 @@
 import { JSONSchema } from 'json-schema-to-ts';
-import isUndefined from 'lodash/isUndefined';
-import mapValues from 'lodash/mapValues';
-import omitBy from 'lodash/omitBy';
+import isUndefined from 'lodash/isUndefined.js';
+import mapValues from 'lodash/mapValues.js';
+import omitBy from 'lodash/omitBy.js';
 import Serverless from 'serverless';
 
 import { getContractFullSchema } from '@swarmion/serverless-contracts';
