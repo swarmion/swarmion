@@ -12,13 +12,13 @@ const sqsClient = new SQSClient({});
 const queueUrl = 'mySqsUrl';
 
 const sqsClientMock = mockClient(SQSClient);
-sqsClientMock.on(SendMessageCommand).resolves({});
 
 describe('SQS contract sendMessage tests', () => {
   beforeEach(() => {
     sqsClientMock.reset();
+    sqsClientMock.on(SendMessageCommand).resolves({});
   });
-  it('should call SQS with the correct parameters', async () => {
+  it('calls SQS with the correct parameters', async () => {
     const mySendMessage = buildSendMessage(sqsContract, {
       queueUrl,
       sqsClient,
@@ -40,5 +40,20 @@ describe('SQS contract sendMessage tests', () => {
         },
       },
     });
+  });
+  it('throws if the message is invalid', async () => {
+    const mySendMessage = buildSendMessage(sqsContract, {
+      queueUrl,
+      sqsClient,
+      ajv,
+    });
+
+    await expect(
+      mySendMessage({
+        // @ts-expect-error - this is the point of the test
+        body: { tata: 'totoValue' },
+        messageAttributes: { tata: 'tataValue' },
+      }),
+    ).rejects.toThrow();
   });
 });

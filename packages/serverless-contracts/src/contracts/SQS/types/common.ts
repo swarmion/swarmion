@@ -17,6 +17,7 @@ export type SqsMessage<Contract extends SQSContract> = Omit<
   SendMessageRequest,
   'MessageBody' | 'QueueUrl'
 > & {
+  Id?: string;
   body: SqsMessageBodyType<Contract>;
   // TODO improve messageAttributes type to be required when SqsMessageAttributesType is a valid json schema
   messageAttributes?: SqsMessageAttributesType<Contract>;
