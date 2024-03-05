@@ -1,54 +1,19 @@
 import { SendMessageCommand } from '@aws-sdk/client-sqs';
+import omit from 'lodash/omit.js';
 
 import { SQSContract } from '../sqsContract';
-import {
-  SendMessageBuilderOptions,
-  SendMessageSideEffect,
-  SqsMessage,
-} from '../types';
-import {
-  getBodyValidator,
-  getMessageAttributesValidator,
-  serializeMessageAttributes,
-} from '../utils';
+import { SendMessageBuilderOptions, SendMessageSideEffect } from '../types';
+import { serializeMessage, validateMessage } from '../utils';
 
 const defaultOptions = {
   validateMessage: true,
   bodySerializer: JSON.stringify,
 } satisfies Partial<SendMessageBuilderOptions<SQSContract>>;
 
-const validateMessage = <Contract extends SQSContract>({
-  contract,
-  message,
-  options,
-}: {
-  contract: Contract;
-  message: SqsMessage<Contract>;
-  options: SendMessageBuilderOptions<Contract>;
-}) => {
-  const { body, messageAttributes } = message;
-
-  const bodyValidator = getBodyValidator<Contract>(contract, options);
-  if (bodyValidator !== undefined && !bodyValidator(body)) {
-    console.error('Error: Invalid message body');
-    console.error(JSON.stringify(bodyValidator.errors, null, 2));
-    throw new Error('Error: Invalid message body');
-  }
-
-  const messageAttributesValidator = getMessageAttributesValidator<Contract>(
-    contract,
-    options,
-  );
-  if (
-    messageAttributesValidator !== undefined &&
-    !messageAttributesValidator(messageAttributes)
-  ) {
-    console.error('Error: Invalid message attributes');
-    console.error(JSON.stringify(messageAttributesValidator.errors, null, 2));
-    throw new Error('Error: Invalid message attributes');
-  }
-};
-
+/**
+ * creates a sendMessage side effect
+ * The sendMessage function validates a message against the contract and sends it to the SQS queue
+ */
 export const buildSendMessage =
   <Contract extends SQSContract>(
     contract: Contract,
@@ -60,25 +25,16 @@ export const buildSendMessage =
       ...options,
     };
     const { queueUrl, sqsClient, bodySerializer } = internalOptions;
-    const { body, messageAttributes, ...restMessage } = message;
 
     validateMessage<Contract>({ contract, message, options: internalOptions });
 
     const command = new SendMessageCommand({
-      MessageBody:
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- bodySerializer can be undefined if explicitly set to undefined in the options
-        bodySerializer !== undefined ? JSON.stringify(body) : (body as string),
       QueueUrl: typeof queueUrl === 'string' ? queueUrl : queueUrl(),
-      ...(messageAttributes !== undefined && messageAttributes !== null
-        ? {
-            MessageAttributes: serializeMessageAttributes(
-              messageAttributes as Record<string, unknown>, // messageAttributes generic infered type has {} as type. I don't know why
-              contract,
-            ),
-          }
-        : {}),
-      ...restMessage,
+      ...omit(
+        serializeMessage<Contract>({ contract, bodySerializer })(message),
+        'Id',
+      ),
     });
 
-    await sqsClient.send(command);
+    return sqsClient.send(command);
   };
