@@ -9,10 +9,11 @@ const eventBridgeContract = new EventBridgeContract({
   payloadSchema: { type: 'object' } as const,
 });
 
-type Check =
-  FullContractSchemaType<typeof eventBridgeContract> extends JSONSchema
-    ? 'pass'
-    : 'fail';
+type Check = FullContractSchemaType<
+  typeof eventBridgeContract
+> extends JSONSchema
+  ? 'pass'
+  : 'fail';
 
 const check: Check = 'pass';
 check;
