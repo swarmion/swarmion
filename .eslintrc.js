@@ -204,5 +204,11 @@ module.exports = {
         ],
       },
     },
+    {
+      files: ['**/__tests__/**', '**/*.test.ts?(x)', '**/__benches__/**'],
+      rules: {
+        'max-lines': 0,
+      },
+    },
   ],
 };

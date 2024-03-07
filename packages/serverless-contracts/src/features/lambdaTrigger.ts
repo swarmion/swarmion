@@ -38,6 +38,11 @@ export function getTrigger<Contract extends ServerlessContract>(
       // @ts-ignore inference is not good enough here, overriding
       return getEventBridgeTrigger(contract, additionalConfig);
 
+    case 'SQS':
+      throw new Error(
+        'SQS contract has no trigger. The trigger only need the SQS arn which is independent of the Contract',
+      );
+
     case 'cloudFormation':
       throw new Error('CloudFormation contract has no trigger');
 
