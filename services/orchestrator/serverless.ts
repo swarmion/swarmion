@@ -3,6 +3,7 @@ import { AWS } from '@serverless/typescript';
 import {
   listDeploymentsContract,
   onDeploymentRequestedContract,
+  onDeploymentUpdatedContract,
   requestSyncDeploymentContract,
 } from '@swarmion/orchestrator-contracts';
 import { ServerlessCdkPluginConfig } from '@swarmion/serverless-cdk-plugin';
@@ -49,7 +50,7 @@ const serverlessConfiguration: AWS &
       listDeploymentsContract,
       onDeploymentRequestedContract,
     },
-    consumes: { onDeploymentRequestedContract },
+    consumes: { onDeploymentRequestedContract, onDeploymentUpdatedContract },
   },
   resources: {
     Description: 'Monorepo deployments orchestrator',

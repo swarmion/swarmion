@@ -6,3 +6,7 @@ export type EventBridgePayloadType<Contract extends EventBridgeContract> =
   Contract['payloadSchema'] extends JSONSchema
     ? FromSchema<Contract['payloadSchema']>
     : void;
+
+export type EventBridgePayloadUnionType<
+  Contracts extends EventBridgeContract[],
+> = EventBridgePayloadType<Contracts[number]>;

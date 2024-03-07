@@ -1,4 +1,7 @@
-import { onDeploymentRequestedContract } from '@swarmion/orchestrator-contracts';
+import {
+  onDeploymentRequestedContract,
+  onDeploymentUpdatedContract,
+} from '@swarmion/orchestrator-contracts';
 import { getTrigger } from '@swarmion/serverless-contracts';
 import { getHandlerPath, LambdaFunction } from '@swarmion/serverless-helpers';
 
@@ -10,6 +13,9 @@ const config: LambdaFunction = {
   iamRoleStatementsInherit: true,
   events: [
     getTrigger(onDeploymentRequestedContract, {
+      eventBus: getCdkProperty('eventBusName'),
+    }),
+    getTrigger(onDeploymentUpdatedContract, {
       eventBus: getCdkProperty('eventBusName'),
     }),
   ],
