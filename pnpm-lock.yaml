@@ -636,7 +636,7 @@ importers:
         version: 1.6.8
       json-schema-diff:
         specifier: ^0.18.0
-        version: 0.18.0
+        version: 0.18.1
       json-schema-to-ts:
         specifier: ^3.0.0
         version: 3.0.1
@@ -9723,6 +9723,7 @@ packages:
   /commander@9.5.0:
     resolution: {integrity: sha512-KRs7WVDKg86PWiuAqhDrAQnTXZKraVcCc6vFdL14qrZ/DcWwuRo7VoiYXalXO7S5GKpqYiVEwCbgFDfxNHKJBQ==}
     engines: {node: ^12.20.0 || >=14}
+    dev: true
 
   /common-path-prefix@3.0.0:
     resolution: {integrity: sha512-QE33hToZseCH3jS0qN96O/bSh3kaw/h+Tq7ngyY9eWDUnTlTNUyqfqvCXioLe5Na5jFsL78ra/wuBU4iuEgd4w==}
@@ -14104,13 +14105,13 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /json-schema-diff@0.18.0:
-    resolution: {integrity: sha512-rZbb7tOpc/N/PK5a/6PKbN+TfdmRGvpKYB41AMi5dke6uqd8LIi4+qiDLaK6MGdGX4b2VFmk97aF5VhMzKB2Gw==}
+  /json-schema-diff@0.18.1:
+    resolution: {integrity: sha512-lLP/kbwXN85yKWwBGtraxVrJnK/v31D7UZIkSg68BrO+Qeai+aeW1u9b5H1h9uF/Uzzsa8PeaQPTYRaUcdAgWQ==}
     engines: {node: '>=v10.24.1'}
     hasBin: true
     dependencies:
       ajv: 8.12.0
-      commander: 9.5.0
+      commander: 10.0.1
       convict: 6.2.4
       json-schema-ref-parser: 9.0.9
       json-schema-spec-types: 0.1.2
