@@ -4,18 +4,20 @@ import { SQSHandler as AwsSQSHandler, SQSRecord } from 'aws-lambda';
 /**
  * getHandler options for SQSContract
  */
-export type GetSQSHandlerOptions =
+export type GetSQSHandlerOptions<HandleRecords extends boolean> =
   | {
       bodyParser?: ((body: string) => unknown) | undefined; // Default is JSON.parse. Pass explicit undefined bodyParser to avoid bodyParsing
       ajv: Ajv;
       validateBody?: boolean;
       validateAttributes?: boolean;
+      handleBatchedRecords?: HandleRecords;
     }
   | {
       bodyParser?: ((body: string) => unknown) | undefined; // Default is JSON.parse. Pass explicit undefined bodyParser to avoid bodyParsing
       ajv?: Ajv;
       validateBody: false;
       validateAttributes: false;
+      handleBatchedRecords?: HandleRecords;
     };
 
 export type DefaultGetSQSHandlerOptions = {
@@ -23,6 +25,7 @@ export type DefaultGetSQSHandlerOptions = {
   validateBody: true;
   validateAttributes: boolean;
   ajv?: undefined;
+  handleBatchedRecords: true;
 };
 
 /**

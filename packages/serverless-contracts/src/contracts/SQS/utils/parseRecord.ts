@@ -4,7 +4,9 @@ import { parseMessageAttributes } from './parseMessageAttributes';
 import { GetSQSHandlerOptions, SwarmionSQSRecord } from '../types';
 
 export const parseRecord =
-  <MessageBody, MessageAttributes>({ bodyParser }: GetSQSHandlerOptions) =>
+  <MessageBody, MessageAttributes>({
+    bodyParser,
+  }: GetSQSHandlerOptions<boolean>) =>
   ({
     body,
     messageAttributes,

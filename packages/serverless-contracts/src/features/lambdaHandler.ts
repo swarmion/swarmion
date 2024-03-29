@@ -10,6 +10,7 @@ import {
   SQSContract,
   SQSHandler,
   SwarmionEventBridgeHandler,
+  SwarmionLambdaSQSHandler,
   SwarmionSQSHandler,
 } from 'contracts';
 import { GetApiGatewayHandlerOptions } from 'contracts/apiGateway/features';
@@ -94,11 +95,14 @@ export function getHandler<
   Contract extends SQSContract,
   MessageBody = SqsMessageBodyType<Contract>,
   MessageAttributes = SqsMessageAttributesType<Contract>,
+  HandleRecords extends boolean = true,
 >(
   contract: Contract,
-  options: GetSQSHandlerOptions,
+  options: GetSQSHandlerOptions<HandleRecords>,
 ): <AdditionalArgs extends unknown[]>(
-  handler: SwarmionSQSHandler<MessageBody, MessageAttributes, AdditionalArgs>,
+  handler: HandleRecords extends false
+    ? SwarmionLambdaSQSHandler<MessageBody, MessageAttributes, AdditionalArgs>
+    : SwarmionSQSHandler<MessageBody, MessageAttributes, AdditionalArgs>,
 ) => SQSHandler<AdditionalArgs>;
 
 // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
@@ -118,7 +122,7 @@ export function getHandler<Contract extends ServerlessContract>(
         options as GetApiGatewayHandlerOptions,
       );
     case 'SQS':
-      return getSQSHandler(contract, options as GetSQSHandlerOptions);
+      return getSQSHandler(contract, options as GetSQSHandlerOptions<boolean>);
     case 'cloudFormation':
       throw new Error('CloudFormation contract has no handler');
     default:

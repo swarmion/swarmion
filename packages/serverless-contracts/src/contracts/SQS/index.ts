@@ -1,5 +1,5 @@
 export { SQSContract } from './sqsContract';
-export { getSQSHandler, getLambdaSQSHandler } from './features';
+export { getSQSHandler } from './features';
 export type {
   SQSHandler,
   SwarmionSQSHandler,
