@@ -18,17 +18,35 @@ const defaultOptions: DefaultGetSQSHandlerOptions = {
   bodyParser: (body: string) => JSON.parse(body) as unknown,
   validateBody: true,
   validateAttributes: true,
+  handleBatchedRecords: true,
 };
 
-const getGetSQSHandler =
-  <HandleRecords extends boolean = false>(handleRecords: HandleRecords) =>
+/**
+ * Returns the Swarmion handler for SQS.
+ * The wrapper parses the body and attributes of the SQS messages
+ * By default,
+ * It calls the handle with only one record of the batch.
+ * The record is parsed and typed.
+ * It can throw an error if the record is invalid.
+ * The wrapper will catch it and inform the SQS that the record couldn't be processed
+ * following the batch failure reporting spec.
+ * https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#services-sqs-batchfailurereporting
+ *
+ * If handleBatchedRecords option is set to false,
+ * It calls the handler with all the records parsed and typed.
+ * The handler must process all the records and handle errors if necessary.
+ *
+ * The handler function can define additional arguments
+ */
+export const getSQSHandler =
   <
     Contract extends SQSContract,
     MessageBody = SqsMessageBodyType<Contract>,
     MessageAttributes = SqsMessageAttributesType<Contract>,
+    HandleRecords extends boolean = true,
   >(
     contract: Contract,
-    options: GetSQSHandlerOptions,
+    options: GetSQSHandlerOptions<HandleRecords>,
   ) =>
   <AdditionalArgs extends unknown[] = []>(
     handler: HandleRecords extends false
@@ -59,7 +77,7 @@ const getGetSQSHandler =
         throw new Error('Invalid records');
       }
 
-      if (handleRecords === false) {
+      if (internalOptions.handleBatchedRecords === false) {
         return (
           handler as SwarmionLambdaSQSHandler<
             MessageBody,
@@ -84,26 +102,3 @@ const getGetSQSHandler =
       return allRecordsHandler({ records: parsedRecords });
     };
   };
-
-/**
- * Returns the basic Swarmion handler for SQS,
- * The wrapper parses the body of the SQS messages
- * and calls the handler with all the records parsed and typed.
- * It must process all the records and handle errors if necessary.
- * Use getSQSHandler to avoid handling the whole batch, and to automatically process errors.
- * The handler function can define additional arguments
- */
-export const getLambdaSQSHandler = getGetSQSHandler(false);
-
-/**
- * Returns the Swarmion handler for SQS.
- * The wrapper parses the body of the SQS messages and report to SQS the batch failure.
- * It calls the handle with only one record of the batch.
- * The record is parsed and typed.
- * It can throw an error if the record is invalid.
- * The wrapper will catch it and inform the SQS that the record couldn't be processed
- * following the batch failure reporting spec.
- * https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#services-sqs-batchfailurereporting
- * The handler function can define additional arguments
- */
-export const getSQSHandler = getGetSQSHandler(true);

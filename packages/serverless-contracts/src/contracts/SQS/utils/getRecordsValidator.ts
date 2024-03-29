@@ -6,7 +6,7 @@ import { GetSQSHandlerOptions, SendMessageBuilderOptions } from '../types';
 
 export const getSchema = <Contract extends SQSContract>(
   contract: Contract,
-  { validateBody, validateAttributes }: GetSQSHandlerOptions,
+  { validateBody, validateAttributes }: GetSQSHandlerOptions<boolean>,
 ): JSONSchema | undefined => ({
   type: 'array',
   items: {
@@ -27,7 +27,7 @@ export const getSchema = <Contract extends SQSContract>(
 
 const getRecordsValidationSchema = <Contract extends SQSContract>(
   contract: Contract,
-  options: GetSQSHandlerOptions,
+  options: GetSQSHandlerOptions<boolean>,
 ): JSONSchema | undefined => {
   const { validateBody, validateAttributes } = options;
   if (
@@ -42,7 +42,7 @@ const getRecordsValidationSchema = <Contract extends SQSContract>(
 
 export const getRecordsValidator = <Contract extends SQSContract>(
   contract: Contract,
-  options: GetSQSHandlerOptions,
+  options: GetSQSHandlerOptions<boolean>,
 ): ValidateFunction | undefined => {
   const recordsValidationSchema = getRecordsValidationSchema(contract, options);
 

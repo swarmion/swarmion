@@ -1,9 +1,9 @@
 import Ajv from 'ajv';
 
 import { getHandlerContextMock } from '__mocks__/requestContext';
+import { getHandler } from 'features/lambdaHandler';
 
 import { baseRecord, minimalSqsContract, sqsContract } from './mock';
-import { getLambdaSQSHandler } from '../features';
 
 const ajv = new Ajv({ keywords: ['faker'] });
 
@@ -11,7 +11,10 @@ describe('SQSContract basic handler test', () => {
   const fakeContext = getHandlerContextMock();
 
   it('should handle the records', async () => {
-    const handler = getLambdaSQSHandler(sqsContract, { ajv })(async event => {
+    const handler = getHandler(sqsContract, {
+      ajv,
+      handleBatchedRecords: false,
+    })(async event => {
       await Promise.resolve();
 
       return event.records.map(record => ({
@@ -49,7 +52,10 @@ describe('SQSContract basic handler test', () => {
   });
 
   it('should throw if the body of the record is invalid', async () => {
-    const handler = getLambdaSQSHandler(sqsContract, { ajv })(async event => {
+    const handler = getHandler(sqsContract, {
+      ajv,
+      handleBatchedRecords: false,
+    })(async event => {
       await Promise.resolve();
 
       return event.records[0]!.body.toto;
@@ -69,7 +75,10 @@ describe('SQSContract basic handler test', () => {
   });
 
   it('should throw if one of the message attribute of the record is invalid', async () => {
-    const handler = getLambdaSQSHandler(sqsContract, { ajv })(async event => {
+    const handler = getHandler(sqsContract, {
+      ajv,
+      handleBatchedRecords: false,
+    })(async event => {
       await Promise.resolve();
 
       return event.records[0]!.body.toto;
@@ -95,9 +104,10 @@ describe('SQSContract basic handler test', () => {
   });
 
   it('should not throw it the payload is invalid but validation is disabled in options', async () => {
-    const handler = getLambdaSQSHandler(sqsContract, {
+    const handler = getHandler(sqsContract, {
       ajv,
       validateBody: false,
+      handleBatchedRecords: false,
     })(async event => {
       await Promise.resolve();
 
@@ -124,7 +134,10 @@ describe('SQSContract basic handler test', () => {
 
     const sideEffects = { mySideEffect: mockSideEffect };
 
-    const handler = getLambdaSQSHandler(sqsContract, { ajv })(async (
+    const handler = getHandler(sqsContract, {
+      ajv,
+      handleBatchedRecords: false,
+    })(async (
       event,
       _context,
       _callback,
@@ -151,9 +164,10 @@ describe('SQSContract basic handler test', () => {
   });
 
   it('should not JSON parse the body if bodyParser is undefined', async () => {
-    const handler = getLambdaSQSHandler(minimalSqsContract, {
+    const handler = getHandler(minimalSqsContract, {
       ajv,
       bodyParser: undefined,
+      handleBatchedRecords: false,
     })(async event => {
       await Promise.resolve();
 
@@ -170,9 +184,10 @@ describe('SQSContract basic handler test', () => {
     expect(result).toEqual('myBody');
   });
   it('should parse the body with the custom bodyParser if provided', async () => {
-    const handler = getLambdaSQSHandler(minimalSqsContract, {
+    const handler = getHandler(minimalSqsContract, {
       ajv,
       bodyParser: (body: string) => `${body}-parsed`,
+      handleBatchedRecords: false,
     })(async event => {
       await Promise.resolve();
 
