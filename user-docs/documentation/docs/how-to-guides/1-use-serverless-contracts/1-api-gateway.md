@@ -636,7 +636,7 @@ paths:
 ```
 
 :::tip
-If you use the [serverless-contracts-plugin](./5-serverless-plugin.md) for the Serverlesss framework, this feature is used by the `pnpm serverless generateOpenApiDocumentation` command with the contract that your service provides.
+If you use the [serverless-contracts-plugin](./6-serverless-plugin.md) for the Serverlesss framework, this feature is used by the `pnpm serverless generateOpenApiDocumentation` command with the contract that your service provides.
 :::
 
 ## Consumer-side usage
