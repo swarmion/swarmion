@@ -10,16 +10,16 @@ importers:
     devDependencies:
       '@commitlint/cli':
         specifier: ^19.0.0
-        version: 19.2.1(@types/node@18.19.26)(typescript@5.4.3)
+        version: 19.2.1(@types/node@18.19.28)(typescript@5.4.3)
       '@commitlint/config-conventional':
         specifier: ^19.0.0
         version: 19.1.0
       '@swarmion/nx-plugin':
         specifier: ^0.31.3
-        version: 0.31.3(@types/node@18.19.26)(nx@18.2.1)(typescript@5.4.3)
+        version: 0.31.3(@types/node@18.19.28)(nx@18.2.1)(typescript@5.4.3)
       '@types/node':
         specifier: ^18.18.2
-        version: 18.19.26
+        version: 18.19.28
       '@typescript-eslint/eslint-plugin':
         specifier: ^7.0.0
         version: 7.3.1(@typescript-eslint/parser@7.3.1)(eslint@8.57.0)(typescript@5.4.3)
@@ -76,11 +76,11 @@ importers:
         version: link:../../packages/serverless-configuration
       '@swarmion/serverless-contracts':
         specifier: ^0.31.3
-        version: 0.31.3(@serverless/typescript@3.38.0)(ajv@8.12.0)(aws-cdk-lib@2.134.0)
+        version: 0.31.3(@serverless/typescript@3.38.0)(ajv@8.12.0)(aws-cdk-lib@2.135.0)
     devDependencies:
       '@types/node':
         specifier: ^18.18.2
-        version: 18.19.26
+        version: 18.19.28
       '@vitest/coverage-v8':
         specifier: 1.4.0
         version: 1.4.0(vitest@1.4.0)
@@ -101,7 +101,7 @@ importers:
         version: 5.0.5
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@18.19.26)(typescript@5.4.3)
+        version: 10.9.2(@types/node@18.19.28)(typescript@5.4.3)
       tsc-alias:
         specifier: ^1.8.8
         version: 1.8.8
@@ -113,20 +113,20 @@ importers:
         version: 5.4.3
       vitest:
         specifier: 1.4.0
-        version: 1.4.0(@types/node@18.19.26)(jsdom@24.0.0)
+        version: 1.4.0(@types/node@18.19.28)(jsdom@24.0.0)
 
   contracts/users-contracts:
     dependencies:
       '@swarmion/serverless-contracts':
         specifier: ^0.31.3
-        version: 0.31.3(@serverless/typescript@3.38.0)(ajv@8.12.0)(aws-cdk-lib@2.134.0)
+        version: 0.31.3(@serverless/typescript@3.38.0)(ajv@8.12.0)(aws-cdk-lib@2.135.0)
       json-schema-to-ts:
         specifier: ^3.0.0
         version: 3.0.1
     devDependencies:
       '@types/node':
         specifier: ^18.18.2
-        version: 18.19.26
+        version: 18.19.28
       '@vitest/coverage-v8':
         specifier: 1.4.0
         version: 1.4.0(vitest@1.4.0)
@@ -147,7 +147,7 @@ importers:
         version: 5.0.5
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@18.19.26)(typescript@5.4.3)
+        version: 10.9.2(@types/node@18.19.28)(typescript@5.4.3)
       tsc-alias:
         specifier: ^1.8.8
         version: 1.8.8
@@ -159,7 +159,7 @@ importers:
         version: 5.4.3
       vitest:
         specifier: 1.4.0
-        version: 1.4.0(@types/node@18.19.26)(jsdom@24.0.0)
+        version: 1.4.0(@types/node@18.19.28)(jsdom@24.0.0)
 
   frontend/app:
     dependencies:
@@ -189,7 +189,7 @@ importers:
         version: link:../../contracts/users-contracts
       '@swarmion/serverless-contracts':
         specifier: ^0.31.3
-        version: 0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.134.0)(axios@1.6.8)
+        version: 0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.135.0)(axios@1.6.8)
       '@tanstack/react-query':
         specifier: ^5.13.4
         version: 5.28.9(react@18.2.0)
@@ -229,7 +229,7 @@ importers:
         version: 3.3.3
       '@types/node':
         specifier: ^18.18.2
-        version: 18.19.26
+        version: 18.19.28
       '@types/react':
         specifier: ^18.2.43
         version: 18.2.73
@@ -304,13 +304,13 @@ importers:
         version: 6.0.4(stylelint@16.3.1)
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@18.19.26)(typescript@5.4.3)
+        version: 10.9.2(@types/node@18.19.28)(typescript@5.4.3)
       typescript:
         specifier: ^5.3.3
         version: 5.4.3
       vite:
         specifier: ^5.0.8
-        version: 5.2.7(@types/node@18.19.26)
+        version: 5.2.7(@types/node@18.19.28)
       vite-plugin-svgr:
         specifier: ^4.2.0
         version: 4.2.0(rollup@4.13.2)(typescript@5.4.3)(vite@5.2.7)
@@ -319,7 +319,7 @@ importers:
         version: 4.3.2(typescript@5.4.3)(vite@5.2.7)
       vitest:
         specifier: 1.4.0
-        version: 1.4.0(@types/node@18.19.26)(jsdom@24.0.0)
+        version: 1.4.0(@types/node@18.19.28)(jsdom@24.0.0)
 
   frontend/cloudfront:
     dependencies:
@@ -335,10 +335,10 @@ importers:
         version: 3.38.0
       '@swarmion/serverless-helpers':
         specifier: ^0.31.3
-        version: 0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.134.0)
+        version: 0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.135.0)
       '@types/node':
         specifier: ^18.18.2
-        version: 18.19.26
+        version: 18.19.28
       '@vitest/coverage-v8':
         specifier: 1.4.0
         version: 1.4.0(vitest@1.4.0)
@@ -356,13 +356,13 @@ importers:
         version: 1.28.1(serverless@3.38.0)
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@18.19.26)(typescript@5.4.3)
+        version: 10.9.2(@types/node@18.19.28)(typescript@5.4.3)
       typescript:
         specifier: ^5.3.3
         version: 5.4.3
       vitest:
         specifier: 1.4.0
-        version: 1.4.0(@types/node@18.19.26)(jsdom@24.0.0)
+        version: 1.4.0(@types/node@18.19.28)(jsdom@24.0.0)
 
   frontend/shared:
     dependencies:
@@ -408,7 +408,7 @@ importers:
         version: 0.1.4
       '@types/node':
         specifier: ^18.18.2
-        version: 18.19.26
+        version: 18.19.28
       '@types/react':
         specifier: ^18.2.43
         version: 18.2.73
@@ -471,7 +471,7 @@ importers:
         version: 4.13.2
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@18.19.26)(typescript@5.4.3)
+        version: 10.9.2(@types/node@18.19.28)(typescript@5.4.3)
       tsc-alias:
         specifier: ^1.8.8
         version: 1.8.8
@@ -483,7 +483,7 @@ importers:
         version: 5.4.3
       vite:
         specifier: ^5.0.8
-        version: 5.2.7(@types/node@18.19.26)
+        version: 5.2.7(@types/node@18.19.28)
       vite-plugin-svgr:
         specifier: ^4.2.0
         version: 4.2.0(rollup@4.13.2)(typescript@5.4.3)(vite@5.2.7)
@@ -492,17 +492,17 @@ importers:
         version: 4.3.2(typescript@5.4.3)(vite@5.2.7)
       vitest:
         specifier: 1.4.0
-        version: 1.4.0(@types/node@18.19.26)(jsdom@24.0.0)
+        version: 1.4.0(@types/node@18.19.28)(jsdom@24.0.0)
 
   packages/serverless-configuration:
     dependencies:
       '@swarmion/serverless-helpers':
         specifier: ^0.31.3
-        version: 0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.134.0)
+        version: 0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.135.0)
     devDependencies:
       '@types/node':
         specifier: ^18.18.2
-        version: 18.19.26
+        version: 18.19.28
       '@vitest/coverage-v8':
         specifier: 1.4.0
         version: 1.4.0(vitest@1.4.0)
@@ -523,7 +523,7 @@ importers:
         version: 5.0.5
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@18.19.26)(typescript@5.4.3)
+        version: 10.9.2(@types/node@18.19.28)(typescript@5.4.3)
       tsc-alias:
         specifier: ^1.8.8
         version: 1.8.8
@@ -535,7 +535,7 @@ importers:
         version: 5.4.3
       vitest:
         specifier: 1.4.0
-        version: 1.4.0(@types/node@18.19.26)(jsdom@24.0.0)
+        version: 1.4.0(@types/node@18.19.28)(jsdom@24.0.0)
 
   services/core:
     dependencies:
@@ -544,7 +544,7 @@ importers:
         version: link:../../packages/serverless-configuration
       '@swarmion/serverless-helpers':
         specifier: ^0.31.3
-        version: 0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.134.0)
+        version: 0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.135.0)
     devDependencies:
       '@serverless/typescript':
         specifier: ^3.38.0
@@ -554,7 +554,7 @@ importers:
         version: link:../../contracts/core-contracts
       '@types/node':
         specifier: ^18.18.2
-        version: 18.19.26
+        version: 18.19.28
       '@vitest/coverage-v8':
         specifier: 1.4.0
         version: 1.4.0(vitest@1.4.0)
@@ -575,7 +575,7 @@ importers:
         version: 1.52.1(esbuild@0.20.2)
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@18.19.26)(typescript@5.4.3)
+        version: 10.9.2(@types/node@18.19.28)(typescript@5.4.3)
       typescript:
         specifier: ^5.3.3
         version: 5.4.3
@@ -584,7 +584,7 @@ importers:
         version: 4.3.2(typescript@5.4.3)(vite@5.2.7)
       vitest:
         specifier: 1.4.0
-        version: 1.4.0(@types/node@18.19.26)(jsdom@24.0.0)
+        version: 1.4.0(@types/node@18.19.28)(jsdom@24.0.0)
 
   services/users:
     dependencies:
@@ -596,10 +596,10 @@ importers:
         version: link:../../contracts/users-contracts
       '@swarmion/serverless-contracts':
         specifier: ^0.31.3
-        version: 0.31.3(@serverless/typescript@3.38.0)(ajv@8.12.0)(aws-cdk-lib@2.134.0)
+        version: 0.31.3(@serverless/typescript@3.38.0)(ajv@8.12.0)(aws-cdk-lib@2.135.0)
       '@swarmion/serverless-helpers':
         specifier: ^0.31.3
-        version: 0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.134.0)
+        version: 0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.135.0)
       ajv:
         specifier: ^8.12.0
         version: 8.12.0
@@ -618,7 +618,7 @@ importers:
         version: 2.0.4
       '@types/node':
         specifier: ^18.18.2
-        version: 18.19.26
+        version: 18.19.28
       '@vitest/coverage-v8':
         specifier: 1.4.0
         version: 1.4.0(vitest@1.4.0)
@@ -639,7 +639,7 @@ importers:
         version: 1.52.1(esbuild@0.20.2)
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@18.19.26)(typescript@5.4.3)
+        version: 10.9.2(@types/node@18.19.28)(typescript@5.4.3)
       typescript:
         specifier: ^5.3.3
         version: 5.4.3
@@ -648,7 +648,7 @@ importers:
         version: 4.3.2(typescript@5.4.3)(vite@5.2.7)
       vitest:
         specifier: 1.4.0
-        version: 1.4.0(@types/node@18.19.26)(jsdom@24.0.0)
+        version: 1.4.0(@types/node@18.19.28)(jsdom@24.0.0)
 
 packages:
 
@@ -682,10 +682,10 @@ packages:
   /@aws-cdk/asset-kubectl-v20@2.1.2:
     resolution: {integrity: sha512-3M2tELJOxQv0apCIiuKQ4pAbncz9GuLwnKFqxifWfe77wuMxyTRPmxssYHs42ePqzap1LT6GDcPygGs+hHstLg==}
 
-  /@aws-cdk/asset-node-proxy-agent-v6@2.0.1:
-    resolution: {integrity: sha512-DDt4SLdLOwWCjGtltH4VCST7hpOI5DzieuhGZsBpZ+AgJdSI2GCjklCXm0GCTwJG/SolkL5dtQXyUKgg9luBDg==}
+  /@aws-cdk/asset-node-proxy-agent-v6@2.0.3:
+    resolution: {integrity: sha512-twhuEG+JPOYCYPx/xy5uH2+VUsIEhPTzDY0F1KuB+ocjWWB/KEDiOVL19nHvbPCB6fhWnkykXEMJ4HHcKvjtvg==}
 
-  /@aws-cdk/aws-apigatewayv2-alpha@2.21.1-alpha.0(aws-cdk-lib@2.134.0)(constructs@10.2.20):
+  /@aws-cdk/aws-apigatewayv2-alpha@2.21.1-alpha.0(aws-cdk-lib@2.135.0)(constructs@10.2.20):
     resolution: {integrity: sha512-FnPL9tLTEHI3B5N4MO6k17/GBYftT4vD5DIgX7qp3w0P4dbKpp2tc97uFNg84dg0bYN+EN8Vn81uX611ETDsNA==}
     engines: {node: '>= 14.15.0'}
     deprecated: This package has been stabilized and moved to aws-cdk-lib
@@ -693,7 +693,7 @@ packages:
       aws-cdk-lib: ^2.21.1
       constructs: ^10.0.0
     dependencies:
-      aws-cdk-lib: 2.134.0(constructs@10.2.20)
+      aws-cdk-lib: 2.135.0(constructs@10.2.20)
       constructs: 10.2.20
     dev: true
 
@@ -3253,14 +3253,14 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@commitlint/cli@19.2.1(@types/node@18.19.26)(typescript@5.4.3):
+  /@commitlint/cli@19.2.1(@types/node@18.19.28)(typescript@5.4.3):
     resolution: {integrity: sha512-cbkYUJsLqRomccNxvoJTyv5yn0bSy05BBizVyIcLACkRbVUqYorC351Diw/XFSWC/GtpwiwT2eOvQgFZa374bg==}
     engines: {node: '>=v18'}
     hasBin: true
     dependencies:
       '@commitlint/format': 19.0.3
       '@commitlint/lint': 19.1.0
-      '@commitlint/load': 19.2.0(@types/node@18.19.26)(typescript@5.4.3)
+      '@commitlint/load': 19.2.0(@types/node@18.19.28)(typescript@5.4.3)
       '@commitlint/read': 19.2.1
       '@commitlint/types': 19.0.3
       execa: 8.0.1
@@ -3329,7 +3329,7 @@ packages:
       '@commitlint/types': 19.0.3
     dev: true
 
-  /@commitlint/load@19.2.0(@types/node@18.19.26)(typescript@5.4.3):
+  /@commitlint/load@19.2.0(@types/node@18.19.28)(typescript@5.4.3):
     resolution: {integrity: sha512-XvxxLJTKqZojCxaBQ7u92qQLFMMZc4+p9qrIq/9kJDy8DOrEa7P1yx7Tjdc2u2JxIalqT4KOGraVgCE7eCYJyQ==}
     engines: {node: '>=v18'}
     dependencies:
@@ -3339,7 +3339,7 @@ packages:
       '@commitlint/types': 19.0.3
       chalk: 5.3.0
       cosmiconfig: 9.0.0(typescript@5.4.3)
-      cosmiconfig-typescript-loader: 5.0.0(@types/node@18.19.26)(cosmiconfig@9.0.0)(typescript@5.4.3)
+      cosmiconfig-typescript-loader: 5.0.0(@types/node@18.19.28)(cosmiconfig@9.0.0)(typescript@5.4.3)
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
@@ -4444,10 +4444,10 @@ packages:
       - nx
     dev: true
 
-  /@nrwl/js@18.0.6(@types/node@18.19.26)(nx@18.2.1)(typescript@5.3.3):
+  /@nrwl/js@18.0.6(@types/node@18.19.28)(nx@18.2.1)(typescript@5.3.3):
     resolution: {integrity: sha512-iGC/uwOCMATObmFcrn1T5gt4e9yrcBTyWaDgaaQHkj9ycP3db+6oheR70sNQyH0yPiNjBRgPz3LRO30Sz1J4/Q==}
     dependencies:
-      '@nx/js': 18.0.6(@types/node@18.19.26)(nx@18.2.1)(typescript@5.3.3)
+      '@nx/js': 18.0.6(@types/node@18.19.28)(nx@18.2.1)(typescript@5.3.3)
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -4527,7 +4527,7 @@ packages:
       yargs-parser: 21.1.1
     dev: true
 
-  /@nx/eslint@18.0.6(@types/node@18.19.26)(nx@18.2.1):
+  /@nx/eslint@18.0.6(@types/node@18.19.28)(nx@18.2.1):
     resolution: {integrity: sha512-++ZixSPM8PvCx97sg5rhiSMMnp05caCjY87YCaN3k6AAfw6inx+zghbhipooemCC5xRJ9ikyUBUmLsHA9Kn40w==}
     peerDependencies:
       js-yaml: 4.1.0
@@ -4536,8 +4536,8 @@ packages:
         optional: true
     dependencies:
       '@nx/devkit': 18.0.6(nx@18.2.1)
-      '@nx/js': 18.0.6(@types/node@18.19.26)(nx@18.2.1)(typescript@5.3.3)
-      '@nx/linter': 18.0.6(@types/node@18.19.26)(nx@18.2.1)
+      '@nx/js': 18.0.6(@types/node@18.19.28)(nx@18.2.1)(typescript@5.3.3)
+      '@nx/linter': 18.0.6(@types/node@18.19.28)(nx@18.2.1)
       eslint: 8.57.0
       tslib: 2.6.2
       typescript: 5.3.3
@@ -4553,7 +4553,7 @@ packages:
       - verdaccio
     dev: true
 
-  /@nx/js@18.0.6(@types/node@18.19.26)(nx@18.2.1)(typescript@5.3.3):
+  /@nx/js@18.0.6(@types/node@18.19.28)(nx@18.2.1)(typescript@5.3.3):
     resolution: {integrity: sha512-NjN9FW70i4Agt8Iy9D6apth9EFItElhD2oJhJg59szAjtFlzurboBdioZV5qHs5JksiDCQAv3/3ItFdTjwSsUg==}
     peerDependencies:
       verdaccio: ^5.0.4
@@ -4568,7 +4568,7 @@ packages:
       '@babel/preset-env': 7.24.0(@babel/core@7.24.0)
       '@babel/preset-typescript': 7.23.3(@babel/core@7.24.0)
       '@babel/runtime': 7.24.1
-      '@nrwl/js': 18.0.6(@types/node@18.19.26)(nx@18.2.1)(typescript@5.3.3)
+      '@nrwl/js': 18.0.6(@types/node@18.19.28)(nx@18.2.1)(typescript@5.3.3)
       '@nx/devkit': 18.0.6(nx@18.2.1)
       '@nx/workspace': 18.0.6
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.3.3)
@@ -4588,7 +4588,7 @@ packages:
       ora: 5.3.0
       semver: 7.6.0
       source-map-support: 0.5.19
-      ts-node: 10.9.1(@types/node@18.19.26)(typescript@5.3.3)
+      ts-node: 10.9.1(@types/node@18.19.28)(typescript@5.3.3)
       tsconfig-paths: 4.2.0
       tslib: 2.6.2
     transitivePeerDependencies:
@@ -4603,10 +4603,10 @@ packages:
       - typescript
     dev: true
 
-  /@nx/linter@18.0.6(@types/node@18.19.26)(nx@18.2.1):
+  /@nx/linter@18.0.6(@types/node@18.19.28)(nx@18.2.1):
     resolution: {integrity: sha512-vbeg3oUBLOgIhhk8NPNPOzc/o13wQYDQWkUKzlWQ2ekWxkamLYi1TbuUJEkikFlLLNpEgw9Z9ZZyFQTlzddCdA==}
     dependencies:
-      '@nx/eslint': 18.0.6(@types/node@18.19.26)(nx@18.2.1)
+      '@nx/eslint': 18.0.6(@types/node@18.19.28)(nx@18.2.1)
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -5565,13 +5565,13 @@ packages:
       - supports-color
     dev: true
 
-  /@swarmion/nx-plugin@0.31.3(@types/node@18.19.26)(nx@18.2.1)(typescript@5.4.3):
+  /@swarmion/nx-plugin@0.31.3(@types/node@18.19.28)(nx@18.2.1)(typescript@5.4.3):
     resolution: {integrity: sha512-P/PWPaDdYa+gt2ZchmvJIz6LoToR9u7pJY2C9xqAI477xXFEVHKv0gX1RWquKPCUPNiqMaNFFMnR7RRkXf/r9Q==}
     peerDependencies:
       typescript: '>=4'
     dependencies:
       '@nx/devkit': 18.0.6(nx@18.2.1)
-      '@nx/linter': 18.0.6(@types/node@18.19.26)(nx@18.2.1)
+      '@nx/linter': 18.0.6(@types/node@18.19.28)(nx@18.2.1)
       typescript: 5.4.3
       yaml: 2.4.0
     transitivePeerDependencies:
@@ -5587,7 +5587,7 @@ packages:
       - verdaccio
     dev: true
 
-  /@swarmion/serverless-contracts@0.31.3(@serverless/typescript@3.38.0)(ajv@8.12.0)(aws-cdk-lib@2.134.0):
+  /@swarmion/serverless-contracts@0.31.3(@serverless/typescript@3.38.0)(ajv@8.12.0)(aws-cdk-lib@2.135.0):
     resolution: {integrity: sha512-vOzUo4qy2lYyssjAHLQ0Qucd6kv+2zeks+k0QLoNWA3zwTA7bnL9BTTtt9hJKeJqiF5QciWqsMGI/YFWl5/how==}
     peerDependencies:
       '@serverless/typescript': '>=3'
@@ -5603,7 +5603,7 @@ packages:
     dependencies:
       '@aws-sdk/client-eventbridge': 3.525.0
       '@serverless/typescript': 3.38.0
-      '@swarmion/serverless-helpers': 0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.134.0)
+      '@swarmion/serverless-helpers': 0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.135.0)
       '@types/aws-lambda': 8.10.134
       '@types/http-errors': 2.0.4
       ajv: 8.12.0
@@ -5619,7 +5619,7 @@ packages:
       - aws-crt
     dev: false
 
-  /@swarmion/serverless-contracts@0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.134.0)(axios@1.6.8):
+  /@swarmion/serverless-contracts@0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.135.0)(axios@1.6.8):
     resolution: {integrity: sha512-vOzUo4qy2lYyssjAHLQ0Qucd6kv+2zeks+k0QLoNWA3zwTA7bnL9BTTtt9hJKeJqiF5QciWqsMGI/YFWl5/how==}
     peerDependencies:
       '@serverless/typescript': '>=3'
@@ -5635,7 +5635,7 @@ packages:
     dependencies:
       '@aws-sdk/client-eventbridge': 3.525.0
       '@serverless/typescript': 3.38.0
-      '@swarmion/serverless-helpers': 0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.134.0)
+      '@swarmion/serverless-helpers': 0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.135.0)
       '@types/aws-lambda': 8.10.134
       '@types/http-errors': 2.0.4
       axios: 1.6.8
@@ -5651,14 +5651,14 @@ packages:
       - aws-crt
     dev: false
 
-  /@swarmion/serverless-helpers@0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.134.0):
+  /@swarmion/serverless-helpers@0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.135.0):
     resolution: {integrity: sha512-osQ1nXfyXyOdcAasOFyajncph4902BVhwpgllFa90IJQ8M8LRQ55MDiNlxPdGIzsGvLxWLJhmBB5hruCAZaD7w==}
     peerDependencies:
       '@serverless/typescript': '>=3'
       aws-cdk-lib: ^2.60.0
     dependencies:
       '@serverless/typescript': 3.38.0
-      aws-cdk-lib: 2.134.0(constructs@10.2.20)
+      aws-cdk-lib: 2.135.0(constructs@10.2.20)
       json-schema-to-ts: 3.0.1
 
   /@szmarczak/http-timer@4.0.6:
@@ -5724,7 +5724,7 @@ packages:
       dom-accessibility-api: 0.6.3
       lodash: 4.17.21
       redent: 3.0.0
-      vitest: 1.4.0(@types/node@18.19.26)(jsdom@24.0.0)
+      vitest: 1.4.0(@types/node@18.19.28)(jsdom@24.0.0)
     dev: true
 
   /@testing-library/react@14.2.2(react-dom@18.2.0)(react@18.2.0):
@@ -5812,14 +5812,14 @@ packages:
     dependencies:
       '@types/http-cache-semantics': 4.0.4
       '@types/keyv': 3.1.4
-      '@types/node': 18.19.26
+      '@types/node': 18.19.28
       '@types/responselike': 1.0.3
     dev: true
 
   /@types/conventional-commits-parser@5.0.0:
     resolution: {integrity: sha512-loB369iXNmAZglwWATL+WRe+CRMmmBPtpolYzIebFaX4YA3x+BEfLqhUAV9WanycKI3TG1IMr5bMJDajDKLlUQ==}
     dependencies:
-      '@types/node': 18.19.26
+      '@types/node': 18.19.28
     dev: true
 
   /@types/css-mediaquery@0.1.4:
@@ -5861,15 +5861,15 @@ packages:
   /@types/keyv@3.1.4:
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
     dependencies:
-      '@types/node': 18.19.26
+      '@types/node': 18.19.28
     dev: true
 
   /@types/lodash@4.14.202:
     resolution: {integrity: sha512-OvlIYQK9tNneDlS0VN54LLd5uiPCBOp7gS5Z0f1mjoJYBrtStzgmJBxONW3U6OZqdtNzZPmn9BS/7WI7BFFcFQ==}
     dev: true
 
-  /@types/node@18.19.26:
-    resolution: {integrity: sha512-+wiMJsIwLOYCvUqSdKTrfkS8mpTp+MPINe6+Np4TAGFWWRWiBQ5kSq9nZGCSPkzx9mvT+uEukzpX4MOSCydcvw==}
+  /@types/node@18.19.28:
+    resolution: {integrity: sha512-J5cOGD9n4x3YGgVuaND6khm5x07MMdAKkRyXnjVR6KFhLMNh2yONGiP7Z+4+tBOt5mK+GvDTiacTOVGGpqiecw==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -5900,7 +5900,7 @@ packages:
   /@types/responselike@1.0.3:
     resolution: {integrity: sha512-H/+L+UkTV33uf49PH5pCAUBVPNj2nDBXTN+qS1dOwyyg24l3CcicicCA7ca+HMvJBZcFgl5r8e+RR6elsb4Lyw==}
     dependencies:
-      '@types/node': 18.19.26
+      '@types/node': 18.19.28
     dev: true
 
   /@types/semver@7.5.8:
@@ -6058,7 +6058,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.23.3(@babel/core@7.24.0)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.0
-      vite: 5.2.7(@types/node@18.19.26)
+      vite: 5.2.7(@types/node@18.19.28)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6082,7 +6082,7 @@ packages:
       strip-literal: 2.0.0
       test-exclude: 6.0.0
       v8-to-istanbul: 9.2.0
-      vitest: 1.4.0(@types/node@18.19.26)(jsdom@24.0.0)
+      vitest: 1.4.0(@types/node@18.19.28)(jsdom@24.0.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6555,15 +6555,15 @@ packages:
       possible-typed-array-names: 1.0.0
     dev: true
 
-  /aws-cdk-lib@2.134.0(constructs@10.2.20):
-    resolution: {integrity: sha512-fjJLsZ7L+HLVSOGfYxMcAbUYBb1I/UWLH9STkPiytT+hWQNN6lmZYLDHlqCqcS8gFyyCqu4i3KOOt/ZDHDVo2Q==}
+  /aws-cdk-lib@2.135.0(constructs@10.2.20):
+    resolution: {integrity: sha512-0RcmhPqJyMFgXqjESv+LilL7TfOQ7uZ4G125hp5/sSoaM7IFz/L3KDAUKVW/01rrebOQo0NZR9M7WIU3JJ7ezQ==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
     dependencies:
       '@aws-cdk/asset-awscli-v1': 2.2.202
       '@aws-cdk/asset-kubectl-v20': 2.1.2
-      '@aws-cdk/asset-node-proxy-agent-v6': 2.0.1
+      '@aws-cdk/asset-node-proxy-agent-v6': 2.0.3
       constructs: 10.2.20
     bundledDependencies:
       - '@balena/dockerignore'
@@ -7322,7 +7322,7 @@ packages:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
     dev: true
 
-  /cosmiconfig-typescript-loader@5.0.0(@types/node@18.19.26)(cosmiconfig@9.0.0)(typescript@5.4.3):
+  /cosmiconfig-typescript-loader@5.0.0(@types/node@18.19.28)(cosmiconfig@9.0.0)(typescript@5.4.3):
     resolution: {integrity: sha512-+8cK7jRAReYkMwMiG+bxhcNKiHJDM6bR9FD/nGBXOWdMLuYawjF5cGrtLilJ+LGd3ZjCXnJjR5DkfWPoIVlqJA==}
     engines: {node: '>=v16'}
     peerDependencies:
@@ -7330,7 +7330,7 @@ packages:
       cosmiconfig: '>=8.2'
       typescript: '>=4'
     dependencies:
-      '@types/node': 18.19.26
+      '@types/node': 18.19.28
       cosmiconfig: 9.0.0(typescript@5.4.3)
       jiti: 1.21.0
       typescript: 5.4.3
@@ -11329,7 +11329,7 @@ packages:
         optional: true
     dependencies:
       lilconfig: 3.1.1
-      ts-node: 10.9.2(@types/node@18.19.26)(typescript@5.4.3)
+      ts-node: 10.9.2(@types/node@18.19.28)(typescript@5.4.3)
       yaml: 2.4.0
     dev: true
 
@@ -12081,8 +12081,8 @@ packages:
     peerDependencies:
       serverless: ^2.36.0 || ^3
     dependencies:
-      '@aws-cdk/aws-apigatewayv2-alpha': 2.21.1-alpha.0(aws-cdk-lib@2.134.0)(constructs@10.2.20)
-      aws-cdk-lib: 2.134.0(constructs@10.2.20)
+      '@aws-cdk/aws-apigatewayv2-alpha': 2.21.1-alpha.0(aws-cdk-lib@2.135.0)(constructs@10.2.20)
+      aws-cdk-lib: 2.135.0(constructs@10.2.20)
       chalk: 4.1.2
       change-case: 4.1.2
       cidr-split: 0.1.2
@@ -12568,7 +12568,7 @@ packages:
     resolution: {integrity: sha512-hrA79fjmN2Eb6K3kxkDzU4ODeVGGjXQsuVaAPSUro6I9MM3X+BvIsVqdphm3BXWfimAGFvUqWtPtHy25mICY1w==}
     engines: {node: ^8.1 || >=10.*}
     dependencies:
-      '@types/node': 18.19.26
+      '@types/node': 18.19.28
       qs: 6.11.2
     dev: true
 
@@ -13019,7 +13019,7 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
-  /ts-node@10.9.1(@types/node@18.19.26)(typescript@5.3.3):
+  /ts-node@10.9.1(@types/node@18.19.28)(typescript@5.3.3):
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -13038,7 +13038,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 18.19.26
+      '@types/node': 18.19.28
       acorn: 8.11.3
       acorn-walk: 8.3.2
       arg: 4.1.3
@@ -13050,7 +13050,7 @@ packages:
       yn: 3.1.1
     dev: true
 
-  /ts-node@10.9.2(@types/node@18.19.26)(typescript@5.4.3):
+  /ts-node@10.9.2(@types/node@18.19.28)(typescript@5.4.3):
     resolution: {integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==}
     hasBin: true
     peerDependencies:
@@ -13069,7 +13069,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 18.19.26
+      '@types/node': 18.19.28
       acorn: 8.11.3
       acorn-walk: 8.3.2
       arg: 4.1.3
@@ -13444,7 +13444,7 @@ packages:
       builtins: 5.0.1
     dev: true
 
-  /vite-node@1.4.0(@types/node@18.19.26):
+  /vite-node@1.4.0(@types/node@18.19.28):
     resolution: {integrity: sha512-VZDAseqjrHgNd4Kh8icYHWzTKSCZMhia7GyHfhtzLW33fZlG9SwsB6CEhgyVOWkJfJ2pFLrp/Gj1FSfAiqH9Lw==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -13453,7 +13453,7 @@ packages:
       debug: 4.3.4(supports-color@8.1.1)
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: 5.2.7(@types/node@18.19.26)
+      vite: 5.2.7(@types/node@18.19.28)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -13473,7 +13473,7 @@ packages:
       '@rollup/pluginutils': 5.0.5(rollup@4.13.2)
       '@svgr/core': 8.1.0(typescript@5.4.3)
       '@svgr/plugin-jsx': 8.1.0(@svgr/core@8.1.0)
-      vite: 5.2.7(@types/node@18.19.26)
+      vite: 5.2.7(@types/node@18.19.28)
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -13491,13 +13491,13 @@ packages:
       debug: 4.3.4(supports-color@8.1.1)
       globrex: 0.1.2
       tsconfck: 3.0.3(typescript@5.4.3)
-      vite: 5.2.7(@types/node@18.19.26)
+      vite: 5.2.7(@types/node@18.19.28)
     transitivePeerDependencies:
       - supports-color
       - typescript
     dev: true
 
-  /vite@5.2.7(@types/node@18.19.26):
+  /vite@5.2.7(@types/node@18.19.28):
     resolution: {integrity: sha512-k14PWOKLI6pMaSzAuGtT+Cf0YmIx12z9YGon39onaJNy8DLBfBJrzg9FQEmkAM5lpHBZs9wksWAsyF/HkpEwJA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -13525,7 +13525,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 18.19.26
+      '@types/node': 18.19.28
       esbuild: 0.20.2
       postcss: 8.4.38
       rollup: 4.13.2
@@ -13533,7 +13533,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vitest@1.4.0(@types/node@18.19.26)(jsdom@24.0.0):
+  /vitest@1.4.0(@types/node@18.19.28)(jsdom@24.0.0):
     resolution: {integrity: sha512-gujzn0g7fmwf83/WzrDTnncZt2UiXP41mHuFYFrdwaLRVQ6JYQEiME2IfEjU3vcFL3VKa75XhI3lFgn+hfVsQw==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -13558,7 +13558,7 @@ packages:
       jsdom:
         optional: true
     dependencies:
-      '@types/node': 18.19.26
+      '@types/node': 18.19.28
       '@vitest/expect': 1.4.0
       '@vitest/runner': 1.4.0
       '@vitest/snapshot': 1.4.0
@@ -13577,8 +13577,8 @@ packages:
       strip-literal: 2.0.0
       tinybench: 2.5.1
       tinypool: 0.8.2
-      vite: 5.2.7(@types/node@18.19.26)
-      vite-node: 1.4.0(@types/node@18.19.26)
+      vite: 5.2.7(@types/node@18.19.28)
+      vite-node: 1.4.0(@types/node@18.19.28)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
