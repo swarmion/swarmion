@@ -55,6 +55,8 @@ export const getWorkspaceNameFromPackageJson = (tree: Tree): string => {
     ? readJson<{ name?: string }>(tree, 'package.json')
     : { name: null };
 
+  // it is actually shorter here to write a single condition
+  // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
   if (name != null && name.startsWith('@')) {
     const workspaceName = name.split('/')[0]?.substring(1);
 
