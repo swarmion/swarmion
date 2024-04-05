@@ -31,7 +31,7 @@ export class Health extends Construct {
     this.healthFunction = new NodejsFunction(this, 'Lambda', {
       entry: getCdkHandlerPath(__dirname),
       handler: 'main',
-      runtime: Runtime.NODEJS_18_X,
+      runtime: Runtime.NODEJS_20_X,
       architecture: Architecture.ARM_64,
       awsSdkConnectionReuse: true,
       bundling: sharedLambdaEsbuildConfig,
