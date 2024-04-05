@@ -28,7 +28,7 @@
     "lint-fix-all": "nx run-many --target=lint-fix-all --all --parallel=4",
     "linter-base-config": "eslint --ext=js,ts",
     "package": "nx run-many --target=package --all --parallel=4",
-    "postinstall": "husky install && syncpack format",
+    "postinstall": "husky && syncpack format",
     "release": "./release.sh",
     "test": "pnpm run format-check && nx run-many --targets=test-circular,test-linter,test-type,test-unit --all --parallel=4",
     "test-affected": "pnpm run format-check && nx affected --targets=test-circular,test-linter,test-type,test-unit",
