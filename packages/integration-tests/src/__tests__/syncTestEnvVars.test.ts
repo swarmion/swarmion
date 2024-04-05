@@ -1,4 +1,3 @@
-import subMinutes from 'date-fns/subMinutes';
 import { readFileSync, unlinkSync, writeFileSync } from 'fs';
 import * as path from 'path';
 import { afterEach, describe, expect, it, vi } from 'vitest';
@@ -8,6 +7,12 @@ import type { CacheFileType } from '../syncTestEnvVars';
 import { syncTestEnvVars } from '../syncTestEnvVars';
 
 vi.mock('../getTestEnvVarParameters.ts');
+
+const subMinutes = (date: Date, minutes: number): Date => {
+  date.setMinutes(date.getMinutes() - minutes);
+
+  return date;
+};
 
 const testCachePath = 'test-temp.json';
 const absoluteTestCachePath = path.resolve(testCachePath);
