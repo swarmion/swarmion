@@ -6,8 +6,8 @@ set -e
 # For this, we need to have the local version of Swarmion packages (not the ones published on npm)
 # This is why we need to symlink packages with the swarmion_setup function
 
-pnpm nx run create-swarmion-app:build
-pnpm package
+pnpm nx run create-swarmion-app:build --skip-nx-cache # important to skip cache here
+pnpm package --skip-nx-cache                          # important to skip cache here
 
 BASE_DIR=$(pwd)
 TEMP_DIR=$(mktemp -d)
