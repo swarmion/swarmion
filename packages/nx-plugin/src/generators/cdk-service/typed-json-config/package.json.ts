@@ -1,12 +1,6 @@
 import { joinPathFragments } from '@nx/devkit';
 
-import {
-  getWorkspaceDependencyVersion,
-  typescriptVersion,
-  vitestCoverageC8Version,
-  vitestVersion,
-  viteTsConfigPathsVersion,
-} from 'generators/helpers';
+import { getWorkspaceDependencyVersion } from 'generators/helpers';
 
 import { NormalizedSchema, PackageJson } from '../../types';
 
@@ -48,21 +42,20 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     '@middy/http-cors': '^4.7.0',
     '@swarmion/serverless-contracts': 'latest',
     '@swarmion/serverless-helpers': 'latest',
-    ajv: 'latest',
+    ajv: getWorkspaceDependencyVersion('ajv'),
   },
   devDependencies: {
-    '@types/node': 'latest',
-    '@vitest/coverage-v8': vitestCoverageC8Version,
-    'aws-cdk': getWorkspaceDependencyVersion('aws-cdk-lib'),
+    '@types/node': getWorkspaceDependencyVersion('@types/node'),
+    '@vitest/coverage-v8': getWorkspaceDependencyVersion('@vitest/coverage-v8'),
     'aws-cdk-lib': getWorkspaceDependencyVersion('aws-cdk-lib'),
     constructs: getWorkspaceDependencyVersion('constructs'),
-    'dependency-cruiser': 'latest',
-    esbuild: 'latest',
-    eslint: 'latest',
-    prettier: 'latest',
-    'ts-node': 'latest',
-    typescript: typescriptVersion,
-    'vite-tsconfig-paths': viteTsConfigPathsVersion,
-    vitest: vitestVersion,
+    'dependency-cruiser': getWorkspaceDependencyVersion('dependency-cruiser'),
+    esbuild: getWorkspaceDependencyVersion('esbuild'),
+    eslint: getWorkspaceDependencyVersion('eslint'),
+    prettier: getWorkspaceDependencyVersion('prettier'),
+    'ts-node': getWorkspaceDependencyVersion('ts-node'),
+    typescript: getWorkspaceDependencyVersion('typescript'),
+    'vite-tsconfig-paths': getWorkspaceDependencyVersion('vite-tsconfig-paths'),
+    vitest: getWorkspaceDependencyVersion('vitest'),
   },
 });

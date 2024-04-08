@@ -1,11 +1,6 @@
 import { joinPathFragments } from '@nx/devkit';
 
-import {
-  typescriptVersion,
-  vitestCoverageC8Version,
-  vitestVersion,
-  viteTsConfigPathsVersion,
-} from 'generators/helpers';
+import { getWorkspaceDependencyVersion } from 'generators/helpers';
 
 import { NormalizedSchema, PackageJson } from '../../types';
 
@@ -43,19 +38,25 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     '@swarmion/serverless-helpers': 'latest',
   },
   devDependencies: {
-    '@serverless/typescript': 'latest',
-    '@types/node': 'latest',
-    '@vitest/coverage-v8': vitestCoverageC8Version,
-    'dependency-cruiser': 'latest',
-    esbuild: 'latest',
-    eslint: 'latest',
-    serverless: 'latest',
-    'serverless-custom-iam-roles-per-function': 'latest',
-    'serverless-esbuild': 'latest',
-    'serverless-iam-roles-per-function': 'latest',
-    'ts-node': 'latest',
-    typescript: typescriptVersion,
-    'vite-tsconfig-paths': viteTsConfigPathsVersion,
-    vitest: vitestVersion,
+    '@serverless/typescript': getWorkspaceDependencyVersion(
+      '@serverless/typescript',
+    ),
+    '@types/node': getWorkspaceDependencyVersion('@types/node'),
+    '@vitest/coverage-v8': getWorkspaceDependencyVersion('@vitest/coverage-v8'),
+    'dependency-cruiser': getWorkspaceDependencyVersion('dependency-cruiser'),
+    esbuild: getWorkspaceDependencyVersion('esbuild'),
+    eslint: getWorkspaceDependencyVersion('eslint'),
+    serverless: getWorkspaceDependencyVersion('serverless'),
+    'serverless-custom-iam-roles-per-function': getWorkspaceDependencyVersion(
+      'serverless-custom-iam-roles-per-function',
+    ),
+    'serverless-esbuild': getWorkspaceDependencyVersion('serverless-esbuild'),
+    'serverless-iam-roles-per-function': getWorkspaceDependencyVersion(
+      'serverless-iam-roles-per-function',
+    ),
+    'ts-node': getWorkspaceDependencyVersion('ts-node'),
+    typescript: getWorkspaceDependencyVersion('typescript'),
+    'vite-tsconfig-paths': getWorkspaceDependencyVersion('vite-tsconfig-paths'),
+    vitest: getWorkspaceDependencyVersion('vitest'),
   },
 });

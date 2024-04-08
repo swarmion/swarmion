@@ -1,11 +1,6 @@
 import { joinPathFragments } from '@nx/devkit';
 
-import {
-  typescriptVersion,
-  vitestCoverageC8Version,
-  vitestVersion,
-  viteTsConfigPathsVersion,
-} from 'generators/helpers';
+import { getWorkspaceDependencyVersion } from 'generators/helpers';
 
 import { NormalizedSchema, PackageJson } from '../../types';
 
@@ -46,19 +41,19 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     watch: "pnpm clean dist && concurrently 'pnpm:package-* --watch'",
   },
   devDependencies: {
-    '@types/node': 'latest',
-    '@vitest/coverage-v8': vitestCoverageC8Version,
-    concurrently: 'latest',
-    'dependency-cruiser': 'latest',
-    eslint: 'latest',
-    'json-schema-to-ts': 'latest',
-    prettier: 'latest',
-    rimraf: 'latest',
-    'ts-node': 'latest',
-    'tsc-alias': 'latest',
-    tsup: 'latest',
-    typescript: typescriptVersion,
-    'vite-tsconfig-paths': viteTsConfigPathsVersion,
-    vitest: vitestVersion,
+    '@types/node': getWorkspaceDependencyVersion('@types/node'),
+    '@vitest/coverage-v8': getWorkspaceDependencyVersion('@vitest/coverage-v8'),
+    concurrently: getWorkspaceDependencyVersion('concurrently'),
+    'dependency-cruiser': getWorkspaceDependencyVersion('dependency-cruiser'),
+    eslint: getWorkspaceDependencyVersion('eslint'),
+    'json-schema-to-ts': getWorkspaceDependencyVersion('json-schema-to-ts'),
+    prettier: getWorkspaceDependencyVersion('prettier'),
+    rimraf: getWorkspaceDependencyVersion('rimraf'),
+    'ts-node': getWorkspaceDependencyVersion('ts-node'),
+    'tsc-alias': getWorkspaceDependencyVersion('tsc-alias'),
+    tsup: getWorkspaceDependencyVersion('tsup'),
+    typescript: getWorkspaceDependencyVersion('typescript'),
+    'vite-tsconfig-paths': getWorkspaceDependencyVersion('vite-tsconfig-paths'),
+    vitest: getWorkspaceDependencyVersion('vitest'),
   },
 });
