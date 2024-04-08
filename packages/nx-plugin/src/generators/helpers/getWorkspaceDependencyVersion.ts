@@ -10,7 +10,7 @@ export const getWorkspaceDependencyVersion = (
   dependencyName: string,
 ): string => {
   const packages = JSON.parse(
-    execSync(`pnpm why -rP --json ${dependencyName}`).toString(),
+    execSync(`pnpm why -r --json ${dependencyName}`).toString(),
   ) as PackageDescription[];
 
   return (
