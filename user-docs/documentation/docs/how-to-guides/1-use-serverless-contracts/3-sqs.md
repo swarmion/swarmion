@@ -290,7 +290,7 @@ const sqsClient = new SQSClient({});
 // The queue url is here available in an env variable, but you can adapt this
 const queueUrl = getEnvVariable('QUEUE_URL');
 
-const sendMyMessage = buildSendMessages(mySqsContract, {
+const sendMyMessages = buildSendMessages(mySqsContract, {
   queueUrl,
   sqsClient,
   ajv,
