@@ -3,6 +3,7 @@ import {
   SendMessageBatchRequestEntry,
 } from '@aws-sdk/client-sqs';
 import { BatchResultErrorEntry } from '@aws-sdk/client-sqs/dist-types/models/models_0';
+import PQueue from 'p-queue';
 
 import { SQSContract } from '../sqsContract';
 import { SendMessagesBuilderOptions, SendMessagesSideEffect } from '../types';
@@ -14,62 +15,55 @@ import {
   wait,
 } from '../utils';
 
+export const InfiniteThroughput = 0;
+
 const defaultOptions = {
   validateMessage: true,
   bodySerializer: JSON.stringify,
   maxRetries: 3,
   baseDelay: 100,
   throwOnFailedBatch: true,
+  throughputCallsPerSecond: InfiniteThroughput,
 } satisfies Partial<SendMessagesBuilderOptions<SQSContract>>;
 
-const sendOneBatch = async <Contract extends SQSContract>(
-  batch: SendMessageBatchRequestEntry[],
+const getThroughputQueueConfig = (
+  throughputCallsPerSecond: number,
+): { intervalCap: number; interval: number } | Record<string, never> =>
+  throughputCallsPerSecond === InfiniteThroughput
+    ? {}
+    : {
+        intervalCap: throughputCallsPerSecond,
+        interval: 1000,
+      };
+
+const sendAllMessagesBatchedWithControlledThroughput = async <
+  Contract extends SQSContract,
+>(
+  messages: SendMessageBatchRequestEntry[],
   options: Omit<
     Required<SendMessagesBuilderOptions<Contract>>,
     'ajv' | 'queueUrl'
   > & { queueUrl: string },
 ): Promise<{ failedItems: BatchResultErrorEntry[] }> => {
-  const { sqsClient, queueUrl, maxRetries, baseDelay } = options;
+  const { sqsClient, queueUrl, throughputCallsPerSecond } = options;
+  const queue = new PQueue(getThroughputQueueConfig(throughputCallsPerSecond));
 
-  let unprocessedItems: SendMessageBatchRequestEntry[] = batch;
-  let attempts = 0;
-  let failedItems: BatchResultErrorEntry[] = [];
+  // Slice events into batches of 10 (max limit for SQS sendMessageBatch) and which size is less than 256KB
+  const batches = chunkSQSMessagesBatch(messages);
 
-  do {
-    const { Failed } = await sqsClient.send(
-      new SendMessageBatchCommand({
-        QueueUrl: queueUrl,
-        Entries: unprocessedItems,
-      }),
-    );
-    failedItems = Failed ?? [];
+  const results = await queue.addAll(
+    batches.map(
+      batch => async () =>
+        await sqsClient.send(
+          new SendMessageBatchCommand({
+            QueueUrl: queueUrl,
+            Entries: batch,
+          }),
+        ),
+    ),
+  );
 
-    if (failedItems.length > 0) {
-      attempts++;
-      console.warn(
-        `Attempt ${attempts}: Failed to process ${failedItems.length} items. Retrying after delay...`,
-      );
-
-      const failedIds = failedItems.map(({ Id }) => Id);
-
-      // Retry only the failed items
-      unprocessedItems = unprocessedItems.filter(({ Id }) =>
-        failedIds.includes(Id),
-      );
-
-      // Delay before the next attempt - exponential backoff
-      if (attempts < maxRetries) {
-        const delayDuration = getExponentialBackoffDelay(
-          attempts - 1,
-          baseDelay,
-        );
-        console.info(`Delaying for ${delayDuration} ms...`);
-        await wait(delayDuration);
-      }
-    }
-  } while (failedItems.length > 0 && attempts < maxRetries);
-
-  return { failedItems };
+  return { failedItems: results.map(({ Failed }) => Failed ?? []).flat() };
 };
 
 const sendBatchedMessages = async <Contract extends SQSContract>({
@@ -81,6 +75,7 @@ const sendBatchedMessages = async <Contract extends SQSContract>({
 }): Promise<{ failedItems: BatchResultErrorEntry[] }> => {
   const {
     queueUrl: queueUrlOrGetter,
+    baseDelay,
     maxRetries,
     throwOnFailedBatch,
   } = options;
@@ -88,24 +83,43 @@ const sendBatchedMessages = async <Contract extends SQSContract>({
     typeof queueUrlOrGetter === 'string'
       ? queueUrlOrGetter
       : queueUrlOrGetter();
-  const failedItems: BatchResultErrorEntry[] = [];
+  let unprocessedMessages: SendMessageBatchRequestEntry[] = messages;
+  let failedItems: BatchResultErrorEntry[] = [];
+  let attempts = 0;
 
-  // Slice events into batches of 10 (max limit for SQS sendMessageBatch) and which size is less than 256KB
-  const batches = chunkSQSMessagesBatch(messages);
+  do {
+    ({ failedItems } =
+      await sendAllMessagesBatchedWithControlledThroughput<Contract>(
+        unprocessedMessages,
+        {
+          ...options,
+          queueUrl,
+        },
+      ));
 
-  // do not parallelize this loop, as it will cause throttling for FIFO queues
-  for (const batch of batches) {
-    const { failedItems: batchFailedItems } = await sendOneBatch<Contract>(
-      batch,
-      {
-        ...options,
-        queueUrl,
-      },
-    );
-    failedItems.push(...batchFailedItems);
-  }
+    if (failedItems.length > 0) {
+      const failedIds = failedItems.map(({ Id }) => Id);
+
+      unprocessedMessages = messages.filter(({ Id }) => failedIds.includes(Id));
+      attempts++;
+      console.warn(
+        `Attempt ${attempts}: Failed to process ${failedItems.length} items. Retrying after delay...`,
+      );
+
+      // Delay before the next attempt with exponential backoff
+      if (attempts < maxRetries) {
+        const delayDuration = getExponentialBackoffDelay(
+          attempts - 1,
+          baseDelay,
+        );
+        console.info(`Delaying for ${delayDuration} ms...`);
+        await wait(delayDuration);
+      }
+    }
+  } while (failedItems.length > 0 && attempts < maxRetries);
 
   if (failedItems.length > 0 && throwOnFailedBatch) {
+    console.error('Failed items:', JSON.stringify(failedItems, null, 2));
     throw new Error(
       `Failed to send ${failedItems.length} items to SQS after ${maxRetries} attempts`,
     );

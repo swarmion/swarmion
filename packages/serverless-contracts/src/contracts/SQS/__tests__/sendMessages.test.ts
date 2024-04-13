@@ -114,6 +114,25 @@ describe('SQS contract sendMessages tests', () => {
     expect(calls[0]!.args[0].input.Entries!.length).toBe(10);
     expect(calls[1]!.args[0].input.Entries!.length).toBe(10);
   });
+  it('calls SQS with controlled throughput', async () => {
+    const mySendMessages = buildSendMessages(sqsContract, {
+      queueUrl,
+      sqsClient,
+      ajv,
+      throughputCallsPerSecond: 1,
+    });
+
+    const start = Date.now();
+    await mySendMessages(createMessages({ length: 30 }));
+    const end = Date.now();
+
+    const calls = sqsClientMock.commandCalls(SendMessageBatchCommand);
+    expect(calls.length).toBe(3);
+    expect(calls[0]!.args[0].input.Entries!.length).toBe(10);
+    expect(calls[1]!.args[0].input.Entries!.length).toBe(10);
+    expect(calls[2]!.args[0].input.Entries!.length).toBe(10);
+    expect(end - start).toBeGreaterThan(2000); // 2s
+  });
   it('calls SQS with more batches if some messages are too big', async () => {
     const mySendMessages = buildSendMessages(sqsContract, {
       queueUrl,

@@ -310,7 +310,22 @@ export const main = getHandler(anotherContract, { ajv })(async event => {
 ```
 
 :::info
-It supports the same options as `buildSendMessage` plus `maxRetries` and `baseDelay` to configure the behavior in case of SendMessageBatchCommand throttling.
+It supports the same options as `buildSendMessage` plus `throughputCallsPerSecond`, `maxRetries`,
+`baseDelay` to configure the SQS API calls rate and the behavior in case of SendMessageBatchCommand throttling.
+:::
+
+:::info
+The default behavior is
+to send all commands in parallel
+because [standard queues have no throughput limitation](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/quotas-messages.html).
+
+But FIFO queues have a throughput limitation of 300 API calls per second.
+Set the `throughputCallsPerSecond` option to `300` for FIFO queues.
+
+[FIFO queues with High Throughput](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html) have a higher limit
+that depends on the AWS region,
+see [the quota page](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/quotas-messages.html)
+to know what `throughputCallsPerSecond` to set.
 :::
 
 :::caution

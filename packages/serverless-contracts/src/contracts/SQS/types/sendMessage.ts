@@ -25,6 +25,7 @@ export type SendMessageBuilderOptions<Contract extends SQSContract> = (
 
 export type SendMessagesBuilderOptions<Contract extends SQSContract> =
   SendMessageBuilderOptions<Contract> & {
+    throughputCallsPerSecond?: number;
     maxRetries?: number;
     baseDelay?: number;
     throwOnFailedBatch?: boolean;
