@@ -19,6 +19,7 @@ const defaultOptions: DefaultGetSQSHandlerOptions = {
   validateBody: true,
   validateAttributes: true,
   handleBatchedRecords: true,
+  logRawEvent: false,
 };
 
 /**
@@ -66,6 +67,9 @@ export const getSQSHandler =
       callback,
       ...additionalArgs: AdditionalArgs
     ) => {
+      if (internalOptions.logRawEvent) {
+        console.debug('Raw event:', JSON.stringify(event, null, 2));
+      }
       const { Records } = event;
 
       const parsedRecords = Records.map(
