@@ -18,7 +18,7 @@ export type SendMessageBuilderOptions<Contract extends SQSContract> = (
       validateMessage: false;
     }
 ) & {
-  queueUrl: string | (() => string);
+  queueUrl: string | (() => string) | (() => Promise<string>);
   sqsClient: SQSClient;
   bodySerializer?: (body: SqsMessageBodyType<Contract>) => string | undefined; // Use explicit undefined to disable body serialization
 };

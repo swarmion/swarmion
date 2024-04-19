@@ -82,7 +82,7 @@ const sendBatchedMessages = async <Contract extends SQSContract>({
   const queueUrl =
     typeof queueUrlOrGetter === 'string'
       ? queueUrlOrGetter
-      : queueUrlOrGetter();
+      : await queueUrlOrGetter();
   let unprocessedMessages: SendMessageBatchRequestEntry[] = messages;
   let failedItems: BatchResultErrorEntry[] = [];
   let attempts = 0;

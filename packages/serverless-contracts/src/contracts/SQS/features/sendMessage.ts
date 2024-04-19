@@ -29,7 +29,7 @@ export const buildSendMessage =
     validateMessage<Contract>({ contract, message, options: internalOptions });
 
     const command = new SendMessageCommand({
-      QueueUrl: typeof queueUrl === 'string' ? queueUrl : queueUrl(),
+      QueueUrl: typeof queueUrl === 'string' ? queueUrl : await queueUrl(),
       ...omit(
         serializeMessage<Contract>({ contract, bodySerializer })(message),
         'Id',
