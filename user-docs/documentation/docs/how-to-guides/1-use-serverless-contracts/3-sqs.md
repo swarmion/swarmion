@@ -170,6 +170,10 @@ const handler = getHandler(myContract, {
 
 :::
 
+:::info
+You can set the `logRawEvent` option to true to log the event received by the handler before any parsing or manipulation.
+:::
+
 Alternatively, if you wish to handle the batch behavior by yourself, you can set the `handleBatchedRecords` option to `false`.
 
 ```ts
