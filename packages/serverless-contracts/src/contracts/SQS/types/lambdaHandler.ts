@@ -42,7 +42,7 @@ export type SQSHandlerParameters = Parameters<AwsSQSHandler>;
  * See https://docs.aws.amazon.com/lambda/latest/dg/typescript-handler.html.
  */
 export type SQSHandler<AdditionalArgs extends unknown[]> = (
-  event: SQSHandlerParameters[0],
+  event: Partial<SQSHandlerParameters[0]>,
   context: SQSHandlerParameters[1],
   callback: SQSHandlerParameters[2],
   ...additionalArgs: AdditionalArgs

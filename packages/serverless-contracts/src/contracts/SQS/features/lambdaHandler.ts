@@ -71,6 +71,11 @@ export const getSQSHandler =
         console.debug('Raw event:', JSON.stringify(event, null, 2));
       }
       const { Records } = event;
+      if (Records === undefined) {
+        throw new Error(
+          'The provided event is not a valid SQS event. It has no Records attribute. Please use `logRawEvent` option to debug this',
+        );
+      }
 
       const parsedRecords = Records.map(
         parseRecord<MessageBody, MessageAttributes>(internalOptions),
