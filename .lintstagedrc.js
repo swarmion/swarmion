@@ -1,4 +1,4 @@
 module.exports = {
   '*': 'prettier --ignore-unknown --write',
-  '*.{js,ts}': 'pnpm lint-fix',
+  '*.{js,ts}': 'corepack pnpm lint-fix',
 };

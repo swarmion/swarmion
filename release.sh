@@ -26,14 +26,14 @@ fi
 # set the new version
 if [[ "$TARGET_VERSION" == "" ]]; then
     echo 'Using lerna version generation target'
-    pnpm lerna version $RELEASE_TYPE --no-git-tag-version --no-push --force-publish
+    corepack pnpm lerna version $RELEASE_TYPE --no-git-tag-version --no-push --force-publish
 else
     echo "Using target version"
-    pnpm lerna version $TARGET_VERSION --no-git-tag-version --no-push --force-publish
+    corepack pnpm lerna version $TARGET_VERSION --no-git-tag-version --no-push --force-publish
 fi
 
 # ensuring all packages are up-to-date
-pnpm install && pnpm package --skip-nx-cache && pnpm build --skip-nx-cache
+corepack pnpm install && corepack pnpm package --skip-nx-cache && corepack pnpm build --skip-nx-cache
 
 NEW_VERSION=$(cat lerna.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[", ]//g')
 
@@ -43,9 +43,9 @@ git commit -S -m "v${NEW_VERSION}"
 
 # publish new version to npm
 if $IS_ALPHA; then
-    pnpm lerna publish from-package --force-publish --dist-tag alpha
+    corepack pnpm lerna publish from-package --force-publish --dist-tag alpha
 else
-    pnpm lerna publish from-package --force-publish
+    corepack pnpm lerna publish from-package --force-publish
 fi
 
 # we need to wait for the version to be available on npm
@@ -56,7 +56,7 @@ sleep 10 # 10 seconds
 for example in examples/*; do
     echo "Upgrading packages in $example"
     cd "$example"
-    HUSKY=0 pnpm up "@swarmion/*@^${NEW_VERSION}" --recursive
+    HUSKY=0 corepack pnpm up "@swarmion/*@^${NEW_VERSION}" --recursive
     cd ../..
     git add "$example"
     git commit -S -m "chore($example): bump Swarmion from v${OLD_VERSION} to v${NEW_VERSION}"
