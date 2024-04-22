@@ -80,7 +80,7 @@ importers:
   contracts/orchestrator-contracts:
     dependencies:
       '@swarmion/serverless-contracts':
-        specifier: ^0.31.3
+        specifier: workspace:^0.31.3
         version: link:../../packages/serverless-contracts/dist
     devDependencies:
       '@types/node':
@@ -507,7 +507,7 @@ importers:
         specifier: ^3.540.0
         version: 3.556.0
       '@swarmion/serverless-helpers':
-        specifier: ^0.31.3
+        specifier: workspace:^0.31.3
         version: link:../serverless-helpers
       '@types/aws-lambda':
         specifier: ^8.10.130
@@ -632,7 +632,7 @@ importers:
   packages/serverless-contracts-plugin:
     dependencies:
       '@swarmion/serverless-contracts':
-        specifier: ^0.31.3
+        specifier: workspace:^0.31.3
         version: link:../serverless-contracts/dist
       aws-sdk:
         specifier: ^2.1516.0
@@ -781,22 +781,22 @@ importers:
         specifier: ^3.540.0
         version: 3.556.0(@aws-sdk/client-dynamodb@3.556.0)
       '@swarmion/orchestrator-contracts':
-        specifier: ^0.31.3
+        specifier: workspace:^0.31.3
         version: link:../../contracts/orchestrator-contracts
       '@swarmion/serverless-cdk-plugin':
-        specifier: ^0.31.3
+        specifier: workspace:^0.31.3
         version: link:../../packages/serverless-cdk-plugin
       '@swarmion/serverless-configuration':
-        specifier: ^0.31.3
+        specifier: workspace:^0.31.3
         version: link:../../packages/serverless-configuration
       '@swarmion/serverless-contracts':
-        specifier: ^0.31.3
+        specifier: workspace:^0.31.3
         version: link:../../packages/serverless-contracts/dist
       '@swarmion/serverless-helpers':
-        specifier: ^0.31.3
+        specifier: workspace:^0.31.3
         version: link:../../packages/serverless-helpers
       '@swarmion/serverless-plugin':
-        specifier: ^0.31.3
+        specifier: workspace:^0.31.3
         version: link:../../packages/serverless-contracts-plugin
       ajv:
         specifier: ^8.12.0
