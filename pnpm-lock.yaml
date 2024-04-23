@@ -80,7 +80,7 @@ importers:
   contracts/orchestrator-contracts:
     dependencies:
       '@swarmion/serverless-contracts':
-        specifier: workspace:^0.31.3
+        specifier: ^0.31.3
         version: link:../../packages/serverless-contracts/dist
     devDependencies:
       '@types/node':
@@ -455,7 +455,7 @@ importers:
   packages/serverless-configuration:
     dependencies:
       '@swarmion/serverless-helpers':
-        specifier: workspace:^0.31.3
+        specifier: ^0.31.3
         version: link:../serverless-helpers
     devDependencies:
       '@serverless/typescript':
@@ -632,7 +632,7 @@ importers:
   packages/serverless-contracts-plugin:
     dependencies:
       '@swarmion/serverless-contracts':
-        specifier: workspace:^0.31.3
+        specifier: ^0.31.3
         version: link:../serverless-contracts/dist
       aws-sdk:
         specifier: ^2.1516.0
