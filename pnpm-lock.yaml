@@ -91,7 +91,7 @@ importers:
         version: 8.2.2
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.3.1
+        version: 16.3.2
       eslint:
         specifier: ^8.55.0
         version: 8.57.0
@@ -185,7 +185,7 @@ importers:
         version: 8.2.2
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.3.1
+        version: 16.3.2
       eslint:
         specifier: ^8.55.0
         version: 8.57.0
@@ -222,7 +222,7 @@ importers:
         version: 8.2.2
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.3.1
+        version: 16.3.2
       eslint:
         specifier: ^8.55.0
         version: 8.57.0
@@ -283,7 +283,7 @@ importers:
         version: 10.3.0
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.3.1
+        version: 16.3.2
       eslint:
         specifier: ^8.55.0
         version: 8.57.0
@@ -344,7 +344,7 @@ importers:
         version: 8.2.2
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.3.1
+        version: 16.3.2
       eslint:
         specifier: ^8.55.0
         version: 8.57.0
@@ -423,7 +423,7 @@ importers:
         version: 10.3.0
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.3.1
+        version: 16.3.2
       eslint:
         specifier: ^8.55.0
         version: 8.57.0
@@ -469,7 +469,7 @@ importers:
         version: 8.2.2
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.3.1
+        version: 16.3.2
       eslint:
         specifier: ^8.55.0
         version: 8.57.0
@@ -590,7 +590,7 @@ importers:
         version: 8.2.2
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.3.1
+        version: 16.3.2
       esbuild:
         specifier: 0.21.1
         version: 0.21.1
@@ -679,7 +679,7 @@ importers:
         version: 8.2.2
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.3.1
+        version: 16.3.2
       eslint:
         specifier: ^8.55.0
         version: 8.57.0
@@ -734,7 +734,7 @@ importers:
         version: 8.2.2
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.3.1
+        version: 16.3.2
       esbuild:
         specifier: 0.21.1
         version: 0.21.1
@@ -831,7 +831,7 @@ importers:
         version: 10.3.0
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.3.1
+        version: 16.3.2
       esbuild:
         specifier: 0.21.1
         version: 0.21.1
@@ -8306,15 +8306,6 @@ packages:
       json-schema-traverse: 0.4.1
       uri-js: 4.4.1
 
-  /ajv@8.12.0:
-    resolution: {integrity: sha512-sRu1kpcO9yLtYxBKvqfTeh9KzZEwO3STyX1HT+4CaDzC6HpTGYhIhPIzj9XuKU7KYDwnaeh5hcOwjy1QuJzBPA==}
-    dependencies:
-      fast-deep-equal: 3.1.3
-      json-schema-traverse: 1.0.0
-      require-from-string: 2.0.2
-      uri-js: 4.4.1
-    dev: true
-
   /ajv@8.13.0:
     resolution: {integrity: sha512-PRA911Blj99jR5RMeTunVbNXMF6Lp4vZXnk5GQjcnUWUTsrXtekg/pnmFFI2u/I36Y/2bITGS30GZCXei6uNkA==}
     dependencies:
@@ -10563,8 +10554,8 @@ packages:
     resolution: {integrity: sha512-g7nH6P6dyDioJogAAGprGpCtVImJhpPk/roCzdb3fIh61/s/nPsfR6onyMwkCAR/OlC3yBC0lESvUoQEAssIrw==}
     engines: {node: '>= 0.8'}
 
-  /dependency-cruiser@16.3.1:
-    resolution: {integrity: sha512-ZwhVjKrCr3Fk7Vb5FfDvkcAcqxttmbb26C9fjuJJVhqDGdgtJQnQ1k1sRY9UbgIBDmMlBTn8/Ccs2b/+TlqOSQ==}
+  /dependency-cruiser@16.3.2:
+    resolution: {integrity: sha512-nNaa2wpViBMqWXNqwqR2YMWLXXpr3CGtaNk53yOPWFWe4qR3A242YyHnK+h6v4IeY1oxM+APXg4af5U7iovyjQ==}
     engines: {node: ^18.17||>=20}
     hasBin: true
     dependencies:
@@ -10573,10 +10564,10 @@ packages:
       acorn-jsx-walk: 2.0.0
       acorn-loose: 8.4.0
       acorn-walk: 8.3.2
-      ajv: 8.12.0
+      ajv: 8.13.0
       chalk: 5.3.0
       commander: 12.0.0
-      enhanced-resolve: 5.16.0
+      enhanced-resolve: 5.16.1
       figures: 6.1.0
       ignore: 5.3.1
       indent-string: 5.0.0
@@ -10590,7 +10581,7 @@ packages:
       rechoir: 0.8.0
       safe-regex: 2.1.1
       semver: 7.6.2
-      semver-try-require: 6.2.3
+      semver-try-require: 7.0.0
       teamcity-service-messages: 0.1.14
       tsconfig-paths-webpack-plugin: 4.1.0
       watskeburt: 4.0.2
@@ -10865,8 +10856,8 @@ packages:
     dependencies:
       once: 1.4.0
 
-  /enhanced-resolve@5.16.0:
-    resolution: {integrity: sha512-O+QWCviPNSSLAD9Ucn8Awv+poAkqn3T1XY5/N7kR7rQO9yfSGWkYZDwpJ+iKF7B8rxaQKWngSqACpgzeapSyoA==}
+  /enhanced-resolve@5.16.1:
+    resolution: {integrity: sha512-4U5pNsuDl0EhuZpq46M5xPslstkviJuhrdobaRDBk2Jy2KO37FDAJl4lb2KlNabxT0m4MTK2UHNrsAcphE8nyw==}
     engines: {node: '>=10.13.0'}
     dependencies:
       graceful-fs: 4.2.11
@@ -11208,7 +11199,7 @@ packages:
       eslint-plugin-import: '*'
     dependencies:
       debug: 4.3.4(supports-color@8.1.1)
-      enhanced-resolve: 5.16.0
+      enhanced-resolve: 5.16.1
       eslint: 8.57.0
       eslint-module-utils: 2.8.0(@typescript-eslint/parser@7.8.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
       eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.8.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
@@ -18274,9 +18265,9 @@ packages:
     dependencies:
       semver: 7.6.2
 
-  /semver-try-require@6.2.3:
-    resolution: {integrity: sha512-6q1N/Vr/4/G0EcQ1k4svN5kwfh3MJs4Gfl+zBAVcKn+AeIjKLwTXQ143Y6YHu6xEeN5gSCbCD1/5+NwCipLY5A==}
-    engines: {node: ^14||^16||>=18}
+  /semver-try-require@7.0.0:
+    resolution: {integrity: sha512-LI7GzDuAZmNKOY0/LY4nB3ifh6kYMvBimFTHVpA6wNEl3gw59QrLbTAnJb7vQzPd1qXPz+BtKJZaYORXWMerrA==}
+    engines: {node: ^18.17||>=20}
     dependencies:
       semver: 7.6.2
     dev: true
@@ -19653,7 +19644,7 @@ packages:
     engines: {node: '>=10.13.0'}
     dependencies:
       chalk: 4.1.2
-      enhanced-resolve: 5.16.0
+      enhanced-resolve: 5.16.1
       tsconfig-paths: 4.2.0
     dev: true
 
@@ -20507,7 +20498,7 @@ packages:
       acorn-import-assertions: 1.9.0(acorn@8.11.3)
       browserslist: 4.23.0
       chrome-trace-event: 1.0.3
-      enhanced-resolve: 5.16.0
+      enhanced-resolve: 5.16.1
       es-module-lexer: 1.3.0
       eslint-scope: 5.1.1
       events: 3.3.0
