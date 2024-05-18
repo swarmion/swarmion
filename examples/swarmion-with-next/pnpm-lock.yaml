@@ -73,7 +73,7 @@ importers:
         version: link:../../packages/serverless-configuration
       '@swarmion/serverless-contracts':
         specifier: ^0.31.3
-        version: 0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.141.0)
+        version: 0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.142.1)
     devDependencies:
       '@types/node':
         specifier: ^20.12.4
@@ -125,7 +125,7 @@ importers:
         version: 5.15.15(@emotion/react@11.11.4)(@emotion/styled@11.11.5)(@types/react@18.3.2)(react@18.3.1)
       '@tanstack/react-query':
         specifier: ^5.13.4
-        version: 5.36.0(react@18.3.1)
+        version: 5.36.1(react@18.3.1)
       axios:
         specifier: ^1.6.7
         version: 1.6.8
@@ -144,7 +144,7 @@ importers:
     devDependencies:
       '@aws-cdk/aws-amplify-alpha':
         specifier: 2.110.1-alpha.0
-        version: 2.110.1-alpha.0(aws-cdk-lib@2.141.0)(constructs@10.3.0)
+        version: 2.110.1-alpha.0(aws-cdk-lib@2.142.1)(constructs@10.3.0)
       '@testing-library/dom':
         specifier: ^10.0.0
         version: 10.1.0
@@ -174,7 +174,7 @@ importers:
         version: 2.141.0
       aws-cdk-lib:
         specifier: ^2.114.1
-        version: 2.141.0(constructs@10.3.0)
+        version: 2.142.1(constructs@10.3.0)
       constructs:
         specifier: ^10.3.0
         version: 10.3.0
@@ -246,7 +246,7 @@ importers:
     dependencies:
       '@swarmion/serverless-helpers':
         specifier: ^0.31.3
-        version: 0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.141.0)
+        version: 0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.142.1)
     devDependencies:
       '@types/node':
         specifier: ^20.12.4
@@ -289,7 +289,7 @@ importers:
         version: link:../../packages/serverless-configuration
       '@swarmion/serverless-helpers':
         specifier: ^0.31.3
-        version: 0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.141.0)
+        version: 0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.142.1)
     devDependencies:
       '@serverless/typescript':
         specifier: ^3.38.0
@@ -365,14 +365,14 @@ packages:
   /@aws-cdk/asset-node-proxy-agent-v6@2.0.3:
     resolution: {integrity: sha512-twhuEG+JPOYCYPx/xy5uH2+VUsIEhPTzDY0F1KuB+ocjWWB/KEDiOVL19nHvbPCB6fhWnkykXEMJ4HHcKvjtvg==}
 
-  /@aws-cdk/aws-amplify-alpha@2.110.1-alpha.0(aws-cdk-lib@2.141.0)(constructs@10.3.0):
+  /@aws-cdk/aws-amplify-alpha@2.110.1-alpha.0(aws-cdk-lib@2.142.1)(constructs@10.3.0):
     resolution: {integrity: sha512-b5+45+9LY28YgPXYT2CmGC7UqLOvZTbFr1YJ9vXtM/+t8YSVoJGOA2F/bPGDBKKzATxUOBJWUCtbzaIMzfL62g==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       aws-cdk-lib: ^2.110.1
       constructs: ^10.0.0
     dependencies:
-      aws-cdk-lib: 2.141.0(constructs@10.3.0)
+      aws-cdk-lib: 2.142.1(constructs@10.3.0)
       constructs: 10.3.0
     dev: true
 
@@ -5406,7 +5406,7 @@ packages:
       - verdaccio
     dev: true
 
-  /@swarmion/serverless-contracts@0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.141.0):
+  /@swarmion/serverless-contracts@0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.142.1):
     resolution: {integrity: sha512-vOzUo4qy2lYyssjAHLQ0Qucd6kv+2zeks+k0QLoNWA3zwTA7bnL9BTTtt9hJKeJqiF5QciWqsMGI/YFWl5/how==}
     peerDependencies:
       '@serverless/typescript': '>=3'
@@ -5422,7 +5422,7 @@ packages:
     dependencies:
       '@aws-sdk/client-eventbridge': 3.525.0
       '@serverless/typescript': 3.38.0
-      '@swarmion/serverless-helpers': 0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.141.0)
+      '@swarmion/serverless-helpers': 0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.142.1)
       '@types/aws-lambda': 8.10.134
       '@types/http-errors': 2.0.4
       http-errors: 2.0.0
@@ -5437,14 +5437,14 @@ packages:
       - aws-crt
     dev: false
 
-  /@swarmion/serverless-helpers@0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.141.0):
+  /@swarmion/serverless-helpers@0.31.3(@serverless/typescript@3.38.0)(aws-cdk-lib@2.142.1):
     resolution: {integrity: sha512-osQ1nXfyXyOdcAasOFyajncph4902BVhwpgllFa90IJQ8M8LRQ55MDiNlxPdGIzsGvLxWLJhmBB5hruCAZaD7w==}
     peerDependencies:
       '@serverless/typescript': '>=3'
       aws-cdk-lib: ^2.60.0
     dependencies:
       '@serverless/typescript': 3.38.0
-      aws-cdk-lib: 2.141.0(constructs@10.3.0)
+      aws-cdk-lib: 2.142.1(constructs@10.3.0)
       json-schema-to-ts: 3.0.0
     dev: false
 
@@ -5466,16 +5466,16 @@ packages:
       defer-to-connect: 2.0.1
     dev: true
 
-  /@tanstack/query-core@5.36.0:
-    resolution: {integrity: sha512-B5BD3pg/mztDR36i77hGcyySKKeYrbM5mnogOROTBi1SUml5ByRK7PGUUl16vvubvQC+mSnqziFG/VIy/DE3FQ==}
+  /@tanstack/query-core@5.36.1:
+    resolution: {integrity: sha512-BteWYEPUcucEu3NBcDAgKuI4U25R9aPrHSP6YSf2NvaD2pSlIQTdqOfLRsxH9WdRYg7k0Uom35Uacb6nvbIMJg==}
     dev: false
 
-  /@tanstack/react-query@5.36.0(react@18.3.1):
-    resolution: {integrity: sha512-BATvtM0rohwg7pRHUnxgeDiwLWRGZ8OM/4y8LImHVpecQWoH6Uhytu3Z8YV6V7hQ1sMQBFcUrGE1/e4MxR6YiA==}
+  /@tanstack/react-query@5.36.1(react@18.3.1):
+    resolution: {integrity: sha512-BxGdE0DQYcLYJoEWVerxgT8iLLbjM8DOB8C0ASwyLeJZC2hqYYjWa8g4KQOaquB2Z+tf7qsH5FS63fvCoX+eVA==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
-      '@tanstack/query-core': 5.36.0
+      '@tanstack/query-core': 5.36.1
       react: 18.3.1
     dev: false
 
@@ -6513,8 +6513,8 @@ packages:
       possible-typed-array-names: 1.0.0
     dev: true
 
-  /aws-cdk-lib@2.141.0(constructs@10.3.0):
-    resolution: {integrity: sha512-xda56Lfwpdqg9MssnFdXrAKTmeeNjfrfFCaWwqGqToG6cfGY2W+6wyyoObX60/MeZGhhs3Lhdb/K94ulLJ4X/A==}
+  /aws-cdk-lib@2.142.1(constructs@10.3.0):
+    resolution: {integrity: sha512-xs4NRoml5/Zh30YHSk/Wwmr7VcZOZHyIInuBye3gC/BYwCh1lsUe9/ChWIeLUCRhUrELd5npyoBOJiHb3ql7Rg==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
