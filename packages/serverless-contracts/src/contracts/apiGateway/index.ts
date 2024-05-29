@@ -7,6 +7,7 @@ export {
   getLambdaHandler,
   getApiGatewayHandler,
   getRequestParameters,
+  SwarmionRouter,
 } from './features';
 export type {
   SwarmionApiGatewayHandler,
