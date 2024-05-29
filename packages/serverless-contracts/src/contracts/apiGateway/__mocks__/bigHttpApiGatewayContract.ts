@@ -72,7 +72,7 @@ export const requestContextSchema = {
 
 export const bigHttpApiContract = new ApiGatewayContract({
   id: 'testContract',
-  path: '/users/{userId}',
+  path: '/users/{userId}/page/{pageNumber}',
   method: 'GET',
   integrationType: 'httpApi',
   authorizerType: 'cognito',
