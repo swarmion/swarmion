@@ -21,7 +21,6 @@ export const serializeMessage =
   }: SqsMessage<Contract>): SendMessageBatchRequestEntry => ({
     Id: ulid(),
     MessageBody:
-      // @ts-expect-error weird bodySerializer error: Type instantiation is excessively deep and possibly infinite
       bodySerializer !== undefined ? bodySerializer(body) : (body as string),
     ...(messageAttributes !== undefined && messageAttributes !== null
       ? {
