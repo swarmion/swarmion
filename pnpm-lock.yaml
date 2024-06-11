@@ -21,7 +21,7 @@ importers:
         version: 19.2.2
       '@nx/workspace':
         specifier: 19.2.2
-        version: 19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)
+        version: 19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)
       '@swarmion/nx-plugin':
         specifier: workspace:*
         version: link:packages/nx-plugin
@@ -57,13 +57,13 @@ importers:
         version: 9.0.11
       lerna:
         specifier: ^8.0.0
-        version: 8.1.3(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(encoding@0.1.13)
+        version: 8.1.3(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(encoding@0.1.13)
       lint-staged:
         specifier: ^15.2.0
         version: 15.2.5
       nx:
         specifier: 19.2.2
-        version: 19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)
+        version: 19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)
       nx-cloud:
         specifier: 18.0.1
         version: 18.0.1
@@ -322,17 +322,17 @@ importers:
     dependencies:
       '@nx/devkit':
         specifier: ^19.0.0
-        version: 19.2.2(nx@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))
+        version: 19.2.2(nx@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))
       '@nx/linter':
         specifier: ^19.0.0
-        version: 19.2.2(@babel/traverse@7.24.7)(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(@types/node@20.14.2)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))
+        version: 19.2.2(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(@types/node@20.14.2)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))
       yaml:
         specifier: ^2.3.4
         version: 2.4.3
     devDependencies:
       '@nx/js':
         specifier: 19.2.2
-        version: 19.2.2(@babel/traverse@7.24.7)(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(@types/node@20.14.2)(nx@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))(typescript@5.4.5)
+        version: 19.2.2(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(@types/node@20.14.2)(nx@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))(typescript@5.4.5)
       '@types/node':
         specifier: ^20.12.4
         version: 20.14.2
@@ -922,7 +922,7 @@ importers:
         version: 3.4.0(@swc/core@1.5.24)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@swc-node/register':
         specifier: ^1.6.8
-        version: 1.9.1(@swc/core@1.5.24)(@swc/types@0.1.8)(typescript@5.4.5)
+        version: 1.9.2(@swc/core@1.5.24)(@swc/types@0.1.8)(typescript@5.4.5)
       '@tsconfig/docusaurus':
         specifier: ^2.0.0
         version: 2.0.3
@@ -3516,8 +3516,8 @@ packages:
       '@swc/core': '>= 1.4.13'
       '@swc/types': '>= 0.1'
 
-  '@swc-node/register@1.9.1':
-    resolution: {integrity: sha512-z//TBXJdRWXoISCXlQmVz+NMm8Qm/UvcfKiGC0tSJdfeVYf5EZkGqvk2OiRH4SIJ6OGFfS9T0YrvA2pDKzWtPA==}
+  '@swc-node/register@1.9.2':
+    resolution: {integrity: sha512-BBjg0QNuEEmJSoU/++JOXhrjWdu3PTyYeJWsvchsI0Aqtj8ICkz/DqlwtXbmZVZ5vuDPpTfFlwDBZe81zgShMA==}
     peerDependencies:
       '@swc/core': '>= 1.4.13'
       typescript: '>= 4.3'
@@ -11278,10 +11278,10 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
       '@aws-crypto/sha256-js': 3.0.0
-      '@aws-sdk/client-sso-oidc': 3.592.0
-      '@aws-sdk/client-sts': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)
+      '@aws-sdk/client-sso-oidc': 3.592.0(@aws-sdk/client-sts@3.592.0)
+      '@aws-sdk/client-sts': 3.592.0
       '@aws-sdk/core': 3.592.0
-      '@aws-sdk/credential-provider-node': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))(@aws-sdk/client-sts@3.592.0)
+      '@aws-sdk/credential-provider-node': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)(@aws-sdk/client-sts@3.592.0)
       '@aws-sdk/middleware-host-header': 3.577.0
       '@aws-sdk/middleware-logger': 3.577.0
       '@aws-sdk/middleware-recursion-detection': 3.577.0
@@ -11326,10 +11326,10 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
       '@aws-crypto/sha256-js': 3.0.0
-      '@aws-sdk/client-sso-oidc': 3.592.0
-      '@aws-sdk/client-sts': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)
+      '@aws-sdk/client-sso-oidc': 3.592.0(@aws-sdk/client-sts@3.592.0)
+      '@aws-sdk/client-sts': 3.592.0
       '@aws-sdk/core': 3.592.0
-      '@aws-sdk/credential-provider-node': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))(@aws-sdk/client-sts@3.592.0)
+      '@aws-sdk/credential-provider-node': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)(@aws-sdk/client-sts@3.592.0)
       '@aws-sdk/middleware-host-header': 3.577.0
       '@aws-sdk/middleware-logger': 3.577.0
       '@aws-sdk/middleware-recursion-detection': 3.577.0
@@ -11374,10 +11374,10 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
       '@aws-crypto/sha256-js': 3.0.0
-      '@aws-sdk/client-sso-oidc': 3.592.0
-      '@aws-sdk/client-sts': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)
+      '@aws-sdk/client-sso-oidc': 3.592.0(@aws-sdk/client-sts@3.592.0)
+      '@aws-sdk/client-sts': 3.592.0
       '@aws-sdk/core': 3.592.0
-      '@aws-sdk/credential-provider-node': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))(@aws-sdk/client-sts@3.592.0)
+      '@aws-sdk/credential-provider-node': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)(@aws-sdk/client-sts@3.592.0)
       '@aws-sdk/middleware-host-header': 3.577.0
       '@aws-sdk/middleware-logger': 3.577.0
       '@aws-sdk/middleware-recursion-detection': 3.577.0
@@ -11420,8 +11420,8 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
       '@aws-crypto/sha256-js': 3.0.0
-      '@aws-sdk/client-sso-oidc': 3.592.0
-      '@aws-sdk/client-sts': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)
+      '@aws-sdk/client-sso-oidc': 3.592.0(@aws-sdk/client-sts@3.592.0)
+      '@aws-sdk/client-sts': 3.592.0
       '@aws-sdk/core': 3.592.0
       '@aws-sdk/credential-provider-node': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)(@aws-sdk/client-sts@3.592.0)
       '@aws-sdk/middleware-endpoint-discovery': 3.587.0
@@ -11469,10 +11469,10 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
       '@aws-crypto/sha256-js': 3.0.0
-      '@aws-sdk/client-sso-oidc': 3.592.0
-      '@aws-sdk/client-sts': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)
+      '@aws-sdk/client-sso-oidc': 3.592.0(@aws-sdk/client-sts@3.592.0)
+      '@aws-sdk/client-sts': 3.592.0
       '@aws-sdk/core': 3.592.0
-      '@aws-sdk/credential-provider-node': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))(@aws-sdk/client-sts@3.592.0)
+      '@aws-sdk/credential-provider-node': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)(@aws-sdk/client-sts@3.592.0)
       '@aws-sdk/middleware-host-header': 3.577.0
       '@aws-sdk/middleware-logger': 3.577.0
       '@aws-sdk/middleware-recursion-detection': 3.577.0
@@ -11515,10 +11515,10 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
       '@aws-crypto/sha256-js': 3.0.0
-      '@aws-sdk/client-sso-oidc': 3.592.0
-      '@aws-sdk/client-sts': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)
+      '@aws-sdk/client-sso-oidc': 3.592.0(@aws-sdk/client-sts@3.592.0)
+      '@aws-sdk/client-sts': 3.592.0
       '@aws-sdk/core': 3.592.0
-      '@aws-sdk/credential-provider-node': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))(@aws-sdk/client-sts@3.592.0)
+      '@aws-sdk/credential-provider-node': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)(@aws-sdk/client-sts@3.592.0)
       '@aws-sdk/middleware-host-header': 3.577.0
       '@aws-sdk/middleware-logger': 3.577.0
       '@aws-sdk/middleware-recursion-detection': 3.577.0
@@ -11562,10 +11562,10 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
       '@aws-crypto/sha256-js': 3.0.0
-      '@aws-sdk/client-sso-oidc': 3.592.0
-      '@aws-sdk/client-sts': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)
+      '@aws-sdk/client-sso-oidc': 3.592.0(@aws-sdk/client-sts@3.592.0)
+      '@aws-sdk/client-sts': 3.592.0
       '@aws-sdk/core': 3.592.0
-      '@aws-sdk/credential-provider-node': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))(@aws-sdk/client-sts@3.592.0)
+      '@aws-sdk/credential-provider-node': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)(@aws-sdk/client-sts@3.592.0)
       '@aws-sdk/middleware-host-header': 3.577.0
       '@aws-sdk/middleware-logger': 3.577.0
       '@aws-sdk/middleware-recursion-detection': 3.577.0
@@ -11614,10 +11614,10 @@ snapshots:
       '@aws-crypto/sha1-browser': 3.0.0
       '@aws-crypto/sha256-browser': 3.0.0
       '@aws-crypto/sha256-js': 3.0.0
-      '@aws-sdk/client-sso-oidc': 3.592.0
-      '@aws-sdk/client-sts': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)
+      '@aws-sdk/client-sso-oidc': 3.592.0(@aws-sdk/client-sts@3.592.0)
+      '@aws-sdk/client-sts': 3.592.0
       '@aws-sdk/core': 3.592.0
-      '@aws-sdk/credential-provider-node': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))(@aws-sdk/client-sts@3.592.0)
+      '@aws-sdk/credential-provider-node': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)(@aws-sdk/client-sts@3.592.0)
       '@aws-sdk/middleware-bucket-endpoint': 3.587.0
       '@aws-sdk/middleware-expect-continue': 3.577.0
       '@aws-sdk/middleware-flexible-checksums': 3.587.0
@@ -11676,8 +11676,8 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
       '@aws-crypto/sha256-js': 3.0.0
-      '@aws-sdk/client-sso-oidc': 3.592.0
-      '@aws-sdk/client-sts': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)
+      '@aws-sdk/client-sso-oidc': 3.592.0(@aws-sdk/client-sts@3.592.0)
+      '@aws-sdk/client-sts': 3.592.0
       '@aws-sdk/core': 3.592.0
       '@aws-sdk/credential-provider-node': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)(@aws-sdk/client-sts@3.592.0)
       '@aws-sdk/middleware-host-header': 3.577.0
@@ -11724,10 +11724,10 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
       '@aws-crypto/sha256-js': 3.0.0
-      '@aws-sdk/client-sso-oidc': 3.592.0
-      '@aws-sdk/client-sts': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)
+      '@aws-sdk/client-sso-oidc': 3.592.0(@aws-sdk/client-sts@3.592.0)
+      '@aws-sdk/client-sts': 3.592.0
       '@aws-sdk/core': 3.592.0
-      '@aws-sdk/credential-provider-node': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)(@aws-sdk/client-sts@3.592.0(@aws-sdk/client-sso-oidc@3.592.0))
+      '@aws-sdk/credential-provider-node': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)(@aws-sdk/client-sts@3.592.0)
       '@aws-sdk/middleware-host-header': 3.577.0
       '@aws-sdk/middleware-logger': 3.577.0
       '@aws-sdk/middleware-recursion-detection': 3.577.0
@@ -11768,58 +11768,13 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
-  '@aws-sdk/client-sso-oidc@3.592.0':
-    dependencies:
-      '@aws-crypto/sha256-browser': 3.0.0
-      '@aws-crypto/sha256-js': 3.0.0
-      '@aws-sdk/client-sts': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)
-      '@aws-sdk/core': 3.592.0
-      '@aws-sdk/credential-provider-node': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)(@aws-sdk/client-sts@3.592.0(@aws-sdk/client-sso-oidc@3.592.0))
-      '@aws-sdk/middleware-host-header': 3.577.0
-      '@aws-sdk/middleware-logger': 3.577.0
-      '@aws-sdk/middleware-recursion-detection': 3.577.0
-      '@aws-sdk/middleware-user-agent': 3.587.0
-      '@aws-sdk/region-config-resolver': 3.587.0
-      '@aws-sdk/types': 3.577.0
-      '@aws-sdk/util-endpoints': 3.587.0
-      '@aws-sdk/util-user-agent-browser': 3.577.0
-      '@aws-sdk/util-user-agent-node': 3.587.0
-      '@smithy/config-resolver': 3.0.1
-      '@smithy/core': 2.2.0
-      '@smithy/fetch-http-handler': 3.0.1
-      '@smithy/hash-node': 3.0.0
-      '@smithy/invalid-dependency': 3.0.0
-      '@smithy/middleware-content-length': 3.0.0
-      '@smithy/middleware-endpoint': 3.0.1
-      '@smithy/middleware-retry': 3.0.3
-      '@smithy/middleware-serde': 3.0.0
-      '@smithy/middleware-stack': 3.0.0
-      '@smithy/node-config-provider': 3.1.0
-      '@smithy/node-http-handler': 3.0.0
-      '@smithy/protocol-http': 4.0.0
-      '@smithy/smithy-client': 3.1.1
-      '@smithy/types': 3.0.0
-      '@smithy/url-parser': 3.0.0
-      '@smithy/util-base64': 3.0.0
-      '@smithy/util-body-length-browser': 3.0.0
-      '@smithy/util-body-length-node': 3.0.0
-      '@smithy/util-defaults-mode-browser': 3.0.3
-      '@smithy/util-defaults-mode-node': 3.0.3
-      '@smithy/util-endpoints': 2.0.1
-      '@smithy/util-middleware': 3.0.0
-      '@smithy/util-retry': 3.0.0
-      '@smithy/util-utf8': 3.0.0
-      tslib: 2.6.3
-    transitivePeerDependencies:
-      - aws-crt
-
   '@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0)':
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
       '@aws-crypto/sha256-js': 3.0.0
-      '@aws-sdk/client-sts': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)
+      '@aws-sdk/client-sts': 3.592.0
       '@aws-sdk/core': 3.592.0
-      '@aws-sdk/credential-provider-node': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))(@aws-sdk/client-sts@3.592.0)
+      '@aws-sdk/credential-provider-node': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)(@aws-sdk/client-sts@3.592.0)
       '@aws-sdk/middleware-host-header': 3.577.0
       '@aws-sdk/middleware-logger': 3.577.0
       '@aws-sdk/middleware-recursion-detection': 3.577.0
@@ -11902,13 +11857,13 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
-  '@aws-sdk/client-sts@3.592.0(@aws-sdk/client-sso-oidc@3.592.0)':
+  '@aws-sdk/client-sts@3.592.0':
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
       '@aws-crypto/sha256-js': 3.0.0
-      '@aws-sdk/client-sso-oidc': 3.592.0
+      '@aws-sdk/client-sso-oidc': 3.592.0(@aws-sdk/client-sts@3.592.0)
       '@aws-sdk/core': 3.592.0
-      '@aws-sdk/credential-provider-node': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)(@aws-sdk/client-sts@3.592.0(@aws-sdk/client-sso-oidc@3.592.0))
+      '@aws-sdk/credential-provider-node': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)(@aws-sdk/client-sts@3.592.0)
       '@aws-sdk/middleware-host-header': 3.577.0
       '@aws-sdk/middleware-logger': 3.577.0
       '@aws-sdk/middleware-recursion-detection': 3.577.0
@@ -11945,7 +11900,6 @@ snapshots:
       '@smithy/util-utf8': 3.0.0
       tslib: 2.6.3
     transitivePeerDependencies:
-      - '@aws-sdk/client-sso-oidc'
       - aws-crt
 
   '@aws-sdk/core@3.592.0':
@@ -11977,27 +11931,9 @@ snapshots:
       '@smithy/util-stream': 3.0.1
       tslib: 2.6.3
 
-  '@aws-sdk/credential-provider-ini@3.592.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))(@aws-sdk/client-sts@3.592.0)':
-    dependencies:
-      '@aws-sdk/client-sts': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)
-      '@aws-sdk/credential-provider-env': 3.587.0
-      '@aws-sdk/credential-provider-http': 3.587.0
-      '@aws-sdk/credential-provider-process': 3.587.0
-      '@aws-sdk/credential-provider-sso': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))
-      '@aws-sdk/credential-provider-web-identity': 3.587.0(@aws-sdk/client-sts@3.592.0)
-      '@aws-sdk/types': 3.577.0
-      '@smithy/credential-provider-imds': 3.1.0
-      '@smithy/property-provider': 3.1.0
-      '@smithy/shared-ini-file-loader': 3.1.0
-      '@smithy/types': 3.0.0
-      tslib: 2.6.3
-    transitivePeerDependencies:
-      - '@aws-sdk/client-sso-oidc'
-      - aws-crt
-
   '@aws-sdk/credential-provider-ini@3.592.0(@aws-sdk/client-sso-oidc@3.592.0)(@aws-sdk/client-sts@3.592.0)':
     dependencies:
-      '@aws-sdk/client-sts': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)
+      '@aws-sdk/client-sts': 3.592.0
       '@aws-sdk/credential-provider-env': 3.587.0
       '@aws-sdk/credential-provider-http': 3.587.0
       '@aws-sdk/credential-provider-process': 3.587.0
@@ -12011,44 +11947,6 @@ snapshots:
       tslib: 2.6.3
     transitivePeerDependencies:
       - '@aws-sdk/client-sso-oidc'
-      - aws-crt
-
-  '@aws-sdk/credential-provider-node@3.592.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))(@aws-sdk/client-sts@3.592.0)':
-    dependencies:
-      '@aws-sdk/credential-provider-env': 3.587.0
-      '@aws-sdk/credential-provider-http': 3.587.0
-      '@aws-sdk/credential-provider-ini': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))(@aws-sdk/client-sts@3.592.0)
-      '@aws-sdk/credential-provider-process': 3.587.0
-      '@aws-sdk/credential-provider-sso': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))
-      '@aws-sdk/credential-provider-web-identity': 3.587.0(@aws-sdk/client-sts@3.592.0)
-      '@aws-sdk/types': 3.577.0
-      '@smithy/credential-provider-imds': 3.1.0
-      '@smithy/property-provider': 3.1.0
-      '@smithy/shared-ini-file-loader': 3.1.0
-      '@smithy/types': 3.0.0
-      tslib: 2.6.3
-    transitivePeerDependencies:
-      - '@aws-sdk/client-sso-oidc'
-      - '@aws-sdk/client-sts'
-      - aws-crt
-
-  '@aws-sdk/credential-provider-node@3.592.0(@aws-sdk/client-sso-oidc@3.592.0)(@aws-sdk/client-sts@3.592.0(@aws-sdk/client-sso-oidc@3.592.0))':
-    dependencies:
-      '@aws-sdk/credential-provider-env': 3.587.0
-      '@aws-sdk/credential-provider-http': 3.587.0
-      '@aws-sdk/credential-provider-ini': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)(@aws-sdk/client-sts@3.592.0)
-      '@aws-sdk/credential-provider-process': 3.587.0
-      '@aws-sdk/credential-provider-sso': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)
-      '@aws-sdk/credential-provider-web-identity': 3.587.0(@aws-sdk/client-sts@3.592.0)
-      '@aws-sdk/types': 3.577.0
-      '@smithy/credential-provider-imds': 3.1.0
-      '@smithy/property-provider': 3.1.0
-      '@smithy/shared-ini-file-loader': 3.1.0
-      '@smithy/types': 3.0.0
-      tslib: 2.6.3
-    transitivePeerDependencies:
-      - '@aws-sdk/client-sso-oidc'
-      - '@aws-sdk/client-sts'
       - aws-crt
 
   '@aws-sdk/credential-provider-node@3.592.0(@aws-sdk/client-sso-oidc@3.592.0)(@aws-sdk/client-sts@3.592.0)':
@@ -12078,19 +11976,6 @@ snapshots:
       '@smithy/types': 3.0.0
       tslib: 2.6.3
 
-  '@aws-sdk/credential-provider-sso@3.592.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))':
-    dependencies:
-      '@aws-sdk/client-sso': 3.592.0
-      '@aws-sdk/token-providers': 3.587.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))
-      '@aws-sdk/types': 3.577.0
-      '@smithy/property-provider': 3.1.0
-      '@smithy/shared-ini-file-loader': 3.1.0
-      '@smithy/types': 3.0.0
-      tslib: 2.6.3
-    transitivePeerDependencies:
-      - '@aws-sdk/client-sso-oidc'
-      - aws-crt
-
   '@aws-sdk/credential-provider-sso@3.592.0(@aws-sdk/client-sso-oidc@3.592.0)':
     dependencies:
       '@aws-sdk/client-sso': 3.592.0
@@ -12106,7 +11991,7 @@ snapshots:
 
   '@aws-sdk/credential-provider-web-identity@3.587.0(@aws-sdk/client-sts@3.592.0)':
     dependencies:
-      '@aws-sdk/client-sts': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)
+      '@aws-sdk/client-sts': 3.592.0
       '@aws-sdk/types': 3.577.0
       '@smithy/property-provider': 3.1.0
       '@smithy/types': 3.0.0
@@ -12258,18 +12143,9 @@ snapshots:
       '@smithy/types': 3.0.0
       tslib: 2.6.3
 
-  '@aws-sdk/token-providers@3.587.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))':
-    dependencies:
-      '@aws-sdk/client-sso-oidc': 3.592.0(@aws-sdk/client-sts@3.592.0)
-      '@aws-sdk/types': 3.577.0
-      '@smithy/property-provider': 3.1.0
-      '@smithy/shared-ini-file-loader': 3.1.0
-      '@smithy/types': 3.0.0
-      tslib: 2.6.3
-
   '@aws-sdk/token-providers@3.587.0(@aws-sdk/client-sso-oidc@3.592.0)':
     dependencies:
-      '@aws-sdk/client-sso-oidc': 3.592.0
+      '@aws-sdk/client-sso-oidc': 3.592.0(@aws-sdk/client-sts@3.592.0)
       '@aws-sdk/types': 3.577.0
       '@smithy/property-provider': 3.1.0
       '@smithy/shared-ini-file-loader': 3.1.0
@@ -14432,10 +14308,10 @@ snapshots:
 
   '@leichtgewicht/ip-codec@2.0.5': {}
 
-  '@lerna/create@8.1.3(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(encoding@0.1.13)(typescript@5.4.5)':
+  '@lerna/create@8.1.3(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(encoding@0.1.13)(typescript@5.4.5)':
     dependencies:
       '@npmcli/run-script': 7.0.2
-      '@nx/devkit': 19.2.2(nx@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))
+      '@nx/devkit': 19.2.2(nx@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))
       '@octokit/plugin-enterprise-rest': 6.0.1
       '@octokit/rest': 19.0.11(encoding@0.1.13)
       byte-size: 8.1.1
@@ -14472,7 +14348,7 @@ snapshots:
       npm-packlist: 5.1.1
       npm-registry-fetch: 14.0.5
       npmlog: 6.0.2
-      nx: 19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)
+      nx: 19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)
       p-map: 4.0.0
       p-map-series: 2.1.0
       p-queue: 6.6.2
@@ -14613,15 +14489,15 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@nrwl/devkit@19.2.2(nx@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))':
+  '@nrwl/devkit@19.2.2(nx@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))':
     dependencies:
-      '@nx/devkit': 19.2.2(nx@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))
+      '@nx/devkit': 19.2.2(nx@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))
     transitivePeerDependencies:
       - nx
 
-  '@nrwl/js@19.2.2(@babel/traverse@7.24.7)(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(@types/node@20.14.2)(nx@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))(typescript@5.4.5)':
+  '@nrwl/js@19.2.2(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(@types/node@20.14.2)(nx@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))(typescript@5.4.5)':
     dependencies:
-      '@nx/js': 19.2.2(@babel/traverse@7.24.7)(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(@types/node@20.14.2)(nx@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))(typescript@5.4.5)
+      '@nx/js': 19.2.2(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(@types/node@20.14.2)(nx@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))(typescript@5.4.5)
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -14640,41 +14516,41 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  '@nrwl/tao@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)':
+  '@nrwl/tao@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)':
     dependencies:
-      nx: 19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)
+      nx: 19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)
       tslib: 2.6.3
     transitivePeerDependencies:
       - '@swc-node/register'
       - '@swc/core'
       - debug
 
-  '@nrwl/workspace@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)':
+  '@nrwl/workspace@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)':
     dependencies:
-      '@nx/workspace': 19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)
+      '@nx/workspace': 19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)
     transitivePeerDependencies:
       - '@swc-node/register'
       - '@swc/core'
       - debug
 
-  '@nx/devkit@19.2.2(nx@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))':
+  '@nx/devkit@19.2.2(nx@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))':
     dependencies:
-      '@nrwl/devkit': 19.2.2(nx@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))
+      '@nrwl/devkit': 19.2.2(nx@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))
       ejs: 3.1.10
       enquirer: 2.3.6
       ignore: 5.3.1
       minimatch: 9.0.3
-      nx: 19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)
+      nx: 19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)
       semver: 7.6.2
       tmp: 0.2.3
       tslib: 2.6.3
       yargs-parser: 21.1.1
 
-  '@nx/eslint@19.2.2(@babel/traverse@7.24.7)(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(@types/node@20.14.2)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))':
+  '@nx/eslint@19.2.2(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(@types/node@20.14.2)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))':
     dependencies:
-      '@nx/devkit': 19.2.2(nx@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))
-      '@nx/js': 19.2.2(@babel/traverse@7.24.7)(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(@types/node@20.14.2)(nx@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))(typescript@5.4.5)
-      '@nx/linter': 19.2.2(@babel/traverse@7.24.7)(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(@types/node@20.14.2)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))
+      '@nx/devkit': 19.2.2(nx@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))
+      '@nx/js': 19.2.2(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(@types/node@20.14.2)(nx@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))(typescript@5.4.5)
+      '@nx/linter': 19.2.2(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(@types/node@20.14.2)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))
       eslint: 8.57.0
       semver: 7.6.2
       tslib: 2.6.3
@@ -14692,7 +14568,7 @@ snapshots:
       - supports-color
       - verdaccio
 
-  '@nx/js@19.2.2(@babel/traverse@7.24.7)(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(@types/node@20.14.2)(nx@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))(typescript@5.4.5)':
+  '@nx/js@19.2.2(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(@types/node@20.14.2)(nx@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))(typescript@5.4.5)':
     dependencies:
       '@babel/core': 7.24.6
       '@babel/plugin-proposal-decorators': 7.24.6(@babel/core@7.24.6)
@@ -14701,9 +14577,9 @@ snapshots:
       '@babel/preset-env': 7.24.6(@babel/core@7.24.6)
       '@babel/preset-typescript': 7.24.6(@babel/core@7.24.6)
       '@babel/runtime': 7.24.6
-      '@nrwl/js': 19.2.2(@babel/traverse@7.24.7)(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(@types/node@20.14.2)(nx@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))(typescript@5.4.5)
-      '@nx/devkit': 19.2.2(nx@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))
-      '@nx/workspace': 19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)
+      '@nrwl/js': 19.2.2(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(@types/node@20.14.2)(nx@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))(typescript@5.4.5)
+      '@nx/devkit': 19.2.2(nx@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))
+      '@nx/workspace': 19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)
       babel-plugin-const-enum: 1.2.0(@babel/core@7.24.6)
       babel-plugin-macros: 2.8.0
       babel-plugin-transform-typescript-metadata: 0.3.2(@babel/core@7.24.6)(@babel/traverse@7.24.7)
@@ -14734,9 +14610,9 @@ snapshots:
       - supports-color
       - typescript
 
-  '@nx/linter@19.2.2(@babel/traverse@7.24.7)(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(@types/node@20.14.2)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))':
+  '@nx/linter@19.2.2(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(@types/node@20.14.2)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))':
     dependencies:
-      '@nx/eslint': 19.2.2(@babel/traverse@7.24.7)(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(@types/node@20.14.2)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))
+      '@nx/eslint': 19.2.2(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(@types/node@20.14.2)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -14780,13 +14656,13 @@ snapshots:
   '@nx/nx-win32-x64-msvc@19.2.2':
     optional: true
 
-  '@nx/workspace@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)':
+  '@nx/workspace@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)':
     dependencies:
-      '@nrwl/workspace': 19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)
-      '@nx/devkit': 19.2.2(nx@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))
+      '@nrwl/workspace': 19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)
+      '@nx/devkit': 19.2.2(nx@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))
       chalk: 4.1.2
       enquirer: 2.3.6
-      nx: 19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)
+      nx: 19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)
       tslib: 2.6.3
       yargs-parser: 21.1.1
     transitivePeerDependencies:
@@ -14945,7 +14821,7 @@ snapshots:
   '@serverless/dashboard-plugin@7.2.3(encoding@0.1.13)(supports-color@8.1.1)':
     dependencies:
       '@aws-sdk/client-cloudformation': 3.592.0
-      '@aws-sdk/client-sts': 3.592.0(@aws-sdk/client-sso-oidc@3.592.0)
+      '@aws-sdk/client-sts': 3.592.0
       '@serverless/event-mocks': 1.1.1
       '@serverless/platform-client': 4.5.1(supports-color@8.1.1)
       '@serverless/utils': 6.15.0(encoding@0.1.13)
@@ -15592,7 +15468,7 @@ snapshots:
       '@swc/core': 1.5.24
       '@swc/types': 0.1.8
 
-  '@swc-node/register@1.9.1(@swc/core@1.5.24)(@swc/types@0.1.8)(typescript@5.4.5)':
+  '@swc-node/register@1.9.2(@swc/core@1.5.24)(@swc/types@0.1.8)(typescript@5.4.5)':
     dependencies:
       '@swc-node/core': 1.13.1(@swc/core@1.5.24)(@swc/types@0.1.8)
       '@swc-node/sourcemap-support': 0.5.0
@@ -20438,11 +20314,11 @@ snapshots:
     dependencies:
       readable-stream: 2.3.8
 
-  lerna@8.1.3(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(encoding@0.1.13):
+  lerna@8.1.3(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(encoding@0.1.13):
     dependencies:
-      '@lerna/create': 8.1.3(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(encoding@0.1.13)(typescript@5.4.5)
+      '@lerna/create': 8.1.3(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)(encoding@0.1.13)(typescript@5.4.5)
       '@npmcli/run-script': 7.0.2
-      '@nx/devkit': 19.2.2(nx@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))
+      '@nx/devkit': 19.2.2(nx@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))
       '@octokit/plugin-enterprise-rest': 6.0.1
       '@octokit/rest': 19.0.11(encoding@0.1.13)
       byte-size: 8.1.1
@@ -20485,7 +20361,7 @@ snapshots:
       npm-packlist: 5.1.1
       npm-registry-fetch: 14.0.5
       npmlog: 6.0.2
-      nx: 19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)
+      nx: 19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)
       p-map: 4.0.0
       p-map-series: 2.1.0
       p-pipe: 3.1.0
@@ -21807,9 +21683,9 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  nx@19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24):
+  nx@19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24):
     dependencies:
-      '@nrwl/tao': 19.2.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)
+      '@nrwl/tao': 19.2.2(@swc-node/register@1.9.2(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)
       '@yarnpkg/lockfile': 1.1.0
       '@yarnpkg/parsers': 3.0.0-rc.46
       '@zkochan/js-yaml': 0.0.7
@@ -21854,7 +21730,7 @@ snapshots:
       '@nx/nx-linux-x64-musl': 19.2.2
       '@nx/nx-win32-arm64-msvc': 19.2.2
       '@nx/nx-win32-x64-msvc': 19.2.2
-      '@swc-node/register': 1.9.1(@swc/core@1.5.24)(@swc/types@0.1.8)(typescript@5.4.5)
+      '@swc-node/register': 1.9.2(@swc/core@1.5.24)(@swc/types@0.1.8)(typescript@5.4.5)
       '@swc/core': 1.5.24
     transitivePeerDependencies:
       - debug
