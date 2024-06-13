@@ -15,8 +15,8 @@ importers:
         specifier: ^19.0.0
         version: 19.2.2
       '@swarmion/nx-plugin':
-        specifier: ^0.32.0
-        version: 0.32.0(@babel/traverse@7.24.7)(@types/node@20.14.2)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.2.2)(typescript@5.4.5)
+        specifier: 0.33.0-alpha.1
+        version: 0.33.0-alpha.1(@babel/traverse@7.24.7)(@types/node@20.14.2)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.2.2)(typescript@5.4.5)
       '@types/node':
         specifier: ^20.12.4
         version: 20.14.2
@@ -69,8 +69,8 @@ importers:
   packages/cdk-configuration:
     dependencies:
       '@swarmion/serverless-helpers':
-        specifier: ^0.32.0
-        version: 0.32.0(@serverless/typescript@3.38.0)(aws-cdk-lib@2.145.0(constructs@10.3.0))
+        specifier: 0.33.0-alpha.1
+        version: 0.33.0-alpha.1(@serverless/typescript@3.38.0)(aws-cdk-lib@2.145.0(constructs@10.3.0))
       aws-cdk-lib:
         specifier: ^2.114.1
         version: 2.145.0(constructs@10.3.0)
@@ -1290,13 +1290,13 @@ packages:
     resolution: {integrity: sha512-LtoMMhxAlorcGhmFYI+LhPgbPZCkgP6ra1YL604EeF6U98pLlQ3iWIGMdWSC+vWmPBWBNgmDBAhnAobLROJmwg==}
     engines: {node: '>=18'}
 
-  '@swarmion/nx-plugin@0.32.0':
-    resolution: {integrity: sha512-VUrfQ91aCwqBfiCdt0yjtnqx+RaaJ6+Z4TWUASJ8S3KVS8bNi69m60v6+I0QSvUQgcvGiFIuTD2bvxd7wD29pg==}
+  '@swarmion/nx-plugin@0.33.0-alpha.1':
+    resolution: {integrity: sha512-OoCu2O+wFkl/jPTCr2N3xM1oYSks/ipcef3iiI0hfG0dL4LMNW4m/jNAso6zwbN+AQ48iDooqvSfYtmsItPo5A==}
     peerDependencies:
       typescript: '>=4'
 
-  '@swarmion/serverless-helpers@0.32.0':
-    resolution: {integrity: sha512-iXzEASnMtXzO1Ab2WhfzKj9CVKY9mQXKoTFhhyd/X3GD8qvIFqahgwV8E3K6bOM0DYFJIX6E39KVtVZ8VylaIg==}
+  '@swarmion/serverless-helpers@0.33.0-alpha.1':
+    resolution: {integrity: sha512-rrcZ9aTFzWGXZL44p1AcK0njKw9OkQhab4UwUx+hLIKCk6G6vIBHL55p1BGiTYRdhUuGCmdmxckyUB86Tx/2ag==}
     peerDependencies:
       '@serverless/typescript': '>=3'
       aws-cdk-lib: ^2.60.0
@@ -1940,8 +1940,8 @@ packages:
     engines: {node: '>=0.10.0'}
     hasBin: true
 
-  electron-to-chromium@1.4.798:
-    resolution: {integrity: sha512-by9J2CiM9KPGj9qfp5U4FcPSbXJG7FNzqnYaY4WLzX+v2PHieVGmnsA4dxfpGE3QEC7JofpPZmn7Vn1B9NR2+Q==}
+  electron-to-chromium@1.4.799:
+    resolution: {integrity: sha512-3D3DwWkRTzrdEpntY0hMLYwj7SeBk1138CkPE8sBDSj3WzrzOiG2rHm3luw8jucpf+WiyLBCZyU9lMHyQI9M9Q==}
 
   emoji-regex@10.3.0:
     resolution: {integrity: sha512-QpLs9D9v9kArv4lfDEgg1X/gN5XLnf/A6l9cs8SPZLRZR3ZkY9+kwIQTxm+fsSej5UMYGE8fdoaZVIBlqG0XTw==}
@@ -4952,6 +4952,12 @@ snapshots:
     transitivePeerDependencies:
       - nx
 
+  '@nrwl/devkit@19.2.3(nx@19.2.3)':
+    dependencies:
+      '@nx/devkit': 19.2.3(nx@19.2.3)
+    transitivePeerDependencies:
+      - nx
+
   '@nrwl/js@19.2.3(@babel/traverse@7.24.7)(@types/node@20.14.2)(nx@19.2.2)(typescript@5.4.5)':
     dependencies:
       '@nx/js': 19.2.3(@babel/traverse@7.24.7)(@types/node@20.14.2)(nx@19.2.2)(typescript@5.4.5)
@@ -5008,7 +5014,7 @@ snapshots:
 
   '@nx/devkit@19.2.3(nx@19.2.3)':
     dependencies:
-      '@nrwl/devkit': 19.2.3(nx@19.2.2)
+      '@nrwl/devkit': 19.2.3(nx@19.2.3)
       ejs: 3.1.10
       enquirer: 2.3.6
       ignore: 5.3.1
@@ -5221,7 +5227,7 @@ snapshots:
 
   '@sindresorhus/merge-streams@2.3.0': {}
 
-  '@swarmion/nx-plugin@0.32.0(@babel/traverse@7.24.7)(@types/node@20.14.2)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.2.2)(typescript@5.4.5)':
+  '@swarmion/nx-plugin@0.33.0-alpha.1(@babel/traverse@7.24.7)(@types/node@20.14.2)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.2.2)(typescript@5.4.5)':
     dependencies:
       '@nx/devkit': 19.2.3(nx@19.2.2)
       '@nx/linter': 19.2.3(@babel/traverse@7.24.7)(@types/node@20.14.2)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.2.2)
@@ -5240,7 +5246,7 @@ snapshots:
       - supports-color
       - verdaccio
 
-  '@swarmion/serverless-helpers@0.32.0(@serverless/typescript@3.38.0)(aws-cdk-lib@2.145.0(constructs@10.3.0))':
+  '@swarmion/serverless-helpers@0.33.0-alpha.1(@serverless/typescript@3.38.0)(aws-cdk-lib@2.145.0(constructs@10.3.0))':
     dependencies:
       '@serverless/typescript': 3.38.0
       aws-cdk-lib: 2.145.0(constructs@10.3.0)
@@ -5626,7 +5632,7 @@ snapshots:
   browserslist@4.23.1:
     dependencies:
       caniuse-lite: 1.0.30001632
-      electron-to-chromium: 1.4.798
+      electron-to-chromium: 1.4.799
       node-releases: 2.0.14
       update-browserslist-db: 1.0.16(browserslist@4.23.1)
 
@@ -5957,7 +5963,7 @@ snapshots:
     dependencies:
       jake: 10.9.1
 
-  electron-to-chromium@1.4.798: {}
+  electron-to-chromium@1.4.799: {}
 
   emoji-regex@10.3.0: {}
 

@@ -15,8 +15,8 @@ importers:
         specifier: ^19.0.0
         version: 19.2.2
       '@swarmion/nx-plugin':
-        specifier: ^0.32.0
-        version: 0.32.0(@babel/traverse@7.24.7)(@types/node@20.14.2)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.2.2)(typescript@5.4.5)
+        specifier: 0.33.0-alpha.1
+        version: 0.33.0-alpha.1(@babel/traverse@7.24.7)(@types/node@20.14.2)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.2.2)(typescript@5.4.5)
       '@types/node':
         specifier: ^20.12.4
         version: 20.14.2
@@ -69,8 +69,8 @@ importers:
   contracts/core-contracts:
     dependencies:
       '@swarmion/serverless-contracts':
-        specifier: ^0.32.0
-        version: 0.32.0(@serverless/typescript@3.38.0)(ajv@8.16.0)(aws-cdk-lib@2.145.0(constructs@10.3.0))(axios@1.7.2)
+        specifier: 0.33.0-alpha.1
+        version: 0.33.0-alpha.1(@serverless/typescript@3.38.0)(ajv@8.16.0)(aws-cdk-lib@2.145.0(constructs@10.3.0))(axios@1.7.2)
     devDependencies:
       '@types/node':
         specifier: ^20.12.4
@@ -130,8 +130,8 @@ importers:
         specifier: workspace:1.0.0
         version: link:../../contracts/core-contracts
       '@swarmion/serverless-contracts':
-        specifier: ^0.32.0
-        version: 0.32.0(@serverless/typescript@3.38.0)(ajv@8.16.0)(aws-cdk-lib@2.145.0(constructs@10.3.0))(axios@1.7.2)
+        specifier: 0.33.0-alpha.1
+        version: 0.33.0-alpha.1(@serverless/typescript@3.38.0)(ajv@8.16.0)(aws-cdk-lib@2.145.0(constructs@10.3.0))(axios@1.7.2)
       '@tanstack/react-query':
         specifier: ^5.13.4
         version: 5.40.1(react@18.3.1)
@@ -275,8 +275,8 @@ importers:
   packages/cdk-configuration:
     dependencies:
       '@swarmion/serverless-helpers':
-        specifier: ^0.32.0
-        version: 0.32.0(@serverless/typescript@3.38.0)(aws-cdk-lib@2.145.0(constructs@10.3.0))
+        specifier: 0.33.0-alpha.1
+        version: 0.33.0-alpha.1(@serverless/typescript@3.38.0)(aws-cdk-lib@2.145.0(constructs@10.3.0))
       aws-cdk:
         specifier: ^2.114.1
         version: 2.145.0
@@ -333,11 +333,11 @@ importers:
         specifier: workspace:1.0.0
         version: link:../../contracts/core-contracts
       '@swarmion/serverless-contracts':
-        specifier: ^0.32.0
-        version: 0.32.0(@serverless/typescript@3.38.0)(ajv@8.16.0)(aws-cdk-lib@2.145.0(constructs@10.3.0))(axios@1.7.2)
+        specifier: 0.33.0-alpha.1
+        version: 0.33.0-alpha.1(@serverless/typescript@3.38.0)(ajv@8.16.0)(aws-cdk-lib@2.145.0(constructs@10.3.0))(axios@1.7.2)
       '@swarmion/serverless-helpers':
-        specifier: ^0.32.0
-        version: 0.32.0(@serverless/typescript@3.38.0)(aws-cdk-lib@2.145.0(constructs@10.3.0))
+        specifier: 0.33.0-alpha.1
+        version: 0.33.0-alpha.1(@serverless/typescript@3.38.0)(aws-cdk-lib@2.145.0(constructs@10.3.0))
       ajv:
         specifier: ^8.15.0
         version: 8.16.0
@@ -2512,13 +2512,13 @@ packages:
     peerDependencies:
       '@svgr/core': '*'
 
-  '@swarmion/nx-plugin@0.32.0':
-    resolution: {integrity: sha512-VUrfQ91aCwqBfiCdt0yjtnqx+RaaJ6+Z4TWUASJ8S3KVS8bNi69m60v6+I0QSvUQgcvGiFIuTD2bvxd7wD29pg==}
+  '@swarmion/nx-plugin@0.33.0-alpha.1':
+    resolution: {integrity: sha512-OoCu2O+wFkl/jPTCr2N3xM1oYSks/ipcef3iiI0hfG0dL4LMNW4m/jNAso6zwbN+AQ48iDooqvSfYtmsItPo5A==}
     peerDependencies:
       typescript: '>=4'
 
-  '@swarmion/serverless-contracts@0.32.0':
-    resolution: {integrity: sha512-Q1yuUMDtDeV7r4rpdNT0BEyKeQrdZ1JcXcOTzR02GbcURHNEhc6K8RqT4sJhKsGAvDSF1zlLxd07VJ2qgEnsWg==}
+  '@swarmion/serverless-contracts@0.33.0-alpha.1':
+    resolution: {integrity: sha512-WX7Y7v2BiIRnQDYhA2qy8q+i7bzjWKp77an3BcfDeGpjcZBrQr9pjRYCqsqT8+6fggfItV5iAxoBSVAUMYjTVg==}
     peerDependencies:
       '@serverless/typescript': '>=3'
       ajv: '>=8'
@@ -2531,8 +2531,8 @@ packages:
       axios:
         optional: true
 
-  '@swarmion/serverless-helpers@0.32.0':
-    resolution: {integrity: sha512-iXzEASnMtXzO1Ab2WhfzKj9CVKY9mQXKoTFhhyd/X3GD8qvIFqahgwV8E3K6bOM0DYFJIX6E39KVtVZ8VylaIg==}
+  '@swarmion/serverless-helpers@0.33.0-alpha.1':
+    resolution: {integrity: sha512-rrcZ9aTFzWGXZL44p1AcK0njKw9OkQhab4UwUx+hLIKCk6G6vIBHL55p1BGiTYRdhUuGCmdmxckyUB86Tx/2ag==}
     peerDependencies:
       '@serverless/typescript': '>=3'
       aws-cdk-lib: ^2.60.0
@@ -4826,6 +4826,9 @@ packages:
   path-scurry@1.11.1:
     resolution: {integrity: sha512-Xa4Nw17FS9ApQFJ9umLiJS4orGjm7ZzwUrwamcGQuHSzDyth9boKDaycYdDcZDuqYATXw4HFXgaqWTctW/v1HA==}
     engines: {node: '>=16 || 14 >=14.18'}
+
+  path-to-regexp@6.2.2:
+    resolution: {integrity: sha512-GQX3SSMokngb36+whdpRXE+3f9V8UzyAorlYvOGx87ufGHehNTn5lCxrKtLyZ4Yl/wEKnNnr98ZzOwwDZV5ogw==}
 
   path-type@4.0.0:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
@@ -8108,6 +8111,12 @@ snapshots:
     transitivePeerDependencies:
       - nx
 
+  '@nrwl/devkit@19.2.3(nx@19.2.3)':
+    dependencies:
+      '@nx/devkit': 19.2.3(nx@19.2.3)
+    transitivePeerDependencies:
+      - nx
+
   '@nrwl/js@19.2.3(@babel/traverse@7.24.7)(@types/node@20.14.2)(nx@19.2.2)(typescript@5.4.5)':
     dependencies:
       '@nx/js': 19.2.3(@babel/traverse@7.24.7)(@types/node@20.14.2)(nx@19.2.2)(typescript@5.4.5)
@@ -8164,7 +8173,7 @@ snapshots:
 
   '@nx/devkit@19.2.3(nx@19.2.3)':
     dependencies:
-      '@nrwl/devkit': 19.2.3(nx@19.2.2)
+      '@nrwl/devkit': 19.2.3(nx@19.2.3)
       ejs: 3.1.10
       enquirer: 2.3.6
       ignore: 5.3.1
@@ -8724,7 +8733,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@swarmion/nx-plugin@0.32.0(@babel/traverse@7.24.7)(@types/node@20.14.2)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.2.2)(typescript@5.4.5)':
+  '@swarmion/nx-plugin@0.33.0-alpha.1(@babel/traverse@7.24.7)(@types/node@20.14.2)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.2.2)(typescript@5.4.5)':
     dependencies:
       '@nx/devkit': 19.2.3(nx@19.2.2)
       '@nx/linter': 19.2.3(@babel/traverse@7.24.7)(@types/node@20.14.2)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.2.2)
@@ -8743,11 +8752,11 @@ snapshots:
       - supports-color
       - verdaccio
 
-  '@swarmion/serverless-contracts@0.32.0(@serverless/typescript@3.38.0)(ajv@8.16.0)(aws-cdk-lib@2.145.0(constructs@10.3.0))(axios@1.7.2)':
+  '@swarmion/serverless-contracts@0.33.0-alpha.1(@serverless/typescript@3.38.0)(ajv@8.16.0)(aws-cdk-lib@2.145.0(constructs@10.3.0))(axios@1.7.2)':
     dependencies:
       '@aws-sdk/client-eventbridge': 3.592.0
       '@aws-sdk/client-sqs': 3.592.0
-      '@swarmion/serverless-helpers': 0.32.0(@serverless/typescript@3.38.0)(aws-cdk-lib@2.145.0(constructs@10.3.0))
+      '@swarmion/serverless-helpers': 0.33.0-alpha.1(@serverless/typescript@3.38.0)(aws-cdk-lib@2.145.0(constructs@10.3.0))
       '@types/aws-lambda': 8.10.138
       '@types/http-errors': 2.0.4
       http-errors: 2.0.0
@@ -8756,6 +8765,7 @@ snapshots:
       lodash: 4.17.21
       openapi-types: 12.1.3
       p-queue: 6.6.2
+      path-to-regexp: 6.2.2
       seedrandom: 3.0.5
       ts-toolbelt: 9.6.0
       ulid: 2.3.0
@@ -8767,7 +8777,7 @@ snapshots:
       - aws-cdk-lib
       - aws-crt
 
-  '@swarmion/serverless-helpers@0.32.0(@serverless/typescript@3.38.0)(aws-cdk-lib@2.145.0(constructs@10.3.0))':
+  '@swarmion/serverless-helpers@0.33.0-alpha.1(@serverless/typescript@3.38.0)(aws-cdk-lib@2.145.0(constructs@10.3.0))':
     dependencies:
       '@serverless/typescript': 3.38.0
       aws-cdk-lib: 2.145.0(constructs@10.3.0)
@@ -11438,6 +11448,8 @@ snapshots:
     dependencies:
       lru-cache: 10.2.2
       minipass: 7.1.1
+
+  path-to-regexp@6.2.2: {}
 
   path-type@4.0.0: {}
 
