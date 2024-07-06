@@ -156,16 +156,16 @@ importers:
     devDependencies:
       '@testing-library/dom':
         specifier: ^10.0.0
-        version: 10.2.0
+        version: 10.3.0
       '@testing-library/jest-dom':
         specifier: ^6.1.5
         version: 6.4.6(vitest@1.6.0(@types/node@20.14.9)(jsdom@24.1.0))
       '@testing-library/react':
         specifier: ^16.0.0
-        version: 16.0.0(@testing-library/dom@10.2.0)(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 16.0.0(@testing-library/dom@10.3.0)(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@testing-library/user-event':
         specifier: ^14.0.0
-        version: 14.5.2(@testing-library/dom@10.2.0)
+        version: 14.5.2(@testing-library/dom@10.3.0)
       '@types/dotenv-flow':
         specifier: ^3.3.3
         version: 3.3.3
@@ -2545,8 +2545,8 @@ packages:
     peerDependencies:
       react: ^18.0.0
 
-  '@testing-library/dom@10.2.0':
-    resolution: {integrity: sha512-CytIvb6tVOADRngTHGWNxH8LPgO/3hi/BdCEHOf7Qd2GvZVClhVP0Wo/QHzWhpki49Bk0b4VT6xpt3fx8HTSIw==}
+  '@testing-library/dom@10.3.0':
+    resolution: {integrity: sha512-pT/TYB2+IyMYkkB6lqpkzD7VFbsR0JBJtflK3cS68sCNWxmOhWwRm1XvVHlseNEorsNcxkYsb4sRDV3aNIpttg==}
     engines: {node: '>=18'}
 
   '@testing-library/jest-dom@6.4.6':
@@ -8143,12 +8143,6 @@ snapshots:
     transitivePeerDependencies:
       - nx
 
-  '@nrwl/devkit@19.2.3(nx@19.2.3)':
-    dependencies:
-      '@nx/devkit': 19.2.3(nx@19.2.3)
-    transitivePeerDependencies:
-      - nx
-
   '@nrwl/js@19.2.3(@babel/traverse@7.24.7)(@types/node@20.14.9)(nx@19.2.2)(typescript@5.4.5)':
     dependencies:
       '@nx/js': 19.2.3(@babel/traverse@7.24.7)(@types/node@20.14.9)(nx@19.2.2)(typescript@5.4.5)
@@ -8205,7 +8199,7 @@ snapshots:
 
   '@nx/devkit@19.2.3(nx@19.2.3)':
     dependencies:
-      '@nrwl/devkit': 19.2.3(nx@19.2.3)
+      '@nrwl/devkit': 19.2.3(nx@19.2.2)
       ejs: 3.1.10
       enquirer: 2.3.6
       ignore: 5.3.1
@@ -8821,7 +8815,7 @@ snapshots:
       '@tanstack/query-core': 5.49.1
       react: 18.3.1
 
-  '@testing-library/dom@10.2.0':
+  '@testing-library/dom@10.3.0':
     dependencies:
       '@babel/code-frame': 7.24.7
       '@babel/runtime': 7.24.7
@@ -8845,19 +8839,19 @@ snapshots:
     optionalDependencies:
       vitest: 1.6.0(@types/node@20.14.9)(jsdom@24.1.0)
 
-  '@testing-library/react@16.0.0(@testing-library/dom@10.2.0)(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@testing-library/react@16.0.0(@testing-library/dom@10.3.0)(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.7
-      '@testing-library/dom': 10.2.0
+      '@testing-library/dom': 10.3.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     optionalDependencies:
       '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
 
-  '@testing-library/user-event@14.5.2(@testing-library/dom@10.2.0)':
+  '@testing-library/user-event@14.5.2(@testing-library/dom@10.3.0)':
     dependencies:
-      '@testing-library/dom': 10.2.0
+      '@testing-library/dom': 10.3.0
 
   '@tsconfig/node10@1.0.11': {}
 
