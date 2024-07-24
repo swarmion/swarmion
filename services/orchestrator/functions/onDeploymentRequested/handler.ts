@@ -1,14 +1,18 @@
-import { onDeploymentRequestedContract } from '@swarmion/orchestrator-contracts';
-import { getHandler } from '@swarmion/serverless-contracts';
+import {
+  onDeploymentRequestedContract,
+  onDeploymentUpdatedContract,
+} from '@swarmion/orchestrator-contracts';
+import { getMultipleEventBridgeHandler } from '@swarmion/serverless-contracts';
 
 import { ajv } from 'libs/ajv';
 
-export const main = getHandler(onDeploymentRequestedContract, { ajv })(
-  async event => {
-    const { applicationId, eventId, serviceId } = event.detail;
+export const main = getMultipleEventBridgeHandler(
+  [onDeploymentRequestedContract, onDeploymentUpdatedContract],
+  { ajv },
+)(async event => {
+  const { applicationId, eventId, serviceId } = event.detail;
 
-    await Promise.resolve();
+  await Promise.resolve();
 
-    console.log({ applicationId, eventId, serviceId });
-  },
-);
+  console.log({ applicationId, eventId, serviceId });
+});
