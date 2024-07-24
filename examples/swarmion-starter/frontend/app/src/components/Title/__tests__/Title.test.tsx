@@ -1,5 +1,4 @@
-import { render, screen } from 'testUtils/react';
-
+import { render, screen } from '../../../testUtils/react';
 import Title from '../Title';
 
 describe('Title component', () => {

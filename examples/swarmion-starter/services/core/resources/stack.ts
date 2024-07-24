@@ -4,7 +4,7 @@ import { Construct } from 'constructs';
 
 import { getAppConfig, getAppStage } from '@swarmion-starter/cdk-configuration';
 
-import { Health } from 'functions/config';
+import { Health } from '../functions/config';
 
 export class CoreStack extends Stack {
   constructor(scope: Construct, id: string, props: StackProps) {

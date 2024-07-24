@@ -5,7 +5,7 @@ import {
   notFoundJpgUrl,
   notFoundPngUrl,
   notFoundWebpUrl,
-} from 'assets';
+} from '../../assets';
 
 const NotFound = (): JSX.Element => (
   <>

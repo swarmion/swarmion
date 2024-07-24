@@ -126,9 +126,6 @@ importers:
       '@mui/system':
         specifier: ^5.14.20
         version: 5.15.20(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1)
-      '@swarmion-starter/core-contracts':
-        specifier: workspace:1.0.0
-        version: link:../../contracts/core-contracts
       '@swarmion/serverless-contracts':
         specifier: ^0.32.0
         version: 0.32.0(@serverless/typescript@3.38.0)(ajv@8.16.0)(aws-cdk-lib@2.148.0(constructs@10.3.0))(axios@1.7.2)
@@ -280,6 +277,9 @@ importers:
       aws-cdk:
         specifier: ^2.114.1
         version: 2.148.0
+      aws-cdk-lib:
+        specifier: ^2.114.1
+        version: 2.148.0(constructs@10.3.0)
       constructs:
         specifier: ^10.3.0
         version: 10.3.0
@@ -326,12 +326,6 @@ importers:
       '@middy/http-cors':
         specifier: ^4.7.0
         version: 4.7.0
-      '@swarmion-starter/cdk-configuration':
-        specifier: workspace:^
-        version: link:../../packages/cdk-configuration
-      '@swarmion-starter/core-contracts':
-        specifier: workspace:1.0.0
-        version: link:../../contracts/core-contracts
       '@swarmion/serverless-contracts':
         specifier: ^0.32.0
         version: 0.32.0(@serverless/typescript@3.38.0)(ajv@8.16.0)(aws-cdk-lib@2.148.0(constructs@10.3.0))(axios@1.7.2)
@@ -8045,6 +8039,12 @@ snapshots:
     transitivePeerDependencies:
       - nx
 
+  '@nrwl/devkit@19.2.3(nx@19.2.3)':
+    dependencies:
+      '@nx/devkit': 19.2.3(nx@19.2.3)
+    transitivePeerDependencies:
+      - nx
+
   '@nrwl/js@19.2.3(@babel/traverse@7.24.7)(@types/node@20.14.9)(nx@19.2.2)(typescript@5.4.5)':
     dependencies:
       '@nx/js': 19.2.3(@babel/traverse@7.24.7)(@types/node@20.14.9)(nx@19.2.2)(typescript@5.4.5)
@@ -8101,7 +8101,7 @@ snapshots:
 
   '@nx/devkit@19.2.3(nx@19.2.3)':
     dependencies:
-      '@nrwl/devkit': 19.2.3(nx@19.2.2)
+      '@nrwl/devkit': 19.2.3(nx@19.2.3)
       ejs: 3.1.10
       enquirer: 2.3.6
       ignore: 5.3.1

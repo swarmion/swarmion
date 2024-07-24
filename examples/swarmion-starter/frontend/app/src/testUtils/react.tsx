@@ -7,9 +7,9 @@ import {
 import { IntlProvider } from 'react-intl';
 import { MemoryRouter, MemoryRouterProps } from 'react-router-dom';
 
-import { flattenMessages } from 'services/i18n';
-import { muiTheme } from 'theme';
-import { frFRMessages } from 'translations';
+import { flattenMessages } from '../services/i18n';
+import { muiTheme } from '../theme';
+import { frFRMessages } from '../translations';
 
 interface RenderOptions extends RtlRenderOptions {
   messages?: Record<string, string>;

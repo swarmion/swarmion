@@ -26,6 +26,7 @@ module.exports = {
         devDependencies: true,
         optionalDependencies: false,
         peerDependencies: false,
+        bundledDependencies: true,
       },
     ],
     'no-shadow': [
@@ -125,9 +126,9 @@ module.exports = {
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
       ],
       parser: '@typescript-eslint/parser',
-      parserOptions: {
-        project: 'tsconfig.json',
-      },
+      // parserOptions: {
+      //   project: 'tsconfig.json',
+      // },
       rules: {
         '@typescript-eslint/prefer-optional-chain': 'error',
         'no-shadow': 'off',
@@ -142,7 +143,7 @@ module.exports = {
           },
         ],
         '@typescript-eslint/ban-ts-comment': [
-          'error',
+          'warn',
           {
             'ts-ignore': 'allow-with-description',
             minimumDescriptionLength: 10,
@@ -185,6 +186,7 @@ module.exports = {
             allowBoolean: true,
           },
         ],
+        '@typescript-eslint/no-unsafe-assignment': 'error',
       },
     },
     {

@@ -3,11 +3,10 @@ import { ThemeProvider } from '@mui/system';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { IntlProvider } from 'react-intl';
 
-import { flattenMessages } from 'services/i18n';
-import { muiTheme } from 'theme';
-import { frFRMessages } from 'translations';
-
 import AppRoutes from './AppRoutes';
+import { flattenMessages } from './services/i18n';
+import { muiTheme } from './theme';
+import { frFRMessages } from './translations';
 
 const queryClient = new QueryClient();
 const intlMessages = flattenMessages(frFRMessages);

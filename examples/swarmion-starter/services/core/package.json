@@ -4,13 +4,13 @@
   "version": "1.0.0",
   "license": "UNLICENSED",
   "scripts": {
-    "bootstrap": "cdk bootstrap --profile swarmion-starter-developer --qualifier de91078a5b",
+    "bootstrap": "cdk bootstrap --profile guillaumed --qualifier de91078a5b",
     "bootstrap-production": "cdk bootstrap --context stage=production --qualifier de91078a5b",
     "bootstrap-staging": "cdk bootstrap --context stage=staging --qualifier de91078a5b",
-    "deploy": "cdk deploy --profile swarmion-starter-developer",
+    "deploy": "cdk deploy --profile guillaumed",
     "deploy-production": "cdk deploy --context stage=production",
     "deploy-staging": "cdk deploy --context stage=staging",
-    "destroy": "cdk destroy --profile swarmion-starter-developer",
+    "destroy": "cdk destroy --profile guillaumed",
     "destroy-production": "cdk destroy --context stage=production",
     "destroy-staging": "cdk destroy --context stage=staging",
     "format-check": "prettier --check . --ignore-path ../../.prettierignore",
@@ -24,11 +24,13 @@
     "test-type": "tsc",
     "test-unit": "vitest run --coverage --passWithNoTests"
   },
+  "bundledDependencies": [
+    "@swarmion-starter/cdk-configuration",
+    "@swarmion-starter/core-contracts"
+  ],
   "dependencies": {
     "@middy/core": "^4.7.0",
     "@middy/http-cors": "^4.7.0",
-    "@swarmion-starter/cdk-configuration": "workspace:^",
-    "@swarmion-starter/core-contracts": "workspace:1.0.0",
     "@swarmion/serverless-contracts": "^0.32.0",
     "@swarmion/serverless-helpers": "^0.32.0",
     "ajv": "^8.15.0"

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "composite": true,
+    // "composite": true,
     "declaration": true,
     "declarationMap": true,
     "emitDeclarationOnly": true,
@@ -20,7 +20,17 @@
     "noUnusedParameters": true,
     "sourceMap": true,
     "noImplicitReturns": true,
-    "noUncheckedIndexedAccess": true
+    "noUncheckedIndexedAccess": true,
+    "baseUrl": ".",
+    "rootDir": ".",
+    "paths": {
+      "@swarmion-starter/core-contracts": [
+        "contracts/core-contracts/src/index.ts"
+      ],
+      "@swarmion-starter/cdk-configuration": [
+        "packages/cdk-configuration/src/index.ts"
+      ]
+    }
   },
   "ts-node": {
     "compilerOptions": {

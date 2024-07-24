@@ -1,7 +1,6 @@
 {
   "extends": "../../tsconfig.options.json",
   "compilerOptions": {
-    "baseUrl": "src",
     "emitDeclarationOnly": false,
     "noEmit": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
@@ -13,8 +12,5 @@
       "node"
     ]
   },
-  "references": [
-    { "path": "../../contracts/core-contracts/tsconfig.build.json" }
-  ],
   "include": ["./**/*.ts", "./**/*.tsx", "vite.config.mts"]
 }

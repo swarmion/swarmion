@@ -1,10 +1,10 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { NotFound } from 'components';
-import { RoutePaths } from 'types';
+import { NotFound } from './components';
+import { RoutePaths } from './types';
 
-const Home = React.lazy(() => import('pages/Home/Home'));
+const Home = React.lazy(() => import('./pages/Home/Home'));
 
 const AppRoutes = (): JSX.Element => (
   <Suspense fallback={<NotFound />}>

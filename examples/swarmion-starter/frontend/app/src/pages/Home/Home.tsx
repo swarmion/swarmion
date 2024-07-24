@@ -6,10 +6,9 @@ import { FormattedMessage } from 'react-intl';
 
 import { healthContract } from '@swarmion-starter/core-contracts';
 
-import { Title } from 'components';
-import client from 'services/networking/client';
-
 import { StyledButton, StyledButtonWithTheme } from './Home.style';
+import { Title } from '../../components';
+import client from '../../services/networking/client';
 
 const Home = (): JSX.Element => {
   const { data: healthResponse, isError } = useQuery({

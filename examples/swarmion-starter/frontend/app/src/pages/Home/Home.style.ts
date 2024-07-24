@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import { css } from '@mui/system';
 
-import { styled } from 'theme';
+import { styled } from '../../theme';
 
 const StyledButtonWithTheme = styled(Button)(
   ({ theme }) => css`

@@ -2,6 +2,7 @@ import { getCdkHandlerPath } from '@swarmion/serverless-helpers';
 import { LambdaIntegration, RestApi } from 'aws-cdk-lib/aws-apigateway';
 import { Architecture, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
+import { RetentionDays } from 'aws-cdk-lib/aws-logs';
 import { Construct } from 'constructs';
 
 import {
@@ -10,7 +11,7 @@ import {
 } from '@swarmion-starter/cdk-configuration';
 import { healthContract } from '@swarmion-starter/core-contracts';
 
-import { CORS_ALLOWED_ORIGINS } from 'shared/constants';
+import { CORS_ALLOWED_ORIGINS } from '../../shared/constants';
 
 type HealthProps = { restApi: RestApi };
 
@@ -36,6 +37,7 @@ export class Health extends Construct {
       awsSdkConnectionReuse: true,
       bundling: sharedLambdaEsbuildConfig,
       environment,
+      logRetention: RetentionDays.ONE_WEEK,
     });
 
     restApi.root

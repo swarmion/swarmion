@@ -6,7 +6,7 @@ import Ajv from 'ajv';
 
 import { healthContract } from '@swarmion-starter/core-contracts';
 
-import { CORS_ALLOWED_ORIGINS } from 'shared/constants';
+import { CORS_ALLOWED_ORIGINS } from '../../shared/constants';
 
 const ajv = new Ajv();
 const allowedOrigins = JSON.parse(

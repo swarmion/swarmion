@@ -6,8 +6,8 @@ import {
 import { IntlProvider } from 'react-intl';
 import { MemoryRouter } from 'react-router-dom';
 
-import { flattenMessages } from 'services/i18n';
-import { frFRMessages } from 'translations';
+import { flattenMessages } from '../services/i18n';
+import { frFRMessages } from '../translations';
 
 interface RenderHookOptions<P> extends RtlRenderHookOptions<P> {
   messages?: Record<string, string>;
