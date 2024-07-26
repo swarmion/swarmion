@@ -4,9 +4,7 @@
   "version": "1.0.0",
   "license": "UNLICENSED",
   "sideEffects": false,
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
-  "types": "dist/types/index.d.ts",
+  "type": "module",
   "scripts": {
     "clean": "rimraf dist *.tsbuildinfo",
     "lint-fix": "pnpm linter-base-config --fix",
@@ -17,7 +15,7 @@
     "package-types": "tsc -p tsconfig.build.json",
     "package-types-aliases": "tsc-alias -p tsconfig.build.json",
     "test": "nx run test-linter && nx run test-type && nx run test-dependencies",
-    "test-dependencies": "pnpm depcruise --config -- .",
+    "test-circular": "pnpm depcruise --config -- .",
     "test-linter": "pnpm linter-base-config .",
     "test-type": "tsc --noEmit --emitDeclarationOnly false",
     "watch": "pnpm clean && concurrently 'pnpm:package-* --watch'"

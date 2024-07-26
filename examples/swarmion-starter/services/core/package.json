@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "license": "UNLICENSED",
+  "type": "module",
   "scripts": {
     "bootstrap": "cdk bootstrap --profile guillaumed --qualifier de91078a5b",
     "bootstrap-production": "cdk bootstrap --context stage=production --qualifier de91078a5b",
@@ -45,7 +46,7 @@
     "esbuild": "^0.21.0",
     "eslint": "^8.55.0",
     "prettier": "^3.1.1",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.16.2",
     "typescript": "^5.3.3",
     "vite": "^5.0.8",
     "vite-tsconfig-paths": "^4.2.2",

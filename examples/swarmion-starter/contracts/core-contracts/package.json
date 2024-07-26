@@ -4,10 +4,7 @@
   "version": "1.0.0",
   "license": "UNLICENSED",
   "sideEffects": false,
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
-  "types": "dist/types/index.d.ts",
-  "contracts": true,
+  "type": "module",
   "scripts": {
     "clean": "rimraf dist *.tsbuildinfo",
     "format-check": "prettier --check . --ignore-path ../../.prettierignore",

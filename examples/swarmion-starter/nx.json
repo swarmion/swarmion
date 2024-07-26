@@ -38,7 +38,7 @@
       "dependsOn": ["build", "^deploy-production", "bootstrap-production"]
     },
     "test-linter": {
-      "inputs": ["default", "^production", "{workspaceRoot}/.eslintrc.js"]
+      "inputs": ["default", "^production", "{workspaceRoot}/.eslintrc.cjs"]
     },
     "test-unit": {
       "inputs": ["default", "^production"],

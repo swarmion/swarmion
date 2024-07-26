@@ -1,3 +1,1 @@
-const commonDependencyCruiserConfig = require('../../commonConfiguration/dependency-cruiser.config');
-
-module.exports = commonDependencyCruiserConfig;
+export { default } from '../../commonConfiguration/dependency-cruiser.config.js';

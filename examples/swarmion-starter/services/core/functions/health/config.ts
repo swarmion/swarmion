@@ -30,7 +30,7 @@ export class Health extends Construct {
     };
 
     this.healthFunction = new NodejsFunction(this, 'Lambda', {
-      entry: getCdkHandlerPath(__dirname),
+      entry: getCdkHandlerPath(import.meta.dirname),
       handler: 'main',
       runtime: Runtime.NODEJS_20_X,
       architecture: Architecture.ARM_64,

@@ -1,6 +1,6 @@
-const baseConfig = require('../../.lintstagedrc');
+import baseConfig from '../../.lintstagedrc.js';
 
-module.exports = {
+export default {
   ...baseConfig,
   '*.{ts,tsx}': 'pnpm stylelint-fix',
 };
