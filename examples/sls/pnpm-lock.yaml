@@ -192,7 +192,7 @@ importers:
         version: 0.32.0(@serverless/typescript@3.38.0)(ajv@8.17.1)(aws-cdk-lib@2.151.0(constructs@10.2.20))(axios@1.7.3)
       '@tanstack/react-query':
         specifier: ^5.13.4
-        version: 5.51.21(react@18.3.1)
+        version: 5.56.2(react@18.3.1)
       axios:
         specifier: ^1.7.2
         version: 1.7.3
@@ -2927,13 +2927,13 @@ packages:
     resolution: {integrity: sha512-4BAffykYOgO+5nzBWYwE3W90sBgLJoUPRWWcL8wlyiM8IB8ipJz3UMJ9KXQd1RKQXpKp8Tutn80HZtWsu2u76w==}
     engines: {node: '>=10'}
 
-  '@tanstack/query-core@5.51.21':
-    resolution: {integrity: sha512-POQxm42IUp6n89kKWF4IZi18v3fxQWFRolvBA6phNVmA8psdfB1MvDnGacCJdS+EOX12w/CyHM62z//rHmYmvw==}
+  '@tanstack/query-core@5.56.2':
+    resolution: {integrity: sha512-gor0RI3/R5rVV3gXfddh1MM+hgl0Z4G7tj6Xxpq6p2I03NGPaJ8dITY9Gz05zYYb/EJq9vPas/T4wn9EaDPd4Q==}
 
-  '@tanstack/react-query@5.51.21':
-    resolution: {integrity: sha512-Q/V81x3sAYgCsxjwOkfLXfrmoG+FmDhLeHH5okC/Bp8Aaw2c33lbEo/mMcMnkxUPVtB2FLpzHT0tq3c+OlZEbw==}
+  '@tanstack/react-query@5.56.2':
+    resolution: {integrity: sha512-SR0GzHVo6yzhN72pnRhkEFRAHMsUo5ZPzAxfTMvUxFIDVS6W9LYUp6nXW3fcHVdg0ZJl8opSH85jqahvm6DSVg==}
     peerDependencies:
-      react: ^18.0.0
+      react: ^18 || ^19
 
   '@testing-library/dom@10.4.0':
     resolution: {integrity: sha512-pemlzrSESWbdAloYml3bAJMEfNh1Z7EduzqPKprCH5S341frlpYnUEW0H72dLxa6IsYr+mPno20GiSm+h9dEdQ==}
@@ -9885,6 +9885,12 @@ snapshots:
     transitivePeerDependencies:
       - nx
 
+  '@nrwl/devkit@19.2.3(nx@19.2.3)':
+    dependencies:
+      '@nx/devkit': 19.2.3(nx@19.2.3)
+    transitivePeerDependencies:
+      - nx
+
   '@nrwl/js@19.2.3(@babel/traverse@7.24.7)(@types/node@20.14.14)(nx@19.2.2)(typescript@5.4.5)':
     dependencies:
       '@nx/js': 19.2.3(@babel/traverse@7.24.7)(@types/node@20.14.14)(nx@19.2.2)(typescript@5.4.5)
@@ -9941,7 +9947,7 @@ snapshots:
 
   '@nx/devkit@19.2.3(nx@19.2.3)':
     dependencies:
-      '@nrwl/devkit': 19.2.3(nx@19.2.2)
+      '@nrwl/devkit': 19.2.3(nx@19.2.3)
       ejs: 3.1.10
       enquirer: 2.3.6
       ignore: 5.3.1
@@ -10713,11 +10719,11 @@ snapshots:
     dependencies:
       defer-to-connect: 2.0.1
 
-  '@tanstack/query-core@5.51.21': {}
+  '@tanstack/query-core@5.56.2': {}
 
-  '@tanstack/react-query@5.51.21(react@18.3.1)':
+  '@tanstack/react-query@5.56.2(react@18.3.1)':
     dependencies:
-      '@tanstack/query-core': 5.51.21
+      '@tanstack/query-core': 5.56.2
       react: 18.3.1
 
   '@testing-library/dom@10.4.0':
