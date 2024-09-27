@@ -76,7 +76,7 @@ importers:
         version: link:../../packages/serverless-configuration
       '@swarmion/serverless-contracts':
         specifier: ^0.32.0
-        version: 0.32.0(@serverless/typescript@3.38.0)(ajv@8.17.1)(aws-cdk-lib@2.151.0(constructs@10.2.20))(axios@1.7.3)
+        version: 0.32.0(@serverless/typescript@3.38.0)(ajv@8.17.1)(aws-cdk-lib@2.151.0(constructs@10.2.20))(axios@1.7.7)
     devDependencies:
       '@types/node':
         specifier: ^20.12.4
@@ -119,7 +119,7 @@ importers:
     dependencies:
       '@swarmion/serverless-contracts':
         specifier: ^0.32.0
-        version: 0.32.0(@serverless/typescript@3.38.0)(ajv@8.17.1)(aws-cdk-lib@2.151.0(constructs@10.2.20))(axios@1.7.3)
+        version: 0.32.0(@serverless/typescript@3.38.0)(ajv@8.17.1)(aws-cdk-lib@2.151.0(constructs@10.2.20))(axios@1.7.7)
       json-schema-to-ts:
         specifier: ^3.0.0
         version: 3.1.0
@@ -189,13 +189,13 @@ importers:
         version: link:../../contracts/users-contracts
       '@swarmion/serverless-contracts':
         specifier: ^0.32.0
-        version: 0.32.0(@serverless/typescript@3.38.0)(ajv@8.17.1)(aws-cdk-lib@2.151.0(constructs@10.2.20))(axios@1.7.3)
+        version: 0.32.0(@serverless/typescript@3.38.0)(ajv@8.17.1)(aws-cdk-lib@2.151.0(constructs@10.2.20))(axios@1.7.7)
       '@tanstack/react-query':
         specifier: ^5.13.4
         version: 5.51.21(react@18.3.1)
       axios:
         specifier: ^1.7.2
-        version: 1.7.3
+        version: 1.7.7
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -596,7 +596,7 @@ importers:
         version: link:../../contracts/users-contracts
       '@swarmion/serverless-contracts':
         specifier: ^0.32.0
-        version: 0.32.0(@serverless/typescript@3.38.0)(ajv@8.17.1)(aws-cdk-lib@2.151.0(constructs@10.2.20))(axios@1.7.3)
+        version: 0.32.0(@serverless/typescript@3.38.0)(ajv@8.17.1)(aws-cdk-lib@2.151.0(constructs@10.2.20))(axios@1.7.7)
       '@swarmion/serverless-helpers':
         specifier: ^0.32.0
         version: 0.32.0(@serverless/typescript@3.38.0)(aws-cdk-lib@2.151.0(constructs@10.2.20))
@@ -3388,8 +3388,8 @@ packages:
     resolution: {integrity: sha512-QbUdXJVTpvUTHU7871ppZkdOLBeGUKBQWHkHrvN2V9IQWGMt61zf3B45BtzjxEJzYuj0JBjBZP/hmYS/R9pmAw==}
     engines: {node: '>=4'}
 
-  axios@1.7.3:
-    resolution: {integrity: sha512-Ar7ND9pU99eJ9GpoGQKhKf58GpUOgnzuaB7ueNQ5BMi0p+LZ5oaEnfF999fAArcTIBwXTCHAmGcHOZJaWPq9Nw==}
+  axios@1.7.7:
+    resolution: {integrity: sha512-S4kL7XrjgBmvdGut0sN3yJxqYzrDOnivkBiN0OFs6hLiUam3UPvswUo0kqGyhqUZGEOytHyumEdXsAkgCOUf3Q==}
 
   axobject-query@3.1.1:
     resolution: {integrity: sha512-goKlv8DZrK9hUh975fnHzhNIO4jUnFCfv/dszV5VwUGDFjI6vQ2VwoyjYjYNEbBE8AH87TduWP5uyDR1D+Iteg==}
@@ -4489,8 +4489,8 @@ packages:
   flatted@3.3.1:
     resolution: {integrity: sha512-X8cqMLLie7KsNUDSdzeN8FYK9rEt4Dt67OsG/DNGnYTSDBG4uFAJFBnUeiV+zCVAvwFy56IjM9sH51jVaEhNxw==}
 
-  follow-redirects@1.15.6:
-    resolution: {integrity: sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==}
+  follow-redirects@1.15.9:
+    resolution: {integrity: sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==}
     engines: {node: '>=4.0'}
     peerDependencies:
       debug: '*'
@@ -10211,7 +10211,7 @@ snapshots:
     dependencies:
       adm-zip: 0.5.14
       archiver: 5.3.2
-      axios: 1.7.3
+      axios: 1.7.7
       fast-glob: 3.3.2
       https-proxy-agent: 5.0.1(supports-color@8.1.1)
       ignore: 5.3.1
@@ -10679,7 +10679,7 @@ snapshots:
       - supports-color
       - verdaccio
 
-  '@swarmion/serverless-contracts@0.32.0(@serverless/typescript@3.38.0)(ajv@8.17.1)(aws-cdk-lib@2.151.0(constructs@10.2.20))(axios@1.7.3)':
+  '@swarmion/serverless-contracts@0.32.0(@serverless/typescript@3.38.0)(ajv@8.17.1)(aws-cdk-lib@2.151.0(constructs@10.2.20))(axios@1.7.7)':
     dependencies:
       '@aws-sdk/client-eventbridge': 3.592.0
       '@aws-sdk/client-sqs': 3.592.0
@@ -10698,7 +10698,7 @@ snapshots:
     optionalDependencies:
       '@serverless/typescript': 3.38.0
       ajv: 8.17.1
-      axios: 1.7.3
+      axios: 1.7.7
     transitivePeerDependencies:
       - aws-cdk-lib
       - aws-crt
@@ -11282,9 +11282,9 @@ snapshots:
 
   axe-core@4.9.1: {}
 
-  axios@1.7.3:
+  axios@1.7.7:
     dependencies:
-      follow-redirects: 1.15.6
+      follow-redirects: 1.15.9
       form-data: 4.0.0
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -12743,7 +12743,7 @@ snapshots:
 
   flatted@3.3.1: {}
 
-  follow-redirects@1.15.6: {}
+  follow-redirects@1.15.9: {}
 
   for-each@0.3.3:
     dependencies:
@@ -13931,7 +13931,7 @@ snapshots:
       '@yarnpkg/lockfile': 1.1.0
       '@yarnpkg/parsers': 3.0.0-rc.46
       '@zkochan/js-yaml': 0.0.7
-      axios: 1.7.3
+      axios: 1.7.7
       chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-spinners: 2.6.1
@@ -13981,7 +13981,7 @@ snapshots:
       '@yarnpkg/lockfile': 1.1.0
       '@yarnpkg/parsers': 3.0.0-rc.46
       '@zkochan/js-yaml': 0.0.7
-      axios: 1.7.3
+      axios: 1.7.7
       chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-spinners: 2.6.1
