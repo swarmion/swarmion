@@ -3,7 +3,7 @@ import {
   SendMessageBatchRequestEntry,
 } from '@aws-sdk/client-sqs';
 import { BatchResultErrorEntry } from '@aws-sdk/client-sqs/dist-types/models/models_0';
-import PQueue from 'p-queue';
+import PQueue from 'p-queue-compat';
 
 import { SQSContract } from '../sqsContract';
 import { SendMessagesBuilderOptions, SendMessagesSideEffect } from '../types';
