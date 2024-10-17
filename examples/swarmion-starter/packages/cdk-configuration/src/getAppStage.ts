@@ -2,7 +2,7 @@ import type { Construct } from 'constructs';
 
 import { CdkDeploymentError } from 'customErrors';
 
-const defaultStage = 'dev' as const;
+const defaultStage = 'dev';
 
 const APP_STAGES = [defaultStage, 'staging', 'production'] as const;
 export type AppStage = (typeof APP_STAGES)[number];
