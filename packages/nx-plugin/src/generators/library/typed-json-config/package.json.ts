@@ -42,7 +42,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
   },
   devDependencies: {
     '@types/node': getWorkspaceDependencyVersion('@types/node'),
-    '@vitest/coverage-v8': getWorkspaceDependencyVersion('@vitest/coverage-v8'),
+    '@vitest/coverage-v8': getWorkspaceDependencyVersion('vitest'), // force to use the same version as vitest
     concurrently: getWorkspaceDependencyVersion('concurrently'),
     'dependency-cruiser': getWorkspaceDependencyVersion('dependency-cruiser'),
     eslint: getWorkspaceDependencyVersion('eslint'),
