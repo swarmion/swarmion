@@ -56,7 +56,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     ),
     'ts-node': getWorkspaceDependencyVersion('ts-node'),
     typescript: getWorkspaceDependencyVersion('typescript'),
-    'vite-tsconfig-paths': getWorkspaceDependencyVersion('vite-tsconfig-paths'),
+    'vite-tsconfig-paths': '^4.0.0', // version 5 is esm only
     vitest: getWorkspaceDependencyVersion('vitest'),
   },
 });
