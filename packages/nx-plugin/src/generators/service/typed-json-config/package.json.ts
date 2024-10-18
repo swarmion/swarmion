@@ -42,7 +42,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
       '@serverless/typescript',
     ),
     '@types/node': getWorkspaceDependencyVersion('@types/node'),
-    '@vitest/coverage-v8': getWorkspaceDependencyVersion('@vitest/coverage-v8'),
+    '@vitest/coverage-v8': getWorkspaceDependencyVersion('vitest'), // force to use the same version as vitest
     'dependency-cruiser': getWorkspaceDependencyVersion('dependency-cruiser'),
     esbuild: getWorkspaceDependencyVersion('esbuild'),
     eslint: getWorkspaceDependencyVersion('eslint'),
