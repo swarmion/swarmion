@@ -18,7 +18,7 @@ export const packageTsConfig = (options: NormalizedSchema): TsConfig => ({
     },
   ],
   exclude: ['./cdk.out'],
-  include: ['./**/*.ts'],
+  include: ['./**/*.ts', 'vitest.config.mts'],
   'ts-node': {
     transpileOnly: true,
   },
