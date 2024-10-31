@@ -7,7 +7,6 @@ import {
   getAPIGatewayV2EventRequestContextMock,
 } from '@swarmion/serverless-helpers';
 
-import { deepMerge } from './utils/deepMerge';
 import { GenericApiGatewayContract } from '../apiGatewayContract';
 import {
   ApiGatewayEvent,
@@ -24,6 +23,7 @@ import {
   ApiGatewayIntegrationType,
 } from '../types/constants';
 import { getHandlerContextMock } from '../utils/mockHandlerContext';
+import { deepMerge } from './utils/deepMerge';
 
 let seed = 'MySuperSwarmionSeed';
 
