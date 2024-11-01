@@ -861,7 +861,7 @@ importers:
         version: 1.0.1
       serverless-esbuild:
         specifier: ^1.50.0
-        version: 1.54.4(esbuild@0.24.0)
+        version: 1.54.5(esbuild@0.24.0)
       serverless-iam-roles-per-function:
         specifier: ^3.2.0
         version: 3.2.0
@@ -4634,8 +4634,8 @@ packages:
     resolution: {integrity: sha512-ueEepnujpqee2o5aIYnvHU6C0A42MNdsIDeqy5BydrkuC5R1ZuUFnm27EeFJGoEHJQgn3uleRvmTXaJgfXbt4g==}
     engines: {node: '>=0.4.0'}
 
-  acorn@8.13.0:
-    resolution: {integrity: sha512-8zSiw54Oxrdym50NlZ9sUusyO1Z1ZchgRLWRaK6c86XJFClyCgFKetdowBg5bKxyp/u+CDBJG4Mpp0m3HLZl9w==}
+  acorn@8.14.0:
+    resolution: {integrity: sha512-cl669nCJTZBsL97OF4kUQm5g5hC2uihk0NxY3WENAC0TYdILVkAyHymAntgxGkl7K+t0cXIrH5siy5S4XkFycA==}
     engines: {node: '>=0.4.0'}
     hasBin: true
 
@@ -6094,8 +6094,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  effect@3.10.1:
-    resolution: {integrity: sha512-Ny0I3WvGykUnlgmQVkNVbkXHE/pPTWVwmnYfpVZYyLlpe53LVyWViY9+a/7iS/Rqml0xUwJoXx5HK6ksK09Y2Q==}
+  effect@3.10.8:
+    resolution: {integrity: sha512-vCKKp7EL6j7x1xfBbmndcQvooNE5FEDxkVro2yqEGBR2Ogn4I4XVK5A4eLVlDxS9egvX7EFaBwDRfm7k6IM6oA==}
 
   effect@3.5.7:
     resolution: {integrity: sha512-PzEncc0R3ZZhqNTR+fXrSX+anF/4Ai6ftKie1ZrUUWY7WPE7d4KjB6wjpeWoGMOC7xWFPGSkBBUudyJN1mx3+g==}
@@ -10241,8 +10241,8 @@ packages:
   serverless-custom-iam-roles-per-function@1.0.1:
     resolution: {integrity: sha512-u5IN8ZNT/bTOeRAFiINjTvWd9Vp9YYYXc1/TC8b04h0OELnBnuluNN8fNpdpwjiBMqUZW6K5N0pRRBH3kOCz/g==}
 
-  serverless-esbuild@1.54.4:
-    resolution: {integrity: sha512-M35q1aQuJ+GyCHmt1wm/rOR15ABcHON2AKOSuhvl2F/VUv4x4YCGcdRzsMZN2D91jsF0Mvf0AsBVbmaDbNC1Dw==}
+  serverless-esbuild@1.54.5:
+    resolution: {integrity: sha512-zORFzVshsf7Z4NCJmmZxR92LGxISFJ7G1ERmPX/u3SBlAjbfj1NQEH4uraMGnwra6XDuDpXq6CleR9845SEmJg==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       esbuild: 0.8 - 0.24
@@ -15095,18 +15095,18 @@ snapshots:
       - uglify-js
       - webpack-cli
 
-  '@effect/platform-node-shared@0.15.5(@effect/platform@0.65.5(@effect/schema@0.73.4(effect@3.10.1))(effect@3.10.1))(effect@3.10.1)':
+  '@effect/platform-node-shared@0.15.5(@effect/platform@0.65.5(@effect/schema@0.73.4(effect@3.10.8))(effect@3.10.8))(effect@3.10.8)':
     dependencies:
-      '@effect/platform': 0.65.5(@effect/schema@0.73.4(effect@3.10.1))(effect@3.10.1)
+      '@effect/platform': 0.65.5(@effect/schema@0.73.4(effect@3.10.8))(effect@3.10.8)
       '@parcel/watcher': 2.4.1
-      effect: 3.10.1
+      effect: 3.10.8
       multipasta: 0.2.5
 
-  '@effect/platform-node@0.60.5(@effect/platform@0.65.5(@effect/schema@0.73.4(effect@3.10.1))(effect@3.10.1))(effect@3.10.1)':
+  '@effect/platform-node@0.60.5(@effect/platform@0.65.5(@effect/schema@0.73.4(effect@3.10.8))(effect@3.10.8))(effect@3.10.8)':
     dependencies:
-      '@effect/platform': 0.65.5(@effect/schema@0.73.4(effect@3.10.1))(effect@3.10.1)
-      '@effect/platform-node-shared': 0.15.5(@effect/platform@0.65.5(@effect/schema@0.73.4(effect@3.10.1))(effect@3.10.1))(effect@3.10.1)
-      effect: 3.10.1
+      '@effect/platform': 0.65.5(@effect/schema@0.73.4(effect@3.10.8))(effect@3.10.8)
+      '@effect/platform-node-shared': 0.15.5(@effect/platform@0.65.5(@effect/schema@0.73.4(effect@3.10.8))(effect@3.10.8))(effect@3.10.8)
+      effect: 3.10.8
       mime: 3.0.0
       undici: 6.20.1
       ws: 8.18.0
@@ -15114,10 +15114,10 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@effect/platform@0.65.5(@effect/schema@0.73.4(effect@3.10.1))(effect@3.10.1)':
+  '@effect/platform@0.65.5(@effect/schema@0.73.4(effect@3.10.8))(effect@3.10.8)':
     dependencies:
-      '@effect/schema': 0.73.4(effect@3.10.1)
-      effect: 3.10.1
+      '@effect/schema': 0.73.4(effect@3.10.8)
+      effect: 3.10.8
       find-my-way-ts: 0.1.5
       multipasta: 0.2.5
 
@@ -15126,9 +15126,9 @@ snapshots:
       effect: 3.5.7
       fast-check: 3.22.0
 
-  '@effect/schema@0.73.4(effect@3.10.1)':
+  '@effect/schema@0.73.4(effect@3.10.8)':
     dependencies:
-      effect: 3.10.1
+      effect: 3.10.8
       fast-check: 3.22.0
 
   '@emnapi/core@1.2.0':
@@ -17895,25 +17895,25 @@ snapshots:
       mime-types: 2.1.35
       negotiator: 0.6.3
 
-  acorn-import-assertions@1.9.0(acorn@8.13.0):
+  acorn-import-assertions@1.9.0(acorn@8.14.0):
     dependencies:
-      acorn: 8.13.0
+      acorn: 8.14.0
 
   acorn-jsx-walk@2.0.0: {}
 
-  acorn-jsx@5.3.2(acorn@8.13.0):
+  acorn-jsx@5.3.2(acorn@8.14.0):
     dependencies:
-      acorn: 8.13.0
+      acorn: 8.14.0
 
   acorn-loose@8.4.0:
     dependencies:
-      acorn: 8.13.0
+      acorn: 8.14.0
 
   acorn-walk@8.3.4:
     dependencies:
-      acorn: 8.13.0
+      acorn: 8.14.0
 
-  acorn@8.13.0: {}
+  acorn@8.14.0: {}
 
   add-stream@1.0.0: {}
 
@@ -19442,8 +19442,8 @@ snapshots:
 
   dependency-cruiser@16.4.2:
     dependencies:
-      acorn: 8.13.0
-      acorn-jsx: 5.3.2(acorn@8.13.0)
+      acorn: 8.14.0
+      acorn-jsx: 5.3.2(acorn@8.14.0)
       acorn-jsx-walk: 2.0.0
       acorn-loose: 8.4.0
       acorn-walk: 8.3.4
@@ -19605,7 +19605,7 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  effect@3.10.1:
+  effect@3.10.8:
     dependencies:
       fast-check: 3.22.0
 
@@ -20036,8 +20036,8 @@ snapshots:
 
   espree@9.6.1:
     dependencies:
-      acorn: 8.13.0
-      acorn-jsx: 5.3.2(acorn@8.13.0)
+      acorn: 8.14.0
+      acorn-jsx: 5.3.2(acorn@8.14.0)
       eslint-visitor-keys: 3.4.3
 
   esprima@4.0.1: {}
@@ -22755,8 +22755,8 @@ snapshots:
 
   micromark-extension-mdxjs@3.0.0:
     dependencies:
-      acorn: 8.13.0
-      acorn-jsx: 5.3.2(acorn@8.13.0)
+      acorn: 8.14.0
+      acorn-jsx: 5.3.2(acorn@8.14.0)
       micromark-extension-mdx-expression: 3.0.0
       micromark-extension-mdx-jsx: 3.0.0
       micromark-extension-mdx-md: 2.0.0
@@ -23045,7 +23045,7 @@ snapshots:
 
   mlly@1.7.2:
     dependencies:
-      acorn: 8.13.0
+      acorn: 8.14.0
       pathe: 1.1.2
       pkg-types: 1.2.1
       ufo: 1.5.4
@@ -24902,18 +24902,18 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.25.9
 
-  serverless-esbuild@1.54.4(esbuild@0.24.0):
+  serverless-esbuild@1.54.5(esbuild@0.24.0):
     dependencies:
-      '@effect/platform': 0.65.5(@effect/schema@0.73.4(effect@3.10.1))(effect@3.10.1)
-      '@effect/platform-node': 0.60.5(@effect/platform@0.65.5(@effect/schema@0.73.4(effect@3.10.1))(effect@3.10.1))(effect@3.10.1)
-      '@effect/schema': 0.73.4(effect@3.10.1)
-      acorn: 8.13.0
+      '@effect/platform': 0.65.5(@effect/schema@0.73.4(effect@3.10.8))(effect@3.10.8)
+      '@effect/platform-node': 0.60.5(@effect/platform@0.65.5(@effect/schema@0.73.4(effect@3.10.8))(effect@3.10.8))(effect@3.10.8)
+      '@effect/schema': 0.73.4(effect@3.10.8)
+      acorn: 8.14.0
       acorn-walk: 8.3.4
       anymatch: 3.1.3
       archiver: 5.3.2
       bestzip: 2.2.1
       chokidar: 3.6.0
-      effect: 3.10.1
+      effect: 3.10.8
       esbuild: 0.24.0
       execa: 5.1.1
       fs-extra: 11.2.0
@@ -25545,7 +25545,7 @@ snapshots:
   terser@5.36.0:
     dependencies:
       '@jridgewell/source-map': 0.3.6
-      acorn: 8.13.0
+      acorn: 8.14.0
       commander: 2.20.3
       source-map-support: 0.5.21
 
@@ -25698,7 +25698,7 @@ snapshots:
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
       '@types/node': 20.16.14
-      acorn: 8.13.0
+      acorn: 8.14.0
       acorn-walk: 8.3.4
       arg: 4.1.3
       create-require: 1.1.1
@@ -25718,7 +25718,7 @@ snapshots:
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
       '@types/node': 20.16.14
-      acorn: 8.13.0
+      acorn: 8.14.0
       acorn-walk: 8.3.4
       arg: 4.1.3
       create-require: 1.1.1
@@ -25738,7 +25738,7 @@ snapshots:
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
       '@types/node': 20.16.14
-      acorn: 8.13.0
+      acorn: 8.14.0
       acorn-walk: 8.3.4
       arg: 4.1.3
       create-require: 1.1.1
@@ -26256,7 +26256,7 @@ snapshots:
   webpack-bundle-analyzer@4.10.2:
     dependencies:
       '@discoveryjs/json-ext': 0.5.7
-      acorn: 8.13.0
+      acorn: 8.14.0
       acorn-walk: 8.3.4
       commander: 7.2.0
       debounce: 1.2.1
@@ -26335,8 +26335,8 @@ snapshots:
       '@webassemblyjs/ast': 1.12.1
       '@webassemblyjs/wasm-edit': 1.12.1
       '@webassemblyjs/wasm-parser': 1.12.1
-      acorn: 8.13.0
-      acorn-import-assertions: 1.9.0(acorn@8.13.0)
+      acorn: 8.14.0
+      acorn-import-assertions: 1.9.0(acorn@8.14.0)
       browserslist: 4.24.2
       chrome-trace-event: 1.0.4
       enhanced-resolve: 5.17.1
