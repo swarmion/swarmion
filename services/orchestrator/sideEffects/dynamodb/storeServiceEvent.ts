@@ -1,4 +1,5 @@
 import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
+import { PutItemCommand } from 'dynamodb-toolbox';
 
 import { StoreServiceEventType } from 'interfaces/storeServiceEvent';
 
@@ -14,6 +15,12 @@ export const buildStoreServiceEvent = (
   );
 
   return async ({ serviceId, applicationId, eventId }) => {
-    await ServiceEventEntity.put({ serviceId, applicationId, eventId });
+    await ServiceEventEntity.build(PutItemCommand)
+      .item({
+        serviceId,
+        applicationId,
+        eventId,
+      })
+      .send();
   };
 };
