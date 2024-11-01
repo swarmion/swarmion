@@ -1,7 +1,7 @@
 module.exports = {
-  root: true,
   parserOptions: {
-    ecmaVersion: 'latest',
+    project: ['./tsconfig.json'],
+    tsconfigRootDir: __dirname,
   },
   plugins: ['@docusaurus'],
   extends: ['plugin:@docusaurus/recommended'],
