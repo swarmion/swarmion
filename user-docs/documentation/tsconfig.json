@@ -6,5 +6,13 @@
     "strictNullChecks": true,
     "emitDeclarationOnly": false,
     "noEmit": true
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "target": "ESNext",
+      "module": "NodeNext",
+      "moduleResolution": "NodeNext"
+    },
+    "require": ["tsconfig-paths/register"]
   }
 }
