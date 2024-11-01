@@ -1,23 +1,21 @@
 import { CfnOutput, Duration, RemovalPolicy } from 'aws-cdk-lib';
 import {
+  Certificate,
+  CertificateValidation,
+} from 'aws-cdk-lib/aws-certificatemanager';
+import {
   AllowedMethods,
   Distribution,
-  OriginAccessIdentity,
   SecurityPolicyProtocol,
   ViewerProtocolPolicy,
 } from 'aws-cdk-lib/aws-cloudfront';
-import { S3Origin } from 'aws-cdk-lib/aws-cloudfront-origins';
-import { CanonicalUserPrincipal, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { S3BucketOrigin } from 'aws-cdk-lib/aws-cloudfront-origins';
 import {
   BlockPublicAccess,
   Bucket,
   BucketEncryption,
 } from 'aws-cdk-lib/aws-s3';
 import { BucketDeployment, Source } from 'aws-cdk-lib/aws-s3-deployment';
-import {
-  Certificate,
-  CertificateValidation,
-} from 'aws-cdk-lib/aws-certificatemanager';
 import { Construct } from 'constructs';
 
 import { defaultStage, getAppStage } from './utils/getAppStage';
@@ -29,8 +27,6 @@ export class StaticSite extends Construct {
 
     const stage = getAppStage(this);
 
-    const cloudfrontOAI = new OriginAccessIdentity(this, 'cloudfront-OAI');
-
     const siteBucket = new Bucket(this, 'SiteBucket', {
       publicReadAccess: false,
       blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
@@ -40,18 +36,6 @@ export class StaticSite extends Construct {
       enforceSSL: true,
       encryption: BucketEncryption.S3_MANAGED,
     });
-
-    siteBucket.addToResourcePolicy(
-      new PolicyStatement({
-        actions: ['s3:GetObject'],
-        resources: [siteBucket.arnForObjects('*')],
-        principals: [
-          new CanonicalUserPrincipal(
-            cloudfrontOAI.cloudFrontOriginAccessIdentityS3CanonicalUserId,
-          ),
-        ],
-      }),
-    );
 
     const domainNames = getDomainNames(stage);
 
@@ -69,9 +53,7 @@ export class StaticSite extends Construct {
       domainNames,
       certificate,
       defaultBehavior: {
-        origin: new S3Origin(siteBucket, {
-          originAccessIdentity: cloudfrontOAI,
-        }),
+        origin: S3BucketOrigin.withOriginAccessControl(siteBucket),
         compress: true,
         allowedMethods: AllowedMethods.ALLOW_GET_HEAD_OPTIONS,
         viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
