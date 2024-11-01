@@ -808,8 +808,8 @@ importers:
         specifier: ^2.114.1
         version: 2.163.0(constructs@10.4.2)
       dynamodb-toolbox:
-        specifier: ^0.9.2
-        version: 0.9.5(@aws-sdk/client-dynamodb@3.675.0)(@aws-sdk/lib-dynamodb@3.675.0(@aws-sdk/client-dynamodb@3.675.0))
+        specifier: ^1.0.0
+        version: 1.12.0(@aws-sdk/client-dynamodb@3.675.0)(@aws-sdk/lib-dynamodb@3.675.0(@aws-sdk/client-dynamodb@3.675.0))
       ulid:
         specifier: ^2.3.0
         version: 2.3.0
@@ -5859,10 +5859,6 @@ packages:
       babel-plugin-macros:
         optional: true
 
-  deep-copy@1.4.2:
-    resolution: {integrity: sha512-VxZwQ/1+WGQPl5nE67uLhh7OqdrmqI1OazrraO9Bbw/M8Bt6Mol/RxzDA6N6ZgRXpsG/W9PgUj8E1LHHBEq2GQ==}
-    engines: {node: '>=4.0.0'}
-
   deep-eql@5.0.2:
     resolution: {integrity: sha512-h5k/5U50IJJFpzfL6nO9jaaumfjO/f2NjK/oYB2Djzm4p9L+3T9qWpZqZ2hAbLPuuYq9wrU08WQyBTL5GbPk5Q==}
     engines: {node: '>=6'}
@@ -6073,8 +6069,8 @@ packages:
   duration@0.2.2:
     resolution: {integrity: sha512-06kgtea+bGreF5eKYgI/36A6pLXggY7oR4p1pq4SmdFBn1ReOL5D8RhG64VrqfTTKNucqqtBAwEj8aB88mcqrg==}
 
-  dynamodb-toolbox@0.9.5:
-    resolution: {integrity: sha512-Zckk2fKZoH5nKdxxB0vWuxSfS8pG4ofojKq2seNu1oFSSyndpvOTcACWalWIYl7h6WZ6prgJnFH/SglskQ+iYA==}
+  dynamodb-toolbox@1.12.0:
+    resolution: {integrity: sha512-hhDlDastQk55aMiz9qnYVQHJGYajQzjJAUF8iY+i5Dj5lyr1MFitfXqrVA1dnbP5r5KJ4qKWkkU1WlsDAJ7HFQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       '@aws-sdk/client-dynamodb': ^3.0.0
@@ -7109,6 +7105,9 @@ packages:
   hosted-git-info@7.0.2:
     resolution: {integrity: sha512-puUZAUKT5m8Zzvs72XWy3HtvVbTWljRE66cP60bxJzAqf2DgICo7lYTY2IHUmLnNpjYvw5bvmoHvPc0QO2a62w==}
     engines: {node: ^16.14.0 || >=18.0.0}
+
+  hotscript@1.0.13:
+    resolution: {integrity: sha512-C++tTF1GqkGYecL+2S1wJTfoH6APGAsbb7PAWQ3iVIwgG/EFseAfEVOKFgAFq4yK3+6j1EjUD4UQ9dRJHX/sSQ==}
 
   hpack.js@2.1.6:
     resolution: {integrity: sha512-zJxVehUdMGIKsRaNt7apO2Gqp0BdqW5yaiGHXXmbpvxgBYVZnAql+BJb4RO5ad2MgpbZKn5G6nMnegrH1FcNYQ==}
@@ -19319,8 +19318,6 @@ snapshots:
 
   dedent@1.5.3: {}
 
-  deep-copy@1.4.2: {}
-
   deep-eql@5.0.2: {}
 
   deep-extend@0.6.0: {}
@@ -19548,12 +19545,11 @@ snapshots:
       d: 1.0.2
       es5-ext: 0.10.64
 
-  dynamodb-toolbox@0.9.5(@aws-sdk/client-dynamodb@3.675.0)(@aws-sdk/lib-dynamodb@3.675.0(@aws-sdk/client-dynamodb@3.675.0)):
+  dynamodb-toolbox@1.12.0(@aws-sdk/client-dynamodb@3.675.0)(@aws-sdk/lib-dynamodb@3.675.0(@aws-sdk/client-dynamodb@3.675.0)):
     dependencies:
       '@aws-sdk/client-dynamodb': 3.675.0
       '@aws-sdk/lib-dynamodb': 3.675.0(@aws-sdk/client-dynamodb@3.675.0)
-      deep-copy: 1.4.2
-      ts-toolbelt: 9.6.0
+      hotscript: 1.0.13
 
   eastasianwidth@0.2.0: {}
 
@@ -20942,6 +20938,8 @@ snapshots:
   hosted-git-info@7.0.2:
     dependencies:
       lru-cache: 10.4.3
+
+  hotscript@1.0.13: {}
 
   hpack.js@2.1.6:
     dependencies:
