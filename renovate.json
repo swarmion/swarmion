@@ -30,6 +30,10 @@
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true
+    },
+    {
+      "matchDepTypes": ["peerDependencies"],
+      "rangeStrategy": "replace"
     }
   ]
 }
