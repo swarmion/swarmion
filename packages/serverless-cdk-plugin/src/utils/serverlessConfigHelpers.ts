@@ -12,6 +12,7 @@ export const getServerlessConfigFile =
   async (): Promise<ServerlessConfigFile> => {
     const configPath = await resolveServerlessConfigPath();
 
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const serverlessConfigFile = (await require(
       configPath,
     )) as ServerlessConfigFile;

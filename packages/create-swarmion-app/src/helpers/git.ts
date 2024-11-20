@@ -8,7 +8,7 @@ const isInGitRepository = (): boolean => {
 
     return true;
     // eslint-disable-next-line no-empty
-  } catch (_) {}
+  } catch {}
 
   return false;
 };
@@ -19,7 +19,7 @@ const isInMercurialRepository = (): boolean => {
 
     return true;
     // eslint-disable-next-line no-empty
-  } catch (_) {}
+  } catch {}
 
   return false;
 };
@@ -43,12 +43,12 @@ export const tryGitInit = (root: string): boolean => {
     });
 
     return true;
-  } catch (e) {
+  } catch {
     if (didInit) {
       try {
         rimrafSync(path.join(root, '.git'));
         // eslint-disable-next-line no-empty
-      } catch (_) {}
+      } catch {}
     }
 
     return false;

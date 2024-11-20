@@ -98,7 +98,7 @@ const getCacheAgeInMs = (cacheFilePath: string): number | undefined => {
     const { lastFetchedDate } = importCacheFile(cacheFilePath);
 
     return new Date().getTime() - new Date(lastFetchedDate).getTime();
-  } catch (e) {
+  } catch {
     console.warn('Test env vars cache file not found or invalid');
 
     return undefined;

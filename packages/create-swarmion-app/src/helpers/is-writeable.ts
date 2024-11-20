@@ -5,7 +5,7 @@ export const isWriteable = async (directory: string): Promise<boolean> => {
     await fs.promises.access(directory, fs.constants.W_OK);
 
     return true;
-  } catch (err) {
+  } catch {
     return false;
   }
 };
