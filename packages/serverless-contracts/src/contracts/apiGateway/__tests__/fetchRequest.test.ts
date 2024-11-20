@@ -6,15 +6,11 @@ import { HttpStatusCodes } from 'types/http';
 import { ApiGatewayContract } from '../apiGatewayContract';
 import { getFetchRequest } from '../features/fetchRequest';
 
-const mockedFetch = vi.fn();
+const mockedFetch = vi.fn<typeof fetch>();
 
 describe('apiGateway fetch request', () => {
   beforeEach(() => {
-    mockedFetch.mockResolvedValue({
-      json: () => {
-        return Promise.resolve(undefined);
-      },
-    });
+    mockedFetch.mockResolvedValue(Response.json(null));
   });
   const pathParametersSchema = {
     type: 'object',
@@ -77,28 +73,24 @@ describe('apiGateway fetch request', () => {
     });
 
     it('should have the correct axiosRequest when all values are defined', async () => {
-      await getFetchRequest(
-        httpApiContract,
-        mockedFetch as unknown as typeof fetch,
-        {
-          pathParameters: {
-            userId: 'azer',
-            pageNumber: 'zert',
-          },
-          queryStringParameters: {
-            testId: 'er',
-            optionalParam: 'ty',
-          },
-          headers: {
-            myHeader: 'rtyu',
-          },
-          body: {
-            foo: 'tyui',
-            bar: ['yuio'],
-          },
-          baseUrl: 'http://localhost:3000',
+      await getFetchRequest(httpApiContract, mockedFetch, {
+        pathParameters: {
+          userId: 'azer',
+          pageNumber: 'zert',
         },
-      );
+        queryStringParameters: {
+          testId: 'er',
+          optionalParam: 'ty',
+        },
+        headers: {
+          myHeader: 'rtyu',
+        },
+        body: {
+          foo: 'tyui',
+          bar: ['yuio'],
+        },
+        baseUrl: 'http://localhost:3000',
+      });
       expect(mockedFetch).toHaveBeenCalledWith(
         new URL('http://localhost:3000/users/azer?testId=er&optionalParam=ty'),
         {
@@ -110,28 +102,24 @@ describe('apiGateway fetch request', () => {
     });
 
     it('should have the correct axiosRequest when some queryStringParameters are undefined', async () => {
-      await getFetchRequest(
-        httpApiContract,
-        mockedFetch as unknown as typeof fetch,
-        {
-          pathParameters: {
-            userId: 'azer',
-            pageNumber: 'zert',
-          },
-          queryStringParameters: {
-            testId: 'erty',
-            optionalParam: undefined,
-          },
-          headers: {
-            myHeader: 'rtyu',
-          },
-          body: {
-            foo: 'tyui',
-            bar: ['yuio'],
-          },
-          baseUrl: 'http://localhost:3000',
+      await getFetchRequest(httpApiContract, mockedFetch, {
+        pathParameters: {
+          userId: 'azer',
+          pageNumber: 'zert',
         },
-      );
+        queryStringParameters: {
+          testId: 'erty',
+          optionalParam: undefined,
+        },
+        headers: {
+          myHeader: 'rtyu',
+        },
+        body: {
+          foo: 'tyui',
+          bar: ['yuio'],
+        },
+        baseUrl: 'http://localhost:3000',
+      });
       expect(mockedFetch).toHaveBeenCalledWith(
         new URL('http://localhost:3000/users/azer?testId=erty'),
         {
@@ -152,11 +140,9 @@ describe('apiGateway fetch request', () => {
     });
 
     it('should have the correct axios request ', async () => {
-      await getFetchRequest(
-        restApiContract,
-        mockedFetch as unknown as typeof fetch,
-        { baseUrl: 'http://localhost:3000' },
-      );
+      await getFetchRequest(restApiContract, mockedFetch, {
+        baseUrl: 'http://localhost:3000',
+      });
       expect(mockedFetch).toHaveBeenCalledWith(
         new URL('http://localhost:3000/coucou'),
         {
@@ -178,15 +164,11 @@ describe('apiGateway fetch request', () => {
     });
 
     it('should have the correct axios request ', async () => {
-      await getFetchRequest(
-        httpApiContract,
-        mockedFetch as unknown as typeof fetch,
-        {
-          queryStringParameters: {
-            testId: 'erty',
-          },
+      await getFetchRequest(httpApiContract, mockedFetch, {
+        queryStringParameters: {
+          testId: 'erty',
         },
-      );
+      });
       expect(mockedFetch).toHaveBeenCalledWith('/coucou?testId=erty', {
         body: undefined,
         headers: { 'Content-Type': 'application/json' },
