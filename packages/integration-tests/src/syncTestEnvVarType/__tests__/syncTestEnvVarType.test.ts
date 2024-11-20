@@ -80,7 +80,7 @@ export type TestEnvVarsType = {
 
     const modifiedFile = fs.readFileSync(filePath).toString();
     expect(modifiedFile)
-      .toEqual(`// eslint-disable-next-line @typescript-eslint/ban-types
+      .toEqual(`// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export type TestEnvVarsType = {
   TOTO: string;
 };

@@ -1,7 +1,7 @@
 module.exports = {
   extends: ['plugin:@swarmion/recommended'],
   parserOptions: {
-    project: ['./tsconfig.json'],
+    project: true,
     tsconfigRootDir: __dirname,
   },
   settings: {
