@@ -22,6 +22,7 @@ export const handle = (
 
     const [handler, newEvent] = matchedRoute;
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return handler(newEvent, ...otherArgs);
   };
 };

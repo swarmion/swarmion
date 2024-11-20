@@ -56,6 +56,10 @@ const getContractOpenApiDocumentation = (
     case 'apiGateway': {
       return getApiGatewayContractDocumentation(contract);
     }
+
+    case 'cloudFormation':
+    case 'eventBridge':
+    case 'SQS':
     default: {
       return undefined;
     }

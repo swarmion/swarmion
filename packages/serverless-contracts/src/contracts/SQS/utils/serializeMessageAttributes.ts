@@ -14,6 +14,7 @@ const serializeMessageAttribute = (
   }
   const { type } = attributeSchema;
 
+  // eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
   switch (type) {
     case 'string':
       return { StringValue: attributeValue as string, DataType: 'String' };

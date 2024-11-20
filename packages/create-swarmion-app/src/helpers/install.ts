@@ -13,7 +13,11 @@ export const install = (root: string): Promise<void> => {
     });
     child.on('close', (code: number) => {
       if (code !== 0) {
-        reject({ command: `${command} ${args.join(' ')}` });
+        reject(
+          new Error(
+            'install command failed, please check the logs above for errors',
+          ),
+        );
 
         return;
       }
