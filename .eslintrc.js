@@ -119,7 +119,7 @@ module.exports = {
       files: ['**/*.ts?(x)'],
       extends: [
         'plugin:@typescript-eslint/recommended',
-        'plugin:@typescript-eslint/recommended-requiring-type-checking',
+        'plugin:@typescript-eslint/recommended-type-checked',
         'plugin:import/typescript',
         'plugin:deprecation/recommended',
       ],
@@ -132,14 +132,6 @@ module.exports = {
         'no-shadow': 'off',
         '@typescript-eslint/no-shadow': 'error',
         '@typescript-eslint/prefer-nullish-coalescing': 'error',
-        '@typescript-eslint/strict-boolean-expressions': [
-          'error',
-          {
-            allowString: false,
-            allowNumber: false,
-            allowNullableObject: true,
-          },
-        ],
         '@typescript-eslint/ban-ts-comment': [
           'error',
           {
@@ -147,16 +139,7 @@ module.exports = {
             minimumDescriptionLength: 10,
           },
         ],
-        '@typescript-eslint/explicit-function-return-type': 0,
-        '@typescript-eslint/explicit-member-accessibility': 0,
-        '@typescript-eslint/camelcase': 0,
-        '@typescript-eslint/interface-name-prefix': 0,
         '@typescript-eslint/explicit-module-boundary-types': 'error',
-        '@typescript-eslint/no-explicit-any': 'error',
-        '@typescript-eslint/no-unused-vars': 'error',
-        '@typescript-eslint/no-empty-object-type': 'error',
-        '@typescript-eslint/no-unsafe-function-type': 'error',
-        '@typescript-eslint/no-wrapper-object-types': 'error',
         '@typescript-eslint/no-restricted-types': [
           'error',
           {
@@ -179,13 +162,6 @@ module.exports = {
         '@typescript-eslint/no-unnecessary-type-arguments': 'error',
         '@typescript-eslint/prefer-string-starts-ends-with': 'error',
         '@typescript-eslint/switch-exhaustiveness-check': 'error',
-        '@typescript-eslint/restrict-template-expressions': [
-          'error',
-          {
-            allowNumber: true,
-            allowBoolean: true,
-          },
-        ],
       },
     },
     {
