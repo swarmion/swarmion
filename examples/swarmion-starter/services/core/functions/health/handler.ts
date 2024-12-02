@@ -3,6 +3,7 @@ import cors from '@middy/http-cors';
 import { getHandler, HttpStatusCodes } from '@swarmion/serverless-contracts';
 import { getEnvVariable } from '@swarmion/serverless-helpers';
 import Ajv from 'ajv';
+import type { Handler } from 'aws-lambda';
 
 import { healthContract } from '@swarmion-starter/core-contracts';
 
@@ -19,4 +20,6 @@ export const handler = getHandler(healthContract, { ajv })(async () => {
   return { statusCode: HttpStatusCodes.OK, body };
 });
 
-export const main = middy(handler).use(cors({ origins: allowedOrigins }));
+export const main: Handler = middy(handler).use(
+  cors({ origins: allowedOrigins }),
+);
