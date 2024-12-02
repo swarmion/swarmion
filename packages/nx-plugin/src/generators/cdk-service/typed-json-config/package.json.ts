@@ -45,6 +45,7 @@ export const packageJson = (options: NormalizedSchema): PackageJson => ({
     ajv: getWorkspaceDependencyVersion('ajv'),
   },
   devDependencies: {
+    '@types/aws-lambda': '^8.10.76',
     '@types/node': getWorkspaceDependencyVersion('@types/node'),
     '@vitest/coverage-v8': getWorkspaceDependencyVersion('vitest'), // force to use the same version as vitest
     'aws-cdk': getWorkspaceDependencyVersion('aws-cdk'),
