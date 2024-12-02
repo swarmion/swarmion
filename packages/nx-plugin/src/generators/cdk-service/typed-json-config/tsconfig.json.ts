@@ -7,6 +7,9 @@ export const packageTsConfig = (options: NormalizedSchema): TsConfig => ({
   compilerOptions: {
     baseUrl: '.',
     emitDeclarationOnly: false,
+    declaration: false,
+    declarationMap: false,
+    composite: false,
     noEmit: true,
   },
   references: [
