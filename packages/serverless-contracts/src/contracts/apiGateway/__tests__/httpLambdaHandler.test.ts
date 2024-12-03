@@ -333,7 +333,9 @@ describe('apiGateway lambda handler', () => {
         });
       });
 
-      const httpHandler = middy(handler).use(cors()).use(errorLogger());
+      const httpHandler = middy(handler)
+        .use(cors({ origin: '*' }))
+        .use(errorLogger());
 
       const result = await httpHandler(
         {
@@ -352,7 +354,6 @@ describe('apiGateway lambda handler', () => {
           isBase64Encoded: false,
         },
         fakeContext,
-        () => null,
       );
 
       expect(result).toMatchObject({
