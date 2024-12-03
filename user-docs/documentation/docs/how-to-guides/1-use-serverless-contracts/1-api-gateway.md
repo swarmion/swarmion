@@ -334,7 +334,9 @@ const handler = getHandler(myContract, { ajv })(async event => {
   // my handler...
 });
 
-const main = middy(handler).use(cors()).use(errorLogger());
+const main = middy(handler)
+  .use(cors({ origin: '*' }))
+  .use(errorLogger());
 ```
 
 ### Override default parsing and validation from the contract
