@@ -321,11 +321,11 @@ importers:
   services/core:
     dependencies:
       '@middy/core':
-        specifier: ^4.7.0
-        version: 4.7.0
+        specifier: ^6.0.0
+        version: 6.0.0
       '@middy/http-cors':
-        specifier: ^4.7.0
-        version: 4.7.0
+        specifier: ^6.0.0
+        version: 6.0.0
       '@swarmion-starter/cdk-configuration':
         specifier: workspace:^
         version: link:../../packages/cdk-configuration
@@ -1509,17 +1509,17 @@ packages:
   '@korzio/djv-draft-04@2.0.1':
     resolution: {integrity: sha512-MeTVcNsfCIYxK6T7jW1sroC7dBAb4IfLmQe6RoCqlxHN5NFkzNpgdnBPR+/0D2wJDUJHM9s9NQv+ouhxKjvUjg==}
 
-  '@middy/core@4.7.0':
-    resolution: {integrity: sha512-yI++DmhDQ8+ugvY7+GrEnb2PF0M/6Wzbgu4Tf7QhOlhwKGDd4j6or+Ab7qYPWx+jnKf8F0tqlmh0gV4JLi0yHw==}
-    engines: {node: '>=16'}
+  '@middy/core@6.0.0':
+    resolution: {integrity: sha512-EFsvMkyFfaIu3Uzye26w2NzycwMAbh/99XlhRH9p240y/YKA0nlQ7itE8y7lBJOJ/clj1qu9evQeLfaiWhJAFg==}
+    engines: {node: '>=20'}
 
-  '@middy/http-cors@4.7.0':
-    resolution: {integrity: sha512-sQ/N+8TNBEzu84Cqkd1UF0+lzMze8K/2/wh6yHz173dVCD8UU0SV4oiE7QSfQzyKzQDT0A0O7FFetswdBeUGOg==}
-    engines: {node: '>=16'}
+  '@middy/http-cors@6.0.0':
+    resolution: {integrity: sha512-owdXHOtb8Qf8ArL0P387vZLI82F7hdiqwd5xUcL3KPNtK/pKQbX7oOcRsq+uyeQY/4tKC8ACWApqBQY+R+ft1Q==}
+    engines: {node: '>=20'}
 
-  '@middy/util@4.7.0':
-    resolution: {integrity: sha512-HUh0EOLGzBQjmJks4N12mmEebshtCUwyzdhk59UmAj97zzM0qn0exQvZDfbkY0pb/6b7sNnf7IpFww8Z6YxpWw==}
-    engines: {node: '>=16'}
+  '@middy/util@6.0.0':
+    resolution: {integrity: sha512-V2/gJ4wE6TtMJNAnUTm3VRdgNyLI6zdNLy3MzhrJOwxiUslG1OSShE1IUYR0cmzMOm5w/Y2p3+OIRXRqKUVHYQ==}
+    engines: {node: '>=20'}
 
   '@mui/base@5.0.0-beta.40':
     resolution: {integrity: sha512-I/lGHztkCzvwlXpjD2+SNmvNQvB4227xBXhISPjEaJUXGImOQ9f3D2Yj/T3KasSI/h0MLWy74X0J6clhPmsRbQ==}
@@ -7349,13 +7349,13 @@ snapshots:
   '@korzio/djv-draft-04@2.0.1':
     optional: true
 
-  '@middy/core@4.7.0': {}
+  '@middy/core@6.0.0': {}
 
-  '@middy/http-cors@4.7.0':
+  '@middy/http-cors@6.0.0':
     dependencies:
-      '@middy/util': 4.7.0
+      '@middy/util': 6.0.0
 
-  '@middy/util@4.7.0': {}
+  '@middy/util@6.0.0': {}
 
   '@mui/base@5.0.0-beta.40(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
