@@ -4,6 +4,7 @@ module.exports = {
   ignorePatterns: [
     '**/node_modules/',
     '**/nx-cache/',
+    '**/.nx/',
     '**/dist/',
     '**/cdk.out/',
     '**/coverage/',
@@ -120,7 +121,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['**/*.ts?(x)'],
+      files: ['**/*.?(m)ts?(x)'],
       extends: [
         'plugin:@typescript-eslint/recommended',
         'plugin:@typescript-eslint/recommended-type-checked',
