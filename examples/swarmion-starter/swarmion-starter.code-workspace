@@ -3,7 +3,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
+      "source.fixAll.eslint": "explicit",
     },
     "search.exclude": {
       "**/coverage": true,
@@ -15,7 +15,7 @@
       "**/*.tsbuildinfo": true,
       "**/cdk.out": true,
       "nx-cache/**": true,
-      "pnpm-lock.yaml": true
+      "pnpm-lock.yaml": true,
     },
     "search.followSymlinks": false,
     "files.watcherExclude": {
@@ -28,7 +28,7 @@
       "**/bundles/**": true,
       "**/*.tsbuildinfo": true,
       "nx-cache/**": true,
-      "**/cdk.out/**": true
+      "**/cdk.out/**": true,
     },
     "files.exclude": {
       "**/.git": true,
@@ -36,18 +36,18 @@
       "**/.hg": true,
       "**/CVS": true,
       "**/.DS_Store": true,
-      "**/Thumbs.db": true
+      "**/Thumbs.db": true,
     },
     "[dotenv][ignore][properties][shellscript]": {
-      "editor.defaultFormatter": "foxundermoon.shell-format"
+      "editor.defaultFormatter": "foxundermoon.shell-format",
     },
     "[html][javascript][json]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "typescript.tsdk": "node_modules/typescript/lib",
     "vitest.commandLine": "pnpm vitest",
     "vitest.disabledWorkspaceFolders": ["swarmion-starter root"],
-    "cSpell.words": ["esbuild", "swarmion"]
+    "cSpell.words": ["esbuild", "swarmion"],
   },
   "extensions": {
     "recommendations": [
@@ -59,29 +59,29 @@
       "streetsidesoftware.code-spell-checker",
       "streetsidesoftware.code-spell-checker-french",
       "styled-components.vscode-styled-components",
-      "SebastianBille.iam-legend"
-    ]
+      "SebastianBille.iam-legend",
+    ],
   },
   "folders": [
     {
       "path": ".",
-      "name": "swarmion-starter root"
+      "name": "swarmion-starter root",
     },
     {
       "path": "services/core",
-      "name": "core [service]"
+      "name": "core [service]",
     },
     {
       "path": "packages/cdk-configuration",
-      "name": "cdk configuration [library]"
+      "name": "cdk configuration [library]",
     },
     {
       "path": "contracts/core-contracts",
-      "name": "contracts core [library]"
+      "name": "contracts core [library]",
     },
     {
       "path": "frontend/app",
-      "name": "frontend [app]"
-    }
-  ]
+      "name": "frontend [app]",
+    },
+  ],
 }
