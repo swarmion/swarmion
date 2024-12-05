@@ -1,31 +1,31 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", ":rebaseStalePrs"],
+  "extends": ["config:recommended", ":rebaseStalePrs"],
   "ignorePaths": ["**/node_modules/**", "**/bower_components/**"],
   "labels": ["dependencies"],
   "postUpdateOptions": ["pnpmDedupe"],
   "packageRules": [
     {
       "matchDatasources": ["npm"],
-      "stabilityDays": 3
+      "minimumReleaseAge": "3 days"
     },
     {
-      "matchPaths": ["examples/**"],
+      "matchFileNames": ["examples/**"],
       "extends": [
         ":semanticCommitTypeAll(examples)",
         ":semanticCommitScope({{parentDir}})"
       ]
     },
     {
-      "matchPaths": ["packages/**"],
+      "matchFileNames": ["packages/**"],
       "extends": [
         ":semanticCommitTypeAll(fix)",
         ":semanticCommitScope({{parentDir}})"
       ]
     },
     {
-      "matchPackagePatterns": ["^@swarmion/", "^@sls/", "^@swarmion-"],
-      "enabled": false
+      "enabled": false,
+      "matchPackageNames": ["/^@swarmion//", "/^@sls//", "/^@swarmion-/"]
     },
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
