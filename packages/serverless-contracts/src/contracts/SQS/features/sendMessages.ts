@@ -3,8 +3,9 @@ import {
   SendMessageBatchRequestEntry,
 } from '@aws-sdk/client-sqs';
 import { BatchResultErrorEntry } from '@aws-sdk/client-sqs/dist-types/models/models_0';
-import PQueue from 'p-queue';
+import _PQueue from 'p-queue';
 
+import { fixESMInteropIssue } from '../../../utils/fixESMInteropIssue';
 import { SQSContract } from '../sqsContract';
 import { SendMessagesBuilderOptions, SendMessagesSideEffect } from '../types';
 import {
@@ -14,6 +15,7 @@ import {
   validateMessages,
   wait,
 } from '../utils';
+const PQueue = fixESMInteropIssue(_PQueue);
 
 export const InfiniteThroughput = 0;
 
