@@ -525,9 +525,9 @@ importers:
       openapi-types:
         specifier: 12.1.3
         version: 12.1.3
-      p-queue-compat:
-        specifier: ^1.0.226
-        version: 1.0.227
+      p-queue:
+        specifier: ^6.6.2
+        version: 6.6.2
       path-to-regexp:
         specifier: ^8.0.0
         version: 8.2.0
@@ -9211,10 +9211,6 @@ packages:
     resolution: {integrity: sha512-08pj8ATpzMR0Y80x50yJHn37NF6vjrqHutASaX5LiH5npS9XPvrUmscd9MF5R4fuYRHOxQR1FfMIlF7AzwoPqw==}
     engines: {node: '>=8'}
 
-  p-queue-compat@1.0.227:
-    resolution: {integrity: sha512-uNKILAU2Wg6oj7hlvcDJgY4Xl1qzqqOEv/Mq8YtA0ApQQxJDa6DQoRElCPMa55mQ/A3jWeT6qSmcwzNI1cFSrA==}
-    engines: {node: '>=12'}
-
   p-queue@6.6.2:
     resolution: {integrity: sha512-RwFpb72c/BhQLEXIZ5K2e+AhgNVmIejGlTgiB9MzZ0e93GRvqZ7uSi0dvRF7/XIXDeNkra2fNHBxTyPDGySpjQ==}
     engines: {node: '>=8'}
@@ -9226,10 +9222,6 @@ packages:
   p-retry@4.6.2:
     resolution: {integrity: sha512-312Id396EbJdvRONlngUx0NydfrIQ5lsYu0znKVUzVvArzEIt08V1qhtyESbGVd1FGX7UKtiFp5uwKZdM8wIuQ==}
     engines: {node: '>=8'}
-
-  p-timeout-compat@1.0.5:
-    resolution: {integrity: sha512-JUyLagABYj4bu58nXmMEO+JpHlimYomLY3xdatcPWKRRVVQ3ky55Ki4Mdj2OUGDfkV2BPt87zqSzISk0ztwruw==}
-    engines: {node: '>=12'}
 
   p-timeout@3.2.0:
     resolution: {integrity: sha512-rhIwUycgwwKcP9yTOOFK/AKsAopjjCakVqLHePO3CC6Mir1Z99xT+R63jZxAT5lFZLa2inS5h+ZS2GvR99/FBg==}
@@ -23905,11 +23897,6 @@ snapshots:
 
   p-pipe@3.1.0: {}
 
-  p-queue-compat@1.0.227:
-    dependencies:
-      eventemitter3: 5.0.1
-      p-timeout-compat: 1.0.5
-
   p-queue@6.6.2:
     dependencies:
       eventemitter3: 4.0.7
@@ -23921,8 +23908,6 @@ snapshots:
     dependencies:
       '@types/retry': 0.12.0
       retry: 0.13.1
-
-  p-timeout-compat@1.0.5: {}
 
   p-timeout@3.2.0:
     dependencies:
