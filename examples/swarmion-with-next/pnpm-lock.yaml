@@ -156,7 +156,7 @@ importers:
         version: 6.6.3
       '@testing-library/react':
         specifier: ^16.0.0
-        version: 16.1.0(@testing-library/dom@10.4.0)(@types/react-dom@18.3.3(@types/react@18.3.15))(@types/react@18.3.15)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 16.1.0(@testing-library/dom@10.4.0)(@types/react-dom@18.3.4(@types/react@18.3.15))(@types/react@18.3.15)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@testing-library/user-event':
         specifier: ^14.5.1
         version: 14.5.2(@testing-library/dom@10.4.0)
@@ -171,7 +171,7 @@ importers:
         version: 18.3.15
       '@types/react-dom':
         specifier: ^18.2.17
-        version: 18.3.3(@types/react@18.3.15)
+        version: 18.3.4(@types/react@18.3.15)
       aws-cdk:
         specifier: ^2.114.1
         version: 2.172.0
@@ -2953,8 +2953,8 @@ packages:
   '@types/prop-types@15.7.14':
     resolution: {integrity: sha512-gNMvNH49DJ7OJYv+KAKn0Xp45p8PLl6zo2YnvDIbTd4J6MER2BmWN49TG7n9LvkyihINxeKW8+3bfS2yDC9dzQ==}
 
-  '@types/react-dom@18.3.3':
-    resolution: {integrity: sha512-uTYkxTLkYp41nq/ULXyXMtkNT1vu5fXJoqad6uTNCOGat5t9cLgF4vMNLBXsTOXpdOI44XzKPY1M5RRm0bQHuw==}
+  '@types/react-dom@18.3.4':
+    resolution: {integrity: sha512-HMqjZ3RJxmfoOn3sVc0T0fO6qSrLDnUQYB+azHKdBBz1eOt0Sq4wUu2Sf1/Dt18gqhECg0fZ33tkh/6YdwrSCw==}
     peerDependencies:
       '@types/react': ^18.0.0
 
@@ -10604,6 +10604,12 @@ snapshots:
 
   '@npmcli/ci-detect@3.0.2': {}
 
+  '@nrwl/devkit@19.8.4(nx@19.8.4)':
+    dependencies:
+      '@nx/devkit': 19.8.4(nx@19.8.4)
+    transitivePeerDependencies:
+      - nx
+
   '@nrwl/devkit@19.8.4(nx@20.2.1)':
     dependencies:
       '@nx/devkit': 19.8.4(nx@20.2.1)
@@ -10644,7 +10650,7 @@ snapshots:
 
   '@nx/devkit@19.8.4(nx@19.8.4)':
     dependencies:
-      '@nrwl/devkit': 19.8.4(nx@20.2.1)
+      '@nrwl/devkit': 19.8.4(nx@19.8.4)
       ejs: 3.1.10
       enquirer: 2.3.6
       ignore: 5.3.2
@@ -11511,7 +11517,7 @@ snapshots:
       lodash: 4.17.21
       redent: 3.0.0
 
-  '@testing-library/react@16.1.0(@testing-library/dom@10.4.0)(@types/react-dom@18.3.3(@types/react@18.3.15))(@types/react@18.3.15)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@testing-library/react@16.1.0(@testing-library/dom@10.4.0)(@types/react-dom@18.3.4(@types/react@18.3.15))(@types/react@18.3.15)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.26.0
       '@testing-library/dom': 10.4.0
@@ -11519,7 +11525,7 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
     optionalDependencies:
       '@types/react': 18.3.15
-      '@types/react-dom': 18.3.3(@types/react@18.3.15)
+      '@types/react-dom': 18.3.4(@types/react@18.3.15)
 
   '@testing-library/user-event@14.5.2(@testing-library/dom@10.4.0)':
     dependencies:
@@ -11629,7 +11635,7 @@ snapshots:
 
   '@types/prop-types@15.7.14': {}
 
-  '@types/react-dom@18.3.3(@types/react@18.3.15)':
+  '@types/react-dom@18.3.4(@types/react@18.3.15)':
     dependencies:
       '@types/react': 18.3.15
 
