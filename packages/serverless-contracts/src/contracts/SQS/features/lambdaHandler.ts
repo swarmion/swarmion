@@ -86,7 +86,7 @@ export const getSQSHandler =
         throw new Error('Invalid records');
       }
 
-      if (internalOptions.handleBatchedRecords === false) {
+      if (!internalOptions.handleBatchedRecords) {
         return (
           handler as SwarmionLambdaSQSHandler<
             MessageBody,
