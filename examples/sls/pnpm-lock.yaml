@@ -289,7 +289,7 @@ importers:
         version: 4.29.1
       rollup-plugin-visualizer:
         specifier: ^5.11.0
-        version: 5.13.0(rollup@4.29.1)
+        version: 5.13.1(rollup@4.29.1)
       stylelint:
         specifier: ^16.2.0
         version: 16.12.0(typescript@5.7.2)
@@ -6323,8 +6323,8 @@ packages:
     engines: {node: 20 || >=22}
     hasBin: true
 
-  rollup-plugin-visualizer@5.13.0:
-    resolution: {integrity: sha512-H/IqyYIJpDj8CfN6zDSV2y8zGBuLZFVM1wPsPOKKlQEZk9t3Dp+SeHlv3NUtOuqrfcNpRpTT3b7Z40kxz9lI4Q==}
+  rollup-plugin-visualizer@5.13.1:
+    resolution: {integrity: sha512-vMg8i6BprL8aFm9DKvL2c8AwS8324EgymYQo9o6E26wgVvwMhsJxS37aNL6ZsU7X9iAcMYwdME7gItLfG5fwJg==}
     engines: {node: '>=18'}
     hasBin: true
     peerDependencies:
@@ -14850,9 +14850,10 @@ snapshots:
       glob: 11.0.0
       package-json-from-dist: 1.0.0
 
-  rollup-plugin-visualizer@5.13.0(rollup@4.29.1):
+  rollup-plugin-visualizer@5.13.1(rollup@4.29.1):
     dependencies:
       open: 8.4.2
+      picomatch: 4.0.2
       source-map: 0.7.4
       yargs: 17.7.2
     optionalDependencies:
