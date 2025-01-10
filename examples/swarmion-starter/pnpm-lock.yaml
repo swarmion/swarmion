@@ -28,7 +28,7 @@ importers:
         version: 8.19.1(eslint@8.57.1)(typescript@5.7.2)
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.8.0
+        version: 16.9.0
       eslint:
         specifier: ^8.55.0
         version: 8.57.1
@@ -80,7 +80,7 @@ importers:
         version: 9.1.2
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.8.0
+        version: 16.9.0
       eslint:
         specifier: ^8.55.0
         version: 8.57.1
@@ -198,7 +198,7 @@ importers:
         version: 10.4.2
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.8.0
+        version: 16.9.0
       dotenv-flow:
         specifier: ^4.0.0
         version: 4.1.0
@@ -292,7 +292,7 @@ importers:
         version: 9.1.2
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.8.0
+        version: 16.9.0
       eslint:
         specifier: ^8.55.0
         version: 8.57.1
@@ -362,7 +362,7 @@ importers:
         version: 10.4.2
       dependency-cruiser:
         specifier: ^16.0.0
-        version: 16.8.0
+        version: 16.9.0
       esbuild:
         specifier: ^0.24.0
         version: 0.24.2
@@ -2901,6 +2901,10 @@ packages:
     resolution: {integrity: sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA==}
     engines: {node: '>=18'}
 
+  commander@13.0.0:
+    resolution: {integrity: sha512-oPYleIY8wmTVzkvQq10AEok6YcTC4sRUBl8F9gVuwchGVUCTbl/vhLTaQqutuuySYOsu8YTgV+OxKc/8Yvx+mQ==}
+    engines: {node: '>=18'}
+
   commander@4.1.1:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
     engines: {node: '>= 6'}
@@ -3105,8 +3109,8 @@ packages:
     resolution: {integrity: sha512-g7nH6P6dyDioJogAAGprGpCtVImJhpPk/roCzdb3fIh61/s/nPsfR6onyMwkCAR/OlC3yBC0lESvUoQEAssIrw==}
     engines: {node: '>= 0.8'}
 
-  dependency-cruiser@16.8.0:
-    resolution: {integrity: sha512-VyBzIrLHfG7rT36URln+CTy8VSjrLB7YDlMx5vtBSHRHCOXgLUCcP4n5ZoD+s166T0i5LN33q1CvBkEOGsDTSg==}
+  dependency-cruiser@16.9.0:
+    resolution: {integrity: sha512-Gc/xHNOBq1nk5i7FPCuexCD0m2OXB/WEfiSHfNYQaQaHZiZltnl5Ixp/ZG38Jvi8aEhKBQTHV4Aw6gmR7rWlOw==}
     engines: {node: ^18.17||>=20}
     hasBin: true
 
@@ -3203,8 +3207,8 @@ packages:
   end-of-stream@1.4.4:
     resolution: {integrity: sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==}
 
-  enhanced-resolve@5.17.1:
-    resolution: {integrity: sha512-LMHl3dXhTcfv8gM4kEzIUeTQ+7fpdA0l2tUf34BddXPkz2A5xJ5L/Pchd5BL6rdccM9QGvu0sWZzK1Z1t4wwyg==}
+  enhanced-resolve@5.18.0:
+    resolution: {integrity: sha512-0/r0MySGYG8YqlayBZ6MuCfECmHFdJ5qyPh8s8wa5Hnm6SaFLSK1VYCbj+NKp090Nm1caZhD+QTnmxO7esYGyQ==}
     engines: {node: '>=10.13.0'}
 
   enquirer@2.3.6:
@@ -3738,6 +3742,10 @@ packages:
 
   ignore@6.0.2:
     resolution: {integrity: sha512-InwqeHHN2XpumIkMvpl/DCJVrAHgCsG5+cn1XlnLWGwtZBm8QJfSusItfrwx81CTp5agNZqpKU2J/ccC5nGT4A==}
+    engines: {node: '>= 4'}
+
+  ignore@7.0.0:
+    resolution: {integrity: sha512-lcX8PNQygAa22u/0BysEY8VhaFRzlOkvdlKczDPnJvrkJD1EuqzEky5VYYKM2iySIuaVIDv9N190DfSreSLw2A==}
     engines: {node: '>= 4'}
 
   import-fresh@3.3.0:
@@ -9038,6 +9046,8 @@ snapshots:
 
   commander@12.1.0: {}
 
+  commander@13.0.0: {}
+
   commander@4.1.1: {}
 
   commander@9.5.0: {}
@@ -9230,7 +9240,7 @@ snapshots:
 
   depd@2.0.0: {}
 
-  dependency-cruiser@16.8.0:
+  dependency-cruiser@16.9.0:
     dependencies:
       acorn: 8.14.0
       acorn-jsx: 5.3.2(acorn@8.14.0)
@@ -9238,9 +9248,9 @@ snapshots:
       acorn-loose: 8.4.0
       acorn-walk: 8.3.4
       ajv: 8.17.1
-      commander: 12.1.0
-      enhanced-resolve: 5.17.1
-      ignore: 6.0.2
+      commander: 13.0.0
+      enhanced-resolve: 5.18.0
+      ignore: 7.0.0
       interpret: 3.1.1
       is-installed-globally: 1.0.0
       json5: 2.2.3
@@ -9340,7 +9350,7 @@ snapshots:
     dependencies:
       once: 1.4.0
 
-  enhanced-resolve@5.17.1:
+  enhanced-resolve@5.18.0:
     dependencies:
       graceful-fs: 4.2.11
       tapable: 2.2.1
@@ -9505,7 +9515,7 @@ snapshots:
     dependencies:
       '@nolyfill/is-core-module': 1.0.39
       debug: 4.4.0
-      enhanced-resolve: 5.17.1
+      enhanced-resolve: 5.18.0
       eslint: 8.57.1
       fast-glob: 3.3.3
       get-tsconfig: 4.8.1
@@ -10043,6 +10053,8 @@ snapshots:
   ignore@5.3.2: {}
 
   ignore@6.0.2: {}
+
+  ignore@7.0.0: {}
 
   import-fresh@3.3.0:
     dependencies:
@@ -11824,7 +11836,7 @@ snapshots:
   tsconfig-paths-webpack-plugin@4.2.0:
     dependencies:
       chalk: 4.1.2
-      enhanced-resolve: 5.17.1
+      enhanced-resolve: 5.18.0
       tapable: 2.2.1
       tsconfig-paths: 4.2.0
 
