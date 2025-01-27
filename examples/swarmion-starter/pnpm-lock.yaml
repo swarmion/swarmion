@@ -146,7 +146,7 @@ importers:
         version: 18.3.1(react@18.3.1)
       react-intl:
         specifier: ^7.0.0
-        version: 7.1.4(typescript@5.7.3)
+        version: 7.1.5(react@18.3.1)(typescript@5.7.3)
       react-router-dom:
         specifier: ^7.0.0
         version: 7.1.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -3103,8 +3103,8 @@ packages:
     resolution: {integrity: sha512-9iE1PgSik9HeIIw2JO94IidnE3eBoQrFJ3w7sFuzSX4DpmZ3v5sZpUiV5Swcf6mQEF+Y0ru8Neo+p+nyh2J+hQ==}
     engines: {node: '>=10'}
 
-  decimal.js@10.4.3:
-    resolution: {integrity: sha512-VBBaLc1MgL5XpzgIP7ny5Z6Nx3UrRkIViUkPUdtl9aya5amy3De1gsUUSB1g3+3sExYNjCAsAznmukyxCb1GRA==}
+  decimal.js@10.5.0:
+    resolution: {integrity: sha512-8vDa8Qxvr/+d94hSh5P3IJwI5t8/c0KsMp+g8bNw9cY2icONa5aPfvKeieW1WlG0WQYwwhJ7mjui2xtiePQSXw==}
 
   deep-eql@5.0.2:
     resolution: {integrity: sha512-h5k/5U50IJJFpzfL6nO9jaaumfjO/f2NjK/oYB2Djzm4p9L+3T9qWpZqZ2hAbLPuuYq9wrU08WQyBTL5GbPk5Q==}
@@ -4808,9 +4808,10 @@ packages:
     peerDependencies:
       react: ^18.3.1
 
-  react-intl@7.1.4:
-    resolution: {integrity: sha512-deZFfvIR4aJIHmI7t3nn3Q46OuriyNRYPaQ3KM4lg6Fh6huMr7m8fkSzR6593WeUghkh8ZoQlYjUVrQEcrlbrA==}
+  react-intl@7.1.5:
+    resolution: {integrity: sha512-cVvsVdaOnZ85XBXU0Lc2PVGNhGlzl4UBV+aWAGe/zrV5Xr+CEW7izUsAp/fIuwvCsJl9R+aokppm+P7cdhnpUA==}
     peerDependencies:
+      react: ^16.6.0 || 17 || 18 || 19
       typescript: '5'
     peerDependenciesMeta:
       typescript:
@@ -7417,7 +7418,7 @@ snapshots:
     dependencies:
       '@formatjs/fast-memoize': 2.2.6
       '@formatjs/intl-localematcher': 0.5.10
-      decimal.js: 10.4.3
+      decimal.js: 10.5.0
       tslib: 2.8.1
 
   '@formatjs/fast-memoize@2.2.6':
@@ -9290,7 +9291,7 @@ snapshots:
 
   decamelize@4.0.0: {}
 
-  decimal.js@10.4.3: {}
+  decimal.js@10.5.0: {}
 
   deep-eql@5.0.2: {}
 
@@ -10422,7 +10423,7 @@ snapshots:
     dependencies:
       cssstyle: 4.2.1
       data-urls: 5.0.0
-      decimal.js: 10.4.3
+      decimal.js: 10.5.0
       form-data: 4.0.1
       html-encoding-sniffer: 4.0.0
       http-proxy-agent: 7.0.2
@@ -11179,7 +11180,7 @@ snapshots:
       react: 18.3.1
       scheduler: 0.23.2
 
-  react-intl@7.1.4(typescript@5.7.3):
+  react-intl@7.1.5(react@18.3.1)(typescript@5.7.3):
     dependencies:
       '@formatjs/ecma402-abstract': 2.3.2
       '@formatjs/icu-messageformat-parser': 2.11.0

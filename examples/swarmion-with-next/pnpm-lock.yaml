@@ -140,7 +140,7 @@ importers:
         version: 18.3.1(react@18.3.1)
       react-intl:
         specifier: ^7.0.0
-        version: 7.1.4(typescript@5.7.3)
+        version: 7.1.5(react@18.3.1)(typescript@5.7.3)
     devDependencies:
       '@aws-cdk/aws-amplify-alpha':
         specifier: 2.110.1-alpha.0
@@ -1930,6 +1930,7 @@ packages:
   '@mui/base@5.0.0-beta.40-0':
     resolution: {integrity: sha512-hG3atoDUxlvEy+0mqdMpWd04wca8HKr2IHjW/fAjlkCHQolSLazhZM46vnHjOf15M4ESu25mV/3PgjczyjVM4w==}
     engines: {node: '>=12.0.0'}
+    deprecated: This package has been replaced by @base-ui-components/react
     peerDependencies:
       '@types/react': ^17.0.0 || ^18.0.0 || ^19.0.0
       react: ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -3887,8 +3888,8 @@ packages:
     resolution: {integrity: sha512-9iE1PgSik9HeIIw2JO94IidnE3eBoQrFJ3w7sFuzSX4DpmZ3v5sZpUiV5Swcf6mQEF+Y0ru8Neo+p+nyh2J+hQ==}
     engines: {node: '>=10'}
 
-  decimal.js@10.4.3:
-    resolution: {integrity: sha512-VBBaLc1MgL5XpzgIP7ny5Z6Nx3UrRkIViUkPUdtl9aya5amy3De1gsUUSB1g3+3sExYNjCAsAznmukyxCb1GRA==}
+  decimal.js@10.5.0:
+    resolution: {integrity: sha512-8vDa8Qxvr/+d94hSh5P3IJwI5t8/c0KsMp+g8bNw9cY2icONa5aPfvKeieW1WlG0WQYwwhJ7mjui2xtiePQSXw==}
 
   decompress-response@6.0.0:
     resolution: {integrity: sha512-aW35yZM6Bb/4oJlZncMH2LCoZtJXTRxES17vE3hoRiowU2kWHaJKFkSBDnDR+cm9J+9QhXmREyIfv0pji9ejCQ==}
@@ -6402,9 +6403,10 @@ packages:
     peerDependencies:
       react: ^18.3.1
 
-  react-intl@7.1.4:
-    resolution: {integrity: sha512-deZFfvIR4aJIHmI7t3nn3Q46OuriyNRYPaQ3KM4lg6Fh6huMr7m8fkSzR6593WeUghkh8ZoQlYjUVrQEcrlbrA==}
+  react-intl@7.1.5:
+    resolution: {integrity: sha512-cVvsVdaOnZ85XBXU0Lc2PVGNhGlzl4UBV+aWAGe/zrV5Xr+CEW7izUsAp/fIuwvCsJl9R+aokppm+P7cdhnpUA==}
     peerDependencies:
+      react: ^16.6.0 || 17 || 18 || 19
       typescript: '5'
     peerDependenciesMeta:
       typescript:
@@ -10121,7 +10123,7 @@ snapshots:
     dependencies:
       '@formatjs/fast-memoize': 2.2.6
       '@formatjs/intl-localematcher': 0.5.10
-      decimal.js: 10.4.3
+      decimal.js: 10.5.0
       tslib: 2.8.1
 
   '@formatjs/fast-memoize@2.2.6':
@@ -12728,7 +12730,7 @@ snapshots:
 
   decamelize@4.0.0: {}
 
-  decimal.js@10.4.3: {}
+  decimal.js@10.5.0: {}
 
   decompress-response@6.0.0:
     dependencies:
@@ -14662,7 +14664,7 @@ snapshots:
       cssom: 0.5.0
       cssstyle: 2.3.0
       data-urls: 3.0.2
-      decimal.js: 10.4.3
+      decimal.js: 10.5.0
       domexception: 4.0.0
       escodegen: 2.0.0
       form-data: 4.0.1
@@ -15740,7 +15742,7 @@ snapshots:
       react: 18.3.1
       scheduler: 0.23.2
 
-  react-intl@7.1.4(typescript@5.7.3):
+  react-intl@7.1.5(react@18.3.1)(typescript@5.7.3):
     dependencies:
       '@formatjs/ecma402-abstract': 2.3.2
       '@formatjs/icu-messageformat-parser': 2.11.0
