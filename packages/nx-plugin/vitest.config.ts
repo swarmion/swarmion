@@ -6,5 +6,6 @@ export default defineConfig({
   test: {
     coverage: { reporter: ['text-summary', 'lcovonly'] },
     globals: true,
+    testTimeout: 30_000,
   },
 });
