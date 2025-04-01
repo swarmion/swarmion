@@ -79,7 +79,7 @@ const config: Config = {
     },
     footer: {
       style: 'dark',
-      copyright: `Copyright © 2024 Swarmion.`,
+      copyright: `Copyright © 2025 Swarmion.`,
       links: [
         {
           title: 'Acknowledgments',

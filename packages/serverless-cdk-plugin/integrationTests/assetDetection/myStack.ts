@@ -8,7 +8,7 @@ export class MyStack extends Stack {
     super(scope, id);
 
     new Function(this, 'Function', {
-      runtime: Runtime.NODEJS_20_X,
+      runtime: Runtime.NODEJS_22_X,
       handler: 'index.handler',
       code: Code.fromAsset(path.join(__dirname, 'lambda')),
     });
