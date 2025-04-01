@@ -34,7 +34,7 @@ importers:
         version: 8.57.1
       eslint-import-resolver-typescript:
         specifier: ^3.6.1
-        version: 3.7.0(eslint-plugin-import@2.31.0)(eslint@8.57.1)
+        version: 3.7.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.22.0(eslint@8.57.1)(typescript@5.7.3))(eslint-import-resolver-typescript@3.7.0)(eslint@8.57.1))(eslint@8.57.1)
       eslint-plugin-import:
         specifier: ^2.29.0
         version: 2.31.0(@typescript-eslint/parser@8.22.0(eslint@8.57.1)(typescript@5.7.3))(eslint-import-resolver-typescript@3.7.0)(eslint@8.57.1)
@@ -73,7 +73,7 @@ importers:
         version: link:../../packages/serverless-configuration
       '@swarmion/serverless-contracts':
         specifier: 0.33.0
-        version: 0.33.0(@serverless/typescript@3.38.0)(ajv@8.17.1)(aws-cdk-lib@2.184.0(constructs@10.4.2))(axios@1.8.2)
+        version: 0.33.0(@serverless/typescript@4.10.1)(ajv@8.17.1)(aws-cdk-lib@2.184.0(constructs@10.4.2))(axios@1.8.2)
     devDependencies:
       '@types/node':
         specifier: ^22.0.0
@@ -249,7 +249,7 @@ importers:
     dependencies:
       '@swarmion/serverless-helpers':
         specifier: 0.33.0
-        version: 0.33.0(@serverless/typescript@3.38.0)(aws-cdk-lib@2.184.0(constructs@10.4.2))
+        version: 0.33.0(@serverless/typescript@4.10.1)(aws-cdk-lib@2.184.0(constructs@10.4.2))
     devDependencies:
       '@types/node':
         specifier: ^22.0.0
@@ -292,11 +292,11 @@ importers:
         version: link:../../packages/serverless-configuration
       '@swarmion/serverless-helpers':
         specifier: 0.33.0
-        version: 0.33.0(@serverless/typescript@3.38.0)(aws-cdk-lib@2.184.0(constructs@10.4.2))
+        version: 0.33.0(@serverless/typescript@4.10.1)(aws-cdk-lib@2.184.0(constructs@10.4.2))
     devDependencies:
       '@serverless/typescript':
-        specifier: ^3.38.0
-        version: 3.38.0
+        specifier: ^4.10.1
+        version: 4.10.1
       '@swarmion-with-next/core-contracts':
         specifier: workspace:1.0.0
         version: link:../../contracts/core-contracts
@@ -2541,8 +2541,8 @@ packages:
     resolution: {integrity: sha512-XltmO/029X76zi0LUFmhsnanhE2wnqH1xf+WBt5K8gumQA9LnrfwLgPxj+VA+mm6wQhy+PCp7H5SS0ZPu7F2Cw==}
     engines: {node: '>=10.0'}
 
-  '@serverless/typescript@3.38.0':
-    resolution: {integrity: sha512-2AZ7SwWNMOfe2sovoBf68FgiQlLH+RuS9MdSMAzXJ/Hx5d0tPZmmLxfUieF7gUGOExe/fhzCAW3akr6wTZuTpQ==}
+  '@serverless/typescript@4.10.1':
+    resolution: {integrity: sha512-vMUD8Q0EXwlbr2WRKBFgHLG3FvusfLxvzWll37saDkD7Y1o0FiPeC9DEmuxW1kjcP1xhKxCqI+TMB3rq+TOXiQ==}
 
   '@serverless/utils@6.15.0':
     resolution: {integrity: sha512-7eDbqKv/OBd11jjdZjUwFGN8sHWkeUqLeHXHQxQ1azja2IM7WIH+z/aLgzR6LhB3/MINNwtjesDpjGqTMj2JKQ==}
@@ -11030,7 +11030,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@serverless/typescript@3.38.0': {}
+  '@serverless/typescript@4.10.1': {}
 
   '@serverless/utils@6.15.0':
     dependencies:
@@ -11434,11 +11434,11 @@ snapshots:
       - supports-color
       - verdaccio
 
-  '@swarmion/serverless-contracts@0.33.0(@serverless/typescript@3.38.0)(ajv@8.17.1)(aws-cdk-lib@2.184.0(constructs@10.4.2))(axios@1.8.2)':
+  '@swarmion/serverless-contracts@0.33.0(@serverless/typescript@4.10.1)(ajv@8.17.1)(aws-cdk-lib@2.184.0(constructs@10.4.2))(axios@1.8.2)':
     dependencies:
       '@aws-sdk/client-eventbridge': 3.716.0
       '@aws-sdk/client-sqs': 3.709.0
-      '@swarmion/serverless-helpers': 0.33.0(@serverless/typescript@3.38.0)(aws-cdk-lib@2.184.0(constructs@10.4.2))
+      '@swarmion/serverless-helpers': 0.33.0(@serverless/typescript@4.10.1)(aws-cdk-lib@2.184.0(constructs@10.4.2))
       '@types/aws-lambda': 8.10.146
       '@types/http-errors': 2.0.4
       http-errors: 2.0.0
@@ -11452,16 +11452,16 @@ snapshots:
       ts-toolbelt: 9.6.0
       ulid: 2.3.0
     optionalDependencies:
-      '@serverless/typescript': 3.38.0
+      '@serverless/typescript': 4.10.1
       ajv: 8.17.1
       axios: 1.8.2
     transitivePeerDependencies:
       - aws-cdk-lib
       - aws-crt
 
-  '@swarmion/serverless-helpers@0.33.0(@serverless/typescript@3.38.0)(aws-cdk-lib@2.184.0(constructs@10.4.2))':
+  '@swarmion/serverless-helpers@0.33.0(@serverless/typescript@4.10.1)(aws-cdk-lib@2.184.0(constructs@10.4.2))':
     dependencies:
-      '@serverless/typescript': 3.38.0
+      '@serverless/typescript': 4.10.1
       aws-cdk-lib: 2.184.0(constructs@10.4.2)
       json-schema-to-ts: 3.1.1
 
@@ -13176,7 +13176,7 @@ snapshots:
       '@typescript-eslint/parser': 8.22.0(eslint@8.57.1)(typescript@5.7.3)
       eslint: 8.57.1
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.7.0(eslint-plugin-import@2.31.0)(eslint@8.57.1)
+      eslint-import-resolver-typescript: 3.7.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.22.0(eslint@8.57.1)(typescript@5.7.3))(eslint-import-resolver-typescript@3.7.0)(eslint@8.57.1))(eslint@8.57.1)
       eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.22.0(eslint@8.57.1)(typescript@5.7.3))(eslint-import-resolver-typescript@3.7.0)(eslint@8.57.1)
       eslint-plugin-jsx-a11y: 6.10.2(eslint@8.57.1)
       eslint-plugin-react: 7.37.4(eslint@8.57.1)
@@ -13196,7 +13196,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-import-resolver-typescript@3.7.0(eslint-plugin-import@2.31.0)(eslint@8.57.1):
+  eslint-import-resolver-typescript@3.7.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.22.0(eslint@8.57.1)(typescript@5.7.3))(eslint-import-resolver-typescript@3.7.0)(eslint@8.57.1))(eslint@8.57.1):
     dependencies:
       '@nolyfill/is-core-module': 1.0.39
       debug: 4.4.0(supports-color@8.1.1)
@@ -13219,7 +13219,7 @@ snapshots:
       '@typescript-eslint/parser': 8.22.0(eslint@8.57.1)(typescript@5.7.3)
       eslint: 8.57.1
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.7.0(eslint-plugin-import@2.31.0)(eslint@8.57.1)
+      eslint-import-resolver-typescript: 3.7.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.22.0(eslint@8.57.1)(typescript@5.7.3))(eslint-import-resolver-typescript@3.7.0)(eslint@8.57.1))(eslint@8.57.1)
     transitivePeerDependencies:
       - supports-color
 

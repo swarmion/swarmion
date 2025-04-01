@@ -35,7 +35,7 @@ export const swarmionEsbuildConfig: SwarmionEsbuildConfig = {
   keepNames: true,
   sourcemap: true,
   exclude: ['aws-sdk'],
-  target: 'node20',
+  target: 'node22',
   platform: 'node',
   mainFields: ['module', 'main'],
   concurrency: 5,
