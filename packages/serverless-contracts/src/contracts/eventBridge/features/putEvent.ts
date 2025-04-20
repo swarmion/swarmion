@@ -13,7 +13,8 @@ export const buildPutEvent =
       Detail: JSON.stringify(payload),
       DetailType: contract.eventType,
       Source: source,
-      EventBusName: eventBusName,
+      EventBusName:
+        typeof eventBusName === 'string' ? eventBusName : await eventBusName(),
     };
 
     const command = new PutEventsCommand({

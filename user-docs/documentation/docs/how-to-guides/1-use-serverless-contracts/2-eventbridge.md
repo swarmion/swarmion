@@ -131,6 +131,7 @@ import { ajvInstance } from 'libs/ajv';
 const eventBridgeClient = new EventBridgeClient({});
 
 //  the event bus name is here available in an env variable, but you can adapt this
+//  eventBusName can also be a getter function that is only called before sending the event
 const eventBusName = getEnvVariable('EVENT_BUS_NAME');
 
 const putMyCustomEvent = buildPutEvent(myEventBridgeContract, {
