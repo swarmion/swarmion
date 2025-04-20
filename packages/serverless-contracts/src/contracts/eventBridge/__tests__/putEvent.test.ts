@@ -4,28 +4,13 @@ import {
 } from '@aws-sdk/client-eventbridge';
 import { mockClient } from 'aws-sdk-client-mock';
 
-import { EventBridgeContract } from '../eventBridgeContract';
 import { buildPutEvent } from '../features';
+import { eventBridgeContract } from './mock';
 
 const eventBridgeClient = new EventBridgeClient({});
 const eventBusName = 'myBusName';
 
 const eventBridgeClientMock = mockClient(EventBridgeClient);
-
-const eventBridgeContract = new EventBridgeContract({
-  id: 'myAwesomeEventBridgeContract',
-  sources: ['toto.tata', 'titi.tutu'] as const,
-  eventType: 'MY_DETAIL_TYPE',
-  payloadSchema: {
-    type: 'object',
-    properties: {
-      userId: { type: 'string' },
-      myOtherProp: { type: 'string' },
-    },
-    required: ['userId', 'myOtherProp'],
-    additionalProperties: false,
-  } as const,
-});
 
 const myPutEvent = buildPutEvent(eventBridgeContract, {
   source: 'titi.tutu',

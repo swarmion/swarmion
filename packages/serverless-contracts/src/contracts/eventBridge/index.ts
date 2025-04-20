@@ -3,6 +3,7 @@ export {
   getEventBridgeHandler,
   getEventBridgeTrigger,
   buildPutEvent,
+  buildPutEvents,
 } from './features';
 export type {
   EventBridgeHandler,

@@ -155,5 +155,63 @@ By default, the `putEvent` function will throw if it fails to send the event. Yo
 :::
 
 :::caution
-This only works with the AWS sdk v3
+This only works with the AWS SDK v3
+:::
+
+### Build a typed putEvents function
+
+The builder function `buildPutEvents` returns a fully type-safe async function you can call to send a list of events
+to the event bus without bothering with the batching process or throttle.
+
+```ts
+import { buildPutEvents, getHandler } from '@swarmion/serverless-contracts';
+import { getEnvVariable } from '@swarmion/serverless-helpers';
+import { EventBridgeClient } from '@aws-sdk/client-eventbridge';
+
+// Instantiate the sdk
+const eventBridgeClient = new EventBridgeClient({});
+
+// The bus name is here available in an env variable, but you can adapt this
+const eventBusName = getEnvVariable('EVENT_BUS_NAME');
+const source = 'my-source';
+
+const putMyEvents = buildPutEvents(myEventBridgeContract, {
+  eventBusName,
+  eventBridgeClient,
+  source,
+});
+
+export const main = getHandler(anotherContract)(async event => {
+  await putMyEvents([
+    { userId: 'toto1', message: 'welcome toto 1!' }, // Typesafe
+    { userId: 'toto2', message: 'welcome toto 2!' },
+    { userId: 'toto3', message: 'welcome toto 3!' },
+    { userId: 'toto4', message: 'welcome toto 4!' },
+    { userId: 'toto5', message: 'welcome toto 5!' },
+  ]);
+
+  // rest of the lambda
+});
+```
+
+:::info
+It supports the same options as `buildPutEvent` plus `throughputCallsPerSecond` to configure the EventBridge API calls rate.
+:::
+
+:::info
+The default behavior is
+to send commands at **400 calls per second**
+because [it's the lowest default of all regions](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-quota.html).
+But some regions can have up to 10000 calls per second by default and the quota can be adjusted.
+
+Consult [the quota page](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-quota.html)
+to know what `throughputCallsPerSecond` to set.
+:::
+
+:::caution
+By default, the `putEvents` function will throw if it fails to send one of the events. You can override this behavior by passing a `throwOnFailure: false` option to the builder function. Then you have access to the processed `entries` containing the error message.
+:::
+
+:::caution
+This only works with the AWS SDK v3
 :::
