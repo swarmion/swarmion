@@ -6,7 +6,12 @@ import { PutEventBuilderArgs, PutEventSideEffect } from '../types/putEvent';
 export const buildPutEvent =
   <Contract extends EventBridgeContract>(
     contract: Contract,
-    { eventBusName, source, eventBridgeClient }: PutEventBuilderArgs<Contract>,
+    {
+      eventBusName,
+      source,
+      eventBridgeClient,
+      throwOnFailure = true,
+    }: PutEventBuilderArgs<Contract>,
   ): PutEventSideEffect<Contract> =>
   async payload => {
     const event = {
@@ -21,5 +26,17 @@ export const buildPutEvent =
       Entries: [event],
     });
 
-    await eventBridgeClient.send(command);
+    const { FailedEntryCount, Entries } = await eventBridgeClient.send(command);
+
+    if ((FailedEntryCount ?? 0) > 0 && throwOnFailure) {
+      const failedEntry = Entries?.[0];
+      console.error(
+        `Failed to send this event: ${JSON.stringify(event, null, 2)}`,
+      );
+      throw new Error(
+        `Failed to send event. Error: ${failedEntry?.ErrorMessage} (${failedEntry?.ErrorCode})`,
+      );
+    }
+
+    return { failedEntryCount: FailedEntryCount, entry: Entries?.[0] };
   };
