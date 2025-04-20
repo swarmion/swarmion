@@ -151,5 +151,9 @@ export const main = getHandler(
 ```
 
 :::caution
+By default, the `putEvent` function will throw if it fails to send the event. You can override this behavior by passing a `throwOnFailure: false` option to the builder function. Then you have access to the processed `entry` containing the error message.
+:::
+
+:::caution
 This only works with the AWS sdk v3
 :::
