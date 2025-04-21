@@ -9,4 +9,5 @@ export type {
   EventBridgeHandler,
   SwarmionEventBridgeHandler,
   EventBridgePayloadType,
+  EventBridgeEvent,
 } from './types';
