@@ -5,4 +5,3 @@ export * from './serializeMessageAttributes';
 export * from './messagesValidation';
 export * from './serializeMessage';
 export * from './delays';
-export * from './chunckSQSMessagesBatch';
