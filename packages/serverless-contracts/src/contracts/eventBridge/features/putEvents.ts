@@ -5,12 +5,15 @@ import {
 } from '@aws-sdk/client-eventbridge';
 import _PQueue from 'p-queue';
 
+import { chunkEntriesBatch } from '../../../utils';
 import { fixESMInteropIssue } from '../../../utils/fixESMInteropIssue';
 import { EventBridgeContract } from '../eventBridgeContract';
 import { PutEventsBuilderArgs, PutEventsSideEffect } from '../types/putEvents';
-import { chunkEventBridgeEventsBatch } from '../utils/chunckEventBridgeEntriesBatch';
 
 const PQueue = fixESMInteropIssue(_PQueue);
+
+const MAX_BATCH_SIZE = 256_000; // 256Kb
+const MAX_BATCH_LENGTH = 10;
 
 const defaultOptions = {
   throughputCallsPerSecond: 400, // Minimal default throughput. Some regions can have up to 10_000. See: https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-quota.html
@@ -25,6 +28,29 @@ const getThroughputQueueConfig = (
   interval: OneSecondInMillis,
 });
 
+/** Sum all values of the event */
+const computeEventSize = (event: PutEventsRequestEntry): number => {
+  let size = 0;
+
+  if (event.Time) {
+    size += 14;
+  }
+  if (event.Detail) {
+    size += Buffer.byteLength(event.Detail, 'utf8');
+  }
+  if (event.DetailType) {
+    size += Buffer.byteLength(event.DetailType, 'utf8');
+  }
+  if (event.Source) {
+    size += Buffer.byteLength(event.Source, 'utf8');
+  }
+  if (event.Resources) {
+    event.Resources.forEach(resource => Buffer.byteLength(resource, 'utf8'));
+  }
+
+  return size;
+};
+
 const sendAllEventsBatchedWithControlledThroughput = async <
   Contract extends EventBridgeContract,
 >(
@@ -38,7 +64,12 @@ const sendAllEventsBatchedWithControlledThroughput = async <
   const queue = new PQueue(getThroughputQueueConfig(throughputCallsPerSecond));
 
   // Slice events into batches of 10 (max limit for EventBridge PutEventsCommand) and which size is less than 256KB
-  const batches = chunkEventBridgeEventsBatch(events);
+  const batches = chunkEntriesBatch({
+    entries: events,
+    computeEntrySize: computeEventSize,
+    maxBatchSize: MAX_BATCH_SIZE,
+    maxBatchLength: MAX_BATCH_LENGTH,
+  });
 
   const results = await queue.addAll(
     batches.map(

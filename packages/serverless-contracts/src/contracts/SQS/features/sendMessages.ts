@@ -5,11 +5,11 @@ import {
 import { BatchResultErrorEntry } from '@aws-sdk/client-sqs/dist-types/models/models_0';
 import _PQueue from 'p-queue';
 
+import { chunkEntriesBatch } from '../../../utils';
 import { fixESMInteropIssue } from '../../../utils/fixESMInteropIssue';
 import { SQSContract } from '../sqsContract';
 import { SendMessagesBuilderOptions, SendMessagesSideEffect } from '../types';
 import {
-  chunkSQSMessagesBatch,
   getExponentialBackoffDelay,
   serializeMessage,
   validateMessages,
@@ -18,6 +18,9 @@ import {
 const PQueue = fixESMInteropIssue(_PQueue);
 
 export const InfiniteThroughput = 0;
+
+const MAX_BATCH_SIZE = 256_000; // 256Kb
+const MAX_BATCH_LENGTH = 10;
 
 const defaultOptions = {
   validateMessage: true,
@@ -38,6 +41,9 @@ const getThroughputQueueConfig = (
         interval: 1000,
       };
 
+const computeMessageSize = (message: SendMessageBatchRequestEntry): number =>
+  Buffer.byteLength(JSON.stringify(message), 'utf8'); // This is not accurate must be a good upper approximation
+
 const sendAllMessagesBatchedWithControlledThroughput = async <
   Contract extends SQSContract,
 >(
@@ -51,7 +57,12 @@ const sendAllMessagesBatchedWithControlledThroughput = async <
   const queue = new PQueue(getThroughputQueueConfig(throughputCallsPerSecond));
 
   // Slice events into batches of 10 (max limit for SQS sendMessageBatch) and which size is less than 256KB
-  const batches = chunkSQSMessagesBatch(messages);
+  const batches = chunkEntriesBatch({
+    entries: messages,
+    computeEntrySize: computeMessageSize,
+    maxBatchSize: MAX_BATCH_SIZE,
+    maxBatchLength: MAX_BATCH_LENGTH,
+  });
 
   const results = await queue.addAll(
     batches.map(
