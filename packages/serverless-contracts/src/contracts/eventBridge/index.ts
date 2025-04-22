@@ -5,9 +5,4 @@ export {
   buildPutEvent,
   buildPutEvents,
 } from './features';
-export type {
-  EventBridgeHandler,
-  SwarmionEventBridgeHandler,
-  EventBridgePayloadType,
-  EventBridgeEvent,
-} from './types';
+export type * from './types';

@@ -1,7 +1,7 @@
 import { JSONSchema } from 'json-schema-to-ts';
 
 import { EventBridgeContract } from '../eventBridgeContract';
-import { FullContractSchemaType } from '../types';
+import { FullContractSchemaType } from '../types/fullContract';
 const eventBridgeContract = new EventBridgeContract({
   id: 'myAwesomeEventBridgeContract',
   sources: ['toto.tata'] as const,
