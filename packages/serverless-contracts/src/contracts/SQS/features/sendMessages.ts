@@ -1,8 +1,8 @@
 import {
+  BatchResultErrorEntry,
   SendMessageBatchCommand,
   SendMessageBatchRequestEntry,
 } from '@aws-sdk/client-sqs';
-import { BatchResultErrorEntry } from '@aws-sdk/client-sqs/dist-types/models/models_0';
 import _PQueue from 'p-queue';
 
 import { chunkEntriesBatch } from '../../../utils';
