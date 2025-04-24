@@ -1,5 +1,4 @@
-import { SendMessageRequest } from '@aws-sdk/client-sqs';
-import { MessageAttributeValue } from '@aws-sdk/client-sqs/dist-types/models/models_0';
+import { MessageAttributeValue, SendMessageRequest } from '@aws-sdk/client-sqs';
 import { JSONSchema } from 'json-schema-to-ts';
 
 import { StringOrNumberDictionaryJSONSchema } from '../../../types/constrainedJSONSchema';
