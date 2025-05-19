@@ -1,5 +1,5 @@
 import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
-import { Entity, schema, string, Table } from 'dynamodb-toolbox';
+import { Entity, map, string, Table } from 'dynamodb-toolbox';
 
 import { PARTITION_KEY, SORT_KEY } from 'sharedConstants';
 
@@ -21,7 +21,7 @@ const ServiceEventTable = new Table({
 
 const ServiceEventEntity = new Entity({
   name: 'ServiceEvent',
-  schema: schema({
+  schema: map({
     serviceId: string().required().key(),
     applicationId: string().required().key(),
     eventId: string().required().key(),
@@ -39,7 +39,7 @@ export const buildServiceEventEntity = (
 ): typeof ServiceEventEntity => {
   try {
     ServiceEventTable.documentClient = documentClient;
-    ServiceEventTable.name = alchemyTableName;
+    ServiceEventTable.tableName = alchemyTableName;
   } catch {
     console.warn(
       'Entity already has a table assigned to it.',
