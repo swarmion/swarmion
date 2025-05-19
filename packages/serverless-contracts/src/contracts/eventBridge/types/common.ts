@@ -10,3 +10,7 @@ export type EventBridgePayloadType<Contract extends EventBridgeContract> =
 
 export type EventBridgeEvent<Contract extends EventBridgeContract> =
   AwsEventBridgeEvent<Contract['eventType'], EventBridgePayloadType<Contract>>;
+
+export type EventBridgePayloadUnionType<
+  Contracts extends EventBridgeContract[],
+> = EventBridgePayloadType<Contracts[number]>;
