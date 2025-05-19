@@ -77,20 +77,36 @@
       "dependsOn": ["^package"]
     },
     "test-unit": {
-      "inputs": ["default", "^production"],
+      "inputs": [
+        "default",
+        "^production",
+        { "dependentTasksOutputFiles": "**/*.d.ts", "transitive": true }
+      ],
       "dependsOn": ["^package"],
       "outputs": ["{projectRoot}/coverage"]
     },
     "test-type": {
-      "inputs": ["default", "^production"],
+      "inputs": [
+        "default",
+        "^production",
+        { "dependentTasksOutputFiles": "**/*.d.ts", "transitive": true }
+      ],
       "dependsOn": ["^package"]
     },
     "test-circular": {
-      "inputs": ["default", "^production"],
+      "inputs": [
+        "default",
+        "^production",
+        { "dependentTasksOutputFiles": "**/*.d.ts", "transitive": true }
+      ],
       "dependsOn": ["^package"]
     },
     "test-integration": {
-      "inputs": ["default", "^production"],
+      "inputs": [
+        "default",
+        "^production",
+        { "dependentTasksOutputFiles": "**/*.d.ts", "transitive": true }
+      ],
       "dependsOn": ["^package"]
     }
   },
