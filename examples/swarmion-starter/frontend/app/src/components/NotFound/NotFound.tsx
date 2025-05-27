@@ -7,7 +7,7 @@ import {
   notFoundWebpUrl,
 } from 'assets';
 
-const NotFound = (): JSX.Element => (
+const NotFound = (): React.JSX.Element => (
   <>
     <NotFoundIcon />
     <Typography variant="h1">Page not found</Typography>
