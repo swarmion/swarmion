@@ -11,7 +11,7 @@ import { frFRMessages } from 'translations';
 const queryClient = new QueryClient();
 const intlMessages = flattenMessages(frFRMessages);
 
-const App = ({ Component, pageProps }: AppProps): JSX.Element => {
+const App = ({ Component, pageProps }: AppProps): React.JSX.Element => {
   return (
     <ThemeProvider theme={muiTheme}>
       <QueryClientProvider client={queryClient}>

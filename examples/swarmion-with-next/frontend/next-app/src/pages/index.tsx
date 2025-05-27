@@ -6,7 +6,7 @@ import { FormattedMessage } from 'react-intl';
 import { StyledButton, StyledButtonWithTheme, Title } from 'components';
 import client from 'services/networking/client';
 
-const Home = (): JSX.Element => {
+const Home = (): React.JSX.Element => {
   const {
     data: response,
     isError,
