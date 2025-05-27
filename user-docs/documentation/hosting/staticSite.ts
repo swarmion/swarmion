@@ -39,6 +39,21 @@ export class StaticSite extends Construct {
 
     const domainNames = getDomainNames(stage);
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const certificateApex = (() => {
+      const mainDomainName = domainNames.shift();
+
+      if (mainDomainName === undefined) {
+        return;
+      }
+
+      return new Certificate(this, 'CertificateApex', {
+        domainName: mainDomainName,
+        subjectAlternativeNames: domainNames,
+        validation: CertificateValidation.fromDns(),
+      });
+    })();
+
     const certificate =
       domainNames.length === 0
         ? undefined
