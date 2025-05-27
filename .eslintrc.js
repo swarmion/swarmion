@@ -144,16 +144,16 @@ module.exports = {
           'error',
           {
             types: {
-              FC: 'Use `const MyComponent = (props: Props): JSX.Element` instead',
-              SFC: 'Use `const MyComponent = (props: Props): JSX.Element` instead',
+              FC: 'Use `const MyComponent = (props: Props): React.JSX.Element` instead',
+              SFC: 'Use `const MyComponent = (props: Props): React.JSX.Element` instead',
               FunctionComponent:
-                'Use `const MyComponent = (props: Props): JSX.Element` instead',
+                'Use `const MyComponent = (props: Props): React.JSX.Element` instead',
               'React.FC':
-                'Use `const MyComponent = (props: Props): JSX.Element` instead',
+                'Use `const MyComponent = (props: Props): React.JSX.Element` instead',
               'React.SFC':
-                'Use `const MyComponent = (props: Props): JSX.Element` instead',
+                'Use `const MyComponent = (props: Props): React.JSX.Element` instead',
               'React.FunctionComponent':
-                'Use `const MyComponent = (props: Props): JSX.Element` instead',
+                'Use `const MyComponent = (props: Props): React.JSX.Element` instead',
             },
           },
         ],
