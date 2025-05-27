@@ -39,28 +39,19 @@ export class StaticSite extends Construct {
 
     const domainNames = getDomainNames(stage);
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const certificateApex = (() => {
-      const mainDomainName = domainNames.shift();
-
-      if (mainDomainName === undefined) {
+    const certificate = (() => {
+      if (domainNames.length === 0) {
         return;
       }
 
+      const [mainDomainName, ...alternateDomainNames] = domainNames;
+
       return new Certificate(this, 'CertificateApex', {
         domainName: mainDomainName,
-        subjectAlternativeNames: domainNames,
+        subjectAlternativeNames: alternateDomainNames,
         validation: CertificateValidation.fromDns(),
       });
     })();
-
-    const certificate =
-      domainNames.length === 0
-        ? undefined
-        : new Certificate(this, 'Certificate', {
-            domainName: '*.swarmion.dev',
-            validation: CertificateValidation.fromDns(),
-          });
 
     const distribution = new Distribution(this, 'SiteDistribution', {
       defaultRootObject: 'index.html',
