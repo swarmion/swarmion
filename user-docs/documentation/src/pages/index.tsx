@@ -26,7 +26,7 @@ const HomepageHeader = () => {
   );
 };
 
-const Home = (): JSX.Element => {
+const Home = (): React.JSX.Element => {
   const { siteConfig } = useDocusaurusContext();
 
   return (

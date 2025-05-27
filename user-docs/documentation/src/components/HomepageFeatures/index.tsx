@@ -1,11 +1,12 @@
-import React from 'react';
 import clsx from 'clsx';
+import React from 'react';
+
 import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
   imgSrc: string;
-  description: JSX.Element;
+  description: React.JSX.Element;
 };
 
 const FeatureList: FeatureItem[] = [
@@ -58,7 +59,7 @@ const Feature = ({ title, imgSrc, description }: FeatureItem) => {
     </div>
   );
 };
-const HomepageFeatures = (): JSX.Element => {
+const HomepageFeatures = (): React.JSX.Element => {
   return (
     <section className={styles.features}>
       <div className="container">
