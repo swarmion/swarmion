@@ -6,7 +6,7 @@ import { RoutePaths } from 'types';
 
 const Home = React.lazy(() => import('pages/Home/Home'));
 
-const AppRoutes = (): JSX.Element => (
+const AppRoutes = (): React.JSX.Element => (
   <Suspense fallback={<NotFound />}>
     <BrowserRouter>
       <Routes>

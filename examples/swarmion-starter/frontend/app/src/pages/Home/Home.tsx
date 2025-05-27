@@ -11,7 +11,7 @@ import client from 'services/networking/client';
 
 import { StyledButton, StyledButtonWithTheme } from './Home.style';
 
-const Home = (): JSX.Element => {
+const Home = (): React.JSX.Element => {
   const { data: healthResponse, isError } = useQuery({
     queryFn: () =>
       getAxiosRequest(healthContract, client, {}).then(({ data }) => data),

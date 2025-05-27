@@ -12,7 +12,7 @@ import AppRoutes from './AppRoutes';
 const queryClient = new QueryClient();
 const intlMessages = flattenMessages(frFRMessages);
 
-const App = (): JSX.Element => {
+const App = (): React.JSX.Element => {
   return (
     <ThemeProvider theme={muiTheme}>
       <QueryClientProvider client={queryClient}>

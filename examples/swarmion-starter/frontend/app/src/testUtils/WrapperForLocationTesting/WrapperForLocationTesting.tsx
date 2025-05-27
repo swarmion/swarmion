@@ -9,7 +9,7 @@ type WrapperForLocationTestingProps = {
 
 const WrapperForLocationTesting = ({
   children,
-}: WrapperForLocationTestingProps): JSX.Element => {
+}: WrapperForLocationTestingProps): React.JSX.Element => {
   const location = useLocation();
 
   return (
