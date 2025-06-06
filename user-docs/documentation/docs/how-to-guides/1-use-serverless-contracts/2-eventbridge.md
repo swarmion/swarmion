@@ -89,6 +89,22 @@ export const main = getHandler(myEventBridgeContract, { ajv })(async event => {
 });
 ```
 
+You may also handle multiple eventBridge contracts at the same time:
+
+```ts
+import { getMultipleEventBridgeHandler } from '@swarmion/serverless-contracts';
+import { ajv } from 'libs/ajv';
+
+export const main = getMultipleEventBridgeHandler(
+  [myEventBridgeContract, myOtherEventBridgeContract],
+  { ajv },
+)(async event => {
+  const { message, userId } = event.detail; // still natively typed with the correct keys
+
+  // your business logic
+});
+```
+
 :::info
 Regarding the `ajv` option, we advise you to use a singleton instance of ajv that you define in a separate file. This way, you can use the same instance for all your contracts and middlewares.
 
@@ -96,7 +112,7 @@ Regarding the `ajv` option, we advise you to use a singleton instance of ajv tha
 :::
 
 :::caution
-This handler also provides a payload validation that will throw an error if there is a mismatch with the `payloadSchema`. This ensure that invalid events will not be mistakenly taken into account. However, be sure to set up an invalid events failure flow, for example with a [Lambda `onFailure` destination](https://www.serverless.com/blog/lambda-destinations/).
+This handler also provides a payload validation that will throw an error if there is a mismatch with the `payloadSchema`. This ensures that invalid events will not be mistakenly taken into account. However, be sure to set up an invalid events failure flow, for example with a [Lambda `onFailure` destination](https://www.serverless.com/blog/lambda-destinations/).
 
 If you still wish to disable this behavior, you can use the optional second argument in the `getHandler` feature.
 If you do so, you can omit the `ajv` option.
