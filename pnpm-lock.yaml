@@ -804,7 +804,7 @@ importers:
         version: 2.208.0(constructs@10.4.2)
       dynamodb-toolbox:
         specifier: ^2.0.0
-        version: 2.4.4(@aws-sdk/client-dynamodb@3.859.0)(@aws-sdk/lib-dynamodb@3.859.0(@aws-sdk/client-dynamodb@3.859.0))(zod@3.25.20)
+        version: 2.7.1(@aws-sdk/client-dynamodb@3.859.0)(@aws-sdk/lib-dynamodb@3.859.0(@aws-sdk/client-dynamodb@3.859.0))
       ulid:
         specifier: ^3.0.0
         version: 3.0.1
@@ -6438,13 +6438,12 @@ packages:
   duration@0.2.2:
     resolution: {integrity: sha512-06kgtea+bGreF5eKYgI/36A6pLXggY7oR4p1pq4SmdFBn1ReOL5D8RhG64VrqfTTKNucqqtBAwEj8aB88mcqrg==}
 
-  dynamodb-toolbox@2.4.4:
-    resolution: {integrity: sha512-gXS2SMXA1r7BJXD9+5M+AhsjsP+FJupHTCcfK9I2yzQNXx/e255MXxAVIjwgvT56BgahUGh53+t/TzKxRerJqg==}
+  dynamodb-toolbox@2.7.1:
+    resolution: {integrity: sha512-27ybMsJPE98nF49iAo4x+buWum2uEGIxh6HMuwGR52t1Of0eER+9AUweUp4+umrED+bNEZXCJWmJOA5Qx0b17w==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       '@aws-sdk/client-dynamodb': ^3.0.0
       '@aws-sdk/lib-dynamodb': ^3.0.0
-      zod: ^3.0.0
 
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
@@ -12254,9 +12253,6 @@ packages:
   zip-stream@4.1.1:
     resolution: {integrity: sha512-9qv4rlDiopXg4E69k+vMHjNN63YFMe9sZMrdlvKnCjlCRWeCBswPPMPUfx+ipsAWq1LXHe70RcbaHdJJpS6hyQ==}
     engines: {node: '>= 10'}
-
-  zod@3.25.20:
-    resolution: {integrity: sha512-z03fqpTMDF1G02VLKUMt6vyACE7rNWkh3gpXVHgPTw28NPtDFRGvcpTtPwn2kMKtQ0idtYJUTxchytmnqYswcw==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -20459,12 +20455,11 @@ snapshots:
       d: 1.0.2
       es5-ext: 0.10.64
 
-  dynamodb-toolbox@2.4.4(@aws-sdk/client-dynamodb@3.859.0)(@aws-sdk/lib-dynamodb@3.859.0(@aws-sdk/client-dynamodb@3.859.0))(zod@3.25.20):
+  dynamodb-toolbox@2.7.1(@aws-sdk/client-dynamodb@3.859.0)(@aws-sdk/lib-dynamodb@3.859.0(@aws-sdk/client-dynamodb@3.859.0)):
     dependencies:
       '@aws-sdk/client-dynamodb': 3.859.0
       '@aws-sdk/lib-dynamodb': 3.859.0(@aws-sdk/client-dynamodb@3.859.0)
       hotscript: 1.0.13
-      zod: 3.25.20
 
   eastasianwidth@0.2.0: {}
 
@@ -27789,7 +27784,5 @@ snapshots:
       archiver-utils: 3.0.4
       compress-commons: 4.1.2
       readable-stream: 3.6.2
-
-  zod@3.25.20: {}
 
   zwitch@2.0.4: {}
