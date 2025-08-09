@@ -73,7 +73,7 @@ importers:
         version: link:../../packages/serverless-configuration
       '@swarmion/serverless-contracts':
         specifier: 0.35.0
-        version: 0.35.0(@serverless/typescript@4.17.2)(ajv@8.17.1)(aws-cdk-lib@2.209.0(constructs@10.4.2))(axios@1.11.0)
+        version: 0.35.0(@serverless/typescript@4.17.2)(ajv@8.17.1)(aws-cdk-lib@2.209.1(constructs@10.4.2))(axios@1.11.0)
     devDependencies:
       '@types/node':
         specifier: ^22.15.18
@@ -144,7 +144,7 @@ importers:
     devDependencies:
       '@aws-cdk/aws-amplify-alpha':
         specifier: 2.110.1-alpha.0
-        version: 2.110.1-alpha.0(aws-cdk-lib@2.209.0(constructs@10.4.2))(constructs@10.4.2)
+        version: 2.110.1-alpha.0(aws-cdk-lib@2.209.1(constructs@10.4.2))(constructs@10.4.2)
       '@jest/types':
         specifier: ^29.6.3
         version: 29.6.3
@@ -177,7 +177,7 @@ importers:
         version: 2.1023.0
       aws-cdk-lib:
         specifier: ^2.196.0
-        version: 2.209.0(constructs@10.4.2)
+        version: 2.209.1(constructs@10.4.2)
       constructs:
         specifier: ^10.3.0
         version: 10.4.2
@@ -249,7 +249,7 @@ importers:
     dependencies:
       '@swarmion/serverless-helpers':
         specifier: 0.35.0
-        version: 0.35.0(@serverless/typescript@4.17.2)(@types/aws-lambda@8.10.149)(aws-cdk-lib@2.209.0(constructs@10.4.2))
+        version: 0.35.0(@serverless/typescript@4.17.2)(@types/aws-lambda@8.10.149)(aws-cdk-lib@2.209.1(constructs@10.4.2))
     devDependencies:
       '@types/node':
         specifier: ^22.15.18
@@ -292,7 +292,7 @@ importers:
         version: link:../../packages/serverless-configuration
       '@swarmion/serverless-helpers':
         specifier: 0.35.0
-        version: 0.35.0(@serverless/typescript@4.17.2)(@types/aws-lambda@8.10.149)(aws-cdk-lib@2.209.0(constructs@10.4.2))
+        version: 0.35.0(@serverless/typescript@4.17.2)(@types/aws-lambda@8.10.149)(aws-cdk-lib@2.209.1(constructs@10.4.2))
     devDependencies:
       '@serverless/typescript':
         specifier: ^4.14.1
@@ -3711,8 +3711,8 @@ packages:
     resolution: {integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==}
     engines: {node: '>= 0.4'}
 
-  aws-cdk-lib@2.209.0:
-    resolution: {integrity: sha512-jSfwQnOdhVVEytE/9QxIIVGf7ekX4atna1gBH/Mk3tEQUTTSjGKGNVEpVGJbVt1zG4kRFVh+7e7jWuHN2Jdhaw==}
+  aws-cdk-lib@2.209.1:
+    resolution: {integrity: sha512-xwLGW3EyQ2y38X4legp917rjfrpv0TCVmvuiRW4Lf5enMU8IF+19FBieRgmaT/+3bzgt0IUu9kYy8MCZu4nJKw==}
     engines: {node: '>= 18.0.0'}
     peerDependencies:
       constructs: ^10.0.0
@@ -8241,9 +8241,9 @@ snapshots:
 
   '@aws-cdk/asset-node-proxy-agent-v6@2.1.0': {}
 
-  '@aws-cdk/aws-amplify-alpha@2.110.1-alpha.0(aws-cdk-lib@2.209.0(constructs@10.4.2))(constructs@10.4.2)':
+  '@aws-cdk/aws-amplify-alpha@2.110.1-alpha.0(aws-cdk-lib@2.209.1(constructs@10.4.2))(constructs@10.4.2)':
     dependencies:
-      aws-cdk-lib: 2.209.0(constructs@10.4.2)
+      aws-cdk-lib: 2.209.1(constructs@10.4.2)
       constructs: 10.4.2
 
   '@aws-cdk/cloud-assembly-schema@48.3.0': {}
@@ -12271,11 +12271,11 @@ snapshots:
       - supports-color
       - verdaccio
 
-  '@swarmion/serverless-contracts@0.35.0(@serverless/typescript@4.17.2)(ajv@8.17.1)(aws-cdk-lib@2.209.0(constructs@10.4.2))(axios@1.11.0)':
+  '@swarmion/serverless-contracts@0.35.0(@serverless/typescript@4.17.2)(ajv@8.17.1)(aws-cdk-lib@2.209.1(constructs@10.4.2))(axios@1.11.0)':
     dependencies:
       '@aws-sdk/client-eventbridge': 3.817.0
       '@aws-sdk/client-sqs': 3.817.0
-      '@swarmion/serverless-helpers': 0.35.0(@serverless/typescript@4.17.2)(@types/aws-lambda@8.10.149)(aws-cdk-lib@2.209.0(constructs@10.4.2))
+      '@swarmion/serverless-helpers': 0.35.0(@serverless/typescript@4.17.2)(@types/aws-lambda@8.10.149)(aws-cdk-lib@2.209.1(constructs@10.4.2))
       '@types/aws-lambda': 8.10.149
       '@types/http-errors': 2.0.4
       http-errors: 2.0.0
@@ -12296,11 +12296,11 @@ snapshots:
       - aws-cdk-lib
       - aws-crt
 
-  '@swarmion/serverless-helpers@0.35.0(@serverless/typescript@4.17.2)(@types/aws-lambda@8.10.149)(aws-cdk-lib@2.209.0(constructs@10.4.2))':
+  '@swarmion/serverless-helpers@0.35.0(@serverless/typescript@4.17.2)(@types/aws-lambda@8.10.149)(aws-cdk-lib@2.209.1(constructs@10.4.2))':
     dependencies:
       '@serverless/typescript': 4.17.2
       '@types/aws-lambda': 8.10.149
-      aws-cdk-lib: 2.209.0(constructs@10.4.2)
+      aws-cdk-lib: 2.209.1(constructs@10.4.2)
       json-schema-to-ts: 3.1.1
 
   '@swc/counter@0.1.3': {}
@@ -13034,7 +13034,7 @@ snapshots:
     dependencies:
       possible-typed-array-names: 1.0.0
 
-  aws-cdk-lib@2.209.0(constructs@10.4.2):
+  aws-cdk-lib@2.209.1(constructs@10.4.2):
     dependencies:
       '@aws-cdk/asset-awscli-v1': 2.2.242
       '@aws-cdk/asset-node-proxy-agent-v6': 2.1.0
