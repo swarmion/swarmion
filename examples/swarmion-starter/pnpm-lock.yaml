@@ -27,8 +27,8 @@ importers:
         specifier: ^8.32.1
         version: 8.39.0(eslint@8.57.1)(typescript@5.9.2)
       dependency-cruiser:
-        specifier: ^16.10.2
-        version: 16.10.4
+        specifier: ^17.0.0
+        version: 17.0.1
       eslint:
         specifier: ^8.55.0
         version: 8.57.1
@@ -79,8 +79,8 @@ importers:
         specifier: ^9.0.0
         version: 9.2.0
       dependency-cruiser:
-        specifier: ^16.10.2
-        version: 16.10.4
+        specifier: ^17.0.0
+        version: 17.0.1
       eslint:
         specifier: ^8.55.0
         version: 8.57.1
@@ -197,8 +197,8 @@ importers:
         specifier: ^10.3.0
         version: 10.4.2
       dependency-cruiser:
-        specifier: ^16.10.2
-        version: 16.10.4
+        specifier: ^17.0.0
+        version: 17.0.1
       dotenv-flow:
         specifier: ^4.0.0
         version: 4.1.0
@@ -291,8 +291,8 @@ importers:
         specifier: ^9.0.0
         version: 9.2.0
       dependency-cruiser:
-        specifier: ^16.10.2
-        version: 16.10.4
+        specifier: ^17.0.0
+        version: 17.0.1
       eslint:
         specifier: ^8.55.0
         version: 8.57.1
@@ -361,8 +361,8 @@ importers:
         specifier: ^10.3.0
         version: 10.4.2
       dependency-cruiser:
-        specifier: ^16.10.2
-        version: 16.10.4
+        specifier: ^17.0.0
+        version: 17.0.1
       esbuild:
         specifier: ^0.25.4
         version: 0.25.8
@@ -3260,9 +3260,9 @@ packages:
     resolution: {integrity: sha512-g7nH6P6dyDioJogAAGprGpCtVImJhpPk/roCzdb3fIh61/s/nPsfR6onyMwkCAR/OlC3yBC0lESvUoQEAssIrw==}
     engines: {node: '>= 0.8'}
 
-  dependency-cruiser@16.10.4:
-    resolution: {integrity: sha512-hrxVOjIm8idZ9ZVDGSyyG3SHiNcEUPhL6RTEmO/3wfQWLepH5pA3nuDMMrcJ1DkZztFA7xg3tk8OVO+MmwwH9w==}
-    engines: {node: ^18.17||>=20}
+  dependency-cruiser@17.0.1:
+    resolution: {integrity: sha512-4clZ8EPsOVoxGA8NMjaE95aJEO118Cd9D7gT5rysx5azij9cPiCSrnjYlZtV+90PFazlD2lZvjzBHkD1ZqGqlw==}
+    engines: {node: ^20.12||^22||>=24}
     hasBin: true
 
   dequal@2.0.3:
@@ -5476,9 +5476,6 @@ packages:
   tar-stream@2.2.0:
     resolution: {integrity: sha512-ujeqbceABgwMZxEJnk2HDY2DlnUZ+9oEcb1KzTVfYHio0UE6dG71n60d8D2I4qNvleWrrXpmjpt7vZeF1LnMZQ==}
     engines: {node: '>=6'}
-
-  teamcity-service-messages@0.1.14:
-    resolution: {integrity: sha512-29aQwaHqm8RMX74u2o/h1KbMLP89FjNiMxD9wbF2BbWOnbM+q+d1sCEC+MqCc4QW3NJykn77OMpTFw/xTHIc0w==}
 
   test-exclude@7.0.1:
     resolution: {integrity: sha512-pFYqmTw68LXVjeWJMST4+borgQP2AyMNbg1BpZh9LbyhUeNkeaPF9gzfPGUAnSMV3qPYdWUwDIjjCLiSDOl7vg==}
@@ -9527,7 +9524,7 @@ snapshots:
 
   depd@2.0.0: {}
 
-  dependency-cruiser@16.10.4:
+  dependency-cruiser@17.0.1:
     dependencies:
       acorn: 8.15.0
       acorn-jsx: 5.3.2(acorn@8.15.0)
@@ -9535,20 +9532,18 @@ snapshots:
       acorn-loose: 8.5.2
       acorn-walk: 8.3.4
       ajv: 8.17.1
-      commander: 13.1.0
+      commander: 14.0.0
       enhanced-resolve: 5.18.2
       ignore: 7.0.5
       interpret: 3.1.1
       is-installed-globally: 1.0.0
       json5: 2.2.3
       memoize: 10.1.0
-      picocolors: 1.1.1
       picomatch: 4.0.3
       prompts: 2.4.2
       rechoir: 0.8.0
       safe-regex: 2.1.1
       semver: 7.7.2
-      teamcity-service-messages: 0.1.14
       tsconfig-paths-webpack-plugin: 4.2.0
       watskeburt: 4.2.3
 
@@ -12050,8 +12045,6 @@ snapshots:
       fs-constants: 1.0.0
       inherits: 2.0.4
       readable-stream: 3.6.2
-
-  teamcity-service-messages@0.1.14: {}
 
   test-exclude@7.0.1:
     dependencies:
