@@ -73,7 +73,7 @@ importers:
         version: link:../../packages/serverless-configuration
       '@swarmion/serverless-contracts':
         specifier: 0.35.0
-        version: 0.35.0(@serverless/typescript@4.18.0)(ajv@8.17.1)(aws-cdk-lib@2.210.0(constructs@10.4.2))(axios@1.12.2)
+        version: 0.35.0(@serverless/typescript@4.20.2)(ajv@8.17.1)(aws-cdk-lib@2.210.0(constructs@10.4.2))(axios@1.12.2)
     devDependencies:
       '@types/node':
         specifier: ^22.15.18
@@ -249,7 +249,7 @@ importers:
     dependencies:
       '@swarmion/serverless-helpers':
         specifier: 0.35.0
-        version: 0.35.0(@serverless/typescript@4.18.0)(@types/aws-lambda@8.10.149)(aws-cdk-lib@2.210.0(constructs@10.4.2))
+        version: 0.35.0(@serverless/typescript@4.20.2)(@types/aws-lambda@8.10.149)(aws-cdk-lib@2.210.0(constructs@10.4.2))
     devDependencies:
       '@types/node':
         specifier: ^22.15.18
@@ -292,11 +292,11 @@ importers:
         version: link:../../packages/serverless-configuration
       '@swarmion/serverless-helpers':
         specifier: 0.35.0
-        version: 0.35.0(@serverless/typescript@4.18.0)(@types/aws-lambda@8.10.149)(aws-cdk-lib@2.210.0(constructs@10.4.2))
+        version: 0.35.0(@serverless/typescript@4.20.2)(@types/aws-lambda@8.10.149)(aws-cdk-lib@2.210.0(constructs@10.4.2))
     devDependencies:
       '@serverless/typescript':
         specifier: ^4.14.1
-        version: 4.18.0
+        version: 4.20.2
       '@swarmion-with-next/core-contracts':
         specifier: workspace:1.0.0
         version: link:../../contracts/core-contracts
@@ -2671,8 +2671,8 @@ packages:
     resolution: {integrity: sha512-XltmO/029X76zi0LUFmhsnanhE2wnqH1xf+WBt5K8gumQA9LnrfwLgPxj+VA+mm6wQhy+PCp7H5SS0ZPu7F2Cw==}
     engines: {node: '>=10.0'}
 
-  '@serverless/typescript@4.18.0':
-    resolution: {integrity: sha512-sURjGuX5JAdvd/ZNDJje076ia2aMfsQWK/18/NmPMmdMlJ4gXvYYwKDOqHFmQqH+H6sy9GptGVlXw6DvL9fTCw==}
+  '@serverless/typescript@4.20.2':
+    resolution: {integrity: sha512-mWlIBn7S1CFB2hFVaprxBlP9MSFBI+VhdFa/dnsAxVzDNC6iX6RNQ4xDklzqtvE3d/3nHBdV0lcy+ngY/utlMQ==}
 
   '@serverless/utils@6.15.0':
     resolution: {integrity: sha512-7eDbqKv/OBd11jjdZjUwFGN8sHWkeUqLeHXHQxQ1azja2IM7WIH+z/aLgzR6LhB3/MINNwtjesDpjGqTMj2JKQ==}
@@ -11602,7 +11602,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@serverless/typescript@4.18.0': {}
+  '@serverless/typescript@4.20.2': {}
 
   '@serverless/utils@6.15.0':
     dependencies:
@@ -12270,11 +12270,11 @@ snapshots:
       - supports-color
       - verdaccio
 
-  '@swarmion/serverless-contracts@0.35.0(@serverless/typescript@4.18.0)(ajv@8.17.1)(aws-cdk-lib@2.210.0(constructs@10.4.2))(axios@1.12.2)':
+  '@swarmion/serverless-contracts@0.35.0(@serverless/typescript@4.20.2)(ajv@8.17.1)(aws-cdk-lib@2.210.0(constructs@10.4.2))(axios@1.12.2)':
     dependencies:
       '@aws-sdk/client-eventbridge': 3.817.0
       '@aws-sdk/client-sqs': 3.817.0
-      '@swarmion/serverless-helpers': 0.35.0(@serverless/typescript@4.18.0)(@types/aws-lambda@8.10.149)(aws-cdk-lib@2.210.0(constructs@10.4.2))
+      '@swarmion/serverless-helpers': 0.35.0(@serverless/typescript@4.20.2)(@types/aws-lambda@8.10.149)(aws-cdk-lib@2.210.0(constructs@10.4.2))
       '@types/aws-lambda': 8.10.149
       '@types/http-errors': 2.0.4
       http-errors: 2.0.0
@@ -12288,16 +12288,16 @@ snapshots:
       ts-toolbelt: 9.6.0
       ulid: 3.0.0
     optionalDependencies:
-      '@serverless/typescript': 4.18.0
+      '@serverless/typescript': 4.20.2
       ajv: 8.17.1
       axios: 1.12.2
     transitivePeerDependencies:
       - aws-cdk-lib
       - aws-crt
 
-  '@swarmion/serverless-helpers@0.35.0(@serverless/typescript@4.18.0)(@types/aws-lambda@8.10.149)(aws-cdk-lib@2.210.0(constructs@10.4.2))':
+  '@swarmion/serverless-helpers@0.35.0(@serverless/typescript@4.20.2)(@types/aws-lambda@8.10.149)(aws-cdk-lib@2.210.0(constructs@10.4.2))':
     dependencies:
-      '@serverless/typescript': 4.18.0
+      '@serverless/typescript': 4.20.2
       '@types/aws-lambda': 8.10.149
       aws-cdk-lib: 2.210.0(constructs@10.4.2)
       json-schema-to-ts: 3.1.1
