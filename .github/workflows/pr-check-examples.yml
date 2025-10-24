@@ -33,7 +33,7 @@ jobs:
     outputs:
       should-run: ${{ steps.check-if-job-should-run.outputs.should-run }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           ref: ${{ env.TARGET_SHA }}
           fetch-depth: 0
@@ -52,7 +52,7 @@ jobs:
     outputs:
       examples: ${{ steps.list-example-folders.outputs.examples }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           ref: ${{ env.TARGET_SHA }}
           fetch-depth: 0
@@ -69,7 +69,7 @@ jobs:
       matrix:
         example: ${{ fromJson(needs.list-examples.outputs.examples) }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           ref: ${{ env.TARGET_SHA }}
           # We need to fetch all branches and commits so that Nx affected has a base to compare against.
