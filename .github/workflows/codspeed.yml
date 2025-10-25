@@ -29,6 +29,6 @@ jobs:
       - name: Package the repo
         run: pnpm package
       - name: Run benchmarks
-        uses: CodSpeedHQ/action@v3
+        uses: CodSpeedHQ/action@v4
         with:
           run: pnpm -r bench
