@@ -1,4 +1,4 @@
-import traverse from 'traverse';
+import traverse from 'neotraverse/legacy';
 
 import { CloudFormationTemplate, ResolveVariable } from 'types';
 
@@ -25,7 +25,7 @@ export const resolveVariablesInCdkOutput = async (
   cdkOutput: CloudFormationTemplate,
   resolveVariable?: ResolveVariable,
 ): Promise<void> => {
-  const toResolvePaths: string[][] = [];
+  const toResolvePaths: PropertyKey[][] = [];
 
   const traversedOutput = traverse(cdkOutput);
   traversedOutput.forEach(function (node: unknown) {
