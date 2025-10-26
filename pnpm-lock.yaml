@@ -382,12 +382,12 @@ importers:
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
+      neotraverse:
+        specifier: ^0.6.18
+        version: 0.6.18
       serverless:
         specifier: '3'
         version: 3.40.0(@types/node@22.18.12)(encoding@0.1.13)
-      traverse:
-        specifier: ^0.6.7
-        version: 0.6.11
       ts-toolbelt:
         specifier: ^9.6.0
         version: 9.6.0
@@ -404,9 +404,6 @@ importers:
       '@types/node':
         specifier: ^22.15.18
         version: 22.18.12
-      '@types/traverse':
-        specifier: ^0.6.35
-        version: 0.6.37
       aws-cdk-lib:
         specifier: ^2.196.0
         version: 2.221.0(constructs@10.4.2)
@@ -4637,9 +4634,6 @@ packages:
 
   '@types/tar@6.1.13':
     resolution: {integrity: sha512-IznnlmU5f4WcGTh2ltRu/Ijpmk8wiWXfF0VA4s+HPjHZgvFggk1YaIkbo5krX/zUCzWF8N/l4+W/LNxnvAJ8nw==}
-
-  '@types/traverse@0.6.37':
-    resolution: {integrity: sha512-c90MVeDiUI1FhOZ6rLQ3kDWr50YE8+paDpM+5zbHjbmsqEp2DlMYkqnZnwbK9oI+NvDe8yRajup4jFwnVX6xsA==}
 
   '@types/unist@2.0.10':
     resolution: {integrity: sha512-IfYcSBWE3hLpBg8+X2SEa8LVkJdJEkT2Ese2aaLs3ptGdVtABxndrMaxuFlQ1qdFf9Q5rDvDpxI3WwgvKFAsQA==}
@@ -9135,6 +9129,10 @@ packages:
 
   neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
+
+  neotraverse@0.6.18:
+    resolution: {integrity: sha512-Z4SmBUweYa09+o6pG+eASabEpP6QkQ70yHj351pQoEXIs8uHbaU2DWVmzBANKgflPa47A50PtB2+NgRpQvr7vA==}
+    engines: {node: '>= 10'}
 
   next-tick@1.1.0:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
@@ -18396,8 +18394,6 @@ snapshots:
       '@types/node': 22.18.12
       minipass: 4.2.8
 
-  '@types/traverse@0.6.37': {}
-
   '@types/unist@2.0.10': {}
 
   '@types/unist@3.0.2': {}
@@ -24035,6 +24031,8 @@ snapshots:
   negotiator@0.6.4: {}
 
   neo-async@2.6.2: {}
+
+  neotraverse@0.6.18: {}
 
   next-tick@1.1.0: {}
 
