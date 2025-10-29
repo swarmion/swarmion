@@ -31,4 +31,5 @@ jobs:
       - name: Run benchmarks
         uses: CodSpeedHQ/action@v4
         with:
+          mode: instrumentation
           run: pnpm -r bench
