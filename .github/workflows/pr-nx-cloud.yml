@@ -1,0 +1,91 @@
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  merge_group:
+    types: [checks_requested]
+
+# cancel previous runs on the same PR
+concurrency:
+  group: ${{ github.ref }}-nx-cloud
+  cancel-in-progress: true
+
+name: ⛷ PR tests Nx Cloud
+
+env:
+  CI: true
+  NX_BRANCH: ${{ github.event.pull_request.head.sha || github.event.merge_group.head_sha }}
+  NX_CLOUD_DISTRIBUTED_EXECUTION: true
+  NX_CLOUD_DISTRIBUTED_EXECUTION_AGENT_COUNT: 3
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  main:
+    name: Nx Cloud - Main Job
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ env.NX_BRANCH }}
+          # We need to fetch all branches and commits so that Nx affected has a base to compare against.
+          fetch-depth: 0
+      - uses: nrwl/nx-set-shas@v3
+      - name: Install & cache node dependencies
+        uses: ./.github/actions/install-node-deps
+      - name: Initialize the Nx Cloud distributed CI run
+        run: pnpm nx-cloud start-ci-run
+      - name: '🧪 Run tests'
+        run: |
+          pids=()
+
+          # list of commands to be run on agents
+          pnpm nx affected -t test-linter,test-type,test-circular,build --parallel=3 & 
+          pids+=($!)
+
+          pnpm nx run-many -t test-unit --parallel=3 &
+          pids+=($!)
+
+          # run all commands in parallel and bail if one of them fails
+          for pid in ${pids[*]}; do
+            if ! wait $pid; then
+              exit 1
+            fi
+          done
+
+          exit 0
+      - name: Stop all running agents for this CI run
+        # It's important that we always run this step, otherwise in the case of any failures in preceding non-Nx steps, the agents will keep running and waste billable minutes
+        if: ${{ always() }}
+        run: pnpm nx-cloud stop-all-agents
+      - name: Install LCOV
+        run: |
+          sudo apt-get update
+          sudo apt-get install lcov
+      - name: '🔃 Merge lcov files'
+        run: ./scripts/merge-lcov.sh
+      - name: 🔎 SonarCloud Scan
+        if: github.event_name == 'pull_request'
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  agents:
+    name: Agent ${{ matrix.agent }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        agent:
+          - ${{ fromJson('[1, 2, 3]') }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install & cache node dependencies
+        uses: ./.github/actions/install-node-deps
+      - name: Start Nx Agent ${{ matrix.agent }}
+        run: npx nx-cloud start-agent
+        env:
+          NX_AGENT_NAME: ${{matrix.agent}}
