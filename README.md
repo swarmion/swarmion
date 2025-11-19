@@ -5,9 +5,7 @@
 </p>
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-24-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-25-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 A set of tools to build and deploy type-safe microservices. In order to see working examples of these tools, check out the [examples folder](https://github.com/swarmion/swarmion/tree/main/examples).
@@ -64,6 +62,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/adelego"><img src="https://avatars.githubusercontent.com/u/28386375?v=4?s=100" width="100px;" alt="Adèle Gauvrit"/><br /><sub><b>Adèle Gauvrit</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=adelego" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/clementmarcilhacy"><img src="https://avatars.githubusercontent.com/u/28105242?v=4?s=100" width="100px;" alt="Clément Marcilhacy"/><br /><sub><b>Clément Marcilhacy</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=clementmarcilhacy" title="Code">💻</a> <a href="https://github.com/swarmion/swarmion/commits?author=clementmarcilhacy" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://dev.to/valentinbeggi"><img src="https://avatars.githubusercontent.com/u/87306219?v=4?s=100" width="100px;" alt="Valentin Beggi"/><br /><sub><b>Valentin Beggi</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=valentinbeggi" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/SashankBhamidi"><img src="https://avatars.githubusercontent.com/u/66299104?v=4?s=100" width="100px;" alt="Sashank"/><br /><sub><b>Sashank</b></sub></a><br /><a href="https://github.com/swarmion/swarmion/commits?author=SashankBhamidi" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
