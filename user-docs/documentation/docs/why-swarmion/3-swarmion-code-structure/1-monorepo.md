@@ -81,4 +81,4 @@ pnpm workspaces:
 
 - Handle dependencies anywhere in the repository
 
-You can find [here](https://nx.dev/getting-started/nx-core) a good explanation on how and why use these tools together.
+You can find [here](https://nx.dev/getting-started/package-based-repo-tutorial#local-linking-of-packages) a good explanation on how and why use these tools together.
